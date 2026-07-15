@@ -1,8 +1,8 @@
-# Matthew Paver — Product Shelf
+# Matthew Paver — Independent Product Builder
 
-The source for [matthewpaver.github.io](https://matthewpaver.github.io/): a curated portfolio of live apps, open-source tools and private commercial pilots.
+The source for [matthewpaver.github.io](https://matthewpaver.github.io/): a founder-led portfolio of commercial product pilots and open evidence tools.
 
-The site is static, responsive, cookie-free and contains no analytics or tracking scripts.
+The site is static, responsive, keyboard accessible, cookie-free and contains no analytics or tracking scripts. Its product covers use real interfaces or explicitly synthetic benchmark output rather than generated product imagery.
 
 ## Product boundaries
 

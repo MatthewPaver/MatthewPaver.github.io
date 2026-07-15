@@ -1,27 +1,32 @@
 const buttons = [...document.querySelectorAll("[data-filter]")];
 const products = [...document.querySelectorAll("[data-kind]")];
-const status = document.querySelector("#filter-status");
+const validFilters = new Set(buttons.map((button) => button.dataset.filter));
+
+function applyFilter(filter, updateUrl = true) {
+  const selectedFilter = validFilters.has(filter) ? filter : "all";
+
+  buttons.forEach((button) => {
+    const selected = button.dataset.filter === selectedFilter;
+    button.classList.toggle("active", selected);
+    button.setAttribute("aria-pressed", String(selected));
+  });
+
+  products.forEach((product) => {
+    const matches = selectedFilter === "all" || product.dataset.kind.split(" ").includes(selectedFilter);
+    product.classList.toggle("hidden", !matches);
+  });
+
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    if (selectedFilter === "all") url.searchParams.delete("filter");
+    else url.searchParams.set("filter", selectedFilter);
+    window.history.replaceState({}, "", url);
+  }
+}
 
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-    let visibleCount = 0;
-
-    buttons.forEach((item) => {
-      const selected = item === button;
-      item.classList.toggle("active", selected);
-      item.setAttribute("aria-pressed", String(selected));
-    });
-
-    products.forEach((product) => {
-      const matches = filter === "all" || product.dataset.kind.split(" ").includes(filter);
-      product.hidden = !matches;
-      if (matches) visibleCount += 1;
-    });
-
-    const label = filter === "all" ? "all" : filter;
-    status.textContent = `Showing ${visibleCount} ${label} product${visibleCount === 1 ? "" : "s"}`;
-  });
+  button.addEventListener("click", () => applyFilter(button.dataset.filter));
 });
 
+applyFilter(new URLSearchParams(window.location.search).get("filter") || "all", false);
 document.querySelector("#year").textContent = new Date().getFullYear();

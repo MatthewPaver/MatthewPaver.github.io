@@ -16,16 +16,16 @@ with sync_playwright() as playwright:
     page.wait_for_load_state("networkidle")
 
     assert page.title() == "Matthew Paver — Product Shelf"
-    assert page.locator("article.product-card").count() == 6
+    assert page.locator("article.product").count() == 6
     assert page.get_by_role("heading", name="Cadence").is_visible()
-    assert page.get_by_role("link", name="Browse all six products").is_visible()
     assert page.locator("img[width='1200'][height='675']").count() == 6
-    page.get_by_role("button", name="Open", exact=True).click()
-    assert page.locator("article.product-card:visible").count() == 3
-    assert page.locator("#filter-status").inner_text() == "Showing 3 open products"
-    assert page.get_by_role("button", name="Open", exact=True).get_attribute("aria-pressed") == "true"
+    page.get_by_role("button", name="Open source", exact=True).click()
+    assert page.locator("article.product:visible").count() == 3
+    assert page.get_by_role("button", name="Open source", exact=True).get_attribute("aria-pressed") == "true"
+    assert "filter=open" in page.url
     page.get_by_role("button", name="All", exact=True).click()
-    assert page.locator("article.product-card:visible").count() == 6
+    assert page.locator("article.product:visible").count() == 6
+    assert "filter=" not in page.url
     assert not errors, errors
 
     page.screenshot(path=str(DESKTOP_OUTPUT), full_page=True)
@@ -35,7 +35,6 @@ with sync_playwright() as playwright:
     mobile.goto("http://127.0.0.1:8766")
     mobile.wait_for_load_state("networkidle")
     assert mobile.evaluate("document.documentElement.scrollWidth") == 390
-    assert mobile.get_by_role("link", name="Products", exact=True).is_visible()
     assert mobile.get_by_role("link", name="GitHub", exact=True).is_visible()
     assert mobile.get_by_role("button", name="All", exact=True).bounding_box()["height"] >= 44
     for image in mobile.locator("img[loading='lazy']").all():

@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A curated shelf of working software, open tools and private product pilots by Matthew Paver." />
+    <meta name="description" content="Working software, open-source tools and private product pilots by Matthew Paver." />
     <meta name="theme-color" content="#ebe8df" />
     <meta property="og:title" content="Matthew Paver — Product Shelf" />
-    <meta property="og:description" content="Six useful products: live demos, open-source tools and private pilots." />
-    <meta property="og:image" content="https://matthewpaver.github.io/assets/cadence-cover-v2.png" />
+    <meta property="og:description" content="Six working products: live demos, open-source tools and private pilots." />
+    <meta property="og:image" content="https://matthewpaver.github.io/assets/cadence-store-v3.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>Matthew Paver — Product Shelf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,173 +16,130 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#products">Skip to products</a>
+    <a class="skip-link" href="#work">Skip to products</a>
     <div class="grain" aria-hidden="true"></div>
-
     <header class="nav-shell">
-      <a class="wordmark" href="#top" aria-label="Matthew Paver, back to top">
-        <span class="monogram" aria-hidden="true">MP</span>
-        <span><strong>Matthew Paver</strong><small>Independent product builder</small></span>
-      </a>
+      <a class="wordmark" href="#top"><span>MP</span>Product Shelf</a>
       <nav aria-label="Primary navigation">
-        <a href="#products">Products</a>
-        <a href="#approach">Approach</a>
-        <a href="https://github.com/MatthewPaver">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="#work">Products</a>
+        <a href="#principles">How I build</a>
+        <a href="https://github.com/MatthewPaver" aria-label="GitHub">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">Product shelf · 2026 collection</p>
-        <div class="hero-layout">
-          <h1 id="hero-title">Useful software,<br /><em>properly finished.</em></h1>
-          <div class="hero-intro">
-            <p>I’m Matthew. I turn awkward, evidence-heavy workflows into products people can inspect, run and trust.</p>
-            <a href="#products">Browse all six products <span aria-hidden="true">↓</span></a>
-          </div>
-        </div>
-        <div class="shelf-summary" aria-label="Portfolio summary">
-          <span><strong>06</strong> products</span>
-          <span><strong>03</strong> public demos</span>
-          <span><strong>03</strong> open tools</span>
-          <span><strong>00</strong> tracking scripts</span>
+      <section class="hero">
+        <p class="edition">Independent software · 2026 collection</p>
+        <h1>Small products,<br /><em>properly finished.</em></h1>
+        <div class="hero-bottom">
+          <p>I build evidence-led tools for messy decisions: managing blocks, buying homes, validating AI output, finding events, auditing strategies and comparing holidays.</p>
+          <div class="count"><strong>06</strong><span>working products<br />in this collection</span></div>
         </div>
       </section>
 
-      <section id="products" class="catalogue" aria-labelledby="catalogue-title">
+      <section id="work" class="catalogue">
         <div class="catalogue-head">
-          <div>
-            <p class="eyebrow">The collection</p>
-            <h2 id="catalogue-title">Ready to try, inspect or discuss.</h2>
-          </div>
-          <div class="filter-wrap">
-            <div class="filters" role="group" aria-label="Filter products">
-              <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
-              <button type="button" data-filter="live" aria-pressed="false">Live</button>
-              <button type="button" data-filter="open" aria-pressed="false">Open</button>
-              <button type="button" data-filter="private" aria-pressed="false">Private</button>
-            </div>
-            <p id="filter-status" class="filter-status" aria-live="polite">Showing all 6 products</p>
+          <div><p class="section-label">The product shelf</p><h2>Ready to inspect, run or discuss.</h2></div>
+          <div class="filters" role="group" aria-label="Filter products">
+            <button class="active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-filter="live" aria-pressed="false">Live apps</button>
+            <button type="button" data-filter="open" aria-pressed="false">Open source</button>
+            <button type="button" data-filter="private" aria-pressed="false">Private pilots</button>
           </div>
         </div>
 
-        <div class="product-grid">
-          <article class="product-card featured" data-kind="live private">
-            <a class="cover" href="https://agency-idea.vercel.app" aria-label="Open the Cadence seeded live demo">
-              <img src="assets/cadence-cover-v2.png" width="1200" height="675" fetchpriority="high" alt="Cadence operating ledger showing collections, resident issues and next decisions" />
-              <span class="card-number" aria-hidden="true">01</span>
-            </a>
-            <div class="card-body">
-              <div class="badges"><span class="badge live">Live seeded demo</span><span class="badge private">Private core</span></div>
-              <p class="category">Block operations</p>
+        <div class="grid">
+          <article class="product feature" data-kind="live private">
+            <a class="visual" href="https://agency-idea.vercel.app" aria-label="Open Cadence live demo"><img src="assets/cadence-store-v3.png" width="1200" height="675" fetchpriority="high" alt="Cadence service-charge operations dashboard" /><span class="number">01</span></a>
+            <div class="product-copy">
+              <div class="badges"><span class="live">Live demo</span><span>Private core</span></div>
               <h3>Cadence</h3>
-              <p class="description">A service-charge operating ledger that connects collections, resident issues and board evidence instead of leaving the work scattered across inboxes.</p>
-              <ul class="proof" aria-label="Cadence highlights">
-                <li>Seeded workspace</li><li>Role-based views</li><li>Commercial pilot</li>
-              </ul>
-              <a class="card-action" href="https://agency-idea.vercel.app">Try the live demo <span aria-hidden="true">↗</span></a>
+              <p class="category">Block operations</p>
+              <p>Collections, resident issues and board evidence in one auditable service-charge workflow.</p>
+              <div class="proof"><span>Seeded workspace</span><span>Role-based views</span><span>Commercial pilot</span></div>
+              <a class="action" href="https://agency-idea.vercel.app">Try the live demo <span>↗</span></a>
             </div>
           </article>
 
-          <article class="product-card" data-kind="live">
-            <a class="cover" href="https://matthewpaver.github.io/winchester-buyer-check/" aria-label="Open Winchester Buyer Check">
-              <img src="assets/winchester-cover-v2.png" width="1200" height="675" loading="lazy" alt="Winchester Buyer Check showing mortgage, cash and loan-to-value calculations" />
-              <span class="card-number" aria-hidden="true">02</span>
-            </a>
-            <div class="card-body">
-              <div class="badges"><span class="badge live">Live public tool</span><span class="badge neutral">Browser only</span></div>
-              <p class="category">Homebuyer planning</p>
+          <article class="product" data-kind="live">
+            <a class="visual" href="https://matthewpaver.github.io/winchester-buyer-check/" aria-label="Open Winchester Buyer Check"><img src="assets/winchester-store-v3.png" width="1200" height="675" loading="lazy" alt="Winchester Buyer Check affordability interface" /><span class="number">02</span></a>
+            <div class="product-copy">
+              <div class="badges"><span class="live">Live app</span><span>Browser only</span></div>
               <h3>Winchester Buyer Check</h3>
-              <p class="description">A private first-pass calculator for mortgage payments, cash needed, loan-to-value and an ownership buffer.</p>
-              <ul class="proof"><li>No account</li><li>No data upload</li></ul>
-              <a class="card-action" href="https://matthewpaver.github.io/winchester-buyer-check/">Open the calculator <span aria-hidden="true">↗</span></a>
+              <p class="category">Homebuyer planning</p>
+              <p>A private first-pass calculator for mortgage payments, cash needed, LTV and an ownership buffer.</p>
+              <div class="proof"><span>No account</span><span>No data upload</span></div>
+              <a class="action" href="https://matthewpaver.github.io/winchester-buyer-check/">Open the calculator <span>↗</span></a>
             </div>
           </article>
 
-          <article class="product-card" data-kind="live open">
-            <a class="cover" href="https://matthewpaver.github.io/ai-workflow-evaluator/app/" aria-label="Open Output Gate">
-              <img src="assets/output-gate-cover-v2.png" width="1200" height="675" loading="lazy" alt="Output Gate showing five of five deterministic release assertions passing" />
-              <span class="card-number" aria-hidden="true">03</span>
-            </a>
-            <div class="card-body">
-              <div class="badges"><span class="badge live">Live public tool</span><span class="badge open">MIT</span></div>
-              <p class="category">LLM workflow QA</p>
+          <article class="product" data-kind="live open">
+            <a class="visual" href="https://matthewpaver.github.io/ai-workflow-evaluator/app/" aria-label="Open Output Gate"><img src="assets/output-gate-store-v3.png" width="1200" height="675" loading="lazy" alt="Output Gate browser workbench" /><span class="number">03</span></a>
+            <div class="product-copy">
+              <div class="badges"><span class="live">Live app</span><span class="open">MIT</span></div>
               <h3>Output Gate</h3>
-              <p class="description">Deterministic phrase and policy checks for catching output regressions locally and in CI.</p>
-              <ul class="proof"><li>No API key</li><li>Browser + CLI</li></ul>
-              <a class="card-action" href="https://matthewpaver.github.io/ai-workflow-evaluator/app/">Use Output Gate <span aria-hidden="true">↗</span></a>
+              <p class="category">LLM workflow QA</p>
+              <p>Deterministic phrase and policy checks for catching output regressions locally and in CI.</p>
+              <div class="proof"><span>No API key</span><span>Browser + CLI</span></div>
+              <a class="action" href="https://matthewpaver.github.io/ai-workflow-evaluator/app/">Use Output Gate <span>↗</span></a>
             </div>
           </article>
 
-          <article class="product-card" data-kind="open private">
-            <a class="cover" href="https://github.com/MatthewPaver/happening-open-core" aria-label="View Happening Open Core on GitHub">
-              <img src="assets/happening-cover-v2.png" width="1200" height="675" loading="lazy" alt="Happening Open Core benchmark showing source coverage, evidence quality and duplicate checks" />
-              <span class="card-number" aria-hidden="true">04</span>
-            </a>
-            <div class="card-body">
-              <div class="badges"><span class="badge open">Open core · MIT</span><span class="badge private">Private product</span></div>
-              <p class="category">Evidence-aware event discovery</p>
+          <article class="product" data-kind="open private">
+            <a class="visual" href="https://github.com/MatthewPaver/happening-open-core" aria-label="View Happening Open Core"><img src="assets/happening-store-v3.png" width="1200" height="675" loading="lazy" alt="Happening event discovery interface" /><span class="number">04</span></a>
+            <div class="product-copy">
+              <div class="badges"><span class="open">Open core · MIT</span><span>Private product</span></div>
               <h3>Happening</h3>
-              <p class="description">Public schemas and benchmarks for the provenance, freshness and coverage layer behind a private event-discovery product.</p>
-              <ul class="proof"><li>Synthetic fixtures</li><li>Installable Python</li></ul>
-              <a class="card-action" href="https://github.com/MatthewPaver/happening-open-core">Explore the open core <span aria-hidden="true">↗</span></a>
+              <p class="category">Evidence-aware event discovery</p>
+              <p>A private discovery product with public schemas and benchmarks for provenance, freshness and source coverage.</p>
+              <div class="proof"><span>Synthetic fixtures</span><span>Installable Python</span></div>
+              <a class="action" href="https://github.com/MatthewPaver/happening-open-core">Explore the open core <span>↗</span></a>
             </div>
           </article>
 
-          <article class="product-card" data-kind="open">
-            <a class="cover" href="https://github.com/MatthewPaver/paper-trading-bot" aria-label="View Paper Trading Research Engine on GitHub">
-              <img src="assets/paper-cover-v2.png" width="1200" height="675" loading="lazy" alt="Paper Trading Research Engine synthetic benchmark with uncertainty and matched baseline metrics" />
-              <span class="card-number" aria-hidden="true">05</span>
-            </a>
-            <div class="card-body">
-              <div class="badges"><span class="badge open">Open source · MIT</span><span class="badge neutral">369 tests</span></div>
-              <p class="category">Reproducible quantitative research</p>
+          <article class="product" data-kind="open">
+            <a class="visual" href="https://github.com/MatthewPaver/paper-trading-bot" aria-label="View Paper Trading Research Engine"><img src="assets/paper-store-v3.png" width="1200" height="675" loading="lazy" alt="Paper Trading Bot benchmark report" /><span class="number">05</span></a>
+            <div class="product-copy">
+              <div class="badges"><span class="open">Open source · MIT</span><span>369 tests</span></div>
               <h3>Paper Trading Research Engine</h3>
-              <p class="description">Auditable walk-forward backtests with matched baselines, risk controls and uncertainty-aware reports.</p>
-              <ul class="proof"><li>Secret-scanned history</li><li>Synthetic demo</li></ul>
-              <a class="card-action" href="https://github.com/MatthewPaver/paper-trading-bot">View the repository <span aria-hidden="true">↗</span></a>
+              <p class="category">Reproducible quantitative research</p>
+              <p>Auditable backtests, matched baselines, risk controls and uncertainty-aware benchmark reports.</p>
+              <div class="proof"><span>Secret-scanned history</span><span>Synthetic demo</span></div>
+              <a class="action" href="https://github.com/MatthewPaver/paper-trading-bot">View the repository <span>↗</span></a>
             </div>
           </article>
 
-          <article class="product-card" data-kind="private">
-            <div class="cover static-cover">
-              <img src="assets/triptruth-cover-v2.png" width="1200" height="675" loading="lazy" alt="TripTruth travel adviser workspace with evidence, price and quote-readiness checks" />
-              <span class="card-number" aria-hidden="true">06</span>
-            </div>
-            <div class="card-body">
-              <div class="badges"><span class="badge private">Private pilot</span><span class="badge neutral">B2B travel</span></div>
-              <p class="category">Travel adviser workspace</p>
+          <article class="product" data-kind="private">
+            <div class="visual"><img src="assets/triptruth-store-v3.png" width="1200" height="675" loading="lazy" alt="TripTruth travel adviser deal desk" /><span class="number">06</span></div>
+            <div class="product-copy">
+              <div class="badges"><span>Private pilot</span><span>B2B</span></div>
               <h3>TripTruth</h3>
-              <p class="description">Turns headline holiday prices into evidence-backed comparisons of extras, suitability and quote readiness.</p>
-              <ul class="proof"><li>Seeded offers</li><li>Evidence links</li></ul>
-              <span class="card-action muted">Private commercial demo</span>
+              <p class="category">Travel adviser workspace</p>
+              <p>Turns headline holiday prices into evidence-backed comparisons of extras, suitability and quote readiness.</p>
+              <div class="proof"><span>Seeded offers</span><span>Evidence links</span></div>
+              <span class="action muted">Private commercial demo</span>
             </div>
           </article>
         </div>
       </section>
 
-      <section id="approach" class="approach" aria-labelledby="approach-title">
-        <div>
-          <p class="eyebrow">How I build</p>
-          <h2 id="approach-title">Evidence before theatre.</h2>
+      <section id="principles" class="principles">
+        <p class="section-label">How I build</p>
+        <div class="principle-grid">
+          <h2>Evidence before theatre.</h2>
+          <div><strong>01</strong><h3>Runnable first</h3><p>A visitor should be able to understand the product and reach a useful result without reading an architecture document.</p></div>
+          <div><strong>02</strong><h3>Honest boundaries</h3><p>Synthetic data is labelled, financial outputs are qualified and private operational advantages stay private.</p></div>
+          <div><strong>03</strong><h3>Open with intent</h3><p>Reusable infrastructure is shared under MIT. Commercial products keep their customer workflow and data operations protected.</p></div>
         </div>
-        <ol>
-          <li><span>01</span><strong>Research the real decision</strong><p>Start with the buyer, the operating pain and the alternatives already in use.</p></li>
-          <li><span>02</span><strong>Make it runnable</strong><p>Turn the critical judgement into a product someone can understand by trying.</p></li>
-          <li><span>03</span><strong>Package the proof</strong><p>Show honest fixtures, repeatable demos, tests and clear commercial boundaries.</p></li>
-        </ol>
       </section>
 
-      <section class="closing" aria-label="Contact">
-        <div><p class="eyebrow">Next conversation</p><h2>Have a difficult workflow?</h2></div>
-        <div class="closing-actions">
-          <a class="primary" href="https://agency-idea.vercel.app">Start with Cadence <span aria-hidden="true">↗</span></a>
-          <a href="https://github.com/MatthewPaver">Find me on GitHub <span aria-hidden="true">↗</span></a>
-        </div>
+      <section class="closing">
+        <p>Have a difficult workflow that deserves a clearer product?</p>
+        <a href="https://github.com/MatthewPaver">Start with my GitHub <span>↗</span></a>
       </section>
     </main>
 
-    <footer><span>© <span id="year">2026</span> Matthew Paver</span><span>Built without tracking or cookies</span></footer>
+    <footer><span>© <span id="year"></span> Matthew Paver</span><span>No tracking · No cookies</span></footer>
     <script src="app.js"></script>
   </body>
 </html>

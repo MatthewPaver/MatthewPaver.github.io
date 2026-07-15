@@ -3,7 +3,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 
-OUTPUT = Path("/tmp/matthew-paver-product-shelf.png")
+DESKTOP_OUTPUT = Path("/tmp/matthew-paver-portfolio-desktop.png")
+MOBILE_OUTPUT = Path("/tmp/matthew-paver-portfolio-mobile.png")
 
 
 with sync_playwright() as playwright:
@@ -14,16 +15,29 @@ with sync_playwright() as playwright:
     page.goto("http://127.0.0.1:8766")
     page.wait_for_load_state("networkidle")
 
-    assert page.title() == "Matthew Paver — Product Shelf"
-    assert page.locator("article.product").count() == 6
-    page.get_by_role("button", name="Open source").click()
-    assert page.locator("article.product:not(.hidden)").count() == 3
-    page.get_by_role("button", name="Private pilots").click()
-    assert page.locator("article.product:not(.hidden)").count() == 3
+    assert page.title() == "Matthew Paver — Independent Product Builder"
+    assert page.locator("article.product-card").count() == 6
+    assert page.get_by_role("heading", name="Cadence").is_visible()
+    assert page.get_by_role("link", name="View Flagship Work").is_visible()
+    assert page.locator("img[width='1200'][height='675']").count() == 6
     assert not errors, errors
 
-    page.get_by_role("button", name="All").click()
-    page.screenshot(path=str(OUTPUT), full_page=True)
+    page.screenshot(path=str(DESKTOP_OUTPUT), full_page=True)
+    page.close()
+
+    mobile = browser.new_page(viewport={"width": 390, "height": 844})
+    mobile.goto("http://127.0.0.1:8766")
+    mobile.wait_for_load_state("networkidle")
+    assert mobile.evaluate("document.documentElement.scrollWidth") == 390
+    assert mobile.get_by_role("link", name="Work", exact=True).is_visible()
+    assert mobile.get_by_role("link", name="GitHub", exact=True).is_visible()
+    assert mobile.get_by_role("link", name="View Flagship Work").bounding_box()["height"] >= 44
+    for image in mobile.locator("img[loading='lazy']").all():
+        image.scroll_into_view_if_needed()
+        image.evaluate("element => element.decode()")
+        assert image.evaluate("element => element.naturalWidth") == 1200
+    mobile.screenshot(path=str(MOBILE_OUTPUT), full_page=True)
+    mobile.close()
     browser.close()
 
-print(f"Smoke test passed; screenshot: {OUTPUT}")
+print(f"Smoke test passed; screenshots: {DESKTOP_OUTPUT}, {MOBILE_OUTPUT}")

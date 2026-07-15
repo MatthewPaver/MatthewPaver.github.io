@@ -5,6 +5,14 @@ from playwright.sync_api import sync_playwright
 
 DESKTOP_OUTPUT = Path("/tmp/matthew-paver-portfolio-desktop.png")
 MOBILE_OUTPUT = Path("/tmp/matthew-paver-portfolio-mobile.png")
+EXPECTED_COVERS = {
+    "cadence-app-v4.png",
+    "winchester-app-v4.png",
+    "output-gate-app-v4.png",
+    "happening-app-v4.png",
+    "paper-app-v4.png",
+    "triptruth-app-v4.png",
+}
 
 
 with sync_playwright() as playwright:
@@ -41,6 +49,11 @@ with sync_playwright() as playwright:
         image.scroll_into_view_if_needed()
         image.evaluate("element => element.decode()")
         assert image.evaluate("element => element.naturalWidth") == 1200
+    cover_names = {
+        Path(image.get_attribute("src")).name
+        for image in mobile.locator("article.product img").all()
+    }
+    assert cover_names == EXPECTED_COVERS
     mobile.screenshot(path=str(MOBILE_OUTPUT), full_page=True)
     mobile.close()
     browser.close()

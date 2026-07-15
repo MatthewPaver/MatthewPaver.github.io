@@ -15,11 +15,17 @@ with sync_playwright() as playwright:
     page.goto("http://127.0.0.1:8766")
     page.wait_for_load_state("networkidle")
 
-    assert page.title() == "Matthew Paver — Independent Product Builder"
+    assert page.title() == "Matthew Paver — Product Shelf"
     assert page.locator("article.product-card").count() == 6
     assert page.get_by_role("heading", name="Cadence").is_visible()
-    assert page.get_by_role("link", name="View Flagship Work").is_visible()
+    assert page.get_by_role("link", name="Browse all six products").is_visible()
     assert page.locator("img[width='1200'][height='675']").count() == 6
+    page.get_by_role("button", name="Open", exact=True).click()
+    assert page.locator("article.product-card:visible").count() == 3
+    assert page.locator("#filter-status").inner_text() == "Showing 3 open products"
+    assert page.get_by_role("button", name="Open", exact=True).get_attribute("aria-pressed") == "true"
+    page.get_by_role("button", name="All", exact=True).click()
+    assert page.locator("article.product-card:visible").count() == 6
     assert not errors, errors
 
     page.screenshot(path=str(DESKTOP_OUTPUT), full_page=True)
@@ -29,9 +35,9 @@ with sync_playwright() as playwright:
     mobile.goto("http://127.0.0.1:8766")
     mobile.wait_for_load_state("networkidle")
     assert mobile.evaluate("document.documentElement.scrollWidth") == 390
-    assert mobile.get_by_role("link", name="Work", exact=True).is_visible()
+    assert mobile.get_by_role("link", name="Products", exact=True).is_visible()
     assert mobile.get_by_role("link", name="GitHub", exact=True).is_visible()
-    assert mobile.get_by_role("link", name="View Flagship Work").bounding_box()["height"] >= 44
+    assert mobile.get_by_role("button", name="All", exact=True).bounding_box()["height"] >= 44
     for image in mobile.locator("img[loading='lazy']").all():
         image.scroll_into_view_if_needed()
         image.evaluate("element => element.decode()")

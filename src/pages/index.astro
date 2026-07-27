@@ -1,0 +1,202 @@
+---
+import { getCollection } from "astro:content";
+import AppCard from "../components/AppCard.astro";
+import CommandPalette from "../components/CommandPalette.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { appUrl, sortApps } from "../lib/catalogue";
+
+const apps = sortApps(await getCollection("apps"));
+const flagships = apps.filter((app) => app.data.kind === "flagship");
+const caseStudies = apps.filter((app) => app.data.kind === "case-study");
+const featured = flagships.filter((app) => app.data.featured);
+const stacks = [...new Set(flagships.flatMap((app) => app.data.stack))].sort();
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Matthew Paver",
+    url: "https://matthewpaver.github.io/",
+    sameAs: [
+      "https://github.com/MatthewPaver",
+      "https://www.linkedin.com/in/matthew-paver-534262166/",
+    ],
+    jobTitle: "Software engineer and automation specialist",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Matthew Paver product store",
+    numberOfItems: flagships.length,
+    itemListElement: flagships.map((app, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: app.data.title,
+      url: new URL(appUrl(app), Astro.site).href,
+    })),
+  },
+];
+---
+
+<SiteLayout
+  title="Matthew Paver Product Store · Useful software, with evidence"
+  description="Eight inspectable products and three protected commercial case studies across project assurance, automation, AI workflow quality and data systems."
+  structuredData={structuredData}
+>
+  <section class="store-hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow">Independent software · 2026 collection</p>
+      <h1>Useful software,<br /><em>with the workings visible.</em></h1>
+      <p class="hero-lede">
+        Browser tools, open repositories and protected product work. Each entry says what runs,
+        what is proved and where a person still decides.
+      </p>
+      <div class="hero-actions">
+        <a class="button button--primary button--large" href="#products">Browse the products</a>
+        <button class="button button--secondary button--large command-trigger" type="button">
+          Search the store <kbd>⌘K</kbd>
+        </button>
+      </div>
+    </div>
+    <aside class="store-stats" aria-label="Store summary">
+      <div><strong>08</strong><span>flagship builds</span></div>
+      <div><strong>06</strong><span>browser tools</span></div>
+      <div><strong>03</strong><span>protected cases</span></div>
+      <p>Counts describe this catalogue, not invented users, ratings or downloads.</p>
+    </aside>
+  </section>
+
+  <section class="featured-section shell" aria-labelledby="featured-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Start here</p>
+        <h2 id="featured-heading">Four tools that show the pattern.</h2>
+      </div>
+      <p>Messy evidence comes in. Deterministic checks and explicit boundaries turn it into something a person can use.</p>
+    </div>
+    <div class="featured-bento">
+      {featured.map((app, index) => (
+        <a class:list={["featured-tile", index === 0 && "featured-tile--lead"]} href={appUrl(app)}>
+          <picture>
+            {app.data.imageAvif && <source srcset={app.data.imageAvif} type="image/avif" />}
+            <img
+              src={app.data.image}
+              alt={app.data.imageAlt}
+              width="1200"
+              height="675"
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchpriority={index === 0 ? "high" : "auto"}
+            />
+          </picture>
+          <span class="featured-overlay">
+            <small>{app.data.category}</small>
+            <strong>{app.data.title}</strong>
+            <span>{app.data.tagline}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section id="products" class="catalogue-section">
+    <div class="shell">
+      <div class="section-heading section-heading--catalogue">
+        <div>
+          <p class="eyebrow">The product shelf</p>
+          <h2>Open it, inspect it or run it locally.</h2>
+        </div>
+        <p>Live means a working browser route. Public means the repository is inspectable. Prototype means the boundary is still being tested.</p>
+      </div>
+
+      <div class="catalogue-controls enhanced" aria-label="Find and filter products">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4A7.75 7.75 0 1 1 3.5 11.25a7.75 7.75 0 0 1 15.5 0Z" /></svg>
+          <label class="sr-only" for="catalogue-search">Search products</label>
+          <input id="catalogue-search" type="search" placeholder="Search a problem, product or technology…" autocomplete="off" />
+        </div>
+        <div class="facet-buttons" aria-label="Availability filters">
+          <button type="button" data-facet="live" aria-pressed="false">Live</button>
+          <button type="button" data-facet="public" aria-pressed="false">Open source</button>
+          <button type="button" data-facet="prototype" aria-pressed="false">Prototype</button>
+        </div>
+        <label class="select-field">
+          <span>Stack</span>
+          <select id="stack-filter">
+            <option value="">All technology</option>
+            {stacks.map((stack) => <option value={stack.toLowerCase()}>{stack}</option>)}
+          </select>
+        </label>
+        <label class="select-field">
+          <span>Sort</span>
+          <select id="sort-products">
+            <option value="curated">Curated</option>
+            <option value="updated">Recently updated</option>
+          </select>
+        </label>
+      </div>
+      <div class="result-line enhanced" aria-live="polite">
+        <span id="result-count">{flagships.length} results</span>
+        <button id="clear-filters" type="button">Clear filters</button>
+      </div>
+
+      <div class="catalogue-grid" data-catalogue>
+        {flagships.map((app) => <AppCard app={app} />)}
+      </div>
+      <div id="catalogue-empty" class="empty-state enhanced" hidden>
+        <strong>No product matches those filters.</strong>
+        <p>Clear the filters or search for a broader problem such as “evidence”, “data” or “workflow”.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-studies" class="case-section shell" aria-labelledby="case-heading">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Protected product work</p>
+        <h2 id="case-heading">Case studies, not dead-end cards.</h2>
+      </div>
+      <p>The workflow and product decisions are inspectable. Customer data, commercial code and operating advantages stay private.</p>
+    </div>
+    <div class="case-grid">
+      {caseStudies.map((app) => (
+        <article class="case-card">
+          <a href={appUrl(app)} class="case-image">
+            <picture>
+              {app.data.imageAvif && <source srcset={app.data.imageAvif} type="image/avif" />}
+              <img src={app.data.image} alt={app.data.imageAlt} width="1200" height="675" loading="lazy" />
+            </picture>
+          </a>
+          <div>
+            <span class="badge badge--private">Protected case</span>
+            <p class="eyebrow">{app.data.category}</p>
+            <h3><a href={appUrl(app)}>{app.data.title}</a></h3>
+            <p>{app.data.tagline}</p>
+            <a class="text-link" href={appUrl(app)}>Read the case <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="method" class="method-section">
+    <div class="shell method-grid">
+      <div>
+        <p class="eyebrow">Build method</p>
+        <h2>Evidence before theatre.</h2>
+        <p>Good demos finish the task, disclose the boundary and leave enough implementation evidence for another person to challenge them.</p>
+      </div>
+      <ol>
+        <li><span>01</span><strong>Make the input inspectable.</strong><p>Use real public evidence or clearly labelled synthetic fixtures.</p></li>
+        <li><span>02</span><strong>Keep deterministic checks separate.</strong><p>Code validates what can be exact. Language models do not impersonate certainty.</p></li>
+        <li><span>03</span><strong>Preserve the human decision.</strong><p>Approval, judgement and commercial responsibility stay with people.</p></li>
+        <li><span>04</span><strong>Package the handoff.</strong><p>A working route, install path, tests, limitations and current status travel together.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <CommandPalette apps={apps} />
+  <script>
+    import { initCatalogue, initCommandPalette } from "../scripts/catalogue-state.mjs";
+    initCatalogue();
+    initCommandPalette();
+  </script>
+</SiteLayout>

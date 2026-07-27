@@ -1,16 +1,46 @@
-# Matthew Paver — Independent Product Builder
+# Matthew Paver — Product Store
 
-The source for [matthewpaver.github.io](https://matthewpaver.github.io/): a founder-led portfolio of commercial product pilots and open evidence tools.
+The source for [matthewpaver.github.io](https://matthewpaver.github.io/): one
+canonical, evidence-led catalogue of Matthew Paver's usable software.
 
-The site is static, responsive, keyboard accessible, cookie-free and contains no analytics or tracking scripts. Its product covers use real interfaces or explicitly synthetic benchmark output rather than generated product imagery.
+The store is built with Astro and produces plain static HTML for GitHub Pages.
+Every flagship has its own indexable page with a real screenshot, current
+repository evidence, install or launch instructions, validation commands, and
+explicit limitations. Search and filters are progressive enhancement, so the
+catalogue remains browsable without JavaScript.
 
-## Product boundaries
+## Catalogue
 
-- **Cadence** and **TripTruth** are private commercial products.
-- The full **Winchester** decision product is private; only the browser-only buyer calculator is public.
-- **Happening** is open-core: generic evidence schemas and benchmarks are public, while the production feed and data operations are private.
-- **Output Gate** and **Paper Trading Research Engine** are MIT-licensed public projects.
+- Eight flagship products: ProjectLens, MeetingProof, Output Gate,
+  DecisionGraph, Marketing ML Lakehouse, Paper Trading, Winchester Buyer Check,
+  and Newco Assurance.
+- Three protected case studies: Cadence, QuickSupply, and Happening.
+- No invented user counts, review scores, or performance claims.
+
+## Work locally
+
+```bash
+npm install
+npm run dev
+```
+
+Run the complete pre-publish check with:
+
+```bash
+npm run verify
+```
+
+`npm run metrics` refreshes public GitHub metadata. `npm run screenshots`
+recaptures MeetingProof and rebuilds Newco's non-sensitive protected-product
+cover.
+
+## Deployment
+
+Pushes to `main` run unit tests, type/build checks, browser tests at desktop and
+mobile widths, then deploy the generated `dist/` directory to GitHub Pages.
 
 ## Rights
 
-Site code may be reused under the MIT licence. Product names, screenshots, copy and other brand assets remain copyright © Matthew Paver and are not sublicensed by the code licence.
+Site code may be reused under the MIT licence. Product names, screenshots, copy
+and other brand assets remain copyright © Matthew Paver and are not sublicensed
+by the code licence.

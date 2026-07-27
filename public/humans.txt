@@ -1,0 +1,4 @@
+Site: Matthew Paver Product Store
+Author: Matthew Paver
+Build: Astro static output
+Principle: real interfaces, stated boundaries, inspectable evidence

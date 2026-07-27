@@ -1,0 +1,19 @@
+---
+const canonical = new URL("/", Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Store moved</title>
+    <link rel="canonical" href={canonical} />
+    <meta http-equiv="refresh" content="0;url=/" />
+  </head>
+  <body>
+    <main>
+      <h1>The product store has moved.</h1>
+      <p><a href="/">Continue to the canonical store</a>.</p>
+    </main>
+  </body>
+</html>

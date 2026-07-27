@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,follow" />
+    <title>Product route moved</title>
+    <script>
+      const routes = {
+        meetingproof: "meetingproof",
+        projectlens: "projectlens",
+        decisiongraph: "decisiongraph",
+        lakehouse: "marketing-ml-lakehouse",
+        "output-gate": "output-gate",
+        happening: "happening",
+        quicksupply: "quicksupply"
+      };
+      const slug = routes[new URLSearchParams(location.search).get("app")];
+      location.replace(slug ? `/store/apps/${slug}/` : "/");
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>The product pages have moved.</h1>
+      <p><a href="/">Continue to the canonical product store</a>.</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import CommandPalette from "../../../components/CommandPalette.astro";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { appUrl, displayDate, metricFor, sortApps } from "../../../lib/catalogue";
+
+export async function getStaticPaths() {
+  const apps = await getCollection("apps");
+  return apps.map((app) => ({ params: { slug: app.id }, props: { app } }));
+}
+
+interface Props {
+  app: CollectionEntry<"apps">;
+}
+
+const { app } = Astro.props;
+const { Content } = await render(app);
+const allApps = sortApps(await getCollection("apps"));
+const data = app.data;
+const metric = metricFor(app);
+const primaryUrl = data.launch ?? data.repo ?? data.caseStudy;
+const statusLabel = {
+  live: "Live app",
+  public: "Open source",
+  prototype: "Prototype",
+  private: "Protected case study",
+}[data.status];
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: data.title,
+    description: data.tagline,
+    applicationCategory: data.category,
+    operatingSystem: data.launch ? "Web" : "macOS, Windows, Linux",
+    url: new URL(appUrl(app), Astro.site).href,
+    image: new URL(data.image, Astro.site).href,
+    codeRepository: data.repo,
+    softwareVersion: data.version,
+    license: data.license,
+    author: { "@type": "Person", name: "Matthew Paver" },
+    offers: data.kind === "flagship" ? { "@type": "Offer", price: "0", priceCurrency: "GBP" } : undefined,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Product Store", item: new URL("/", Astro.site).href },
+      { "@type": "ListItem", position: 2, name: data.title, item: new URL(appUrl(app), Astro.site).href },
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title={`${data.title} · Matthew Paver Product Store`}
+  description={data.tagline}
+  image={data.image}
+  canonical={appUrl(app)}
+  structuredData={structuredData}
+>
+  <div class="shell app-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Product store</a><span aria-hidden="true">/</span><span>{data.title}</span>
+    </nav>
+
+    <header class="app-hero">
+      <div class="app-hero-copy">
+        <div class="badge-row">
+          <span class:list={["badge", `badge--${data.status}`]}>{statusLabel}</span>
+          {metric?.ciStatus === "success" && <span class="badge badge--verified">Checks passing</span>}
+          {metric?.ciStatus === "failure" && <span class="badge badge--warning">Checks need attention</span>}
+        </div>
+        <p class="eyebrow">{data.category}</p>
+        <h1>{data.title}</h1>
+        <p class="app-hero-lede">{data.tagline}</p>
+        <div class="app-hero-actions">
+          {primaryUrl && <a class="button button--primary button--large" href={primaryUrl}>{data.primaryAction}</a>}
+          {data.repo && <a class="button button--secondary button--large" href={data.repo}>View source</a>}
+        </div>
+        <dl class="app-facts">
+          <div><dt>Version</dt><dd>{metric?.release ?? data.version}</dd></div>
+          <div><dt>Updated</dt><dd>{displayDate(metric?.updatedAt ?? data.updated)}</dd></div>
+          <div><dt>Licence</dt><dd>{data.license}</dd></div>
+        </dl>
+      </div>
+      <figure class="app-hero-media">
+        <picture>
+          {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
+          <img src={data.image} alt={data.imageAlt} width="1200" height="675" fetchpriority="high" />
+        </picture>
+        <figcaption>Current public interface or documented product evidence.</figcaption>
+      </figure>
+    </header>
+
+    <nav class="page-tabs" aria-label="On this page">
+      <a href="#overview">Overview</a>
+      <a href="#evidence">Evidence</a>
+      <a href={data.install.length ? "#install" : "#boundary"}>{data.install.length ? "Install" : "Product boundary"}</a>
+      <a href="#status">Status</a>
+    </nav>
+
+    <div class="app-content-grid">
+      <div class="app-content-main">
+        <section id="overview" class="detail-section">
+          <p class="eyebrow">Overview</p>
+          <h2>{data.problem}</h2>
+          <p class="outcome">{data.outcome}</p>
+          <div class="prose"><Content /></div>
+        </section>
+
+        <section id="evidence" class="detail-section">
+          <p class="eyebrow">What to inspect</p>
+          <h2>The proof is part of the handoff.</h2>
+          <ul class="evidence-grid">
+            {data.proof.map((proof, index) => (
+              <li><span>0{index + 1}</span><strong>{proof}</strong></li>
+            ))}
+          </ul>
+          <ul class="stack-list stack-list--large" aria-label="Technology">
+            {data.stack.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        {data.install.length > 0 ? (
+          <section id="install" class="detail-section">
+            <p class="eyebrow">Install</p>
+            <h2>Run it locally</h2>
+            <p class="outcome">An honest install path, not a decorative repository link.</p>
+            {data.requirements.length > 0 && (
+              <div class="requirements">
+                <h3>Requirements</h3>
+                <ul>{data.requirements.map((item) => <li>{item}</li>)}</ul>
+              </div>
+            )}
+            <div class="command-stack">
+              {data.install.map((command) => (
+                <div class="command-line">
+                  <code>{command}</code>
+                  <button type="button" data-copy={command}>Copy</button>
+                </div>
+              ))}
+            </div>
+            {data.validate.length > 0 && (
+              <div class="validate-block">
+                <h3>Verify it</h3>
+                {data.validate.map((command) => (
+                  <div class="command-line">
+                    <code>{command}</code>
+                    <button type="button" data-copy={command}>Copy</button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        ) : (
+          <section id="boundary" class="detail-section">
+            <p class="eyebrow">Product boundary</p>
+            <h2>The case is public. The operating advantage is not.</h2>
+            <p class="outcome">This page shows the user problem, workflow and current evidence without publishing private code or operational data.</p>
+          </section>
+        )}
+
+        <section id="status" class="detail-section">
+          <p class="eyebrow">Current status</p>
+          <h2>Known limits</h2>
+          <ul class="limitations">
+            {data.limitations.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="status-note">
+            Last reviewed {displayDate(data.updated)}. Store metadata is generated from the same content entry as this page.
+          </p>
+        </section>
+      </div>
+
+      <aside class="app-content-aside">
+        <div class="aside-panel">
+          <p class="eyebrow">Quick route</p>
+          <strong>{data.primaryAction}</strong>
+          <p>{data.tagline}</p>
+          {primaryUrl && <a class="button button--primary" href={primaryUrl}>Continue</a>}
+        </div>
+        <div class="aside-panel">
+          <p class="eyebrow">Technology</p>
+          <ul>{data.stack.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <CommandPalette apps={allApps} />
+  <script>
+    import { initCommandPalette, initCopyButtons } from "../../../scripts/catalogue-state.mjs";
+    initCommandPalette();
+    initCopyButtons();
+  </script>
+</SiteLayout>

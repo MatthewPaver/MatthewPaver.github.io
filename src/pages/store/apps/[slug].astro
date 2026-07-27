@@ -77,6 +77,11 @@ const structuredData = [
         <div class="app-hero-actions">
           {primaryUrl && <a class="button button--primary button--large" href={primaryUrl}>{data.primaryAction}</a>}
           {data.repo && <a class="button button--secondary button--large" href={data.repo}>View source</a>}
+          {data.repo && metric?.release && (
+            <a class="button button--secondary button--large" href={`${data.repo}/releases/latest`}>
+              Download {metric.release}
+            </a>
+          )}
         </div>
         <dl class="app-facts">
           <div><dt>Version</dt><dd>{metric?.release ?? data.version}</dd></div>
@@ -179,6 +184,9 @@ const structuredData = [
           <strong>{data.primaryAction}</strong>
           <p>{data.tagline}</p>
           {primaryUrl && <a class="button button--primary" href={primaryUrl}>Continue</a>}
+          {data.repo && metric?.release && (
+            <a class="text-link" href={`${data.repo}/releases/latest`}>Release {metric.release} <span aria-hidden="true">→</span></a>
+          )}
         </div>
         <div class="aside-panel">
           <p class="eyebrow">Technology</p>

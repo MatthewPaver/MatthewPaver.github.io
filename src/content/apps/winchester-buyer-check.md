@@ -23,7 +23,7 @@ imageAlt: Winchester Buyer Check inputs and calculated mortgage, cash and loan-t
 repo: https://github.com/MatthewPaver/winchester-buyer-check
 metricsRepo: MatthewPaver/winchester-buyer-check
 launch: https://matthewpaver.github.io/winchester-buyer-check/
-primaryAction: Open the private calculator
+primaryAction: Open the buyer calculator
 license: Publicly viewable; no open-source licence
 version: Public edition
 updated: 2026-07-15

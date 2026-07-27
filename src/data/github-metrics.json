@@ -1,44 +1,44 @@
 {
   "MatthewPaver/ProjectLens": {
     "stars": 1,
-    "updatedAt": "2026-07-20T10:35:40Z",
+    "updatedAt": "2026-07-27T10:38:10Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v1.0.0"
   },
   "MatthewPaver/MeetingProof": {
     "stars": 0,
-    "updatedAt": "2026-07-20T10:35:39Z",
+    "updatedAt": "2026-07-27T10:38:11Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v1.0.0"
   },
   "MatthewPaver/ai-workflow-evaluator": {
     "stars": 0,
-    "updatedAt": "2026-07-15T02:38:45Z",
+    "updatedAt": "2026-07-27T10:38:12Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v1.0.0"
   },
   "MatthewPaver/DecisionGraph": {
     "stars": 0,
-    "updatedAt": "2026-07-20T10:35:40Z",
+    "updatedAt": "2026-07-27T10:38:13Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v1.0.0"
   },
   "MatthewPaver/marketing-ml-lakehouse": {
     "stars": 0,
-    "updatedAt": "2026-05-25T10:26:52Z",
+    "updatedAt": "2026-07-27T10:38:14Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v1.0.0"
   },
   "MatthewPaver/paper-trading-bot": {
     "stars": 0,
-    "updatedAt": "2026-07-15T02:43:04Z",
+    "updatedAt": "2026-07-27T10:38:16Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v0.1.0"
   },
   "MatthewPaver/winchester-buyer-check": {
     "stars": 0,
-    "updatedAt": "2026-07-15T02:26:44Z",
+    "updatedAt": "2026-07-27T10:38:15Z",
     "ciStatus": "success",
-    "release": null
+    "release": "v1.0.0"
   }
 }

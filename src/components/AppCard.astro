@@ -47,6 +47,7 @@ const actionUrl = data.launch ?? data.repo ?? data.caseStudy ?? appUrl(app);
   <div class="app-card-body">
     <div class="badge-row">
       <span class:list={["badge", `badge--${data.status}`]}>{statusLabel}</span>
+      {metric?.release && <span class="badge">{metric.release}</span>}
       {metric?.ciStatus === "success" && <span class="badge badge--verified">Checks passing</span>}
       {metric?.ciStatus === "failure" && <span class="badge badge--warning">Checks need attention</span>}
     </div>

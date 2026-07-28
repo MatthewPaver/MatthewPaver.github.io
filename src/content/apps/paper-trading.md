@@ -6,11 +6,11 @@ featured: false
 kind: flagship
 portfolioRole: Research study
 audience: Developers studying reproducible backtests and simulated execution
-category: Quantitative research
+category: Backtesting research
 status: live
-tagline: Reproduce a strategy result before trusting the chart.
-problem: Trading demonstrations often hide benchmark choice, execution assumptions and downside behaviour.
-outcome: The engine records its benchmark, risk controls, walk-forward windows and simulated trades in one report.
+tagline: Reproduce a backtest with matched baselines, costs and drawdown checks.
+problem: A good-looking backtest can hide a weak benchmark, unrealistic execution or a large drawdown.
+outcome: The engine records the benchmark, risk checks, test windows and simulated trades in one report.
 proof:
   - Reproducible backtests
   - Risk and drawdown controls
@@ -25,7 +25,7 @@ imageAlt: Paper Trading research console showing the synthetic strategy verdict,
 launch: https://matthewpaver.github.io/paper-trading-bot/
 repo: https://github.com/MatthewPaver/paper-trading-bot
 metricsRepo: MatthewPaver/paper-trading-bot
-primaryAction: Open the research console
+primaryAction: Open Paper Trading
 license: MIT
 version: Full browser demo + v0.1.0 engine
 updated: 2026-07-28
@@ -46,9 +46,8 @@ limitations:
   - The public browser console uses an explicitly synthetic fixture, not market evidence.
 ---
 
-The no-setup research console exposes the synthetic walk-forward benchmark, its
-three matched test windows, the documented risk gate, a seeded decision journal
-and the complete provenance bundle.
+The browser demo shows a made-up walk-forward test, three matched windows, the
+risk gate and the decision journal.
 
-The versioned Python engine remains the canonical path for reproducible
-backtests, risk controls, reports and paper-only execution.
+The Python package runs the backtests, risk checks, reports and paper-only
+execution.

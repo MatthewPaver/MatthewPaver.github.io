@@ -1,6 +1,5 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import AppIcon from "../../../components/AppIcon.astro";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import { appUrl, displayDate, metricFor } from "../../../lib/catalogue";
 
@@ -18,11 +17,12 @@ const { Content } = await render(app);
 const data = app.data;
 const metric = metricFor(app);
 const primaryUrl = data.launch ?? data.repo ?? data.caseStudy;
+const primaryLabel = data.launch ? "Open demo" : "View source";
 const statusLabel = {
-  live: "Live app",
-  public: "Open source",
+  live: "Demo available",
+  public: "Public repository",
   prototype: "Prototype",
-  private: data.kind === "case-study" ? "Protected case study" : "Private product",
+  private: "Case study",
 }[data.status];
 const structuredData = [
   {
@@ -44,7 +44,7 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Selected software", item: new URL("/", Astro.site).href },
+      { "@type": "ListItem", position: 1, name: "Work", item: new URL("/", Astro.site).href },
       { "@type": "ListItem", position: 2, name: data.title, item: new URL(appUrl(app), Astro.site).href },
     ],
   },
@@ -60,26 +60,25 @@ const structuredData = [
 >
   <div class="shell app-page">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Selected software</a><span aria-hidden="true">/</span><span>{data.title}</span>
+      <a href="/">Work</a><span aria-hidden="true">/</span><span>{data.title}</span>
     </nav>
 
     <header class="app-hero">
       <div class="app-hero-copy">
         <div class="detail-identity">
-          <AppIcon slug={app.id} />
           <div>
-            <p class="kicker">{data.portfolioRole}</p>
+            <p class="kicker">{data.category}</p>
             <h1>{data.title}</h1>
           </div>
         </div>
         <p class="app-hero-lede">{data.tagline}</p>
         <div class="detail-status">
           <span class:list={["availability", `availability--${data.status}`]}>{statusLabel}</span>
-          {metric?.ciStatus === "success" && <span>Automated checks pass</span>}
-          {metric?.ciStatus === "failure" && <span>Automated checks need attention</span>}
+          {metric?.ciStatus === "success" && <span>CI passing</span>}
+          {metric?.ciStatus === "failure" && <span>CI needs attention</span>}
         </div>
         <div class="app-hero-actions">
-          {primaryUrl && <a class="button button--primary button--large" href={primaryUrl}>{data.primaryAction}</a>}
+          {primaryUrl && <a class="button button--primary button--large" href={primaryUrl}>{primaryLabel}</a>}
           {data.repo && <a class="button button--secondary button--large" href={data.repo}>View source</a>}
           {data.repo && metric?.release && (
             <a class="button button--secondary button--large" href={`${data.repo}/releases/latest`}>
@@ -88,7 +87,7 @@ const structuredData = [
           )}
         </div>
         <dl class="app-facts">
-          <div><dt>Built for</dt><dd>{data.audience}</dd></div>
+          <div><dt>For</dt><dd>{data.audience}</dd></div>
           <div><dt>Version</dt><dd>{metric?.release ?? data.version}</dd></div>
           <div><dt>Licence</dt><dd>{data.license}</dd></div>
         </dl>
@@ -98,15 +97,15 @@ const structuredData = [
           {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
           <img src={data.image} alt={data.imageAlt} width="1200" height="675" fetchpriority="high" />
         </picture>
-        <figcaption>Current interface or product preview.</figcaption>
+        <figcaption>Screenshot from the public demo.</figcaption>
       </figure>
     </header>
 
     <nav class="page-tabs" aria-label="On this page">
       <a href="#overview">Overview</a>
-      <a href="#evidence">Included</a>
-      <a href={data.install.length ? "#install" : "#boundary"}>{data.install.length ? "Install" : "About the case"}</a>
-      <a href="#status">Status</a>
+      <a href="#evidence">What is included</a>
+      <a href={data.install.length ? "#install" : "#boundary"}>{data.install.length ? "Run locally" : "Public version"}</a>
+      <a href="#status">Limits</a>
     </nav>
 
     <div class="app-content-grid">
@@ -119,8 +118,8 @@ const structuredData = [
         </section>
 
         <section id="evidence" class="detail-section">
-          <p class="kicker">Included</p>
-          <h2>What this version contains</h2>
+          <p class="kicker">Repository</p>
+          <h2>What is included</h2>
           <ul class="evidence-grid">
             {data.proof.map((proof, index) => (
               <li><span>0{index + 1}</span><strong>{proof}</strong></li>
@@ -135,7 +134,7 @@ const structuredData = [
           <section id="install" class="detail-section">
             <p class="kicker">Install</p>
             <h2>Run it locally</h2>
-            <p class="outcome">Clone the repository and run the commands below.</p>
+            <p class="outcome">Clone the repository, then run these commands.</p>
             {data.requirements.length > 0 && (
               <div class="requirements">
                 <h3>Requirements</h3>
@@ -164,34 +163,34 @@ const structuredData = [
           </section>
         ) : (
           <section id="boundary" class="detail-section">
-            <p class="kicker">Private product</p>
-            <h2>{data.kind === "case-study" ? "Public case study" : "Private product"}</h2>
+            <p class="kicker">Public version</p>
+            <h2>{data.kind === "case-study" ? "What is public" : "Public demo"}</h2>
             <p class="outcome">
               {data.kind === "case-study"
-                ? "The product notes are public. Source code, customer data and operating procedures remain private."
-                : "The overview documents the working product while its source code and account-backed services remain private."}
+                ? "The notes and demo are public. Customer data and production operations are private."
+                : "The demo is public. Account-backed services remain private."}
             </p>
           </section>
         )}
 
         <section id="status" class="detail-section">
-          <p class="kicker">Current status</p>
+          <p class="kicker">Limits</p>
           <h2>Known limits</h2>
           <ul class="limitations">
             {data.limitations.map((item) => <li>{item}</li>)}
           </ul>
           <p class="status-note">
-            Last reviewed {displayDate(data.updated)}. Portfolio metadata is generated from the same content entry as this page.
+            Reviewed {displayDate(data.updated)}.
           </p>
         </section>
       </div>
 
       <aside class="app-content-aside">
         <div class="aside-panel">
-          <p class="kicker">Open</p>
-          <strong>{data.primaryAction}</strong>
+          <p class="kicker">Demo</p>
+          <strong>{data.title}</strong>
           <p>{data.tagline}</p>
-          {primaryUrl && <a class="button button--primary" href={primaryUrl}>Continue</a>}
+          {primaryUrl && <a class="button button--primary" href={primaryUrl}>{primaryLabel}</a>}
           {data.repo && metric?.release && (
             <a class="text-link" href={`${data.repo}/releases/latest`}>Release {metric.release} <span aria-hidden="true">→</span></a>
           )}

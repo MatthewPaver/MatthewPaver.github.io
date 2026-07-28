@@ -5,11 +5,11 @@ featured: false
 kind: flagship
 portfolioRole: ProjectLens component
 audience: Project teams looking for a relevant earlier decision
-category: Decision memory
+category: Decision retrieval
 status: live
-tagline: Find previous project decisions that match the change in front of you.
-problem: Project outcomes are documented but rarely retrieved when a comparable decision appears.
-outcome: DecisionGraph ranks comparable cases, shows the matching fields and keeps each intervention beside its recorded outcome.
+tagline: Find earlier project decisions that resemble the one you are making now.
+problem: Teams record project decisions, then struggle to find the useful precedent later.
+outcome: DecisionGraph ranks the closest cases and shows the fields behind each match.
 proof:
   - 16 sample cases
   - Rule-based retrieval
@@ -24,7 +24,7 @@ imageAlt: DecisionGraph workspace showing a relationship map and three comparabl
 repo: https://github.com/MatthewPaver/DecisionGraph
 metricsRepo: MatthewPaver/DecisionGraph
 launch: https://matthewpaver.github.io/DecisionGraph/
-primaryAction: Search decision memory
+primaryAction: Open DecisionGraph
 license: MIT
 version: Public demonstrator
 updated: 2026-07-20
@@ -43,4 +43,5 @@ limitations:
   - Retrieval supports a person; it does not approve a change.
 ---
 
-Each result lists the fields that produced the match. The sample case library is synthetic and can be replaced with an organisation's own decision history.
+Each result lists the fields that produced the match. The sample cases are made
+up; an organisation can replace them with its own decision history.

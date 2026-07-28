@@ -1,28 +1,29 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage leads with three jobs and keeps five entries in supporting work", async ({ page }) => {
+test("homepage introduces Matthew and shows three selected projects plus five more", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Matthew Paver · Selected software/);
-  await expect(page.getByRole("heading", {
-    name: "Check the evidence before you approve, send or ship.",
-  })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "What needs checking?" })).toBeVisible();
+  await expect(page).toHaveTitle(/Matthew Paver · Product engineer/);
+  await expect(page.getByRole("heading", { name: "Matthew Paver" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Selected projects" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "More things I have built" })).toBeVisible();
   await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
-  await expect(page.locator(".flagship-case")).toHaveCount(3);
-  await expect(page.locator(".product-grid--supporting .product-card")).toHaveCount(5);
+  await expect(page.locator(".featured-project")).toHaveCount(3);
+  await expect(page.locator(".product-grid .product-card")).toHaveCount(5);
+  await expect(page.locator(".method-card, .journey-choices")).toHaveCount(0);
   await expect(page.getByRole("searchbox")).toHaveCount(0);
-  await expect(page.getByRole("button", { name: /All 8/ })).toHaveCount(0);
 });
 
-test("task choices lead to a specific workflow and call to action", async ({ page }) => {
+test("selected work provides direct demo and build-note links", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: /A project change needs a board decision/ }).click();
-  await expect(page).toHaveURL(/#projectlens$/);
-  await expect(page.locator("#projectlens")).toBeInViewport();
-  await expect(page.getByRole("link", { name: "Review a change pack" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Need a relevant earlier decision too/ })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Build an approved follow-up" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Run a regression check" })).toBeVisible();
+  const projectLens = page.locator(".featured-project").first();
+  await expect(projectLens.getByRole("heading", { name: "ProjectLens" })).toBeVisible();
+  await expect(projectLens.getByRole("link", { name: "Open demo" })).toHaveAttribute(
+    "href",
+    "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+  );
+  await projectLens.getByRole("link", { name: "Build notes" }).click();
+  await expect(page).toHaveURL(/\/store\/apps\/projectlens\/$/);
+  await expect(page.getByRole("heading", { name: "ProjectLens", exact: true })).toBeVisible();
 });
 
 test("app pages are static, indexable and include a real install path", async ({ page }) => {
@@ -42,13 +43,13 @@ test("app pages are static, indexable and include a real install path", async ({
   );
 });
 
-test("the primary portfolio remains usable without JavaScript", async ({ browser }) => {
+test("the portfolio remains usable without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
   await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
-  await expect(page.getByRole("link", { name: "Build an approved follow-up" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Meeting notes need an accountable follow-up/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Selected projects" })).toBeVisible();
+  await expect(page.locator(".featured-project").first().getByRole("link", { name: "Open demo" })).toBeVisible();
   await context.close();
 });
 
@@ -58,8 +59,8 @@ test("mobile layout has usable controls and no horizontal overflow", async ({ pa
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
-  const choice = page.getByRole("link", { name: /A project change needs a board decision/ });
-  const box = await choice.boundingBox();
+  const link = page.locator(".featured-project").first().getByRole("link", { name: "Open demo" });
+  const box = await link.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
-  expect(box?.width).toBeGreaterThanOrEqual(200);
+  expect(box?.width).toBeGreaterThanOrEqual(44);
 });

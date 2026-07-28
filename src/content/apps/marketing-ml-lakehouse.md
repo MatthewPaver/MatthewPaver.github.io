@@ -6,11 +6,11 @@ featured: false
 kind: flagship
 portfolioRole: Engineering study
 audience: Data engineers reviewing a local marketing analytics pipeline
-category: Data systems
+category: Marketing data
 status: live
-tagline: Move marketing CSVs through a checked local pipeline into a usable dashboard.
-problem: Analytics portfolios often stop at a notebook and omit ingestion, data quality and operational handoff.
-outcome: The repository loads CSV files into bronze, silver and gold DuckDB layers, trains an example model and serves the results in Streamlit.
+tagline: Run a local marketing pipeline from raw CSV files to a scored campaign dashboard.
+problem: A notebook can hide the ingestion and data-quality work needed to reproduce an analysis.
+outcome: The repository loads CSV files into DuckDB, trains an example model and serves the results in Streamlit.
 proof:
   - End-to-end local pipeline
   - Synthetic sample data
@@ -25,7 +25,7 @@ imageAlt: Marketing ML Lakehouse evidence console showing campaign revenue, spen
 launch: https://matthewpaver.github.io/marketing-ml-lakehouse/
 repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 metricsRepo: MatthewPaver/marketing-ml-lakehouse
-primaryAction: Open the evidence console
+primaryAction: Open ML Lakehouse
 license: MIT
 version: Full browser demo + local engine
 updated: 2026-07-28
@@ -45,6 +45,8 @@ limitations:
   - The browser console reviews the committed fixture; DuckDB rebuilds and XGBoost training run locally.
 ---
 
-The no-setup evidence console exposes campaign comparison, pacing scenarios, deterministic data-quality checks and lineage using aggregates from the committed CSV fixtures.
+The browser demo uses aggregates from the sample CSV files to show campaign
+comparison, pacing, data checks and lineage.
 
-The repository remains the canonical runnable engine: it rebuilds the DuckDB bronze, silver and gold layers, trains the models and serves the Streamlit dashboard locally.
+Run the repository locally to rebuild the DuckDB layers, train the example model
+and open the Streamlit dashboard.

@@ -4,19 +4,20 @@
 
 ## Decision
 
-Present this site as a curated software portfolio. The homepage leads with three specific jobs:
+Present this site as Matthew Paver's software portfolio. Introduce Matthew
+briefly, then show ProjectLens, MeetingProof and Output Gate as the first three
+projects. Put the other five projects in a smaller archive.
 
-1. Review a project change before a board decision.
-2. Turn meeting notes into an approved follow-up.
-3. Catch a known AI-output regression before release.
-
-DecisionGraph supports the ProjectLens story. The lakehouse, paper-trading engine, House Hunter and Happening appear as supporting components, studies and utilities.
+The visitor-facing copy should describe the work without turning the projects
+into one product family.
 
 ## Why the app-store model does not fit
 
 Raycast Store serves Raycast users who install extensions. GitHub Marketplace serves developers who add tools to GitHub workflows. Sindre Sorhus's catalogue serves Apple users who download focused utilities. Each store has a shared audience and repeated action.
 
-This portfolio covers several markets and several types of work. Giving each entry equal weight makes the visitor decide how the projects relate. The new hierarchy makes that relationship explicit.
+This portfolio covers several markets and several types of work. A personal
+introduction and a simple project hierarchy are more honest than store filters
+or a shared product manifesto.
 
 ## Market evidence
 
@@ -62,12 +63,11 @@ Sources:
 
 ```text
 Homepage (/)
-├── Start with your task (/#products)
-│   ├── ProjectLens (/#projectlens)
-│   │   └── DecisionGraph (/store/apps/decisiongraph/)
-│   ├── MeetingProof (/#meetingproof)
-│   └── Output Gate (/#output-gate)
-├── Supporting work (/#supporting-work)
+├── Selected projects (/#work)
+│   ├── ProjectLens (/store/apps/projectlens/)
+│   ├── MeetingProof (/store/apps/meetingproof/)
+│   └── Output Gate (/store/apps/output-gate/)
+├── Project archive (/#more-work)
 │   ├── DecisionGraph (/store/apps/decisiongraph/)
 │   ├── Marketing ML Lakehouse (/store/apps/marketing-ml-lakehouse/)
 │   ├── Paper Trading Research Engine (/store/apps/paper-trading/)

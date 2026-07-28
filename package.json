@@ -1,5 +1,5 @@
 {
-  "name": "matthew-paver-selected-software",
+  "name": "matthew-paver-portfolio",
   "version": "2.0.0",
   "private": true,
   "type": "module",
@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/dm-mono": "^5.3.0",
     "astro": "^7.1.3"
   },
   "devDependencies": {

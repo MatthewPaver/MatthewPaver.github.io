@@ -22,7 +22,7 @@ const statusLabel = {
   live: "Live app",
   public: "Open source",
   prototype: "Prototype",
-  private: "Protected case study",
+  private: data.kind === "case-study" ? "Protected case study" : "Private product",
 }[data.status];
 const structuredData = [
   {
@@ -165,8 +165,12 @@ const structuredData = [
         ) : (
           <section id="boundary" class="detail-section">
             <p class="kicker">Private product</p>
-            <h2>Public case study</h2>
-            <p class="outcome">The product notes are public. Source code, customer data and operating procedures remain private.</p>
+            <h2>{data.kind === "case-study" ? "Public case study" : "Private product"}</h2>
+            <p class="outcome">
+              {data.kind === "case-study"
+                ? "The product notes are public. Source code, customer data and operating procedures remain private."
+                : "The overview documents the working product while its source code and account-backed services remain private."}
+            </p>
           </section>
         )}
 

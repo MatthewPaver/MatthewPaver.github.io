@@ -2,11 +2,11 @@ import { expect, test } from "@playwright/test";
 
 test("canonical store exposes eight products and three protected cases", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Useful software, with evidence/);
+  await expect(page).toHaveTitle(/Small products, properly finished/);
   await expect(page.locator("[data-catalogue-item]")).toHaveCount(8);
   await expect(page.locator(".case-card")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "ProjectLens" }).first()).toBeVisible();
-  await expect(page.getByText("Counts describe this catalogue")).toBeVisible();
+  await expect(page.getByText("No invented ratings", { exact: false })).toBeVisible();
 });
 
 test("search and multi-select filters are reflected in browser history", async ({ page }) => {

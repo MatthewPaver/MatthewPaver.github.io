@@ -5,7 +5,7 @@ order: 6
 featured: false
 kind: flagship
 category: Quantitative research
-status: public
+status: live
 tagline: Reproduce a strategy result before trusting the chart.
 problem: Trading demonstrations often hide benchmark choice, execution assumptions and downside behaviour.
 outcome: The engine records its benchmark, risk controls, walk-forward windows and simulated trades in one report.
@@ -19,12 +19,13 @@ stack:
   - XGBoost
   - GitHub Actions
 image: /assets/apps/paper-trading.png
-imageAlt: Paper Trading Research Engine benchmark report with return, baseline and drawdown evidence
+imageAlt: Paper Trading research console showing the synthetic strategy verdict, matched baseline and drawdown evidence
+launch: https://matthewpaver.github.io/paper-trading-bot/
 repo: https://github.com/MatthewPaver/paper-trading-bot
 metricsRepo: MatthewPaver/paper-trading-bot
-primaryAction: Inspect the research engine
+primaryAction: Open the research console
 license: MIT
-version: v0.1.0
+version: Full browser demo + v0.1.0 engine
 updated: 2026-07-28
 requirements:
   - Python 3.11
@@ -40,9 +41,12 @@ validate:
 limitations:
   - This is research and paper trading only, not investment advice or a live-trading promise.
   - Results depend on historical data, benchmark choice and explicit execution assumptions.
+  - The public browser console uses an explicitly synthetic fixture, not market evidence.
 ---
 
-The first versioned release packages the reproducible benchmark, risk controls,
-walk-forward evaluation and paper-only execution path. The repository's
-three-minute demo uses fixtures so the evidence report can be reviewed without
-downloading market data or presenting fixture numbers as real performance.
+The no-setup research console exposes the synthetic walk-forward benchmark, its
+three matched test windows, the documented risk gate, a seeded decision journal
+and the complete provenance bundle.
+
+The versioned Python engine remains the canonical path for reproducible
+backtests, risk controls, reports and paper-only execution.

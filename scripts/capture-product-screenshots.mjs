@@ -135,9 +135,29 @@ try {
     selector: "#resultsSection",
   });
   await capture(page, {
+    name: "lakehouse",
+    url: "https://matthewpaver.github.io/marketing-ml-lakehouse/",
+    selector: ".metric-grid",
+  });
+  await capture(page, {
+    name: "paper-trading",
+    url: "https://matthewpaver.github.io/paper-trading-bot/",
+    selector: ".score-row",
+  });
+  await capture(page, {
+    name: "happening",
+    url: "https://matthewpaver.github.io/happening-open-core/",
+    selector: ".event-layout",
+  });
+  await capture(page, {
     name: "winchester",
     url: "https://matthewpaver.github.io/winchester-buyer-check/",
     selector: ".feature-hero",
+  });
+  await capture(page, {
+    name: "quicksupply",
+    url: "https://matthewpaver.github.io/demos/quicksupply/",
+    selector: ".kpi-grid",
   });
   await renderNewco(page);
 } finally {

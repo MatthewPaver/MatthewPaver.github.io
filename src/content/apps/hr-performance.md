@@ -9,6 +9,7 @@ audience: Stakeholders receiving a dashboard package they can inspect and rerun
 category: BI dashboards
 status: public
 shelf: analytics
+tier: listed
 tagline: "Power BI dashboards packaged for handoff: PBIX files, data, screenshots and commentary."
 problem: Dashboard work needs inspectable handoff material, not just a screenshot.
 outcome: PBIX files, prepared data, previews and stakeholder commentary in one package.

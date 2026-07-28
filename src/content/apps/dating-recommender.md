@@ -9,6 +9,7 @@ audience: Anyone evaluating recommender systems beyond a random train-test split
 category: Recommender systems
 status: private
 shelf: data-ml
+tier: listed
 tagline: Implicit-feedback recommendations judged with temporal holdouts and Top-K metrics.
 problem: Recommendation demos often skip the evaluation that would expose them.
 outcome: Implicit feedback, temporal holdout and Top-K metrics instead of a random split.

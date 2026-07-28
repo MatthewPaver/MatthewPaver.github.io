@@ -9,6 +9,7 @@ audience: Anyone using embeddings for retrieval who needs the caveats made plain
 category: NLP study
 status: public
 shelf: data-ml
+tier: listed
 tagline: Transformer embeddings and cosine ranking, with the caveat that similarity is not truth.
 problem: Similarity is useful but it is not truth — retrieval demos rarely say so.
 outcome: Embedding retrieval with ranked comparisons and the failure cases shown alongside.

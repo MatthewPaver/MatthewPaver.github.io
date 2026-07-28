@@ -9,6 +9,7 @@ audience: Students turning uploaded notes and documents into practice material
 category: AI learning workflow
 status: private
 shelf: product
+tier: listed
 tagline: Uploaded study material becomes flashcards, quizzes and a spaced-review plan.
 problem: Uploaded study material needs to become usable practice, not a pile of PDFs.
 outcome: Document ingestion, generation and spaced review in one loop, with source material staying part of the review.

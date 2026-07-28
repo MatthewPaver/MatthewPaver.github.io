@@ -7,6 +7,7 @@ portfolioRole: Open-core case study
 audience: Developers building local-event feeds from inconsistent venue sources
 category: Event data
 status: live
+shelf: automation
 tagline: Turn inconsistent venue listings into event records that can be traced back to source.
 problem: Every venue publishes different fields, dates and ticket links.
 outcome: The public repository contains the event schema, sample sources and checks used by the private feed.

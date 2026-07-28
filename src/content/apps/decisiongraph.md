@@ -7,6 +7,7 @@ portfolioRole: ProjectLens component
 audience: Project teams looking for a relevant earlier decision
 category: Decision retrieval
 status: live
+shelf: product
 tagline: Find earlier project decisions that resemble the one you are making now.
 problem: Teams record project decisions, then struggle to find the useful precedent later.
 outcome: DecisionGraph ranks the closest cases and shows the fields behind each match.

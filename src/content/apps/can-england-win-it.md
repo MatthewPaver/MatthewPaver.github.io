@@ -8,6 +8,7 @@ portfolioRole: Engineering study
 audience: Anyone curious how tournament probability models are built and closed out
 category: Product close-out
 status: live
+shelf: product
 tagline: A time-boxed World Cup probability experiment, archived with a written postmortem.
 problem: Topical products need shipping before the moment passes, then an honest close-out when it does.
 outcome: A transparent Monte Carlo scenario tool, shipped before the semi-final and archived with the completed result and a postmortem.

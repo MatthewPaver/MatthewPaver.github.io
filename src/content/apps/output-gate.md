@@ -5,11 +5,11 @@ featured: true
 kind: flagship
 portfolioRole: Open-source tool
 audience: Developers maintaining prompts, agents or generated customer content
-category: AI workflow QA
+category: AI output testing
 status: live
-tagline: Catch known output regressions before they reach a user.
-problem: Prompt, model and agent changes can silently remove required language or introduce banned claims.
-outcome: Output Gate checks required and forbidden phrases in the browser or CI and exports the result as JSON.
+tagline: Check generated text for required wording and claims that must not appear.
+problem: A prompt or model change can remove required wording or add a claim you have already ruled out.
+outcome: Output Gate runs the same phrase checks in the browser or CI and saves the result as JSON.
 proof:
   - No model call
   - Browser and CLI
@@ -24,7 +24,7 @@ imageAlt: Output Gate workbench showing required phrases, forbidden claims and a
 repo: https://github.com/MatthewPaver/ai-workflow-evaluator
 metricsRepo: MatthewPaver/ai-workflow-evaluator
 launch: https://matthewpaver.github.io/ai-workflow-evaluator/app/
-primaryAction: Run a regression check
+primaryAction: Open Output Gate
 license: MIT
 version: Main branch
 updated: 2026-07-15
@@ -42,4 +42,5 @@ limitations:
   - Phrase checks cannot handle every valid variation in wording.
 ---
 
-Use Output Gate when a saved response must contain required wording or avoid a banned claim. It does not judge meaning or factual accuracy.
+Use it when a saved response must include known wording or avoid a banned claim.
+It does not judge meaning or factual accuracy.

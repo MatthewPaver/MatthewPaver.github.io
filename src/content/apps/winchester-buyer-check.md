@@ -6,11 +6,11 @@ featured: false
 kind: flagship
 portfolioRole: Public utility
 audience: Homebuyers comparing affordability, market context and property evidence
-category: Property decision support
+category: Property research
 status: live
-tagline: Compare Winchester homes against mortgage affordability, commute, market and source evidence.
-problem: A listing price alone does not show whether a home fits the buyer's LISA limit, cash reserve, commute, condition or evidence threshold.
-outcome: House Hunter combines a nine-home shortlist, sold-price research, affordability planning, property review and an evidence-backed action queue.
+tagline: Compare Winchester listings with affordability, commute time and source evidence.
+problem: A listing price does not tell you whether the move works once cash, commute and condition are included.
+outcome: House Hunter combines a nine-home shortlist with sold prices, an affordability plan, property notes and a simple action list.
 proof:
   - Nine-home seeded shortlist
   - HM Land Registry market explorer
@@ -26,7 +26,7 @@ imageAlt: Winchester House Hunter workspace showing its navigation and nine-home
 repo: https://github.com/MatthewPaver/winchester-buyer-check
 metricsRepo: MatthewPaver/winchester-buyer-check
 launch: https://matthewpaver.github.io/winchester-buyer-check/
-primaryAction: Open the interactive demo
+primaryAction: Open House Hunter
 license: Public demo; production product remains private
 version: Full browser demo
 updated: 2026-07-28
@@ -39,6 +39,8 @@ limitations:
   - Accounts, uploads and private production services are intentionally unavailable.
 ---
 
-The public link opens the complete seeded decision journey: browse nine Winchester homes, compare market context, build a LISA-aware buying plan, review a property and record source evidence.
+The demo contains nine made-up Winchester listings. You can compare sold prices,
+build a LISA-aware buying plan, review a property and save source notes.
 
-It runs entirely in the browser, so reviewers can explore the product without an account or setup. The account-backed production code and data services remain protected.
+It runs in the browser without an account. The account-backed version and its
+data services are private.

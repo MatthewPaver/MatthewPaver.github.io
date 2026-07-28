@@ -28,5 +28,5 @@ test("the portfolio contains only entries backed by public repository evidence",
     assert.equal(metricsRepo, repo, `${entry.name} metrics must use its displayed repository`);
     assert.ok(metrics[metricsRepo], `${entry.name} must have public repository evidence`);
   }
-  assert.equal(featured, 3, "the homepage must lead with exactly three flagship journeys");
+  assert.equal(featured, 3, "the homepage must lead with exactly three selected projects");
 });

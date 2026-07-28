@@ -101,7 +101,7 @@ const structuredData = [
                 </picture>
               </a>
               <div class="featured-project-copy">
-                <p class="project-label">0{index + 1} / {data.category}</p>
+                <p class="project-label">0{index + 1} / {data.category}{data.since && ` · since ${data.since}`}</p>
                 <h3><a href={detailUrl}>{data.title}</a></h3>
                 <p>{featuredCopy[app.id]}</p>
                 <div class="project-links">
@@ -140,6 +140,11 @@ const structuredData = [
         projects started because I wanted to understand a problem by building the
         tool myself. The code, tests and known limits are in the linked repositories.
       </p>
+      <nav class="portfolio-links" aria-label="Contact Matthew Paver">
+        <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/MatthewPaver">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF) <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
   </section>
 </SiteLayout>

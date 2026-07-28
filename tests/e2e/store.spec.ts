@@ -6,9 +6,9 @@ test("homepage introduces Matthew and shows three selected projects plus five mo
   await expect(page.getByRole("heading", { name: "Matthew Paver" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Selected projects" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "More things I have built" })).toBeVisible();
-  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
+  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(9);
   await expect(page.locator(".featured-project")).toHaveCount(3);
-  await expect(page.locator(".product-grid .product-card")).toHaveCount(5);
+  await expect(page.locator(".product-grid .product-card")).toHaveCount(6);
   await expect(page.locator(".method-card, .journey-choices")).toHaveCount(0);
   await expect(page.getByRole("searchbox")).toHaveCount(0);
 });
@@ -47,7 +47,7 @@ test("the portfolio remains usable without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
+  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(9);
   await expect(page.getByRole("heading", { name: "Selected projects" })).toBeVisible();
   await expect(page.locator(".featured-project").first().getByRole("link", { name: "Open demo" })).toBeVisible();
   await context.close();

@@ -1687,7 +1687,10 @@ a {
   }
 
   .primary-nav {
-    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    gap: 22px;
+    padding-bottom: 8px;
   }
 
   .index-intro {

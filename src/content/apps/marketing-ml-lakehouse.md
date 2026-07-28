@@ -28,6 +28,7 @@ metricsRepo: MatthewPaver/marketing-ml-lakehouse
 primaryAction: Open ML Lakehouse
 license: MIT
 version: Full browser demo + local engine
+since: Oct 2025
 updated: 2026-07-28
 requirements:
   - Python 3.11

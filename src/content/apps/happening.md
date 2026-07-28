@@ -27,6 +27,7 @@ metricsRepo: MatthewPaver/happening-open-core
 primaryAction: Open Happening
 license: MIT open core; private production feed
 version: Full open-core browser demo
+since: Jul 2026
 updated: 2026-07-28
 requirements:
   - Python 3.11 for the public benchmark

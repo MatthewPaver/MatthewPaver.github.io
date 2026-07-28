@@ -15,7 +15,7 @@ const entries = readdirSync(contentDir)
   }));
 
 test("the portfolio contains only entries backed by public repository evidence", () => {
-  assert.equal(entries.length, 8);
+  assert.equal(entries.length, 9);
   let featured = 0;
   for (const entry of entries) {
     assert.doesNotMatch(entry.source, /^status:\s+private$/m, entry.name);

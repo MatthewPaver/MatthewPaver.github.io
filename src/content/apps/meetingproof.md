@@ -27,6 +27,7 @@ launch: https://matthewpaver.github.io/MeetingProof/
 primaryAction: Open MeetingProof
 license: MIT
 version: Public demonstrator
+since: Jul 2026
 updated: 2026-07-20
 requirements:
   - Modern browser for the public tool

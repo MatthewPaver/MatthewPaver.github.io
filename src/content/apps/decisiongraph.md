@@ -27,6 +27,7 @@ launch: https://matthewpaver.github.io/DecisionGraph/
 primaryAction: Open DecisionGraph
 license: MIT
 version: Public demonstrator
+since: Jul 2026
 updated: 2026-07-20
 requirements:
   - Modern browser

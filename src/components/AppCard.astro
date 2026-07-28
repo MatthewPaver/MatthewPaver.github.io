@@ -28,7 +28,7 @@ const actionLabel = data.launch ? "Live demo" : "Source";
   </a>
 
   <div class="product-card-body">
-    <p class="project-label">{data.category}</p>
+    <p class="project-label">{data.category}{data.since && ` · since ${data.since}`}</p>
     <h3><a href={detailUrl}>{data.shortTitle ?? data.title}</a></h3>
     <p class="product-summary">{data.tagline}</p>
     <div class="product-actions">

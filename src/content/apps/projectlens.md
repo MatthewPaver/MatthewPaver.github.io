@@ -27,6 +27,7 @@ launch: https://matthewpaver.github.io/ProjectLens/change-assurance.html
 primaryAction: Open ProjectLens
 license: MIT
 version: Public demonstrator
+since: Apr 2025
 updated: 2026-07-20
 requirements:
   - Modern browser for the public review

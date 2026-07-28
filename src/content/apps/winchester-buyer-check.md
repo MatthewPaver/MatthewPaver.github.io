@@ -29,6 +29,7 @@ launch: https://matthewpaver.github.io/winchester-buyer-check/
 primaryAction: Open House Hunter
 license: Public demo; production product remains private
 version: Full browser demo
+since: Jul 2026
 updated: 2026-07-28
 requirements: []
 install: []

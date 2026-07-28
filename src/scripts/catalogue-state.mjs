@@ -31,7 +31,9 @@ export function itemMatches(item, state) {
   const queryMatches = queryTokens.every((token) => search.includes(token));
   const facetMatches =
     state.facets.size === 0 ||
-    [...state.facets].some((facet) => item.kind === facet || item.status === facet);
+    [...state.facets].some(
+      (facet) => item.kind === facet || item.status === facet || (facet === "source" && item.source === "true"),
+    );
   const stackMatches = !state.stack || item.stack.split("|").includes(state.stack);
   return queryMatches && facetMatches && stackMatches;
 }
@@ -52,6 +54,7 @@ export function initCatalogue() {
     search: card.dataset.search,
     kind: card.dataset.kind,
     status: card.dataset.status,
+    source: card.dataset.source,
     stack: card.dataset.stack,
   });
 
@@ -60,7 +63,8 @@ export function initCatalogue() {
     if (stack) stack.value = state.stack;
     if (sort) sort.value = state.sort;
     facetButtons.forEach((button) => {
-      const selected = state.facets.has(button.dataset.facet);
+      const facet = button.dataset.facet;
+      const selected = facet ? state.facets.has(facet) : state.facets.size === 0;
       button.setAttribute("aria-pressed", String(selected));
       button.classList.toggle("is-active", selected);
     });
@@ -98,8 +102,7 @@ export function initCatalogue() {
   facetButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const facet = button.dataset.facet;
-      if (state.facets.has(facet)) state.facets.delete(facet);
-      else state.facets.add(facet);
+      state.facets = facet ? new Set([facet]) : new Set();
       render(true);
     });
   });
@@ -112,47 +115,6 @@ export function initCatalogue() {
     render(false);
   });
   render(false);
-}
-
-export function initCommandPalette() {
-  const dialog = document.querySelector(".command-dialog");
-  const trigger = document.querySelector(".command-trigger");
-  const close = document.querySelector(".command-close");
-  const input = document.querySelector("#command-search");
-  const items = [...document.querySelectorAll("[data-command-item]")];
-  const empty = document.querySelector(".command-empty");
-  if (!(dialog instanceof HTMLDialogElement)) return;
-
-  function open() {
-    dialog.showModal();
-    input?.focus();
-  }
-  function shut() {
-    dialog.close();
-    if (input) input.value = "";
-    items.forEach((item) => (item.hidden = false));
-    if (empty) empty.hidden = true;
-  }
-  trigger?.addEventListener("click", open);
-  close?.addEventListener("click", shut);
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) shut();
-  });
-  addEventListener("keydown", (event) => {
-    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-      event.preventDefault();
-      dialog.open ? shut() : open();
-    }
-  });
-  input?.addEventListener("input", () => {
-    const query = normalize(input.value);
-    let matches = 0;
-    items.forEach((item) => {
-      item.hidden = query && !normalize(item.dataset.search).includes(query);
-      if (!item.hidden) matches += 1;
-    });
-    if (empty) empty.hidden = matches !== 0;
-  });
 }
 
 export function initCopyButtons() {

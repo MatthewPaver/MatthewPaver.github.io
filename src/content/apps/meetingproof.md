@@ -5,20 +5,20 @@ featured: true
 kind: flagship
 category: Everyday work
 status: live
-tagline: Turn meeting notes into a defensible, reviewed follow-up.
+tagline: Turn labelled meeting notes into an action list you can check before sending.
 problem: Decisions, actions and missing ownership disappear inside ordinary meeting notes.
-outcome: MeetingProof links every proposed item to its source line, pauses for human review and exports only the approved record.
+outcome: MeetingProof extracts labelled decisions, actions and questions, shows the source line and waits for approval before export.
 proof:
   - Exact source lines
-  - LangGraph human interrupt
-  - Deterministic release evaluation
+  - Approval step before export
+  - Tested parsing fixtures
 stack:
   - JavaScript
   - Python
   - LangGraph
   - Pydantic
 image: /assets/apps/meetingproof.png
-imageAlt: MeetingProof browser workspace with notes, evidence-linked decisions and an approved follow-up record
+imageAlt: MeetingProof workspace with meeting notes and an editable review list
 repo: https://github.com/MatthewPaver/MeetingProof
 metricsRepo: MatthewPaver/MeetingProof
 launch: https://matthewpaver.github.io/MeetingProof/
@@ -41,4 +41,4 @@ limitations:
   - It does not infer agreement from ordinary discussion.
 ---
 
-The public interface runs entirely in the browser. The Python package supplies the inspectable graph, approval boundary and evaluation fixtures for reviewers who want to go deeper.
+The public interface runs in the browser. The Python package contains the graph workflow and parsing tests used by the release.

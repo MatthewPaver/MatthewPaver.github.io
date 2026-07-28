@@ -5,9 +5,9 @@ featured: false
 kind: case-study
 category: Block operations
 status: private
-tagline: Service-charge collections and building evidence in one operational workspace.
+tagline: Manage service-charge collections, resident issues and board updates in one workspace.
 problem: Payment instructions, arrears, resident issues and board evidence are fragmented across property-management tools.
-outcome: Cadence demonstrates role-specific workspaces, bank-transfer-first payment instructions and an auditable evidence trail.
+outcome: Cadence gives agency, board and resident users separate views of the same collection and issue records.
 proof:
   - Live seeded workspace
   - Five role boundaries
@@ -18,7 +18,7 @@ stack:
   - PostgreSQL
   - Product operations
 image: /assets/apps/cadence.png
-imageAlt: Cadence agency workspace showing service-charge collections, building evidence and next actions
+imageAlt: Cadence agency dashboard showing service-charge collections and next actions
 launch: https://agency-idea.vercel.app/
 primaryAction: Open the seeded demo
 license: Private commercial product
@@ -32,4 +32,4 @@ limitations:
   - Bank-feed validation and signed payment links remain production gates.
 ---
 
-Cadence is presented as a protected case study rather than open-source software. The working seeded demo is sufficient to inspect the product thinking without exposing its commercial workflow code.
+The seeded demo shows the agency, board and resident journeys. The commercial workflow code and live financial integrations remain private.

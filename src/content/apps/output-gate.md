@@ -7,7 +7,7 @@ category: AI workflow QA
 status: live
 tagline: Catch known output regressions before they reach a user.
 problem: Prompt, model and agent changes can silently remove required language or introduce banned claims.
-outcome: Output Gate runs deterministic assertions in the browser or CI and produces a reviewable JSON fixture.
+outcome: Output Gate checks required and forbidden phrases in the browser or CI and exports the result as JSON.
 proof:
   - No model call
   - Browser and CLI
@@ -18,7 +18,6 @@ stack:
   - GitHub Actions
   - JSON
 image: /assets/apps/output-gate.png
-imageAvif: /assets/apps/output-gate.avif
 imageAlt: Output Gate workbench showing required phrases, forbidden claims and a passing regression result
 repo: https://github.com/MatthewPaver/ai-workflow-evaluator
 metricsRepo: MatthewPaver/ai-workflow-evaluator
@@ -38,7 +37,7 @@ validate:
   - python3 -m evaluator.cli examples/sample-suite.json --fail-on-block
 limitations:
   - Phrase checks do not establish factual accuracy.
-  - Semantic variation still requires source review or a suitable evaluation.
+  - Phrase checks cannot handle every valid variation in wording.
 ---
 
-Output Gate deliberately does one narrow job well. It protects known requirements and prohibited claims without pretending that string assertions are a complete AI evaluation system.
+Use Output Gate when a saved response must contain required wording or avoid a banned claim. It does not judge meaning or factual accuracy.

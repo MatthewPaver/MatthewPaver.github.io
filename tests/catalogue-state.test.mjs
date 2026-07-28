@@ -28,6 +28,7 @@ test("status facets are inclusive while search and stack remain narrowing filter
     search: "output gate python workflow quality",
     kind: "flagship",
     status: "live",
+    source: "true",
     stack: "python|javascript",
   };
   assert.equal(
@@ -47,5 +48,14 @@ test("status facets are inclusive while search and stack remain narrowing filter
       sort: "curated",
     }),
     false,
+  );
+  assert.equal(
+    itemMatches(item, {
+      query: "",
+      facets: new Set(["source"]),
+      stack: "",
+      sort: "curated",
+    }),
+    true,
   );
 });

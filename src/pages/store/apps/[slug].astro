@@ -1,8 +1,8 @@
 ---
 import { getCollection, render, type CollectionEntry } from "astro:content";
-import CommandPalette from "../../../components/CommandPalette.astro";
+import AppIcon from "../../../components/AppIcon.astro";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
-import { appUrl, displayDate, metricFor, sortApps } from "../../../lib/catalogue";
+import { appUrl, displayDate, metricFor } from "../../../lib/catalogue";
 
 export async function getStaticPaths() {
   const apps = await getCollection("apps");
@@ -15,7 +15,6 @@ interface Props {
 
 const { app } = Astro.props;
 const { Content } = await render(app);
-const allApps = sortApps(await getCollection("apps"));
 const data = app.data;
 const metric = metricFor(app);
 const primaryUrl = data.launch ?? data.repo ?? data.caseStudy;
@@ -45,7 +44,7 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Product Store", item: new URL("/", Astro.site).href },
+      { "@type": "ListItem", position: 1, name: "Software", item: new URL("/", Astro.site).href },
       { "@type": "ListItem", position: 2, name: data.title, item: new URL(appUrl(app), Astro.site).href },
     ],
   },
@@ -53,7 +52,7 @@ const structuredData = [
 ---
 
 <SiteLayout
-  title={`${data.title} · Matthew Paver Product Store`}
+  title={`${data.title} · Matthew Paver Software`}
   description={data.tagline}
   image={data.image}
   canonical={appUrl(app)}
@@ -61,19 +60,24 @@ const structuredData = [
 >
   <div class="shell app-page">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Product store</a><span aria-hidden="true">/</span><span>{data.title}</span>
+      <a href="/">Software</a><span aria-hidden="true">/</span><span>{data.title}</span>
     </nav>
 
     <header class="app-hero">
       <div class="app-hero-copy">
-        <div class="badge-row">
-          <span class:list={["badge", `badge--${data.status}`]}>{statusLabel}</span>
-          {metric?.ciStatus === "success" && <span class="badge badge--verified">Checks passing</span>}
-          {metric?.ciStatus === "failure" && <span class="badge badge--warning">Checks need attention</span>}
+        <div class="detail-identity">
+          <AppIcon slug={app.id} />
+          <div>
+            <p class="kicker">{data.category}</p>
+            <h1>{data.title}</h1>
+          </div>
         </div>
-        <p class="eyebrow">{data.category}</p>
-        <h1>{data.title}</h1>
         <p class="app-hero-lede">{data.tagline}</p>
+        <div class="detail-status">
+          <span class:list={["availability", `availability--${data.status}`]}>{statusLabel}</span>
+          {metric?.ciStatus === "success" && <span>Automated checks pass</span>}
+          {metric?.ciStatus === "failure" && <span>Automated checks need attention</span>}
+        </div>
         <div class="app-hero-actions">
           {primaryUrl && <a class="button button--primary button--large" href={primaryUrl}>{data.primaryAction}</a>}
           {data.repo && <a class="button button--secondary button--large" href={data.repo}>View source</a>}
@@ -94,29 +98,29 @@ const structuredData = [
           {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
           <img src={data.image} alt={data.imageAlt} width="1200" height="675" fetchpriority="high" />
         </picture>
-        <figcaption>Current public interface or documented product evidence.</figcaption>
+        <figcaption>Current interface or product preview.</figcaption>
       </figure>
     </header>
 
     <nav class="page-tabs" aria-label="On this page">
       <a href="#overview">Overview</a>
-      <a href="#evidence">Evidence</a>
-      <a href={data.install.length ? "#install" : "#boundary"}>{data.install.length ? "Install" : "Product boundary"}</a>
+      <a href="#evidence">Included</a>
+      <a href={data.install.length ? "#install" : "#boundary"}>{data.install.length ? "Install" : "About the case"}</a>
       <a href="#status">Status</a>
     </nav>
 
     <div class="app-content-grid">
       <div class="app-content-main">
         <section id="overview" class="detail-section">
-          <p class="eyebrow">Overview</p>
+          <p class="kicker">Overview</p>
           <h2>{data.problem}</h2>
           <p class="outcome">{data.outcome}</p>
           <div class="prose"><Content /></div>
         </section>
 
         <section id="evidence" class="detail-section">
-          <p class="eyebrow">What to inspect</p>
-          <h2>The proof is part of the handoff.</h2>
+          <p class="kicker">Included</p>
+          <h2>What this version contains</h2>
           <ul class="evidence-grid">
             {data.proof.map((proof, index) => (
               <li><span>0{index + 1}</span><strong>{proof}</strong></li>
@@ -129,9 +133,9 @@ const structuredData = [
 
         {data.install.length > 0 ? (
           <section id="install" class="detail-section">
-            <p class="eyebrow">Install</p>
+            <p class="kicker">Install</p>
             <h2>Run it locally</h2>
-            <p class="outcome">An honest install path, not a decorative repository link.</p>
+            <p class="outcome">Clone the repository and run the commands below.</p>
             {data.requirements.length > 0 && (
               <div class="requirements">
                 <h3>Requirements</h3>
@@ -160,14 +164,14 @@ const structuredData = [
           </section>
         ) : (
           <section id="boundary" class="detail-section">
-            <p class="eyebrow">Product boundary</p>
-            <h2>The case is public. The operating advantage is not.</h2>
-            <p class="outcome">This page shows the user problem, workflow and current evidence without publishing private code or operational data.</p>
+            <p class="kicker">Private product</p>
+            <h2>Public case study</h2>
+            <p class="outcome">The product notes are public. Source code, customer data and operating procedures remain private.</p>
           </section>
         )}
 
         <section id="status" class="detail-section">
-          <p class="eyebrow">Current status</p>
+          <p class="kicker">Current status</p>
           <h2>Known limits</h2>
           <ul class="limitations">
             {data.limitations.map((item) => <li>{item}</li>)}
@@ -180,7 +184,7 @@ const structuredData = [
 
       <aside class="app-content-aside">
         <div class="aside-panel">
-          <p class="eyebrow">Quick route</p>
+          <p class="kicker">Open</p>
           <strong>{data.primaryAction}</strong>
           <p>{data.tagline}</p>
           {primaryUrl && <a class="button button--primary" href={primaryUrl}>Continue</a>}
@@ -189,17 +193,15 @@ const structuredData = [
           )}
         </div>
         <div class="aside-panel">
-          <p class="eyebrow">Technology</p>
+          <p class="kicker">Technology</p>
           <ul>{data.stack.map((item) => <li>{item}</li>)}</ul>
         </div>
       </aside>
     </div>
   </div>
 
-  <CommandPalette apps={allApps} />
   <script>
-    import { initCommandPalette, initCopyButtons } from "../../../scripts/catalogue-state.mjs";
-    initCommandPalette();
+    import { initCopyButtons } from "../../../scripts/catalogue-state.mjs";
     initCopyButtons();
   </script>
 </SiteLayout>

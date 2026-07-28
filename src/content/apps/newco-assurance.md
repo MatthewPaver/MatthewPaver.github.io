@@ -5,13 +5,13 @@ featured: false
 kind: flagship
 category: AI assurance
 status: prototype
-tagline: Check what an organisation can safely rely on before a prototype becomes operational.
+tagline: Review ownership, data paths and failure controls before relying on an AI prototype.
 problem: Convincing AI-built workflows can acquire real users before ownership, data paths and failure controls are understood.
-outcome: The private pre-flight makes evidence, assumptions and priority fixes visible before a human reliance decision.
+outcome: The private review records who owns the workflow, where customer data travels and which fallback controls remain untested.
 proof:
-  - Private browser-local prototype
-  - Synthetic evaluation suite
-  - Human reliance decision
+  - Private browser prototype
+  - Synthetic test suite
+  - Recorded owner decision
 stack:
   - Python
   - JavaScript
@@ -29,6 +29,5 @@ limitations:
   - It is a controlled-pilot demonstrator, not a security certification or multi-tenant service.
 ---
 
-Newco Assurance is a protected demonstration of an assurance method. The store
-shows the problem, product boundary and evaluation approach without publishing
-the private implementation or commercial framework.
+The public page documents the review questions and current prototype status.
+The implementation and commercial method remain private.

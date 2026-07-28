@@ -5,21 +5,20 @@ featured: true
 kind: flagship
 category: Decision memory
 status: live
-tagline: Retrieve what happened last time before approving the next change.
+tagline: Find previous project decisions that match the change in front of you.
 problem: Project outcomes are documented but rarely retrieved when a comparable decision appears.
-outcome: DecisionGraph returns inspectable precedents, explains the match and keeps the intervention and measured outcome together.
+outcome: DecisionGraph ranks comparable cases, shows the matching fields and keeps each intervention beside its recorded outcome.
 proof:
-  - 16 synthetic cases
-  - Deterministic retrieval
-  - Visible match rationale
+  - 16 sample cases
+  - Rule-based retrieval
+  - Visible matching fields
 stack:
   - JavaScript
   - HTML
   - Information retrieval
   - Knowledge graphs
 image: /assets/apps/decisiongraph.png
-imageAvif: /assets/apps/decisiongraph.avif
-imageAlt: DecisionGraph decision desk showing comparable project cases, match evidence and observed outcomes
+imageAlt: DecisionGraph workspace showing a relationship map and three comparable project decisions
 repo: https://github.com/MatthewPaver/DecisionGraph
 metricsRepo: MatthewPaver/DecisionGraph
 launch: https://matthewpaver.github.io/DecisionGraph/
@@ -42,4 +41,4 @@ limitations:
   - Retrieval supports a person; it does not approve a change.
 ---
 
-DecisionGraph is useful because it shows its workings. A reviewer can see why each precedent was selected instead of receiving an unexplained recommendation.
+Each result lists the fields that produced the match. The sample case library is synthetic and can be replaced with an organisation's own decision history.

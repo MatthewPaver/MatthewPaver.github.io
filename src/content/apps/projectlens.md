@@ -5,21 +5,20 @@ featured: true
 kind: flagship
 category: Project assurance
 status: live
-tagline: Check whether a project board pack is ready to decide.
+tagline: Compare a change pack with its schedule before the board meeting.
 problem: Board packs, schedules, actions and delivery narratives can disagree at the moment a decision is required.
-outcome: ProjectLens exposes the three material blockers, keeps the source evidence visible and records the human decision and follow-up conditions.
+outcome: ProjectLens compares the submitted dates and narrative, lists the three largest conflicts and records the board's response.
 proof:
   - Browser-local XER comparison
-  - Source-linked findings
-  - Human decision record
+  - Findings linked to schedule dates
+  - Decision and follow-up record
 stack:
   - JavaScript
   - Python
   - Primavera P6 XER
   - GitHub Pages
 image: /assets/apps/projectlens.png
-imageAvif: /assets/apps/projectlens.avif
-imageAlt: ProjectLens change assurance review showing three evidence blockers and the human decision workflow
+imageAlt: ProjectLens review workspace showing schedule conflicts in the Northstar change pack
 repo: https://github.com/MatthewPaver/ProjectLens
 metricsRepo: MatthewPaver/ProjectLens
 launch: https://matthewpaver.github.io/ProjectLens/change-assurance.html
@@ -41,4 +40,4 @@ limitations:
   - People retain decision authority.
 ---
 
-ProjectLens is the centre of the public Project Evidence Desk. The browser tool is immediately usable with synthetic schedule evidence, while the repository shows the deterministic comparison and public-data preparation behind it.
+The browser tool includes a synthetic Northstar change pack. You can compare its schedule dates, review the conflicts and record a board response without uploading a file.

@@ -1,43 +1,39 @@
 ---
-title: Winchester Buyer Check
-shortTitle: Buyer Check
+title: Winchester House Hunter
+shortTitle: House Hunter
 order: 7
 featured: false
 kind: flagship
-category: Personal finance utility
-status: live
-tagline: See the real cash and monthly shape of a home purchase.
-problem: Headline purchase price and deposit figures hide completion costs, loan-to-value thresholds and the ownership buffer.
-outcome: The calculator updates mortgage payment, cash required and term interest without transmitting the buyer's figures.
+category: Property decision support
+status: private
+tagline: Compare Winchester homes against mortgage affordability, commute, market and source evidence.
+problem: A listing price alone does not show whether a home fits the buyer's LISA limit, cash reserve, commute, condition or evidence threshold.
+outcome: House Hunter combines a nine-home shortlist, sold-price research, affordability planning, property review and an evidence-backed action queue.
 proof:
-  - Browser-local calculations
-  - No sign-up
-  - No data upload
+  - Nine-home seeded shortlist
+  - HM Land Registry market explorer
+  - Evidence and negotiation workflow
 stack:
-  - HTML
-  - CSS
-  - JavaScript
-  - GitHub Pages
+  - React
+  - TypeScript
+  - Fastify
+  - Prisma
+  - HM Land Registry data
 image: /assets/apps/winchester.png
-imageAlt: Winchester Buyer Check inputs and calculated mortgage, cash and loan-to-value summary
-repo: https://github.com/MatthewPaver/winchester-buyer-check
-metricsRepo: MatthewPaver/winchester-buyer-check
+imageAlt: Winchester House Hunter workspace showing its navigation and nine-home shortlist
 launch: https://matthewpaver.github.io/winchester-buyer-check/
-primaryAction: Open the buyer calculator
-license: Publicly viewable; no open-source licence
-version: Public edition
-updated: 2026-07-15
-requirements:
-  - Modern browser
-install:
-  - git clone https://github.com/MatthewPaver/winchester-buyer-check.git
-  - cd winchester-buyer-check
-  - python3 -m http.server 8000
-validate:
-  - Open http://localhost:8000 and change the purchase assumptions
+primaryAction: Try the public buyer check
+license: Private commercial product
+version: Full preview + public check
+updated: 2026-07-28
+requirements: []
+install: []
+validate: []
 limitations:
   - Illustrative only; not financial, tax, legal or mortgage advice.
-  - Transaction tax remains manual because personal circumstances vary.
+  - The account-backed service remains a private preview pending production auth, data services, legal review and operational checks.
 ---
 
-The public calculator covers purchase cash, mortgage payments and loan-to-value thresholds. It works without an account and keeps the figures in the browser.
+The public link opens the key-free affordability check. The repository contains the complete seeded decision workspace: homes catalogue, Winchester sold-price explorer, buying plan, property review, source evidence, action queue and administrative controls.
+
+The full workspace runs locally today. It is presented as a working private preview rather than a hosted financial service until the production release gates are complete.

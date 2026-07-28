@@ -17,16 +17,16 @@ test("search and catalogue tabs are reflected in browser history", async ({ page
   await expect(page).toHaveURL(/q=mortgage/);
 
   await search.fill("");
-  await page.getByRole("button", { name: "Live 5", exact: true }).click();
-  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(5);
+  await page.getByRole("button", { name: "Live 4", exact: true }).click();
+  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(4);
   await expect(page).toHaveURL(/facet=live/);
 
-  await page.getByRole("button", { name: "Source 8", exact: true }).click();
-  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(8);
+  await page.getByRole("button", { name: "Source 7", exact: true }).click();
+  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(7);
   await expect(page).toHaveURL(/facet=source/);
 
   await page.goBack();
-  await expect(page.getByRole("button", { name: "Live 5", exact: true })).toHaveAttribute(
+  await expect(page.getByRole("button", { name: "Live 4", exact: true })).toHaveAttribute(
     "aria-pressed",
     "true",
   );

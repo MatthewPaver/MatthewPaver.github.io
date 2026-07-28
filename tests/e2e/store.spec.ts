@@ -17,8 +17,8 @@ test("search and catalogue tabs are reflected in browser history", async ({ page
   await expect(page).toHaveURL(/q=mortgage/);
 
   await search.fill("");
-  await page.getByRole("button", { name: "Live 5", exact: true }).click();
-  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(5);
+  await page.getByRole("button", { name: "Live 9", exact: true }).click();
+  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(9);
   await expect(page).toHaveURL(/facet=live/);
 
   await page.getByRole("button", { name: "Source 7", exact: true }).click();
@@ -26,7 +26,7 @@ test("search and catalogue tabs are reflected in browser history", async ({ page
   await expect(page).toHaveURL(/facet=source/);
 
   await page.goBack();
-  await expect(page.getByRole("button", { name: "Live 5", exact: true })).toHaveAttribute(
+  await expect(page.getByRole("button", { name: "Live 9", exact: true })).toHaveAttribute(
     "aria-pressed",
     "true",
   );
@@ -69,4 +69,29 @@ test("mobile layout has usable controls and no horizontal overflow", async ({ pa
   const box = await search.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(200);
+});
+
+test("QuickSupply demo carries one request across all three roles", async ({ page }) => {
+  await page.goto("/demos/quicksupply/");
+  await expect(page.getByRole("heading", { name: "Good morning, Sarah." })).toBeVisible();
+
+  await page.getByRole("button", { name: "School", exact: true }).click();
+  await page.getByLabel("Role workspace").getByRole("button", { name: "Request cover" }).click();
+  await page.getByLabel("Class or subject").fill("Year 6 General");
+  await page.getByRole("button", { name: /Submit cover request/ }).click();
+  await expect(page.getByRole("heading", { name: "Every request, one status" })).toBeVisible();
+  await expect(page.getByText("Year 6 General")).toBeVisible();
+
+  await page.getByRole("button", { name: "Agency", exact: true }).click();
+  await page.getByRole("button", { name: "Requests", exact: true }).click();
+  await expect(page.getByText("Year 6 General")).toBeVisible();
+
+  await page.getByRole("button", { name: "Teacher", exact: true }).click();
+  await page.getByRole("button", { name: "Availability", exact: true }).click();
+  await page.getByRole("button", { name: /Wed 29 Available/ }).click();
+  await expect(page.getByRole("button", { name: /Wed 29 Unavailable/ })).toBeVisible();
+
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+    await page.evaluate(() => document.documentElement.clientWidth),
+  );
 });

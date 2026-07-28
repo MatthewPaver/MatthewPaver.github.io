@@ -20,7 +20,6 @@ stack:
 image: /assets/apps/quicksupply.png
 imageAvif: /assets/apps/quicksupply.avif
 imageAlt: QuickSupply operations dashboard showing active cover requests and sequential teacher assignment
-caseStudy: https://matthewpaver.github.io/MatthewPaver/store/preview.html?app=quicksupply
 primaryAction: Review the product case
 license: Private commercial product
 version: Private MVP
@@ -33,4 +32,4 @@ limitations:
   - The public material demonstrates workflow design rather than production school usage.
 ---
 
-QuickSupply remains protected because its value lies in the cross-party operating model. The store shows the workflow and evidence, not a dead-end “private” card.
+The case study covers the agency, school and teacher journeys. Source code and operating data remain private.

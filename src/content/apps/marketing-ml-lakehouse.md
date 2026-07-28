@@ -8,7 +8,7 @@ category: Data systems
 status: public
 tagline: Move marketing CSVs through a checked local pipeline into a usable dashboard.
 problem: Analytics portfolios often stop at a notebook and omit ingestion, data quality and operational handoff.
-outcome: This repository packages bronze, silver and gold DuckDB layers, model training, checks and a Streamlit interface.
+outcome: The repository loads CSV files into bronze, silver and gold DuckDB layers, trains an example model and serves the results in Streamlit.
 proof:
   - End-to-end local pipeline
   - Synthetic sample data
@@ -39,7 +39,7 @@ validate:
   - make test
 limitations:
   - The included data is demonstrative rather than a production marketing account.
-  - Model output is evidence for workflow design, not a campaign-performance claim.
+  - The example model does not represent campaign performance from a live account.
 ---
 
-This is a developer-facing application rather than a hosted consumer tool. Its value is the complete, reproducible handoff from files to checks, model and interface.
+This developer-facing project runs locally. The repository includes the sample files, pipeline, quality checks, model and Streamlit dashboard.

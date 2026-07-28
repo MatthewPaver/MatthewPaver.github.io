@@ -8,7 +8,7 @@ category: Quantitative research
 status: public
 tagline: Reproduce a strategy result before trusting the chart.
 problem: Trading demonstrations often hide benchmark choice, execution assumptions and downside behaviour.
-outcome: The engine records matched baselines, risk controls, walk-forward validation and paper-only execution.
+outcome: The engine records its benchmark, risk controls, walk-forward windows and simulated trades in one report.
 proof:
   - Reproducible backtests
   - Risk and drawdown controls

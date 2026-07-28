@@ -44,7 +44,7 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Software", item: new URL("/", Astro.site).href },
+      { "@type": "ListItem", position: 1, name: "Selected software", item: new URL("/", Astro.site).href },
       { "@type": "ListItem", position: 2, name: data.title, item: new URL(appUrl(app), Astro.site).href },
     ],
   },
@@ -52,7 +52,7 @@ const structuredData = [
 ---
 
 <SiteLayout
-  title={`${data.title} · Matthew Paver Software`}
+  title={`${data.title} · Matthew Paver`}
   description={data.tagline}
   image={data.image}
   canonical={appUrl(app)}
@@ -60,7 +60,7 @@ const structuredData = [
 >
   <div class="shell app-page">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Software</a><span aria-hidden="true">/</span><span>{data.title}</span>
+      <a href="/">Selected software</a><span aria-hidden="true">/</span><span>{data.title}</span>
     </nav>
 
     <header class="app-hero">
@@ -68,7 +68,7 @@ const structuredData = [
         <div class="detail-identity">
           <AppIcon slug={app.id} />
           <div>
-            <p class="kicker">{data.category}</p>
+            <p class="kicker">{data.portfolioRole}</p>
             <h1>{data.title}</h1>
           </div>
         </div>
@@ -88,8 +88,8 @@ const structuredData = [
           )}
         </div>
         <dl class="app-facts">
+          <div><dt>Built for</dt><dd>{data.audience}</dd></div>
           <div><dt>Version</dt><dd>{metric?.release ?? data.version}</dd></div>
-          <div><dt>Updated</dt><dd>{displayDate(metric?.updatedAt ?? data.updated)}</dd></div>
           <div><dt>Licence</dt><dd>{data.license}</dd></div>
         </dl>
       </div>
@@ -181,7 +181,7 @@ const structuredData = [
             {data.limitations.map((item) => <li>{item}</li>)}
           </ul>
           <p class="status-note">
-            Last reviewed {displayDate(data.updated)}. Store metadata is generated from the same content entry as this page.
+            Last reviewed {displayDate(data.updated)}. Portfolio metadata is generated from the same content entry as this page.
           </p>
         </section>
       </div>
@@ -205,7 +205,7 @@ const structuredData = [
   </div>
 
   <script>
-    import { initCopyButtons } from "../../../scripts/catalogue-state.mjs";
+    import { initCopyButtons } from "../../../scripts/copy-buttons.mjs";
     initCopyButtons();
   </script>
 </SiteLayout>

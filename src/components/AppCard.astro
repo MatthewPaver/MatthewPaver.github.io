@@ -1,7 +1,7 @@
 ---
 import AppIcon from "./AppIcon.astro";
 import type { AppEntry } from "../lib/catalogue";
-import { appUrl, displayDate, metricFor, searchableText } from "../lib/catalogue";
+import { appUrl, displayDate, metricFor } from "../lib/catalogue";
 
 interface Props {
   app: AppEntry;
@@ -20,23 +20,11 @@ const statusLabel = {
   prototype: "Private prototype",
   private: data.launch ? "Seeded demo" : "Case study",
 }[data.status];
-const actionLabel = {
-  live: "Open app",
-  public: "View source",
-  prototype: "View overview",
-  private: data.launch ? "Open demo" : "View case study",
-}[data.status];
 ---
 
 <article
   class="product-card"
-  data-catalogue-item
-  data-kind={data.kind}
-  data-status={data.status}
-  data-source={Boolean(data.repo)}
-  data-stack={data.stack.join("|").toLowerCase()}
-  data-search={searchableText(app)}
-  data-updated={(metric?.updatedAt ?? data.updated).toString()}
+  data-portfolio-entry
 >
   <a class="product-preview" href={detailUrl} aria-label={`View ${data.title} details`}>
     <picture>
@@ -57,17 +45,12 @@ const actionLabel = {
     <div class="product-identity">
       <AppIcon slug={app.id} />
       <div>
-        <p>{data.category}</p>
+        <p>{data.portfolioRole}</p>
         <h3><a href={detailUrl}>{data.shortTitle ?? data.title}</a></h3>
       </div>
     </div>
 
     <p class="product-summary">{data.tagline}</p>
-
-    <div class="product-owner">
-      <span class="owner-mark" aria-hidden="true">MP</span>
-      <span>Matthew Paver</span>
-    </div>
 
     <div class="product-meta">
       <span class:list={["availability", `availability--${data.status}`]}>{statusLabel}</span>
@@ -78,8 +61,8 @@ const actionLabel = {
     </div>
 
     <div class="product-actions">
-      <a class="product-action" href={actionUrl}>{actionLabel}<span aria-hidden="true">↗</span></a>
-      <a class="product-details" href={detailUrl}>Details</a>
+      <a class="product-action" href={actionUrl}>{data.primaryAction}<span aria-hidden="true">↗</span></a>
+      <a class="product-details" href={detailUrl}>Read the notes</a>
     </div>
   </div>
 </article>

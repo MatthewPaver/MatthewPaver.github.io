@@ -3,6 +3,8 @@ title: MeetingProof
 order: 2
 featured: true
 kind: flagship
+portfolioRole: Flagship product
+audience: Project teams and operations leads responsible for the follow-up
 category: Everyday work
 status: live
 tagline: Turn labelled meeting notes into an action list you can check before sending.
@@ -22,7 +24,7 @@ imageAlt: MeetingProof workspace with meeting notes and an editable review list
 repo: https://github.com/MatthewPaver/MeetingProof
 metricsRepo: MatthewPaver/MeetingProof
 launch: https://matthewpaver.github.io/MeetingProof/
-primaryAction: Review the safe example
+primaryAction: Build an approved follow-up
 license: MIT
 version: Public demonstrator
 updated: 2026-07-20

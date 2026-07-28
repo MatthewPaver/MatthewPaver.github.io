@@ -5,11 +5,11 @@ featured: true
 kind: flagship
 portfolioRole: Flagship product
 audience: Project teams and operations leads responsible for the follow-up
-category: Everyday work
+category: Meeting follow-up
 status: live
-tagline: Turn labelled meeting notes into an action list you can check before sending.
-problem: Decisions, actions and missing ownership disappear inside ordinary meeting notes.
-outcome: MeetingProof extracts labelled decisions, actions and questions, shows the source line and waits for approval before export.
+tagline: Paste in meeting notes, check the actions and export the agreed follow-up.
+problem: Actions and decisions are easy to miss once a meeting disappears into a page of notes.
+outcome: The demo finds labelled decisions, actions and questions, then keeps each item beside its source line while you review it.
 proof:
   - Exact source lines
   - Approval step before export
@@ -24,7 +24,7 @@ imageAlt: MeetingProof workspace with meeting notes and an editable review list
 repo: https://github.com/MatthewPaver/MeetingProof
 metricsRepo: MatthewPaver/MeetingProof
 launch: https://matthewpaver.github.io/MeetingProof/
-primaryAction: Build an approved follow-up
+primaryAction: Open MeetingProof
 license: MIT
 version: Public demonstrator
 updated: 2026-07-20
@@ -43,4 +43,5 @@ limitations:
   - It does not infer agreement from ordinary discussion.
 ---
 
-The public interface runs in the browser. The Python package contains the graph workflow and parsing tests used by the release.
+The demo runs in the browser. The Python package contains the graph workflow and
+the parsing tests used for each release.

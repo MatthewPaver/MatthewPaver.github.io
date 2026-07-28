@@ -1,4 +1,4 @@
-# Matthew Paver — Selected Software
+# Matthew Paver — Portfolio
 
 The source for [matthewpaver.github.io](https://matthewpaver.github.io/): one
 canonical portfolio of Matthew Paver's usable software.
@@ -10,12 +10,9 @@ limitations.
 
 ## Portfolio structure
 
-- Three first-level journeys: review a project change with ProjectLens, build an
-  approved meeting follow-up with MeetingProof, or run an AI-output regression
-  check with Output Gate.
-- DecisionGraph appears as a ProjectLens component.
-- Marketing ML Lakehouse, Paper Trading, Winchester House Hunter and Happening
-  appear as engineering studies, a public utility and an open-core case study.
+- ProjectLens, MeetingProof and Output Gate lead the homepage.
+- DecisionGraph, Marketing ML Lakehouse, Paper Trading, Winchester House Hunter
+  and Happening sit in the project archive.
 - Private repositories and private-product case studies are not listed.
 - No invented user counts, review scores, or performance claims.
 

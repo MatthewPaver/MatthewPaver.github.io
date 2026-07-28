@@ -5,11 +5,11 @@ featured: false
 kind: case-study
 portfolioRole: Open-core case study
 audience: Developers building local-event feeds from inconsistent venue sources
-category: Event data operations
+category: Event data
 status: live
-tagline: Normalise venue listings into searchable event records with source timestamps.
-problem: Venue listings vary in structure, freshness and ticket evidence, making event feeds brittle.
-outcome: The private service uses per-venue configurations and freshness checks. The public repository contains the shared schemas, fixtures and benchmarks.
+tagline: Turn inconsistent venue listings into event records that can be traced back to source.
+problem: Every venue publishes different fields, dates and ticket links.
+outcome: The public repository contains the event schema, sample sources and checks used by the private feed.
 proof:
   - 103+ source configurations
   - 167 reliability tests
@@ -24,7 +24,7 @@ imageAlt: Happening evidence workbench showing normalised Examplechester events 
 launch: https://matthewpaver.github.io/happening-open-core/
 repo: https://github.com/MatthewPaver/happening-open-core
 metricsRepo: MatthewPaver/happening-open-core
-primaryAction: Open the evidence workbench
+primaryAction: Open Happening
 license: MIT open core; private production feed
 version: Full open-core browser demo
 updated: 2026-07-28
@@ -41,6 +41,8 @@ limitations:
   - The public workbench uses two synthetic Examplechester events and three example sources.
 ---
 
-The browser workbench demonstrates the complete public core: normalised events, field-level source evidence, reference-source coverage, an interactive quality gate and the portable event schema.
+The browser demo contains two made-up events and shows the source behind each
+field. It also runs the same quality checks as the public Python package.
 
-Happening uses an open-core model. The schemas, fixtures and benchmarks are public under MIT; the production feed, source configurations and operational playbooks remain private.
+The schema, fixtures and tests are public under MIT. The production feed and its
+venue configurations are private.

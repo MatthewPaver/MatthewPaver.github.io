@@ -1,34 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 import AppCard from "../components/AppCard.astro";
-import AppIcon from "../components/AppIcon.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { appUrl, metricFor, sortApps } from "../lib/catalogue";
+import { appUrl, sortApps } from "../lib/catalogue";
 
 const apps = sortApps(await getCollection("apps"));
 const featuredApps = apps.filter((app) => app.data.featured);
-const supportingApps = apps.filter((app) => !app.data.featured);
-const decisionGraph = apps.find((app) => app.id === "decisiongraph");
+const otherApps = apps.filter((app) => !app.data.featured);
 
-const journeyById: Record<
-  string,
-  { prompt: string; result: string; sequence: string }
-> = {
-  projectlens: {
-    prompt: "A project change needs a board decision.",
-    result: "Three schedule conflicts, their source dates and a recorded board response.",
-    sequence: "Compare the pack",
-  },
-  meetingproof: {
-    prompt: "Meeting notes need an accountable follow-up.",
-    result: "A reviewed list of decisions, actions, owners and unanswered questions.",
-    sequence: "Review the record",
-  },
-  "output-gate": {
-    prompt: "An AI workflow changed before release.",
-    result: "A pass or block result against known requirements and banned claims.",
-    sequence: "Test the output",
-  },
+const featuredCopy: Record<string, string> = {
+  projectlens:
+    "Compare the dates in a change pack with the schedule behind it. The demo shows the three largest conflicts and lets you record the board's response.",
+  meetingproof:
+    "Paste in labelled meeting notes, review the decisions and actions, then export the agreed follow-up.",
+  "output-gate":
+    "Check generated text for wording that must be present and claims that must not appear. It runs in the browser and in CI.",
 };
 
 const structuredData = [
@@ -41,12 +27,12 @@ const structuredData = [
       "https://github.com/MatthewPaver",
       "https://www.linkedin.com/in/matthew-paver-534262166/",
     ],
-    jobTitle: "Software engineer and automation specialist",
+    jobTitle: "Product engineer",
   },
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Selected software by Matthew Paver",
+    name: "Software projects by Matthew Paver",
     numberOfItems: apps.length,
     itemListElement: apps.map((app, index) => ({
       "@type": "ListItem",
@@ -59,81 +45,49 @@ const structuredData = [
 ---
 
 <SiteLayout
-  title="Matthew Paver · Selected software"
-  description="Focused tools for project decisions, accountable meeting follow-up and AI release checks, designed and built by Matthew Paver."
+  title="Matthew Paver · Product engineer"
+  description="Software projects by Matthew Paver, covering project delivery, operations, data and applied AI."
   structuredData={structuredData}
 >
-  <section class="index-intro shell">
-    <div>
-      <p class="kicker">Matthew Paver / Product engineer</p>
-      <h1>Check the evidence before you approve, send or ship.</h1>
-      <p class="index-lede">
-        I build focused tools for project and product teams. Start with the decision
-        in front of you, try the public workflow, then inspect how it works.
-      </p>
-      <div class="intro-actions">
-        <a class="button button--primary button--large" href="#products">Choose a task</a>
-        <a class="button button--secondary button--large" href="#supporting-work">See supporting work</a>
-      </div>
+  <section class="portfolio-intro shell">
+    <div class="portfolio-name">
+      <p class="kicker">Product engineer</p>
+      <h1>Matthew Paver</h1>
     </div>
-
-    <aside class="method-card" aria-label="How the featured software works">
-      <p class="kicker">One working pattern</p>
-      <ol>
-        <li><span>01</span><strong>Start with the source material</strong></li>
-        <li><span>02</span><strong>Run explicit checks</strong></li>
-        <li><span>03</span><strong>Keep the evidence visible</strong></li>
-        <li><span>04</span><strong>Leave the decision to a person</strong></li>
-      </ol>
-    </aside>
-  </section>
-
-  <section id="products" class="journey-start">
-    <div class="shell">
-      <header class="section-heading">
-        <div>
-          <p class="kicker">Start with your task</p>
-          <h2>What needs checking?</h2>
-        </div>
-        <p>Choose the situation you recognise. Each link opens a working public example.</p>
-      </header>
-
-      <nav class="journey-choices" aria-label="Choose a task">
-        {featuredApps.map((app, index) => {
-          const journey = journeyById[app.id];
-          return (
-            <a href={`#${app.id}`}>
-              <span>0{index + 1}</span>
-              <strong>{journey.prompt}</strong>
-              <small>{app.data.shortTitle ?? app.data.title}</small>
-              <span aria-hidden="true">↓</span>
-            </a>
-          );
-        })}
+    <div class="portfolio-intro-copy">
+      <p class="portfolio-lede">
+        I build tools for awkward bits of work: comparing a project pack,
+        turning meeting notes into actions, checking AI output and researching a house move.
+      </p>
+      <p>The demos and source are public.</p>
+      <nav class="portfolio-links" aria-label="Matthew Paver links">
+        <a href="https://github.com/MatthewPaver">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </section>
 
-  <section class="flagship-work shell" aria-labelledby="flagship-heading">
-    <header class="section-heading section-heading--quiet">
-      <div>
-        <p class="kicker">Selected software</p>
-        <h2 id="flagship-heading">Selected tools for the work in front of you.</h2>
-      </div>
-      <p>Each public example uses synthetic data and exposes its limits.</p>
-    </header>
+  <section id="work" class="selected-work">
+    <div class="shell">
+      <header class="portfolio-section-heading">
+        <div>
+          <p class="kicker">Work</p>
+          <h2>Selected projects</h2>
+        </div>
+        <p>These are the three I would open first.</p>
+      </header>
 
-    <div class="flagship-list">
-      {featuredApps.map((app, index) => {
-        const data = app.data;
-        const journey = journeyById[app.id];
-        const detailUrl = appUrl(app);
-        const primaryUrl = data.launch ?? data.repo;
-        const metric = metricFor(app);
-        return (
-          <article id={app.id} class="flagship-case" data-portfolio-entry>
-            <figure class="flagship-media">
-              <a href={detailUrl} aria-label={`Read the ${data.title} product notes`}>
+      <div class="featured-projects">
+        {featuredApps.map((app, index) => {
+          const data = app.data;
+          const detailUrl = appUrl(app);
+          const demoUrl = data.launch ?? data.repo ?? detailUrl;
+          return (
+            <article
+              class:list={["featured-project", index === 0 && "featured-project--lead"]}
+              data-portfolio-entry
+            >
+              <a class="featured-project-media" href={demoUrl} aria-label={`Open ${data.title}`}>
                 <picture>
                   {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
                   <img
@@ -146,77 +100,46 @@ const structuredData = [
                   />
                 </picture>
               </a>
-              <figcaption>{journey.sequence} in the public browser workflow.</figcaption>
-            </figure>
-
-            <div class="flagship-copy">
-              <div class="flagship-identity">
-                <AppIcon slug={app.id} />
-                <div>
-                  <p class="kicker">0{index + 1} / {data.portfolioRole}</p>
-                  <h3>{data.title}</h3>
+              <div class="featured-project-copy">
+                <p class="project-label">0{index + 1} / {data.category}</p>
+                <h3><a href={detailUrl}>{data.title}</a></h3>
+                <p>{featuredCopy[app.id]}</p>
+                <div class="project-links">
+                  <a href={demoUrl}>Open demo <span aria-hidden="true">↗</span></a>
+                  <a href={detailUrl}>Build notes</a>
                 </div>
               </div>
-              <p class="flagship-prompt">{journey.prompt}</p>
-              <p class="flagship-problem">{data.problem}</p>
-              <dl class="flagship-facts">
-                <div><dt>Built for</dt><dd>{data.audience}</dd></div>
-                <div><dt>You finish with</dt><dd>{journey.result}</dd></div>
-              </dl>
-              <div class="flagship-actions">
-                {primaryUrl && <a class="button button--primary" href={primaryUrl}>{data.primaryAction}</a>}
-                <a class="button button--secondary" href={detailUrl}>Read the product notes</a>
-              </div>
-              <p class="release-note">
-                {metric?.ciStatus === "success" ? "Automated checks pass" : "Public repository"}
-                {metric?.release ? ` · ${metric.release}` : ""}
-              </p>
-
-              {app.id === "projectlens" && decisionGraph && (
-                <a class="related-capability" href={appUrl(decisionGraph)}>
-                  <span>Supporting capability</span>
-                  <strong>Need a relevant earlier decision too?</strong>
-                  <small>DecisionGraph retrieves comparable project cases and explains each match.</small>
-                </a>
-              )}
-            </div>
-          </article>
-        );
-      })}
-    </div>
-  </section>
-
-  <section id="supporting-work" class="supporting-work">
-    <div class="shell">
-      <header class="section-heading">
-        <div>
-          <p class="kicker">Supporting work</p>
-          <h2>Components, studies and utilities.</h2>
-        </div>
-        <p>
-          Public work across decision retrieval, data pipelines, simulation,
-          property research and event-data quality.
-        </p>
-      </header>
-
-      <div class="product-grid product-grid--supporting">
-        {supportingApps.map((app) => <AppCard app={app} />)}
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <section id="about" class="about-strip shell">
-    <div>
-      <span class="owner-mark owner-mark--large" aria-hidden="true">MP</span>
-      <div><p class="kicker">Designed and built by</p><h2>Matthew Paver</h2></div>
+  <section id="more-work" class="more-work">
+    <div class="shell">
+      <header class="portfolio-section-heading">
+        <div>
+          <p class="kicker">Archive</p>
+          <h2>More things I have built</h2>
+        </div>
+      </header>
+
+      <div class="product-grid">
+        {otherApps.map((app) => <AppCard app={app} />)}
+      </div>
     </div>
-    <p>
-      I design the workflow, interface and tests behind each project. The public
-      apps use synthetic or public data and state their limits.
-    </p>
-    <nav aria-label="Matthew Paver links">
-      <a href="https://github.com/MatthewPaver">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn ↗</a>
-    </nav>
+  </section>
+
+  <section id="about" class="portfolio-about shell">
+    <p class="kicker">About</p>
+    <div>
+      <h2>A bit about me</h2>
+      <p>
+        I work across product design, software, data and automation. Most of these
+        projects started because I wanted to understand a problem by building the
+        tool myself. The code, tests and known limits are in the linked repositories.
+      </p>
+    </div>
   </section>
 </SiteLayout>

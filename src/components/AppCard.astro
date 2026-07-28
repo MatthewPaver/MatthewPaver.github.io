@@ -1,32 +1,20 @@
 ---
-import AppIcon from "./AppIcon.astro";
 import type { AppEntry } from "../lib/catalogue";
-import { appUrl, displayDate, metricFor } from "../lib/catalogue";
+import { appUrl } from "../lib/catalogue";
 
 interface Props {
   app: AppEntry;
-  priority?: boolean;
 }
 
-const { app, priority = false } = Astro.props;
+const { app } = Astro.props;
 const data = app.data;
-const metric = metricFor(app);
 const detailUrl = appUrl(app);
-const actionUrl =
-  data.kind === "case-study" ? (data.launch ?? detailUrl) : (data.launch ?? data.repo ?? detailUrl);
-const statusLabel = {
-  live: "Runs in browser",
-  public: "Source available",
-  prototype: "Private prototype",
-  private: data.launch ? "Seeded demo" : "Case study",
-}[data.status];
+const demoUrl = data.launch ?? data.repo ?? detailUrl;
+const actionLabel = data.launch ? "Live demo" : "Source";
 ---
 
-<article
-  class="product-card"
-  data-portfolio-entry
->
-  <a class="product-preview" href={detailUrl} aria-label={`View ${data.title} details`}>
+<article class="product-card" data-portfolio-entry>
+  <a class="product-preview" href={demoUrl} aria-label={`Open ${data.title}`}>
     <picture>
       {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
       <img
@@ -34,35 +22,18 @@ const statusLabel = {
         alt={data.imageAlt}
         width="1200"
         height="675"
-        loading={priority ? "eager" : "lazy"}
-        fetchpriority={priority ? "high" : "auto"}
+        loading="lazy"
       />
     </picture>
-    <span>View preview</span>
   </a>
 
   <div class="product-card-body">
-    <div class="product-identity">
-      <AppIcon slug={app.id} />
-      <div>
-        <p>{data.portfolioRole}</p>
-        <h3><a href={detailUrl}>{data.shortTitle ?? data.title}</a></h3>
-      </div>
-    </div>
-
+    <p class="project-label">{data.category}</p>
+    <h3><a href={detailUrl}>{data.shortTitle ?? data.title}</a></h3>
     <p class="product-summary">{data.tagline}</p>
-
-    <div class="product-meta">
-      <span class:list={["availability", `availability--${data.status}`]}>{statusLabel}</span>
-      <span>{metric?.release ?? data.version}</span>
-      <time datetime={(metric?.updatedAt ?? data.updated).toString()}>
-        {displayDate(metric?.updatedAt ?? data.updated)}
-      </time>
-    </div>
-
     <div class="product-actions">
-      <a class="product-action" href={actionUrl}>{data.primaryAction}<span aria-hidden="true">↗</span></a>
-      <a class="product-details" href={detailUrl}>Read the notes</a>
+      <a href={demoUrl}>{actionLabel} <span aria-hidden="true">↗</span></a>
+      <a href={detailUrl}>Build notes</a>
     </div>
   </div>
 </article>

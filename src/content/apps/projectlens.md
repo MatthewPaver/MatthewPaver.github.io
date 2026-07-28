@@ -5,11 +5,11 @@ featured: true
 kind: flagship
 portfolioRole: Flagship product
 audience: Project controls teams, PMOs and delivery leads
-category: Project assurance
+category: Project controls
 status: live
-tagline: Compare a change pack with its schedule before the board meeting.
-problem: Board packs, schedules, actions and delivery narratives can disagree at the moment a decision is required.
-outcome: ProjectLens compares the submitted dates and narrative, lists the three largest conflicts and records the board's response.
+tagline: Compare the dates in a change pack with the schedule behind it.
+problem: A change pack can tell a different story from the schedule it cites.
+outcome: The demo puts three schedule conflicts beside their source dates and lets you record the board's response.
 proof:
   - Browser-local XER comparison
   - Findings linked to schedule dates
@@ -24,7 +24,7 @@ imageAlt: ProjectLens review workspace showing schedule conflicts in the Northst
 repo: https://github.com/MatthewPaver/ProjectLens
 metricsRepo: MatthewPaver/ProjectLens
 launch: https://matthewpaver.github.io/ProjectLens/change-assurance.html
-primaryAction: Review a change pack
+primaryAction: Open ProjectLens
 license: MIT
 version: Public demonstrator
 updated: 2026-07-20
@@ -42,4 +42,5 @@ limitations:
   - People retain decision authority.
 ---
 
-The browser tool includes a synthetic Northstar change pack. You can compare its schedule dates, review the conflicts and record a board response without uploading a file.
+The demo uses a made-up Northstar change pack. You can compare its dates, inspect
+the conflicts and record a board response without uploading a file.

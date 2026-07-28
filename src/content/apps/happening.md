@@ -48,3 +48,9 @@ field. It also runs the same quality checks as the public Python package.
 
 The schema, fixtures and tests are public under MIT. The production feed and its
 venue configurations are private.
+
+**The build, end to end.** The problem: event listings are scattered, inconsistent
+and easy to break. The decision: treat each venue as a configured source with
+explicit extraction rules. The result: 103+ source configs, dedupe and checks,
+scheduled runs, and a 167-test reliability suite. What stuck: scraping only helps
+when you can see exactly why a run failed.

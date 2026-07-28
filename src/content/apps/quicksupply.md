@@ -9,6 +9,7 @@ audience: Schools, supply agencies and cover teachers coordinating same-day cove
 category: Operations workflow
 status: private
 shelf: product
+tier: listed
 tagline: "A three-sided school cover-ops workflow: school, agency, teacher — with live status."
 problem: Same-day school cover requests need visible ownership and status.
 outcome: Sequential assignment, compliance checks and live status across all three sides of the workflow.

@@ -9,6 +9,7 @@ audience: Anyone curious how generative ML projects are disciplined end to end
 category: Generative ML
 status: private
 shelf: data-ml
+tier: listed
 tagline: Architecture image generation with dataset prep, a conditional GAN and a small serving API.
 problem: Architecture image generation needs dataset and serving discipline, not just a model.
 outcome: Dataset preparation, conditional GAN training and a Flask API in one project.

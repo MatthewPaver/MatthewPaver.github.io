@@ -26,6 +26,7 @@ const apps = defineCollection({
     category: z.string(),
     status: z.enum(["live", "public", "prototype", "private"]),
     shelf: z.enum(["product", "data-ml", "analytics", "automation"]).default("product"),
+    tier: z.enum(["supporting", "listed"]).default("supporting"),
     tagline: z.string(),
     problem: z.string(),
     outcome: z.string(),

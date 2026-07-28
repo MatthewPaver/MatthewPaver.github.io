@@ -9,6 +9,7 @@ audience: Anyone comparing roles, salaries and skills across noisy job listings
 category: Labour-market data
 status: private
 shelf: data-ml
+tier: listed
 tagline: Noisy job listings normalised into salary, skill, remote-work and volume signals.
 problem: Job listings need to become comparable market signals before they are useful.
 outcome: Reports, alerts and an API shape over normalised listings data.

@@ -6,34 +6,23 @@ import { appUrl, sortApps } from "../lib/catalogue";
 
 const apps = sortApps(await getCollection("apps"));
 const featuredApps = apps.filter((app) => app.data.featured);
-const otherApps = apps.filter((app) => !app.data.featured);
-const liveCount = apps.filter((app) => app.data.launch).length;
+const supportingApps = apps.filter((app) => !app.data.featured && app.data.tier === "supporting");
+const listedApps = apps.filter((app) => app.data.tier === "listed");
 
-const featuredCopy: Record<string, string> = {
-  projectlens:
-    "Compare the dates in a change pack with the schedule behind it. The demo shows the three largest conflicts and lets you record the board's response.",
-  meetingproof:
-    "Paste in labelled meeting notes, review the decisions and actions, then export the agreed follow-up.",
-  "output-gate":
-    "Check generated text for wording that must be present and claims that must not appear. It runs in the browser and in CI.",
+const situations: Record<string, { prompt: string; finish: string }> = {
+  projectlens: {
+    prompt: "A project change needs a board decision.",
+    finish: "The three largest conflicts between the pack and its schedule, their source dates, and a recorded board response you can export.",
+  },
+  meetingproof: {
+    prompt: "Meeting notes need an accountable follow-up.",
+    finish: "A reviewed register of decisions, actions, owners and open questions — every item pinned to its source line.",
+  },
+  "output-gate": {
+    prompt: "An AI workflow changed before release.",
+    finish: "A pass or block result against required and banned wording, in the browser or as a CI exit code.",
+  },
 };
-
-const shelves = [
-  { key: "all", label: "All" },
-  { key: "product", label: "Product" },
-  { key: "data-ml", label: "Data & ML" },
-  { key: "analytics", label: "Analytics" },
-  { key: "automation", label: "Automation" },
-];
-
-const credentials = [
-  { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services" },
-  { name: "AWS AI Practitioner", issuer: "Amazon Web Services" },
-  { name: "Neo4j Certified Professional", issuer: "Neo4j" },
-  { name: "AI Agents Fundamentals", issuer: "Hugging Face" },
-  { name: "RPA Developer Foundation", issuer: "UiPath" },
-  { name: "Diploma in IT", issuer: "BCS" },
-];
 
 const structuredData = [
   {
@@ -64,32 +53,22 @@ const structuredData = [
 
 <SiteLayout
   title="Matthew Paver · Product engineer"
-  description="Software for messy, real-world work: project delivery, operations, data and applied AI — by Matthew Paver."
+  description="Tools that put the evidence in front of the person who has to decide — board approvals, meeting follow-ups, AI releases."
   structuredData={structuredData}
 >
-  <section class="portfolio-intro shell">
-    <div class="portfolio-name">
-      <p class="kicker">Product engineer</p>
-      <h1>Matthew Paver</h1>
-      <p class="portfolio-stats" aria-label="Portfolio at a glance">
-        {apps.length} products &amp; studies · {liveCount} live demos · shipping publicly since 2017
-      </p>
-    </div>
-    <div class="portfolio-intro-copy">
-      <p class="portfolio-lede">
-        I build software for messy, real-world work: comparing a project pack,
-        turning meeting notes into actions, checking AI output before release.
-      </p>
-      <dl class="spec-strip">
-        <div><dt>Focus</dt><dd>Human-in-the-loop decision tools</dd></div>
-        <div><dt>Based</dt><dd>London</dd></div>
-        <div><dt>Now</dt><dd>ProjectLens change assurance · agent-reviewed trading research</dd></div>
-      </dl>
-      <nav class="portfolio-links" aria-label="Matthew Paver links">
-        <a href="https://github.com/MatthewPaver">GitHub <span aria-hidden="true">↗</span></a>
-        <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF) <span aria-hidden="true">↗</span></a>
-      </nav>
+  <section class="promise-intro shell">
+    <p class="kicker">Matthew Paver · Product engineer, London</p>
+    <h1>Check the evidence before you approve, send or ship.</h1>
+    <p class="promise-lede">
+      High-stakes calls — a board approval, a meeting follow-up, an AI release —
+      go wrong when the person deciding cannot see the evidence. I build tools
+      that put it in front of them, and leave the decision human.
+    </p>
+    <div class="intro-actions">
+      <a class="button button--primary button--large" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">
+        Review a change pack in your browser
+      </a>
+      <a class="button button--secondary button--large" href="#work">See the three situations</a>
     </div>
   </section>
 
@@ -97,10 +76,10 @@ const structuredData = [
     <div class="shell">
       <header class="portfolio-section-heading">
         <div>
-          <p class="kicker">Work</p>
-          <h2>Selected projects</h2>
+          <p class="kicker">Three situations</p>
+          <h2>Start with the decision in front of you.</h2>
         </div>
-        <p>These are the three I would open first.</p>
+        <p>Each one opens a working public example — synthetic data, no sign-up, limits stated.</p>
       </header>
 
       <div class="featured-projects">
@@ -108,6 +87,7 @@ const structuredData = [
           const data = app.data;
           const detailUrl = appUrl(app);
           const demoUrl = data.launch ?? data.repo ?? detailUrl;
+          const situation = situations[app.id];
           return (
             <article
               class:list={["featured-project", index === 0 && "featured-project--lead"]}
@@ -127,40 +107,23 @@ const structuredData = [
                 </picture>
               </a>
               <div class="featured-project-copy">
-                <p class="project-label">0{index + 1} / {data.category}{data.since && ` · since ${data.since}`}</p>
+                <p class="project-label">0{index + 1} / {data.category}</p>
+                <p class="situation-prompt">{situation.prompt}</p>
                 <h3><a href={detailUrl}>{data.title}</a></h3>
-                <p>{featuredCopy[app.id]}</p>
+                <p><strong>You finish with:</strong> {situation.finish}</p>
                 <div class="project-links">
-                  <a href={demoUrl}>Open demo <span aria-hidden="true">↗</span></a>
-                  <a href={detailUrl}>Build notes</a>
+                  <a href={demoUrl}>Open the demo <span aria-hidden="true">↗</span></a>
+                  <a href={detailUrl}>How it works</a>
                 </div>
               </div>
             </article>
           );
         })}
       </div>
-    </div>
-  </section>
 
-  <section class="case-strip">
-    <div class="shell">
-      <header class="portfolio-section-heading">
-        <div>
-          <p class="kicker">Featured build</p>
-          <h2>Happening: messy venue pages into checked event data.</h2>
-        </div>
-        <p>One build end to end — the pattern behind most of this shelf.</p>
-      </header>
-      <div class="case-grid">
-        <div><h3>Problem</h3><p>Event listings are scattered, inconsistent and easy to break.</p></div>
-        <div><h3>Decision</h3><p>Treat each venue as a configured source with explicit extraction rules.</p></div>
-        <div><h3>Result</h3><p>103+ source configs, dedupe and checks, scheduled runs, and a 167-test reliability suite.</p></div>
-        <div><h3>What stuck</h3><p>Scraping only helps when you can see exactly why a run failed.</p></div>
-      </div>
-      <div class="case-actions">
-        <a class="button button--primary" href="https://matthewpaver.github.io/happening-open-core/">Open the evidence workbench</a>
-        <a class="button button--secondary" href="/store/apps/happening/">Read the build notes</a>
-      </div>
+      <aside class="journey-close" aria-label="After the demo">
+        <p><strong>Tried one?</strong> Next: inspect the source on <a href="https://github.com/MatthewPaver">GitHub</a>, read the build notes behind each demo, or <a href="https://www.linkedin.com/in/matthew-paver-534262166/">say hello on LinkedIn</a>.</p>
+      </aside>
     </div>
   </section>
 
@@ -168,42 +131,27 @@ const structuredData = [
     <div class="shell">
       <header class="portfolio-section-heading">
         <div>
-          <p class="kicker">The full shelf</p>
-          <h2>Everything else I have built</h2>
+          <p class="kicker">Supporting work</p>
+          <h2>Five builds behind the same pattern.</h2>
         </div>
-        <p>Public repos, private products and archived experiments — filter by the kind of work.</p>
+        <p>Source material in, explicit checks, visible evidence, a person decides.</p>
       </header>
 
-      <div class="shelf-filters" role="group" aria-label="Filter projects" hidden>
-        {shelves.map((shelf, index) => (
-          <button
-            type="button"
-            data-chip={shelf.key}
-            aria-pressed={index === 0 ? "true" : "false"}
-          >{shelf.label}</button>
-        ))}
+      <div class="product-grid">
+        {supportingApps.map((app) => <AppCard app={app} />)}
       </div>
 
-      <div class="product-grid" data-shelf-grid>
-        {otherApps.map((app) => <AppCard app={app} />)}
+      <div class="listed-work">
+        <p class="kicker">Also built</p>
+        <ul>
+          {listedApps.map((app) => (
+            <li>
+              <a href={appUrl(app)}>{app.data.shortTitle ?? app.data.title}</a>
+              <span>{app.data.category.toLowerCase()}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="credentials-strip">
-    <div class="shell">
-      <header class="portfolio-section-heading">
-        <div>
-          <p class="kicker">Credentials</p>
-          <h2>Certifications behind the build work.</h2>
-        </div>
-        <p>Verification links live in the <a href="https://github.com/MatthewPaver">GitHub profile</a> and <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV</a>.</p>
-      </header>
-      <ul class="credential-grid">
-        {credentials.map((credential) => (
-          <li><strong>{credential.name}</strong><span>{credential.issuer}</span></li>
-        ))}
-      </ul>
     </div>
   </section>
 
@@ -212,9 +160,14 @@ const structuredData = [
     <div>
       <h2>A bit about me</h2>
       <p>
-        I work across product design, software, data and automation. Most of these
-        projects started because I wanted to understand a problem by building the
-        tool myself. The code, tests and known limits are in the linked repositories.
+        I work across product design, software, data and automation in London.
+        Most of these projects started because I wanted to understand a problem
+        by building the tool myself. The code, tests and known limits are in the
+        linked repositories.
+      </p>
+      <p class="about-certs">
+        Certified: AWS Cloud Practitioner &amp; AI Practitioner · Neo4j Professional ·
+        Hugging Face AI Agents · UiPath RPA · BCS Diploma in IT — verification in the CV.
       </p>
       <nav class="portfolio-links" aria-label="Contact Matthew Paver">
         <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn <span aria-hidden="true">↗</span></a>
@@ -223,20 +176,4 @@ const structuredData = [
       </nav>
     </div>
   </section>
-
-  <script>
-    const filterBar = document.querySelector<HTMLElement>(".shelf-filters");
-    if (filterBar) {
-      filterBar.hidden = false;
-      const chips = [...filterBar.querySelectorAll<HTMLButtonElement>("[data-chip]")];
-      const cards = [...document.querySelectorAll<HTMLElement>("[data-shelf-grid] [data-shelf]")];
-      for (const chip of chips) {
-        chip.addEventListener("click", () => {
-          const key = chip.dataset.chip;
-          for (const other of chips) other.setAttribute("aria-pressed", String(other === chip));
-          for (const card of cards) card.hidden = key !== "all" && card.dataset.shelf !== key;
-        });
-      }
-    }
-  </script>
 </SiteLayout>

@@ -9,6 +9,7 @@ audience: Homebuyers comparing affordability, market context and property eviden
 category: Property research
 status: live
 shelf: product
+tier: listed
 tagline: Compare Winchester listings with affordability, commute time and source evidence.
 problem: A listing price does not tell you whether the move works once cash, commute and condition are included.
 outcome: House Hunter combines a nine-home shortlist with sold prices, an affordability plan, property notes and a simple action list.

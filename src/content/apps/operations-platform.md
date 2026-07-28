@@ -9,6 +9,7 @@ audience: Property teams keeping resident requests, evidence and payments in one
 category: Operations workflow
 status: private
 shelf: product
+tier: listed
 tagline: Resident requests with an audit trail, payments and AI triage in one prototype.
 problem: Resident requests and operational context live in different places.
 outcome: Request intake, audit trail, payments and an AI-triage concept in a single prototype.

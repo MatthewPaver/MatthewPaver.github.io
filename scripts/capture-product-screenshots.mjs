@@ -134,7 +134,11 @@ try {
     url: "https://matthewpaver.github.io/DecisionGraph/",
     selector: "#resultsSection",
   });
-  console.log("Preserved Winchester showcase from the protected product repository");
+  await capture(page, {
+    name: "winchester",
+    url: "https://matthewpaver.github.io/winchester-buyer-check/",
+    selector: ".feature-hero",
+  });
   await renderNewco(page);
 } finally {
   await browser.close();

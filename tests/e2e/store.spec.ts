@@ -1,35 +1,28 @@
 import { expect, test } from "@playwright/test";
 
-test("software index exposes seven public products and one open-core case study", async ({ page }) => {
+test("homepage leads with three jobs and keeps five entries in supporting work", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Matthew Paver · Software/);
-  await expect(page.locator("[data-catalogue-item]")).toHaveCount(8);
-  await expect(page.locator('[data-catalogue-item][data-kind="case-study"]')).toHaveCount(1);
-  await expect(page.getByRole("heading", { name: "ProjectLens" }).first()).toBeVisible();
-  await expect(page.getByText("Software engineer", { exact: true }).first()).toBeVisible();
+  await expect(page).toHaveTitle(/Matthew Paver · Selected software/);
+  await expect(page.getByRole("heading", {
+    name: "Check the evidence before you approve, send or ship.",
+  })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What needs checking?" })).toBeVisible();
+  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
+  await expect(page.locator(".flagship-case")).toHaveCount(3);
+  await expect(page.locator(".product-grid--supporting .product-card")).toHaveCount(5);
+  await expect(page.getByRole("searchbox")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /All 8/ })).toHaveCount(0);
 });
 
-test("search and catalogue tabs are reflected in browser history", async ({ page }) => {
+test("task choices lead to a specific workflow and call to action", async ({ page }) => {
   await page.goto("/");
-  const search = page.getByRole("searchbox", { name: "Search products" });
-  await search.fill("mortgage");
-  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(1);
-  await expect(page).toHaveURL(/q=mortgage/);
-
-  await search.fill("");
-  await page.getByRole("button", { name: "Live 8", exact: true }).click();
-  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(8);
-  await expect(page).toHaveURL(/facet=live/);
-
-  await page.getByRole("button", { name: "Source 8", exact: true }).click();
-  await expect(page.locator("[data-catalogue-item]:visible")).toHaveCount(8);
-  await expect(page).toHaveURL(/facet=source/);
-
-  await page.goBack();
-  await expect(page.getByRole("button", { name: "Live 8", exact: true })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
+  await page.getByRole("link", { name: /A project change needs a board decision/ }).click();
+  await expect(page).toHaveURL(/#projectlens$/);
+  await expect(page.locator("#projectlens")).toBeInViewport();
+  await expect(page.getByRole("link", { name: "Review a change pack" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Need a relevant earlier decision too/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Build an approved follow-up" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Run a regression check" })).toBeVisible();
 });
 
 test("app pages are static, indexable and include a real install path", async ({ page }) => {
@@ -49,13 +42,13 @@ test("app pages are static, indexable and include a real install path", async ({
   );
 });
 
-test("the primary catalogue remains usable without JavaScript", async ({ browser }) => {
+test("the primary portfolio remains usable without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator("[data-catalogue-item]")).toHaveCount(8);
-  await expect(page.getByRole("link", { name: "View MeetingProof details" })).toBeVisible();
-  await expect(page.locator(".catalogue-tools")).toBeHidden();
+  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
+  await expect(page.getByRole("link", { name: "Build an approved follow-up" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Meeting notes need an accountable follow-up/ })).toBeVisible();
   await context.close();
 });
 
@@ -65,8 +58,8 @@ test("mobile layout has usable controls and no horizontal overflow", async ({ pa
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
-  const search = page.getByRole("searchbox", { name: "Search products" });
-  const box = await search.boundingBox();
+  const choice = page.getByRole("link", { name: /A project change needs a board decision/ });
+  const box = await choice.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(200);
 });

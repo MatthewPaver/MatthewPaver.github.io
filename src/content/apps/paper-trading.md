@@ -4,6 +4,8 @@ shortTitle: Paper Trading
 order: 6
 featured: false
 kind: flagship
+portfolioRole: Research study
+audience: Developers studying reproducible backtests and simulated execution
 category: Quantitative research
 status: live
 tagline: Reproduce a strategy result before trusting the chart.

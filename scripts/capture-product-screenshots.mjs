@@ -8,15 +8,20 @@ const output = join(root, "public", "assets", "apps");
 await mkdir(output, { recursive: true });
 
 async function align(page, selector, offset = 84) {
-  await page.locator(selector).scrollIntoViewIfNeeded();
-  await page.evaluate((distance) => window.scrollBy(0, -distance), offset);
+  const target = page.locator(selector).first();
+  await target.waitFor({ state: "visible" });
+  const top = await target.evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
+  await page.evaluate(
+    ({ position, distance }) => window.scrollTo(0, Math.max(0, position - distance)),
+    { position: top, distance: offset },
+  );
   await page.waitForTimeout(180);
 }
 
-async function capture(page, { name, url, selector, prepare }) {
+async function capture(page, { name, url, selector, offset, prepare }) {
   await page.goto(url, { waitUntil: "networkidle" });
   if (prepare) await prepare(page);
-  await align(page, selector);
+  await align(page, selector, offset);
   await page.screenshot({
     path: join(output, `${name}.png`),
     animations: "disabled",
@@ -36,7 +41,8 @@ try {
   await capture(page, {
     name: "projectlens",
     url: "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
-    selector: "#readinessWorkspace",
+    selector: "#blockerList",
+    offset: 210,
     prepare: async (target) => {
       await target.getByText("Try the Northstar example", { exact: false }).click();
       await target.waitForTimeout(220);
@@ -45,7 +51,8 @@ try {
   await capture(page, {
     name: "meetingproof",
     url: "https://matthewpaver.github.io/MeetingProof/",
-    selector: "#workspace",
+    selector: "#reviewItems",
+    offset: 150,
     prepare: async (target) => {
       await target.getByText("Load the safe example", { exact: true }).click();
       await target.getByText("Create review draft", { exact: true }).click();
@@ -56,6 +63,7 @@ try {
     name: "output-gate",
     url: "https://matthewpaver.github.io/ai-workflow-evaluator/app/",
     selector: "#gate",
+    offset: 16,
   });
   await capture(page, {
     name: "decisiongraph",

@@ -3,6 +3,8 @@ title: ProjectLens
 order: 1
 featured: true
 kind: flagship
+portfolioRole: Flagship product
+audience: Project controls teams, PMOs and delivery leads
 category: Project assurance
 status: live
 tagline: Compare a change pack with its schedule before the board meeting.
@@ -22,7 +24,7 @@ imageAlt: ProjectLens review workspace showing schedule conflicts in the Northst
 repo: https://github.com/MatthewPaver/ProjectLens
 metricsRepo: MatthewPaver/ProjectLens
 launch: https://matthewpaver.github.io/ProjectLens/change-assurance.html
-primaryAction: Review the Northstar example
+primaryAction: Review a change pack
 license: MIT
 version: Public demonstrator
 updated: 2026-07-20

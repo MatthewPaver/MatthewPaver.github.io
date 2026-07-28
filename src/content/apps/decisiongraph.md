@@ -1,8 +1,10 @@
 ---
 title: DecisionGraph
 order: 4
-featured: true
+featured: false
 kind: flagship
+portfolioRole: ProjectLens component
+audience: Project teams looking for a relevant earlier decision
 category: Decision memory
 status: live
 tagline: Find previous project decisions that match the change in front of you.

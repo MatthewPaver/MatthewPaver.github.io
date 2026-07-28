@@ -1,21 +1,26 @@
-# Matthew Paver — Product Store
+# Matthew Paver — Selected Software
 
 The source for [matthewpaver.github.io](https://matthewpaver.github.io/): one
-canonical, evidence-led catalogue of Matthew Paver's usable software.
+canonical portfolio of Matthew Paver's usable software.
 
-The store is built with Astro and produces plain static HTML for GitHub Pages.
-Every flagship has its own indexable page with a real screenshot, current
-repository evidence, install or launch instructions, validation commands, and
-explicit limitations. Search and filters are progressive enhancement, so the
-catalogue remains browsable without JavaScript.
+The site is built with Astro and produces plain static HTML for GitHub Pages.
+Every entry has an indexable page with a real screenshot, current repository
+evidence, install or launch instructions, validation commands and explicit
+limitations.
 
-## Catalogue
+## Portfolio structure
 
-- Seven flagship products: ProjectLens, MeetingProof, Output Gate,
-  DecisionGraph, Marketing ML Lakehouse, Paper Trading, and Winchester Buyer Check.
-- One open-core case study: Happening.
+- Three first-level journeys: review a project change with ProjectLens, build an
+  approved meeting follow-up with MeetingProof, or run an AI-output regression
+  check with Output Gate.
+- DecisionGraph appears as a ProjectLens component.
+- Marketing ML Lakehouse, Paper Trading, Winchester House Hunter and Happening
+  appear as engineering studies, a public utility and an open-core case study.
 - Private repositories and private-product case studies are not listed.
 - No invented user counts, review scores, or performance claims.
+
+The market rationale and page hierarchy are recorded in
+[`docs/market-positioning.md`](docs/market-positioning.md).
 
 ## Work locally
 
@@ -31,7 +36,7 @@ npm run verify
 ```
 
 `npm run metrics` refreshes public GitHub metadata. `npm run screenshots`
-recaptures the public browser applications used by the store.
+recaptures the public browser applications used by the portfolio.
 
 ## Deployment
 

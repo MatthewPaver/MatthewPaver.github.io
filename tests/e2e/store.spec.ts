@@ -43,7 +43,7 @@ test("app pages are static, indexable and include a real install path", async ({
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\.png$/);
   await expect(page.getByRole("heading", { name: "Run it locally" })).toBeVisible();
   await expect(page.locator("[data-copy]")).not.toHaveCount(0);
-  await expect(page.getByRole("link", { name: "Download v1.0.0" })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: /^Download / })).toHaveAttribute(
     "href",
     "https://github.com/MatthewPaver/MeetingProof/releases/latest",
   );

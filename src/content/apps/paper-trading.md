@@ -28,6 +28,7 @@ metricsRepo: MatthewPaver/paper-trading-bot
 primaryAction: Open Paper Trading
 license: MIT
 version: Full browser demo + v0.1.0 engine
+since: Feb 2026
 updated: 2026-07-28
 requirements:
   - Python 3.11

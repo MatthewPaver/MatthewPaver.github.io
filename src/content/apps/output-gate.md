@@ -27,6 +27,7 @@ launch: https://matthewpaver.github.io/ai-workflow-evaluator/app/
 primaryAction: Open Output Gate
 license: MIT
 version: Main branch
+since: May 2026
 updated: 2026-07-15
 requirements:
   - No account or API key for the browser tool

@@ -31,7 +31,7 @@
   },
   "MatthewPaver/paper-trading-bot": {
     "stars": 0,
-    "updatedAt": "2026-07-28T11:42:51Z",
+    "updatedAt": "2026-07-28T22:11:37Z",
     "ciStatus": "success",
     "release": "v0.1.0"
   },
@@ -43,8 +43,14 @@
   },
   "MatthewPaver/winchester-buyer-check": {
     "stars": 0,
-    "updatedAt": "2026-07-28T11:12:30Z",
+    "updatedAt": "2026-07-28T22:09:28Z",
     "ciStatus": "success",
     "release": "v1.0.0"
+  },
+  "MatthewPaver/can-england-win-it": {
+    "stars": 0,
+    "updatedAt": "2026-07-28T09:47:56Z",
+    "ciStatus": "success",
+    "release": null
   }
 }

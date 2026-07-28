@@ -38,6 +38,7 @@ const apps = defineCollection({
     license: z.string(),
     version: z.string(),
     updated: z.coerce.date(),
+    since: z.string().optional(),
     requirements: z.array(z.string()).default([]),
     install: z.array(z.string()).default([]),
     validate: z.array(z.string()).default([]),

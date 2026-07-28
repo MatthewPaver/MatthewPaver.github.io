@@ -89,6 +89,7 @@ const structuredData = [
         <dl class="app-facts">
           <div><dt>For</dt><dd>{data.audience}</dd></div>
           <div><dt>Version</dt><dd>{metric?.release ?? data.version}</dd></div>
+          {data.since && <div><dt>Since</dt><dd>{data.since}</dd></div>}
           <div><dt>Licence</dt><dd>{data.license}</dd></div>
         </dl>
       </div>

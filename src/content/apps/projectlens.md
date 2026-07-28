@@ -7,6 +7,7 @@ portfolioRole: Flagship product
 audience: Project controls teams, PMOs and delivery leads
 category: Project controls
 status: live
+shelf: product
 tagline: Compare the dates in a change pack with the schedule behind it.
 problem: A change pack can tell a different story from the schedule it cites.
 outcome: The demo puts three schedule conflicts beside their source dates and lets you record the board's response.

@@ -1,13 +1,13 @@
 {
   "MatthewPaver/ProjectLens": {
     "stars": 1,
-    "updatedAt": "2026-07-28T09:58:57Z",
+    "updatedAt": "2026-07-28T22:12:50Z",
     "ciStatus": "success",
     "release": "v1.0.0"
   },
   "MatthewPaver/MeetingProof": {
     "stars": 0,
-    "updatedAt": "2026-07-28T09:48:17Z",
+    "updatedAt": "2026-07-28T22:13:55Z",
     "ciStatus": "success",
     "release": "v1.0.1"
   },
@@ -19,7 +19,7 @@
   },
   "MatthewPaver/DecisionGraph": {
     "stars": 0,
-    "updatedAt": "2026-07-28T09:58:57Z",
+    "updatedAt": "2026-07-28T22:13:34Z",
     "ciStatus": "success",
     "release": "v1.0.0"
   },
@@ -50,6 +50,18 @@
   "MatthewPaver/can-england-win-it": {
     "stars": 0,
     "updatedAt": "2026-07-28T09:47:56Z",
+    "ciStatus": "success",
+    "release": null
+  },
+  "MatthewPaver/hr-performance-dashboards": {
+    "stars": 0,
+    "updatedAt": "2026-07-28T09:58:57Z",
+    "ciStatus": "success",
+    "release": null
+  },
+  "MatthewPaver/sentence-similarity-analysis": {
+    "stars": 1,
+    "updatedAt": "2026-07-28T09:58:57Z",
     "ciStatus": "success",
     "release": null
   }

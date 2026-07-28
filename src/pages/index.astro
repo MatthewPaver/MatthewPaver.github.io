@@ -7,6 +7,7 @@ import { appUrl, sortApps } from "../lib/catalogue";
 const apps = sortApps(await getCollection("apps"));
 const featuredApps = apps.filter((app) => app.data.featured);
 const otherApps = apps.filter((app) => !app.data.featured);
+const liveCount = apps.filter((app) => app.data.launch).length;
 
 const featuredCopy: Record<string, string> = {
   projectlens:
@@ -16,6 +17,23 @@ const featuredCopy: Record<string, string> = {
   "output-gate":
     "Check generated text for wording that must be present and claims that must not appear. It runs in the browser and in CI.",
 };
+
+const shelves = [
+  { key: "all", label: "All" },
+  { key: "product", label: "Product" },
+  { key: "data-ml", label: "Data & ML" },
+  { key: "analytics", label: "Analytics" },
+  { key: "automation", label: "Automation" },
+];
+
+const credentials = [
+  { name: "AWS Cloud Practitioner", issuer: "Amazon Web Services" },
+  { name: "AWS AI Practitioner", issuer: "Amazon Web Services" },
+  { name: "Neo4j Certified Professional", issuer: "Neo4j" },
+  { name: "AI Agents Fundamentals", issuer: "Hugging Face" },
+  { name: "RPA Developer Foundation", issuer: "UiPath" },
+  { name: "Diploma in IT", issuer: "BCS" },
+];
 
 const structuredData = [
   {
@@ -46,23 +64,31 @@ const structuredData = [
 
 <SiteLayout
   title="Matthew Paver · Product engineer"
-  description="Software projects by Matthew Paver, covering project delivery, operations, data and applied AI."
+  description="Software for messy, real-world work: project delivery, operations, data and applied AI — by Matthew Paver."
   structuredData={structuredData}
 >
   <section class="portfolio-intro shell">
     <div class="portfolio-name">
       <p class="kicker">Product engineer</p>
       <h1>Matthew Paver</h1>
+      <p class="portfolio-stats" aria-label="Portfolio at a glance">
+        {apps.length} products &amp; studies · {liveCount} live demos · shipping publicly since 2017
+      </p>
     </div>
     <div class="portfolio-intro-copy">
       <p class="portfolio-lede">
-        I build tools for awkward bits of work: comparing a project pack,
-        turning meeting notes into actions, checking AI output and researching a house move.
+        I build software for messy, real-world work: comparing a project pack,
+        turning meeting notes into actions, checking AI output before release.
       </p>
-      <p>The demos and source are public.</p>
+      <dl class="spec-strip">
+        <div><dt>Focus</dt><dd>Human-in-the-loop decision tools</dd></div>
+        <div><dt>Based</dt><dd>London</dd></div>
+        <div><dt>Now</dt><dd>ProjectLens change assurance · agent-reviewed trading research</dd></div>
+      </dl>
       <nav class="portfolio-links" aria-label="Matthew Paver links">
         <a href="https://github.com/MatthewPaver">GitHub <span aria-hidden="true">↗</span></a>
         <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF) <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </section>
@@ -116,18 +142,68 @@ const structuredData = [
     </div>
   </section>
 
+  <section class="case-strip">
+    <div class="shell">
+      <header class="portfolio-section-heading">
+        <div>
+          <p class="kicker">Featured build</p>
+          <h2>Happening: messy venue pages into checked event data.</h2>
+        </div>
+        <p>One build end to end — the pattern behind most of this shelf.</p>
+      </header>
+      <div class="case-grid">
+        <div><h3>Problem</h3><p>Event listings are scattered, inconsistent and easy to break.</p></div>
+        <div><h3>Decision</h3><p>Treat each venue as a configured source with explicit extraction rules.</p></div>
+        <div><h3>Result</h3><p>103+ source configs, dedupe and checks, scheduled runs, and a 167-test reliability suite.</p></div>
+        <div><h3>What stuck</h3><p>Scraping only helps when you can see exactly why a run failed.</p></div>
+      </div>
+      <div class="case-actions">
+        <a class="button button--primary" href="https://matthewpaver.github.io/happening-open-core/">Open the evidence workbench</a>
+        <a class="button button--secondary" href="/store/apps/happening/">Read the build notes</a>
+      </div>
+    </div>
+  </section>
+
   <section id="more-work" class="more-work">
     <div class="shell">
       <header class="portfolio-section-heading">
         <div>
-          <p class="kicker">Archive</p>
-          <h2>More things I have built</h2>
+          <p class="kicker">The full shelf</p>
+          <h2>Everything else I have built</h2>
         </div>
+        <p>Public repos, private products and archived experiments — filter by the kind of work.</p>
       </header>
 
-      <div class="product-grid">
+      <div class="shelf-filters" role="group" aria-label="Filter projects" hidden>
+        {shelves.map((shelf, index) => (
+          <button
+            type="button"
+            data-chip={shelf.key}
+            aria-pressed={index === 0 ? "true" : "false"}
+          >{shelf.label}</button>
+        ))}
+      </div>
+
+      <div class="product-grid" data-shelf-grid>
         {otherApps.map((app) => <AppCard app={app} />)}
       </div>
+    </div>
+  </section>
+
+  <section class="credentials-strip">
+    <div class="shell">
+      <header class="portfolio-section-heading">
+        <div>
+          <p class="kicker">Credentials</p>
+          <h2>Certifications behind the build work.</h2>
+        </div>
+        <p>Verification links live in the <a href="https://github.com/MatthewPaver">GitHub profile</a> and <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV</a>.</p>
+      </header>
+      <ul class="credential-grid">
+        {credentials.map((credential) => (
+          <li><strong>{credential.name}</strong><span>{credential.issuer}</span></li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -147,4 +223,20 @@ const structuredData = [
       </nav>
     </div>
   </section>
+
+  <script>
+    const filterBar = document.querySelector<HTMLElement>(".shelf-filters");
+    if (filterBar) {
+      filterBar.hidden = false;
+      const chips = [...filterBar.querySelectorAll<HTMLButtonElement>("[data-chip]")];
+      const cards = [...document.querySelectorAll<HTMLElement>("[data-shelf-grid] [data-shelf]")];
+      for (const chip of chips) {
+        chip.addEventListener("click", () => {
+          const key = chip.dataset.chip;
+          for (const other of chips) other.setAttribute("aria-pressed", String(other === chip));
+          for (const card of cards) card.hidden = key !== "all" && card.dataset.shelf !== key;
+        });
+      }
+    }
+  </script>
 </SiteLayout>

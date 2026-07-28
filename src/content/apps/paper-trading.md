@@ -8,6 +8,7 @@ portfolioRole: Research study
 audience: Developers studying reproducible backtests and simulated execution
 category: Backtesting research
 status: live
+shelf: data-ml
 tagline: Reproduce a backtest with matched baselines, costs and drawdown checks.
 problem: A good-looking backtest can hide a weak benchmark, unrealistic execution or a large drawdown.
 outcome: The engine records the benchmark, risk checks, test windows and simulated trades in one report.

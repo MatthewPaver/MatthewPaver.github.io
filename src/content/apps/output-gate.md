@@ -7,6 +7,7 @@ portfolioRole: Open-source tool
 audience: Developers maintaining prompts, agents or generated customer content
 category: AI output testing
 status: live
+shelf: product
 tagline: Check generated text for required wording and claims that must not appear.
 problem: A prompt or model change can remove required wording or add a claim you have already ruled out.
 outcome: Output Gate runs the same phrase checks in the browser or CI and saves the result as JSON.

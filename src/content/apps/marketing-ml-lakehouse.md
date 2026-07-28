@@ -8,6 +8,7 @@ portfolioRole: Engineering study
 audience: Data engineers reviewing a local marketing analytics pipeline
 category: Marketing data
 status: live
+shelf: data-ml
 tagline: Run a local marketing pipeline from raw CSV files to a scored campaign dashboard.
 problem: A notebook can hide the ingestion and data-quality work needed to reproduce an analysis.
 outcome: The repository loads CSV files into DuckDB, trains an example model and serves the results in Streamlit.

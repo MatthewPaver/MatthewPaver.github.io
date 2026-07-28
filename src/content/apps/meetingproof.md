@@ -7,6 +7,7 @@ portfolioRole: Flagship product
 audience: Project teams and operations leads responsible for the follow-up
 category: Meeting follow-up
 status: live
+shelf: product
 tagline: Paste in meeting notes, check the actions and export the agreed follow-up.
 problem: Actions and decisions are easy to miss once a meeting disappears into a page of notes.
 outcome: The demo finds labelled decisions, actions and questions, then keeps each item beside its source line while you review it.

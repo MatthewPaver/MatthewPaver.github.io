@@ -4,6 +4,8 @@ shortTitle: ML Lakehouse
 order: 5
 featured: false
 kind: flagship
+portfolioRole: Engineering study
+audience: Data engineers reviewing a local marketing analytics pipeline
 category: Data systems
 status: live
 tagline: Move marketing CSVs through a checked local pipeline into a usable dashboard.

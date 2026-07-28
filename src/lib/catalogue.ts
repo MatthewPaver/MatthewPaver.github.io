@@ -30,17 +30,3 @@ export function displayDate(value: Date | string) {
     year: "numeric",
   }).format(date);
 }
-
-export function searchableText(app: AppEntry) {
-  return [
-    app.data.title,
-    app.data.category,
-    app.data.tagline,
-    app.data.problem,
-    app.data.outcome,
-    ...app.data.stack,
-    ...app.data.proof,
-  ]
-    .join(" ")
-    .toLowerCase();
-}

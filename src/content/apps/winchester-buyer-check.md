@@ -4,6 +4,8 @@ shortTitle: House Hunter
 order: 7
 featured: false
 kind: flagship
+portfolioRole: Public utility
+audience: Homebuyers comparing affordability, market context and property evidence
 category: Property decision support
 status: live
 tagline: Compare Winchester homes against mortgage affordability, commute, market and source evidence.

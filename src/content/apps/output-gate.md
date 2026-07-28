@@ -3,6 +3,8 @@ title: Output Gate
 order: 3
 featured: true
 kind: flagship
+portfolioRole: Open-source tool
+audience: Developers maintaining prompts, agents or generated customer content
 category: AI workflow QA
 status: live
 tagline: Catch known output regressions before they reach a user.
@@ -22,7 +24,7 @@ imageAlt: Output Gate workbench showing required phrases, forbidden claims and a
 repo: https://github.com/MatthewPaver/ai-workflow-evaluator
 metricsRepo: MatthewPaver/ai-workflow-evaluator
 launch: https://matthewpaver.github.io/ai-workflow-evaluator/app/
-primaryAction: Run an output check
+primaryAction: Run a regression check
 license: MIT
 version: Main branch
 updated: 2026-07-15

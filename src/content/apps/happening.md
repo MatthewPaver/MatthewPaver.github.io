@@ -3,6 +3,8 @@ title: Happening
 order: 11
 featured: false
 kind: case-study
+portfolioRole: Open-core case study
+audience: Developers building local-event feeds from inconsistent venue sources
 category: Event data operations
 status: live
 tagline: Normalise venue listings into searchable event records with source timestamps.

@@ -1,13 +1,36 @@
 ---
 import { getCollection } from "astro:content";
 import AppCard from "../components/AppCard.astro";
+import AppIcon from "../components/AppIcon.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { appUrl, sortApps } from "../lib/catalogue";
+import { appUrl, metricFor, sortApps } from "../lib/catalogue";
 
 const apps = sortApps(await getCollection("apps"));
-const liveApps = apps.filter((app) => app.data.status === "live").length;
-const sourceProjects = apps.filter((app) => app.data.repo).length;
-const caseStudies = apps.filter((app) => app.data.kind === "case-study").length;
+const featuredApps = apps.filter((app) => app.data.featured);
+const supportingApps = apps.filter((app) => !app.data.featured);
+const decisionGraph = apps.find((app) => app.id === "decisiongraph");
+
+const journeyById: Record<
+  string,
+  { prompt: string; result: string; sequence: string }
+> = {
+  projectlens: {
+    prompt: "A project change needs a board decision.",
+    result: "Three schedule conflicts, their source dates and a recorded board response.",
+    sequence: "Compare the pack",
+  },
+  meetingproof: {
+    prompt: "Meeting notes need an accountable follow-up.",
+    result: "A reviewed list of decisions, actions, owners and unanswered questions.",
+    sequence: "Review the record",
+  },
+  "output-gate": {
+    prompt: "An AI workflow changed before release.",
+    result: "A pass or block result against known requirements and banned claims.",
+    sequence: "Test the output",
+  },
+};
+
 const structuredData = [
   {
     "@context": "https://schema.org",
@@ -23,7 +46,7 @@ const structuredData = [
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Software by Matthew Paver",
+    name: "Selected software by Matthew Paver",
     numberOfItems: apps.length,
     itemListElement: apps.map((app, index) => ({
       "@type": "ListItem",
@@ -36,70 +59,148 @@ const structuredData = [
 ---
 
 <SiteLayout
-  title="Matthew Paver · Software"
-  description="Working software and product case studies by Matthew Paver across project delivery, operations, automation, applied AI and data."
+  title="Matthew Paver · Selected software"
+  description="Focused tools for project decisions, accountable meeting follow-up and AI release checks, designed and built by Matthew Paver."
   structuredData={structuredData}
 >
   <section class="index-intro shell">
     <div>
-      <p class="kicker">Matthew Paver / Software</p>
-      <h1>Working software for projects, operations and research.</h1>
+      <p class="kicker">Matthew Paver / Product engineer</p>
+      <h1>Check the evidence before you approve, send or ship.</h1>
       <p class="index-lede">
-        I design and build the products listed here. Every entry links to a public
-        browser app or public source repository.
+        I build focused tools for project and product teams. Start with the decision
+        in front of you, try the public workflow, then inspect how it works.
       </p>
+      <div class="intro-actions">
+        <a class="button button--primary button--large" href="#products">Choose a task</a>
+        <a class="button button--secondary button--large" href="#supporting-work">See supporting work</a>
+      </div>
     </div>
 
-    <aside class="maker-card" aria-label="About this catalogue">
-      <div class="maker-identity">
-        <span aria-hidden="true">MP</span>
-        <div><strong>Matthew Paver</strong><small>Software engineer</small></div>
-      </div>
-      <dl>
-        <div><dt>Entries</dt><dd>{String(apps.length).padStart(2, "0")}</dd></div>
-        <div><dt>Live apps</dt><dd>{String(liveApps).padStart(2, "0")}</dd></div>
-        <div><dt>Public repositories</dt><dd>{String(sourceProjects).padStart(2, "0")}</dd></div>
-      </dl>
-      <a href="https://github.com/MatthewPaver">GitHub profile <span aria-hidden="true">↗</span></a>
+    <aside class="method-card" aria-label="How the featured software works">
+      <p class="kicker">One working pattern</p>
+      <ol>
+        <li><span>01</span><strong>Start with the source material</strong></li>
+        <li><span>02</span><strong>Run explicit checks</strong></li>
+        <li><span>03</span><strong>Keep the evidence visible</strong></li>
+        <li><span>04</span><strong>Leave the decision to a person</strong></li>
+      </ol>
     </aside>
   </section>
 
-  <section id="products" class="software-index">
+  <section id="products" class="journey-start">
     <div class="shell">
-      <header class="index-header">
+      <header class="section-heading">
         <div>
-          <p class="kicker">Catalogue</p>
-          <h2>Software <span>{String(apps.length).padStart(2, "0")}</span></h2>
+          <p class="kicker">Start with your task</p>
+          <h2>What needs checking?</h2>
         </div>
-        <p>Use the app, read the source or open the product notes.</p>
+        <p>Choose the situation you recognise. Each link opens a working public example.</p>
       </header>
 
-      <div class="catalogue-tools enhanced" aria-label="Find and filter software">
-        <label class="index-search">
-          <span class="sr-only">Search products</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4A7.75 7.75 0 1 1 3.5 11.25a7.75 7.75 0 0 1 15.5 0Z" /></svg>
-          <input id="catalogue-search" type="search" placeholder="Search products" autocomplete="off" />
-        </label>
-        <div class="index-tabs" aria-label="Catalogue sections">
-          <button type="button" data-facet="" aria-pressed="true">All <span>{apps.length}</span></button>
-          <button type="button" data-facet="live" aria-pressed="false">Live <span>{liveApps}</span></button>
-          <button type="button" data-facet="source" aria-pressed="false">Source <span>{sourceProjects}</span></button>
-          <button type="button" data-facet="case-study" aria-pressed="false">Cases <span>{caseStudies}</span></button>
+      <nav class="journey-choices" aria-label="Choose a task">
+        {featuredApps.map((app, index) => {
+          const journey = journeyById[app.id];
+          return (
+            <a href={`#${app.id}`}>
+              <span>0{index + 1}</span>
+              <strong>{journey.prompt}</strong>
+              <small>{app.data.shortTitle ?? app.data.title}</small>
+              <span aria-hidden="true">↓</span>
+            </a>
+          );
+        })}
+      </nav>
+    </div>
+  </section>
+
+  <section class="flagship-work shell" aria-labelledby="flagship-heading">
+    <header class="section-heading section-heading--quiet">
+      <div>
+        <p class="kicker">Selected software</p>
+        <h2 id="flagship-heading">Selected tools for the work in front of you.</h2>
+      </div>
+      <p>Each public example uses synthetic data and exposes its limits.</p>
+    </header>
+
+    <div class="flagship-list">
+      {featuredApps.map((app, index) => {
+        const data = app.data;
+        const journey = journeyById[app.id];
+        const detailUrl = appUrl(app);
+        const primaryUrl = data.launch ?? data.repo;
+        const metric = metricFor(app);
+        return (
+          <article id={app.id} class="flagship-case" data-portfolio-entry>
+            <figure class="flagship-media">
+              <a href={detailUrl} aria-label={`Read the ${data.title} product notes`}>
+                <picture>
+                  {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
+                  <img
+                    src={data.image}
+                    alt={data.imageAlt}
+                    width="1200"
+                    height="675"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                  />
+                </picture>
+              </a>
+              <figcaption>{journey.sequence} in the public browser workflow.</figcaption>
+            </figure>
+
+            <div class="flagship-copy">
+              <div class="flagship-identity">
+                <AppIcon slug={app.id} />
+                <div>
+                  <p class="kicker">0{index + 1} / {data.portfolioRole}</p>
+                  <h3>{data.title}</h3>
+                </div>
+              </div>
+              <p class="flagship-prompt">{journey.prompt}</p>
+              <p class="flagship-problem">{data.problem}</p>
+              <dl class="flagship-facts">
+                <div><dt>Built for</dt><dd>{data.audience}</dd></div>
+                <div><dt>You finish with</dt><dd>{journey.result}</dd></div>
+              </dl>
+              <div class="flagship-actions">
+                {primaryUrl && <a class="button button--primary" href={primaryUrl}>{data.primaryAction}</a>}
+                <a class="button button--secondary" href={detailUrl}>Read the product notes</a>
+              </div>
+              <p class="release-note">
+                {metric?.ciStatus === "success" ? "Automated checks pass" : "Public repository"}
+                {metric?.release ? ` · ${metric.release}` : ""}
+              </p>
+
+              {app.id === "projectlens" && decisionGraph && (
+                <a class="related-capability" href={appUrl(decisionGraph)}>
+                  <span>Supporting capability</span>
+                  <strong>Need a relevant earlier decision too?</strong>
+                  <small>DecisionGraph retrieves comparable project cases and explains each match.</small>
+                </a>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  <section id="supporting-work" class="supporting-work">
+    <div class="shell">
+      <header class="section-heading">
+        <div>
+          <p class="kicker">Supporting work</p>
+          <h2>Components, studies and utilities.</h2>
         </div>
-      </div>
+        <p>
+          Public work across decision retrieval, data pipelines, simulation,
+          property research and event-data quality.
+        </p>
+      </header>
 
-      <div class="result-line enhanced" aria-live="polite">
-        <span id="result-count">{apps.length} results</span>
-        <button id="clear-filters" type="button">Reset</button>
-      </div>
-
-      <div class="product-grid" data-catalogue>
-        {apps.map((app, index) => <AppCard app={app} priority={index < 3} />)}
-      </div>
-
-      <div id="catalogue-empty" class="empty-state enhanced" hidden>
-        <strong>No matching software</strong>
-        <p>Try the product name, a problem or a technology.</p>
+      <div class="product-grid product-grid--supporting">
+        {supportingApps.map((app) => <AppCard app={app} />)}
       </div>
     </div>
   </section>
@@ -107,17 +208,15 @@ const structuredData = [
   <section id="about" class="about-strip shell">
     <div>
       <span class="owner-mark owner-mark--large" aria-hidden="true">MP</span>
-      <div><p class="kicker">Built and maintained by</p><h2>Matthew Paver</h2></div>
+      <div><p class="kicker">Designed and built by</p><h2>Matthew Paver</h2></div>
     </div>
-    <p>I work on project systems, operational software, automation and applied AI.</p>
+    <p>
+      I design the workflow, interface and tests behind each project. The public
+      apps use synthetic or public data and state their limits.
+    </p>
     <nav aria-label="Matthew Paver links">
       <a href="https://github.com/MatthewPaver">GitHub ↗</a>
       <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn ↗</a>
     </nav>
   </section>
-
-  <script>
-    import { initCatalogue } from "../scripts/catalogue-state.mjs";
-    initCatalogue();
-  </script>
 </SiteLayout>

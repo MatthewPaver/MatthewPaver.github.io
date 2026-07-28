@@ -21,6 +21,8 @@ stack:
   - HM Land Registry data
 image: /assets/apps/winchester.png
 imageAlt: Winchester House Hunter workspace showing its navigation and nine-home shortlist
+repo: https://github.com/MatthewPaver/winchester-buyer-check
+metricsRepo: MatthewPaver/winchester-buyer-check
 launch: https://matthewpaver.github.io/winchester-buyer-check/
 primaryAction: Open the interactive demo
 license: Public demo; production product remains private

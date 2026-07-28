@@ -24,6 +24,9 @@ for (const repo of Object.keys(current)) {
       request(`https://api.github.com/repos/${repo}/actions/runs?per_page=1`),
       request(`https://api.github.com/repos/${repo}/releases/latest`),
     ]);
+    if (!metadata || metadata.private || metadata.visibility !== "public") {
+      throw new Error(`${repo} is unavailable or not public`);
+    }
     next[repo] = {
       stars: metadata?.stargazers_count ?? current[repo].stars ?? 0,
       updatedAt: metadata?.pushed_at ?? current[repo].updatedAt,
@@ -31,8 +34,7 @@ for (const repo of Object.keys(current)) {
       release: release?.tag_name ?? null,
     };
   } catch (error) {
-    process.stderr.write(`Metrics fallback for ${repo}: ${error.message}\n`);
-    next[repo] = current[repo];
+    throw new Error(`Public catalogue check failed: ${error.message}`);
   }
 }
 

@@ -8,7 +8,6 @@ import { appUrl, sortApps } from "../lib/catalogue";
 const apps = sortApps(await getCollection("apps"));
 const flagships = apps.filter((app) => app.data.kind === "flagship");
 const caseStudies = apps.filter((app) => app.data.kind === "case-study");
-const featured = flagships.filter((app) => app.data.featured);
 const stacks = [...new Set(flagships.flatMap((app) => app.data.stack))].sort();
 const structuredData = [
   {
@@ -38,62 +37,30 @@ const structuredData = [
 ---
 
 <SiteLayout
-  title="Matthew Paver Product Store · Useful software, with evidence"
+  title="Matthew Paver Product Store · Small products, properly finished"
   description="Eight inspectable products and three protected commercial case studies across project assurance, automation, AI workflow quality and data systems."
   structuredData={structuredData}
 >
   <section class="store-hero shell">
     <div class="hero-copy">
       <p class="eyebrow">Independent software · 2026 collection</p>
-      <h1>Useful software,<br /><em>with the workings visible.</em></h1>
-      <p class="hero-lede">
-        Browser tools, open repositories and protected product work. Each entry says what runs,
-        what is proved and where a person still decides.
-      </p>
+      <h1>Small products,<br /><em>properly finished.</em></h1>
+      <div class="hero-summary">
+        <p class="hero-lede">
+          Evidence-led tools for project assurance, automation, AI workflow quality and data.
+          Open one in the browser, inspect the source or download a release.
+        </p>
+        <div class="collection-count" aria-label={`${flagships.length} flagship products`}>
+          <strong>{String(flagships.length).padStart(2, "0")}</strong>
+          <span>flagship products<br />ready to inspect</span>
+        </div>
+      </div>
       <div class="hero-actions">
         <a class="button button--primary button--large" href="#products">Browse the products</a>
         <button class="button button--secondary button--large command-trigger" type="button">
           Search the store <kbd>⌘K</kbd>
         </button>
       </div>
-    </div>
-    <aside class="store-stats" aria-label="Store summary">
-      <div><strong>08</strong><span>flagship builds</span></div>
-      <div><strong>06</strong><span>browser tools</span></div>
-      <div><strong>03</strong><span>protected cases</span></div>
-      <p>Counts describe this catalogue, not invented users, ratings or downloads.</p>
-    </aside>
-  </section>
-
-  <section class="featured-section shell" aria-labelledby="featured-heading">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Start here</p>
-        <h2 id="featured-heading">Four tools that show the pattern.</h2>
-      </div>
-      <p>Messy evidence comes in. Deterministic checks and explicit boundaries turn it into something a person can use.</p>
-    </div>
-    <div class="featured-bento">
-      {featured.map((app, index) => (
-        <a class:list={["featured-tile", index === 0 && "featured-tile--lead"]} href={appUrl(app)}>
-          <picture>
-            {app.data.imageAvif && <source srcset={app.data.imageAvif} type="image/avif" />}
-            <img
-              src={app.data.image}
-              alt={app.data.imageAlt}
-              width="1200"
-              height="675"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchpriority={index === 0 ? "high" : "auto"}
-            />
-          </picture>
-          <span class="featured-overlay">
-            <small>{app.data.category}</small>
-            <strong>{app.data.title}</strong>
-            <span>{app.data.tagline}</span>
-          </span>
-        </a>
-      ))}
     </div>
   </section>
 
@@ -102,9 +69,9 @@ const structuredData = [
       <div class="section-heading section-heading--catalogue">
         <div>
           <p class="eyebrow">The product shelf</p>
-          <h2>Open it, inspect it or run it locally.</h2>
+          <h2>Ready to inspect, run or discuss.</h2>
         </div>
-        <p>Live means a working browser route. Public means the repository is inspectable. Prototype means the boundary is still being tested.</p>
+        <p>Live tools open in the browser. Public builds include source and releases. Protected work explains the boundary.</p>
       </div>
 
       <div class="catalogue-controls enhanced" aria-label="Find and filter products">
@@ -152,7 +119,7 @@ const structuredData = [
     <div class="section-heading">
       <div>
         <p class="eyebrow">Protected product work</p>
-        <h2 id="case-heading">Case studies, not dead-end cards.</h2>
+        <h2 id="case-heading">Protected work, clearly explained.</h2>
       </div>
       <p>The workflow and product decisions are inspectable. Customer data, commercial code and operating advantages stay private.</p>
     </div>
@@ -191,6 +158,13 @@ const structuredData = [
         <li><span>04</span><strong>Package the handoff.</strong><p>A working route, install path, tests, limitations and current status travel together.</p></li>
       </ol>
     </div>
+  </section>
+
+  <section class="closing-section shell" aria-label="Work with Matthew Paver">
+    <p>Have a difficult workflow that deserves a clearer product?</p>
+    <a class="button button--primary" href="https://github.com/MatthewPaver">
+      Start with my GitHub <span aria-hidden="true">↗</span>
+    </a>
   </section>
 
   <CommandPalette apps={apps} />

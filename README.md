@@ -11,10 +11,10 @@ catalogue remains browsable without JavaScript.
 
 ## Catalogue
 
-- Eight flagship products: ProjectLens, MeetingProof, Output Gate,
-  DecisionGraph, Marketing ML Lakehouse, Paper Trading, Winchester Buyer Check,
-  and Newco Assurance.
-- Three protected case studies: Cadence, QuickSupply, and Happening.
+- Seven flagship products: ProjectLens, MeetingProof, Output Gate,
+  DecisionGraph, Marketing ML Lakehouse, Paper Trading, and Winchester Buyer Check.
+- One open-core case study: Happening.
+- Private repositories and private-product case studies are not listed.
 - No invented user counts, review scores, or performance claims.
 
 ## Work locally
@@ -31,8 +31,7 @@ npm run verify
 ```
 
 `npm run metrics` refreshes public GitHub metadata. `npm run screenshots`
-recaptures MeetingProof and rebuilds Newco's non-sensitive protected-product
-cover.
+recaptures the public browser applications used by the store.
 
 ## Deployment
 

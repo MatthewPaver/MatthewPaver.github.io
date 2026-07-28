@@ -12,8 +12,7 @@
         decisiongraph: "decisiongraph",
         lakehouse: "marketing-ml-lakehouse",
         "output-gate": "output-gate",
-        happening: "happening",
-        quicksupply: "quicksupply"
+        happening: "happening"
       };
       const slug = routes[new URLSearchParams(location.search).get("app")];
       location.replace(slug ? `/store/apps/${slug}/` : "/");

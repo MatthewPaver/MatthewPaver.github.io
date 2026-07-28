@@ -693,9 +693,6 @@ a {
 .app-icon[data-app="marketing-ml-lakehouse"] { --icon-bg: #172b2d; --icon-fg: #75d2c9; }
 .app-icon[data-app="paper-trading"] { --icon-bg: #17263b; --icon-fg: #f09d78; }
 .app-icon[data-app="winchester-buyer-check"] { --icon-bg: #17392f; --icon-fg: #f3cf78; }
-.app-icon[data-app="newco-assurance"] { --icon-bg: #283029; --icon-fg: #e9eee9; }
-.app-icon[data-app="cadence"] { --icon-bg: #123d48; --icon-fg: #9ae3df; }
-.app-icon[data-app="quicksupply"] { --icon-bg: #442080; --icon-fg: #e7d8ff; }
 .app-icon[data-app="happening"] { --icon-bg: #195a52; --icon-fg: #b6f0d0; }
 
 .product-summary {

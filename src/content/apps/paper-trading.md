@@ -24,8 +24,8 @@ repo: https://github.com/MatthewPaver/paper-trading-bot
 metricsRepo: MatthewPaver/paper-trading-bot
 primaryAction: Inspect the research engine
 license: MIT
-version: v0.1.0 draft
-updated: 2026-07-15
+version: v0.1.0
+updated: 2026-07-28
 requirements:
   - Python 3.11
   - No brokerage account for the default simulation
@@ -39,7 +39,10 @@ validate:
   - python cli.py backtest --tier 1
 limitations:
   - This is research and paper trading only, not investment advice or a live-trading promise.
-  - The current public release remains a draft.
+  - Results depend on historical data, benchmark choice and explicit execution assumptions.
 ---
 
-The engineering is stronger than the product packaging. A versioned public release and a safe report viewer are the remaining steps before non-technical users can use it comfortably.
+The first versioned release packages the reproducible benchmark, risk controls,
+walk-forward evaluation and paper-only execution path. The repository's
+three-minute demo uses fixtures so the evidence report can be reviewed without
+downloading market data or presenting fixture numbers as real performance.

@@ -1,34 +1,44 @@
 ---
+import AppIcon from "./AppIcon.astro";
 import type { AppEntry } from "../lib/catalogue";
 import { appUrl, displayDate, metricFor, searchableText } from "../lib/catalogue";
 
 interface Props {
   app: AppEntry;
-  featured?: boolean;
+  priority?: boolean;
 }
 
-const { app, featured = false } = Astro.props;
+const { app, priority = false } = Astro.props;
 const data = app.data;
 const metric = metricFor(app);
+const detailUrl = appUrl(app);
+const actionUrl =
+  data.kind === "case-study" ? (data.launch ?? detailUrl) : (data.launch ?? data.repo ?? detailUrl);
 const statusLabel = {
-  live: "Live app",
-  public: "Open source",
-  prototype: "Prototype",
-  private: "Protected case",
+  live: "Runs in browser",
+  public: "Source available",
+  prototype: "Private prototype",
+  private: data.launch ? "Seeded demo" : "Case study",
 }[data.status];
-const actionUrl = data.launch ?? data.repo ?? data.caseStudy ?? appUrl(app);
+const actionLabel = {
+  live: "Open app",
+  public: "View source",
+  prototype: "View overview",
+  private: data.launch ? "Open demo" : "View case study",
+}[data.status];
 ---
 
 <article
-  class:list={["app-card", featured && "app-card--featured"]}
+  class="product-card"
   data-catalogue-item
   data-kind={data.kind}
   data-status={data.status}
+  data-source={Boolean(data.repo)}
   data-stack={data.stack.join("|").toLowerCase()}
   data-search={searchableText(app)}
   data-updated={(metric?.updatedAt ?? data.updated).toString()}
 >
-  <a class="app-media" href={appUrl(app)} aria-label={`View ${data.title} details`}>
+  <a class="product-preview" href={detailUrl} aria-label={`View ${data.title} details`}>
     <picture>
       {data.imageAvif && <source srcset={data.imageAvif} type="image/avif" />}
       <img
@@ -36,38 +46,40 @@ const actionUrl = data.launch ?? data.repo ?? data.caseStudy ?? appUrl(app);
         alt={data.imageAlt}
         width="1200"
         height="675"
-        loading={featured ? "eager" : "lazy"}
-        fetchpriority={featured ? "high" : "auto"}
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
       />
     </picture>
-    <span class="media-corner" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></svg>
-    </span>
+    <span>View preview</span>
   </a>
-  <div class="app-card-body">
-    <div class="badge-row">
-      <span class:list={["badge", `badge--${data.status}`]}>{statusLabel}</span>
-      {metric?.release && <span class="badge">{metric.release}</span>}
-      {metric?.ciStatus === "success" && <span class="badge badge--verified">Checks passing</span>}
-      {metric?.ciStatus === "failure" && <span class="badge badge--warning">Checks need attention</span>}
-    </div>
-    <div class="app-title-row">
+
+  <div class="product-card-body">
+    <div class="product-identity">
+      <AppIcon slug={app.id} />
       <div>
-        <p class="eyebrow">{data.category}</p>
-        <h3><a href={appUrl(app)}>{data.shortTitle ?? data.title}</a></h3>
+        <p>{data.category}</p>
+        <h3><a href={detailUrl}>{data.shortTitle ?? data.title}</a></h3>
       </div>
-      <span class="updated">{displayDate(metric?.updatedAt ?? data.updated)}</span>
     </div>
-    <p class="app-tagline">{data.tagline}</p>
-    <ul class="proof-list" aria-label={`${data.title} proof points`}>
-      {data.proof.slice(0, featured ? 3 : 2).map((item) => <li>{item}</li>)}
-    </ul>
-    <ul class="stack-list" aria-label={`${data.title} technology`}>
-      {data.stack.slice(0, 4).map((item) => <li>{item}</li>)}
-    </ul>
-    <div class="card-actions">
-      <a class="button button--primary" href={actionUrl}>{data.primaryAction}</a>
-      <a class="text-link" href={appUrl(app)}>Details <span aria-hidden="true">→</span></a>
+
+    <p class="product-summary">{data.tagline}</p>
+
+    <div class="product-owner">
+      <span class="owner-mark" aria-hidden="true">MP</span>
+      <span>Matthew Paver</span>
+    </div>
+
+    <div class="product-meta">
+      <span class:list={["availability", `availability--${data.status}`]}>{statusLabel}</span>
+      <span>{metric?.release ?? data.version}</span>
+      <time datetime={(metric?.updatedAt ?? data.updated).toString()}>
+        {displayDate(metric?.updatedAt ?? data.updated)}
+      </time>
+    </div>
+
+    <div class="product-actions">
+      <a class="product-action" href={actionUrl}>{actionLabel}<span aria-hidden="true">↗</span></a>
+      <a class="product-details" href={detailUrl}>Details</a>
     </div>
   </div>
 </article>

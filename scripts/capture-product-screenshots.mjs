@@ -1,14 +1,100 @@
 import { chromium } from "playwright";
 import { mkdir } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const targets = [
-  {
-    name: "meetingproof",
-    url: "https://matthewpaver.github.io/MeetingProof/",
-    output: "public/assets/apps/meetingproof.png",
-  },
-];
+const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const output = join(root, "public", "assets", "apps");
+await mkdir(output, { recursive: true });
+
+async function align(page, selector, offset = 84) {
+  await page.locator(selector).scrollIntoViewIfNeeded();
+  await page.evaluate((distance) => window.scrollBy(0, -distance), offset);
+  await page.waitForTimeout(180);
+}
+
+async function capture(page, { name, url, selector, prepare }) {
+  await page.goto(url, { waitUntil: "networkidle" });
+  if (prepare) await prepare(page);
+  await align(page, selector);
+  await page.screenshot({
+    path: join(output, `${name}.png`),
+    animations: "disabled",
+  });
+  console.log(`Captured ${name} -> public/assets/apps/${name}.png`);
+}
+
+async function renderNewco(page) {
+  await page.setContent(
+    `<!doctype html>
+    <html lang="en">
+      <head>
+        <style>
+          * { box-sizing: border-box; }
+          body {
+            width: 1200px; height: 675px; margin: 0; overflow: hidden;
+            background: #eceeea; color: #171917;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          }
+          main { width: 1080px; margin: 54px auto; border: 1px solid #c8ccc5; background: #fff; }
+          header {
+            height: 86px; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 30px; border-bottom: 1px solid #d8dbd5;
+          }
+          .identity { display: flex; align-items: center; gap: 14px; }
+          .icon {
+            width: 44px; height: 44px; display: grid; place-items: center;
+            border-radius: 10px; background: #202b25; color: #fff; font-weight: 750;
+          }
+          strong { display: block; font-size: 17px; }
+          small { color: #6b716b; font-size: 12px; }
+          .status { color: #7a4b12; font-size: 12px; font-weight: 700; }
+          section { padding: 30px; }
+          h1 { max-width: 660px; margin: 0 0 12px; font-size: 34px; line-height: 1.12; }
+          p { max-width: 760px; margin: 0; color: #5f655f; font-size: 16px; line-height: 1.5; }
+          table { width: 100%; margin-top: 30px; border-collapse: collapse; font-size: 14px; }
+          th, td { padding: 16px 14px; border-top: 1px solid #d8dbd5; text-align: left; }
+          th { color: #6b716b; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+          td:last-child { width: 210px; font-weight: 700; }
+          .review { color: #9c4f12; }
+          .ready { color: #17613c; }
+          footer { padding: 15px 30px; border-top: 1px solid #d8dbd5; color: #6b716b; font-size: 12px; }
+        </style>
+      </head>
+      <body>
+        <main>
+          <header>
+            <div class="identity">
+              <span class="icon">NA</span>
+              <span><strong>Newco Assurance</strong><small>Prototype review</small></span>
+            </div>
+            <span class="status">PRIVATE PROTOTYPE</span>
+          </header>
+          <section>
+            <h1>Reliance review</h1>
+            <p>Three checks for teams deciding whether an AI-built workflow can enter a live process.</p>
+            <table>
+              <thead><tr><th>Review item</th><th>Recorded state</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Named owner</td><td>Operations lead assigned</td><td class="ready">Recorded</td></tr>
+                <tr><td>Customer data path</td><td>Storage location not confirmed</td><td class="review">Needs review</td></tr>
+                <tr><td>Failure control</td><td>Manual fallback documented</td><td class="ready">Recorded</td></tr>
+                <tr><td>Release evidence</td><td>Evaluation run is out of date</td><td class="review">Needs review</td></tr>
+              </tbody>
+            </table>
+          </section>
+          <footer>Illustrative preview. Product code and customer data are not public.</footer>
+        </main>
+      </body>
+    </html>`,
+    { waitUntil: "load" },
+  );
+  await page.screenshot({
+    path: join(output, "newco-assurance.png"),
+    animations: "disabled",
+  });
+  console.log("Rendered newco-assurance -> public/assets/apps/newco-assurance.png");
+}
 
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({
@@ -18,73 +104,42 @@ const page = await browser.newPage({
   reducedMotion: "reduce",
 });
 
-for (const target of targets) {
-  const output = resolve(target.output);
-  await mkdir(dirname(output), { recursive: true });
-  await page.goto(target.url, { waitUntil: "networkidle" });
-  await page.screenshot({ path: output, animations: "disabled" });
-  process.stdout.write(`Captured ${target.name} -> ${target.output}\n`);
+try {
+  await capture(page, {
+    name: "projectlens",
+    url: "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+    selector: "#readinessWorkspace",
+    prepare: async (target) => {
+      await target.getByText("Try the Northstar example", { exact: false }).click();
+      await target.waitForTimeout(220);
+    },
+  });
+  await capture(page, {
+    name: "meetingproof",
+    url: "https://matthewpaver.github.io/MeetingProof/",
+    selector: "#workspace",
+    prepare: async (target) => {
+      await target.getByText("Load the safe example", { exact: true }).click();
+      await target.getByText("Create review draft", { exact: true }).click();
+      await target.waitForTimeout(220);
+    },
+  });
+  await capture(page, {
+    name: "output-gate",
+    url: "https://matthewpaver.github.io/ai-workflow-evaluator/app/",
+    selector: "#gate",
+  });
+  await capture(page, {
+    name: "decisiongraph",
+    url: "https://matthewpaver.github.io/DecisionGraph/",
+    selector: "#resultsSection",
+  });
+  await capture(page, {
+    name: "winchester",
+    url: "https://matthewpaver.github.io/winchester-buyer-check/",
+    selector: ".calculator",
+  });
+  await renderNewco(page);
+} finally {
+  await browser.close();
 }
-
-const newcoOutput = resolve("public/assets/apps/newco-assurance.png");
-await mkdir(dirname(newcoOutput), { recursive: true });
-const coverPage = await browser.newPage({
-  viewport: { width: 1200, height: 675 },
-  deviceScaleFactor: 1,
-  colorScheme: "dark",
-  reducedMotion: "reduce",
-});
-await coverPage.setContent(`
-  <!doctype html>
-  <html lang="en">
-    <head>
-      <style>
-        * { box-sizing: border-box; }
-        body {
-          width: 1200px;
-          height: 675px;
-          margin: 0;
-          overflow: hidden;
-          background:
-            linear-gradient(rgba(139, 236, 206, .08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139, 236, 206, .08) 1px, transparent 1px),
-            #10201b;
-          background-size: 48px 48px;
-          color: #f4efe3;
-          font-family: Arial, sans-serif;
-        }
-        main { height: 100%; padding: 64px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 70px; }
-        .eyebrow { color: #8beccd; font-size: 15px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-        h1 { max-width: 600px; margin: 34px 0 22px; font-family: Georgia, serif; font-size: 78px; font-weight: 500; letter-spacing: -.05em; line-height: .94; }
-        .lede { max-width: 540px; color: #bdc9c4; font-size: 22px; line-height: 1.5; }
-        .boundary { display: inline-block; margin-top: 36px; padding: 12px 16px; border: 1px solid #6d7d76; border-radius: 999px; color: #e6ad70; font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-        .checks { align-self: center; display: grid; gap: 16px; }
-        .check { padding: 26px 28px; border: 1px solid #40524a; border-radius: 14px; background: rgba(15, 29, 24, .86); }
-        .check small { display: block; color: #8beccd; font-size: 13px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-        .check strong { display: block; margin-top: 10px; font-family: Georgia, serif; font-size: 31px; font-weight: 500; }
-        footer { position: absolute; right: 64px; bottom: 44px; color: #8fa099; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
-      </style>
-    </head>
-    <body>
-      <main>
-        <section>
-          <p class="eyebrow">Newco / Assurance</p>
-          <h1>Reliance needs evidence.</h1>
-          <p class="lede">A human-reviewed pre-flight for AI-built workflows before another person or a live process depends on them.</p>
-          <span class="boundary">Private prototype · interface withheld</span>
-        </section>
-        <section class="checks" aria-label="Assurance questions">
-          <div class="check"><small>01 / Ownership</small><strong>Who answers when it fails?</strong></div>
-          <div class="check"><small>02 / Data path</small><strong>Where does the evidence go?</strong></div>
-          <div class="check"><small>03 / Controls</small><strong>What blocks unsafe reliance?</strong></div>
-        </section>
-      </main>
-      <footer>Product boundary shown. Private method protected.</footer>
-    </body>
-  </html>
-`, { waitUntil: "load" });
-await coverPage.screenshot({ path: newcoOutput, animations: "disabled" });
-await coverPage.close();
-process.stdout.write("Designed protected Newco cover -> public/assets/apps/newco-assurance.png\n");
-
-await browser.close();

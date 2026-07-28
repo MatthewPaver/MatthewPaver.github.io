@@ -40,4 +40,4 @@ limitations:
   - Transaction tax remains manual because personal circumstances vary.
 ---
 
-This is the intentionally limited public edition of a larger private property-decision product. The boundary is clear and the useful calculation remains available without an account.
+The public calculator covers purchase cash, mortgage payments and loan-to-value thresholds. It works without an account and keeps the figures in the browser.

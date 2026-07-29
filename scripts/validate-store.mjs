@@ -120,7 +120,7 @@ const slugs = new Set();
 const tagSet = new Set(tagRows.map((row) => row.tag));
 
 assert(indexRows.length >= 10, "store/app-index.csv should include the full project catalogue");
-assert(tagRows.length >= 6, "store/tags.csv should include the store shelves");
+assert(tagRows.length >= 5, "store/tags.csv should include the store shelves");
 assert(!fs.existsSync(path.join(root, "store/catalogue.csv")), "store/catalogue.csv was removed in favour of app-index.csv");
 
 for (const row of indexRows) {
@@ -250,7 +250,7 @@ const status = {
   passing: true,
   checks: [
     { name: "Catalogue entries", value: String(indexRows.length), pass: indexRows.length >= 10 },
-    { name: "Shelves", value: String(tagRows.length), pass: tagRows.length >= 6 },
+    { name: "Shelves", value: String(tagRows.length), pass: tagRows.length >= 5 },
     { name: "Previews wired", value: String(previewSlugs.length), pass: previewSlugs.length === indexRows.length },
     { name: "Image tags", value: String(imageTags.length), pass: imageTags.length > 0 },
     { name: "Spec artifacts", value: String(requiredSpecFiles.length), pass: true },

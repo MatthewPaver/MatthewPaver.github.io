@@ -70,6 +70,12 @@ const structuredData = [
       </a>
       <a class="button button--secondary button--large" href="#work">See the three situations</a>
     </div>
+    <ul class="evidence-chips" aria-label="Evidence behind the work">
+      <li><strong>189</strong> UK major projects analysed <span>ProjectLens</span></li>
+      <li><strong>30/30</strong> extraction eval cases pass <span>MeetingProof</span></li>
+      <li><strong>369</strong> tests run in CI <span>Paper Trading</span></li>
+      <li><strong>167</strong>-test reliability suite <span>Happening</span></li>
+    </ul>
   </section>
 
   <section id="work" class="selected-work">
@@ -152,6 +158,25 @@ const structuredData = [
           ))}
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="deploy-gate">
+    <div class="shell">
+      <header class="portfolio-section-heading">
+        <div>
+          <p class="kicker">Same rules for this site</p>
+          <h2>Every push runs the checklist.</h2>
+        </div>
+        <p>This portfolio gates its own deploys the way the tools gate decisions — nothing ships unless the checks pass.</p>
+      </header>
+      <ul class="gate-checklist">
+        <li><strong>Catalogue policy</strong><span>public entries must carry live repository evidence; private ones must declare themselves</span></li>
+        <li><strong>Type check &amp; build</strong><span>astro check + full static build</span></li>
+        <li><strong>Nine browser checks</strong><span>desktop and mobile Playwright runs, including no-JavaScript and overflow tests</span></li>
+        <li><strong>Fresh repo evidence</strong><span>version and CI status on every card re-fetched from GitHub at deploy time</span></li>
+      </ul>
+      <p class="gate-link"><a href="https://github.com/MatthewPaver/MatthewPaver.github.io/blob/main/.github/workflows/pages.yml">Read the workflow <span aria-hidden="true">↗</span></a></p>
     </div>
   </section>
 

@@ -40,6 +40,9 @@ const isArchived = data.version === "Archived";
     </p>
     <h3><a href={detailUrl}>{data.shortTitle ?? data.title}</a></h3>
     <p class="product-summary">{data.tagline}</p>
+    <ul class="stack-pills" aria-label="Technology">
+      {data.stack.slice(0, 3).map((item) => <li>{item}</li>)}
+    </ul>
     <div class="product-actions">
       <a href={demoUrl}>{actionLabel} <span aria-hidden="true">↗</span></a>
       <a href={detailUrl}>Build notes</a>

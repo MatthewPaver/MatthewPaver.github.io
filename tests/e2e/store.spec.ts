@@ -1,20 +1,30 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage leads with the promise, three situations, five supporting builds and a listed archive", async ({ page }) => {
+test("homepage leads with identity, three featured projects and the full browsable catalogue", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Matthew Paver · Product engineer/);
+  await expect(page).toHaveTitle(/Matthew Paver · Portfolio store/);
   await expect(
-    page.getByRole("heading", { name: "Check the evidence before you approve, send or ship." }),
+    page.getByRole("heading", { name: "I build AI products and the data systems behind them." }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Start with the decision in front of you." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Five builds behind the same pattern." })).toBeVisible();
-  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
+  await expect(page.getByRole("heading", { name: "Three projects worth a real look." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Browse by shelf." })).toBeVisible();
   await expect(page.locator(".featured-project")).toHaveCount(3);
-  await expect(page.locator(".product-grid .product-card")).toHaveCount(5);
-  await expect(page.locator(".listed-work li")).toHaveCount(9);
-  // the failed hero band must stay dead: no stat line, no spec strip, no cert grid, no filters
-  await expect(page.locator(".portfolio-stats, .spec-strip, .credential-grid, .shelf-filters")).toHaveCount(0);
-  await expect(page.getByRole("searchbox")).toHaveCount(0);
+  await expect(page.locator(".product-grid .product-card")).toHaveCount(14);
+  await expect(page.locator(".evidence-chips li")).toHaveCount(5);
+});
+
+test("catalogue search and shelf filters narrow the grid", async ({ page }) => {
+  await page.goto("/");
+  const cards = page.locator(".product-grid .product-card:visible");
+  await expect(cards).toHaveCount(14);
+  await page.getByRole("button", { name: "Automation" }).click();
+  await expect(cards).toHaveCount(1);
+  await page.getByRole("button", { name: "All" }).click();
+  await page.getByRole("searchbox").fill("lakehouse");
+  await expect(cards).toHaveCount(1);
+  await page.getByRole("searchbox").fill("zzz-no-match");
+  await expect(cards).toHaveCount(0);
+  await expect(page.locator("[data-catalogue-empty]")).toBeVisible();
 });
 
 test("selected work provides direct demo and build-note links", async ({ page }) => {
@@ -51,8 +61,9 @@ test("the portfolio remains usable without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator("[data-portfolio-entry]")).toHaveCount(8);
-  await expect(page.getByRole("heading", { name: "Start with the decision in front of you." })).toBeVisible();
+  await expect(page.locator(".product-grid .product-card:visible")).toHaveCount(14);
+  await expect(page.getByRole("heading", { name: "Browse by shelf." })).toBeVisible();
+  await expect(page.locator("[data-catalogue-controls]")).toBeHidden();
   await expect(page.locator(".featured-project").first().getByRole("link", { name: "Open the demo" })).toBeVisible();
   await context.close();
 });

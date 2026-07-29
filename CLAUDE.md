@@ -4,7 +4,9 @@ Project rules for the canonical Matthew Paver product store.
 
 ## Product
 
-This repository owns `matthewpaver.github.io`. The root route is the canonical product store. It contains eight flagship public builds and a separate shelf for protected commercial case studies.
+This repository owns `matthewpaver.github.io`. The root route is the canonical product store.
+
+**Deployed site (since 2026-07-29): the restored 19 May static store**, recovered verbatim from the pre-purge profile-repo history (operator decision — the Astro rebuilds never beat it). It lives in top-level `store/` (plain HTML/CSS/JS, `preview.html?app=<slug>` detail views, `scripts/validate-store.mjs` gate) and `pages.yml` deploys that directory. The Astro source below (`src/`) is retained but NOT deployed; its verify+dist pipeline is in git history if the operator chooses to return to it. Do not redesign the deployed store without an explicit operator request.
 
 ## Architecture
 

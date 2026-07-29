@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbfaf7" />
+    <title>Project Preview · Matthew Paver Portfolio Store</title>
+    <meta
+      name="description"
+      content="App-store style project preview for Matthew Paver's selected AI, data, and workflow systems."
+    />
+    <link rel="canonical" href="https://matthewpaver.github.io/preview.html" />
+    <meta property="og:title" content="Project Preview · Matthew Paver Portfolio Store" />
+    <meta property="og:description" content="App-store style project preview for Matthew Paver's selected AI, data, and workflow systems." />
+    <meta property="og:url" content="https://matthewpaver.github.io/preview.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://matthewpaver.github.io/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Matthew Paver Portfolio Store" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Project Preview · Matthew Paver Portfolio Store" />
+    <meta name="twitter:description" content="App-store style project preview for Matthew Paver's selected AI, data, and workflow systems." />
+    <meta name="twitter:image" content="https://matthewpaver.github.io/assets/og-image.png" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <script>
+      document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=20260519-1" />
+  </head>
+  <body>
+    <main class="shell preview-shell">
+      <nav class="preview-nav" aria-label="Preview navigation">
+        <a href="./">Back to store</a>
+        <a href="https://github.com/MatthewPaver/MatthewPaver">GitHub profile</a>
+      </nav>
+
+      <section class="preview-hero">
+        <noscript>
+          <article class="preview-panel no-script-panel">
+            <h1>Project previews need JavaScript.</h1>
+            <p>
+              The main store still works without JavaScript. Open the store to browse every project card,
+              direct repo link, live product link, and case study link.
+            </p>
+            <p>
+              <a class="button primary" href="./#project-grid-heading">Back to store</a>
+            </p>
+          </article>
+        </noscript>
+        <div class="preview-copy">
+          <p id="preview-kicker" class="eyebrow">Selected work</p>
+          <h1 id="preview-title">Project preview</h1>
+          <p id="preview-summary" class="lede"></p>
+          <div id="preview-actions" class="preview-actions"></div>
+        </div>
+
+        <figure class="preview-media">
+          <img id="preview-image" src="./assets/inference-brief.png" width="1280" height="720" alt="" />
+          <video id="preview-video" hidden controls muted playsinline preload="metadata"></video>
+          <figcaption class="preview-meta">
+            <div>
+              <span>Role</span>
+              <strong id="preview-role"></strong>
+            </div>
+            <div>
+              <span>Status</span>
+              <strong id="preview-status"></strong>
+            </div>
+            <div>
+              <span>Focus</span>
+              <strong id="preview-focus"></strong>
+            </div>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="preview-layout">
+        <article class="preview-panel">
+          <h2>What it solves</h2>
+          <p id="preview-problem"></p>
+          <ul id="preview-points" class="preview-list"></ul>
+        </article>
+
+        <aside class="preview-panel">
+          <h3>Stack</h3>
+          <div id="preview-stack" class="preview-stack"></div>
+          <p id="preview-note" class="motion-note"></p>
+        </aside>
+      </section>
+
+      <footer class="footer">
+        <p>Portfolio store · Build <a id="build-sha" href="https://github.com/MatthewPaver/MatthewPaver.github.io/commits/main">dev</a></p>
+        <a href="./">Back to store</a>
+      </footer>
+    </main>
+
+    <script src="./preview.js?v=20260519-1"></script>
+  </body>
+</html>

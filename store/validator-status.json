@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-07-29T15:33:21.768Z",
+  "generatedAt": "2026-07-29T15:55:21.919Z",
   "passing": true,
   "checks": [
     {
       "name": "Catalogue entries",
-      "value": "14",
+      "value": "12",
       "pass": true
     },
     {
       "name": "Shelves",
-      "value": "6",
+      "value": "5",
       "pass": true
     },
     {
       "name": "Previews wired",
-      "value": "14",
+      "value": "12",
       "pass": true
     },
     {
       "name": "Image tags",
-      "value": "18",
+      "value": "16",
       "pass": true
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "name": "Sitemap URLs",
-      "value": "15",
+      "value": "13",
       "pass": true
     },
     {

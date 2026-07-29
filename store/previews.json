@@ -1,26 +1,4 @@
 {
-  "inference": {
-    "kicker": "Live product",
-    "title": "Inference Brief",
-    "summary": "A working AI-news reader built for people who want the signal without living in feeds.",
-    "image": "./assets/inference-brief.png",
-    "imageAlt": "Inference Brief issue and article interface",
-    "role": "Product + data pipeline",
-    "status": "Live",
-    "focus": "AI news workflow",
-    "problem": "AI news is noisy, repetitive, and easy to over-skim. Inference Brief turns source collection, scoring, summarisation, issue publishing, and reader history into one product flow.",
-    "points": [
-      "Collects and scores stories before they become reader-facing issues.",
-      "Packages summaries, bookmarks, account history, and preferences around the reading job.",
-      "Built as a real product rather than a static newsletter archive."
-    ],
-    "stack": ["Next.js", "TypeScript", "Supabase", "Python", "Stripe"],
-    "links": [
-      { "label": "Open product", "href": "https://inferencebrief.co/", "primary": true },
-      { "label": "Read case study", "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#inference-brief" }
-    ],
-    "note": "Best opened as the live product; the preview sets the context before you leave the store."
-  },
   "happening": {
     "kicker": "Private system",
     "title": "Happening",
@@ -36,9 +14,19 @@
       "Combines crawling, extraction, dedupe, checks, and scheduled runs.",
       "Backed by a 167-test private reliability suite across the ingestion surface."
     ],
-    "stack": ["Python", "Playwright", "SQLite", "Pydantic", "GitHub Actions"],
+    "stack": [
+      "Python",
+      "Playwright",
+      "SQLite",
+      "Pydantic",
+      "GitHub Actions"
+    ],
     "links": [
-      { "label": "Read case study", "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#featured-build-happening", "primary": true }
+      {
+        "label": "Read case study",
+        "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#featured-build-happening",
+        "primary": true
+      }
     ],
     "note": "The preview shows the product surface and the private case study explains the reliability work behind it."
   },
@@ -58,9 +46,19 @@
       "Uses live status updates so bookings can move without manual chasing.",
       "Designed around operational clarity: who has the request, what changed, and what happens next."
     ],
-    "stack": ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "SSE"],
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle",
+      "SSE"
+    ],
     "links": [
-      { "label": "View catalogue card", "href": "./#quicksupply", "primary": true }
+      {
+        "label": "View catalogue card",
+        "href": "./#quicksupply",
+        "primary": true
+      }
     ],
     "note": "The demo gives a quick pass through the agency workflow: request view, assignment context, and live booking status."
   },
@@ -79,9 +77,19 @@
       "Separates background generation jobs from the learner-facing review flow.",
       "Uses a spaced-repetition loop so the product is about retention, not just content generation."
     ],
-    "stack": ["FastAPI", "PostgreSQL", "Redis", "Celery", "LLMs"],
+    "stack": [
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Celery",
+      "LLMs"
+    ],
     "links": [
-      { "label": "Read case study", "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#ai-study-companion", "primary": true }
+      {
+        "label": "Read case study",
+        "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#ai-study-companion",
+        "primary": true
+      }
     ],
     "note": "This is a private build, so the preview focuses on the workflow and system decisions rather than exposing code."
   },
@@ -100,9 +108,19 @@
       "Packages salary, skill, volume, and remote-work signals into usable outputs.",
       "Frames the product around alerts, reports, and API tiers rather than one-off analysis."
     ],
-    "stack": ["Python", "FastAPI", "PostgreSQL", "Redis", "Celery"],
+    "stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis",
+      "Celery"
+    ],
     "links": [
-      { "label": "Read case study", "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#smart-job-market-intelligence", "primary": true }
+      {
+        "label": "Read case study",
+        "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#smart-job-market-intelligence",
+        "primary": true
+      }
     ],
     "note": "The preview keeps the emphasis on the decision-support workflow: collect, normalise, compare, alert."
   },
@@ -121,9 +139,19 @@
       "Includes audit trail and service-charge visibility concepts.",
       "Explores where AI triage can help without hiding operational accountability."
     ],
-    "stack": ["Next.js", "TypeScript", "Payments", "AI triage", "Product docs"],
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Payments",
+      "AI triage",
+      "Product docs"
+    ],
     "links": [
-      { "label": "View catalogue", "href": "./#store", "primary": true }
+      {
+        "label": "View catalogue",
+        "href": "./#store",
+        "primary": true
+      }
     ],
     "note": "This sits in the store as a product prototype: useful for showing product thinking, not as a public repo."
   },
@@ -142,9 +170,19 @@
       "Includes model training and data-quality checks rather than only charts.",
       "Has repo packaging and validation so reviewers can inspect it as a runnable project."
     ],
-    "stack": ["Python", "DuckDB", "XGBoost", "Streamlit", "Makefile"],
+    "stack": [
+      "Python",
+      "DuckDB",
+      "XGBoost",
+      "Streamlit",
+      "Makefile"
+    ],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse", "primary": true }
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse",
+        "primary": true
+      }
     ],
     "note": "A strong public repo to inspect: end-to-end data flow, model training, tests, and a dashboard in one place."
   },
@@ -163,9 +201,19 @@
       "Packages analysis into reporting views rather than leaving it as raw tables.",
       "Includes tests and validation so the public repo is more reviewer-friendly."
     ],
-    "stack": ["Python", "Flask", "pandas", "Forecasting", "Power BI"],
+    "stack": [
+      "Python",
+      "Flask",
+      "pandas",
+      "Forecasting",
+      "Power BI"
+    ],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/ProjectLens", "primary": true }
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/ProjectLens",
+        "primary": true
+      }
     ],
     "note": "The repo is packaged for review with a clear workflow, tests, and public inspection path."
   },
@@ -176,7 +224,7 @@
     "image": "./assets/architexa-thumb.svg",
     "imageAlt": "Architexa product thumbnail",
     "role": "Generative ML",
-    "status": "Public",
+    "status": "Private",
     "focus": "Architecture imagery",
     "problem": "The project explores image generation for architecture-style outputs, including how the data is prepared, how the model is trained, and how generated outputs can be served.",
     "points": [
@@ -184,9 +232,19 @@
       "Uses a conditional GAN workflow for generation.",
       "Exposes model interaction through a small Flask API."
     ],
-    "stack": ["Python", "TensorFlow", "Keras", "Flask", "GAN"],
+    "stack": [
+      "Python",
+      "TensorFlow",
+      "Keras",
+      "Flask",
+      "GAN"
+    ],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/Architexa", "primary": true }
+      {
+        "label": "Portfolio notes",
+        "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#public-portfolio-notes",
+        "primary": true
+      }
     ],
     "note": "A focused ML build that shows dataset preparation, model training, and a simple serving path."
   },
@@ -197,7 +255,7 @@
     "image": "./assets/recommender-thumb.svg",
     "imageAlt": "Dating app recommendation product thumbnail",
     "role": "Ranking system",
-    "status": "Public",
+    "status": "Private",
     "focus": "Recommendation evaluation",
     "problem": "Recommendation demos often skip the evaluation question. This project uses swipe-style interaction data and temporal splitting to make ranking performance easier to reason about.",
     "points": [
@@ -205,9 +263,19 @@
       "Uses temporal holdouts so evaluation is closer to real recommendation timing.",
       "Includes sample data, tests, and a CLI smoke path for public review."
     ],
-    "stack": ["Python", "NumPy", "SciPy", "Jupyter", "CLI"],
+    "stack": [
+      "Python",
+      "NumPy",
+      "SciPy",
+      "Jupyter",
+      "CLI"
+    ],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/dating-app-recommendation-system", "primary": true }
+      {
+        "label": "Portfolio notes",
+        "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#public-portfolio-notes",
+        "primary": true
+      }
     ],
     "note": "This preview is about evaluation discipline: how the recommender is tested matters as much as the model choice."
   },
@@ -226,11 +294,27 @@
       "Produces ship, review, or block decisions with evidence notes.",
       "Includes baseline deltas, dataset/scorer versions, trace evidence, tests, and GitHub Actions validation."
     ],
-    "stack": ["Python", "HTML", "CSS", "JavaScript", "GitHub Actions"],
+    "stack": [
+      "Python",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "GitHub Actions"
+    ],
     "links": [
-      { "label": "Open demo", "href": "https://matthewpaver.github.io/ai-workflow-evaluator/app/", "primary": true },
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/ai-workflow-evaluator" },
-      { "label": "Read case study", "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#ai-workflow-evaluator" }
+      {
+        "label": "Open demo",
+        "href": "https://matthewpaver.github.io/ai-workflow-evaluator/app/",
+        "primary": true
+      },
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/ai-workflow-evaluator"
+      },
+      {
+        "label": "Read case study",
+        "href": "https://github.com/MatthewPaver/MatthewPaver/blob/main/CASE_STUDIES.md#ai-workflow-evaluator"
+      }
     ],
     "note": "A compact public repo that shows how I think about AI product reliability: evidence first, criteria visible, review gates explicit, calibration shown."
   },
@@ -249,9 +333,19 @@
       "Includes prepared data and dashboard files for inspection.",
       "Frames the work as a handoff package rather than a single screenshot."
     ],
-    "stack": ["Power BI", "DAX", "CSV", "Reporting", "PDF exports"],
+    "stack": [
+      "Power BI",
+      "DAX",
+      "CSV",
+      "Reporting",
+      "PDF exports"
+    ],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/hr-performance-dashboards", "primary": true }
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/hr-performance-dashboards",
+        "primary": true
+      }
     ],
     "note": "The repo is framed as a dashboard handoff package with files, screenshots, and commentary together."
   },
@@ -270,32 +364,19 @@
       "Ranks examples with cosine similarity.",
       "Calls out where retrieval-style scoring can mislead."
     ],
-    "stack": ["Python", "Jupyter", "sentence-transformers", "PyTorch"],
+    "stack": [
+      "Python",
+      "Jupyter",
+      "sentence-transformers",
+      "PyTorch"
+    ],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/sentence-similarity-analysis", "primary": true }
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/sentence-similarity-analysis",
+        "primary": true
+      }
     ],
     "note": "This is intentionally small: it works as a clear NLP concept demo in the broader portfolio."
-  },
-  "archive": {
-    "kicker": "Archive shelf",
-    "title": "Newsletter + Scraper Utilities",
-    "summary": "Earlier automation utilities kept for provenance: newsletter rendering and image collection patterns.",
-    "image": "./assets/archive-utilities-thumb.svg",
-    "imageAlt": "Newsletter and scraper utilities archive visual",
-    "role": "Earlier automation",
-    "status": "Archived",
-    "focus": "Superseded utilities",
-    "problem": "Not every project should be presented as current flagship work. These utilities show earlier automation patterns that fed later product and data experiments.",
-    "points": [
-      "Article-to-HTML newsletter rendering helped shape later publishing workflows.",
-      "Image collection utilities supported earlier dataset experiments.",
-      "Kept in the store as archive context, not as the first thing to inspect."
-    ],
-    "stack": ["Python", "HTML", "Automation", "Scraping"],
-    "links": [
-      { "label": "Newsletter repo", "href": "https://github.com/MatthewPaver/generate-newsletter", "primary": true },
-      { "label": "Scraper repo", "href": "https://github.com/MatthewPaver/pinterest-image-scraper" }
-    ],
-    "note": "This preview is deliberately honest: archived work can be useful evidence without competing with the strongest builds."
   }
 }

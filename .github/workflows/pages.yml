@@ -3,13 +3,10 @@ name: Deploy portfolio
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  actions: read
   pages: write
   id-token: write
 
@@ -17,39 +14,36 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# The site currently deployed is the restored 19 May static store (top-level
+# `store/`). The Astro source in src/ is retained but not deployed — restore
+# the previous verify+dist pipeline from git history to bring it back.
 jobs:
-  verify:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - name: Refresh public repository evidence
-        run: npm run metrics
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - run: npm test
-      - run: npm run test:e2e
-      - uses: actions/configure-pages@v6
-        if: github.event_name != 'pull_request'
-      - uses: actions/upload-pages-artifact@v5
-        if: github.event_name != 'pull_request'
-        with:
-          path: dist
 
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: verify
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
+      - name: Validate store catalogue
+        run: node scripts/validate-store.mjs
+
+      - name: Inject build SHA
+        run: |
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          LONG_SHA="${GITHUB_SHA}"
+          REPLACEMENT="id=\"build-sha\" href=\"https://github.com/MatthewPaver/MatthewPaver.github.io/commit/${LONG_SHA}\">${SHORT_SHA}"
+          find store -name "*.html" -exec sed -i "s|id=\"build-sha\" href=\"[^\"]*\">dev|${REPLACEMENT}|g" {} +
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: store
+
       - id: deployment
         uses: actions/deploy-pages@v5

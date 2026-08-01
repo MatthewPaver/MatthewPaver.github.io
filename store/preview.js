@@ -1,4 +1,4 @@
-const SITE_BASE = "https://matthewpaver.github.io/MatthewPaver/store/";
+const SITE_BASE = "https://matthewpaver.github.io/";
 
 function setText(id, text) {
   const node = document.querySelector(`#${id}`);
@@ -124,7 +124,7 @@ function renderPreview(preview, slug) {
 
 async function init() {
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get("app") || "happening";
+  const slug = params.get("app") || "projectlens";
 
   try {
     const response = await fetch("./previews.json", { cache: "no-cache" });

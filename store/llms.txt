@@ -21,58 +21,53 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Automation (automation)
 - ML and retrieval (ml)
 - Analytics (analytics)
+- Archive (archive)
 
 ## Projects
 
-### Happening
-
-- Shelf: Automation
-- Status: Private
-- Problem: Venue event listings are inconsistent and brittle
-- Outcome: Turns venue pages into data
-- Proof: 103+ source configs and 167 reliability tests
-- Preview: https://matthewpaver.github.io/preview.html?app=happening
-- Stack: Python, Playwright, SQLite, Pydantic, GitHub Actions
-
-### QuickSupply
+### ProjectLens
 
 - Shelf: Products
-- Status: Private MVP
-- Problem: School cover coordination is fragmented
-- Outcome: Coordinates supply-cover work
-- Proof: School agency teacher flow with live status
-- Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
-- Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
+- Status: Public
+- Problem: Change packs and schedules disagree quietly before board meetings
+- Outcome: Compares the pack with the schedule and records the decision
+- Proof: Browser-local Northstar demo on bundled synthetic fixtures; Playwright checks in CI
+- Preview: https://matthewpaver.github.io/preview.html?app=projectlens
+- Repo: https://github.com/MatthewPaver/ProjectLens
+- Stack: Python, Playwright, pandas, GitHub Pages
 
-### AI Study Companion
+### Output Gate
 
 - Shelf: Products
-- Status: Private
-- Problem: Revision material starts as unstructured notes
-- Outcome: Makes revision material usable
-- Proof: Document ingestion generation and spaced review
-- Preview: https://matthewpaver.github.io/preview.html?app=study
-- Stack: FastAPI, PostgreSQL, Redis, Celery, LLMs
+- Status: Public
+- Problem: Prompt and model changes quietly reintroduce known output failures
+- Outcome: Checks saved outputs against required and banned phrases
+- Proof: Deterministic, in the browser or as a GitHub Action; no model call
+- Preview: https://matthewpaver.github.io/preview.html?app=ai-evaluator
+- Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
+- Stack: Python, GitHub Actions, HTML, JavaScript
 
-### Smart Job Market Intelligence
+### MeetingProof
+
+- Shelf: Products
+- Status: Public
+- Problem: Meeting follow-ups lose the link back to what was said
+- Outcome: Drafts decisions, actions and questions you approve before export
+- Proof: Browser demo on synthetic notes; nothing exports without approval
+- Preview: https://matthewpaver.github.io/preview.html?app=meetingproof
+- Repo: https://github.com/MatthewPaver/MeetingProof
+- Stack: JavaScript, LangGraph, Pydantic, GitHub Pages
+
+### Paper Trading Research Engine
 
 - Shelf: Data systems
-- Status: Private
-- Problem: Job listings are noisy snapshots
-- Outcome: Finds labour-market signals
-- Proof: Salary skill remote-work and volume signals
-- Preview: https://matthewpaver.github.io/preview.html?app=smart-job
-- Stack: Python, FastAPI, PostgreSQL, Redis, Celery
-
-### Operations Platform Prototype
-
-- Shelf: Products
-- Status: Private prototype
-- Problem: Resident requests and ops context live in different places
-- Outcome: Organises property ops requests
-- Proof: Request intake audit trail payments and AI triage
-- Preview: https://matthewpaver.github.io/preview.html?app=operations
-- Stack: Next.js, TypeScript, Payments, AI triage, Product docs
+- Status: Public
+- Problem: Backtest results are easy to cherry-pick and hard to reproduce
+- Outcome: Walk-forward backtests with provenance-bundled reports
+- Proof: Published benchmark numbers are labelled synthetic fixtures, not market performance
+- Preview: https://matthewpaver.github.io/preview.html?app=paper-trading
+- Repo: https://github.com/MatthewPaver/paper-trading-bot
+- Stack: Python, pandas, GitHub Actions, GitHub Pages
 
 ### Marketing ML Lakehouse
 
@@ -80,63 +75,21 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Analytics demos often stop at a notebook
 - Outcome: Packages local analytics
-- Proof: Raw CSVs to DuckDB ML checks and dashboard
+- Proof: CI rebuilds the whole pipeline from committed demo CSVs
 - Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
 - Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 - Stack: Python, DuckDB, XGBoost, Streamlit, Makefile
 
-### ProjectLens
+### Happening Open Core
 
-- Shelf: Analytics
+- Shelf: Automation
 - Status: Public
-- Problem: Schedule risk is hard to read until late
-- Outcome: Reads schedule delivery risk
-- Proof: Upload cleaning slippage analysis and reporting
-- Preview: https://matthewpaver.github.io/preview.html?app=projectlens
-- Repo: https://github.com/MatthewPaver/ProjectLens
-- Stack: Python, Flask, pandas, Forecasting, Power BI
-
-### Architexa
-
-- Shelf: ML and retrieval
-- Status: Private
-- Problem: Architecture image generation needs dataset and serving discipline
-- Outcome: Generates architecture imagery
-- Proof: Dataset prep conditional GAN and Flask API
-- Preview: https://matthewpaver.github.io/preview.html?app=architexa
-- Stack: Python, TensorFlow, Keras, Flask, GAN
-
-### Dating App Recommendation System
-
-- Shelf: ML and retrieval
-- Status: Private
-- Problem: Recommendation demos often skip evaluation
-- Outcome: Ranks candidate profiles
-- Proof: Implicit feedback temporal holdout and Top-K metrics
-- Preview: https://matthewpaver.github.io/preview.html?app=recommender
-- Stack: Python, NumPy, SciPy, Jupyter, CLI
-
-### AI Workflow Evaluator
-
-- Shelf: ML and retrieval
-- Status: Public
-- Problem: AI-generated outputs need evidence gates before they ship
-- Outcome: Checks AI output claims
-- Proof: Source facts blocked claims baseline deltas trace evidence and review checks
-- Preview: https://matthewpaver.github.io/preview.html?app=ai-evaluator
-- Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
-- Stack: Python, HTML, CSS, JavaScript, GitHub Actions
-
-### HR Performance Analytics
-
-- Shelf: Analytics
-- Status: Public
-- Problem: Dashboard work needs inspectable handoff material
-- Outcome: Turns HR data into decisions
-- Proof: PBIX files screenshots data and commentary
-- Preview: https://matthewpaver.github.io/preview.html?app=hr
-- Repo: https://github.com/MatthewPaver/hr-performance-dashboards
-- Stack: Power BI, DAX, CSV, Reporting, PDF exports
+- Problem: Event datasets rarely say how trustworthy they are
+- Outcome: Scores provenance, freshness and coverage in one command
+- Proof: Stdlib-only Python; the example run reproduces the README score exactly
+- Preview: https://matthewpaver.github.io/preview.html?app=happening-core
+- Repo: https://github.com/MatthewPaver/happening-open-core
+- Stack: Python, JSON, GitHub Actions
 
 ### Sentence Similarity Analysis
 
@@ -148,6 +101,39 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Preview: https://matthewpaver.github.io/preview.html?app=sentence
 - Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
 - Stack: Python, Jupyter, sentence-transformers, PyTorch
+
+### PySpark Kafka Streaming
+
+- Shelf: Data systems
+- Status: Public
+- Problem: Streaming examples are often too big to actually read
+- Outcome: Compact PySpark and Kafka examples that run
+- Proof: CI executes the DataFrame demo via spark-submit
+- Preview: https://matthewpaver.github.io/preview.html?app=pyspark
+- Repo: https://github.com/MatthewPaver/pyspark-kafka-streaming
+- Stack: Python, PySpark, Kafka, Docker
+
+### HR Performance Analytics
+
+- Shelf: Analytics
+- Status: Public
+- Problem: Dashboard work needs inspectable handoff material
+- Outcome: Turns HR data into decisions
+- Proof: PBIX files, screenshots and methodology PDF; automated checks cover only the synthetic sample schema
+- Preview: https://matthewpaver.github.io/preview.html?app=hr
+- Repo: https://github.com/MatthewPaver/hr-performance-dashboards
+- Stack: Power BI, DAX, CSV, Reporting, PDF exports
+
+### Can England Win It
+
+- Shelf: Archive
+- Status: Archived
+- Problem: Single-event tools go stale after the event
+- Outcome: A 10,000-run scenario simulator, archived with a postmortem
+- Proof: Seed-deterministic tests; POSTMORTEM.md explains the archive decision
+- Preview: https://matthewpaver.github.io/preview.html?app=england
+- Repo: https://github.com/MatthewPaver/can-england-win-it
+- Stack: TypeScript, React, Vite, Vitest
 
 ## Optional
 

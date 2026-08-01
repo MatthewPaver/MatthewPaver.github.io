@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">PySpark Kafka Streaming product thumbnail</title>
+  <desc id="desc">A code-style interface showing the three compact example scripts and the one-command Kafka demo.</desc>
+  <rect width="1200" height="675" fill="#fbfaf7"/>
+  <rect x="54" y="52" width="1092" height="571" rx="0" fill="#ffffff" stroke="#151515" stroke-width="3"/>
+  <rect x="54" y="52" width="1092" height="72" fill="#151515"/>
+  <circle cx="94" cy="88" r="10" fill="#e76f51"/>
+  <circle cx="126" cy="88" r="10" fill="#e9c46a"/>
+  <circle cx="158" cy="88" r="10" fill="#2a9d8f"/>
+  <text x="198" y="96" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" fill="#ffffff">PySpark Kafka Streaming</text>
+  <text x="900" y="95" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="18" font-weight="800" fill="#7dd3c7">TECHNICAL EXAMPLES</text>
+
+  <g font-family="SF Mono, Menlo, monospace">
+    <rect x="94" y="166" width="1012" height="86" fill="#f4f0e9" stroke="#d8d2c8" stroke-width="2"/>
+    <text x="122" y="218" font-size="24" fill="#151515">examples/basic_dataframe.py</text>
+    <text x="920" y="218" font-size="20" fill="#0f766e" font-weight="700">DataFrames</text>
+
+    <rect x="94" y="276" width="1012" height="86" fill="#f4f0e9" stroke="#d8d2c8" stroke-width="2"/>
+    <text x="122" y="328" font-size="24" fill="#151515">examples/kafka_producer.py</text>
+    <text x="920" y="328" font-size="20" fill="#0f766e" font-weight="700">JSON events</text>
+
+    <rect x="94" y="386" width="1012" height="86" fill="#f4f0e9" stroke="#d8d2c8" stroke-width="2"/>
+    <text x="122" y="438" font-size="24" fill="#151515">examples/kafka_streaming.py</text>
+    <text x="920" y="438" font-size="20" fill="#0f766e" font-weight="700">Structured Streaming</text>
+  </g>
+
+  <rect x="94" y="506" width="1012" height="80" fill="#151515"/>
+  <text x="122" y="556" font-family="SF Mono, Menlo, monospace" font-size="24" fill="#7dd3c7">$ make demo</text>
+  <text x="310" y="556" font-family="SF Mono, Menlo, monospace" font-size="22" fill="#ffffff"># Kafka round trip via docker-compose</text>
+
+  <text x="94" y="612" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" fill="#5f5a52">A compact streaming-data demo, not a packaged platform.</text>
+</svg>

@@ -151,5 +151,4 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 
 ## Optional
 
-- Deploy gate status: https://matthewpaver.github.io/validator-status.json
 - Sitemap: https://matthewpaver.github.io/sitemap.xml

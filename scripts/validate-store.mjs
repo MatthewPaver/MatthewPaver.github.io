@@ -154,8 +154,11 @@ for (const match of cardMatches) {
   const slug = /data-slug=["']([^"']+)["']/.exec(openingAttrs)?.[1];
   const solves = /data-solves=["']([^"']+)["']/.exec(openingAttrs)?.[1];
   const shows = /data-shows=["']([^"']+)["']/.exec(openingAttrs)?.[1];
+  const problem = /data-problem=["']([^"']+)["']/.exec(openingAttrs)?.[1];
+  const proof = /data-proof=["']([^"']+)["']/.exec(openingAttrs)?.[1];
   const title = /<h3>([^<]+)<\/h3>/.exec(match[3])?.[1];
-  if (slug) cardsBySlug.set(slug, { solves, shows, title });
+  const hasCaseGrammar = /class="card-snapshot"/.test(match[3]) && /<dt>Problem<\/dt>/.test(match[3]);
+  if (slug) cardsBySlug.set(slug, { solves, shows, problem, proof, title, hasCaseGrammar });
 }
 
 for (const row of indexRows) {
@@ -164,6 +167,9 @@ for (const row of indexRows) {
   assert(card.title === row.title, `Card title mismatch for ${row.slug}: card has "${card.title}", CSV has "${row.title}"`);
   assert(card.solves === row.solves, `data-solves mismatch for ${row.slug}: card has "${card.solves}", CSV has "${row.solves}"`);
   assert(card.shows === row.shows, `data-shows mismatch for ${row.slug}: card has "${card.shows}", CSV has "${row.shows}"`);
+  assert(card.problem === row.problem, `data-problem mismatch for ${row.slug}: card has "${card.problem}", CSV has "${row.problem}"`);
+  assert(card.proof === row.proof, `data-proof mismatch for ${row.slug}: card has "${card.proof}", CSV has "${row.proof}"`);
+  assert(card.hasCaseGrammar, `Card for ${row.slug} must include a static Problem/Outcome/Proof case grammar block`);
 }
 
 for (const tag of tagSet) {
@@ -182,8 +188,14 @@ assert(indexHtml.includes('class="store-toolbar js-only"'), "Search/sort toolbar
 assert(indexHtml.includes('class="filters js-only"'), "Filter toolbar should be hidden when JS is disabled");
 assert(storeCss.includes(".no-js .js-only"), "CSS should hide JS-only controls without JavaScript");
 assert(storeCss.includes("@media print"), "CSS should include a print stylesheet");
+assert(storeCss.includes("overflow-x: clip"), "CSS should use overflow-x: clip to avoid scroll traps");
+assert(!/html,\s*body\s*\{\s*overflow-x:\s*hidden/.test(storeCss), "Avoid overflow-x: hidden on both html and body");
 assert(storeScript.includes("#project-grid-heading"), "Shelf filtering should scroll to the project grid heading");
 assert(storeScript.includes("searchIndex"), "Search should use a pre-computed index rather than reading textContent each keystroke");
+assert(storeScript.includes("hero-gate-chip"), "Deploy gate script should update the hero gate chip");
+assert(indexHtml.includes('id="hero-gate-chip"'), "Hero should expose a deploy-gate chip");
+assert(indexHtml.includes('id="deploy-gate"'), "Deploy gate section needs a stable hash target");
+assert(indexHtml.includes('aria-label="Case grammar"'), "Cards should expose Problem/Outcome/Proof case grammar");
 
 // SEO + meta hygiene
 assert(indexHtml.includes('rel="canonical"'), "Store HTML should declare a canonical URL");
@@ -256,13 +268,72 @@ const status = {
     { name: "Spec artifacts", value: String(requiredSpecFiles.length), pass: true },
     { name: "Sitemap URLs", value: String(sitemapUrlCount), pass: sitemapUrlCount >= indexRows.length },
     { name: "Structured data", value: "JSON-LD", pass: indexHtml.includes("application/ld+json") },
-    { name: "Security headers", value: "CSP meta", pass: indexHtml.includes('http-equiv="Content-Security-Policy"') }
+    { name: "Security headers", value: "CSP meta", pass: indexHtml.includes('http-equiv="Content-Security-Policy"') },
+    { name: "llms.txt", value: "present", pass: true }
   ]
 };
 fs.writeFileSync(
   path.join(root, "store/validator-status.json"),
   JSON.stringify(status, null, 2) + "\n"
 );
+
+// Machine-readable map for agents / recruiters — keep it generated from the CSV
+// so the catalogue and llms.txt cannot drift apart.
+const shelfLabels = Object.fromEntries(tagRows.map((row) => [row.tag, row.label || row.tag]));
+const llmsLines = [
+  "# Matthew Paver Portfolio Store",
+  "",
+  "> Product-shaped engineering across AI, data, and automation.",
+  "",
+  `Site: ${siteBase}/`,
+  "Author: Matthew Paver",
+  "Based: London",
+  "Principle: real interfaces, stated boundaries, inspectable evidence",
+  "Rule: do not invent user counts, ratings, testimonials, or commercial results",
+  "",
+  "## Profile",
+  "",
+  `- GitHub: https://github.com/MatthewPaver`,
+  `- LinkedIn: https://www.linkedin.com/in/matthew-paver-534262166/`,
+  `- Profile README: https://github.com/MatthewPaver/MatthewPaver`,
+  "",
+  "## Shelves",
+  "",
+  ...tagRows.map((row) => `- ${row.label || row.tag} (${row.tag})`),
+  "",
+  "## Projects",
+  ""
+];
+
+for (const row of indexRows) {
+  const shelf = shelfLabels[row.shelf] || row.shelf;
+  llmsLines.push(`### ${row.title}`);
+  llmsLines.push("");
+  llmsLines.push(`- Shelf: ${shelf}`);
+  llmsLines.push(`- Status: ${row.status}`);
+  llmsLines.push(`- Problem: ${row.problem}`);
+  llmsLines.push(`- Outcome: ${row.solves}`);
+  llmsLines.push(`- Proof: ${row.proof}`);
+  llmsLines.push(`- Preview: ${siteBase}/${row.preview}`);
+  if (row.repo) llmsLines.push(`- Repo: ${row.repo}`);
+  llmsLines.push(`- Stack: ${row.stack.replace(/;/g, ",")}`);
+  llmsLines.push("");
+}
+
+llmsLines.push("## Optional");
+llmsLines.push("");
+llmsLines.push(`- Deploy gate status: ${siteBase}/validator-status.json`);
+llmsLines.push(`- Sitemap: ${siteBase}/sitemap.xml`);
+llmsLines.push("");
+
+fs.writeFileSync(path.join(root, "store/llms.txt"), llmsLines.join("\n"));
+assert(fs.existsSync(path.join(root, "store/llms.txt")), "store/llms.txt should be generated by the validator");
+for (const row of indexRows) {
+  assert(
+    llmsLines.some((line) => line.includes(row.title)),
+    `llms.txt should mention ${row.title}`
+  );
+}
 
 console.log(
   `Validated ${indexRows.length} indexed store entries, ${tagRows.length} shelves, ${previewSlugs.length} previews, ${imageTags.length} image tags.`

@@ -1,0 +1,155 @@
+# Matthew Paver Portfolio Store
+
+> Product-shaped engineering across AI, data, and automation.
+
+Site: https://matthewpaver.github.io/
+Author: Matthew Paver
+Based: London
+Principle: real interfaces, stated boundaries, inspectable evidence
+Rule: do not invent user counts, ratings, testimonials, or commercial results
+
+## Profile
+
+- GitHub: https://github.com/MatthewPaver
+- LinkedIn: https://www.linkedin.com/in/matthew-paver-534262166/
+- Profile README: https://github.com/MatthewPaver/MatthewPaver
+
+## Shelves
+
+- Products (product)
+- Data systems (data)
+- Automation (automation)
+- ML and retrieval (ml)
+- Analytics (analytics)
+
+## Projects
+
+### Happening
+
+- Shelf: Automation
+- Status: Private
+- Problem: Venue event listings are inconsistent and brittle
+- Outcome: Turns venue pages into data
+- Proof: 103+ source configs and 167 reliability tests
+- Preview: https://matthewpaver.github.io/preview.html?app=happening
+- Stack: Python, Playwright, SQLite, Pydantic, GitHub Actions
+
+### QuickSupply
+
+- Shelf: Products
+- Status: Private MVP
+- Problem: School cover coordination is fragmented
+- Outcome: Coordinates supply-cover work
+- Proof: School agency teacher flow with live status
+- Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
+- Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
+
+### AI Study Companion
+
+- Shelf: Products
+- Status: Private
+- Problem: Revision material starts as unstructured notes
+- Outcome: Makes revision material usable
+- Proof: Document ingestion generation and spaced review
+- Preview: https://matthewpaver.github.io/preview.html?app=study
+- Stack: FastAPI, PostgreSQL, Redis, Celery, LLMs
+
+### Smart Job Market Intelligence
+
+- Shelf: Data systems
+- Status: Private
+- Problem: Job listings are noisy snapshots
+- Outcome: Finds labour-market signals
+- Proof: Salary skill remote-work and volume signals
+- Preview: https://matthewpaver.github.io/preview.html?app=smart-job
+- Stack: Python, FastAPI, PostgreSQL, Redis, Celery
+
+### Operations Platform Prototype
+
+- Shelf: Products
+- Status: Private prototype
+- Problem: Resident requests and ops context live in different places
+- Outcome: Organises property ops requests
+- Proof: Request intake audit trail payments and AI triage
+- Preview: https://matthewpaver.github.io/preview.html?app=operations
+- Stack: Next.js, TypeScript, Payments, AI triage, Product docs
+
+### Marketing ML Lakehouse
+
+- Shelf: Data systems
+- Status: Public
+- Problem: Analytics demos often stop at a notebook
+- Outcome: Packages local analytics
+- Proof: Raw CSVs to DuckDB ML checks and dashboard
+- Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
+- Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
+- Stack: Python, DuckDB, XGBoost, Streamlit, Makefile
+
+### ProjectLens
+
+- Shelf: Analytics
+- Status: Public
+- Problem: Schedule risk is hard to read until late
+- Outcome: Reads schedule delivery risk
+- Proof: Upload cleaning slippage analysis and reporting
+- Preview: https://matthewpaver.github.io/preview.html?app=projectlens
+- Repo: https://github.com/MatthewPaver/ProjectLens
+- Stack: Python, Flask, pandas, Forecasting, Power BI
+
+### Architexa
+
+- Shelf: ML and retrieval
+- Status: Private
+- Problem: Architecture image generation needs dataset and serving discipline
+- Outcome: Generates architecture imagery
+- Proof: Dataset prep conditional GAN and Flask API
+- Preview: https://matthewpaver.github.io/preview.html?app=architexa
+- Stack: Python, TensorFlow, Keras, Flask, GAN
+
+### Dating App Recommendation System
+
+- Shelf: ML and retrieval
+- Status: Private
+- Problem: Recommendation demos often skip evaluation
+- Outcome: Ranks candidate profiles
+- Proof: Implicit feedback temporal holdout and Top-K metrics
+- Preview: https://matthewpaver.github.io/preview.html?app=recommender
+- Stack: Python, NumPy, SciPy, Jupyter, CLI
+
+### AI Workflow Evaluator
+
+- Shelf: ML and retrieval
+- Status: Public
+- Problem: AI-generated outputs need evidence gates before they ship
+- Outcome: Checks AI output claims
+- Proof: Source facts blocked claims baseline deltas trace evidence and review checks
+- Preview: https://matthewpaver.github.io/preview.html?app=ai-evaluator
+- Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
+- Stack: Python, HTML, CSS, JavaScript, GitHub Actions
+
+### HR Performance Analytics
+
+- Shelf: Analytics
+- Status: Public
+- Problem: Dashboard work needs inspectable handoff material
+- Outcome: Turns HR data into decisions
+- Proof: PBIX files screenshots data and commentary
+- Preview: https://matthewpaver.github.io/preview.html?app=hr
+- Repo: https://github.com/MatthewPaver/hr-performance-dashboards
+- Stack: Power BI, DAX, CSV, Reporting, PDF exports
+
+### Sentence Similarity Analysis
+
+- Shelf: ML and retrieval
+- Status: Public
+- Problem: Similarity is useful but not truth
+- Outcome: Compares meaning with embeddings
+- Proof: Transformer embeddings cosine ranking and caveats
+- Preview: https://matthewpaver.github.io/preview.html?app=sentence
+- Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
+- Stack: Python, Jupyter, sentence-transformers, PyTorch
+
+## Optional
+
+- Deploy gate status: https://matthewpaver.github.io/validator-status.json
+- Sitemap: https://matthewpaver.github.io/sitemap.xml

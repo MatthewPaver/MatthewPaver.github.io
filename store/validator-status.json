@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T15:55:21.919Z",
+  "generatedAt": "2026-08-01T13:43:12.430Z",
   "passing": true,
   "checks": [
     {
@@ -40,6 +40,11 @@
     {
       "name": "Security headers",
       "value": "CSP meta",
+      "pass": true
+    },
+    {
+      "name": "llms.txt",
+      "value": "present",
       "pass": true
     }
   ]

@@ -192,10 +192,11 @@ assert(storeCss.includes("overflow-x: clip"), "CSS should use overflow-x: clip t
 assert(!/html,\s*body\s*\{\s*overflow-x:\s*hidden/.test(storeCss), "Avoid overflow-x: hidden on both html and body");
 assert(storeScript.includes("#project-grid-heading"), "Shelf filtering should scroll to the project grid heading");
 assert(storeScript.includes("searchIndex"), "Search should use a pre-computed index rather than reading textContent each keystroke");
-assert(storeScript.includes("hero-gate-chip"), "Deploy gate script should update the hero gate chip");
-assert(indexHtml.includes('id="hero-gate-chip"'), "Hero should expose a deploy-gate chip");
-assert(indexHtml.includes('id="deploy-gate"'), "Deploy gate section needs a stable hash target");
 assert(indexHtml.includes('aria-label="Case grammar"'), "Cards should expose Problem/Outcome/Proof case grammar");
+assert(!indexHtml.includes("deploy-gate"), "Deploy gate UI was removed from the store page");
+assert(!storeScript.includes("initDeployGate"), "Deploy gate script should be gone");
+assert(!storeCss.includes(".deploy-gate"), "Deploy gate styles should be gone");
+assert(!storeCss.includes(".gate-chip"), "Hero gate chip styles should be gone");
 
 // SEO + meta hygiene
 assert(indexHtml.includes('rel="canonical"'), "Store HTML should declare a canonical URL");
@@ -255,7 +256,7 @@ assert(sitemap.includes(`${siteBase}/`), "sitemap.xml must include the store roo
 assert(robots.includes(`Sitemap: ${siteBase}/sitemap.xml`), "robots.txt Sitemap line must point to /sitemap.xml");
 
 
-// Emit a small JSON status file the store reads to render a live deploy-gate panel.
+// Emit a small JSON status file from the validator run (CI artefact, not shown on the page).
 const sitemapUrlCount = (sitemap.match(/<loc>/g) || []).length;
 const status = {
   generatedAt: new Date().toISOString(),
@@ -322,7 +323,6 @@ for (const row of indexRows) {
 
 llmsLines.push("## Optional");
 llmsLines.push("");
-llmsLines.push(`- Deploy gate status: ${siteBase}/validator-status.json`);
 llmsLines.push(`- Sitemap: ${siteBase}/sitemap.xml`);
 llmsLines.push("");
 

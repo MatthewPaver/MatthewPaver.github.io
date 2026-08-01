@@ -238,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollChrome();
   initSpotlightCards();
   initCountUp();
-  initDeployGate();
 });
 
 function initScrollChrome() {
@@ -282,90 +281,6 @@ function initSpotlightCards() {
       card.style.setProperty("--my", `${y}%`);
     });
   });
-}
-
-async function initDeployGate() {
-  const panel = document.querySelector("#deploy-gate-panel");
-  const heroChip = document.querySelector("#hero-gate-chip");
-  if (!panel && !heroChip) return;
-
-  const fail = (message) => {
-    if (panel) {
-      panel.innerHTML = "";
-      const note = document.createElement("p");
-      note.className = "deploy-gate-loading";
-      note.textContent = message;
-      panel.append(note);
-    }
-    // keep the hero chip honest when the status file is missing
-    if (heroChip) {
-      heroChip.classList.remove("is-loading", "is-pass");
-      heroChip.classList.add("is-fail");
-      heroChip.textContent = "Deploy gate unavailable";
-    }
-  };
-
-  try {
-    const response = await fetch("./validator-status.json", { cache: "no-cache" });
-    if (!response.ok) throw new Error(`status ${response.status}`);
-    const data = await response.json();
-    if (!data || !Array.isArray(data.checks)) throw new Error("malformed status payload");
-
-    const total = data.checks.length;
-    const passing = data.checks.filter((c) => c.pass).length;
-    const allPass = passing === total && data.passing !== false;
-    const generated = new Date(data.generatedAt);
-    const stamp = Number.isFinite(generated.getTime())
-      ? generated.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })
-      : "unknown";
-
-    if (heroChip) {
-      heroChip.classList.remove("is-loading");
-      heroChip.classList.toggle("is-pass", allPass);
-      heroChip.classList.toggle("is-fail", !allPass);
-      heroChip.textContent = allPass
-        ? `Deploy gate: passing · ${passing}/${total}`
-        : `Deploy gate: issues · ${passing}/${total}`;
-    }
-
-    if (!panel) return;
-
-    panel.innerHTML = "";
-
-    const header = document.createElement("div");
-    header.className = "deploy-gate-header";
-    header.innerHTML = `
-      <span class="deploy-gate-state ${allPass ? "pass" : "fail"}">
-        <span class="deploy-gate-dot" aria-hidden="true"></span>
-        ${allPass ? "Passing" : "Issues"}
-      </span>
-      <span class="deploy-gate-summary">${passing} of ${total} checks</span>
-      <span class="deploy-gate-stamp">Run ${stamp}</span>
-    `;
-    panel.append(header);
-
-    const list = document.createElement("ul");
-    list.className = "deploy-gate-list";
-    data.checks.forEach((check) => {
-      const item = document.createElement("li");
-      item.className = check.pass ? "pass" : "fail";
-      const mark = document.createElement("span");
-      mark.className = "deploy-gate-mark";
-      mark.setAttribute("aria-hidden", "true");
-      mark.textContent = check.pass ? "✓" : "×";
-      const name = document.createElement("span");
-      name.className = "deploy-gate-name";
-      name.textContent = check.name;
-      const value = document.createElement("span");
-      value.className = "deploy-gate-value";
-      value.textContent = check.value;
-      item.append(mark, name, value);
-      list.append(item);
-    });
-    panel.append(list);
-  } catch (error) {
-    fail("Validator status is unavailable. Open a fresh build to refresh.");
-  }
 }
 
 function initCountUp() {

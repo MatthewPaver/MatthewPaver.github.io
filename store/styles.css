@@ -28,11 +28,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 82px;
-}
-
-html,
-body {
-  overflow-x: hidden;
+  /* clip horizontal bleed without the old html+body overflow-x:hidden trap
+     that can make vertical scrolling feel stuck in Chrome/Safari */
+  overflow-x: clip;
 }
 
 body {
@@ -41,7 +39,7 @@ body {
   color: var(--ink);
   font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
   -webkit-tap-highlight-color: rgba(15, 118, 110, 0.2);
-  overscroll-behavior-y: none;
+  overflow-x: clip;
 }
 
 a {
@@ -1228,11 +1226,22 @@ h1 {
 
 .card-snapshot {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1px;
   margin: 0 0 14px;
   border: 1px solid var(--line);
   background: var(--line);
+}
+
+@media (min-width: 640px) {
+  .card-snapshot {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* problem gets the full row so the case grammar reads top-down */
+  .card-snapshot .case-problem {
+    grid-column: 1 / -1;
+  }
 }
 
 .card-snapshot div {
@@ -2139,6 +2148,53 @@ body {
 
 .hero-spec dd a:hover {
   color: var(--accent);
+}
+
+/* compact hero link into the same deploy-gate panel further down the page */
+.gate-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 4px 0;
+  color: var(--accent-ink);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.gate-chip::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.gate-chip.is-pass {
+  color: var(--accent-ink);
+}
+
+.gate-chip.is-pass::before {
+  background: #16a34a;
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+}
+
+.gate-chip.is-fail {
+  color: var(--red);
+}
+
+.gate-chip.is-fail::before {
+  background: var(--red);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gate-chip.is-pass::before {
+    animation: live-pulse 1.8s var(--ease-out) infinite;
+  }
 }
 
 .status-dot {

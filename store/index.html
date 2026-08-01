@@ -44,7 +44,7 @@
     <script>
       document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260522-2" />
+    <link rel="stylesheet" href="./styles.css?v=20260801-1" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -125,6 +125,21 @@
             <div>
               <dt>Based</dt>
               <dd>London</dd>
+            </div>
+            <div>
+              <dt>Gate</dt>
+              <dd>
+                <!-- filled from validator-status.json when JS runs; static label stays useful without it -->
+                <a
+                  class="gate-chip"
+                  id="hero-gate-chip"
+                  href="#deploy-gate"
+                  aria-describedby="hero-gate-hint"
+                >Deploy gate checklist</a>
+                <span id="hero-gate-hint" class="visually-hidden">
+                  Jump to the live deploy-gate panel for check details.
+                </span>
+              </dd>
             </div>
           </dl>
           <div class="hero-actions">
@@ -298,7 +313,7 @@
       </div>
 
       <section class="store-grid">
-        <article class="app-card featured image-card" data-slug="happening" data-tags="automation data" data-status="Private system" data-solves="Turns venue pages into data" data-shows="103+ sources, 167 tests">
+        <article class="app-card featured image-card" data-slug="happening" data-tags="automation data" data-status="Private system" data-solves="Turns venue pages into data" data-shows="103+ sources, 167 tests" data-problem="Venue event listings are inconsistent and brittle" data-proof="103+ source configs and 167 reliability tests">
           <img src="./assets/happening-web.png" width="1200" height="760" loading="lazy" alt="Happening event feed and map interface screenshot" />
           <div class="app-body">
             <div class="app-title-row">
@@ -314,6 +329,20 @@
               <li>Playwright crawling</li>
               <li>167-test reliability suite</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Venue event listings are inconsistent and brittle</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Turns venue pages into data</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>103+ source configs and 167 reliability tests</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>Python</span><span>Playwright</span><span>SQLite</span><span>Pydantic</span><span>GitHub Actions</span>
             </div>
@@ -324,7 +353,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="study" data-tags="product ml" data-status="Private product" data-solves="Makes revision material usable" data-shows="Ingestion + generation loop">
+        <article class="app-card image-card" data-slug="study" data-tags="product ml" data-status="Private product" data-solves="Makes revision material usable" data-shows="Ingestion + generation loop" data-problem="Revision material starts as unstructured notes" data-proof="Document ingestion generation and spaced review">
           <img class="study-shot" src="./assets/ai-study-companion.png" width="1280" height="3418" loading="lazy" alt="AI Study Companion product workspace screenshot" />
           <div class="app-body">
             <div class="app-title-row">
@@ -340,6 +369,20 @@
               <li>Background generation jobs</li>
               <li>SM-2 review loop</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Revision material starts as unstructured notes</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Makes revision material usable</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Document ingestion generation and spaced review</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Celery</span><span>LLMs</span>
             </div>
@@ -350,7 +393,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="smart-job" data-tags="data product automation" data-status="Private system" data-solves="Finds labour-market signals" data-shows="Reports, alerts, API shape">
+        <article class="app-card image-card" data-slug="smart-job" data-tags="data product automation" data-status="Private system" data-solves="Finds labour-market signals" data-shows="Reports, alerts, API shape" data-problem="Job listings are noisy snapshots" data-proof="Salary skill remote-work and volume signals">
           <img class="product-shot" src="./assets/smart-job-market.png" width="1400" height="787" loading="lazy" alt="Smart Job Market Intelligence interface screenshot" />
           <div class="app-body">
             <div class="app-title-row">
@@ -366,6 +409,20 @@
               <li>Salary and skill trend reports</li>
               <li>Alerts and API tier design</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Job listings are noisy snapshots</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Finds labour-market signals</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Salary skill remote-work and volume signals</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Celery</span>
             </div>
@@ -376,7 +433,7 @@
           </div>
         </article>
 
-        <article id="quicksupply" class="app-card image-card" data-slug="quicksupply" data-tags="product automation" data-status="Private MVP" data-solves="Coordinates supply-cover work" data-shows="Three-sided workflow model">
+        <article id="quicksupply" class="app-card image-card" data-slug="quicksupply" data-tags="product automation" data-status="Private MVP" data-solves="Coordinates supply-cover work" data-shows="Three-sided workflow model" data-problem="School cover coordination is fragmented" data-proof="School agency teacher flow with live status">
           <img class="poster-shot" src="./assets/quicksupply-dashboard.png" width="1200" height="760" loading="lazy" alt="QuickSupply agency dashboard screenshot" />
           <div class="app-body">
             <div class="app-title-row">
@@ -392,6 +449,20 @@
               <li>School, teacher, and agency portals</li>
               <li>Server-sent event updates</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>School cover coordination is fragmented</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Coordinates supply-cover work</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>School agency teacher flow with live status</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Drizzle</span><span>SSE</span>
             </div>
@@ -401,7 +472,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="operations" data-tags="product automation" data-status="Private prototype" data-solves="Organises property ops requests" data-shows="Audit trail + triage concept">
+        <article class="app-card image-card" data-slug="operations" data-tags="product automation" data-status="Private prototype" data-solves="Organises property ops requests" data-shows="Audit trail + triage concept" data-problem="Resident requests and ops context live in different places" data-proof="Request intake audit trail payments and AI triage">
           <img class="product-shot" src="./assets/operations-platform.png" width="1400" height="787" loading="lazy" alt="Operations platform prototype interface screenshot" />
           <div class="app-body">
             <div class="app-title-row">
@@ -417,6 +488,20 @@
               <li>Operations console and audit trail</li>
               <li>Payment and AI triage concepts</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Resident requests and ops context live in different places</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Organises property ops requests</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Request intake audit trail payments and AI triage</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>Next.js</span><span>TypeScript</span><span>Payments</span><span>AI triage</span><span>Product docs</span>
             </div>
@@ -426,7 +511,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="lakehouse" data-tags="data ml analytics" data-status="Runnable application" data-solves="Packages local analytics" data-shows="Pipeline, ML, dashboard">
+        <article class="app-card image-card" data-slug="lakehouse" data-tags="data ml analytics" data-status="Runnable application" data-solves="Packages local analytics" data-shows="Pipeline, ML, dashboard" data-problem="Analytics demos often stop at a notebook" data-proof="Raw CSVs to DuckDB ML checks and dashboard">
           <img src="./assets/marketing-lakehouse-thumb.svg" width="1200" height="675" loading="lazy" alt="Marketing ML Lakehouse product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -442,7 +527,20 @@
               <li>XGBoost model training</li>
               <li>Streamlit dashboard</li>
             </ul>
-            <div class="repo-confidence" aria-label="Public repo signals">
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Analytics demos often stop at a notebook</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Packages local analytics</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Raw CSVs to DuckDB ML checks and dashboard</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>Run locally</span><span>Tests</span>
             </div>
             <div class="stack-list" aria-label="Tech stack">
@@ -455,7 +553,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="projectlens" data-tags="analytics product" data-status="Runnable application" data-solves="Reads schedule delivery risk" data-shows="Upload-to-report flow">
+        <article class="app-card image-card" data-slug="projectlens" data-tags="analytics product" data-status="Runnable application" data-solves="Reads schedule delivery risk" data-shows="Upload-to-report flow" data-problem="Schedule risk is hard to read until late" data-proof="Upload cleaning slippage analysis and reporting">
           <img src="./assets/projectlens-thumb.svg" width="1200" height="675" loading="lazy" alt="ProjectLens schedule risk product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -471,7 +569,20 @@
               <li>Schedule-risk reporting</li>
               <li>Power BI-ready outputs</li>
             </ul>
-            <div class="repo-confidence" aria-label="Public repo signals">
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Schedule risk is hard to read until late</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Reads schedule delivery risk</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Upload cleaning slippage analysis and reporting</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>Run tests</span><span>Upload flow</span>
             </div>
             <div class="stack-list" aria-label="Tech stack">
@@ -484,7 +595,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="architexa" data-tags="ml product" data-status="Completed project" data-solves="Generates architecture imagery" data-shows="Dataset, GAN, API">
+        <article class="app-card image-card" data-slug="architexa" data-tags="ml product" data-status="Completed project" data-solves="Generates architecture imagery" data-shows="Dataset, GAN, API" data-problem="Architecture image generation needs dataset and serving discipline" data-proof="Dataset prep conditional GAN and Flask API">
           <img src="./assets/architexa-thumb.svg" width="1200" height="675" loading="lazy" alt="Architexa product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -500,6 +611,20 @@
               <li>Dataset preparation</li>
               <li>API integration</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Architecture image generation needs dataset and serving discipline</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Generates architecture imagery</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Dataset prep conditional GAN and Flask API</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>Python</span><span>TensorFlow</span><span>Keras</span><span>Flask</span><span>GAN</span>
             </div>
@@ -509,7 +634,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="recommender" data-tags="ml data" data-status="Notebook project" data-solves="Ranks candidate profiles" data-shows="Temporal evaluation discipline">
+        <article class="app-card image-card" data-slug="recommender" data-tags="ml data" data-status="Notebook project" data-solves="Ranks candidate profiles" data-shows="Temporal evaluation discipline" data-problem="Recommendation demos often skip evaluation" data-proof="Implicit feedback temporal holdout and Top-K metrics">
           <img src="./assets/recommender-thumb.svg" width="1200" height="675" loading="lazy" alt="Dating app recommendation product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -525,6 +650,20 @@
               <li>Temporal holdout</li>
               <li>Top-K metrics</li>
             </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Recommendation demos often skip evaluation</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Ranks candidate profiles</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Implicit feedback temporal holdout and Top-K metrics</dd>
+              </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
               <span>Python</span><span>NumPy</span><span>SciPy</span><span>Jupyter</span><span>CLI</span>
             </div>
@@ -534,7 +673,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="ai-evaluator" data-tags="ml product automation" data-status="Runnable evaluator" data-solves="Checks AI output claims" data-shows="Evidence gates for AI outputs">
+        <article class="app-card image-card" data-slug="ai-evaluator" data-tags="ml product automation" data-status="Runnable evaluator" data-solves="Checks AI output claims" data-shows="Evidence gates for AI outputs" data-problem="AI-generated outputs need evidence gates before they ship" data-proof="Source facts blocked claims baseline deltas trace evidence and review checks">
           <img src="./assets/ai-workflow-evaluator-thumb.svg" width="1200" height="675" loading="lazy" alt="AI Workflow Evaluator product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -550,7 +689,20 @@
               <li>Ship, review, or block decisions</li>
               <li>Versioned dataset, baseline, and CI checks</li>
             </ul>
-            <div class="repo-confidence" aria-label="Public repo signals">
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>AI-generated outputs need evidence gates before they ship</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Checks AI output claims</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Source facts blocked claims baseline deltas trace evidence and review checks</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>Run locally</span><span>Tests</span>
             </div>
             <div class="stack-list" aria-label="Tech stack">
@@ -565,7 +717,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="hr" data-tags="analytics" data-status="Dashboard portfolio" data-solves="Turns HR data into decisions" data-shows="Stakeholder-ready dashboards">
+        <article class="app-card image-card" data-slug="hr" data-tags="analytics" data-status="Dashboard portfolio" data-solves="Turns HR data into decisions" data-shows="Stakeholder-ready dashboards" data-problem="Dashboard work needs inspectable handoff material" data-proof="PBIX files screenshots data and commentary">
           <img src="./assets/hr-performance-thumb.svg" width="1200" height="675" loading="lazy" alt="HR Performance Analytics product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -581,7 +733,20 @@
               <li>Prepared CSVs and PBIX</li>
               <li>Stakeholder-ready writeup</li>
             </ul>
-            <div class="repo-confidence" aria-label="Public repo signals">
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Dashboard work needs inspectable handoff material</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Turns HR data into decisions</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>PBIX files screenshots data and commentary</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>PBIX files</span><span>Screenshots</span>
             </div>
             <div class="stack-list" aria-label="Tech stack">
@@ -594,7 +759,7 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="sentence" data-tags="data ml" data-status="Notebook demo" data-solves="Compares meaning with embeddings" data-shows="Retrieval caveats made clear">
+        <article class="app-card image-card" data-slug="sentence" data-tags="data ml" data-status="Notebook demo" data-solves="Compares meaning with embeddings" data-shows="Retrieval caveats made clear" data-problem="Similarity is useful but not truth" data-proof="Transformer embeddings cosine ranking and caveats">
           <img src="./assets/sentence-similarity-thumb.svg" width="1200" height="675" loading="lazy" alt="Sentence similarity product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -610,7 +775,20 @@
               <li>Cosine ranking</li>
               <li>Retrieval caveats</li>
             </ul>
-            <div class="repo-confidence" aria-label="Public repo signals">
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Similarity is useful but not truth</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Compares meaning with embeddings</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Transformer embeddings cosine ranking and caveats</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>Notebook</span><span>Concept demo</span>
             </div>
             <div class="stack-list" aria-label="Tech stack">
@@ -689,7 +867,7 @@
         <a class="text-link" href="./preview.html?app=ai-evaluator">Open evaluator preview</a>
       </section>
 
-      <section class="deploy-gate" aria-labelledby="deploy-gate-heading">
+      <section id="deploy-gate" class="deploy-gate" aria-labelledby="deploy-gate-heading">
         <div class="deploy-gate-copy">
           <p class="eyebrow">Live deploy gate</p>
           <h2 id="deploy-gate-heading">Every push runs the checklist.</h2>
@@ -766,6 +944,6 @@
       <a href="https://www.linkedin.com/in/matthew-paver-534262166/">Connect on LinkedIn</a>
     </footer>
 
-    <script src="./script.js?v=20260519-1"></script>
+    <script src="./script.js?v=20260801-1"></script>
   </body>
 </html>

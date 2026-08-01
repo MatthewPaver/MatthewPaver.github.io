@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://matthewpaver.github.io/sitemap.xml
+
+# Machine-readable catalogue for agents and recruiters
+# https://matthewpaver.github.io/llms.txt

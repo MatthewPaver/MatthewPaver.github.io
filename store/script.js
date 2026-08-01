@@ -22,9 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.forEach((card, index) => {
       const title = card.querySelector("h3")?.textContent?.trim();
       const titleRow = card.querySelector(".app-title-row");
-      const proofList = card.querySelector(".proof-list");
-      const solves = card.dataset.solves;
-      const shows = card.dataset.shows;
+      // case grammar (Problem / Outcome / Proof) is now static HTML from the CSV —
+      // don't re-inject the old Solves/Shows block or we'll get duplicate panels
 
       card.style.setProperty("--card-number", `"${String(index + 1).padStart(2, "0")}"`);
       card.dataset.order = String(index);
@@ -42,24 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
           .join("")
           .toUpperCase();
         titleRow.prepend(icon);
-      }
-
-      if (solves && shows && proofList && !card.querySelector(".card-snapshot")) {
-        const snapshot = document.createElement("dl");
-        snapshot.className = "card-snapshot";
-        snapshot.innerHTML = `
-          <div>
-            <dt>Solves</dt>
-            <dd></dd>
-          </div>
-          <div>
-            <dt>Shows</dt>
-            <dd></dd>
-          </div>
-        `;
-        snapshot.querySelectorAll("dd")[0].textContent = solves;
-        snapshot.querySelectorAll("dd")[1].textContent = shows;
-        proofList.insertAdjacentElement("afterend", snapshot);
       }
 
       searchIndex.set(card, card.textContent.toLowerCase());
@@ -305,14 +286,23 @@ function initSpotlightCards() {
 
 async function initDeployGate() {
   const panel = document.querySelector("#deploy-gate-panel");
-  if (!panel) return;
+  const heroChip = document.querySelector("#hero-gate-chip");
+  if (!panel && !heroChip) return;
 
   const fail = (message) => {
-    panel.innerHTML = "";
-    const note = document.createElement("p");
-    note.className = "deploy-gate-loading";
-    note.textContent = message;
-    panel.append(note);
+    if (panel) {
+      panel.innerHTML = "";
+      const note = document.createElement("p");
+      note.className = "deploy-gate-loading";
+      note.textContent = message;
+      panel.append(note);
+    }
+    // keep the hero chip honest when the status file is missing
+    if (heroChip) {
+      heroChip.classList.remove("is-loading", "is-pass");
+      heroChip.classList.add("is-fail");
+      heroChip.textContent = "Deploy gate unavailable";
+    }
   };
 
   try {
@@ -328,6 +318,17 @@ async function initDeployGate() {
     const stamp = Number.isFinite(generated.getTime())
       ? generated.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })
       : "unknown";
+
+    if (heroChip) {
+      heroChip.classList.remove("is-loading");
+      heroChip.classList.toggle("is-pass", allPass);
+      heroChip.classList.toggle("is-fail", !allPass);
+      heroChip.textContent = allPass
+        ? `Deploy gate: passing · ${passing}/${total}`
+        : `Deploy gate: issues · ${passing}/${total}`;
+    }
+
+    if (!panel) return;
 
     panel.innerHTML = "";
 

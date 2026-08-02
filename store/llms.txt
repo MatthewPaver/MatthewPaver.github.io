@@ -19,6 +19,8 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Products (product)
 - Data systems (data)
 - Automation (automation)
+- ML and retrieval (ml)
+- Analytics (analytics)
 - Archive (archive)
 
 ## Projects
@@ -67,16 +69,38 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/paper-trading-bot
 - Stack: Python, pandas, GitHub Actions, GitHub Pages
 
-### Happening
+### Marketing ML Lakehouse
+
+- Shelf: Data systems
+- Status: Public
+- Problem: Analytics demos often stop at a notebook
+- Outcome: Packages local analytics
+- Proof: CI rebuilds the whole pipeline from committed demo CSVs
+- Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
+- Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
+- Stack: Python, DuckDB, XGBoost, Streamlit, Makefile
+
+### Happening Open Core
 
 - Shelf: Automation
-- Status: Private
-- Problem: Venue listings are scattered and unreliable
-- Outcome: Turns venue pages into checked event data
-- Proof: 129 configs and 1,130 tests private; open-core benchmark public in CI
+- Status: Public
+- Problem: Event datasets rarely say how trustworthy they are
+- Outcome: Scores provenance, freshness and coverage in one command
+- Proof: Stdlib-only Python; the example run reproduces the README score exactly
 - Preview: https://matthewpaver.github.io/preview.html?app=happening-core
 - Repo: https://github.com/MatthewPaver/happening-open-core
-- Stack: Python, Playwright, SQLite, Pydantic, GitHub Actions
+- Stack: Python, JSON, GitHub Actions
+
+### Sentence Similarity Analysis
+
+- Shelf: ML and retrieval
+- Status: Public
+- Problem: Similarity is useful but not truth
+- Outcome: Compares meaning with embeddings
+- Proof: Transformer embeddings cosine ranking and caveats
+- Preview: https://matthewpaver.github.io/preview.html?app=sentence
+- Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
+- Stack: Python, Jupyter, sentence-transformers, PyTorch
 
 ### PySpark Kafka Streaming
 
@@ -89,6 +113,17 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/pyspark-kafka-streaming
 - Stack: Python, PySpark, Kafka, Docker
 
+### HR Performance Analytics
+
+- Shelf: Analytics
+- Status: Public
+- Problem: Dashboard work needs inspectable handoff material
+- Outcome: Turns HR data into decisions
+- Proof: PBIX files, screenshots and methodology PDF; automated checks cover only the synthetic sample schema
+- Preview: https://matthewpaver.github.io/preview.html?app=hr
+- Repo: https://github.com/MatthewPaver/hr-performance-dashboards
+- Stack: Power BI, DAX, CSV, Reporting, PDF exports
+
 ### Can England Win It
 
 - Shelf: Archive
@@ -99,16 +134,6 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Preview: https://matthewpaver.github.io/preview.html?app=england
 - Repo: https://github.com/MatthewPaver/can-england-win-it
 - Stack: TypeScript, React, Vite, Vitest
-
-### QuickSupply
-
-- Shelf: Products
-- Status: Private
-- Problem: School cover coordination becomes a spreadsheet-and-message chain
-- Outcome: Coordinates school cover end to end
-- Proof: 24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites
-- Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
-- Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
 
 ## Optional
 

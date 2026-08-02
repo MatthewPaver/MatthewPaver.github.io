@@ -31,7 +31,19 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://matthewpaver.github.io/preview.html?app=lakehouse</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://matthewpaver.github.io/preview.html?app=happening-core</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://matthewpaver.github.io/preview.html?app=sentence</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -43,14 +55,15 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://matthewpaver.github.io/preview.html?app=england</loc>
+    <loc>https://matthewpaver.github.io/preview.html?app=hr</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://matthewpaver.github.io/preview.html?app=quicksupply</loc>
+    <loc>https://matthewpaver.github.io/preview.html?app=england</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>

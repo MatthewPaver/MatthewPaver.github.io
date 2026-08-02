@@ -1,0 +1,24 @@
+name: Live smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_run:
+    workflows: ["Deploy portfolio"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Run live smoke checks
+        run: node scripts/smoke-live.mjs

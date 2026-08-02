@@ -78,10 +78,12 @@
             { "@type": "ListItem", "position": 2, "url": "https://matthewpaver.github.io/preview.html?app=ai-evaluator", "name": "Output Gate" },
             { "@type": "ListItem", "position": 3, "url": "https://matthewpaver.github.io/preview.html?app=meetingproof", "name": "MeetingProof" },
             { "@type": "ListItem", "position": 4, "url": "https://matthewpaver.github.io/preview.html?app=paper-trading", "name": "Paper Trading Research Engine" },
-            { "@type": "ListItem", "position": 5, "url": "https://matthewpaver.github.io/preview.html?app=happening-core", "name": "Happening" },
-            { "@type": "ListItem", "position": 6, "url": "https://matthewpaver.github.io/preview.html?app=pyspark", "name": "PySpark Kafka Streaming" },
-            { "@type": "ListItem", "position": 7, "url": "https://matthewpaver.github.io/preview.html?app=england", "name": "Can England Win It" },
-            { "@type": "ListItem", "position": 8, "url": "https://matthewpaver.github.io/preview.html?app=quicksupply", "name": "QuickSupply" }
+            { "@type": "ListItem", "position": 5, "url": "https://matthewpaver.github.io/preview.html?app=lakehouse", "name": "Marketing ML Lakehouse" },
+            { "@type": "ListItem", "position": 6, "url": "https://matthewpaver.github.io/preview.html?app=happening-core", "name": "Happening Open Core" },
+            { "@type": "ListItem", "position": 7, "url": "https://matthewpaver.github.io/preview.html?app=sentence", "name": "Sentence Similarity Analysis" },
+            { "@type": "ListItem", "position": 8, "url": "https://matthewpaver.github.io/preview.html?app=pyspark", "name": "PySpark Kafka Streaming" },
+            { "@type": "ListItem", "position": 9, "url": "https://matthewpaver.github.io/preview.html?app=hr", "name": "HR Performance Analytics" },
+            { "@type": "ListItem", "position": 10, "url": "https://matthewpaver.github.io/preview.html?app=england", "name": "Can England Win It" }
           ]
         }
       ]
@@ -132,21 +134,21 @@
 
       <section class="stats-row" aria-label="Portfolio at a glance">
         <div>
-          <strong data-count-to="8">8</strong>
+          <strong data-count-to="10">10</strong>
           <span class="stat-label">
             <svg class="stat-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
-            Projects on the shelf
+            Public projects
           </span>
         </div>
         <div>
-          <strong data-count-to="7">7</strong>
+          <strong data-count-to="10">10</strong>
           <span class="stat-label">
             <svg class="stat-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8.5l3 3 7-7"/></svg>
             Repos with tests in CI
           </span>
         </div>
         <div>
-          <strong data-count-to="6">6</strong>
+          <strong data-count-to="7">7</strong>
           <span class="stat-label">
             <svg class="stat-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="4" r="1.4"/><circle cx="4" cy="12" r="1.4"/><circle cx="12" cy="6" r="1.4"/><path d="M4 5.5v5.5"/><path d="M5.3 12c0-3 0.5-4 3-4l2.4-1.5"/></svg>
             In-browser demos
@@ -220,29 +222,39 @@
           <h2 id="shelf-index-heading">Browse by shelf.</h2>
           <p>
             The store is organised like a working lab: runnable products first, then the data systems,
-            automation and archive work that show how the ideas are built. Every public card links to a
-            repo with tests in CI.
+            automation, ML, and analytics work that show how the ideas are built. Every card links to a
+            public repo with tests in CI.
           </p>
           <p>
-            Two private systems — Happening and QuickSupply — are on the shelf with their own numbers;
-            Happening ships a public open-core repo so part of it is checkable today.
+            Private prototypes and paused work — Happening, QuickSupply and others — live on GitHub and
+            return here when they have something a stranger can verify.
           </p>
         </div>
         <div class="shelf-grid" aria-label="Project shelves">
           <a href="?filter=product#project-grid-heading" data-filter-link="product">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 10h16"/><circle cx="7" cy="8" r="0.5" fill="currentColor"/><circle cx="9" cy="8" r="0.5" fill="currentColor"/></svg>
             <strong>Products</strong>
-            <small>ProjectLens, Output Gate, MeetingProof, QuickSupply</small>
+            <small>ProjectLens, Output Gate, MeetingProof</small>
           </a>
           <a href="?filter=data#project-grid-heading" data-filter-link="data">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.2"/><path d="M5 5v14c0 1.2 3.1 2.2 7 2.2s7-1 7-2.2V5"/><path d="M5 11c0 1.2 3.1 2.2 7 2.2s7-1 7-2.2"/></svg>
             <strong>Data systems</strong>
-            <small>Paper trading research and streaming examples</small>
+            <small>Paper trading research, lakehouse, streaming examples</small>
           </a>
           <a href="?filter=automation#project-grid-heading" data-filter-link="automation">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
             <strong>Automation</strong>
             <small>Happening Open Core benchmark</small>
+          </a>
+          <a href="?filter=ml#project-grid-heading" data-filter-link="ml">
+            <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="12" r="2"/><path d="M8 6h2M14 6h2M8 18h2M14 18h2M6 8v2M6 14v2M18 8v2M18 14v2"/></svg>
+            <strong>ML and retrieval</strong>
+            <small>Embeddings, ranking, retrieval caveats</small>
+          </a>
+          <a href="?filter=analytics#project-grid-heading" data-filter-link="analytics">
+            <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><rect x="8" y="13" width="3" height="5"/><rect x="13" y="9" width="3" height="9"/><rect x="18" y="6" width="3" height="12"/></svg>
+            <strong>Analytics</strong>
+            <small>HR dashboards and reporting handoff</small>
           </a>
           <a href="?filter=archive#project-grid-heading" data-filter-link="archive">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v13H4z"/><path d="M3 4h18v3H3z"/><path d="M10 11h4"/></svg>
@@ -282,6 +294,8 @@
         <button class="filter" data-filter="product" type="button" aria-pressed="false">Products</button>
         <button class="filter" data-filter="data" type="button" aria-pressed="false">Data systems</button>
         <button class="filter" data-filter="automation" type="button" aria-pressed="false">Automation</button>
+        <button class="filter" data-filter="ml" type="button" aria-pressed="false">ML</button>
+        <button class="filter" data-filter="analytics" type="button" aria-pressed="false">Analytics</button>
         <button class="filter" data-filter="archive" type="button" aria-pressed="false">Archive</button>
       </div>
 
@@ -454,33 +468,75 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="happening-core" data-tags="automation data" data-status="Public" data-solves="Turns venue pages into checked event data" data-shows="129 sources, 1,130 tests; open-core slice public" data-problem="Venue listings are scattered and unreliable" data-proof="129 configs and 1,130 tests private; open-core benchmark public in CI">
-          <img src="./assets/happening-web.png" width="1200" height="760" loading="lazy" alt="Happening event feed and map interface screenshot" />
+        <article class="app-card image-card" data-slug="lakehouse" data-tags="data ml analytics" data-status="Public" data-solves="Packages local analytics" data-shows="Pipeline, model, dashboard, checks" data-problem="Analytics demos often stop at a notebook" data-proof="CI rebuilds the whole pipeline from committed demo CSVs">
+          <img src="./assets/marketing-lakehouse-thumb.svg" width="1200" height="675" loading="lazy" alt="Marketing ML Lakehouse product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
-              <h3>Happening</h3>
-              <span class="status private">Private</span>
+              <h3>Marketing ML Lakehouse</h3>
+              <span class="status public">Public</span>
             </div>
             <p>
-              A private London-events pipeline: 129 venue source configs, scheduled crawls, dedupe and a 1,130-test reliability suite over 3,000+ real events. The public open-core repo carries its schemas and quality benchmark so a stranger can verify the shape.
+              Built to show the full local analytics loop: raw marketing CSVs into DuckDB, clean tables, XGBoost models, data-quality checks, and a Streamlit dashboard.
             </p>
             <ul class="proof-list">
-              <li>129 source configs</li>
-              <li>1,130-test reliability suite</li>
-              <li>Open-core repo with exact-number CI tests</li>
+              <li>Bronze/silver/gold flow</li>
+              <li>XGBoost model training</li>
+              <li>Streamlit dashboard</li>
             </ul>
             <dl class="card-snapshot" aria-label="Case grammar">
               <div class="case-problem">
                 <dt>Problem</dt>
-                <dd>Venue listings are scattered and unreliable</dd>
+                <dd>Analytics demos often stop at a notebook</dd>
               </div>
               <div>
                 <dt>Outcome</dt>
-                <dd>Turns venue pages into checked event data</dd>
+                <dd>Packages local analytics</dd>
               </div>
               <div>
                 <dt>Proof</dt>
-                <dd>129 configs and 1,130 tests private; open-core benchmark public in CI</dd>
+                <dd>CI rebuilds the whole pipeline from committed demo CSVs</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
+              <span>Open repo</span><span>In-browser demo</span><span>Tests in CI</span>
+            </div>
+            <div class="stack-list" aria-label="Tech stack">
+              <span>Python</span><span>DuckDB</span><span>XGBoost</span><span>Streamlit</span><span>Makefile</span>
+            </div>
+            <div class="card-actions">
+              <a href="./preview.html?app=lakehouse">Preview</a>
+              <a href="https://matthewpaver.github.io/marketing-ml-lakehouse/">Demo</a>
+              <a href="https://github.com/MatthewPaver/marketing-ml-lakehouse">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="app-card image-card" data-slug="happening-core" data-tags="automation data" data-status="Public" data-solves="Scores provenance, freshness and coverage in one command" data-shows="The public core of the Happening platform" data-problem="Event datasets rarely say how trustworthy they are" data-proof="Stdlib-only Python; the example run reproduces the README score exactly">
+          <img src="./assets/happening-core-thumb.svg" width="1200" height="675" loading="lazy" alt="Happening Open Core benchmark CLI thumbnail" />
+          <div class="app-body">
+            <div class="app-title-row">
+              <h3>Happening Open Core</h3>
+              <span class="status public">Public</span>
+            </div>
+            <p>
+              The open core of Happening: event schemas and a deterministic quality benchmark. One command against committed example data scores provenance, freshness and coverage, with no third-party dependencies.
+            </p>
+            <ul class="proof-list">
+              <li>One-command demo</li>
+              <li>Exact-number tests in CI</li>
+              <li>States what is deliberately not included</li>
+            </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Event datasets rarely say how trustworthy they are</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Scores provenance, freshness and coverage in one command</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Stdlib-only Python; the example run reproduces the README score exactly</dd>
               </div>
             </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>In-browser demo</span><span>Tests in CI</span>
@@ -496,40 +552,43 @@
           </div>
         </article>
 
-        <article class="app-card image-card" data-slug="quicksupply" data-tags="product" data-status="Private" data-solves="Coordinates school cover end to end" data-shows="Three-sided workflow with live status" data-problem="School cover coordination becomes a spreadsheet-and-message chain" data-proof="24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites">
-          <img src="./assets/quicksupply-dashboard.png" width="1200" height="760" loading="lazy" alt="QuickSupply agency dashboard interface screenshot" />
+        <article class="app-card image-card" data-slug="sentence" data-tags="ml data" data-status="Public" data-solves="Compares meaning with embeddings" data-shows="Retrieval caveats made clear" data-problem="Similarity is useful but not truth" data-proof="Transformer embeddings cosine ranking and caveats">
+          <img src="./assets/sentence-similarity-thumb.svg" width="1200" height="675" loading="lazy" alt="Sentence similarity product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
-              <h3>QuickSupply</h3>
-              <span class="status private">Private</span>
+              <h3>Sentence Similarity Analysis</h3>
+              <span class="status public">Public</span>
             </div>
             <p>
-              A private supply-cover MVP for schools: request intake, sequential agency assignment, teacher offers, compliance documents and live status over SSE, with school, agency and teacher kept as separate workflows.
+              A small NLP notebook with a clear point: embeddings and cosine ranking are useful for retrieval, but similarity is not the same thing as truth.
             </p>
             <ul class="proof-list">
-              <li>Sequential assignment engine</li>
-              <li>Server-sent event updates</li>
-              <li>12 Playwright e2e suites</li>
+              <li>Transformer embeddings</li>
+              <li>Cosine ranking</li>
+              <li>Retrieval caveats</li>
             </ul>
             <dl class="card-snapshot" aria-label="Case grammar">
               <div class="case-problem">
                 <dt>Problem</dt>
-                <dd>School cover coordination becomes a spreadsheet-and-message chain</dd>
+                <dd>Similarity is useful but not truth</dd>
               </div>
               <div>
                 <dt>Outcome</dt>
-                <dd>Coordinates school cover end to end</dd>
+                <dd>Compares meaning with embeddings</dd>
               </div>
               <div>
                 <dt>Proof</dt>
-                <dd>24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites</dd>
+                <dd>Transformer embeddings cosine ranking and caveats</dd>
               </div>
-            </dl>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
+              <span>Open repo</span><span>Notebook</span><span>Tests in CI</span>
+            </div>
             <div class="stack-list" aria-label="Tech stack">
-              <span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Drizzle</span><span>SSE</span>
+              <span>Python</span><span>Jupyter</span><span>sentence-transformers</span><span>PyTorch</span>
             </div>
             <div class="card-actions">
-              <a href="./preview.html?app=quicksupply">Preview</a>
+              <a href="./preview.html?app=sentence">Preview</a>
+              <a href="https://github.com/MatthewPaver/sentence-similarity-analysis">Repo</a>
             </div>
           </div>
         </article>
@@ -571,6 +630,47 @@
             <div class="card-actions">
               <a href="./preview.html?app=pyspark">Preview</a>
               <a href="https://github.com/MatthewPaver/pyspark-kafka-streaming">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="app-card image-card" data-slug="hr" data-tags="analytics" data-status="Public" data-solves="Turns HR data into decisions" data-shows="Stakeholder-ready dashboards" data-problem="Dashboard work needs inspectable handoff material" data-proof="PBIX files, screenshots and methodology PDF; automated checks cover only the synthetic sample schema">
+          <img src="./assets/hr-performance-thumb.svg" width="1200" height="675" loading="lazy" alt="HR Performance Analytics product thumbnail" />
+          <div class="app-body">
+            <div class="app-title-row">
+              <h3>HR Performance Analytics</h3>
+              <span class="status public">Public</span>
+            </div>
+            <p>
+              A dashboard package designed for handoff: prepared data, PBIX files, screenshots, business commentary, and walkthrough material.
+            </p>
+            <ul class="proof-list">
+              <li>Summary, sales, and absence views</li>
+              <li>Prepared CSVs and PBIX</li>
+              <li>Stakeholder-ready writeup</li>
+            </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Dashboard work needs inspectable handoff material</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Turns HR data into decisions</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>PBIX files, screenshots and methodology PDF; automated checks cover only the synthetic sample schema</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
+              <span>Open repo</span><span>PBIX files</span><span>Screenshots</span>
+            </div>
+            <div class="stack-list" aria-label="Tech stack">
+              <span>Power BI</span><span>DAX</span><span>CSV</span><span>Reporting</span><span>PDF exports</span>
+            </div>
+            <div class="card-actions">
+              <a href="./preview.html?app=hr">Preview</a>
+              <a href="https://github.com/MatthewPaver/hr-performance-dashboards">Repo</a>
             </div>
           </div>
         </article>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T11:02:05.260Z",
+  "generatedAt": "2026-08-02T12:52:06.804Z",
   "passing": true,
   "checks": [
     {
@@ -19,7 +19,7 @@
     },
     {
       "name": "Image tags",
-      "value": "14",
+      "value": "15",
       "pass": true
     },
     {

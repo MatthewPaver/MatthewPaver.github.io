@@ -56,6 +56,10 @@
     ],
     "links": [
       {
+        "label": "Add to your CI",
+        "href": "https://github.com/MatthewPaver/ai-workflow-evaluator/blob/main/ADOPTION.md"
+      },
+      {
         "label": "Open demo",
         "href": "https://matthewpaver.github.io/ai-workflow-evaluator/app/",
         "primary": true

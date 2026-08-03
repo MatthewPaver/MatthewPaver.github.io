@@ -31,7 +31,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Change packs and schedules disagree quietly before board meetings
 - Outcome: Compares the pack with the schedule and records the decision
-- Proof: Browser-local Northstar demo on bundled synthetic fixtures; Playwright checks in CI
+- Proof: Browser-local demo on Northstar + Riverside synthetic XER pairs; Playwright checks in CI
 - Preview: https://matthewpaver.github.io/preview.html?app=projectlens
 - Repo: https://github.com/MatthewPaver/ProjectLens
 - Stack: Python, Playwright, pandas, GitHub Pages
@@ -53,7 +53,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Backtest results are easy to cherry-pick and hard to reproduce
 - Outcome: Walk-forward backtests with provenance-bundled reports
-- Proof: Published benchmark numbers are labelled synthetic fixtures, not market performance
+- Proof: Browser console on labelled synthetic fixtures; CI on the research engine
 - Preview: https://matthewpaver.github.io/preview.html?app=paper-trading
 - Repo: https://github.com/MatthewPaver/paper-trading-bot
 - Stack: Python, pandas, GitHub Actions, GitHub Pages
@@ -64,7 +64,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Analytics demos often stop at a notebook
 - Outcome: Packages local analytics
-- Proof: CI rebuilds the whole pipeline from committed demo CSVs
+- Proof: Browser evidence console plus CI rebuild from committed demo CSVs
 - Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
 - Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 - Stack: Python, DuckDB, XGBoost, Streamlit, Makefile
@@ -86,7 +86,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Similarity is useful but not truth
 - Outcome: Compares meaning with embeddings
-- Proof: Transformer embeddings cosine ranking and caveats
+- Proof: Notebook + CI on ranking logic; no GitHub Pages app
 - Preview: https://matthewpaver.github.io/preview.html?app=sentence
 - Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
 - Stack: Python, Jupyter, sentence-transformers, PyTorch
@@ -97,7 +97,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Streaming examples are often too big to actually read
 - Outcome: Compact PySpark and Kafka examples that run
-- Proof: CI executes the DataFrame demo via spark-submit
+- Proof: CI spark-submit on compact scripts; Docker Kafka round-trip in README
 - Preview: https://matthewpaver.github.io/preview.html?app=pyspark
 - Repo: https://github.com/MatthewPaver/pyspark-kafka-streaming
 - Stack: Python, PySpark, Kafka, Docker
@@ -108,7 +108,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Dashboard work needs inspectable handoff material
 - Outcome: Turns HR data into decisions
-- Proof: PBIX files, screenshots and methodology PDF; automated checks cover only the synthetic sample schema
+- Proof: PBIX, screenshots and methodology PDF in the repo; schema checks on synthetic CSV
 - Preview: https://matthewpaver.github.io/preview.html?app=hr
 - Repo: https://github.com/MatthewPaver/hr-performance-dashboards
 - Stack: Power BI, DAX, CSV, Reporting, PDF exports

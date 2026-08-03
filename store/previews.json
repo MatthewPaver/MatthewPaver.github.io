@@ -72,7 +72,7 @@
     "note": "Repository and package name: ai-workflow-evaluator. The portfolio name is Output Gate."
   },
   "paper-trading": {
-    "kicker": "Research engine",
+    "kicker": "Research demo console",
     "title": "Paper Trading Research Engine",
     "summary": "Evidence-bundled walk-forward backtesting: reproducible reports, risk controls and honestly labelled synthetic benchmarks.",
     "image": "./assets/paper-trading.png",
@@ -103,10 +103,10 @@
         "href": "https://github.com/MatthewPaver/paper-trading-bot"
       }
     ],
-    "note": "Paper trading only. Nothing here is investment advice or a performance claim."
+    "note": "Synthetic fixtures only. Not a live trading product or financial advice."
   },
   "lakehouse": {
-    "kicker": "Runnable analytics app",
+    "kicker": "Runnable demo console",
     "title": "Marketing ML Lakehouse",
     "summary": "A local analytics loop that moves raw marketing CSVs through DuckDB, model training, checks, and a dashboard.",
     "image": "./assets/marketing-lakehouse-thumb.svg",
@@ -138,10 +138,10 @@
         "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse"
       }
     ],
-    "note": "Metrics shown anywhere are computed from the committed demo CSVs."
+    "note": "Local demo pipeline and browser console \u2014 not a hosted SaaS product."
   },
   "happening-core": {
-    "kicker": "Benchmark CLI",
+    "kicker": "Benchmark CLI + demo",
     "title": "Happening Open Core",
     "summary": "Event schemas and a deterministic quality benchmark: provenance, freshness and coverage scored in one command.",
     "image": "./assets/happening-core-thumb.svg",
@@ -174,7 +174,7 @@
     "note": "The private Happening product is parked; this public core is what a stranger can verify."
   },
   "sentence": {
-    "kicker": "NLP notebook",
+    "kicker": "Study notebook",
     "title": "Sentence Similarity Analysis",
     "summary": "A compact NLP notebook showing embeddings, cosine ranking, and the limits of similarity as a signal.",
     "image": "./assets/sentence-similarity-thumb.svg",
@@ -201,7 +201,7 @@
         "primary": true
       }
     ],
-    "note": "This is intentionally small: a clear NLP concept demo in the broader portfolio."
+    "note": "Study notebook: clone the repository. There is no GitHub Pages demo app."
   },
   "pyspark": {
     "kicker": "Technical examples",
@@ -231,10 +231,10 @@
         "primary": true
       }
     ],
-    "note": "The README's status label says it plainly: a compact demo, not a packaged platform."
+    "note": "Technical examples: clone and run locally. There is no GitHub Pages demo app."
   },
   "hr": {
-    "kicker": "Dashboard package",
+    "kicker": "Handoff package",
     "title": "HR Performance Analytics",
     "summary": "A Power BI dashboard package for headcount, sales performance, absence, and stakeholder-ready reporting.",
     "image": "./assets/hr-performance-thumb.svg",
@@ -262,7 +262,7 @@
         "primary": true
       }
     ],
-    "note": "Interactive review needs Power BI Desktop; the PDF and screenshots need nothing."
+    "note": "Handoff package: open PBIX and PDFs in the repo. There is no live web demo."
   },
   "england": {
     "kicker": "Archived scenario app",

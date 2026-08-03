@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-02T16:35:42.924Z",
+  "generatedAt": "2026-08-03T14:09:49.677Z",
   "passing": true,
   "checks": [
     {
       "name": "Catalogue entries",
-      "value": "10",
+      "value": "9",
       "pass": true
     },
     {
@@ -14,12 +14,12 @@
     },
     {
       "name": "Previews wired",
-      "value": "10",
+      "value": "9",
       "pass": true
     },
     {
       "name": "Image tags",
-      "value": "15",
+      "value": "13",
       "pass": true
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "name": "Sitemap URLs",
-      "value": "11",
+      "value": "10",
       "pass": true
     },
     {

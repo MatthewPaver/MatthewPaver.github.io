@@ -10,7 +10,7 @@ limitations.
 
 ## Portfolio structure
 
-- ProjectLens, MeetingProof and Output Gate lead the homepage.
+- ProjectLens and Output Gate lead the homepage.
 - DecisionGraph, Marketing ML Lakehouse, Paper Trading, Winchester House Hunter
   and Happening sit in the project archive.
 - Private repositories and private-product case studies are not listed.

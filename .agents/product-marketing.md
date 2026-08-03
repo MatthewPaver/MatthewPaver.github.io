@@ -17,7 +17,6 @@ Lead with Matthew's name and a short first-person introduction. Show three
 projects first:
 
 1. ProjectLens
-2. MeetingProof
 3. Output Gate
 
 Keep DecisionGraph, Marketing ML Lakehouse, Paper Trading, House Hunter and

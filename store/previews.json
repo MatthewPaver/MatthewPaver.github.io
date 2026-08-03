@@ -10,7 +10,7 @@
     "focus": "Board decisions",
     "problem": "Change packs and schedules drift apart before board meetings. ProjectLens loads both in the browser, surfaces the largest conflicts with source dates, and records the human decision and its conditions.",
     "points": [
-      "One-click Northstar demo runs on bundled synthetic fixtures — no install, no upload.",
+      "One-click Northstar demo runs on bundled synthetic fixtures \u2014 no install, no upload.",
       "Pytest and Playwright suites run in CI and assert the demo's exact outcomes.",
       "The README states boundaries explicitly, including what the tool does not prove."
     ],
@@ -42,11 +42,11 @@
     "role": "Release gate",
     "status": "Public",
     "focus": "AI output regressions",
-    "problem": "Prompt and model changes quietly reintroduce known output failures. Output Gate replays saved outputs against a phrase policy and returns a pass or fail as a CI exit code — no model call, no API key.",
+    "problem": "Prompt and model changes quietly reintroduce known output failures. Output Gate replays saved outputs against a phrase policy and returns a pass or fail as a CI exit code \u2014 no model call, no API key.",
     "points": [
       "Runs in the browser or as a composite GitHub Action.",
       "Deterministic: the same inputs always produce the same decision.",
-      "Scope is stated plainly — it does not check facts; a fluent fabrication that avoids the banned list still passes."
+      "Scope is stated plainly \u2014 it does not check facts; a fluent fabrication that avoids the banned list still passes."
     ],
     "stack": [
       "Python",
@@ -71,40 +71,6 @@
     ],
     "note": "Repository and package name: ai-workflow-evaluator. The portfolio name is Output Gate."
   },
-  "meetingproof": {
-    "kicker": "Runnable review tool",
-    "title": "MeetingProof",
-    "summary": "Evidence-linked meeting follow-up: draft decisions, actions and questions, approve them yourself before export.",
-    "image": "./assets/meetingproof.png",
-    "imageAlt": "MeetingProof evidence-linked meeting follow-up screenshot",
-    "role": "Meeting follow-up",
-    "status": "Public",
-    "focus": "Human approval",
-    "problem": "Meeting follow-ups lose the link back to what was said. MeetingProof extracts decisions, actions and questions with exact source lines, and nothing is exported without an explicit human command.",
-    "points": [
-      "One-click safe example loads synthetic notes in the browser — no key, no upload.",
-      "A 30-case evaluation fixture ships with the repo; no model-quality numbers are claimed.",
-      "CI tests assert the interrupt-before-export gate and exact evidence quotes."
-    ],
-    "stack": [
-      "JavaScript",
-      "LangGraph",
-      "Pydantic",
-      "GitHub Pages"
-    ],
-    "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/MeetingProof/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/MeetingProof"
-      }
-    ],
-    "note": "Rule-based extraction expects labelled notes; model-backed extraction is optional."
-  },
   "paper-trading": {
     "kicker": "Research engine",
     "title": "Paper Trading Research Engine",
@@ -116,7 +82,7 @@
     "focus": "Reproducibility",
     "problem": "Backtest results are easy to cherry-pick and hard to reproduce. This engine bundles every report with its provenance, and deliberately publishes only synthetic fixture numbers.",
     "points": [
-      "Two-command local demo against a committed synthetic fixture — no API keys.",
+      "Two-command local demo against a committed synthetic fixture \u2014 no API keys.",
       "CI runs linting, multi-version tests, CodeQL and a security audit.",
       "The benchmark table is labelled synthetic; real market results are not published without full provenance. Not financial advice."
     ],

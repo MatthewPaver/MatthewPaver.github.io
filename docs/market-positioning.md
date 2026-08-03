@@ -5,7 +5,7 @@
 ## Decision
 
 Present this site as Matthew Paver's software portfolio. Introduce Matthew
-briefly, then show ProjectLens, MeetingProof and Output Gate as the first three
+briefly, then show ProjectLens and Output Gate as the first two
 projects. Put the other five projects in a smaller archive.
 
 The visitor-facing copy should describe the work without turning the projects
@@ -32,14 +32,6 @@ Sources:
 - https://primavera.oraclecloud.com/help/en/user/149130.htm
 - https://www.deltek.com/products/delivery-assurance/ppm/acumen/fuse/
 
-### MeetingProof
-
-Fellow and Otter already generate transcripts, summaries and action items. MeetingProof needs a narrower position: take an existing set of notes, keep each draft item beside its source line and require approval before export.
-
-Sources:
-
-- https://fellow.ai/features/action-items
-- https://get.otter.ai/otter-business-upgrade/
 
 ### Output Gate
 
@@ -65,7 +57,6 @@ Sources:
 Homepage (/)
 ├── Selected projects (/#work)
 │   ├── ProjectLens (/store/apps/projectlens/)
-│   ├── MeetingProof (/store/apps/meetingproof/)
 │   └── Output Gate (/store/apps/output-gate/)
 ├── Project archive (/#more-work)
 │   ├── DecisionGraph (/store/apps/decisiongraph/)

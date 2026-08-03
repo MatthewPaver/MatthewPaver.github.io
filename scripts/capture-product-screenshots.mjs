@@ -48,17 +48,7 @@ try {
       await target.waitForTimeout(220);
     },
   });
-  await capture(page, {
-    name: "meetingproof",
-    url: "https://matthewpaver.github.io/MeetingProof/",
-    selector: "#reviewItems",
-    offset: 150,
-    prepare: async (target) => {
-      await target.getByText("Load the safe example", { exact: true }).click();
-      await target.getByText("Create review draft", { exact: true }).click();
-      await target.waitForTimeout(220);
-    },
-  });
+
   await capture(page, {
     name: "output-gate",
     url: "https://matthewpaver.github.io/ai-workflow-evaluator/app/",

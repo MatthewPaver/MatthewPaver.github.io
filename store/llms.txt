@@ -47,17 +47,6 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
 - Stack: Python, GitHub Actions, HTML, JavaScript
 
-### MeetingProof
-
-- Shelf: Products
-- Status: Public
-- Problem: Meeting follow-ups lose the link back to what was said
-- Outcome: Drafts decisions, actions and questions you approve before export
-- Proof: Browser demo on synthetic notes; nothing exports without approval
-- Preview: https://matthewpaver.github.io/preview.html?app=meetingproof
-- Repo: https://github.com/MatthewPaver/MeetingProof
-- Stack: JavaScript, LangGraph, Pydantic, GitHub Pages
-
 ### Paper Trading Research Engine
 
 - Shelf: Data systems

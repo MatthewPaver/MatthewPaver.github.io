@@ -29,7 +29,6 @@ await expect200("homepage 200", HOME);
 await expect200("ProjectLens demo 200", "https://matthewpaver.github.io/ProjectLens/change-assurance.html");
 await expect200("Output Gate app 200", "https://matthewpaver.github.io/ai-workflow-evaluator/app/");
 await expect200("Output Gate Pages root 200", "https://matthewpaver.github.io/ai-workflow-evaluator/");
-await expect200("MeetingProof 200", "https://matthewpaver.github.io/MeetingProof/");
 await expect200("ADOPTION.md on main 200", "https://raw.githubusercontent.com/MatthewPaver/ai-workflow-evaluator/main/ADOPTION.md");
 await expect200(
   "examples/consumer-repo on main 200",
@@ -40,6 +39,7 @@ try {
   const html = await (await fetch(`${HOME}?smoke=${Date.now()}`, { cache: "no-store" })).text();
   record("homepage contains 'Add to your CI'", html.includes("Add to your CI"));
   record("homepage links ADOPTION.md", html.includes("ADOPTION.md"));
+  record("homepage has no MeetingProof", !/MeetingProof|meetingproof/i.test(html));
   const privateMarkers =
     (html.match(/class="status private"/g) || []).length + (html.match(/data-status="Private/gi) || []).length;
   record("zero private product cards", privateMarkers === 0, `${privateMarkers} marker(s)`);

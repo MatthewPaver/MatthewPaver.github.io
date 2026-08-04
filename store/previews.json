@@ -36,7 +36,7 @@
   "ai-evaluator": {
     "kicker": "Regression gate",
     "title": "Output Gate",
-    "summary": "A deterministic regression gate for saved LLM outputs: required and banned phrases, in the browser or CI.",
+    "summary": "A deterministic regression gate for saved LLM outputs: required and banned phrases, in CI, the browser, or via MCP.",
     "image": "./assets/output-gate.png",
     "imageAlt": "Output Gate regression check workbench screenshot",
     "role": "Release gate",
@@ -44,15 +44,15 @@
     "focus": "AI output regressions",
     "problem": "Prompt and model changes quietly reintroduce known output failures. Output Gate replays saved outputs against a phrase policy and returns a pass or fail as a CI exit code \u2014 no model call, no API key.",
     "points": [
-      "Runs in the browser or as a composite GitHub Action.",
-      "Deterministic: the same inputs always produce the same decision.",
+      "Runs in the browser or as a composite GitHub Action with sticky PR comments.",
+      "Optional MCP server so Cursor/Claude can run the same phrase gate while drafting.",
       "Scope is stated plainly \u2014 it does not check facts; a fluent fabrication that avoids the banned list still passes."
     ],
     "stack": [
       "Python",
       "GitHub Actions",
-      "HTML",
-      "JavaScript"
+      "MCP",
+      "HTML"
     ],
     "links": [
       {

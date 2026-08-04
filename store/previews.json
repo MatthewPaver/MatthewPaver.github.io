@@ -78,7 +78,7 @@
     "image": "./assets/paper-trading.png",
     "imageAlt": "Paper trading research engine benchmark console screenshot",
     "role": "Trading research",
-    "status": "Public",
+    "status": "Archived",
     "focus": "Reproducibility",
     "problem": "Backtest results are easy to cherry-pick and hard to reproduce. This engine bundles every report with its provenance, and deliberately publishes only synthetic fixture numbers.",
     "points": [
@@ -103,7 +103,7 @@
         "href": "https://github.com/MatthewPaver/paper-trading-bot"
       }
     ],
-    "note": "Synthetic fixtures only. Not a live trading product or financial advice."
+    "note": "Synthetic fixtures only. Not a live trading product or financial advice. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
   },
   "lakehouse": {
     "kicker": "Runnable demo console",
@@ -147,7 +147,7 @@
     "image": "./assets/happening-core-thumb.svg",
     "imageAlt": "Happening Open Core benchmark CLI thumbnail",
     "role": "Data quality benchmark",
-    "status": "Public",
+    "status": "Archived",
     "focus": "Event data",
     "problem": "Event datasets rarely say how trustworthy they are. Happening Open Core scores a dataset for provenance, freshness and coverage against a reference list, deterministically.",
     "points": [
@@ -171,7 +171,7 @@
         "href": "https://github.com/MatthewPaver/happening-open-core"
       }
     ],
-    "note": "The private Happening product is parked; this public core is what a stranger can verify."
+    "note": "The private Happening product is parked; this public core is what a stranger can verify. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
   },
   "sentence": {
     "kicker": "Study notebook",
@@ -180,7 +180,7 @@
     "image": "./assets/sentence-similarity-thumb.svg",
     "imageAlt": "Sentence similarity product thumbnail",
     "role": "NLP analysis",
-    "status": "Public",
+    "status": "Archived",
     "focus": "Embedding retrieval",
     "problem": "Similarity search is useful, but similarity is not the same as truth. This notebook is a small, focused demo of embedding comparison and retrieval caveats.",
     "points": [
@@ -201,7 +201,7 @@
         "primary": true
       }
     ],
-    "note": "Study notebook: clone the repository. There is no GitHub Pages demo app."
+    "note": "Study notebook: clone the repository. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
   },
   "pyspark": {
     "kicker": "Technical examples",
@@ -210,7 +210,7 @@
     "image": "./assets/pyspark-kafka-thumb.svg",
     "imageAlt": "PySpark Kafka Streaming examples thumbnail",
     "role": "Streaming examples",
-    "status": "Public",
+    "status": "Archived",
     "focus": "PySpark + Kafka",
     "problem": "Streaming examples are often too big to actually read. This repo keeps three small scripts that run, with a docker-compose Kafka round trip behind one make target.",
     "points": [
@@ -231,7 +231,7 @@
         "primary": true
       }
     ],
-    "note": "Technical examples: clone and run locally. There is no GitHub Pages demo app."
+    "note": "Technical examples: clone and run locally. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
   },
   "hr": {
     "kicker": "Handoff package",

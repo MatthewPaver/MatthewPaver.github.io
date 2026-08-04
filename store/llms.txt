@@ -52,7 +52,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 ### Paper Trading Research Engine
 
 - Shelf: Data systems
-- Status: Public
+- Status: Archived
 - Problem: Backtest results are easy to cherry-pick and hard to reproduce
 - Outcome: Walk-forward backtests with provenance-bundled reports
 - Proof: Browser console on labelled synthetic fixtures; CI on the research engine
@@ -74,7 +74,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 ### Happening Open Core
 
 - Shelf: Automation
-- Status: Public
+- Status: Archived
 - Problem: Event datasets rarely say how trustworthy they are
 - Outcome: Scores provenance, freshness and coverage in one command
 - Proof: Stdlib-only Python; the example run reproduces the README score exactly
@@ -85,7 +85,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 ### Sentence Similarity Analysis
 
 - Shelf: ML and retrieval
-- Status: Public
+- Status: Archived
 - Problem: Similarity is useful but not truth
 - Outcome: Compares meaning with embeddings
 - Proof: Notebook + CI on ranking logic; no GitHub Pages app
@@ -96,7 +96,7 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 ### PySpark Kafka Streaming
 
 - Shelf: Data systems
-- Status: Public
+- Status: Archived
 - Problem: Streaming examples are often too big to actually read
 - Outcome: Compact PySpark and Kafka examples that run
 - Proof: CI spark-submit on compact scripts; Docker Kafka round-trip in README

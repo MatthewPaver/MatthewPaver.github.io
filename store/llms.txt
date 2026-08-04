@@ -42,10 +42,12 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Status: Public
 - Problem: Prompt and model changes quietly reintroduce known output failures
 - Outcome: Checks saved outputs against required and banned phrases
-- Proof: Deterministic, in the browser or as a GitHub Action; no model call
+- Proof: Deterministic CI Action, sticky PR comments, browser workbench, optional MCP; no model call
 - Preview: https://matthewpaver.github.io/preview.html?app=ai-evaluator
 - Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
-- Stack: Python, GitHub Actions, HTML, JavaScript
+- Stack: Python, GitHub Actions, MCP, HTML
+- Value doc: https://github.com/MatthewPaver/ai-workflow-evaluator/blob/main/docs/WHERE_IT_FITS.md
+- MCP: https://github.com/MatthewPaver/ai-workflow-evaluator/blob/main/docs/MCP.md
 
 ### Paper Trading Research Engine
 

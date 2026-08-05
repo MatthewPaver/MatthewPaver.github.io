@@ -42,15 +42,26 @@ await expect200(
   "Marketing ML Lakehouse demo console 200",
   "https://matthewpaver.github.io/marketing-ml-lakehouse/"
 );
+await expect200(
+  "QuickSupply preview 200",
+  "https://matthewpaver.github.io/preview.html?app=quicksupply"
+);
+await expect200(
+  "England preview 200",
+  "https://matthewpaver.github.io/preview.html?app=england"
+);
 
 try {
   const html = await (await fetch(`${HOME}?smoke=${Date.now()}`, { cache: "no-store" })).text();
   record("homepage contains 'Add to your CI'", html.includes("Add to your CI"));
   record("homepage links ADOPTION.md", html.includes("ADOPTION.md"));
   record("homepage has no MeetingProof", !/MeetingProof|meetingproof/i.test(html));
+  record("homepage includes QuickSupply", /data-slug="quicksupply"/i.test(html));
+  record("homepage labels paper trading archived", /data-slug="paper-trading"[\s\S]*?Archived/i.test(html));
   const privateMarkers =
     (html.match(/class="status private"/g) || []).length + (html.match(/data-status="Private/gi) || []).length;
-  record("zero private product cards", privateMarkers === 0, `${privateMarkers} marker(s)`);
+  // One intentional private showcase (QuickSupply video) is allowed.
+  record("private showcase is QuickSupply only", privateMarkers === 1 && /data-slug="quicksupply"[^>]*data-status="Private"/i.test(html), `${privateMarkers} marker(s)`);
 } catch (err) {
   record("homepage content checks", false, err.message);
 }

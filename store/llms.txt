@@ -47,16 +47,15 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
 - Stack: Python, GitHub Actions, HTML, JavaScript
 
-### Paper Trading Research Engine
+### QuickSupply
 
-- Shelf: Data systems
-- Status: Public
-- Problem: Backtest results are easy to cherry-pick and hard to reproduce
-- Outcome: Walk-forward backtests with provenance-bundled reports
-- Proof: Browser console on labelled synthetic fixtures; CI on the research engine
-- Preview: https://matthewpaver.github.io/preview.html?app=paper-trading
-- Repo: https://github.com/MatthewPaver/paper-trading-bot
-- Stack: Python, pandas, GitHub Actions, GitHub Pages
+- Shelf: Products
+- Status: Private
+- Problem: School cover coordination becomes a spreadsheet-and-message chain
+- Outcome: Coordinates school cover end to end
+- Proof: 24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites; recorded agency demo
+- Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
+- Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
 
 ### Marketing ML Lakehouse
 
@@ -112,6 +111,17 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Preview: https://matthewpaver.github.io/preview.html?app=hr
 - Repo: https://github.com/MatthewPaver/hr-performance-dashboards
 - Stack: Power BI, DAX, CSV, Reporting, PDF exports
+
+### Paper Trading Research Engine
+
+- Shelf: Archive
+- Status: Archived
+- Problem: Backtest results are easy to cherry-pick and hard to reproduce
+- Outcome: Walk-forward backtests with provenance-bundled reports
+- Proof: Browser console on labelled synthetic fixtures; CI on the research engine
+- Preview: https://matthewpaver.github.io/preview.html?app=paper-trading
+- Repo: https://github.com/MatthewPaver/paper-trading-bot
+- Stack: Python, pandas, GitHub Actions, GitHub Pages
 
 ### Can England Win It
 

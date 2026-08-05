@@ -299,7 +299,7 @@
       </div>
 
       <section class="store-grid">
-        <article class="app-card featured image-card" data-slug="projectlens" data-tags="product analytics" data-status="Public" data-solves="Compares the pack with the schedule and records the decision" data-shows="Change assurance with human decision; bring-your-own XER" data-problem="Change packs and schedules disagree quietly before board meetings" data-proof="Browser-local demo on Northstar + Riverside synthetic XER pairs; Playwright checks in CI">
+        <article class="app-card featured image-card" data-slug="projectlens" data-tags="product analytics ml" data-status="Public" data-solves="Compares the pack with the schedule, retrieves cited precedents, records the decision" data-shows="Change assurance + cited-precedent RAG; bring-your-own XER" data-problem="Change packs and schedules disagree quietly before board meetings" data-proof="Browser-local demo on Northstar XER; LangGraph/Gemini/LangSmith RAG with Use/Ignore gate; Playwright in CI">
           <img src="./assets/projectlens-thumb.svg" width="1200" height="675" loading="lazy" alt="ProjectLens change assurance product thumbnail" />
           <div class="app-body">
             <div class="app-title-row">
@@ -307,10 +307,11 @@
               <span class="status public">Public</span>
             </div>
             <p>
-              Compare a change pack with its schedule before the board meeting: the largest conflicts, source dates and a recorded response. Runs in the browser on bundled synthetic data or your own Primavera XER exports; files never leave the browser.
+              Compare a change pack with its schedule before the board meeting, retrieve similar past decisions with sources (LangGraph + Gemini, traced in LangSmith), then record a human response only after a Use/Ignore gate. XER files never leave the browser.
             </p>
             <ul class="proof-list">
-              <li>One-click Northstar demo</li>
+              <li>One-click Northstar demo on GitHub Pages</li>
+              <li>Cited-precedent RAG with human gate</li>
               <li>Pytest and Playwright suites in CI</li>
               <li>Boundaries stated in the README</li>
             </ul>
@@ -321,11 +322,11 @@
               </div>
               <div>
                 <dt>Outcome</dt>
-                <dd>Compares the pack with the schedule and records the decision</dd>
+                <dd>Compares the pack with the schedule, retrieves cited precedents, records the decision</dd>
               </div>
               <div>
                 <dt>Proof</dt>
-                <dd>Browser-local demo on Northstar + Riverside synthetic XER pairs; Playwright checks in CI</dd>
+                <dd>Browser-local Northstar demo; LangGraph/Gemini/LangSmith RAG; Playwright in CI</dd>
               </div>
             </dl><div class="repo-confidence" aria-label="Public repo signals">
               <span>Open repo</span><span>In-browser demo</span><span>Tests in CI</span>

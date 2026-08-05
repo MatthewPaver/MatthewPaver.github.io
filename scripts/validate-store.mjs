@@ -251,6 +251,23 @@ for (const row of indexRows) {
   assert(sitemap.includes(url), `sitemap.xml is missing entry for ${url}`);
 }
 assert(sitemap.includes(`${siteBase}/`), "sitemap.xml must include the store root");
+// Legacy Astro deep-link that recruiters and bookmarks still hit
+assert(
+  sitemap.includes(`${siteBase}/store/apps/marketing-ml-lakehouse/`),
+  "sitemap.xml must keep the Marketing ML Lakehouse /store/apps/ URL"
+);
+assert(
+  fs.existsSync(path.join(root, "scripts/prepare-pages-artifact.mjs")),
+  "prepare-pages-artifact.mjs must exist so /store/apps/ routes deploy"
+);
+assert(
+  readFile("scripts/prepare-pages-artifact.mjs").includes('"marketing-ml-lakehouse"'),
+  "prepare-pages-artifact.mjs must alias marketing-ml-lakehouse → lakehouse"
+);
+assert(
+  indexHtml.includes("./store/apps/marketing-ml-lakehouse/"),
+  "Store card Preview for lakehouse should point at /store/apps/marketing-ml-lakehouse/"
+);
 
 // robots.txt points to actual sitemap
 assert(robots.includes(`Sitemap: ${siteBase}/sitemap.xml`), "robots.txt Sitemap line must point to /sitemap.xml");

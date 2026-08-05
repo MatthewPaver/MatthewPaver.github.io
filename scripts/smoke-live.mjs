@@ -34,6 +34,14 @@ await expect200(
   "examples/consumer-repo on main 200",
   "https://raw.githubusercontent.com/MatthewPaver/ai-workflow-evaluator/main/examples/consumer-repo/README.md"
 );
+await expect200(
+  "Marketing ML Lakehouse store page 200",
+  "https://matthewpaver.github.io/store/apps/marketing-ml-lakehouse/"
+);
+await expect200(
+  "Marketing ML Lakehouse demo console 200",
+  "https://matthewpaver.github.io/marketing-ml-lakehouse/"
+);
 
 try {
   const html = await (await fetch(`${HOME}?smoke=${Date.now()}`, { cache: "no-store" })).text();

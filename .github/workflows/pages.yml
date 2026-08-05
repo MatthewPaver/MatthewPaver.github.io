@@ -33,17 +33,23 @@ jobs:
       - name: Validate store catalogue
         run: node scripts/validate-store.mjs
 
+      - name: Prepare Pages artifact
+        run: node scripts/prepare-pages-artifact.mjs
+
       - name: Inject build SHA
         run: |
           SHORT_SHA="${GITHUB_SHA:0:7}"
           LONG_SHA="${GITHUB_SHA}"
           REPLACEMENT="id=\"build-sha\" href=\"https://github.com/MatthewPaver/MatthewPaver.github.io/commit/${LONG_SHA}\">${SHORT_SHA}"
-          find store -name "*.html" -exec sed -i "s|id=\"build-sha\" href=\"[^\"]*\">dev|${REPLACEMENT}|g" {} +
+          # Stamp every HTML page in the artifact, including nested /store/apps/ routes
+          find pages-dist -name "*.html" -exec sed -i "s|id=\"build-sha\" href=\"[^\"]*\">dev|${REPLACEMENT}|g" {} +
 
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: store
+          # pages-dist is store/ at the site root, plus nested store/apps/<slug>/
+          # so legacy /store/apps/... bookmarks (e.g. marketing-ml-lakehouse) resolve.
+          path: pages-dist
 
       - id: deployment
         uses: actions/deploy-pages@v5

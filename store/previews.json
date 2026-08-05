@@ -10,7 +10,7 @@
     "focus": "Board decisions",
     "problem": "Change packs and schedules drift apart before board meetings. ProjectLens loads both in the browser, surfaces the largest conflicts with source dates, and records the human decision and its conditions.",
     "points": [
-      "One-click Northstar demo runs on bundled synthetic fixtures \u2014 no install, no upload.",
+      "One-click Northstar demo runs on bundled synthetic fixtures — no install, no upload.",
       "Pytest and Playwright suites run in CI and assert the demo's exact outcomes.",
       "The README states boundaries explicitly, including what the tool does not prove."
     ],
@@ -42,11 +42,11 @@
     "role": "Release gate",
     "status": "Public",
     "focus": "AI output regressions",
-    "problem": "Prompt and model changes quietly reintroduce known output failures. Output Gate replays saved outputs against a phrase policy and returns a pass or fail as a CI exit code \u2014 no model call, no API key.",
+    "problem": "Prompt and model changes quietly reintroduce known output failures. Output Gate replays saved outputs against a phrase policy and returns a pass or fail as a CI exit code — no model call, no API key.",
     "points": [
       "Runs in the browser or as a composite GitHub Action with sticky PR comments.",
       "Optional MCP server so Cursor/Claude can run the same phrase gate while drafting.",
-      "Scope is stated plainly \u2014 it does not check facts; a fluent fabrication that avoids the banned list still passes."
+      "Scope is stated plainly — it does not check facts; a fluent fabrication that avoids the banned list still passes."
     ],
     "stack": [
       "Python",
@@ -71,39 +71,41 @@
     ],
     "note": "Repository and package name: ai-workflow-evaluator. The portfolio name is Output Gate."
   },
-  "paper-trading": {
-    "kicker": "Research demo console",
-    "title": "Paper Trading Research Engine",
-    "summary": "Evidence-bundled walk-forward backtesting: reproducible reports, risk controls and honestly labelled synthetic benchmarks.",
-    "image": "./assets/paper-trading.png",
-    "imageAlt": "Paper trading research engine benchmark console screenshot",
-    "role": "Trading research",
-    "status": "Archived",
-    "focus": "Reproducibility",
-    "problem": "Backtest results are easy to cherry-pick and hard to reproduce. This engine bundles every report with its provenance, and deliberately publishes only synthetic fixture numbers.",
+  "quicksupply": {
+    "kicker": "Private workflow MVP",
+    "title": "QuickSupply",
+    "summary": "A supply-cover workflow for requests, agencies, teacher offers, compliance, and live status — source stays private; the store shows a recorded demo.",
+    "image": "./assets/quicksupply-dashboard.png",
+    "imageAlt": "QuickSupply agency dashboard interface",
+    "video": "./assets/quicksupply-demo.m4v",
+    "role": "Workflow product",
+    "status": "Private showcase",
+    "focus": "School cover ops",
+    "problem": "School cover coordination can become a spreadsheet-and-message chain. QuickSupply shapes the job around request intake, sequential agency assignment, teacher availability, compliance checks, and status updates.",
     "points": [
-      "Two-command local demo against a committed synthetic fixture \u2014 no API keys.",
-      "CI runs linting, multi-version tests, CodeQL and a security audit.",
-      "The benchmark table is labelled synthetic; real market results are not published without full provenance. Not financial advice."
+      "Separates school, agency, and teacher workflows instead of flattening them into one admin view.",
+      "Uses live status updates so bookings can move without manual chasing.",
+      "Recorded agency demo only — the repository and live app are not public."
     ],
     "stack": [
-      "Python",
-      "pandas",
-      "GitHub Actions",
-      "GitHub Pages"
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle",
+      "SSE"
     ],
     "links": [
       {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/paper-trading-bot/",
+        "label": "Watch demo",
+        "href": "./preview.html?app=quicksupply",
         "primary": true
       },
       {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/paper-trading-bot"
+        "label": "Back to store",
+        "href": "./#quicksupply"
       }
     ],
-    "note": "Synthetic fixtures only. Not a live trading product or financial advice. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
+    "note": "Private MVP. The muted video is a walkthrough of the agency workflow; no public repo or hosted demo."
   },
   "lakehouse": {
     "kicker": "Runnable demo console",
@@ -138,7 +140,7 @@
         "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse"
       }
     ],
-    "note": "Local demo pipeline and browser console \u2014 not a hosted SaaS product."
+    "note": "Local demo pipeline and browser console — not a hosted SaaS product."
   },
   "happening-core": {
     "kicker": "Benchmark CLI + demo",
@@ -171,7 +173,7 @@
         "href": "https://github.com/MatthewPaver/happening-open-core"
       }
     ],
-    "note": "The private Happening product is parked; this public core is what a stranger can verify. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
+    "note": "The private Happening product is parked; this public core is what a stranger can verify. Archived on GitHub Aug 2026 — kept as a completed study/demo sample."
   },
   "sentence": {
     "kicker": "Study notebook",
@@ -201,7 +203,7 @@
         "primary": true
       }
     ],
-    "note": "Study notebook: clone the repository. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
+    "note": "Study notebook: clone the repository. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 — kept as a completed study/demo sample."
   },
   "pyspark": {
     "kicker": "Technical examples",
@@ -231,7 +233,7 @@
         "primary": true
       }
     ],
-    "note": "Technical examples: clone and run locally. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 \u2014 kept as a completed study/demo sample."
+    "note": "Technical examples: clone and run locally. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 — kept as a completed study/demo sample."
   },
   "hr": {
     "kicker": "Handoff package",
@@ -264,6 +266,40 @@
     ],
     "note": "Handoff package: open PBIX and PDFs in the repo. There is no live web demo."
   },
+  "paper-trading": {
+    "kicker": "Personal research archive",
+    "title": "Paper Trading Research Engine",
+    "summary": "A completed personal study in reproducible walk-forward backtesting. Kept on the archive shelf so the method is inspectable; not pitched as a product.",
+    "image": "./assets/paper-trading.png",
+    "imageAlt": "Paper trading research engine benchmark console screenshot",
+    "role": "Personal study",
+    "status": "Archived",
+    "focus": "Reproducibility",
+    "problem": "Backtest results are easy to cherry-pick and hard to reproduce. This engine bundles every report with its provenance, and deliberately publishes only synthetic fixture numbers.",
+    "points": [
+      "Two-command local demo against a committed synthetic fixture — no API keys.",
+      "CI runs linting, multi-version tests, CodeQL and a security audit.",
+      "The benchmark table is labelled synthetic; real market results are not published without full provenance. Not financial advice."
+    ],
+    "stack": [
+      "Python",
+      "pandas",
+      "GitHub Actions",
+      "GitHub Pages"
+    ],
+    "links": [
+      {
+        "label": "Open demo",
+        "href": "https://matthewpaver.github.io/paper-trading-bot/",
+        "primary": true
+      },
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/paper-trading-bot"
+      }
+    ],
+    "note": "Personal research archive. Synthetic fixtures only — not a product for others to run as a trading system, and not financial advice."
+  },
   "england": {
     "kicker": "Archived scenario app",
     "title": "Can England Win It",
@@ -276,7 +312,7 @@
     "problem": "Tools built for a single event go stale after it. This app ran 10,000 seeded simulations per scenario, and was archived with a postmortem instead of being left to rot.",
     "points": [
       "Seed-deterministic simulation with tests for bounds, monotonicity and uncertainty ranges.",
-      "npm test runs in CI before every deploy.",
+      "Recorded walkthrough on the store preview — npm test runs in CI before every deploy.",
       "POSTMORTEM.md explains why archiving was more honest than a stale countdown."
     ],
     "stack": [
@@ -296,6 +332,7 @@
         "href": "https://github.com/MatthewPaver/can-england-win-it"
       }
     ],
-    "note": "This is a scenario tool, not a forecast or betting product."
+    "note": "This is a scenario tool, not a forecast or betting product.",
+    "video": "./assets/can-england-win-it-demo.mp4"
   }
 }

@@ -19,7 +19,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://matthewpaver.github.io/preview.html?app=paper-trading</loc>
+    <loc>https://matthewpaver.github.io/preview.html?app=quicksupply</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -40,7 +40,7 @@
     <loc>https://matthewpaver.github.io/preview.html?app=happening-core</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://matthewpaver.github.io/preview.html?app=sentence</loc>
@@ -59,6 +59,12 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matthewpaver.github.io/preview.html?app=paper-trading</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://matthewpaver.github.io/preview.html?app=england</loc>

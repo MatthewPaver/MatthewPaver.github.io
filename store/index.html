@@ -76,13 +76,14 @@
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "url": "https://matthewpaver.github.io/preview.html?app=projectlens", "name": "ProjectLens" },
             { "@type": "ListItem", "position": 2, "url": "https://matthewpaver.github.io/preview.html?app=ai-evaluator", "name": "Output Gate" },
-            { "@type": "ListItem", "position": 3, "url": "https://matthewpaver.github.io/preview.html?app=paper-trading", "name": "Paper Trading Research Engine" },
+            { "@type": "ListItem", "position": 3, "url": "https://matthewpaver.github.io/preview.html?app=quicksupply", "name": "QuickSupply" },
             { "@type": "ListItem", "position": 4, "url": "https://matthewpaver.github.io/store/apps/marketing-ml-lakehouse/", "name": "Marketing ML Lakehouse" },
             { "@type": "ListItem", "position": 5, "url": "https://matthewpaver.github.io/preview.html?app=happening-core", "name": "Happening Open Core" },
             { "@type": "ListItem", "position": 6, "url": "https://matthewpaver.github.io/preview.html?app=sentence", "name": "Sentence Similarity Analysis" },
             { "@type": "ListItem", "position": 7, "url": "https://matthewpaver.github.io/preview.html?app=pyspark", "name": "PySpark Kafka Streaming" },
             { "@type": "ListItem", "position": 8, "url": "https://matthewpaver.github.io/preview.html?app=hr", "name": "HR Performance Analytics" },
-            { "@type": "ListItem", "position": 9, "url": "https://matthewpaver.github.io/preview.html?app=england", "name": "Can England Win It" }
+            { "@type": "ListItem", "position": 9, "url": "https://matthewpaver.github.io/preview.html?app=paper-trading", "name": "Paper Trading Research Engine" },
+            { "@type": "ListItem", "position": 10, "url": "https://matthewpaver.github.io/preview.html?app=england", "name": "Can England Win It" }
           ]
         }
       ]
@@ -225,21 +226,21 @@
             public repo with tests in CI.
           </p>
           <p>
-            The private Happening product is parked (no public live feed yet). What you can verify
-            Happening Open Core is archived. Other private prototypes stay off this shelf until a
-            stranger can open them without asking me.
+            QuickSupply is the one private showcase: a recorded agency demo only — source stays
+            closed. Happening’s live product is parked; Happening Open Core is the public benchmark
+            slice. Paper trading sits on the archive shelf as a personal research study.
           </p>
         </div>
         <div class="shelf-grid" aria-label="Project shelves">
           <a href="?filter=product#project-grid-heading" data-filter-link="product">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 10h16"/><circle cx="7" cy="8" r="0.5" fill="currentColor"/><circle cx="9" cy="8" r="0.5" fill="currentColor"/></svg>
             <strong>Products</strong>
-            <small>ProjectLens, Output Gate</small>
+            <small>ProjectLens, Output Gate, QuickSupply (private video)</small>
           </a>
           <a href="?filter=data#project-grid-heading" data-filter-link="data">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="7" ry="2.2"/><path d="M5 5v14c0 1.2 3.1 2.2 7 2.2s7-1 7-2.2V5"/><path d="M5 11c0 1.2 3.1 2.2 7 2.2s7-1 7-2.2"/></svg>
             <strong>Data systems</strong>
-            <small>Lakehouse demo; paper-trading and streaming examples archived</small>
+            <small>Lakehouse demo; streaming examples</small>
           </a>
           <a href="?filter=automation#project-grid-heading" data-filter-link="automation">
             <svg class="shelf-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
@@ -384,45 +385,40 @@
           </div>
         </article>
 
-
-        <article class="app-card image-card" data-slug="paper-trading" data-tags="data automation" data-status="Archived" data-solves="Walk-forward backtests with provenance-bundled reports" data-shows="Synthetic research demo — not a live trading product" data-problem="Backtest results are easy to cherry-pick and hard to reproduce" data-proof="Browser console on labelled synthetic fixtures; CI on the research engine">
-          <img src="./assets/paper-trading.png" width="1200" height="675" loading="lazy" alt="Paper trading research engine benchmark console screenshot" />
+        <article class="app-card image-card" data-slug="quicksupply" data-tags="product" data-status="Private" data-solves="Coordinates school cover end to end" data-shows="Private showcase — video preview only; source stays private" data-problem="School cover coordination becomes a spreadsheet-and-message chain" data-proof="24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites; recorded agency demo">
+          <img src="./assets/quicksupply-dashboard.png" width="1200" height="760" loading="lazy" alt="QuickSupply agency dashboard interface screenshot" />
           <div class="app-body">
             <div class="app-title-row">
-              <h3>Paper Trading Research Engine</h3>
-              <span class="status archived">Archived</span>
+              <h3>QuickSupply</h3>
+              <span class="status private">Private</span>
             </div>
             <p>
-              Walk-forward backtests, risk controls and benchmark reports, bundled with their provenance. Every published number is synthetic fixture data; real market results are not published without their full provenance bundle. Not financial advice. This is a research demo console, not a live trading product.
+              A private supply-cover MVP for schools: request intake, sequential agency assignment, teacher offers, compliance documents and live status over SSE, with school, agency and teacher kept as separate workflows. Source stays closed — the store shows a recorded agency demo.
             </p>
             <ul class="proof-list">
-              <li>Two-command local demo, no API keys</li>
-              <li>Green CI including CodeQL and security audit</li>
-              <li>Synthetic data labelled as synthetic</li>
+              <li>Sequential assignment engine</li>
+              <li>Server-sent event updates</li>
+              <li>Recorded agency walkthrough</li>
             </ul>
             <dl class="card-snapshot" aria-label="Case grammar">
               <div class="case-problem">
                 <dt>Problem</dt>
-                <dd>Backtest results are easy to cherry-pick and hard to reproduce</dd>
+                <dd>School cover coordination becomes a spreadsheet-and-message chain</dd>
               </div>
               <div>
                 <dt>Outcome</dt>
-                <dd>Walk-forward backtests with provenance-bundled reports</dd>
+                <dd>Coordinates school cover end to end</dd>
               </div>
               <div>
                 <dt>Proof</dt>
-                <dd>Browser console on labelled synthetic fixtures; CI on the research engine</dd>
+                <dd>24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites; recorded agency demo</dd>
               </div>
-            </dl><div class="repo-confidence" aria-label="Public repo signals">
-              <span>Open repo</span><span>In-browser demo</span><span>Tests in CI</span>
-            </div>
+            </dl>
             <div class="stack-list" aria-label="Tech stack">
-              <span>Python</span><span>pandas</span><span>GitHub Actions</span><span>GitHub Pages</span>
+              <span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Drizzle</span><span>SSE</span>
             </div>
             <div class="card-actions">
-              <a href="./preview.html?app=paper-trading">Preview</a>
-              <a href="https://matthewpaver.github.io/paper-trading-bot/">Demo</a>
-              <a href="https://github.com/MatthewPaver/paper-trading-bot">Repo</a>
+              <a href="./preview.html?app=quicksupply">Preview video</a>
             </div>
           </div>
         </article>
@@ -630,6 +626,47 @@
             <div class="card-actions">
               <a href="./preview.html?app=hr">Preview</a>
               <a href="https://github.com/MatthewPaver/hr-performance-dashboards">Repo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="app-card image-card" data-slug="paper-trading" data-tags="archive data automation" data-status="Archived" data-solves="Walk-forward backtests with provenance-bundled reports" data-shows="Personal research archive — not a product for others" data-problem="Backtest results are easy to cherry-pick and hard to reproduce" data-proof="Browser console on labelled synthetic fixtures; CI on the research engine">
+          <img src="./assets/paper-trading.png" width="1200" height="675" loading="lazy" alt="Paper trading research engine benchmark console screenshot" />
+          <div class="app-body">
+            <div class="app-title-row">
+              <h3>Paper Trading Research Engine</h3>
+              <span class="status archived">Archived</span>
+            </div>
+            <p>
+              A personal research study in walk-forward backtests, risk controls and provenance-bundled reports. Every published number is synthetic fixture data. Not financial advice, and not pitched as a product for others to adopt.
+            </p>
+            <ul class="proof-list">
+              <li>Personal research archive</li>
+              <li>Synthetic fixtures labelled as synthetic</li>
+              <li>CI still green on the public subset</li>
+            </ul>
+            <dl class="card-snapshot" aria-label="Case grammar">
+              <div class="case-problem">
+                <dt>Problem</dt>
+                <dd>Backtest results are easy to cherry-pick and hard to reproduce</dd>
+              </div>
+              <div>
+                <dt>Outcome</dt>
+                <dd>Walk-forward backtests with provenance-bundled reports</dd>
+              </div>
+              <div>
+                <dt>Proof</dt>
+                <dd>Browser console on labelled synthetic fixtures; CI on the research engine</dd>
+              </div>
+            </dl><div class="repo-confidence" aria-label="Public repo signals">
+              <span>Open repo</span><span>In-browser demo</span><span>Personal study</span>
+            </div>
+            <div class="stack-list" aria-label="Tech stack">
+              <span>Python</span><span>pandas</span><span>GitHub Actions</span><span>GitHub Pages</span>
+            </div>
+            <div class="card-actions">
+              <a href="./preview.html?app=paper-trading">Preview</a>
+              <a href="https://github.com/MatthewPaver/paper-trading-bot">Repo</a>
             </div>
           </div>
         </article>

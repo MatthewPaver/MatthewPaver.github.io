@@ -36,25 +36,15 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/ProjectLens
 - Stack: Python, Playwright, pandas, GitHub Pages
 
-### Output Gate
-
-- Shelf: Products
-- Status: Public
-- Problem: Prompt and model changes quietly reintroduce known output failures
-- Outcome: Checks saved outputs against required and banned phrases
-- Proof: Deterministic, in the browser or as a GitHub Action; no model call
-- Preview: https://matthewpaver.github.io/preview.html?app=ai-evaluator
-- Repo: https://github.com/MatthewPaver/ai-workflow-evaluator
-- Stack: Python, GitHub Actions, HTML, JavaScript
-
 ### QuickSupply
 
 - Shelf: Products
-- Status: Private
+- Status: Public
 - Problem: School cover coordination becomes a spreadsheet-and-message chain
 - Outcome: Coordinates school cover end to end
-- Proof: 24k-line Next.js app; 14 migrations, SSE, 12 Playwright e2e suites; recorded agency demo
+- Proof: Public repo; recorded agency demo; 14 migrations, SSE, Playwright e2e
 - Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
+- Repo: https://github.com/MatthewPaver/QuickSupply
 - Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
 
 ### Marketing ML Lakehouse
@@ -68,23 +58,12 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 - Stack: Python, DuckDB, XGBoost, Streamlit, Makefile
 
-### Happening Open Core
-
-- Shelf: Automation
-- Status: Public
-- Problem: Event datasets rarely say how trustworthy they are
-- Outcome: Scores provenance, freshness and coverage in one command
-- Proof: Stdlib-only Python; the example run reproduces the README score exactly
-- Preview: https://matthewpaver.github.io/preview.html?app=happening-core
-- Repo: https://github.com/MatthewPaver/happening-open-core
-- Stack: Python, JSON, GitHub Actions
-
 ### Sentence Similarity Analysis
 
 - Shelf: ML and retrieval
 - Status: Public
 - Problem: Similarity is useful but not truth
-- Outcome: Compares meaning with embeddings
+- Outcome: Ranks meaning with embeddings — with retrieval caveats
 - Proof: Notebook + CI on ranking logic; no GitHub Pages app
 - Preview: https://matthewpaver.github.io/preview.html?app=sentence
 - Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
@@ -112,24 +91,13 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/hr-performance-dashboards
 - Stack: Power BI, DAX, CSV, Reporting, PDF exports
 
-### Paper Trading Research Engine
-
-- Shelf: Archive
-- Status: Archived
-- Problem: Backtest results are easy to cherry-pick and hard to reproduce
-- Outcome: Walk-forward backtests with provenance-bundled reports
-- Proof: Browser console on labelled synthetic fixtures; CI on the research engine
-- Preview: https://matthewpaver.github.io/preview.html?app=paper-trading
-- Repo: https://github.com/MatthewPaver/paper-trading-bot
-- Stack: Python, pandas, GitHub Actions, GitHub Pages
-
 ### Can England Win It
 
 - Shelf: Archive
-- Status: Archived
+- Status: Public
 - Problem: Single-event tools go stale after the event
-- Outcome: A 10,000-run scenario simulator, archived with a postmortem
-- Proof: Seed-deterministic tests; POSTMORTEM.md explains the archive decision
+- Outcome: A 10k-run scenario simulator kept public as a bit of fun
+- Proof: Seed-deterministic tests; recorded walkthrough; POSTMORTEM.md
 - Preview: https://matthewpaver.github.io/preview.html?app=england
 - Repo: https://github.com/MatthewPaver/can-england-win-it
 - Stack: TypeScript, React, Vite, Vitest

@@ -33,59 +33,21 @@
     ],
     "note": "Everything on the demo page is synthetic fixture data committed to the repo."
   },
-  "ai-evaluator": {
-    "kicker": "Regression gate",
-    "title": "Output Gate",
-    "summary": "A deterministic regression gate for saved LLM outputs: required and banned phrases, in CI, the browser, or via MCP.",
-    "image": "./assets/output-gate.png",
-    "imageAlt": "Output Gate regression check workbench screenshot",
-    "role": "Release gate",
-    "status": "Public",
-    "focus": "AI output regressions",
-    "problem": "Prompt and model changes quietly reintroduce known output failures. Output Gate replays saved outputs against a phrase policy and returns a pass or fail as a CI exit code — no model call, no API key.",
-    "points": [
-      "Runs in the browser or as a composite GitHub Action with sticky PR comments.",
-      "Optional MCP server so Cursor/Claude can run the same phrase gate while drafting.",
-      "Scope is stated plainly — it does not check facts; a fluent fabrication that avoids the banned list still passes."
-    ],
-    "stack": [
-      "Python",
-      "GitHub Actions",
-      "MCP",
-      "HTML"
-    ],
-    "links": [
-      {
-        "label": "Add to your CI",
-        "href": "https://github.com/MatthewPaver/ai-workflow-evaluator/blob/main/ADOPTION.md"
-      },
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/ai-workflow-evaluator/app/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/ai-workflow-evaluator"
-      }
-    ],
-    "note": "Repository and package name: ai-workflow-evaluator. The portfolio name is Output Gate."
-  },
   "quicksupply": {
-    "kicker": "Private workflow MVP",
+    "kicker": "Workflow product",
     "title": "QuickSupply",
-    "summary": "A supply-cover workflow for requests, agencies, teacher offers, compliance, and live status — source stays private; the store shows a recorded demo.",
+    "summary": "A supply-cover workflow for requests, agencies, teacher offers, compliance, and live status — now a public repo with a recorded agency demo.",
     "image": "./assets/quicksupply-dashboard.png",
     "imageAlt": "QuickSupply agency dashboard interface",
     "video": "./assets/quicksupply-demo.m4v",
     "role": "Workflow product",
-    "status": "Private showcase",
+    "status": "Public",
     "focus": "School cover ops",
     "problem": "School cover coordination can become a spreadsheet-and-message chain. QuickSupply shapes the job around request intake, sequential agency assignment, teacher availability, compliance checks, and status updates.",
     "points": [
       "Separates school, agency, and teacher workflows instead of flattening them into one admin view.",
       "Uses live status updates so bookings can move without manual chasing.",
-      "Recorded agency demo only — the repository and live app are not public."
+      "Public source plus a muted agency walkthrough on this preview page."
     ],
     "stack": [
       "Next.js",
@@ -101,11 +63,11 @@
         "primary": true
       },
       {
-        "label": "Back to store",
-        "href": "./#quicksupply"
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/QuickSupply"
       }
     ],
-    "note": "Private MVP. The muted video is a walkthrough of the agency workflow; no public repo or hosted demo."
+    "note": "Public product repo. The video is a walkthrough of the agency workflow on synthetic/demo data."
   },
   "lakehouse": {
     "kicker": "Runnable demo console",
@@ -142,53 +104,20 @@
     ],
     "note": "Local demo pipeline and browser console — not a hosted SaaS product."
   },
-  "happening-core": {
-    "kicker": "Benchmark CLI + demo",
-    "title": "Happening Open Core",
-    "summary": "Event schemas and a deterministic quality benchmark: provenance, freshness and coverage scored in one command.",
-    "image": "./assets/happening-core-thumb.svg",
-    "imageAlt": "Happening Open Core benchmark CLI thumbnail",
-    "role": "Data quality benchmark",
-    "status": "Archived",
-    "focus": "Event data",
-    "problem": "Event datasets rarely say how trustworthy they are. Happening Open Core scores a dataset for provenance, freshness and coverage against a reference list, deterministically.",
-    "points": [
-      "One command against committed example data; no third-party runtime dependencies.",
-      "CI tests assert the exact benchmark numbers, including the README's example score.",
-      "The README lists what is deliberately not here: no live feed, no scraping selectors, no customer data."
-    ],
-    "stack": [
-      "Python",
-      "JSON",
-      "GitHub Actions"
-    ],
-    "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/happening-open-core/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/happening-open-core"
-      }
-    ],
-    "note": "The private Happening product is parked; this public core is what a stranger can verify. Archived on GitHub Aug 2026 — kept as a completed study/demo sample."
-  },
   "sentence": {
     "kicker": "Study notebook",
     "title": "Sentence Similarity Analysis",
-    "summary": "A compact NLP notebook showing embeddings, cosine ranking, and the limits of similarity as a signal.",
+    "summary": "Embeddings and cosine ranking for retrieval-shaped jobs (FAQ match, support triage) — with an explicit caveat that similarity is not truth.",
     "image": "./assets/sentence-similarity-thumb.svg",
     "imageAlt": "Sentence similarity product thumbnail",
     "role": "NLP analysis",
     "status": "Archived",
     "focus": "Embedding retrieval",
-    "problem": "Similarity search is useful, but similarity is not the same as truth. This notebook is a small, focused demo of embedding comparison and retrieval caveats.",
+    "problem": "Teams often treat embedding similarity as a correctness score. This notebook shows ranking that is useful for retrieval, and where it still misleads without a human or source check.",
     "points": [
-      "Uses transformer embeddings to compare sentence meaning.",
-      "Ranks examples with cosine similarity.",
-      "CI tests the ranking logic with deterministic local vectors, and says so."
+      "Transformer embeddings + cosine ranking over a fixed corpus.",
+      "Realistic uses: FAQ retrieval, similar-ticket suggestions, duplicate-question hints.",
+      "Explicit non-goal: do not treat top-1 similarity as a verified fact."
     ],
     "stack": [
       "Python",
@@ -203,22 +132,22 @@
         "primary": true
       }
     ],
-    "note": "Study notebook: clone the repository. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 — kept as a completed study/demo sample."
+    "note": "Study notebook. Good for showing retrieval caveats before you trust RAG answers."
   },
   "pyspark": {
     "kicker": "Technical examples",
     "title": "PySpark Kafka Streaming",
-    "summary": "Compact PySpark and Kafka examples: DataFrames, JSON event production, and Structured Streaming.",
+    "summary": "Compact PySpark + Kafka examples aimed at real ops shapes: event streams, status feeds, and local Structured Streaming checks.",
     "image": "./assets/pyspark-kafka-thumb.svg",
     "imageAlt": "PySpark Kafka Streaming examples thumbnail",
     "role": "Streaming examples",
     "status": "Archived",
     "focus": "PySpark + Kafka",
-    "problem": "Streaming examples are often too big to actually read. This repo keeps three small scripts that run, with a docker-compose Kafka round trip behind one make target.",
+    "problem": "Streaming tutorials are often too large to read. These scripts show the shape you need for ops events and near-real-time status without a platform dump.",
     "points": [
-      "examples/basic_dataframe.py runs with Java and PySpark alone.",
-      "make demo runs the Kafka producer and Structured Streaming consumer via Docker.",
-      "CI compiles the examples and executes the DataFrame demo via spark-submit."
+      "DataFrame basics that compile under CI via spark-submit.",
+      "Realistic uses: cover-status events, booking updates, simple telemetry into a console sink.",
+      "Kafka round-trip via Docker when you want the producer/consumer path."
     ],
     "stack": [
       "Python",
@@ -233,7 +162,7 @@
         "primary": true
       }
     ],
-    "note": "Technical examples: clone and run locally. There is no GitHub Pages demo app. Archived on GitHub Aug 2026 — kept as a completed study/demo sample."
+    "note": "Technical example. Useful pattern for ops event streams — not a packaged platform."
   },
   "hr": {
     "kicker": "Handoff package",
@@ -266,54 +195,20 @@
     ],
     "note": "Handoff package: open PBIX and PDFs in the repo. There is no live web demo."
   },
-  "paper-trading": {
-    "kicker": "Personal research archive",
-    "title": "Paper Trading Research Engine",
-    "summary": "A completed personal study in reproducible walk-forward backtesting. Kept on the archive shelf so the method is inspectable; not pitched as a product.",
-    "image": "./assets/paper-trading.png",
-    "imageAlt": "Paper trading research engine benchmark console screenshot",
-    "role": "Personal study",
-    "status": "Archived",
-    "focus": "Reproducibility",
-    "problem": "Backtest results are easy to cherry-pick and hard to reproduce. This engine bundles every report with its provenance, and deliberately publishes only synthetic fixture numbers.",
-    "points": [
-      "Two-command local demo against a committed synthetic fixture — no API keys.",
-      "CI runs linting, multi-version tests, CodeQL and a security audit.",
-      "The benchmark table is labelled synthetic; real market results are not published without full provenance. Not financial advice."
-    ],
-    "stack": [
-      "Python",
-      "pandas",
-      "GitHub Actions",
-      "GitHub Pages"
-    ],
-    "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/paper-trading-bot/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/paper-trading-bot"
-      }
-    ],
-    "note": "Personal research archive. Synthetic fixtures only — not a product for others to run as a trading system, and not financial advice."
-  },
   "england": {
-    "kicker": "Archived scenario app",
+    "kicker": "Fun scenario lab",
     "title": "Can England Win It",
-    "summary": "An interactive World Cup scenario simulator, archived after the event with an honest postmortem.",
+    "summary": "An interactive World Cup scenario simulator kept public as a bit of fun — with an honest postmortem after the event.",
     "image": "./assets/can-england-win-it.png",
     "imageAlt": "Can England Win It scenario simulator screenshot",
     "role": "Scenario simulation",
-    "status": "Archived",
+    "status": "Public",
     "focus": "Honest close-out",
     "problem": "Tools built for a single event go stale after it. This app ran 10,000 seeded simulations per scenario, and was archived with a postmortem instead of being left to rot.",
     "points": [
       "Seed-deterministic simulation with tests for bounds, monotonicity and uncertainty ranges.",
-      "Recorded walkthrough on the store preview — npm test runs in CI before every deploy.",
-      "POSTMORTEM.md explains why archiving was more honest than a stale countdown."
+      "Recorded walkthrough on this preview — npm test runs in CI.",
+      "POSTMORTEM.md explains why the project was closed honestly after the tournament."
     ],
     "stack": [
       "TypeScript",
@@ -332,7 +227,7 @@
         "href": "https://github.com/MatthewPaver/can-england-win-it"
       }
     ],
-    "note": "This is a scenario tool, not a forecast or betting product.",
+    "note": "Public fun project. Scenario tool, not a forecast or betting product.",
     "video": "./assets/can-england-win-it-demo.mp4"
   }
 }

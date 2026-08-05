@@ -47,6 +47,17 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Repo: https://github.com/MatthewPaver/QuickSupply
 - Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
 
+### Can England Win It
+
+- Shelf: Products
+- Status: Public
+- Problem: Single-event tools go stale after the event
+- Outcome: A 10k-run scenario simulator kept public as a bit of fun
+- Proof: Seed-deterministic tests; recorded walkthrough; POSTMORTEM.md
+- Preview: https://matthewpaver.github.io/preview.html?app=england
+- Repo: https://github.com/MatthewPaver/can-england-win-it
+- Stack: TypeScript, React, Vite, Vitest
+
 ### Marketing ML Lakehouse
 
 - Shelf: Data systems
@@ -62,19 +73,30 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 
 - Shelf: ML and retrieval
 - Status: Public
-- Problem: Similarity is useful but not truth
-- Outcome: Ranks meaning with embeddings — with retrieval caveats
+- Problem: Teams treat embedding similarity as a correctness score
+- Outcome: Shortlists meaning for FAQ and precedent retrieval — with caveats
 - Proof: Notebook + CI on ranking logic; no GitHub Pages app
 - Preview: https://matthewpaver.github.io/preview.html?app=sentence
 - Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
 - Stack: Python, Jupyter, sentence-transformers, PyTorch
+
+### Swipe Recommender Lab
+
+- Shelf: ML and retrieval
+- Status: Public
+- Problem: Implicit feedback recommenders are easy to overfit on random splits
+- Outcome: Ranks candidates from swipe-style implicit feedback with honest holdouts
+- Proof: Temporal holdout Top-K metrics in CI; synthetic swipe fixtures
+- Preview: https://matthewpaver.github.io/preview.html?app=recommender
+- Repo: https://github.com/MatthewPaver/dating-app-recommendation-system
+- Stack: Python, NumPy, SciPy, scikit-learn, Jupyter
 
 ### PySpark Kafka Streaming
 
 - Shelf: Data systems
 - Status: Public
 - Problem: Streaming examples are often too big to actually read
-- Outcome: Compact PySpark and Kafka examples that run
+- Outcome: Compact event-stream patterns for ops status and telemetry
 - Proof: CI spark-submit on compact scripts; Docker Kafka round-trip in README
 - Preview: https://matthewpaver.github.io/preview.html?app=pyspark
 - Repo: https://github.com/MatthewPaver/pyspark-kafka-streaming
@@ -90,17 +112,6 @@ Rule: do not invent user counts, ratings, testimonials, or commercial results
 - Preview: https://matthewpaver.github.io/preview.html?app=hr
 - Repo: https://github.com/MatthewPaver/hr-performance-dashboards
 - Stack: Power BI, DAX, CSV, Reporting, PDF exports
-
-### Can England Win It
-
-- Shelf: Archive
-- Status: Public
-- Problem: Single-event tools go stale after the event
-- Outcome: A 10k-run scenario simulator kept public as a bit of fun
-- Proof: Seed-deterministic tests; recorded walkthrough; POSTMORTEM.md
-- Preview: https://matthewpaver.github.io/preview.html?app=england
-- Repo: https://github.com/MatthewPaver/can-england-win-it
-- Stack: TypeScript, React, Vite, Vitest
 
 ## Optional
 

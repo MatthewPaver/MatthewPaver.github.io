@@ -69,6 +69,41 @@
     ],
     "note": "Public product repo. The video is a walkthrough of the agency workflow on synthetic/demo data."
   },
+  "england": {
+    "kicker": "Fun scenario lab",
+    "title": "Can England Win It",
+    "summary": "An interactive World Cup scenario simulator kept public as a bit of fun — with an honest postmortem after the event.",
+    "image": "./assets/can-england-win-it.png",
+    "imageAlt": "Can England Win It scenario simulator screenshot",
+    "role": "Scenario simulation",
+    "status": "Public",
+    "focus": "Public fun",
+    "problem": "Tools built for a single event go stale after it. This app ran 10,000 seeded simulations per scenario, and was archived with a postmortem instead of being left to rot.",
+    "points": [
+      "Seed-deterministic simulation with tests for bounds, monotonicity and uncertainty ranges.",
+      "Recorded walkthrough on this preview — npm test runs in CI.",
+      "POSTMORTEM.md explains why the project was closed honestly after the tournament."
+    ],
+    "stack": [
+      "TypeScript",
+      "React",
+      "Vite",
+      "Vitest"
+    ],
+    "links": [
+      {
+        "label": "Open demo",
+        "href": "https://matthewpaver.github.io/can-england-win-it/",
+        "primary": true
+      },
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/can-england-win-it"
+      }
+    ],
+    "note": "Public fun project. Scenario tool, not a forecast or betting product.",
+    "video": "./assets/can-england-win-it-demo.mp4"
+  },
   "lakehouse": {
     "kicker": "Runnable demo console",
     "title": "Marketing ML Lakehouse",
@@ -105,19 +140,19 @@
     "note": "Local demo pipeline and browser console — not a hosted SaaS product."
   },
   "sentence": {
-    "kicker": "Study notebook",
+    "kicker": "Retrieval study",
     "title": "Sentence Similarity Analysis",
-    "summary": "Embeddings and cosine ranking for retrieval-shaped jobs (FAQ match, support triage) — with an explicit caveat that similarity is not truth.",
+    "summary": "Embedding shortlists for FAQ match and precedent-style retrieval — the same caveat you need before trusting a ProjectLens RAG answer.",
     "image": "./assets/sentence-similarity-thumb.svg",
     "imageAlt": "Sentence similarity product thumbnail",
     "role": "NLP analysis",
-    "status": "Archived",
-    "focus": "Embedding retrieval",
-    "problem": "Teams often treat embedding similarity as a correctness score. This notebook shows ranking that is useful for retrieval, and where it still misleads without a human or source check.",
+    "status": "Public",
+    "focus": "Retrieval before generation",
+    "problem": "Embedding similarity is useful for shortlisting, but it is not proof. This notebook shows ranking that helps retrieval and where it still misleads.",
     "points": [
       "Transformer embeddings + cosine ranking over a fixed corpus.",
-      "Realistic uses: FAQ retrieval, similar-ticket suggestions, duplicate-question hints.",
-      "Explicit non-goal: do not treat top-1 similarity as a verified fact."
+      "Use it as the retrieval half of RAG / FAQ / similar-ticket flows.",
+      "Non-goal: top-1 similarity is not a verified fact — cite sources next."
     ],
     "stack": [
       "Python",
@@ -132,22 +167,53 @@
         "primary": true
       }
     ],
-    "note": "Study notebook. Good for showing retrieval caveats before you trust RAG answers."
+    "note": "Study notebook that supports the ProjectLens RAG direction: retrieve with caveats, then human/source check."
+  },
+  "recommender": {
+    "kicker": "Ranking study",
+    "title": "Swipe Recommender Lab",
+    "summary": "Collaborative filtering on swipe-style implicit feedback with temporal holdouts and Top-K metrics — a recommender-systems signal, not a dating product.",
+    "image": "./assets/recommender-eval-thumb.png",
+    "imageAlt": "Swipe recommender evaluation thumbnail",
+    "role": "Ranking / CF",
+    "status": "Public",
+    "focus": "Recommendation systems",
+    "problem": "Random-split recommenders look good and fail in time. This lab uses temporal holdouts so ranking quality is honest.",
+    "points": [
+      "Implicit feedback from swipe-style interactions.",
+      "Temporal holdout Top-K evaluation in CI.",
+      "Shows CF / ranking discipline useful beyond dating (marketplace, content, shortlists)."
+    ],
+    "stack": [
+      "Python",
+      "NumPy",
+      "SciPy",
+      "scikit-learn",
+      "Jupyter"
+    ],
+    "links": [
+      {
+        "label": "Open repo",
+        "href": "https://github.com/MatthewPaver/dating-app-recommendation-system",
+        "primary": true
+      }
+    ],
+    "note": "Offline ranking lab on synthetic/demo swipes. Not a live dating app."
   },
   "pyspark": {
-    "kicker": "Technical examples",
+    "kicker": "Streaming examples",
     "title": "PySpark Kafka Streaming",
-    "summary": "Compact PySpark + Kafka examples aimed at real ops shapes: event streams, status feeds, and local Structured Streaming checks.",
+    "summary": "Compact PySpark + Kafka patterns for ops event streams — cover status, booking updates, telemetry fan-in.",
     "image": "./assets/pyspark-kafka-thumb.svg",
     "imageAlt": "PySpark Kafka Streaming examples thumbnail",
     "role": "Streaming examples",
-    "status": "Archived",
-    "focus": "PySpark + Kafka",
-    "problem": "Streaming tutorials are often too large to read. These scripts show the shape you need for ops events and near-real-time status without a platform dump.",
+    "status": "Public",
+    "focus": "Event buses",
+    "problem": "Streaming tutorials are often too large to read. These scripts show the shape for live status feeds without a platform dump.",
     "points": [
-      "DataFrame basics that compile under CI via spark-submit.",
-      "Realistic uses: cover-status events, booking updates, simple telemetry into a console sink.",
-      "Kafka round-trip via Docker when you want the producer/consumer path."
+      "DataFrame + Structured Streaming paths that CI can compile.",
+      "Maps to live booking/cover status buses and ops telemetry.",
+      "Kafka round-trip via Docker when you want producer/consumer."
     ],
     "stack": [
       "Python",
@@ -162,7 +228,7 @@
         "primary": true
       }
     ],
-    "note": "Technical example. Useful pattern for ops event streams — not a packaged platform."
+    "note": "Technical example for event-shaped products (QuickSupply status, Happening ingest) — not a packaged platform."
   },
   "hr": {
     "kicker": "Handoff package",
@@ -194,40 +260,5 @@
       }
     ],
     "note": "Handoff package: open PBIX and PDFs in the repo. There is no live web demo."
-  },
-  "england": {
-    "kicker": "Fun scenario lab",
-    "title": "Can England Win It",
-    "summary": "An interactive World Cup scenario simulator kept public as a bit of fun — with an honest postmortem after the event.",
-    "image": "./assets/can-england-win-it.png",
-    "imageAlt": "Can England Win It scenario simulator screenshot",
-    "role": "Scenario simulation",
-    "status": "Public",
-    "focus": "Honest close-out",
-    "problem": "Tools built for a single event go stale after it. This app ran 10,000 seeded simulations per scenario, and was archived with a postmortem instead of being left to rot.",
-    "points": [
-      "Seed-deterministic simulation with tests for bounds, monotonicity and uncertainty ranges.",
-      "Recorded walkthrough on this preview — npm test runs in CI.",
-      "POSTMORTEM.md explains why the project was closed honestly after the tournament."
-    ],
-    "stack": [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Vitest"
-    ],
-    "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/can-england-win-it/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/can-england-win-it"
-      }
-    ],
-    "note": "Public fun project. Scenario tool, not a forecast or betting product.",
-    "video": "./assets/can-england-win-it-demo.mp4"
   }
 }

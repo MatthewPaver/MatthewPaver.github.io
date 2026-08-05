@@ -18,11 +18,6 @@ const siteBase = "https://matthewpaver.github.io";
 // Keeps shared / bookmarked /store/apps/<astro-id>/ URLs alive.
 const ALIASES = {
   "marketing-ml-lakehouse": "lakehouse",
-  "output-gate": "ai-evaluator",
-  "ai-workflow-evaluator": "ai-evaluator",
-  "paper-trading-bot": "paper-trading",
-  "happening": "happening-core",
-  "happening-open-core": "happening-core",
   "sentence-similarity": "sentence",
   "sentence-similarity-analysis": "sentence",
   "hr-performance": "hr",
@@ -30,6 +25,8 @@ const ALIASES = {
   "can-england-win-it": "england",
   "pyspark-kafka-streaming": "pyspark",
   "project-lens": "projectlens",
+  "QuickSupply": "quicksupply",
+  "quick-supply": "quicksupply",
 };
 
 function escapeHtml(value) {

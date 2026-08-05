@@ -1,4 +1,4 @@
-// Live smoke checks for the deployed portfolio and the Output Gate adoption path.
+// Live smoke checks for the deployed portfolio.
 // Fails (exit 1) if any stranger-path invariant breaks. No dependencies; Node 18+.
 
 const HOME = "https://matthewpaver.github.io/";
@@ -27,13 +27,8 @@ async function expect200(name, url) {
 
 await expect200("homepage 200", HOME);
 await expect200("ProjectLens demo 200", "https://matthewpaver.github.io/ProjectLens/change-assurance.html");
-await expect200("Output Gate app 200", "https://matthewpaver.github.io/ai-workflow-evaluator/app/");
-await expect200("Output Gate Pages root 200", "https://matthewpaver.github.io/ai-workflow-evaluator/");
-await expect200("ADOPTION.md on main 200", "https://raw.githubusercontent.com/MatthewPaver/ai-workflow-evaluator/main/ADOPTION.md");
-await expect200(
-  "examples/consumer-repo on main 200",
-  "https://raw.githubusercontent.com/MatthewPaver/ai-workflow-evaluator/main/examples/consumer-repo/README.md"
-);
+await expect200("QuickSupply preview 200", "https://matthewpaver.github.io/preview.html?app=quicksupply");
+await expect200("QuickSupply repo 200", "https://github.com/MatthewPaver/QuickSupply");
 await expect200(
   "Marketing ML Lakehouse store page 200",
   "https://matthewpaver.github.io/store/apps/marketing-ml-lakehouse/"
@@ -42,26 +37,20 @@ await expect200(
   "Marketing ML Lakehouse demo console 200",
   "https://matthewpaver.github.io/marketing-ml-lakehouse/"
 );
-await expect200(
-  "QuickSupply preview 200",
-  "https://matthewpaver.github.io/preview.html?app=quicksupply"
-);
-await expect200(
-  "England preview 200",
-  "https://matthewpaver.github.io/preview.html?app=england"
-);
+await expect200("England preview 200", "https://matthewpaver.github.io/preview.html?app=england");
 
 try {
   const html = await (await fetch(`${HOME}?smoke=${Date.now()}`, { cache: "no-store" })).text();
-  record("homepage contains 'Add to your CI'", html.includes("Add to your CI"));
-  record("homepage links ADOPTION.md", html.includes("ADOPTION.md"));
+  record("homepage has ProjectLens", /data-slug="projectlens"/i.test(html));
+  record("homepage has QuickSupply public", /data-slug="quicksupply"[^>]*data-status="Public"/i.test(html));
+  record("homepage has lakehouse", /data-slug="lakehouse"/i.test(html));
+  record("homepage has no Output Gate", !/Output Gate|ai-workflow-evaluator|ADOPTION\.md/i.test(html));
   record("homepage has no MeetingProof", !/MeetingProof|meetingproof/i.test(html));
-  record("homepage includes QuickSupply", /data-slug="quicksupply"/i.test(html));
-  record("homepage labels paper trading archived", /data-slug="paper-trading"[\s\S]*?Archived/i.test(html));
+  record("homepage has no happening-open-core card", !/data-slug="happening-core"/i.test(html));
+  record("homepage has no paper-trading card", !/data-slug="paper-trading"/i.test(html));
   const privateMarkers =
     (html.match(/class="status private"/g) || []).length + (html.match(/data-status="Private/gi) || []).length;
-  // One intentional private showcase (QuickSupply video) is allowed.
-  record("private showcase is QuickSupply only", privateMarkers === 1 && /data-slug="quicksupply"[^>]*data-status="Private"/i.test(html), `${privateMarkers} marker(s)`);
+  record("zero private product cards", privateMarkers === 0, `${privateMarkers} marker(s)`);
 } catch (err) {
   record("homepage content checks", false, err.message);
 }

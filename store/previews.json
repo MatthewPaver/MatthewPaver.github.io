@@ -26,7 +26,7 @@
     "title": "ProjectLens",
     "summary": "Compare a change narrative with its Primavera schedule, inspect cited conflicts and record the board response.",
     "image": "./assets/projectlens.png",
-    "imageAlt": "ProjectLens change assurance workspace",
+    "imageAlt": "ProjectLens schedule assurance workspace showing a 73-day finish movement and three cited blockers",
     "role": "Decision support",
     "status": "Live public demo",
     "focus": "Project controls and RAG",

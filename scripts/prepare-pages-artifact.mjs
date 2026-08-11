@@ -12,16 +12,10 @@ import path from "node:path";
 const root = process.cwd();
 const sourceDir = path.join(root, "store");
 const outDir = path.join(root, "pages-dist");
-const portfolioPrototypeDir = path.join(root, "prototypes", "tabfolio-presenta");
-const portfolioAssetsDir = path.join(root, "public", "assets", "apps");
-const portfolioFontFile = path.join(
-  root,
-  "node_modules",
-  "@fontsource-variable",
-  "manrope",
-  "files",
-  "manrope-latin-wght-normal.woff2"
-);
+const fontFiles = [
+  path.join(root, "node_modules", "@fontsource-variable", "manrope", "files", "manrope-latin-wght-normal.woff2"),
+  path.join(root, "node_modules", "@fontsource-variable", "newsreader", "files", "newsreader-latin-opsz-normal.woff2"),
+];
 const siteBase = "https://matthewpaver.github.io";
 
 // Old Astro catalogue ids → current store preview slugs.
@@ -51,39 +45,17 @@ function copyDir(from, to) {
   fs.cpSync(from, to, { recursive: true });
 }
 
-function publishPortfolioHomepage() {
-  const sourceHtml = path.join(portfolioPrototypeDir, "index.html");
-  const sourceCss = path.join(portfolioPrototypeDir, "styles.css");
-  const sourceScript = path.join(portfolioPrototypeDir, "script.js");
-
-  for (const source of [sourceHtml, sourceCss, sourceScript, portfolioFontFile]) {
+function publishFonts() {
+  for (const source of fontFiles) {
     if (!fs.existsSync(source)) {
-      throw new Error(`portfolio prototype is missing ${path.basename(source)}`);
+      throw new Error(`portfolio font is missing ${path.basename(source)}`);
     }
   }
 
-  const html = fs
-    .readFileSync(sourceHtml, "utf8")
-    .replace('./styles.css', './portfolio.css')
-    .replace('./script.js', './portfolio.js')
-    .replaceAll('../../public/assets/apps/', './assets/apps/');
-
-  const css = fs
-    .readFileSync(sourceCss, "utf8")
-    .replace(
-      "../../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2",
-      "./assets/fonts/manrope-latin-wght-normal.woff2"
-    );
-
-  fs.writeFileSync(path.join(outDir, "index.html"), html);
-  fs.writeFileSync(path.join(outDir, "portfolio.css"), css);
-  fs.copyFileSync(sourceScript, path.join(outDir, "portfolio.js"));
-  copyDir(portfolioAssetsDir, path.join(outDir, "assets", "apps"));
   fs.mkdirSync(path.join(outDir, "assets", "fonts"), { recursive: true });
-  fs.copyFileSync(
-    portfolioFontFile,
-    path.join(outDir, "assets", "fonts", "manrope-latin-wght-normal.woff2")
-  );
+  for (const source of fontFiles) {
+    fs.copyFileSync(source, path.join(outDir, "assets", "fonts", path.basename(source)));
+  }
 }
 
 function renderAppPage({ pageSlug, previewSlug, preview }) {
@@ -223,7 +195,7 @@ function main() {
 
   fs.rmSync(outDir, { recursive: true, force: true });
   copyDir(sourceDir, outDir);
-  publishPortfolioHomepage();
+  publishFonts();
 
   const previews = JSON.parse(fs.readFileSync(path.join(sourceDir, "previews.json"), "utf8"));
   const pageTargets = new Map();

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3efe6" />
+    <title>Public work · Matthew Paver</title>
+    <link rel="canonical" href="https://matthewpaver.github.io/work/" />
+    <meta name="description" content="Seven public projects and three reusable engineering patterns by Matthew Paver, with code, demos and honest limits." />
+    <meta property="og:title" content="Public work · Matthew Paver" />
+    <meta property="og:description" content="Seven public projects and three reusable engineering patterns, with code, demos and honest limits." />
+    <meta property="og:url" content="https://matthewpaver.github.io/work/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://matthewpaver.github.io/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.svg" />
+    <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
+    <link rel="stylesheet" href="../styles.css?v=20260811-2" />
+    <script src="../script.js?v=20260811-2" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalogue">Skip to catalogue</a>
+
+    <div class="topbar-shell">
+      <nav class="shell topbar" aria-label="Primary navigation">
+        <a class="brand" href="../" aria-label="Matthew Paver home">
+          <span class="brand-mark" aria-hidden="true">MP</span>
+          <span>Matthew Paver</span>
+        </a>
+        <div class="nav-links">
+          <a href="../">Home</a>
+          <a aria-current="page" href="./">All work</a>
+          <a href="#templates">Patterns</a>
+          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV</a>
+        </div>
+      </nav>
+    </div>
+
+    <main class="shell work-page">
+      <header class="work-hero">
+        <h1>Things I have built, tested and learned from.</h1>
+        <p class="lede">Seven projects and three reusable patterns. Search by the job each one does, then open the code, demo and known limits.</p>
+      </header>
+
+      <section id="catalogue" aria-labelledby="catalogue-heading">
+        <div class="catalogue-heading">
+          <h2 id="catalogue-heading">Projects</h2>
+          <p data-catalogue-count aria-live="polite">Seven projects</p>
+        </div>
+
+        <div class="catalogue-controls js-only" data-catalogue-controls hidden>
+          <label class="search-field">
+            <span>Search public work</span>
+            <input type="search" placeholder="Try AI evaluation or public data" autocomplete="off" data-catalogue-search />
+          </label>
+          <div class="work-filters" role="group" aria-label="Filter projects by type">
+            <button type="button" data-work-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-work-filter="decision">Decision tools</button>
+            <button type="button" data-work-filter="product">Product</button>
+            <button type="button" data-work-filter="data">Data</button>
+            <button type="button" data-work-filter="analytics">Analytics</button>
+            <button type="button" data-work-filter="experiment">Experiments</button>
+          </div>
+        </div>
+
+        <div class="work-grid" data-catalogue-grid>
+          <article class="work-card app-card image-card" data-slug="policylens" data-category="decision" data-status="Public" data-problem="Reviewers can see a risky policy diff without proving which sensitive request became reachable" data-solves="Turns an IAM policy diff into a cited stop or pass decision" data-proof="55 documented IAM boundary cases; adversarial AI grounding evaluation; correction verifier; public source">
+            <img src="../assets/policylens.png" width="1400" height="900" alt="PolicyLens IAM change review with a cited access finding" loading="eager" />
+            <div class="work-card-copy">
+              <p class="project-kind">AI assurance</p>
+              <h3>PolicyLens</h3>
+              <p>Checks whether one sensitive AWS request became reachable, cites the granting statement, and tests the correction.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>55 boundary cases</dd></div><div><dt>Limit</dt><dd>No SCP or permission-boundary model yet</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=policylens">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-slug="projectlens" data-category="decision" data-status="Public" data-problem="A change pack can tell a different story from the schedule it cites" data-solves="Gives a change board an evidence pack and decision record before approval" data-proof="Northstar XER demo; cited findings; 189 source-linked GMPP records; fail-closed optional RAG">
+            <img src="../assets/projectlens.png" width="2863" height="1524" alt="ProjectLens schedule assurance workspace with cited conflicts" />
+            <div class="work-card-copy">
+              <p class="project-kind">Project controls</p>
+              <h3>ProjectLens</h3>
+              <p>Compares a change narrative with its Primavera schedule before the board meets and keeps every finding tied to source dates.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>Browser-local XER demo</dd></div><div><dt>Limit</dt><dd>Supports review, not contractual entitlement</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=projectlens">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-slug="quicksupply" data-category="product" data-status="Public" data-problem="A Liverpool supply-cover booking journey relied on dated screens and manual follow-up" data-solves="Makes a three-sided booking handoff visible and testable" data-proof="Public repo; recorded walkthrough; official DfE market context; eligibility checks; unit route and browser tests">
+            <img src="../assets/quicksupply-dashboard.png" width="1200" height="760" alt="QuickSupply agency dashboard showing live cover requests" />
+            <div class="work-card-copy">
+              <p class="project-kind">Workflow product</p>
+              <h3>QuickSupply</h3>
+              <p>Turns an observed Liverpool supply-cover problem into separate school, agency and teacher journeys with visible handoffs.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>Tested three-role workflow</dd></div><div><dt>Limit</dt><dd>Historical case study, not a live service</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=quicksupply">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-slug="winchester" data-category="product data decision" data-status="Public" data-problem="A listing price omits commute, cash position, sold-price context and condition" data-solves="Turns a property shortlist into an affordability and evidence review" data-proof="Five-part public demo; 2,122 eligible HM Land Registry transactions from 2,389 source records; published filters">
+            <img src="../assets/winchester.png" width="1600" height="1000" alt="Winchester House Hunter property comparison workspace" />
+            <div class="work-card-copy">
+              <p class="project-kind">Recommendation workflow</p>
+              <h3>Winchester House Hunter</h3>
+              <p>Combines a personal shortlist with affordability, commute, sold-price context, condition notes and next actions.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>2,122 traced transactions after filters</dd></div><div><dt>Limit</dt><dd>Seeded homes, not a valuation</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=winchester">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-slug="lakehouse" data-category="data" data-status="Public" data-problem="A notebook hides the source contracts and data checks needed to reproduce an analysis" data-solves="Rebuilds a marketing dataset from source contracts to a prospective model task" data-proof="Checksum lineage; Bronze Silver Gold pipeline; 16 tests; leakage-safe next-day targets; GA4 public-data adapter">
+            <img src="../assets/marketing-lakehouse-dashboard.png" width="1200" height="675" alt="Marketing ML Lakehouse evidence console" />
+            <div class="work-card-copy">
+              <p class="project-kind">Data engineering template</p>
+              <h3>Marketing ML Lakehouse</h3>
+              <p>Builds source contracts, lineage and layered tables around a next-day prediction task with a temporal holdout and simple baseline.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>16 pipeline and evaluation tests</dd></div><div><dt>Limit</dt><dd>Demo fixtures are not campaign results</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=lakehouse">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-slug="hr" data-category="analytics" data-status="Public" data-problem="A dashboard screenshot does not preserve the model, calculations or interpretation decisions" data-solves="Packages a historical Power BI exercise with a corrected semantic contract" data-proof="AdventureWorks source; PBIX and PDF artefacts; corrected semantic contract; 11-file package validator">
+            <img src="../assets/hr-summary-preview.png" width="1360" height="787" alt="HR Performance Analytics Power BI summary dashboard" />
+            <div class="work-card-copy">
+              <p class="project-kind">Analytics handoff</p>
+              <h3>HR Performance Analytics</h3>
+              <p>Packages a historical Power BI exercise with its artefacts, reproduction notes and a correction to the original field interpretation.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>11-file package validator</dd></div><div><dt>Limit</dt><dd>Historical export still carries old labels</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=hr">Open case study <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-slug="england" data-category="experiment" data-status="Archived" data-problem="A one-event product loses its purpose when the event ends" data-solves="Shows a transparent tournament scenario model and closes it when the event ends" data-proof="10,000 seeded runs; model tests; live retrospective; POSTMORTEM.md">
+            <img src="../assets/can-england-win-it.png" width="1200" height="675" alt="Can England Win It tournament scenario simulator" />
+            <div class="work-card-copy">
+              <p class="project-kind">Finished experiment</p>
+              <h3>Can England Win It?</h3>
+              <p>A one-day World Cup scenario tool kept as a compact example of interactive modelling, animation and an honest close-out.</p>
+              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>10,000 seeded runs per scenario</dd></div><div><dt>Limit</dt><dd>Retrospective, not a forecast</dd></div></dl>
+              <a class="project-link" href="../preview.html?app=england">Open retrospective <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="catalogue-empty" data-catalogue-empty hidden>
+          <h3>No project matches that search.</h3>
+          <p>Clear the search or choose another category.</p>
+        </div>
+      </section>
+
+      <section id="templates" class="template-shelf" aria-labelledby="templates-heading">
+        <header class="section-intro">
+          <h2 id="templates-heading">Patterns you can reuse.</h2>
+          <p>Smaller repositories that teach one engineering decision without pretending to be standalone products.</p>
+        </header>
+        <div class="template-list">
+          <a class="template-row" href="https://github.com/MatthewPaver/sentence-similarity-analysis">
+            <div><strong>RAG retrieval and answer evaluation</strong><p>Measures retrieval, citation coverage and grounded answers, with BEIR adapters and adversarial documents.</p></div><span>Python and sentence-transformers</span>
+          </a>
+          <a class="template-row" href="https://github.com/MatthewPaver/pyspark-kafka-streaming">
+            <div><strong>PySpark and Kafka data contracts</strong><p>Validates events, quarantines failures, applies watermarks and deduplication, then reports window metrics.</p></div><span>PySpark and Kafka</span>
+          </a>
+          <a class="template-row" href="https://github.com/MatthewPaver/dating-app-recommendation-system">
+            <div><strong>Offline recommender evaluation</strong><p>Compares collaborative filtering with a popularity baseline using temporal holdouts, Top-K metrics and coverage.</p></div><span>Python and SciPy</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell footer">
+      <p>Public projects only. Private work stays private.</p>
+      <a href="../">Back to selected work</a>
+    </footer>
+  </body>
+</html>

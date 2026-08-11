@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
+    "dev": "python3 -m http.server 4321 --directory store",
+    "build": "node scripts/validate-store.mjs && node scripts/prepare-pages-artifact.mjs",
+    "build:astro-archive": "astro check && astro build",
+    "preview": "python3 -m http.server 4321 --directory pages-dist",
     "metrics": "node scripts/fetch-github-metrics.mjs",
     "screenshots": "node scripts/capture-product-screenshots.mjs",
     "test": "npm run test:unit && npm run build",

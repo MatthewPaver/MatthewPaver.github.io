@@ -14,9 +14,8 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
-# The site currently deployed is the restored 19 May static store (top-level
-# `store/`). The Astro source in src/ is retained but not deployed — restore
-# the previous verify+dist pipeline from git history to bring it back.
+# `store/` is the canonical source. The build copies it to `pages-dist/` and
+# writes indexable detail pages under `/store/apps/<slug>/`.
 jobs:
   deploy:
     environment:
@@ -35,14 +34,6 @@ jobs:
 
       - name: Prepare Pages artifact
         run: node scripts/prepare-pages-artifact.mjs
-
-      - name: Inject build SHA
-        run: |
-          SHORT_SHA="${GITHUB_SHA:0:7}"
-          LONG_SHA="${GITHUB_SHA}"
-          REPLACEMENT="id=\"build-sha\" href=\"https://github.com/MatthewPaver/MatthewPaver.github.io/commit/${LONG_SHA}\">${SHORT_SHA}"
-          # Stamp every HTML page in the artifact, including nested /store/apps/ routes
-          find pages-dist -name "*.html" -exec sed -i "s|id=\"build-sha\" href=\"[^\"]*\">dev|${REPLACEMENT}|g" {} +
 
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5

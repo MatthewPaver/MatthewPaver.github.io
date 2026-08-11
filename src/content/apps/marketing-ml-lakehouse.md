@@ -9,13 +9,13 @@ audience: Data engineers reviewing a local marketing analytics pipeline
 category: Marketing data
 status: live
 shelf: data-ml
-tagline: Run a local marketing pipeline from raw CSV files to a scored campaign dashboard.
-problem: A notebook can hide the ingestion and data-quality work needed to reproduce an analysis.
-outcome: The repository loads CSV files into DuckDB, trains an example model and serves the results in Streamlit.
+tagline: Rebuild a marketing dataset from source contracts to model output.
+problem: A notebook can hide the source contracts, lineage and data checks needed to reproduce an analysis.
+outcome: The template records source checksums, builds Bronze, Silver and Gold tables, trains an example model and serves the evidence.
 proof:
-  - End-to-end local pipeline
-  - Synthetic sample data
-  - Streamlit dashboard
+  - Source contracts and checksum lineage
+  - Full local rebuild with 13 checks
+  - Optional public GA4 ecommerce profile
 stack:
   - Python
   - DuckDB
@@ -30,7 +30,7 @@ primaryAction: Open ML Lakehouse
 license: MIT
 version: Full browser demo + local engine
 since: Oct 2025
-updated: 2026-07-28
+updated: 2026-08-11
 requirements:
   - Python 3.11
   - Local browser for Streamlit

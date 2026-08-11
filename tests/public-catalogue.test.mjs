@@ -14,8 +14,8 @@ const entries = readdirSync(contentDir)
     source: readFileSync(join(contentDir.pathname, name), "utf8"),
   }));
 
-test("public entries carry repository evidence; private entries declare themselves", () => {
-  assert.equal(entries.length, 17);
+test("the curated catalogue contains public, reproducible work only", () => {
+  assert.equal(entries.length, 7);
   let featured = 0;
   for (const entry of entries) {
     assert.match(entry.source, /^portfolioRole:\s+.+$/m, `${entry.name} must state its portfolio role`);
@@ -23,15 +23,13 @@ test("public entries carry repository evidence; private entries declare themselv
     if (/^featured:\s+true$/m.test(entry.source)) featured += 1;
     const repo = entry.source.match(/^repo:\s+https:\/\/github\.com\/([^\s]+)$/m)?.[1];
     const metricsRepo = entry.source.match(/^metricsRepo:\s+([^\s]+)$/m)?.[1];
-    if (repo) {
-      assert.equal(metricsRepo, repo, `${entry.name} metrics must use its displayed repository`);
-      assert.ok(metrics[metricsRepo], `${entry.name} must have public repository evidence`);
-    } else {
-      assert.match(entry.source, /^status:\s+(private|prototype)$/m,
-        `${entry.name} has no public repo so it must be declared private or prototype`);
-      assert.doesNotMatch(entry.source, /^featured:\s+true$/m,
-        `${entry.name} is private and must not be a featured selected project`);
-    }
+    assert.ok(repo, `${entry.name} must link to a public repository`);
+    assert.equal(metricsRepo, repo, `${entry.name} metrics must use its displayed repository`);
+    assert.ok(metrics[metricsRepo], `${entry.name} must have public repository evidence`);
+    assert.doesNotMatch(entry.source, /^status:\s+(private|prototype)$/m,
+      `${entry.name} cannot expose private or prototype work`);
+    assert.doesNotMatch(entry.source, /^image:\s+.*\.svg$/m,
+      `${entry.name} must use a real interface screenshot`);
   }
   assert.equal(featured, 3, "the homepage must lead with exactly three selected projects");
 });

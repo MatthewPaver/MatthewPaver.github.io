@@ -17,16 +17,16 @@ const siteBase = "https://matthewpaver.github.io";
 // Old Astro catalogue ids → current store preview slugs.
 // Keeps shared / bookmarked /store/apps/<astro-id>/ URLs alive.
 const ALIASES = {
+  "iam-policy-auditor": "policylens",
+  "policy-lens": "policylens",
   "marketing-ml-lakehouse": "lakehouse",
-  "sentence-similarity": "sentence",
-  "sentence-similarity-analysis": "sentence",
   "hr-performance": "hr",
   "hr-performance-dashboards": "hr",
   "can-england-win-it": "england",
-  "pyspark-kafka-streaming": "pyspark",
   "project-lens": "projectlens",
   "QuickSupply": "quicksupply",
   "quick-supply": "quicksupply",
+  "winchester-buyer-check": "winchester",
 };
 
 function escapeHtml(value) {
@@ -70,17 +70,17 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#fbfaf7" />
-    <title>${escapeHtml(preview.title)} · Matthew Paver Portfolio Store</title>
+    <title>${escapeHtml(preview.title)} · Matthew Paver</title>
     <meta name="description" content="${escapeHtml(preview.summary)}" />
     <link rel="canonical" href="${canonical}" />
-    <meta property="og:title" content="${escapeHtml(preview.title)} · Matthew Paver Portfolio Store" />
+    <meta property="og:title" content="${escapeHtml(preview.title)} · Matthew Paver" />
     <meta property="og:description" content="${escapeHtml(preview.summary)}" />
     <meta property="og:url" content="${canonical}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="${escapeHtml(absoluteImage)}" />
     <meta property="og:image:alt" content="${escapeHtml(preview.imageAlt)}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${escapeHtml(preview.title)} · Matthew Paver Portfolio Store" />
+    <meta name="twitter:title" content="${escapeHtml(preview.title)} · Matthew Paver" />
     <meta name="twitter:description" content="${escapeHtml(preview.summary)}" />
     <meta name="twitter:image" content="${escapeHtml(absoluteImage)}" />
     <link rel="icon" type="image/svg+xml" href="${assetPrefix}/assets/favicon.svg" />
@@ -113,8 +113,8 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
 
       <section class="preview-hero">
         <div class="preview-copy">
-          <p class="eyebrow">${escapeHtml(preview.kicker)}</p>
           <h1>${escapeHtml(preview.title)}</h1>
+          <p class="preview-kicker">${escapeHtml(preview.kicker)}</p>
           <p class="lede">${escapeHtml(preview.summary)}</p>
           <div class="preview-actions">
             ${
@@ -162,8 +162,8 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
       </section>
 
       <footer class="footer">
-        <p>Portfolio store · <a href="${canonical}">/store/apps/${escapeHtml(pageSlug)}/</a></p>
-        <a href="${assetPrefix}/">Back to store</a>
+        <p>Matthew Paver, software and AI engineer.</p>
+        <a href="${assetPrefix}/work/">All public work</a>
       </footer>
     </main>
   </body>

@@ -47,27 +47,27 @@ const structuredData = [
 ---
 
 <SiteLayout
-  title="Matthew Paver · Portfolio store"
-  description="Matthew Paver's portfolio store — AI products, data systems, automation and analytics projects, each with a working demo or an honest install path."
+  title="Matthew Paver · Software and AI engineering"
+  description="Public decision tools, data products and reproducible engineering case studies by Matthew Paver."
   structuredData={structuredData}
 >
   <section class="promise-intro shell">
     <p class="kicker">Matthew Paver · Product engineer, London</p>
-    <h1>I build AI products and the data systems behind them.</h1>
+    <h1>I build decision tools, data products and the checks that keep them honest.</h1>
     <p class="promise-lede">
-      This is the whole catalogue — live demos, public repositories and private
-      builds, each with its stack, its status and its known limits stated.
+      Seven public projects with working demos or reproducible run paths. Each one
+      names the decision it supports, the evidence in the repository and its limits.
     </p>
     <div class="intro-actions">
       <a class="button button--primary button--large" href="#catalogue">Browse the shelves</a>
       <a class="button button--secondary button--large" href="https://www.linkedin.com/in/matthew-paver-534262166/">Connect with me</a>
     </div>
     <ul class="evidence-chips" aria-label="Catalogue in numbers">
-      <li><strong>{apps.length}</strong> projects shipped <span>this catalogue</span></li>
+      <li><strong>{apps.length}</strong> public projects <span>curated here</span></li>
       <li><strong>{liveCount}</strong> live demos <span>no sign-up</span></li>
       <li><strong>{publicRepoCount}</strong> public repos <span>on GitHub</span></li>
-      <li><strong>30/30</strong> extraction eval cases pass <span>MeetingProof</span></li>
-      <li><strong>167</strong>-test reliability suite <span>Happening</span></li>
+      <li><strong>23</strong> IAM benchmark cases <span>PolicyLens</span></li>
+      <li><strong>13</strong> pipeline checks <span>ML Lakehouse</span></li>
     </ul>
   </section>
 
@@ -78,7 +78,7 @@ const structuredData = [
           <p class="kicker">Open these first</p>
           <h2>Three projects worth a real look.</h2>
         </div>
-        <p>Each one opens a working public example — synthetic data, no sign-up, limits stated.</p>
+        <p>Policy review, project change assurance and a three-sided booking journey.</p>
       </header>
 
       <div class="featured-projects">
@@ -86,6 +86,7 @@ const structuredData = [
           const data = app.data;
           const detailUrl = appUrl(app);
           const demoUrl = data.launch ?? data.repo ?? detailUrl;
+          const actionLabel = data.launch ? "Open demo" : data.repo ? "View source" : "Read case study";
           return (
             <article
               class:list={["featured-project", index === 0 && "featured-project--lead"]}
@@ -110,7 +111,7 @@ const structuredData = [
                 <p>{data.tagline}</p>
                 <p><strong>You finish with:</strong> {data.outcome}</p>
                 <div class="project-links">
-                  <a href={demoUrl}>Open the demo <span aria-hidden="true">↗</span></a>
+                  <a href={demoUrl}>{actionLabel} <span aria-hidden="true">↗</span></a>
                   <a href={detailUrl}>How it works</a>
                 </div>
               </div>
@@ -126,9 +127,9 @@ const structuredData = [
       <header class="portfolio-section-heading">
         <div>
           <p class="kicker">Catalogue</p>
-          <h2>Browse by shelf.</h2>
+          <h2>More public work.</h2>
         </div>
-        <p>Everything else I've shipped — products, data systems, automation, analytics. Private builds are labelled, not dressed up.</p>
+        <p>Decision tools, data templates, analytics handoffs and one finished experiment.</p>
       </header>
 
       <div class="catalogue-controls" data-catalogue-controls hidden>
@@ -168,10 +169,10 @@ const structuredData = [
           <p class="kicker">Same rules for this site</p>
           <h2>Every push runs the checklist.</h2>
         </div>
-        <p>This site gates its own deploys — nothing ships unless the checks pass.</p>
+        <p>This site checks every catalogue entry before it deploys.</p>
       </header>
       <ul class="gate-checklist">
-        <li><strong>Catalogue policy</strong><span>public entries must carry live repository evidence; private ones must declare themselves</span></li>
+        <li><strong>Catalogue policy</strong><span>every visible project must link to a public repository and real screenshot</span></li>
         <li><strong>Type check &amp; build</strong><span>astro check + full static build</span></li>
         <li><strong>Nine browser checks</strong><span>desktop and mobile Playwright runs, including no-JavaScript and overflow tests</span></li>
         <li><strong>Fresh repo evidence</strong><span>version and CI status on every card re-fetched from GitHub at deploy time</span></li>
@@ -186,13 +187,13 @@ const structuredData = [
       <h2>A bit about me</h2>
       <p>
         I work across product design, software, data and automation in London.
-        Most of these projects started because I wanted to understand a problem
-        by building the tool myself. The code, tests and known limits are in the
+        These projects started with a specific question I wanted to answer by
+        building the tool. The code, tests and known limits are in the
         linked repositories.
       </p>
       <p class="about-certs">
         Certified: AWS Cloud Practitioner &amp; AI Practitioner · Neo4j Professional ·
-        Hugging Face AI Agents · UiPath RPA · BCS Diploma in IT — verification in the CV.
+        Hugging Face AI Agents · UiPath RPA · BCS Diploma in IT. Verification is in the CV.
       </p>
       <nav class="portfolio-links" aria-label="Contact Matthew Paver">
         <a href="https://www.linkedin.com/in/matthew-paver-534262166/">LinkedIn <span aria-hidden="true">↗</span></a>

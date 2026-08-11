@@ -1,118 +1,93 @@
-# Matthew Paver Portfolio Store
+# Matthew Paver Portfolio
 
-> Product-shaped engineering across AI, data, and automation.
+> Public decision tools, data products and reproducible engineering case studies.
 
 Site: https://matthewpaver.github.io/
 Author: Matthew Paver
 Based: London
-Principle: real interfaces, stated boundaries, inspectable evidence
-Rule: do not invent user counts, ratings, testimonials, or commercial results
-
-## Profile
-
-- GitHub: https://github.com/MatthewPaver
-- LinkedIn: https://www.linkedin.com/in/matthew-paver-534262166/
-- Profile README: https://github.com/MatthewPaver/MatthewPaver
-
-## Shelves
-
-- Products (product)
-- Data systems (data)
-- Automation (automation)
-- ML and retrieval (ml)
-- Analytics (analytics)
-- Archive (archive)
+Rule: do not invent adoption, customer, revenue or accuracy claims
 
 ## Projects
+
+### PolicyLens
+
+- Shelf: AI engineering
+- Status: Public
+- Problem: Reviewers can see a risky policy diff without proving which sensitive request became reachable
+- Outcome: Turns an IAM policy diff into a cited stop or pass decision
+- Proof: 55 documented IAM boundary cases; adversarial AI grounding evaluation; correction verifier; public source
+- Preview: https://matthewpaver.github.io/preview.html?app=policylens
+- Repo: https://github.com/MatthewPaver/iam-policy-auditor
+- Stack: Node.js, AWS IAM, AI evals, Docker
 
 ### ProjectLens
 
 - Shelf: Products
 - Status: Public
-- Problem: Change packs and schedules disagree quietly before board meetings
-- Outcome: Compares the pack with the schedule and records the decision
-- Proof: Browser-local demo on Northstar + Riverside synthetic XER pairs; Playwright checks in CI
+- Problem: A change pack can tell a different story from the schedule it cites
+- Outcome: Gives a change board an evidence pack and decision record before approval
+- Proof: Northstar XER demo; cited findings; 189 source-linked GMPP records; fail-closed optional RAG
 - Preview: https://matthewpaver.github.io/preview.html?app=projectlens
 - Repo: https://github.com/MatthewPaver/ProjectLens
-- Stack: Python, Playwright, pandas, GitHub Pages
+- Stack: Python, LangGraph, Gemini, LangSmith, Playwright
 
 ### QuickSupply
 
 - Shelf: Products
 - Status: Public
-- Problem: School cover coordination becomes a spreadsheet-and-message chain
-- Outcome: Coordinates school cover end to end
-- Proof: Public repo; recorded agency demo; 14 migrations, SSE, Playwright e2e
+- Problem: A Liverpool supply-cover booking journey relied on dated screens and manual follow-up
+- Outcome: Makes a three-sided booking handoff visible and testable
+- Proof: Public repo; recorded walkthrough; official DfE market context; eligibility checks; unit route and browser tests
 - Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
 - Repo: https://github.com/MatthewPaver/QuickSupply
-- Stack: Next.js, TypeScript, PostgreSQL, Drizzle, SSE
+- Stack: Next.js, TypeScript, SQLite, Drizzle, SSE
 
-### Can England Win It
+### Winchester House Hunter
 
 - Shelf: Products
 - Status: Public
-- Problem: Single-event tools go stale after the event
-- Outcome: A 10k-run scenario simulator kept public as a bit of fun
-- Proof: Seed-deterministic tests; recorded walkthrough; POSTMORTEM.md
-- Preview: https://matthewpaver.github.io/preview.html?app=england
-- Repo: https://github.com/MatthewPaver/can-england-win-it
-- Stack: TypeScript, React, Vite, Vitest
+- Problem: A listing price omits commute, cash position, sold-price context and condition
+- Outcome: Turns a property shortlist into an affordability and evidence review
+- Proof: Five-part public demo; 2,122 eligible HM Land Registry transactions from 2,389 source records; published filters
+- Preview: https://matthewpaver.github.io/preview.html?app=winchester
+- Repo: https://github.com/MatthewPaver/winchester-buyer-check
+- Stack: React, TypeScript, public data
 
 ### Marketing ML Lakehouse
 
 - Shelf: Data systems
 - Status: Public
-- Problem: Analytics demos often stop at a notebook
-- Outcome: Packages local analytics
-- Proof: Browser evidence console plus CI rebuild from committed demo CSVs
+- Problem: A notebook hides the source contracts and data checks needed to reproduce an analysis
+- Outcome: Rebuilds a marketing dataset from source contracts to a prospective model task
+- Proof: Checksum lineage; Bronze Silver Gold pipeline; 16 tests; leakage-safe next-day targets; GA4 public-data adapter
 - Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
 - Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 - Stack: Python, DuckDB, XGBoost, Streamlit, Makefile
-
-### Sentence Similarity Analysis
-
-- Shelf: ML and retrieval
-- Status: Public
-- Problem: Teams treat embedding similarity as a correctness score
-- Outcome: Shortlists meaning for FAQ and precedent retrieval — with caveats
-- Proof: Notebook + CI on ranking logic; no GitHub Pages app
-- Preview: https://matthewpaver.github.io/preview.html?app=sentence
-- Repo: https://github.com/MatthewPaver/sentence-similarity-analysis
-- Stack: Python, Jupyter, sentence-transformers, PyTorch
-
-### Swipe Recommender Lab
-
-- Shelf: ML and retrieval
-- Status: Public
-- Problem: Implicit feedback recommenders are easy to overfit on random splits
-- Outcome: Ranks candidates from swipe-style implicit feedback with honest holdouts
-- Proof: Temporal holdout Top-K metrics in CI; synthetic swipe fixtures
-- Preview: https://matthewpaver.github.io/preview.html?app=recommender
-- Repo: https://github.com/MatthewPaver/dating-app-recommendation-system
-- Stack: Python, NumPy, SciPy, scikit-learn, Jupyter
-
-### PySpark Kafka Streaming
-
-- Shelf: Data systems
-- Status: Public
-- Problem: Streaming examples are often too big to actually read
-- Outcome: Compact event-stream patterns for ops status and telemetry
-- Proof: CI spark-submit on compact scripts; Docker Kafka round-trip in README
-- Preview: https://matthewpaver.github.io/preview.html?app=pyspark
-- Repo: https://github.com/MatthewPaver/pyspark-kafka-streaming
-- Stack: Python, PySpark, Kafka, Docker
 
 ### HR Performance Analytics
 
 - Shelf: Analytics
 - Status: Public
-- Problem: Dashboard work needs inspectable handoff material
-- Outcome: Turns HR data into decisions
-- Proof: PBIX, screenshots and methodology PDF in the repo; schema checks on synthetic CSV
+- Problem: A dashboard screenshot does not preserve the model, calculations or interpretation decisions
+- Outcome: Packages a historical Power BI exercise with a corrected semantic contract
+- Proof: AdventureWorks source; PBIX and PDF artefacts; corrected semantic contract; 11-file package validator
 - Preview: https://matthewpaver.github.io/preview.html?app=hr
 - Repo: https://github.com/MatthewPaver/hr-performance-dashboards
-- Stack: Power BI, DAX, CSV, Reporting, PDF exports
+- Stack: Power BI, DAX, AdventureWorks, reporting
 
-## Optional
+### Can England Win It
 
-- Sitemap: https://matthewpaver.github.io/sitemap.xml
+- Shelf: Finished experiments
+- Status: Archived
+- Problem: A one-event product loses its purpose when the event ends
+- Outcome: Shows a transparent tournament scenario model and closes it when the event ends
+- Proof: 10,000 seeded runs; model tests; live retrospective; POSTMORTEM.md
+- Preview: https://matthewpaver.github.io/preview.html?app=england
+- Repo: https://github.com/MatthewPaver/can-england-win-it
+- Stack: TypeScript, React, Vite, Vitest
+
+## Reusable templates
+
+- RAG retrieval and answer evaluation: https://github.com/MatthewPaver/sentence-similarity-analysis
+- PySpark and Kafka data contracts: https://github.com/MatthewPaver/pyspark-kafka-streaming
+- Offline recommender evaluation: https://github.com/MatthewPaver/dating-app-recommendation-system

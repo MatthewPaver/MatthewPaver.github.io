@@ -1,7 +1,7 @@
 ---
 title: Winchester House Hunter
 shortTitle: House Hunter
-order: 7
+order: 4
 featured: false
 kind: flagship
 portfolioRole: Public utility
@@ -32,7 +32,7 @@ primaryAction: Open House Hunter
 license: Public demo; production product remains private
 version: Full browser demo
 since: Jul 2026
-updated: 2026-07-28
+updated: 2026-08-11
 requirements: []
 install: []
 validate: []

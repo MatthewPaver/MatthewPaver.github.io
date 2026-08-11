@@ -1,270 +1,156 @@
 {
-  "projectlens": {
-    "kicker": "Runnable decision tool",
-    "title": "ProjectLens",
-    "summary": "Browser-local change assurance with cited-precedent RAG: compare a change pack with its schedule, retrieve similar past decisions with sources, then record the human response.",
-    "image": "./assets/projectlens-thumb.svg",
-    "imageAlt": "ProjectLens change assurance product thumbnail",
-    "role": "Change assurance",
-    "status": "Public",
-    "focus": "Board decisions + RAG",
-    "problem": "Change packs and schedules drift apart before board meetings. ProjectLens loads both in the browser, surfaces the largest conflicts with source dates, retrieves comparable past decisions (Gemini + LangGraph, traced in LangSmith), and records the human decision only after a Use/Ignore gate.",
+  "policylens": {
+    "kicker": "IAM change review",
+    "title": "PolicyLens",
+    "summary": "Check whether one sensitive AWS request became reachable, cite the granting statement and test the correction.",
+    "image": "./assets/policylens.png",
+    "imageAlt": "PolicyLens IAM review interface",
+    "role": "Decision support",
+    "status": "Public source",
+    "focus": "IAM and AI evaluation",
+    "problem": "A policy diff tells a reviewer which JSON changed. PolicyLens evaluates the same sensitive request before and after, cites the granting statement, and checks whether a correction closes that path while preserving required access.",
     "points": [
-      "One-click Northstar demo on GitHub Pages — XER stay in the browser; no upload.",
-      "Cited-precedent RAG (LangGraph retrieve → Gemini brief → LangSmith traces) with a human Use/Ignore gate before the decision register.",
-      "Pytest + Playwright in CI; public Pages hosts the deterministic demo; live Gemini retrieve runs via local `make precedent-rag`."
+      "The deterministic engine decides permission reachability. The LLM can explain the result but cannot change it.",
+      "The 55-case benchmark covers documented IAM boundary conditions; the offline AI suite rejects wrong verdicts, invented citations and unsafe claims.",
+      "The included fixtures, tests and Docker path run without a cloud account or API key."
     ],
-    "stack": [
-      "Python",
-      "LangGraph",
-      "Gemini",
-      "LangSmith",
-      "Playwright",
-      "GitHub Pages"
-    ],
+    "stack": ["Node.js", "AWS IAM", "AI evals", "Docker"],
     "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/ProjectLens"
-      },
-      {
-        "label": "RAG notes",
-        "href": "https://github.com/MatthewPaver/ProjectLens/blob/main/docs/precedent-rag.md"
-      }
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/iam-policy-auditor", "primary": true },
+      { "label": "Read the eval design", "href": "https://github.com/MatthewPaver/iam-policy-auditor/blob/main/docs/AI_EVALS.md" }
     ],
-    "note": "Demo fixtures are synthetic. GitHub Pages is static — live hybrid retrieve needs the local FastAPI sidecar (or a configured API URL)."
+    "note": "Local decision support, not an authorization oracle. SCPs, permission boundaries, session policies and some cross-account interactions remain outside the current model."
+  },
+  "projectlens": {
+    "kicker": "Project change assurance",
+    "title": "ProjectLens",
+    "summary": "Compare a change narrative with its Primavera schedule, inspect cited conflicts and record the board response.",
+    "image": "./assets/projectlens.png",
+    "imageAlt": "ProjectLens change assurance workspace",
+    "role": "Decision support",
+    "status": "Live public demo",
+    "focus": "Project controls and RAG",
+    "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. An optional retrieval path finds cited past decisions, then asks the reviewer to use or ignore them.",
+    "points": [
+      "The public Northstar XER runs in the browser and files do not leave the device.",
+      "Every finding links to schedule evidence and the reviewer records the decision and follow-up.",
+      "The public context comes from 189 current, source-linked GMPP records; it is not presented as evidence that an intervention worked."
+    ],
+    "stack": ["Python", "LangGraph", "Gemini", "LangSmith", "Playwright"],
+    "links": [
+      { "label": "Open demo", "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html", "primary": true },
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/ProjectLens" }
+    ],
+    "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority."
   },
   "quicksupply": {
-    "kicker": "Workflow product",
+    "kicker": "Product redesign case study",
     "title": "QuickSupply",
-    "summary": "A supply-cover workflow for requests, agencies, teacher offers, compliance, and live status — now a public repo with a recorded agency demo.",
+    "summary": "A working redesign of an outdated Liverpool supply-cover journey across school, agency and teacher roles.",
     "image": "./assets/quicksupply-dashboard.png",
-    "imageAlt": "QuickSupply agency dashboard interface",
+    "imageAlt": "QuickSupply agency dashboard",
     "video": "./assets/quicksupply-demo.m4v",
     "role": "Workflow product",
-    "status": "Public",
-    "focus": "School cover ops",
-    "problem": "School cover coordination can become a spreadsheet-and-message chain. QuickSupply shapes the job around request intake, sequential agency assignment, teacher availability, compliance checks, and status updates.",
+    "status": "Public case study",
+    "focus": "School cover operations",
+    "problem": "A local booking process split same-day cover across dated screens and manual follow-up. QuickSupply separates school, agency and teacher work, then makes each assignment and status handoff visible.",
     "points": [
-      "Separates school, agency, and teacher workflows instead of flattening them into one admin view.",
-      "Uses live status updates so bookings can move without manual chasing.",
-      "Public source plus a muted agency walkthrough on this preview page."
+      "Sequential offers and eligibility checks model the operational constraints.",
+      "Server-sent events keep the three views in step without manual refresh.",
+      "Official DfE vacancy data supplies aggregate market context only; it never ranks an individual teacher."
     ],
-    "stack": [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Drizzle",
-      "SSE"
-    ],
+    "stack": ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "SSE"],
     "links": [
-      {
-        "label": "Watch demo",
-        "href": "./preview.html?app=quicksupply",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/QuickSupply"
-      }
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/QuickSupply", "primary": true }
     ],
-    "note": "Public product repo. The video is a walkthrough of the agency workflow on synthetic/demo data."
+    "note": "Historical redesign case study, not a live staffing service or a validated startup."
   },
-  "england": {
-    "kicker": "Fun scenario lab",
-    "title": "Can England Win It",
-    "summary": "An interactive World Cup scenario simulator kept public as a bit of fun — with an honest postmortem after the event.",
-    "image": "./assets/can-england-win-it.png",
-    "imageAlt": "Can England Win It scenario simulator screenshot",
-    "role": "Scenario simulation",
-    "status": "Public",
-    "focus": "Public fun",
-    "problem": "Tools built for a single event go stale after it. This app ran 10,000 seeded simulations per scenario, and was archived with a postmortem instead of being left to rot.",
+  "winchester": {
+    "kicker": "Property decision tool",
+    "title": "Winchester House Hunter",
+    "summary": "A personal property shortlist tied to affordability, commute, condition notes and traced sold-price context.",
+    "image": "./assets/winchester.png",
+    "imageAlt": "Winchester House Hunter comparison workspace",
+    "role": "Public utility",
+    "status": "Live public demo",
+    "focus": "Recommendations and public data",
+    "problem": "A portal listing cannot answer whether one home works for one buyer. House Hunter combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
     "points": [
-      "Seed-deterministic simulation with tests for bounds, monotonicity and uncertainty ranges.",
-      "Recorded walkthrough on this preview — npm test runs in CI.",
-      "POSTMORTEM.md explains why the project was closed honestly after the tournament."
+      "The five-part demo takes a reviewer from shortlist to an evidence-backed next action.",
+      "The public market view retains 2,122 of 2,389 traced HM Land Registry transactions after its published filters.",
+      "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
     ],
-    "stack": [
-      "TypeScript",
-      "React",
-      "Vite",
-      "Vitest"
-    ],
+    "stack": ["React", "TypeScript", "Fastify", "Prisma", "HM Land Registry"],
     "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/can-england-win-it/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/can-england-win-it"
-      }
+      { "label": "Open demo", "href": "https://matthewpaver.github.io/winchester-buyer-check/", "primary": true },
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/winchester-buyer-check" }
     ],
-    "note": "Public fun project. Scenario tool, not a forecast or betting product.",
-    "video": "./assets/can-england-win-it-demo.mp4"
+    "note": "Illustrative only. Listings and figures are seeded examples, not financial, tax, legal or mortgage advice."
   },
   "lakehouse": {
-    "kicker": "Runnable demo console",
+    "kicker": "Reusable data template",
     "title": "Marketing ML Lakehouse",
-    "summary": "A local analytics loop that moves raw marketing CSVs through DuckDB, model training, checks, and a dashboard.",
-    "image": "./assets/marketing-lakehouse-thumb.svg",
-    "imageAlt": "Marketing ML Lakehouse product thumbnail",
-    "role": "Analytics engineering",
-    "status": "Public",
-    "focus": "Lakehouse + ML",
-    "problem": "Many analytics demos stop at a notebook. This repo packages the full local loop: ingest raw marketing data, model it, check it, and expose it through a dashboard.",
+    "summary": "A rebuildable local pipeline from source contracts to a leakage-safe next-day prediction task and evidence console.",
+    "image": "./assets/marketing-lakehouse-dashboard.png",
+    "imageAlt": "Marketing ML Lakehouse evidence console",
+    "role": "Data engineering template",
+    "status": "Live public demo",
+    "focus": "Lakehouse and ML delivery",
+    "problem": "A notebook can hide the ingestion, lineage and evaluation choices needed to reproduce an analysis. This template records source contracts and checksums, builds Bronze, Silver and Gold tables, then evaluates a next-day target against a persistence baseline with a temporal holdout.",
     "points": [
-      "Two commands from clone to running pipeline, using CSV fixtures committed to the repo.",
-      "CI rebuilds the whole DuckDB lakehouse from the demo data and runs shape, tolerance and leakage checks.",
-      "The Pages demo states on the page that metrics come from committed fixtures, not a connected ad account."
+      "A clean command rebuilds the DuckDB lakehouse from committed fixtures.",
+      "Sixteen tests cover contracts, lineage, shapes, tolerances, temporal splits and leakage.",
+      "An optional adapter maps Google's public GA4 ecommerce sample to the same prospective task without committing the raw export."
     ],
-    "stack": [
-      "Python",
-      "DuckDB",
-      "XGBoost",
-      "Streamlit",
-      "Makefile"
-    ],
+    "stack": ["Python", "DuckDB", "XGBoost", "Streamlit", "Makefile"],
     "links": [
-      {
-        "label": "Open demo",
-        "href": "https://matthewpaver.github.io/marketing-ml-lakehouse/",
-        "primary": true
-      },
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse"
-      }
+      { "label": "Open demo", "href": "https://matthewpaver.github.io/marketing-ml-lakehouse/", "primary": true },
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse" }
     ],
-    "note": "Local demo pipeline and browser console — not a hosted SaaS product."
-  },
-  "sentence": {
-    "kicker": "Retrieval study",
-    "title": "Sentence Similarity Analysis",
-    "summary": "Embedding shortlists for FAQ match and precedent-style retrieval — the same caveat you need before trusting a ProjectLens RAG answer.",
-    "image": "./assets/sentence-similarity-thumb.svg",
-    "imageAlt": "Sentence similarity product thumbnail",
-    "role": "NLP analysis",
-    "status": "Public",
-    "focus": "Retrieval before generation",
-    "problem": "Embedding similarity is useful for shortlisting, but it is not proof. This notebook shows ranking that helps retrieval and where it still misleads.",
-    "points": [
-      "Transformer embeddings + cosine ranking over a fixed corpus.",
-      "Use it as the retrieval half of RAG / FAQ / similar-ticket flows.",
-      "Non-goal: top-1 similarity is not a verified fact — cite sources next."
-    ],
-    "stack": [
-      "Python",
-      "Jupyter",
-      "sentence-transformers",
-      "PyTorch"
-    ],
-    "links": [
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/sentence-similarity-analysis",
-        "primary": true
-      }
-    ],
-    "note": "Study notebook that supports the ProjectLens RAG direction: retrieve with caveats, then human/source check."
-  },
-  "recommender": {
-    "kicker": "Ranking study",
-    "title": "Swipe Recommender Lab",
-    "summary": "Collaborative filtering on swipe-style implicit feedback with temporal holdouts and Top-K metrics — a recommender-systems signal, not a dating product.",
-    "image": "./assets/recommender-eval-thumb.png",
-    "imageAlt": "Swipe recommender evaluation thumbnail",
-    "role": "Ranking / CF",
-    "status": "Public",
-    "focus": "Recommendation systems",
-    "problem": "Random-split recommenders look good and fail in time. This lab uses temporal holdouts so ranking quality is honest.",
-    "points": [
-      "Implicit feedback from swipe-style interactions.",
-      "Temporal holdout Top-K evaluation in CI.",
-      "Shows CF / ranking discipline useful beyond dating (marketplace, content, shortlists)."
-    ],
-    "stack": [
-      "Python",
-      "NumPy",
-      "SciPy",
-      "scikit-learn",
-      "Jupyter"
-    ],
-    "links": [
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/dating-app-recommendation-system",
-        "primary": true
-      }
-    ],
-    "note": "Offline ranking lab on synthetic/demo swipes. Not a live dating app."
-  },
-  "pyspark": {
-    "kicker": "Streaming examples",
-    "title": "PySpark Kafka Streaming",
-    "summary": "Compact PySpark + Kafka patterns for ops event streams — cover status, booking updates, telemetry fan-in.",
-    "image": "./assets/pyspark-kafka-thumb.svg",
-    "imageAlt": "PySpark Kafka Streaming examples thumbnail",
-    "role": "Streaming examples",
-    "status": "Public",
-    "focus": "Event buses",
-    "problem": "Streaming tutorials are often too large to read. These scripts show the shape for live status feeds without a platform dump.",
-    "points": [
-      "DataFrame + Structured Streaming paths that CI can compile.",
-      "Maps to live booking/cover status buses and ops telemetry.",
-      "Kafka round-trip via Docker when you want producer/consumer."
-    ],
-    "stack": [
-      "Python",
-      "PySpark",
-      "Kafka",
-      "Docker"
-    ],
-    "links": [
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/pyspark-kafka-streaming",
-        "primary": true
-      }
-    ],
-    "note": "Technical example for event-shaped products (QuickSupply status, Happening ingest) — not a packaged platform."
+    "note": "The public console uses committed fixtures. It does not claim results from a connected advertising account."
   },
   "hr": {
-    "kicker": "Handoff package",
+    "kicker": "Analytics handoff",
     "title": "HR Performance Analytics",
-    "summary": "A Power BI dashboard package for headcount, sales performance, absence, and stakeholder-ready reporting.",
-    "image": "./assets/hr-performance-thumb.svg",
-    "imageAlt": "HR Performance Analytics product thumbnail",
+    "summary": "A historical Power BI delivery exercise packaged with its artefacts, reproduction notes and a corrected semantic contract.",
+    "image": "./assets/hr-summary-preview.png",
+    "imageAlt": "HR Performance Analytics Power BI dashboard",
     "role": "BI reporting",
-    "status": "Public",
-    "focus": "People analytics",
-    "problem": "Dashboard work is only useful when someone can inspect the handoff material. This package keeps screenshots, PBIX files, data, and commentary together.",
+    "status": "Public package",
+    "focus": "Stakeholder analytics",
+    "problem": "A dashboard screenshot hides the model, calculations and interpretation choices. This repository keeps the historical artefacts together, points to Microsoft AdventureWorks and records two semantic errors that must be corrected in a rebuild.",
     "points": [
-      "Covers summary, sales, and absence views.",
-      "Includes PBIX files and a methodology PDF for inspection.",
-      "The sample CSV is synthetic and the README says the automated checks cover only its schema."
+      "SickLeaveHours is treated as an available balance, not absence taken; ModifiedDate is not used as age or tenure evidence.",
+      "PBIX, PDF, screenshots, SQL and the written correction trail stay together.",
+      "A validator checks the 11-file handoff package and semantic contract."
     ],
-    "stack": [
-      "Power BI",
-      "DAX",
-      "CSV",
-      "Reporting",
-      "PDF exports"
-    ],
+    "stack": ["Power BI", "DAX", "AdventureWorks", "Reporting"],
     "links": [
-      {
-        "label": "Open repo",
-        "href": "https://github.com/MatthewPaver/hr-performance-dashboards",
-        "primary": true
-      }
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/hr-performance-dashboards", "primary": true }
     ],
-    "note": "Handoff package: open PBIX and PDFs in the repo. There is no live web demo."
+    "note": "The historical PBIX and PDF still carry the old labels. The semantic contract takes precedence until those immutable exports are rebuilt."
+  },
+  "england": {
+    "kicker": "Finished experiment",
+    "title": "Can England Win It?",
+    "summary": "A one-day World Cup scenario simulator kept as an example of interactive modelling and animation.",
+    "image": "./assets/can-england-win-it.png",
+    "imageAlt": "Can England Win It scenario simulator",
+    "video": "./assets/can-england-win-it-demo.mp4",
+    "role": "Scenario simulation",
+    "status": "Finished",
+    "focus": "Public experiment",
+    "problem": "A tool built for one event loses its purpose when the event ends. This project ran 10,000 seeded simulations per scenario, then closed with the final result and a postmortem.",
+    "points": [
+      "The assumptions stay visible and editable.",
+      "Tests cover seeded output, bounds, monotonicity and uncertainty ranges.",
+      "The postmortem records what the one-day build achieved and why it stopped."
+    ],
+    "stack": ["TypeScript", "React", "Vite", "Vitest"],
+    "links": [
+      { "label": "Open retrospective", "href": "https://matthewpaver.github.io/can-england-win-it/", "primary": true },
+      { "label": "Open repo", "href": "https://github.com/MatthewPaver/can-england-win-it" }
+    ],
+    "note": "A scenario tool for fun, not a forecast or betting product."
   }
 }

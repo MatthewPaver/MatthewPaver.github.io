@@ -79,8 +79,8 @@
               <dd>A proposed AWS access policy</dd>
             </div>
             <div>
-              <dt>What was tested</dt>
-              <dd>55 documented boundary cases and six misleading-answer checks</dd>
+              <dt>What the check reveals</dt>
+              <dd>Who gains access, which statement grants it and whether the correction closes it</dd>
             </div>
             <div>
               <dt>What the reviewer gets</dt>
@@ -148,7 +148,7 @@
               </p>
               <dl class="case-facts">
                 <div><dt>I built</dt><dd>The permission analysis, explanation safeguards and evaluation harness.</dd></div>
-                <div><dt>Proof</dt><dd>55 documented boundary cases and six tests for misleading or unsupported explanations.</dd></div>
+                <div><dt>Reproducible result</dt><dd>55/55 documented scenarios match the expected decision. The AWS simulator cross-check is still pending.</dd></div>
                 <div><dt>Decision it supports</dt><dd>Approve the change, return it for correction or investigate further.</dd></div>
                 <div><dt>Limit</dt><dd>It supports a reviewer. It does not model every AWS policy layer or cross-account effect.</dd></div>
               </dl>
@@ -182,7 +182,7 @@
               </p>
               <dl class="case-facts">
                 <div><dt>I built</dt><dd>Browser-local schedule comparison, evidence provenance and guarded precedent retrieval.</dd></div>
-                <div><dt>Proof</dt><dd>Every finding links back to a date in the public Northstar schedule.</dd></div>
+                <div><dt>Reproducible result</dt><dd>The bundled Northstar case finds three board blockers, including an unacknowledged 73-day finish movement.</dd></div>
                 <div><dt>Decision it supports</dt><dd>Approve, challenge or request more evidence before the board closes the change.</dd></div>
                 <div><dt>Limit</dt><dd>It does not establish contractual entitlement, causation or forecast certainty.</dd></div>
               </dl>
@@ -216,7 +216,7 @@
               </p>
               <dl class="case-facts">
                 <div><dt>I built</dt><dd>The state model and three-sided workflow across school, agency and teacher views.</dd></div>
-                <div><dt>Proof</dt><dd>A recorded walkthrough, tested routes and shared live status across all three roles.</dd></div>
+                <div><dt>Reproducible result</dt><dd>One request can be followed from school submission through agency assignment to teacher acceptance.</dd></div>
                 <div><dt>Decision it supports</dt><dd>Send the next offer, confirm eligibility or tell the school cover is secured.</dd></div>
                 <div><dt>Limit</dt><dd>People and schools are synthetic. The wider market need has not been validated.</dd></div>
               </dl>
@@ -251,14 +251,14 @@
           <div class="origin-story__copy">
             <h3>Choose which home deserves a viewing.</h3>
             <p>
-              Winchester House Hunter combines a shortlist with cash position, commute,
-              nearby sold prices, condition notes and the next question to ask.
+              The demo compares nine seeded homes against cash position, commute,
+              local completed sales, condition notes and the next question to ask.
             </p>
             <dl class="origin-facts">
               <div><dt>For</dt><dd>A buyer deciding which property is worth more time</dd></div>
-              <div><dt>Evidence</dt><dd>2,122 traced HM Land Registry transactions after published filters</dd></div>
-              <div><dt>What they get</dt><dd>An evidence-backed shortlist and next action</dd></div>
-              <div><dt>Limit</dt><dd>Seeded listings, not financial or property advice</dd></div>
+              <div><dt>Reproducible result</dt><dd>Nine homes compared against budget, commute and local sold-price evidence</dd></div>
+              <div><dt>Data boundary</dt><dd>Completed-sale context, not current listings or a valuation</dd></div>
+              <div><dt>Limit</dt><dd>Seeded listings based on one buyer's assumptions; not financial or property advice</dd></div>
             </dl>
             <div class="action-row">
               <a class="button button--quiet" href="https://matthewpaver.github.io/winchester-buyer-check/" target="_blank" rel="noreferrer">Open demo</a>
@@ -274,13 +274,13 @@
           <div class="origin-story__copy">
             <h3>Know which campaign needs attention tomorrow.</h3>
             <p>
-              A marketing lead gets a watchlist of campaigns likely to miss booking or
-              pacing expectations, plus the data-quality evidence behind each warning.
+              A marketing lead can see which campaigns may need attention tomorrow and
+              inspect the source checks behind each warning before acting.
             </p>
             <dl class="origin-facts">
               <div><dt>For</dt><dd>A marketing lead planning the next day's checks</dd></div>
-              <div><dt>What they get</dt><dd>A next-day bookings and under-pacing watchlist</dd></div>
-              <div><dt>Why the pipeline matters</dt><dd>The team can rebuild the result from checked sources instead of trusting one notebook</dd></div>
+              <div><dt>Data-quality result</dt><dd>The current fixture surfaces five duplicate campaign/day records before training</dd></div>
+              <div><dt>Model check</dt><dd>Next-day bookings and under-pacing are evaluated against a persistence baseline</dd></div>
               <div><dt>Limit</dt><dd>Fixture data proves the workflow, not real campaign performance</dd></div>
             </dl>
             <div class="action-row">

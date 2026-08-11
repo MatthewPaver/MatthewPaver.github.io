@@ -2,26 +2,28 @@ import { expect, test } from "@playwright/test";
 
 test("homepage leads with three public projects and a short route through the work", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Matthew Paver · Software and AI engineering/);
+  await expect(page).toHaveTitle(/Matthew Paver \| AI Engineer and Solution Architect/);
   await expect(
-    page.getByRole("heading", { name: "I build software that helps people make difficult decisions." }),
+    page.getByRole("heading", { name: "AI systems that show their work." }),
   ).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Three projects to open first." })).toBeVisible();
-  await expect(page.locator(".selected-card")).toHaveCount(3);
-  await expect(page.getByRole("link", { name: /Browse all seven public projects/ })).toHaveAttribute("href", "./work/");
+  await expect(page.getByRole("heading", { name: "Lead projects" })).toBeVisible();
+  await expect(page.getByRole("tab")).toHaveCount(3);
+  await expect(page.locator(".project-panel")).toHaveCount(3);
+  await expect(page.getByRole("link", { name: "View my CV" })).toHaveAttribute(
+    "href",
+    "https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf",
+  );
   await expect(page.getByText("Private", { exact: true })).toHaveCount(0);
 });
 
-test("PolicyLens evidence story explains the decision boundary", async ({ page }) => {
+test("the assurance map explains how evidence becomes a human decision", async ({ page }) => {
   await page.goto("/");
-  const story = page.locator("[data-evidence-story]");
-  await page.getByRole("button", { name: "Cited finding" }).click();
-  await expect(story).toHaveAttribute("data-stage", "finding");
-  await expect(page.locator("[data-evidence-caption]")).toContainText("names the statement and access path");
-  await expect(page.getByRole("button", { name: "Cited finding" })).toHaveAttribute("aria-pressed", "true");
-
-  await page.getByRole("button", { name: "Reviewer decision" }).click();
-  await expect(page.locator("[data-evidence-caption]")).toContainText("AI explanation never owns the verdict");
+  const map = page.locator("[data-assurance-map]");
+  await page.getByRole("button", { name: "Project change" }).click();
+  await expect(page.locator("[data-flow-summary]")).toContainText("change narrative matches the schedule dates");
+  await expect(map.locator('[data-flow-title="decision"]')).toHaveText("Record the board response");
+  await expect(page.locator("[data-flow-owner]")).toHaveText("Project change board");
+  await expect(page.getByRole("button", { name: "Project change" })).toHaveAttribute("aria-pressed", "true");
 });
 
 test("full catalogue search and category filters narrow seven public projects", async ({ page }) => {
@@ -39,14 +41,18 @@ test("full catalogue search and category filters narrow seven public projects", 
   await expect(page.locator("[data-catalogue-empty]")).toBeVisible();
 });
 
-test("selected work opens its public evidence page", async ({ page }) => {
+test("selected work exposes public evidence and source", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: /Open the PolicyLens case/ }).click();
-  await expect(page).toHaveURL(/preview\.html\?app=policylens$/);
-  await expect(page.getByRole("heading", { name: "PolicyLens", exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Open repo" })).toHaveAttribute(
+  await expect(page.getByText("55/55 documented scenarios match the expected decision.")).toBeVisible();
+  await expect(page.getByRole("link", { name: "View source" }).first()).toHaveAttribute(
     "href",
     "https://github.com/MatthewPaver/iam-policy-auditor",
+  );
+  await page.getByRole("tab", { name: "ProjectLens" }).click();
+  await expect(page.getByText(/three board blockers, including an unacknowledged 73-day finish movement/i)).toBeVisible();
+  await expect(page.locator("#panel-project").getByRole("link", { name: "Open demo" })).toHaveAttribute(
+    "href",
+    "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
   );
 });
 
@@ -70,8 +76,9 @@ test("the portfolio remains useful without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator(".selected-card")).toHaveCount(3);
-  await expect(page.locator(".evidence-controls")).toBeHidden();
+  await expect(page.locator(".project-panel:visible")).toHaveCount(1);
+  await expect(page.getByRole("heading", { name: "See who gains sensitive cloud access before you approve it." })).toBeVisible();
+  await expect(page.locator(".origin-story")).toHaveCount(2);
   await page.goto("/work/");
   await expect(page.locator(".work-card:visible")).toHaveCount(7);
   await expect(page.locator("[data-catalogue-controls]")).toBeHidden();
@@ -84,7 +91,7 @@ test("mobile layout has usable controls and no horizontal overflow", async ({ pa
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
-  const button = page.getByRole("button", { name: "Access check" });
+  const button = page.getByRole("tab", { name: "ProjectLens" });
   const box = await button.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(44);

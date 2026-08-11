@@ -1,6 +1,6 @@
 ---
 title: ProjectLens
-order: 1
+order: 2
 featured: true
 kind: flagship
 portfolioRole: Flagship product
@@ -8,17 +8,19 @@ audience: Project controls teams, PMOs and delivery leads
 category: Project controls
 status: live
 shelf: product
-tagline: Compare the dates in a change pack with the schedule behind it.
+tagline: Compare a change pack with its schedule before the board decides.
 problem: A change pack can tell a different story from the schedule it cites.
-outcome: The demo puts three schedule conflicts beside their source dates and lets you record the board's response.
+outcome: The review links schedule conflicts to source dates, retrieves cited precedents and records the board's response.
 proof:
   - Browser-local XER comparison
   - Findings linked to schedule dates
   - Decision and follow-up record
+  - Fail-closed precedent RAG with a Use or Ignore gate
 stack:
   - JavaScript
   - Python
   - Primavera P6 XER
+  - LangGraph
   - GitHub Pages
 image: /assets/apps/projectlens.png
 imageAlt: ProjectLens review workspace showing schedule conflicts in the Northstar change pack
@@ -29,7 +31,7 @@ primaryAction: Open ProjectLens
 license: MIT
 version: Public demonstrator
 since: Apr 2025
-updated: 2026-07-20
+updated: 2026-08-11
 requirements:
   - Modern browser for the public review
   - Python 3.11 for rebuilding the public dataset
@@ -44,5 +46,4 @@ limitations:
   - People retain decision authority.
 ---
 
-The demo uses a made-up Northstar change pack. You can compare its dates, inspect
-the conflicts and record a board response without uploading a file.
+The public Northstar review runs in the browser. A separate retrieval path can find similar decisions and draft a cited brief, but the reviewer must choose whether the evidence belongs in the record.

@@ -1,46 +1,4 @@
 {
-  "MatthewPaver/ProjectLens": {
-    "stars": 1,
-    "updatedAt": "2026-07-28T22:56:50Z",
-    "ciStatus": "success",
-    "release": "v1.0.0"
-  },
-  "MatthewPaver/ai-workflow-evaluator": {
-    "stars": 0,
-    "updatedAt": "2026-07-28T22:53:12Z",
-    "ciStatus": "success",
-    "release": "v1.0.1"
-  },
-  "MatthewPaver/DecisionGraph": {
-    "stars": 0,
-    "updatedAt": "2026-07-28T22:52:51Z",
-    "ciStatus": "success",
-    "release": "v1.0.0"
-  },
-  "MatthewPaver/marketing-ml-lakehouse": {
-    "stars": 0,
-    "updatedAt": "2026-07-28T11:36:12Z",
-    "ciStatus": "success",
-    "release": "v1.0.0"
-  },
-  "MatthewPaver/paper-trading-bot": {
-    "stars": 0,
-    "updatedAt": "2026-07-28T22:11:37Z",
-    "ciStatus": "success",
-    "release": "v0.1.0"
-  },
-  "MatthewPaver/happening-open-core": {
-    "stars": 0,
-    "updatedAt": "2026-07-28T11:36:12Z",
-    "ciStatus": "success",
-    "release": "v0.2.0"
-  },
-  "MatthewPaver/winchester-buyer-check": {
-    "stars": 0,
-    "updatedAt": "2026-07-28T22:09:28Z",
-    "ciStatus": "success",
-    "release": "v1.0.0"
-  },
   "MatthewPaver/can-england-win-it": {
     "stars": 0,
     "updatedAt": "2026-07-28T09:47:56Z",
@@ -53,10 +11,34 @@
     "ciStatus": "success",
     "release": null
   },
-  "MatthewPaver/sentence-similarity-analysis": {
+  "MatthewPaver/marketing-ml-lakehouse": {
+    "stars": 0,
+    "updatedAt": "2026-08-05T08:12:53Z",
+    "ciStatus": "success",
+    "release": "v1.0.0"
+  },
+  "MatthewPaver/iam-policy-auditor": {
+    "stars": 0,
+    "updatedAt": "2026-08-03T14:41:30Z",
+    "ciStatus": "failure",
+    "release": null
+  },
+  "MatthewPaver/ProjectLens": {
     "stars": 1,
-    "updatedAt": "2026-07-28T09:58:57Z",
+    "updatedAt": "2026-08-05T12:47:44Z",
+    "ciStatus": "success",
+    "release": "v1.0.0"
+  },
+  "MatthewPaver/QuickSupply": {
+    "stars": 0,
+    "updatedAt": "2026-07-13T14:46:41Z",
     "ciStatus": "success",
     "release": null
+  },
+  "MatthewPaver/winchester-buyer-check": {
+    "stars": 0,
+    "updatedAt": "2026-07-28T22:09:28Z",
+    "ciStatus": "success",
+    "release": "v1.0.0"
   }
 }

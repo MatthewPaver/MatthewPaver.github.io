@@ -1,50 +1,35 @@
 {
-  "generatedAt": "2026-08-05T08:29:40.934Z",
+  "generatedAt": "2026-08-11T04:56:15.713Z",
   "passing": true,
   "checks": [
     {
-      "name": "Catalogue entries",
-      "value": "8",
-      "pass": true
-    },
-    {
-      "name": "Shelves",
-      "value": "6",
-      "pass": true
-    },
-    {
-      "name": "Previews wired",
-      "value": "8",
-      "pass": true
-    },
-    {
-      "name": "Image tags",
-      "value": "12",
-      "pass": true
-    },
-    {
-      "name": "Spec artifacts",
+      "name": "Public catalogue entries",
       "value": "7",
       "pass": true
     },
     {
-      "name": "Sitemap URLs",
-      "value": "10",
+      "name": "Real screenshots",
+      "value": "7",
       "pass": true
     },
     {
-      "name": "Structured data",
-      "value": "JSON-LD",
+      "name": "Preview records",
+      "value": "7",
+      "pass": true
+    },
+    {
+      "name": "Private projects exposed",
+      "value": "0",
+      "pass": true
+    },
+    {
+      "name": "Reusable templates",
+      "value": "3",
       "pass": true
     },
     {
       "name": "Security headers",
       "value": "CSP meta",
-      "pass": true
-    },
-    {
-      "name": "llms.txt",
-      "value": "present",
       "pass": true
     }
   ]

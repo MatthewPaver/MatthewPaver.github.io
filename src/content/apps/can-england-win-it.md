@@ -1,7 +1,7 @@
 ---
 title: Can England Win It?
 shortTitle: England Sim
-order: 8
+order: 7
 featured: false
 kind: flagship
 portfolioRole: Engineering study
@@ -9,7 +9,7 @@ audience: Anyone curious how tournament probability models are built and closed 
 category: Product close-out
 status: live
 shelf: product
-tagline: A time-boxed World Cup probability experiment, archived with a written postmortem.
+tagline: A one-day World Cup scenario tool, closed with a written postmortem.
 problem: Topical products need shipping before the moment passes, then an honest close-out when it does.
 outcome: A transparent Monte Carlo scenario tool, shipped before the semi-final and archived with the completed result and a postmortem.
 proof:
@@ -30,7 +30,7 @@ primaryAction: Explore the retrospective
 license: MIT
 version: Archived
 since: Jul 2026
-updated: 2026-07-28
+updated: 2026-08-11
 requirements:
   - Node 20
 install:
@@ -41,7 +41,7 @@ install:
 validate:
   - npx vitest run
 limitations:
-  - A scenario tool, not a forecast — the assumptions are deliberately simple and editable.
+  - A scenario tool, not a forecast; the assumptions are simple and editable.
   - Entertainment boosts are labelled as such and excluded from the headline model.
   - Archived after the tournament; the repository is read-only by intent.
 ---

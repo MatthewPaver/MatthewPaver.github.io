@@ -21,6 +21,7 @@ const apps = defineCollection({
       "Private product",
       "ML study",
       "Analytics handoff",
+      "Product redesign case study",
     ]),
     audience: z.string(),
     category: z.string(),

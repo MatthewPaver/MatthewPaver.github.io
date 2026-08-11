@@ -1,7 +1,6 @@
 tag,label,position
-product,Products,1
-data,Data systems,2
-automation,Automation,3
-ml,ML and retrieval,4
-analytics,Analytics,5
-archive,Archive,6
+ai,AI engineering,1
+product,Products,2
+data,Data systems,3
+analytics,Analytics,4
+archive,Finished experiments,5

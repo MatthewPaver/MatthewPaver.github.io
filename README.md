@@ -1,23 +1,14 @@
-# Matthew Paver — Portfolio
+# Matthew Paver portfolio
 
-The source for [matthewpaver.github.io](https://matthewpaver.github.io/): one
-canonical portfolio of Matthew Paver's usable software.
+Source for [matthewpaver.github.io](https://matthewpaver.github.io/), a public portfolio of software, AI evaluation and data engineering work.
 
-The site is built with Astro and produces plain static HTML for GitHub Pages.
-Every entry has an indexable page with a real screenshot, current repository
-evidence, install or launch instructions, validation commands and explicit
-limitations.
+The homepage gives hiring managers a short route through three selected projects. The full work page contains seven public projects and three smaller reusable patterns. Private repositories do not appear in either view.
 
-## Portfolio structure
+## Source of truth
 
-- ProjectLens and Output Gate lead the homepage.
-- DecisionGraph, Marketing ML Lakehouse, Paper Trading, Winchester House Hunter
-  and Happening sit in the project archive.
-- Private repositories and private-product case studies are not listed.
-- No invented user counts, review scores, or performance claims.
+The deployed site lives in [`store/`](store/). `npm run build` validates its catalogue, copies it to `pages-dist/`, and generates indexable project pages under `/store/apps/<slug>/`.
 
-The market rationale and page hierarchy are recorded in
-[`docs/market-positioning.md`](docs/market-positioning.md).
+The `src/` folder contains an earlier Astro catalogue and is not used for deployment. It remains only while the project pages and content collections are being retired or migrated.
 
 ## Work locally
 
@@ -26,22 +17,21 @@ npm install
 npm run dev
 ```
 
-Run the complete pre-publish check with:
+Open `http://127.0.0.1:4321`.
+
+Run the release checks with:
 
 ```bash
-npm run verify
+npm test
+npm run test:e2e
 ```
 
-`npm run metrics` refreshes public GitHub metadata. `npm run screenshots`
-recaptures the public browser applications used by the portfolio.
+`npm run metrics` refreshes public GitHub metadata. `npm run screenshots` recaptures public product screenshots.
 
 ## Deployment
 
-Pushes to `main` run unit tests, type/build checks, browser tests at desktop and
-mobile widths, then deploy the generated `dist/` directory to GitHub Pages.
+Pushes to `main` validate the public catalogue, build `pages-dist/`, and deploy that directory to GitHub Pages.
 
 ## Rights
 
-Site code may be reused under the MIT licence. Product names, screenshots, copy
-and other brand assets remain copyright © Matthew Paver and are not sublicensed
-by the code licence.
+Site code may be reused under the MIT licence. Product names, screenshots, copy and brand assets remain copyright © Matthew Paver and are not sublicensed by the code licence.

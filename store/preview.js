@@ -13,7 +13,7 @@ function setMeta(selector, attribute, value) {
 function updateSocialMeta(preview, slug) {
   const absoluteImage = preview.image.replace(/^\.\//, SITE_BASE);
   const previewUrl = `${SITE_BASE}preview.html?app=${slug}`;
-  const title = `${preview.title} · Matthew Paver Portfolio Store`;
+  const title = `${preview.title} · Matthew Paver`;
 
   document.title = title;
   setMeta("meta[name='description']", "content", preview.summary);
@@ -29,12 +29,12 @@ function updateSocialMeta(preview, slug) {
 }
 
 function renderUnknown(slug) {
-  document.title = "Unknown app · Matthew Paver Portfolio Store";
+  document.title = "Unknown project · Matthew Paver";
   setText("preview-kicker", "Not found");
   setText("preview-title", `No preview for “${slug}”`);
   setText(
     "preview-summary",
-    "That preview slug is not in the store catalogue. The project may have been renamed or archived. Head back to browse every project."
+    "That project is not in the public catalogue. It may have been renamed or archived. Browse the current work instead."
   );
 
   const media = document.querySelector(".preview-media");

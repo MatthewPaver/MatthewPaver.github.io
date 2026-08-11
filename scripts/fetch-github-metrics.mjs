@@ -1,6 +1,7 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 
 const outputUrl = new URL("../src/data/github-metrics.json", import.meta.url);
+const contentUrl = new URL("../src/content/apps/", import.meta.url);
 const current = JSON.parse(await readFile(outputUrl, "utf8"));
 const token = process.env.GITHUB_TOKEN;
 const headers = {
@@ -17,7 +18,15 @@ async function request(url) {
 }
 
 const next = {};
-for (const repo of Object.keys(current)) {
+const contentFiles = (await readdir(contentUrl)).filter((name) => name.endsWith(".md"));
+const repositories = new Set();
+for (const file of contentFiles) {
+  const source = await readFile(new URL(file, contentUrl), "utf8");
+  const repo = source.match(/^metricsRepo:\s+([^\s]+)$/m)?.[1];
+  if (repo) repositories.add(repo);
+}
+
+for (const repo of repositories) {
   try {
     const [metadata, runs, release] = await Promise.all([
       request(`https://api.github.com/repos/${repo}`),
@@ -28,9 +37,9 @@ for (const repo of Object.keys(current)) {
       throw new Error(`${repo} is unavailable or not public`);
     }
     next[repo] = {
-      stars: metadata?.stargazers_count ?? current[repo].stars ?? 0,
-      updatedAt: metadata?.pushed_at ?? current[repo].updatedAt,
-      ciStatus: runs?.workflow_runs?.[0]?.conclusion ?? current[repo].ciStatus ?? "unknown",
+      stars: metadata?.stargazers_count ?? current[repo]?.stars ?? 0,
+      updatedAt: metadata?.pushed_at ?? current[repo]?.updatedAt,
+      ciStatus: runs?.workflow_runs?.[0]?.conclusion ?? current[repo]?.ciStatus ?? "unknown",
       release: release?.tag_name ?? null,
     };
   } catch (error) {

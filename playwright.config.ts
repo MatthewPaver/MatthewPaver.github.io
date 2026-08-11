@@ -20,7 +20,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run preview -- --host 127.0.0.1 --port 4321",
+    command: "node scripts/prepare-pages-artifact.mjs && python3 -m http.server 4321 --directory pages-dist",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 30_000,

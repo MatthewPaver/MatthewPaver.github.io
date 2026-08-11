@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-11T12:15:02Z",
+  "title": "Design System: Matthew Paver Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "burnt-orange": {
+        "role": "primary",
+        "displayName": "Burnt Orange",
+        "canonical": "#a83f24",
+        "tonalRamp": ["#35150d", "#572114", "#7b2d1a", "#a83f24", "#c96546", "#df937b", "#efc3b3", "#faeee9"]
+      },
+      "burnt-orange-deep": {
+        "role": "primary",
+        "displayName": "Deep Burnt Orange",
+        "canonical": "#742914",
+        "tonalRamp": ["#281009", "#48190c", "#742914", "#984126", "#bd674c", "#dc9480", "#efc5b7", "#faf0ec"]
+      },
+      "burnt-orange-soft": {
+        "role": "primary",
+        "displayName": "Soft Burnt Orange",
+        "canonical": "#eed7cf",
+        "tonalRamp": ["#37201a", "#5b382e", "#81574a", "#a77b6d", "#c7a79b", "#eed7cf", "#f5e8e3", "#fcf7f5"]
+      },
+      "sea-green": {
+        "role": "secondary",
+        "displayName": "Sea Green",
+        "canonical": "#165e58",
+        "tonalRamp": ["#082421", "#0d3935", "#124c47", "#165e58", "#3c7d76", "#6aa49d", "#a5cbc6", "#e3f0ee"]
+      },
+      "focus-green": {
+        "role": "secondary",
+        "displayName": "Focus Green",
+        "canonical": "#006d63",
+        "tonalRamp": ["#002823", "#004039", "#00584f", "#006d63", "#318c82", "#66ada5", "#a3d3ce", "#e2f3f1"]
+      },
+      "warm-canvas": {
+        "role": "neutral",
+        "displayName": "Warm Canvas",
+        "canonical": "#f3efe6",
+        "tonalRamp": ["#2b2925", "#47433c", "#676159", "#8a8378", "#afa89d", "#d2ccc1", "#f3efe6", "#fbf9f4"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fbfaf6",
+        "tonalRamp": ["#2d2c29", "#4a4944", "#696760", "#8c8981", "#b1aea5", "#d7d4cc", "#fbfaf6", "#ffffff"]
+      },
+      "paper-strong": {
+        "role": "neutral",
+        "displayName": "Strong Paper",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#2c2c2c", "#494949", "#686868", "#8b8b8b", "#b0b0b0", "#d6d6d6", "#f4f4f4", "#ffffff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1b1c19",
+        "tonalRamp": ["#1b1c19", "#30312d", "#4c4d47", "#6d6e67", "#92938b", "#b9bab3", "#dedfd9", "#f5f5f1"]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#5d5f58",
+        "tonalRamp": ["#20211e", "#393a35", "#5d5f58", "#7c7e76", "#9fa198", "#c1c3bb", "#e1e2dd", "#f6f7f4"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#cfc8ba",
+        "tonalRamp": ["#2c2924", "#49443b", "#696157", "#8b8377", "#aea699", "#cfc8ba", "#e7e3da", "#faf8f3"]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "#8b877e",
+        "tonalRamp": ["#292722", "#46433c", "#666159", "#8b877e", "#aba79f", "#cbc8c1", "#e6e4df", "#f8f7f4"]
+      },
+      "night-canvas": {
+        "role": "neutral",
+        "displayName": "Night Canvas",
+        "canonical": "#181a18",
+        "tonalRamp": ["#181a18", "#2e312e", "#494d49", "#686d68", "#8e938e", "#b7bbb7", "#dcdedc", "#f3f4f3"]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#20231f",
+        "tonalRamp": ["#171916", "#20231f", "#3b3f3a", "#5b605a", "#80857f", "#a9aea8", "#d0d3cf", "#f0f2ef"]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "#f1eee7",
+        "tonalRamp": ["#292823", "#45423c", "#645f57", "#877f75", "#aaa398", "#cdc8bf", "#f1eee7", "#faf9f6"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Editorial Display",
+        "purpose": "The two-line hero proposition and no other copy."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Major section and project headings."
+      },
+      "body": {
+        "displayName": "Operational Body",
+        "purpose": "Explanations, evidence, controls and technical detail."
+      },
+      "label": {
+        "displayName": "Evidence Label",
+        "purpose": "Audience, state and Decision Contract roles."
+      }
+    },
+    "shadows": [
+      {
+        "name": "evidence-window",
+        "value": "0 24px 55px rgb(55 40 25 / 16%)",
+        "purpose": "Focuses the hero's real interface capture."
+      },
+      {
+        "name": "contract-workbench",
+        "value": "0 24px 52px rgb(55 40 25 / 12%)",
+        "purpose": "Separates the enterprise diagram from its paper section."
+      },
+      {
+        "name": "screenshot-inset",
+        "value": "0 18px 38px rgb(27 28 25 / 20%)",
+        "purpose": "Makes real application captures read as inset software windows."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Short directional state changes and restrained surface lift."
+      },
+      {
+        "name": "state",
+        "value": "180ms ease",
+        "purpose": "Color, border and visibility feedback."
+      },
+      {
+        "name": "evidence-crop",
+        "value": "720ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One-time movement between evidence stages."
+      },
+      {
+        "name": "contract-signal",
+        "value": "640ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One pass through the six decision fields on entry or genuine scenario change."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "980px"
+      },
+      {
+        "name": "mobile",
+        "value": "720px"
+      },
+      {
+        "name": "small-mobile",
+        "value": "460px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single strongest action in a local section.",
+      "html": "<a class=\"ds-button-primary\" href=\"#\">Explore the store</a>",
+      "css": ".ds-button-primary { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#1b1c19); border-radius:3px; background:var(--ink,#1b1c19); color:var(--paper,#fbfaf6); font:800 .9rem/1.2 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms cubic-bezier(.16,1,.3,1); } .ds-button-primary:hover { background:var(--accent-dark,#742914); translate:0 -2px; } .ds-button-primary:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "A quiet secondary action such as the CV link.",
+      "html": "<a class=\"ds-button-ghost\" href=\"#\">View CV</a>",
+      "css": ".ds-button-ghost { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#1b1c19); border-radius:3px; background:transparent; color:var(--ink,#1b1c19); font:800 .9rem/1.2 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms cubic-bezier(.16,1,.3,1); } .ds-button-ghost:hover { background:var(--paper-strong,#fff); translate:0 -2px; } .ds-button-ghost:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+    },
+    {
+      "name": "Section Navigation",
+      "kind": "nav",
+      "description": "Sticky, quiet navigation with an evidence-colored current-location marker.",
+      "html": "<nav class=\"ds-nav\"><a aria-current=\"location\" href=\"#\">Selected</a><a href=\"#\">All work</a><a href=\"#\">About</a></nav>",
+      "css": ".ds-nav { display:flex; gap:24px; align-items:center; font-family:var(--body,sans-serif); } .ds-nav a { display:inline-flex; min-height:44px; align-items:center; color:var(--muted,#5d5f58); font-size:.86rem; font-weight:700; text-decoration:none; } .ds-nav a:hover { color:var(--ink,#1b1c19); } .ds-nav a[aria-current=location] { color:var(--ink,#1b1c19); text-decoration:underline; text-decoration-color:var(--accent,#a83f24); text-underline-offset:.45em; } .ds-nav a:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+    },
+    {
+      "name": "Catalogue Search",
+      "kind": "input",
+      "description": "A compact, touch-safe field for the full public work catalogue.",
+      "html": "<label class=\"ds-search\"><span>Search projects</span><input type=\"search\" placeholder=\"Try AI evaluation or public data\"></label>",
+      "css": ".ds-search { display:grid; gap:7px; color:var(--ink,#1b1c19); font:750 .78rem/1.4 var(--body,sans-serif); } .ds-search input { min-height:46px; padding:10px 13px; border:1px solid var(--line-strong,#8b877e); border-radius:3px; background:var(--paper,#fbfaf6); color:var(--ink,#1b1c19); font:500 1rem/1.4 var(--body,sans-serif); } .ds-search input:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+    },
+    {
+      "name": "Flagship Evidence Card",
+      "kind": "card",
+      "refersTo": "evidence-card",
+      "description": "A real interface capture followed by audience, purpose, result and boundary.",
+      "html": "<article class=\"ds-evidence-card\"><div class=\"ds-evidence-media\">REAL INTERFACE CAPTURE</div><div class=\"ds-evidence-copy\"><small>For cloud security reviewers</small><h3>PolicyLens</h3><p>See exactly how a permission change alters access.</p><dl><div><dt>Reproduced result</dt><dd>One decision path with cited policy evidence.</dd></div><div><dt>Boundary</dt><dd>Code owns the verdict; AI only explains it.</dd></div></dl><a href=\"#\">Open case →</a></div></article>",
+      "css": ".ds-evidence-card { overflow:hidden; border:1px solid var(--line-strong,#8b877e); border-radius:5px; background:var(--canvas,#f3efe6); color:var(--ink,#1b1c19); font-family:var(--body,sans-serif); } .ds-evidence-media { min-height:170px; padding:20px; border-bottom:1px solid var(--line-strong,#8b877e); background:#1d2929; color:#f1eee7; font-size:.7rem; font-weight:800; letter-spacing:.05em; } .ds-evidence-copy { padding:24px; } .ds-evidence-copy small { color:var(--accent-dark,#742914); font-weight:750; } .ds-evidence-copy h3 { margin:8px 0 12px; font:700 2.4rem/.98 var(--display,serif); letter-spacing:-.025em; } .ds-evidence-copy p { color:var(--muted,#5d5f58); line-height:1.55; } .ds-evidence-copy dl { margin:22px 0 16px; } .ds-evidence-copy dl div { padding:10px 0; border-top:1px solid var(--line,#cfc8ba); } .ds-evidence-copy dt { color:var(--muted,#5d5f58); font-size:.72rem; font-weight:750; } .ds-evidence-copy dd { margin:3px 0 0; font-size:.8rem; font-weight:700; } .ds-evidence-copy a { display:inline-flex; min-height:44px; align-items:center; color:inherit; font-weight:800; text-underline-offset:.22em; } .ds-evidence-copy a:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+    },
+    {
+      "name": "Decision Contract Scenario",
+      "kind": "chip",
+      "description": "A three-state switcher whose selection updates one complete decision boundary.",
+      "html": "<div class=\"ds-scenarios\" role=\"group\" aria-label=\"Decision scenario\"><button aria-pressed=\"true\">PolicyLens</button><button aria-pressed=\"false\">ProjectLens</button><button aria-pressed=\"false\">Lakehouse</button></div>",
+      "css": ".ds-scenarios { display:flex; gap:6px; padding:10px; background:#202824; } .ds-scenarios button { min-height:46px; padding:9px 13px; border:1px solid #68716c; border-radius:3px; background:transparent; color:#d5dcd7; font:760 .78rem/1.3 var(--body,sans-serif); cursor:pointer; } .ds-scenarios button:hover { border-color:#aeb8b1; } .ds-scenarios button[aria-pressed=true] { border-color:#f3efe6; background:#f3efe6; color:#1b1c19; } .ds-scenarios button:focus-visible { outline:3px solid var(--focus,#79d5ca); outline-offset:3px; }"
+    },
+    {
+      "name": "Decision Contract Node",
+      "kind": "custom",
+      "refersTo": "contract-node",
+      "description": "One accountable field in the six-part enterprise decision boundary.",
+      "html": "<section class=\"ds-contract-node\"><span>Permitted AI role</span><strong>Explain the fixed verdict with claims tied to policy evidence</strong></section>",
+      "css": ".ds-contract-node { display:flex; min-height:150px; flex-direction:column; justify-content:space-between; padding:21px; border:1px solid var(--line,#cfc8ba); border-radius:4px; background:var(--paper-strong,#fff); color:var(--ink,#1b1c19); font-family:var(--body,sans-serif); } .ds-contract-node span { color:var(--accent-dark,#742914); font-size:.7rem; font-weight:800; } .ds-contract-node strong { margin-top:28px; font-size:1rem; line-height:1.45; } .ds-contract-node:focus-within { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Evidence Catalogue",
+    "overview": "The portfolio feels like a small, carefully edited software shop whose products can withstand inspection. It pairs an editorial reading experience with the precision of an engineering workbench: warm paper, dark ink, quiet rules, real interface captures and brief statements of purpose, evidence and limits.\n\nThe composition is confident but restrained. Personality comes from Matthew's work and decision philosophy rather than ornamental effects. Motion explains a change, check or hand-off, then settles; it never competes with the evidence.",
+    "keyCharacteristics": [
+      "Editorial hierarchy with dense, readable engineering evidence.",
+      "One rare burnt-orange accent against warm paper and ink.",
+      "Real product captures framed as working software, not generated artwork.",
+      "Rectilinear, lightly softened surfaces with sparse structural borders.",
+      "Honest boundaries and accountable human decisions beside every claim."
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Burnt orange identifies a meaningful state or piece of evidence; it is not decorative fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Claim and Evidence Rule",
+        "body": "Serif type makes the claim; sans-serif type explains, qualifies and proves it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Curated First Rule",
+        "body": "Three flagship applications must be understandable before the visitor is asked to browse the full catalogue.",
+        "section": "layout"
+      },
+      {
+        "name": "The Evidence Above Chrome Rule",
+        "body": "Depth may focus attention on a real interface or causal workflow, never on ornamental containers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do lead with a real application surface and a plain-language user problem.",
+      "Do pair every reproduced result with its honest boundary.",
+      "Do use the accent only for consequential evidence, selection or caution.",
+      "Do preserve dark mode, visible keyboard focus, reduced motion and touch-safe controls.",
+      "Do keep private work out of public catalogues and previews."
+    ],
+    "donts": [
+      "Don't replace screenshots with generated product art or generic gradient thumbnails.",
+      "Don't add vanity counters, floating blobs, perpetual motion, marquees or cursor spectacle.",
+      "Don't repeat the same project proof across several homepage sections.",
+      "Don't use rounded-pill components as a default visual language.",
+      "Don't claim model or product impact that the linked evidence cannot reproduce."
+    ]
+  }
+}

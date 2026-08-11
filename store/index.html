@@ -5,12 +5,13 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f3efe6" />
-    <title>Matthew Paver · Software and AI engineering</title>
+    <title>Matthew Paver | Software and AI engineering</title>
     <link rel="canonical" href="https://matthewpaver.github.io/" />
     <link rel="preload" as="image" href="./assets/policylens.png" fetchpriority="high" />
-    <meta name="description" content="Software, AI evaluation and data engineering projects by Matthew Paver, with public code, working demos and stated limits." />
-    <meta property="og:title" content="Matthew Paver · Software and AI engineering" />
-    <meta property="og:description" content="Public software, AI evaluation and data engineering work, with the evidence attached." />
+    <link rel="preload" as="font" href="./assets/fonts/manrope-latin-wght-normal.woff2" type="font/woff2" crossorigin />
+    <meta name="description" content="Inspect the software, AI evaluation and data engineering projects Matthew Paver has built, tested and made reproducible." />
+    <meta property="og:title" content="Matthew Paver | Software and AI engineering" />
+    <meta property="og:description" content="A curated store of public software, AI evaluation and data engineering work, with demos, evidence and stated limits." />
     <meta property="og:url" content="https://matthewpaver.github.io/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://matthewpaver.github.io/assets/og-image.png" />
@@ -18,7 +19,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Matthew Paver software and AI engineering portfolio" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Matthew Paver · Software and AI engineering" />
+    <meta name="twitter:title" content="Matthew Paver | Software and AI engineering" />
     <meta name="twitter:description" content="Public software, AI evaluation and data engineering work, with the evidence attached." />
     <meta name="twitter:image" content="https://matthewpaver.github.io/assets/og-image.png" />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
@@ -26,8 +27,8 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="alternate" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
-    <link rel="stylesheet" href="./styles.css?v=20260811-2" />
-    <script src="./script.js?v=20260811-2" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260811-3" />
+    <script src="./script.js?v=20260811-3" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -63,126 +64,248 @@
 
     <div class="topbar-shell">
       <nav class="shell topbar" aria-label="Primary navigation">
-        <a class="brand" href="./" aria-label="Matthew Paver home">
+        <a class="brand" href="#top" aria-label="Matthew Paver home">
           <span class="brand-mark" aria-hidden="true">MP</span>
           <span>Matthew Paver</span>
         </a>
         <div class="nav-links">
-          <a href="#selected">Selected work</a>
+          <a href="#selected" data-nav-section="selected">Selected</a>
           <a href="./work/">All work</a>
-          <a href="#about">About</a>
+          <a href="#contract" data-nav-section="contract">Decision Contract</a>
+          <a href="#about" data-nav-section="about">About</a>
           <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV</a>
         </div>
       </nav>
     </div>
 
-    <header class="shell hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1>I build software that helps people make difficult decisions.</h1>
-          <p class="lede">AI evaluation, data engineering and product workflows, shown through public code, working demos and stated limits.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#selected">View selected work</a>
-            <a class="button ghost" href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">View CV</a>
+    <main id="top">
+      <header class="shell hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Evidence-led software.</h1>
+            <p class="lede">I’m Matthew, a software and AI engineer building inspectable decision tools, data systems and practical product workflows.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#selected">Explore the store</a>
+              <a class="button ghost" href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">View CV</a>
+            </div>
           </div>
-          <p class="hero-byline">Software and AI engineer in London.</p>
+
+          <section class="evidence-story" aria-labelledby="evidence-story-title" data-evidence-story data-stage="change">
+            <div class="evidence-window">
+              <div class="window-bar" aria-hidden="true">
+                <span>PolicyLens review</span>
+                <span>Evidence stays attached</span>
+              </div>
+              <div class="evidence-image-frame">
+                <img class="evidence-image" src="./assets/policylens.png" width="1400" height="900" alt="PolicyLens showing an IAM policy change and its cited access decision" fetchpriority="high" />
+                <span class="evidence-marker" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="evidence-copy">
+              <h2 id="evidence-story-title">One decision, fully traceable.</h2>
+              <p class="evidence-caption" data-evidence-caption aria-live="polite">A reviewer starts with the proposed permission change, not a generic AI summary.</p>
+              <div class="evidence-controls" role="group" aria-label="PolicyLens decision stages">
+                <button type="button" data-stage-button="change" aria-pressed="true">Policy change</button>
+                <button type="button" data-stage-button="check" aria-pressed="false">Access check</button>
+                <button type="button" data-stage-button="finding" aria-pressed="false">Cited finding</button>
+                <button type="button" data-stage-button="decision" aria-pressed="false">Reviewer decision</button>
+              </div>
+            </div>
+          </section>
         </div>
+      </header>
 
-        <section class="evidence-story" aria-labelledby="evidence-story-title" data-evidence-story data-stage="change">
-          <div class="evidence-window">
-            <div class="window-bar" aria-hidden="true">
-              <span>PolicyLens review</span>
-              <span>Evidence stays attached</span>
-            </div>
-            <div class="evidence-image-frame">
-              <img class="evidence-image" src="./assets/policylens.png" width="1400" height="900" alt="PolicyLens showing an IAM policy change and its cited access decision" fetchpriority="high" />
-              <span class="evidence-marker" aria-hidden="true"></span>
-            </div>
+      <section id="selected" class="selected-work" aria-labelledby="selected-heading">
+        <div class="shell">
+          <header class="section-intro section-intro--stacked">
+            <h2 id="selected-heading">Start with three applications.</h2>
+            <p>Open a real interface, see who it helps and inspect the result I can reproduce today.</p>
+          </header>
+
+          <div class="selected-grid selected-grid--shelf" aria-label="Featured applications">
+            <article class="selected-card" data-project="policylens">
+              <a class="project-media" href="./preview.html?app=policylens" aria-label="Open the PolicyLens case">
+                <img src="./assets/policylens.png" width="1400" height="900" alt="PolicyLens IAM change review with a cited access finding" loading="lazy" />
+              </a>
+              <div class="project-copy">
+                <div class="project-title-line">
+                  <h3>PolicyLens</h3>
+                  <span>Cloud security</span>
+                </div>
+                <p class="project-audience">For reviewers approving sensitive AWS access changes.</p>
+                <p class="project-summary">Shows who gains access, which policy statement grants it and whether the correction closes it.</p>
+                <dl class="project-proof">
+                  <div><dt>Reproduced</dt><dd>55/55 documented decisions matched</dd></div>
+                  <div><dt>Boundary</dt><dd>AI explains the verdict; it cannot change it</dd></div>
+                </dl>
+                <a class="project-link" href="./preview.html?app=policylens">Open case</a>
+              </div>
+            </article>
+
+            <article class="selected-card" data-project="projectlens">
+              <a class="project-media" href="./preview.html?app=projectlens" aria-label="Open the ProjectLens case">
+                <img src="./assets/projectlens.png" width="1440" height="1000" alt="ProjectLens schedule assurance workspace showing a 73-day finish movement and three cited blockers" loading="lazy" />
+              </a>
+              <div class="project-copy">
+                <div class="project-title-line">
+                  <h3>ProjectLens</h3>
+                  <span>Project controls</span>
+                </div>
+                <p class="project-audience">For change boards checking whether a narrative matches its schedule.</p>
+                <p class="project-summary">Places each claim beside the Primavera dates it relies on before the board approves the change.</p>
+                <dl class="project-proof">
+                  <div><dt>Reproduced</dt><dd>Three blockers, including a 73-day finish movement</dd></div>
+                  <div><dt>Boundary</dt><dd>Supports review, not contractual entitlement</dd></div>
+                </dl>
+                <a class="project-link" href="./preview.html?app=projectlens">Open case</a>
+              </div>
+            </article>
+
+            <article class="selected-card" data-project="quicksupply">
+              <a class="project-media" href="./preview.html?app=quicksupply" aria-label="Open the QuickSupply case">
+                <img src="./assets/quicksupply-dashboard.png" width="1200" height="760" alt="QuickSupply agency dashboard showing live cover requests" loading="lazy" />
+              </a>
+              <div class="project-copy">
+                <div class="project-title-line">
+                  <h3>QuickSupply</h3>
+                  <span>Service workflow</span>
+                </div>
+                <p class="project-audience">For schools, agencies and teachers coordinating urgent cover.</p>
+                <p class="project-summary">Makes the handoff visible from a school request through agency assignment to teacher acceptance.</p>
+                <dl class="project-proof">
+                  <div><dt>Reproduced</dt><dd>One complete school-to-teacher request trace</dd></div>
+                  <div><dt>Boundary</dt><dd>Historical case study, not a live staffing service</dd></div>
+                </dl>
+                <a class="project-link" href="./preview.html?app=quicksupply">Open case</a>
+              </div>
+            </article>
           </div>
-          <div class="evidence-copy">
-            <h2 id="evidence-story-title">Follow one decision from change to review.</h2>
-            <p class="evidence-caption" data-evidence-caption aria-live="polite">A reviewer starts with the proposed permission change, not a generic AI summary.</p>
-            <div class="evidence-controls" role="group" aria-label="PolicyLens decision stages">
-              <button type="button" data-stage-button="change" aria-pressed="true">Policy change</button>
-              <button type="button" data-stage-button="check" aria-pressed="false">Access check</button>
-              <button type="button" data-stage-button="finding" aria-pressed="false">Cited finding</button>
-              <button type="button" data-stage-button="decision" aria-pressed="false">Reviewer decision</button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </header>
 
-    <main>
-      <section id="selected" class="shell selected-work" aria-labelledby="selected-heading">
-        <header class="section-intro">
-          <h2 id="selected-heading">Three projects to open first.</h2>
-          <p>Each starts with a real decision, exposes the evidence, and says where the current build stops.</p>
-        </header>
-
-        <div class="selected-grid">
-          <article class="selected-card selected-card--lead">
-            <div class="project-media">
-              <img src="./assets/policylens.png" width="1400" height="900" alt="PolicyLens IAM change review with a cited access finding" loading="lazy" />
-            </div>
-            <div class="project-copy">
-              <p class="project-kind">AI assurance</p>
-              <h3>PolicyLens</h3>
-              <p class="project-summary">Tests one sensitive AWS request before and after a policy change, then gives the reviewer a cited stop or pass decision.</p>
-              <dl class="project-proof">
-                <div><dt>Result</dt><dd>55/55 documented scenarios match the expected decision</dd></div>
-                <div><dt>Boundary</dt><dd>AI explains the verdict; it cannot change it</dd></div>
-              </dl>
-              <a class="project-link" href="./preview.html?app=policylens">Open the PolicyLens case <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="selected-card">
-            <div class="project-media">
-              <img src="./assets/projectlens.png" width="2863" height="1524" alt="ProjectLens schedule assurance workspace with cited conflicts" loading="lazy" />
-            </div>
-            <div class="project-copy">
-              <p class="project-kind">Project controls</p>
-              <h3>ProjectLens</h3>
-              <p class="project-summary">Checks a change narrative against its Primavera schedule before the board meets, with every conflict tied to source dates.</p>
-              <dl class="project-proof">
-                <div><dt>Result</dt><dd>Three blockers, including an unacknowledged 73-day finish movement</dd></div>
-                <div><dt>Boundary</dt><dd>Every finding stays tied to source dates</dd></div>
-              </dl>
-              <a class="project-link" href="./preview.html?app=projectlens">Open the ProjectLens case <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="selected-card">
-            <div class="project-media">
-              <img src="./assets/quicksupply-dashboard.png" width="1200" height="760" alt="QuickSupply agency dashboard showing live cover requests" loading="lazy" />
-            </div>
-            <div class="project-copy">
-              <p class="project-kind">Workflow product</p>
-              <h3>QuickSupply</h3>
-              <p class="project-summary">Reworks an outdated Liverpool supply-cover process into separate school, agency and teacher journeys with visible handoffs.</p>
-              <dl class="project-proof">
-                <div><dt>Result</dt><dd>One request traced from school submission to teacher acceptance</dd></div>
-                <div><dt>Boundary</dt><dd>Historical case study, not a live staffing service</dd></div>
-              </dl>
-              <a class="project-link" href="./preview.html?app=quicksupply">Open the QuickSupply case <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
+          <p class="all-work-link"><a href="./work/">Browse all public work</a></p>
         </div>
+      </section>
 
-        <p class="all-work-link"><a href="./work/">Browse all seven public projects and three reusable patterns <span aria-hidden="true">→</span></a></p>
+      <section id="capabilities" class="capability-store" aria-labelledby="capabilities-heading">
+        <div class="shell">
+          <header class="section-intro section-intro--stacked">
+            <h2 id="capabilities-heading">Browse by capability.</h2>
+            <p>Use the full catalogue when you want breadth. These routes show the kind of work behind each project.</p>
+          </header>
+
+          <nav class="capability-routes" aria-label="Browse work by capability">
+            <a href="./work/?category=decision#catalogue">
+              <strong>Decision systems</strong>
+              <span>AI evaluation, deterministic checks and human review</span>
+              <small>PolicyLens, ProjectLens, Winchester</small>
+            </a>
+            <a href="./work/?category=data#catalogue">
+              <strong>Data and ML</strong>
+              <span>Contracts, lineage, temporal evaluation and reproducible analysis</span>
+              <small>Lakehouse, HR Analytics, reusable patterns</small>
+            </a>
+            <a href="./work/?category=product#catalogue">
+              <strong>Product workflows</strong>
+              <span>Multi-sided journeys, demos and service handoffs</span>
+              <small>QuickSupply and product case studies</small>
+            </a>
+          </nav>
+
+          <div class="supporting-heading">
+            <h3>Also on the shelves</h3>
+            <a href="./work/">View the full catalogue</a>
+          </div>
+
+          <div class="supporting-shelf" aria-label="Supporting projects">
+            <a class="supporting-item" href="./preview.html?app=winchester">
+              <span class="supporting-media"><img src="./assets/winchester.png" width="1600" height="1000" alt="Winchester House Hunter property comparison workspace" loading="lazy" /></span>
+              <strong>Winchester House Hunter</strong>
+              <small>Property shortlist with sold-price context</small>
+            </a>
+            <a class="supporting-item" href="./preview.html?app=lakehouse">
+              <span class="supporting-media"><img src="./assets/marketing-lakehouse-dashboard.png" width="1200" height="675" alt="Marketing ML Lakehouse evidence console" loading="lazy" /></span>
+              <strong>Marketing ML Lakehouse</strong>
+              <small>Prospective ML with contracts and lineage</small>
+            </a>
+            <a class="supporting-item" href="./preview.html?app=hr">
+              <span class="supporting-media"><img src="./assets/hr-summary-preview.png" width="1360" height="787" alt="HR Performance Analytics Power BI summary dashboard" loading="lazy" /></span>
+              <strong>HR Performance Analytics</strong>
+              <small>Power BI handoff with corrected interpretation</small>
+            </a>
+            <a class="supporting-item" href="./preview.html?app=england">
+              <span class="supporting-media"><img src="./assets/can-england-win-it.png" width="1200" height="675" alt="Can England Win It tournament scenario simulator" loading="lazy" /></span>
+              <strong>Can England Win It?</strong>
+              <small>A finished simulation experiment</small>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contract" class="decision-contract" aria-labelledby="contract-heading">
+        <div class="shell">
+          <header class="contract-intro">
+            <h2 id="contract-heading">My Decision Contract.</h2>
+            <p>Before AI can influence a decision, I define the source, authority, permitted role, stop condition, owner and retained evidence.</p>
+          </header>
+
+          <div class="contract-workbench" data-decision-contract>
+            <div class="contract-toolbar">
+              <div class="contract-switcher" role="group" aria-label="Choose a project contract">
+                <button type="button" data-contract-scenario="policy" aria-pressed="true">PolicyLens</button>
+                <button type="button" data-contract-scenario="project" aria-pressed="false">ProjectLens</button>
+                <button type="button" data-contract-scenario="data" aria-pressed="false">ML Lakehouse</button>
+              </div>
+              <p data-contract-summary aria-live="polite">A cloud access review where code owns the verdict and AI is limited to a cited explanation.</p>
+            </div>
+
+            <div class="contract-canvas" data-contract-canvas>
+              <article class="contract-node contract-node--source">
+                <span>Source of truth</span>
+                <strong data-contract-value="source">Policy before and after the proposed change</strong>
+              </article>
+
+              <article class="contract-node contract-node--authority">
+                <span>Deterministic authority</span>
+                <strong data-contract-value="authority">Permission evaluation for one sensitive request</strong>
+              </article>
+
+              <article class="contract-node contract-node--ai">
+                <span>Permitted AI role</span>
+                <strong data-contract-value="ai">Explain the fixed verdict with claims tied to policy evidence</strong>
+              </article>
+
+              <article class="contract-node contract-node--stop">
+                <span>Abstention condition</span>
+                <strong data-contract-value="stop">Withhold the explanation when verdict, claims or citations disagree</strong>
+              </article>
+
+              <article class="contract-node contract-node--owner">
+                <span>Accountable human</span>
+                <strong data-contract-value="owner">Cloud security reviewer</strong>
+              </article>
+
+              <article class="contract-node contract-node--record">
+                <span>Retained decision record</span>
+                <strong data-contract-value="record">Policy diff, granting statement, checks and reviewer decision</strong>
+              </article>
+
+              <div class="contract-path contract-path--one" aria-hidden="true"></div>
+              <div class="contract-path contract-path--two" aria-hidden="true"></div>
+              <div class="contract-path contract-path--three" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="about" class="shell closing" aria-labelledby="about-heading">
         <div>
-          <h2 id="about-heading">I work from the decision backwards.</h2>
-          <p>That usually means finding the rule that can be tested, the evidence a person needs, and the part an AI system should not be allowed to invent.</p>
-          <p>I am based in London and work across software, AI evaluation, data engineering and product delivery.</p>
+          <h2 id="about-heading">What I am trying to prove.</h2>
+          <p>I keep seeing polished AI answers arrive without the checks needed to challenge them. I build the data pipelines, controls, evaluations, interfaces and records around that gap.</p>
+          <p>The portfolio also shows product delivery beyond AI: turning observed problems into usable workflows, testing the result and documenting where it stops.</p>
         </div>
         <nav class="closing-links" aria-label="Contact Matthew Paver">
-          <a class="button primary" href="https://www.linkedin.com/in/matthew-paver-534262166/">Talk to me on LinkedIn</a>
+          <a class="button primary" href="https://www.linkedin.com/in/matthew-paver-534262166/">Connect on LinkedIn</a>
           <a href="https://github.com/MatthewPaver">GitHub</a>
-          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV</a>
+          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">View CV</a>
         </nav>
       </section>
     </main>

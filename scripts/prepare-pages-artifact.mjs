@@ -12,6 +12,8 @@ import path from "node:path";
 const root = process.cwd();
 const sourceDir = path.join(root, "store");
 const outDir = path.join(root, "pages-dist");
+const portfolioPrototypeDir = path.join(root, "prototypes", "tabfolio-presenta");
+const portfolioAssetsDir = path.join(root, "public", "assets", "apps");
 const siteBase = "https://matthewpaver.github.io";
 
 // Old Astro catalogue ids → current store preview slugs.
@@ -39,6 +41,29 @@ function escapeHtml(value) {
 
 function copyDir(from, to) {
   fs.cpSync(from, to, { recursive: true });
+}
+
+function publishPortfolioHomepage() {
+  const sourceHtml = path.join(portfolioPrototypeDir, "index.html");
+  const sourceCss = path.join(portfolioPrototypeDir, "styles.css");
+  const sourceScript = path.join(portfolioPrototypeDir, "script.js");
+
+  for (const source of [sourceHtml, sourceCss, sourceScript]) {
+    if (!fs.existsSync(source)) {
+      throw new Error(`portfolio prototype is missing ${path.basename(source)}`);
+    }
+  }
+
+  const html = fs
+    .readFileSync(sourceHtml, "utf8")
+    .replace('./styles.css', './portfolio.css')
+    .replace('./script.js', './portfolio.js')
+    .replaceAll('../../public/assets/apps/', './assets/apps/');
+
+  fs.writeFileSync(path.join(outDir, "index.html"), html);
+  fs.copyFileSync(sourceCss, path.join(outDir, "portfolio.css"));
+  fs.copyFileSync(sourceScript, path.join(outDir, "portfolio.js"));
+  copyDir(portfolioAssetsDir, path.join(outDir, "assets", "apps"));
 }
 
 function renderAppPage({ pageSlug, previewSlug, preview }) {
@@ -178,6 +203,7 @@ function main() {
 
   fs.rmSync(outDir, { recursive: true, force: true });
   copyDir(sourceDir, outDir);
+  publishPortfolioHomepage();
 
   const previews = JSON.parse(fs.readFileSync(path.join(sourceDir, "previews.json"), "utf8"));
   const pageTargets = new Map();

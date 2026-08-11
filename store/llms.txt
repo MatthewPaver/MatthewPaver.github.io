@@ -15,7 +15,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: Reviewers can see a risky policy diff without proving which sensitive request became reachable
 - Outcome: Turns an IAM policy diff into a cited stop or pass decision
-- Proof: 55 documented IAM boundary cases; adversarial AI grounding evaluation; correction verifier; public source
+- Proof: 55 of 55 documented scenarios match expected decisions; AWS simulator cross-check pending; adversarial AI grounding evaluation; correction verifier
 - Preview: https://matthewpaver.github.io/preview.html?app=policylens
 - Repo: https://github.com/MatthewPaver/iam-policy-auditor
 - Stack: Node.js, AWS IAM, AI evals, Docker
@@ -26,7 +26,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A change pack can tell a different story from the schedule it cites
 - Outcome: Gives a change board an evidence pack and decision record before approval
-- Proof: Northstar XER demo; cited findings; 189 source-linked GMPP records; fail-closed optional RAG
+- Proof: Northstar demo surfaces three blockers including an unacknowledged 73-day finish movement; cited dates; optional RAG with a human gate
 - Preview: https://matthewpaver.github.io/preview.html?app=projectlens
 - Repo: https://github.com/MatthewPaver/ProjectLens
 - Stack: Python, LangGraph, Gemini, LangSmith, Playwright
@@ -37,7 +37,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A Liverpool supply-cover booking journey relied on dated screens and manual follow-up
 - Outcome: Makes a three-sided booking handoff visible and testable
-- Proof: Public repo; recorded walkthrough; official DfE market context; eligibility checks; unit route and browser tests
+- Proof: One request traced from school submission through agency assignment to teacher acceptance; recorded walkthrough; official DfE context; route and browser tests
 - Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
 - Repo: https://github.com/MatthewPaver/QuickSupply
 - Stack: Next.js, TypeScript, SQLite, Drizzle, SSE
@@ -48,7 +48,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A listing price omits commute, cash position, sold-price context and condition
 - Outcome: Turns a property shortlist into an affordability and evidence review
-- Proof: Five-part public demo; 2,122 eligible HM Land Registry transactions from 2,389 source records; published filters
+- Proof: Nine seeded homes compared against budget, commute and completed-sale context; HM Land Registry source with published filters
 - Preview: https://matthewpaver.github.io/preview.html?app=winchester
 - Repo: https://github.com/MatthewPaver/winchester-buyer-check
 - Stack: React, TypeScript, public data
@@ -59,7 +59,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A notebook hides the source contracts and data checks needed to reproduce an analysis
 - Outcome: Rebuilds a marketing dataset from source contracts to a prospective model task
-- Proof: Checksum lineage; Bronze Silver Gold pipeline; 16 tests; leakage-safe next-day targets; GA4 public-data adapter
+- Proof: Five duplicate campaign/day records surfaced before training; checksum lineage; temporal baseline; leakage-safe next-day targets; GA4 public-data adapter
 - Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
 - Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 - Stack: Python, DuckDB, XGBoost, Streamlit, Makefile

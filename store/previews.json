@@ -11,7 +11,7 @@
     "problem": "A policy diff tells a reviewer which JSON changed. PolicyLens evaluates the same sensitive request before and after, cites the granting statement, and checks whether a correction closes that path while preserving required access.",
     "points": [
       "The deterministic engine decides permission reachability. The LLM can explain the result but cannot change it.",
-      "The 55-case benchmark covers documented IAM boundary conditions; the offline AI suite rejects wrong verdicts, invented citations and unsafe claims.",
+      "All 55 documented scenarios match their expected decisions; the AWS simulator cross-check is still pending.",
       "The included fixtures, tests and Docker path run without a cloud account or API key."
     ],
     "stack": ["Node.js", "AWS IAM", "AI evals", "Docker"],
@@ -33,8 +33,8 @@
     "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. An optional retrieval path finds cited past decisions, then asks the reviewer to use or ignore them.",
     "points": [
       "The public Northstar XER runs in the browser and files do not leave the device.",
-      "Every finding links to schedule evidence and the reviewer records the decision and follow-up.",
-      "The public context comes from 189 current, source-linked GMPP records; it is not presented as evidence that an intervention worked."
+      "The bundled case surfaces three board blockers, including an unacknowledged 73-day finish movement.",
+      "Every finding links to schedule evidence and the reviewer records the decision and follow-up."
     ],
     "stack": ["Python", "LangGraph", "Gemini", "LangSmith", "Playwright"],
     "links": [
@@ -55,7 +55,7 @@
     "focus": "School cover operations",
     "problem": "A local booking process split same-day cover across dated screens and manual follow-up. QuickSupply separates school, agency and teacher work, then makes each assignment and status handoff visible.",
     "points": [
-      "Sequential offers and eligibility checks model the operational constraints.",
+      "One request can be followed from school submission through agency assignment to teacher acceptance.",
       "Server-sent events keep the three views in step without manual refresh.",
       "Official DfE vacancy data supplies aggregate market context only; it never ranks an individual teacher."
     ],
@@ -76,8 +76,8 @@
     "focus": "Recommendations and public data",
     "problem": "A portal listing cannot answer whether one home works for one buyer. House Hunter combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
     "points": [
-      "The five-part demo takes a reviewer from shortlist to an evidence-backed next action.",
-      "The public market view retains 2,122 of 2,389 traced HM Land Registry transactions after its published filters.",
+      "The demo compares nine seeded homes against budget, commute and local completed-sale evidence.",
+      "The HM Land Registry market view uses completed sales after published filters, not current listings or valuations.",
       "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
     ],
     "stack": ["React", "TypeScript", "Fastify", "Prisma", "HM Land Registry"],
@@ -98,8 +98,8 @@
     "focus": "Lakehouse and ML delivery",
     "problem": "A notebook can hide the ingestion, lineage and evaluation choices needed to reproduce an analysis. This template records source contracts and checksums, builds Bronze, Silver and Gold tables, then evaluates a next-day target against a persistence baseline with a temporal holdout.",
     "points": [
-      "A clean command rebuilds the DuckDB lakehouse from committed fixtures.",
-      "Sixteen tests cover contracts, lineage, shapes, tolerances, temporal splits and leakage.",
+      "A clean command rebuilds the DuckDB lakehouse from committed fixtures and preserves source checksums.",
+      "The current fixture surfaces five duplicate campaign/day records before training, then scores next-day predictions against persistence.",
       "An optional adapter maps Google's public GA4 ecommerce sample to the same prospective task without committing the raw export."
     ],
     "stack": ["Python", "DuckDB", "XGBoost", "Streamlit", "Makefile"],

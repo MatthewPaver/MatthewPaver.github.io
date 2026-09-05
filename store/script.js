@@ -5,45 +5,6 @@ const evidenceCopy = {
   decision: "A person approves, stops or corrects the change. The AI explanation never owns the verdict.",
 };
 
-const contractScenarios = {
-  policy: {
-    summary: "In the local change-review extension, code checks access before and after a change. AI explains the result; the reviewer owns the decision.",
-    source: "Policy before and after the proposed change",
-    authority: "Whether one sensitive action is allowed",
-    ai: "Explain the result and point to the permission behind it",
-    stop: "Do not show an explanation that disagrees with the checked result or its sources",
-    owner: "Cloud security reviewer",
-    record: "The permission change, check results and reviewer’s decision",
-    example: "The screenshot shows my local change-review extension. The public repository offers the earlier organisation-policy demo and benchmark.",
-    input: ["Inspect the public benchmark", "https://github.com/MatthewPaver/iam-policy-auditor/tree/main/benchmark"],
-    output: ["See the local review example", "./preview.html?app=policylens#case-story"],
-  },
-  project: {
-    summary: "The project timetable supplies the dates. Earlier decisions can help the review, but the board decides what to approve.",
-    source: "A change request and its project timetable",
-    authority: "Dates, deadlines and task relationships that disagree",
-    ai: "Find earlier decisions for a reviewer to use or reject",
-    stop: "Do not recommend a next step when dates or sources are missing",
-    owner: "Project change board",
-    record: "The differences, their source dates and the board’s response",
-    example: "Northstar is a synthetic input pack. The public demo finds three blockers, including the 73-day finish movement; it does not establish the cause.",
-    input: ["Inspect the Northstar input files", "https://github.com/MatthewPaver/ProjectLens/tree/main/docs/demo"],
-    output: ["See the three-blocker result", "./preview.html?app=projectlens#case-story"],
-  },
-  data: {
-    summary: "The public template rebuilds campaign tables. My local follow-on work tests tomorrow’s prediction against simply using today’s figure.",
-    source: "Campaign records and the dates they became available",
-    authority: "Missing, repeated or late records, and accidental use of future data",
-    ai: "Estimate tomorrow’s bookings and compare with a simple forecast",
-    stop: "Review quality warnings and any failure to beat the simple baseline before using predictions",
-    owner: "Marketing operations lead",
-    record: "The input version, data checks, both forecasts and chosen action",
-    example: "The public console is a fixed quality snapshot. Next-day evaluation is a local extension, not the model in the published walkthrough.",
-    input: ["Read the published rebuild steps", "https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md"],
-    output: ["Inspect the sample and its boundary", "./preview.html?app=lakehouse#case-story"],
-  },
-};
-
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function initScreeningRoom() {
@@ -177,63 +138,6 @@ function initEvidenceStory() {
   }
 }
 
-function initDecisionContract() {
-  const workbench = document.querySelector("[data-decision-contract]");
-  const canvas = workbench?.querySelector("[data-contract-canvas]");
-  const summary = workbench?.querySelector("[data-contract-summary]");
-  const buttons = [...(workbench?.querySelectorAll("[data-contract-scenario]") ?? [])];
-  if (!workbench || !canvas || !summary || !buttons.length) return;
-
-  let animationTimer;
-  let hasPlayed = false;
-  let selectedKey = "policy";
-
-  function playSignal() {
-    if (reducedMotion.matches) return;
-    canvas.classList.remove("is-playing");
-    requestAnimationFrame(() => {
-      canvas.classList.add("is-playing");
-      window.clearTimeout(animationTimer);
-      animationTimer = window.setTimeout(() => canvas.classList.remove("is-playing"), 1250);
-    });
-  }
-
-  function selectScenario(key) {
-    const scenario = contractScenarios[key];
-    if (!scenario || key === selectedKey) return;
-
-    selectedKey = key;
-    summary.textContent = scenario.summary;
-    workbench.querySelector('[data-contract-example]').textContent = scenario.example;
-    for (const direction of ['input', 'output']) {
-      const link = workbench.querySelector(`[data-contract-${direction}]`);
-      [link.textContent, link.href] = scenario[direction];
-    }
-    for (const field of ["source", "authority", "ai", "stop", "owner", "record"]) {
-      const target = canvas.querySelector(`[data-contract-value="${field}"]`);
-      if (target) target.textContent = scenario[field];
-    }
-    for (const button of buttons) {
-      button.setAttribute("aria-pressed", button.dataset.contractScenario === key ? "true" : "false");
-    }
-    playSignal();
-  }
-
-  for (const button of buttons) {
-    button.addEventListener("click", () => selectScenario(button.dataset.contractScenario));
-  }
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting || hasPlayed) return;
-      hasPlayed = true;
-      observer.disconnect();
-      playSignal();
-    }, { threshold: 0.35 });
-    observer.observe(workbench);
-  }
-}
-
 function initSectionNavigation() {
   const links = [...document.querySelectorAll("[data-nav-section]")];
   if (!("IntersectionObserver" in window) || !links.length) return;
@@ -263,6 +167,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initScreeningRoom();
   initLandingMotion();
   initEvidenceStory();
-  initDecisionContract();
   initSectionNavigation();
 });

@@ -4,6 +4,7 @@ const controls = document.querySelector('[data-catalogue-controls]');
 const items = [...document.querySelectorAll('[data-catalogue-item]')];
 const search = document.querySelector('[data-catalogue-search]');
 const subject = document.querySelector('[data-catalogue-subject]');
+const mode = document.querySelector('[data-catalogue-mode]');
 const filters = [...document.querySelectorAll('[data-work-filter]')];
 const count = document.querySelector('[data-catalogue-count]');
 const empty = document.querySelector('[data-catalogue-empty]');
@@ -13,6 +14,7 @@ let state = readCatalogueState(location.search);
 function render() {
   search.value = state.q;
   subject.value = state.category;
+  mode.value = state.mode;
   for (const button of filters) button.setAttribute('aria-pressed', String(button.dataset.workFilter === state.mode));
   let projects = 0;
   let patterns = 0;
@@ -44,6 +46,7 @@ function change(next, replace = false) {
 
 search.addEventListener('input', () => change({ ...state, q: search.value }, true));
 subject.addEventListener('change', () => change({ ...state, category: subject.value }));
+mode.addEventListener('change', () => change({ ...state, mode: mode.value }));
 filters.forEach((button) => button.addEventListener('click', () => change({ ...state, mode: button.dataset.workFilter })));
 const patternJump = document.querySelector('[data-pattern-jump]');
 patternJump.href = catalogueHref({ mode:'pattern', category:'all', q:'' });

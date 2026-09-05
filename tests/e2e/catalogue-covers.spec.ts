@@ -39,9 +39,8 @@ test('prototype covers pair contextual photos with genuine uncropped screens', a
     expect(boxes.right).toBeGreaterThan(0);
     expect(boxes.bottom).toBeGreaterThan(0);
   }
-  await page.getByText('Photography & screen captures', { exact: true }).click();
-  await expect(page.locator('.image-credits')).toContainText('not client sites, live listings or project evidence');
-  await expect(page.locator('.image-credits a[href*="unsplash.com/photos/"]')).toHaveCount(3);
+  await expect(page.getByText('Photography & screen captures', { exact: true })).toHaveCount(0);
+  await expect(page.locator('.image-credits')).toHaveCount(0);
 });
 
 test('all seven covers share a stable frame and preserve the original source captures', async ({ page }) => {

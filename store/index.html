@@ -28,11 +28,11 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="alternate" type="application/xml" title="Sitemap" href="/sitemap.xml" />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
-    <link rel="stylesheet" href="./styles.css?v=20260905-1" />
-    <link rel="stylesheet" href="./landing.css?v=20260905-1" />
-    <link rel="stylesheet" href="./work-story.css?v=20260905-1" />
-    <script src="./script.js?v=20260905-2" defer></script>
-    <script src="./work-story.js?v=20260905-1" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260905-5" />
+    <link rel="stylesheet" href="./landing.css?v=20260905-2" />
+    <link rel="stylesheet" href="./work-story.css?v=20260905-3" />
+    <script src="./script.js?v=20260905-3" defer></script>
+    <script src="./work-story.js?v=20260905-3" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -138,17 +138,16 @@
       <section id="selected" class="selected-work" aria-labelledby="selected-heading">
         <div class="shell">
           <header class="section-intro section-intro--stacked" data-reveal>
-            <h2 id="selected-heading">Selected work.</h2>
+            <div class="selected-heading-row">
+              <h2 id="selected-heading">Selected work.</h2>
+            </div>
             <p>Independent projects you can inspect. They demonstrate my approach, not work delivered for an employer or client.</p>
           </header>
 
-          <div class="story-controls">
-            <nav aria-label="Jump to a selected project"><a href="#case-policylens">PolicyLens</a><a href="#case-projectlens">ProjectLens</a><a href="#case-quicksupply">QuickSupply</a></nav>
-            <button type="button" data-story-toggle hidden>Use simple view</button>
-          </div>
           <div class="work-story" data-work-story>
+          <div class="case-tabs" role="tablist" aria-label="Selected case studies" data-case-tabs hidden></div>
           <div class="selected-grid selected-grid--shelf" aria-label="Featured applications">
-            <article class="selected-card" data-project="policylens" id="case-policylens" data-story-caption="A sample access change, checked before and after">
+            <div class="selected-card" data-project="policylens" id="case-policylens" data-story-caption="A sample access change, checked before and after">
               <div class="selected-card-content">
                 <span class="project-media">
                   <img src="./assets/policylens-review.png" width="808" height="625" alt="Completed PolicyLens sample review: an AWS deletion request changes from denied to allowed, with the granting statement cited" loading="lazy" />
@@ -169,9 +168,9 @@
                   <div class="project-actions"><a class="project-link" href="./preview.html?app=policylens">Review PolicyLens case</a><a class="project-capture-link" href="./assets/policylens-review.png">Open full-size PolicyLens capture</a></div>
                 </div>
               </div>
-            </article>
+            </div>
 
-            <article class="selected-card" data-project="projectlens" id="case-projectlens" data-story-caption="Questions drawn from the sample project timetable">
+            <div class="selected-card" data-project="projectlens" id="case-projectlens" data-story-caption="Questions drawn from the sample project timetable">
               <div class="selected-card-content">
                 <span class="project-media">
                   <img src="./assets/projectlens-questions.png" width="1200" height="615" alt="ProjectLens turns three synthetic Northstar schedule findings into review questions with evidence and ownership fields" loading="lazy" />
@@ -192,9 +191,9 @@
                   <div class="project-actions"><a class="project-link" href="./preview.html?app=projectlens">Review ProjectLens case</a><a class="project-capture-link" href="./assets/projectlens-questions.png">Open full-size ProjectLens capture</a></div>
                 </div>
               </div>
-            </article>
+            </div>
 
-            <article class="selected-card" data-project="quicksupply" id="case-quicksupply" data-story-caption="A recorded supply-teacher booking case study">
+            <div class="selected-card" data-project="quicksupply" id="case-quicksupply" data-story-caption="A recorded supply-teacher booking case study">
               <div class="selected-card-content">
                 <span class="project-media">
                   <picture>
@@ -218,7 +217,7 @@
                   <div class="project-actions"><a class="project-link" href="./preview.html?app=quicksupply">Review QuickSupply case</a><a class="project-capture-link" href="./assets/quicksupply-dashboard.png">Open full-size QuickSupply capture</a></div>
                 </div>
               </div>
-            </article>
+            </div>
           </div>
           </div>
         </div>
@@ -227,55 +226,32 @@
       <section id="contract" class="decision-contract" aria-labelledby="contract-heading">
         <div class="shell">
           <header class="contract-intro" data-reveal>
-            <h2 id="contract-heading">How I check the answers.</h2>
-            <p>A useful tool needs more than a convincing answer. Choose a project to see what it checks, where AI helps and which decisions stay with a person.</p>
+            <h2 id="contract-heading">How I work.</h2>
+            <p>I start with the decision someone needs to make, then test the part most likely to mislead them. Here is what that looks like in the work.</p>
           </header>
 
-          <div class="contract-workbench" data-decision-contract>
-            <div class="contract-toolbar">
-              <div class="contract-switcher" role="group" aria-label="Choose a project contract">
-                <button type="button" data-contract-scenario="policy" aria-pressed="true">PolicyLens</button>
-                <button type="button" data-contract-scenario="project" aria-pressed="false">ProjectLens</button>
-                <button type="button" data-contract-scenario="data" aria-pressed="false">ML Lakehouse</button>
+          <div class="method-examples">
+            <article class="method-example">
+              <h3>Keep the source beside the answer.</h3>
+              <div>
+                <p>In ProjectLens, a reviewer can follow a schedule conflict back to the dates behind it. The sample helps them ask a better question; it does not tell them who caused the delay.</p>
+                <a href="./preview.html?app=projectlens#case-story">Follow the ProjectLens example</a>
               </div>
-              <p data-contract-summary aria-live="polite">In the local change-review extension, code checks access before and after a change. AI explains the result; the reviewer owns the decision.</p>
-            </div>
-
-            <ol class="contract-canvas" data-contract-canvas aria-label="Review sequence">
-              <li class="contract-node contract-node--source">
-                <span>1. What goes in</span>
-                <strong data-contract-value="source">Policy before and after the proposed change</strong>
-              </li>
-
-              <li class="contract-node contract-node--authority">
-                <span>2. What the code checks</span>
-                <strong data-contract-value="authority">Whether one sensitive action is allowed</strong>
-              </li>
-
-              <li class="contract-node contract-node--ai">
-                <span>3. What AI can do</span>
-                <strong data-contract-value="ai">Explain the result and point to the permission behind it</strong>
-              </li>
-
-              <li class="contract-node contract-node--stop">
-                <span>4. What needs review</span>
-                <strong data-contract-value="stop">Do not show an explanation that disagrees with the checked result or its sources</strong>
-              </li>
-
-              <li class="contract-node contract-node--owner">
-                <span>5. Who decides</span>
-                <strong data-contract-value="owner">Cloud security reviewer</strong>
-              </li>
-
-              <li class="contract-node contract-node--record">
-                <span>6. What gets saved</span>
-                <strong data-contract-value="record">The permission change, check results and reviewer’s decision</strong>
-              </li>
-            </ol>
-            <div class="contract-evidence">
-              <p data-contract-example>The screenshot shows my local change-review extension. The public repository offers the earlier organisation-policy demo and benchmark.</p>
-              <nav aria-label="Inspect this method’s evidence"><a data-contract-input href="https://github.com/MatthewPaver/iam-policy-auditor/tree/main/benchmark">Inspect the public benchmark</a><a data-contract-output href="./preview.html?app=policylens#case-story">See the local review example</a></nav>
-            </div>
+            </article>
+            <article class="method-example">
+              <h3>Test the explanation, too.</h3>
+              <div>
+                <p>My local PolicyLens extension checks that an AI explanation agrees with the permission result and its cited source. These are authored test cases, not independent validation of every AWS rule.</p>
+                <a href="./preview.html?app=policylens#case-story">Inspect the PolicyLens checks</a>
+              </div>
+            </article>
+            <article class="method-example">
+              <h3>Compare with the simple baseline.</h3>
+              <div>
+                <p>For the lakehouse’s local next-day forecast, the comparison is using today’s figure again. I keep future records out of training and report when the model fails to improve on that baseline.</p>
+                <a href="./preview.html?app=lakehouse#case-story">Read the lakehouse evaluation</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -330,7 +306,6 @@
 
     <footer class="shell footer">
       <p>Matthew Paver, software and AI engineer.</p>
-      <p>Public work, reproducible evidence and honest limits.</p>
     </footer>
   </body>
 </html>

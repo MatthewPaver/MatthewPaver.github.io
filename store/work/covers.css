@@ -55,20 +55,6 @@
 .app-cover[data-cover="hr"] { background: #d9deeb; }
 .app-cover[data-cover="england"] { background: #0b1d45; }
 
-.image-credits {
-  margin-top: 36px;
-  padding-block: 12px;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: .875rem;
-  line-height: 1.65;
-}
-.image-credits summary { min-height: 44px; padding-block: 10px; cursor: pointer; color: var(--ink); }
-.image-credits p, .image-credits ul { max-width: 75ch; }
-.image-credits ul { padding-left: 20px; }
-.image-credits li + li { margin-top: 8px; }
-.image-credits a { color: var(--accent-dark); text-underline-offset: 3px; }
-
 @media (prefers-color-scheme: dark) {
   .app-cover { background: #20364c; }
   .app-cover[data-cover="lakehouse"] { background: #294b46; }

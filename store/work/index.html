@@ -20,10 +20,10 @@
     <link rel="preload" href="../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="../assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
-    <link rel="stylesheet" href="../styles.css?v=20260905-3" />
-    <link rel="stylesheet" href="./catalogue.css?v=20260905-3" />
+    <link rel="stylesheet" href="../styles.css?v=20260905-5" />
+    <link rel="stylesheet" href="./catalogue.css?v=20260905-4" />
     <link rel="stylesheet" href="./covers.css?v=20260905-1" />
-    <script src="./catalogue.js?v=20260905-1" type="module"></script>
+    <script src="./catalogue.js?v=20260905-2" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#catalogue">Skip to catalogue</a>
@@ -67,6 +67,7 @@
             <button type="button" data-work-filter="case" aria-pressed="false">Watch or read</button>
             <button type="button" data-work-filter="pattern" aria-pressed="false">Reuse a pattern</button>
           </div>
+          <label class="catalogue-mode">Explore <select data-catalogue-mode><option value="all">All work</option><option value="browser">Try in browser</option><option value="local">Run locally</option><option value="case">Watch or read</option><option value="pattern">Reuse a pattern</option></select></label>
           <label class="catalogue-subject">Subject <select data-catalogue-subject><option value="all">All subjects</option><option value="decision">Decision tools</option><option value="product">Product workflows</option><option value="data">Data and ML</option><option value="analytics">Analytics</option><option value="experiment">Experiments</option></select></label>
           <button class="catalogue-clear" type="button" data-catalogue-clear>Clear filters</button>
         </div>
@@ -107,7 +108,7 @@
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-catalogue-item data-mode="case" data-slug="quicksupply" data-category="product" data-status="Public" data-problem="A Liverpool supply-cover booking journey relied on dated screens and manual follow-up" data-solves="Makes a three-sided booking handoff visible and testable" data-proof="One request traced from school submission through agency assignment to teacher acceptance; recorded walkthrough; official DfE context; route and browser tests">
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="case" data-slug="quicksupply" data-category="product" data-status="Public" data-problem="A Liverpool supply-cover booking journey relied on dated screens and manual follow-up" data-solves="Makes a three-sided booking handoff visible and testable" data-proof="Recorded school, agency and teacher handoff; newer DfE context and audit fixes remain local work">
             <div class="app-cover app-cover--photo" data-cover="classroom">
               <img class="app-cover-photo" src="../assets/photography/classroom.jpg" width="1200" height="675" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div class="app-cover-screen">
@@ -128,7 +129,7 @@
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser" data-slug="winchester" data-category="product decision" data-status="Public" data-problem="A listing price omits commute, cash position, sold-price context and condition" data-solves="Turns a property shortlist into an affordability and evidence review" data-proof="Nine seeded homes compared against budget, commute and completed-sale context; HM Land Registry source with published filters">
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser" data-slug="winchester" data-category="product decision" data-status="Public" data-problem="A listing price omits commute, cash position, sold-price context and condition" data-solves="Turns a property shortlist into an affordability and evidence review" data-proof="Nine seeded homes; hosted market summaries are illustrative until the traceable local rebuild is published">
             <div class="app-cover app-cover--photo" data-cover="housing">
               <img class="app-cover-photo" src="../assets/photography/housing.jpg" width="1200" height="901" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div class="app-cover-screen">
@@ -176,7 +177,7 @@
               <h3>HR Performance Analytics</h3>
               <p class="work-access">Historical case · Power BI Desktop to edit</p>
               <p>For BI learners: inspect a dashboard handoff and its corrections to the meaning of employee fields in Microsoft's sample data.</p>
-              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Read this</dt><dd>Why a sick-leave balance is not annual absence, and a row's update date is not age or tenure.</dd></div><div><dt>Before using</dt><dd>The old exports and public README still contain those interpretations. A rebuild is outstanding.</dd></div></dl>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Read this</dt><dd>Why a sick-leave balance is not annual absence, and a row's update date is not age or tenure.</dd></div><div><dt>Before using</dt><dd>Corrected CSVs and a review PDF exist locally. The public files remain historical; the Power BI refresh is outstanding.</dd></div></dl>
               <a class="work-launch" href="../preview.html?app=hr#case-story">Read the corrections first</a>
               <a class="project-link" href="../preview.html?app=hr">Review HR Analytics case</a>
               <details class="work-first-steps"><summary>First steps</summary><ol><li>Read the correction on the case page before opening the repository.</li><li>Inspect the original files as historical work, not current HR findings.</li><li>Rebuild measures from appropriate source fields before reusing the report.</li></ol><p>Fictional AdventureWorks data. The old labels must not inform employee decisions.</p></details>
@@ -225,16 +226,6 @@
           </a>
         </div>
       </section>
-      <details class="image-credits">
-        <summary>Photography &amp; screen captures</summary>
-        <p>Every interface shown is a real project capture. The background photographs provide context, not client sites, live listings or project evidence.</p>
-        <ul>
-          <li>QuickSupply: classroom photograph by <a href="https://unsplash.com/photos/empty-classroom-with-desks-and-chalkboard-PDRFeeDniCk">Ivan Aleksic</a>, taken at the Museum of Yugoslavia in Belgrade, not a Liverpool client site.</li>
-          <li>Winchester: terraced houses by <a href="https://unsplash.com/photos/row-of-colorful-terraced-houses-under-a-cloudy-sky-zhq1aM0RC4U">Rohan Gangopadhyay</a>. These are not properties in the demo.</li>
-          <li>ProjectLens: construction cranes in Hamburg by <a href="https://unsplash.com/photos/a-group-of-cranes-that-are-next-to-a-building-ARCwim3C14s">Johannes Weckström</a>, not the synthetic Northstar project.</li>
-        </ul>
-        <p>Photos used under the <a href="https://unsplash.com/license">Unsplash License</a>. Full-size interface captures and their limitations are on each case page.</p>
-      </details>
     </main>
 
     <footer class="shell footer">

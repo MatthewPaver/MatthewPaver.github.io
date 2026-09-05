@@ -1,82 +1,74 @@
-// Apple-inspired pacing, implemented with native scrolling and real project captures.
-// The source cards remain the complete, accessible no-JavaScript version.
+/* Progressive enhancement: every case remains readable without JavaScript. */
 (() => {
   const story = document.querySelector('[data-work-story]');
-  if (!story || !('IntersectionObserver' in window)) return;
-  const cards = [...story.querySelectorAll('[data-project]')];
-  const toggle = document.querySelector('[data-story-toggle]');
-  const jumps = [...document.querySelectorAll('.story-controls nav a')];
-  const wide = matchMedia('(min-width: 1100px) and (min-height: 700px)');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  const stage = document.createElement('div');
-  stage.className = 'work-story-stage';
-  stage.setAttribute('aria-hidden', 'true');
-  const frames = cards.map(card => {
-    const frame = document.createElement('figure');
-    frame.className = 'work-story-frame';
-    frame.dataset.storyFrame = card.dataset.project;
-    const media = card.querySelector('.project-media picture, .project-media img').cloneNode(true);
-    const img = media.matches('img') ? media : media.querySelector('img');
-    img.alt = '';
-    const caption = document.createElement('figcaption');
-    caption.textContent = card.dataset.storyCaption;
-    frame.append(media, caption);
-    stage.append(frame);
-    return frame;
+  const tabs = story?.querySelector('[data-case-tabs]');
+  const panels = [...(story?.querySelectorAll('.selected-card') ?? [])];
+  if (!tabs || !panels.length) return;
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const buttons = panels.map(panel => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.id = 'tab-' + panel.dataset.project;
+    button.textContent = panel.querySelector('h3').textContent;
+    button.setAttribute('role', 'tab');
+    button.setAttribute('aria-controls', panel.id);
+    panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-labelledby', button.id);
+    panel.tabIndex = 0;
+    tabs.append(button);
+    return button;
   });
-  story.prepend(stage);
-  let simple = false;
-  let observer;
+  let active = -1;
   let animation;
-  const intersecting = new Set();
-
-  function select(card) {
-    if (story.dataset.activeProject === card.dataset.project) return;
+  function select(index, {focus = false, updateUrl = false, animate = false} = {}) {
+    const changed = active !== index;
+    active = index;
     animation?.cancel();
-    story.dataset.activeProject = card.dataset.project;
-    frames.forEach(frame => {
-      const active = frame.dataset.storyFrame === card.dataset.project;
-      frame.classList.toggle('is-active', active);
-      if (active && story.dataset.storyMode === 'scroll' && !reduce.matches) {
-        animation = frame.animate([
-          {clipPath:'inset(0 0 12% 0 round 14px)',transform:'translateY(22px) scale(.97)'},
-          {clipPath:'inset(0 0 0 0 round 14px)',transform:'translateY(0) scale(1)'},
-        ], {duration:700,easing:'cubic-bezier(.16,1,.3,1)'});
-      }
+    buttons.forEach((button, i) => {
+      button.setAttribute('aria-selected', String(i === index));
+      button.tabIndex = i === index ? 0 : -1;
+      panels[i].hidden = i !== index;
     });
-    jumps.forEach(link => {
-      if (link.hash === `#${card.id}`) link.setAttribute('aria-current','location');
-      else link.removeAttribute('aria-current');
+    story.dataset.activeProject = panels[index].dataset.project;
+    if (focus) buttons[index].focus({preventScroll: true});
+    if (updateUrl && location.hash !== '#' + panels[index].id) {
+      history.pushState(null, '', '#' + panels[index].id);
+    }
+    if (changed && animate && !motion.matches) {
+      animation = panels[index].animate(
+        [{opacity: .65, transform: 'translateY(8px)'}, {opacity: 1, transform: 'translateY(0)'}],
+        {duration: 240, easing: 'cubic-bezier(.16,1,.3,1)'}
+      );
+    }
+  }
+  function indexFromHash() {
+    return panels.findIndex(panel => '#' + panel.id === location.hash);
+  }
+  function restoreHash() {
+    const index = indexFromHash();
+    if (index !== -1) select(index);
+  }
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => select(index, {updateUrl: true, animate: true}));
+    button.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % buttons.length;
+      if (event.key === 'ArrowLeft') next = (index + buttons.length - 1) % buttons.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = buttons.length - 1;
+      if (next === undefined) return;
+      event.preventDefault();
+      select(next, {focus: true, updateUrl: true, animate: true});
     });
-  }
-
-  function updateMode() {
-    observer?.disconnect();
-    animation?.cancel();
-    intersecting.clear();
-    const enabled = wide.matches && !reduce.matches && !simple;
-    story.dataset.storyMode = enabled ? 'scroll' : 'simple';
-    toggle.hidden = !wide.matches || reduce.matches;
-    toggle.textContent = enabled ? 'Use simple view' : 'Use scroll view';
-    toggle.setAttribute('aria-pressed',String(simple));
-    if (!enabled) return;
-    observer = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) intersecting.add(entry.target);
-        else intersecting.delete(entry.target);
-      }
-      const closest = [...intersecting].sort((a,b) => {
-        const distance = el => Math.abs(el.getBoundingClientRect().top + el.offsetHeight / 2 - innerHeight / 2);
-        return distance(a) - distance(b);
-      })[0];
-      if (closest) select(closest.closest('[data-project]'));
-    }, {rootMargin:'-30% 0px -30% 0px',threshold:0});
-    cards.forEach(card => observer.observe(card.querySelector('.project-copy')));
-  }
-  cards.forEach(card => card.addEventListener('focusin', () => select(card)));
-  toggle.addEventListener('click', () => { simple = !simple; updateMode(); });
-  wide.addEventListener('change', updateMode);
-  reduce.addEventListener('change', updateMode);
-  select(cards[0]);
-  updateMode();
+  });
+  select(Math.max(0, indexFromHash()));
+  story.dataset.storyMode = 'tabs';
+  tabs.hidden = false;
+  window.addEventListener('hashchange', restoreHash);
+  window.addEventListener('popstate', restoreHash);
+  motion.addEventListener('change', () => { if (motion.matches) animation?.cancel(); });
+  // Layout becomes shorter during enhancement; retain existing incoming anchors.
+  if (location.hash) requestAnimationFrame(() => {
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior: 'instant', block: 'start'});
+  });
 })();

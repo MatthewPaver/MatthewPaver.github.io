@@ -1,4 +1,15 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+async function selectMode(page: Page, label: string, mode: string) {
+  const compact = page.getByRole('combobox', { name: 'Explore', exact: true });
+  if (await compact.isVisible()) await compact.selectOption(mode);
+  else await page.getByRole('button', { name: label, exact: true }).click();
+}
+
+async function expectMode(page: Page, mode: string) {
+  await expect(page.locator(`[data-work-filter="${mode}"]`)).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('[data-catalogue-mode]')).toHaveValue(mode);
+}
 
 const projectSlugs = ['policylens', 'projectlens', 'quicksupply', 'winchester', 'lakehouse', 'hr', 'england'];
 
@@ -40,31 +51,21 @@ test('long case titles stay inside their text column at 1280px on query and gene
   }
 });
 
-test('method evidence follows each scenario and visual order matches reading order', async ({ page }) => {
+test('method evidence is available together in reading order', async ({ page }) => {
   await page.goto('/#contract');
-  const method = page.locator('[data-decision-contract]');
-  for (const [label, slug, source] of [
-    ['PolicyLens', 'policylens', '/benchmark'],
-    ['ProjectLens', 'projectlens', '/docs/demo'],
-    ['ML Lakehouse', 'lakehouse', '/DEMO.md'],
-  ]) {
-    await method.getByRole('button', { name: label, exact: true }).click();
-    await expect(method.locator('[data-contract-input]')).toHaveAttribute('href', new RegExp(source));
-    await expect(method.locator('[data-contract-output]')).toHaveAttribute('href', new RegExp(`app=${slug}`));
-    await expect(method.locator('[data-contract-example]')).not.toBeEmpty();
-    const bounds = await method.locator('.contract-node').evaluateAll(nodes => nodes.map(node => {
-      const { x, y } = node.getBoundingClientRect(); return { x, y };
-    }));
-    for (let index = 1; index < bounds.length; index++) {
-      expect(bounds[index].y > bounds[index - 1].y || (Math.abs(bounds[index].y - bounds[index - 1].y) < 1 && bounds[index].x > bounds[index - 1].x)).toBe(true);
-    }
+  const method = page.locator('#contract');
+  for (const slug of ['projectlens','policylens','lakehouse']) {
+    await expect(method.locator('a[href="./preview.html?app=' + slug + '#case-story"]')).toBeVisible();
   }
+  const tops = await method.locator('.method-example').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().top));
+  expect(tops[0]).toBeLessThan(tops[1]);
+  expect(tops[1]).toBeLessThan(tops[2]);
 });
 
-test('a direct Method link stays on the method after the scroll story enhances', async ({ page }) => {
+test('a direct Method link stays on the method after compact cases enhance', async ({ page }) => {
   await page.setViewportSize({width:1280,height:800});
   await page.goto('/#contract');
-  await expect(page.locator('[data-work-story]')).toHaveAttribute('data-story-mode', 'scroll');
+  await expect(page.locator('[data-work-story]')).toHaveAttribute('data-story-mode', 'tabs');
   await page.evaluate(() => document.fonts.ready);
   await expect.poll(() => page.locator('#contract').evaluate(el => el.getBoundingClientRect().top)).toBeLessThan(150);
 });
@@ -95,15 +96,13 @@ const modes = [
 for (const { label, mode, slugs } of modes) {
   test(`action filter ${label} selects its work and persists in the URL`, async ({ page }) => {
     await page.goto('/work/');
-    const filter = page.getByRole('button', { name: label, exact: true });
-    await expect(filter).toBeVisible();
-    await filter.click();
-    await expect(filter).toHaveAttribute('aria-pressed', 'true');
+    await selectMode(page, label, mode);
+    await expectMode(page, mode);
     await expect.poll(() => new URL(page.url()).searchParams.get('mode')).toBe(mode);
     await expect.poll(() => page.locator('.work-card:visible').evaluateAll((cards) => cards.map((card) => card.getAttribute('data-slug')))).toEqual(slugs);
     await expect(page.locator('.template-row:visible')).toHaveCount(mode === 'pattern' ? 3 : 0);
     await page.reload();
-    await expect(filter).toHaveAttribute('aria-pressed', 'true');
+    await expectMode(page, mode);
     await expect.poll(() => page.locator('.work-card:visible').evaluateAll((cards) => cards.map((card) => card.getAttribute('data-slug')))).toEqual(slugs);
     await expect(page.locator('.template-row:visible')).toHaveCount(mode === 'pattern' ? 3 : 0);
   });
@@ -113,14 +112,12 @@ test('catalogue search and action mode survive reload together', async ({ page }
   await page.goto('/work/');
   const search = page.getByRole('searchbox', { name: 'Search public work' });
   await search.fill('ProjectLens');
-  const browserFilter = page.getByRole('button', { name: 'Try in browser', exact: true });
-  await expect(browserFilter).toBeVisible();
-  await browserFilter.click();
+  await selectMode(page, 'Try in browser', 'browser');
   await expect.poll(() => new URL(page.url()).searchParams.get('q')).toBe('ProjectLens');
   await expect.poll(() => new URL(page.url()).searchParams.get('mode')).toBe('browser');
   await page.reload();
   await expect(search).toHaveValue('ProjectLens');
-  await expect(page.getByRole('button', { name: 'Try in browser', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expectMode(page, 'browser');
   await expect(page.locator('.work-card:visible')).toHaveCount(1);
   await expect(page.locator('[data-slug="projectlens"]')).toBeVisible();
 });
@@ -131,7 +128,7 @@ test('browser Back restores the filtered catalogue after reading a case', async 
   await expect(page.locator('.preview-copy h1')).toHaveText('ProjectLens');
   await page.goBack();
   await expect(page.getByRole('searchbox', { name: 'Search public work' })).toHaveValue('ProjectLens');
-  await expect(page.getByRole('button', { name: 'Try in browser', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expectMode(page, 'browser');
   await expect(page.locator('.work-card:visible')).toHaveCount(1);
   await expect(page.locator('[data-slug="projectlens"]')).toBeVisible();
 });
@@ -312,7 +309,7 @@ test('catalogue and preview reading text and actions have contrast in both theme
   for (const colorScheme of ['light','dark'] as const) {
     await page.emulateMedia({colorScheme});
     for (const [url, selectors] of [
-      ['/work/', ['.work-access', '.work-card-proof dd', '.work-launch', '.catalogue-clear', '.work-filters button[aria-pressed="true"]']],
+      ['/work/', ['.work-access', '.work-card-proof dd', '.work-launch', '.catalogue-clear', '.work-filters button[aria-pressed="true"]:visible, .catalogue-mode select:visible', '.catalogue-subject select']],
       ['/preview.html?app=hr', ['.preview-access', '.preview-boundary p', '.preview-media-caption', '.preview-actions .primary', '.preview-panel p']],
     ] as const) {
       await page.goto(url);

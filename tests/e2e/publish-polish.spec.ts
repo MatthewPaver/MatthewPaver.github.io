@@ -8,6 +8,7 @@ test('selected cases have short action names and directly inspectable captures',
     ['projectlens', 'ProjectLens', 'projectlens-questions.png'],
     ['quicksupply', 'QuickSupply', 'quicksupply-dashboard.png'],
   ]) {
+    await page.getByRole('tab', {name, exact:true}).click();
     const card = page.locator(`[data-project="${slug}"]`);
     await expect(card.getByRole('link', { name: `Review ${name} case`, exact: true }))
       .toHaveAttribute('href', `./preview.html?app=${slug}`);

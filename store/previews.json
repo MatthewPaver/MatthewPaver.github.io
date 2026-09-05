@@ -41,7 +41,7 @@
     "role": "Product and AI engineer",
     "status": "Live public demo",
     "focus": "Project controls and RAG",
-    "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. An optional retrieval path finds cited past decisions, then asks the reviewer to use or ignore them.",
+    "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. The public demo uses static context. Newer local retrieval lets a reviewer inspect cited programme status records; these are not records of past decisions or their causes.",
     "choice": "I compare the schedule evidence before asking AI for help. Every finding keeps its source dates, and a reviewer must decide whether a suggested precedent is relevant. A plausible narrative is not treated as a project decision.",
     "result": "The synthetic Northstar example produces three blockers, including a finish date moving by 73 days without being acknowledged. The reviewer can inspect the dates, prepare follow-up questions and export a decision record.",
     "learning": "The useful output is a question someone can investigate, not a score that pretends to predict project failure. Separating schedule facts from interpretation makes the review easier to challenge.",
@@ -85,7 +85,7 @@
     "points": [
       "One request can be followed from school submission through agency assignment to teacher acceptance.",
       "Server-sent events keep the three views in step without manual refresh.",
-      "Official DfE vacancy data supplies aggregate market context only; it never ranks an individual teacher."
+      "Newer local work adds official DfE vacancy data for aggregate market context. It does not rank teachers and is not part of the published recording."
     ],
     "stack": ["Next.js", "TypeScript", "SQLite", "Drizzle", "SSE"],
     "links": [
@@ -110,12 +110,12 @@
     "result": "Choose Under £425k and the nine seeded homes become five. Open Upper Brook Street to inspect the evidence checklist and see which assumptions need checking.",
     "learning": "Precise-looking scores can imply more certainty than the inputs deserve. Fit and evidence scores are demo heuristics, not calibrated probabilities; negotiation figures are illustrative assumptions, not estimated market values.",
     "access": "Runs in your browser. No account; nine seeded homes.",
-    "publication": "The homes, fit scores and negotiation figures are examples. Completed-sale context is historical and separate from the shortlist.",
+    "publication": "The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.",
     "mediaCaption": "Public seeded example with the under-£425k filter selected.",
     "steps": ["Choose Under £425k or a station-distance filter.", "Open a home and read its evidence checklist before interpreting the score.", "Treat prices and affordability inputs as illustrative. Consult the cited completed-sale context separately."],
     "points": [
       "The demo compares nine seeded homes against budget, commute and local completed-sale evidence.",
-      "The HM Land Registry market view uses completed sales after published filters, not current listings or valuations.",
+      "The newer local market build records the HM Land Registry source, filters and reconciled counts. Until that release is public, treat the hosted summaries as illustrative.",
       "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
     ],
     "stack": ["Browser JavaScript", "HTML and CSS", "HM Land Registry"],
@@ -166,14 +166,14 @@
     "imageAvif": "./assets/hr-summary-preview.avif",
     "imageAlt": "Historical HR dashboard; its absence and age labels are not reliable interpretations of the source data",
     "role": "BI analyst and dashboard developer",
-    "status": "Historical work; rebuild outstanding",
+    "status": "Historical dashboard; corrected data rebuilt locally",
     "focus": "Stakeholder analytics",
     "problem": "A dashboard screenshot hides the model, calculations and interpretation choices. This case puts the historical AdventureWorks dashboard beside two errors in how I interpreted its fields. Both need correcting before the report can be reused.",
     "choice": "The original dashboard made two unsupported interpretations. SickLeaveHours is an available balance, not absence taken. ModifiedDate records when a row changed; it cannot stand in for a birth date or hire date. I am retaining the original work with this correction rather than presenting it as reliable employee analysis.",
-    "result": "The screenshots and exports show the historical dashboard, not a corrected rebuild. Annual absence, age or tenure conclusions derived from those fields should not be used. A rebuilt report needs explicit definitions and appropriate source dates before those measures are calculated.",
+    "result": "The new local rebuild produces checked CSVs and a corrected review PDF from Microsoft's public sample. Its three available-leave balance bands reconcile to 290 fictional employees. The screenshots here still show the historical dashboard; the original Power BI model has not been refreshed.",
     "learning": "A chart can be technically well built and still answer the wrong question. Field definitions, measure assumptions and a correction trail are part of the deliverable, not documentation to add after the visual design.",
     "access": "Read the correction here. Power BI Desktop is needed to edit the historical report.",
-    "publication": "Read the correction below before opening the repository. Its README and existing PBIX/PDF exports still contain the old interpretations; a corrected rebuild remains outstanding.",
+    "publication": "The corrected data and replacement review PDF are local, unpublished work. The public repository still contains historical interpretations. Refreshing and checking the original Power BI report remains outstanding.",
     "mediaCaption": "Historical output retained for the case study; labels have not been corrected in the export.",
     "steps": ["Read the two field-meaning corrections on this page.", "Inspect the original exports as historical artefacts, not current HR findings.", "Before reuse, rebuild the measures from documented field definitions and validate the resulting PBIX/PDF."],
     "points": [

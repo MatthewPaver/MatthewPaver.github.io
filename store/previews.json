@@ -2,145 +2,212 @@
   "policylens": {
     "kicker": "IAM change review",
     "title": "PolicyLens",
-    "summary": "Check whether one sensitive AWS request became reachable, cite the granting statement and test the correction.",
-    "image": "./assets/policylens.png",
-    "imageAlt": "PolicyLens IAM review interface",
-    "role": "Decision support",
-    "status": "Public source",
+    "summary": "Find the permission that allows a sensitive cloud action, then check whether a proposed correction removes that access.",
+    "image": "./assets/policylens-review.png",
+    "imageWidth": 808,
+    "imageHeight": 625,
+    "imageAlt": "Completed PolicyLens sample review showing denied-to-allowed access, source evidence and a candidate correction",
+    "role": "Product and AI engineer",
+    "status": "Local extension of a public tool",
     "focus": "IAM and AI evaluation",
     "problem": "A policy diff tells a reviewer which JSON changed. PolicyLens evaluates the same sensitive request before and after, cites the granting statement, and checks whether a correction closes that path while preserving required access.",
+    "choice": "I kept the permission decision in code. AI receives the checked facts and may explain them, but it cannot overrule the result. This makes a wrong explanation something I can test for, rather than something a reviewer has to guess at.",
+    "result": "In the captured local example, deleting a production database changes from denied to allowed. The review identifies the granting statement and checks a candidate correction while preserving required report access.",
+    "learning": "A passing test suite only establishes behaviour for the cases it covers. The next useful evidence is comparison with AWS's own simulator, plus adversarial tests of whether AI explanations stay faithful to the engine.",
+    "access": "Node.js or Docker. The public example does not need an API key.",
+    "publication": "The capture shows the newer local change-review extension. The public repository currently opens the earlier Org demo, not this exact screen.",
+    "mediaCaption": "Local change-review example: denied, allowed, then a proposed correction.",
+    "steps": ["Follow the public repository's quick start and open the local app.", "Choose Run the 90-second demo to populate the Org view.", "Inspect who-can results and their policy citations. The change-review capture above documents a separate, not-yet-published extension."],
     "points": [
       "The deterministic engine decides permission reachability. The LLM can explain the result but cannot change it.",
-      "All 55 documented scenarios match their expected decisions; the AWS simulator cross-check is still pending.",
-      "The included fixtures, tests and Docker path run without a cloud account or API key."
+      "The public benchmark and newer local scenario suite are different evidence sets. Neither is a completed independent AWS simulator cross-check.",
+      "Run the published benchmark to inspect its documented cases. AI explanations are optional and need a separately configured key."
     ],
     "stack": ["Node.js", "AWS IAM", "AI evals", "Docker"],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/iam-policy-auditor", "primary": true },
-      { "label": "Read the eval design", "href": "https://github.com/MatthewPaver/iam-policy-auditor/blob/main/docs/AI_EVALS.md" }
+      { "label": "Run public IAM demo", "href": "https://github.com/MatthewPaver/iam-policy-auditor#quick-start-stranger-usable-in-90-seconds", "primary": true },
+      { "label": "Inspect public benchmark", "href": "https://github.com/MatthewPaver/iam-policy-auditor/tree/main/benchmark" }
     ],
     "note": "Local decision support, not an authorization oracle. SCPs, permission boundaries, session policies and some cross-account interactions remain outside the current model."
   },
   "projectlens": {
     "kicker": "Project change assurance",
     "title": "ProjectLens",
-    "summary": "Compare a change narrative with its Primavera schedule, inspect cited conflicts and record the board response.",
-    "image": "./assets/projectlens.png",
-    "imageAlt": "ProjectLens schedule assurance workspace showing a 73-day finish movement and three cited blockers",
-    "role": "Decision support",
+    "summary": "Find where a project's written update disagrees with its schedule, then turn the differences into questions for a reviewer.",
+    "image": "./assets/projectlens-blockers.png",
+    "imageWidth": 1076,
+    "imageHeight": 688,
+    "imageAlt": "ProjectLens readiness result with three blockers from the synthetic Northstar example",
+    "role": "Product and AI engineer",
     "status": "Live public demo",
     "focus": "Project controls and RAG",
     "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. An optional retrieval path finds cited past decisions, then asks the reviewer to use or ignore them.",
+    "choice": "I compare the schedule evidence before asking AI for help. Every finding keeps its source dates, and a reviewer must decide whether a suggested precedent is relevant. A plausible narrative is not treated as a project decision.",
+    "result": "The synthetic Northstar example produces three blockers, including a finish date moving by 73 days without being acknowledged. The reviewer can inspect the dates, prepare follow-up questions and export a decision record.",
+    "learning": "The useful output is a question someone can investigate, not a score that pretends to predict project failure. Separating schedule facts from interpretation makes the review easier to challenge.",
+    "access": "Runs in your browser. No account; sample schedules included.",
+    "publication": "The public example uses synthetic schedules. Its precedent cards are a static fallback; live retrieval requires local setup.",
+    "mediaCaption": "Public Northstar sample: three issues to resolve before a decision.",
+    "steps": ["Select Try the Northstar example in the public demo.", "Open the three blockers and follow the source dates, including the 73-day movement.", "Prepare review questions. Export the record if you want to keep it; the browser is not a shared team workspace."],
     "points": [
-      "The public Northstar XER runs in the browser and files do not leave the device.",
+      "The bundled Northstar schedules are synthetic examples. The browser comparison also accepts your own XER files without uploading them.",
       "The bundled case surfaces three board blockers, including an unacknowledged 73-day finish movement.",
       "Every finding links to schedule evidence and the reviewer records the decision and follow-up."
     ],
-    "stack": ["Python", "LangGraph", "Gemini", "LangSmith", "Playwright"],
+    "stack": ["Browser JavaScript", "Python", "Playwright", "Optional Gemini RAG"],
     "links": [
-      { "label": "Open demo", "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html", "primary": true },
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/ProjectLens" }
+      { "label": "Try the schedule review", "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html", "primary": true },
+      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/ProjectLens" }
     ],
     "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority."
   },
   "quicksupply": {
     "kicker": "Product redesign case study",
     "title": "QuickSupply",
-    "summary": "A working redesign of an outdated Liverpool supply-cover journey across school, agency and teacher roles.",
+    "summary": "Follow a school's request for cover through agency assignment and a teacher's response, without losing track of who needs to act next.",
     "image": "./assets/quicksupply-dashboard.png",
+    "imageWidth": 1200,
+    "imageHeight": 760,
+    "imageAvif": "./assets/quicksupply-dashboard.avif",
     "imageAlt": "QuickSupply agency dashboard",
     "video": "./assets/quicksupply-demo.m4v",
-    "role": "Workflow product",
-    "status": "Public case study",
+    "role": "Product and full-stack engineer",
+    "status": "Recorded demo and public source",
     "focus": "School cover operations",
     "problem": "A local booking process split same-day cover across dated screens and manual follow-up. QuickSupply separates school, agency and teacher work, then makes each assignment and status handoff visible.",
+    "choice": "I gave the school, agency and teacher separate views of the same booking. The agency manages offers and exceptions; each role sees its next action instead of editing an undifferentiated list.",
+    "result": "The recording follows a fictional cover request across the three roles. The shared booking status makes it possible to see whether a request is waiting for assignment or a teacher response.",
+    "learning": "The product problem was the handoff, not just the appearance of the old screens. A useful next test would observe real school and agency staff handling a declined offer or a last-minute cancellation. This case does not establish adoption or time savings.",
+    "access": "Watch the recorded prototype without installing anything.",
+    "publication": "Historical case study with fictional data. The public source is not a deployment-ready staffing service.",
+    "mediaCaption": "Recorded prototype: school request, agency assignment and teacher response.",
+    "steps": ["The school submits a request for supply cover.", "The agency reviews the request and assigns or offers the work to a teacher.", "The teacher responds, and the booking status is visible across the separate role views."],
     "points": [
       "One request can be followed from school submission through agency assignment to teacher acceptance.",
       "Server-sent events keep the three views in step without manual refresh.",
       "Official DfE vacancy data supplies aggregate market context only; it never ranks an individual teacher."
     ],
-    "stack": ["Next.js", "TypeScript", "PostgreSQL", "Drizzle", "SSE"],
+    "stack": ["Next.js", "TypeScript", "SQLite", "Drizzle", "SSE"],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/QuickSupply", "primary": true }
+      { "label": "Watch the walkthrough", "href": "#recording", "primary": true },
+      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/QuickSupply" }
     ],
     "note": "Historical redesign case study, not a live staffing service or a validated startup."
   },
   "winchester": {
     "kicker": "Property decision tool",
     "title": "Winchester House Hunter",
-    "summary": "A personal property shortlist tied to affordability, commute, condition notes and traced sold-price context.",
-    "image": "./assets/winchester.png",
-    "imageAlt": "Winchester House Hunter comparison workspace",
-    "role": "Public utility",
+    "summary": "Compare a shortlist of homes by budget, station walk and missing evidence, then see what needs checking before a decision.",
+    "image": "./assets/winchester-shortlist.png",
+    "imageWidth": 1280,
+    "imageHeight": 800,
+    "imageAlt": "Winchester's seeded shortlist with the under £425k filter selected",
+    "role": "Product and data engineer",
     "status": "Live public demo",
     "focus": "Recommendations and public data",
     "problem": "A portal listing cannot answer whether one home works for one buyer. House Hunter combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
+    "choice": "I separated the example homes from public completed-sale records, and put missing evidence beside the shortlist. This makes the recommendation a starting point for questions rather than an unexplained ranking.",
+    "result": "Choose Under £425k and the nine seeded homes become five. Open Upper Brook Street to inspect the evidence checklist and see which assumptions need checking.",
+    "learning": "Precise-looking scores can imply more certainty than the inputs deserve. Fit and evidence scores are demo heuristics, not calibrated probabilities; negotiation figures are illustrative assumptions, not estimated market values.",
+    "access": "Runs in your browser. No account; nine seeded homes.",
+    "publication": "The homes, fit scores and negotiation figures are examples. Completed-sale context is historical and separate from the shortlist.",
+    "mediaCaption": "Public seeded example with the under-£425k filter selected.",
+    "steps": ["Choose Under £425k or a station-distance filter.", "Open a home and read its evidence checklist before interpreting the score.", "Treat prices and affordability inputs as illustrative. Consult the cited completed-sale context separately."],
     "points": [
       "The demo compares nine seeded homes against budget, commute and local completed-sale evidence.",
       "The HM Land Registry market view uses completed sales after published filters, not current listings or valuations.",
       "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
     ],
-    "stack": ["React", "TypeScript", "Fastify", "Prisma", "HM Land Registry"],
+    "stack": ["Browser JavaScript", "HTML and CSS", "HM Land Registry"],
     "links": [
-      { "label": "Open demo", "href": "https://matthewpaver.github.io/winchester-buyer-check/", "primary": true },
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/winchester-buyer-check" }
+      { "label": "Try the shortlist", "href": "https://matthewpaver.github.io/winchester-buyer-check/", "primary": true },
+      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/winchester-buyer-check" }
     ],
     "note": "Illustrative only. Listings and figures are seeded examples, not financial, tax, legal or mortgage advice."
   },
   "lakehouse": {
     "kicker": "Reusable data template",
     "title": "Marketing ML Lakehouse",
-    "summary": "A rebuildable local pipeline from source contracts to a leakage-safe next-day prediction task and evidence console.",
-    "image": "./assets/marketing-lakehouse-dashboard.png",
-    "imageAlt": "Marketing ML Lakehouse evidence console",
-    "role": "Data engineering template",
-    "status": "Live public demo",
+    "summary": "Turn campaign files into checked reporting tables. Explore the public sample, or rebuild the published data pipeline on your computer.",
+    "image": "./assets/lakehouse-quality.png",
+    "imageWidth": 1280,
+    "imageHeight": 800,
+    "imageAlt": "Published lakehouse browser snapshot showing sample quality checks, not a live Python pipeline run",
+    "role": "Data and ML engineer",
+    "status": "Public template with a local ML extension",
     "focus": "Lakehouse and ML delivery",
-    "problem": "A notebook can hide the ingestion, lineage and evaluation choices needed to reproduce an analysis. This template records source contracts and checksums, builds Bronze, Silver and Gold tables, then evaluates a next-day target against a persistence baseline with a temporal holdout.",
+    "problem": "Before a marketing team acts on a forecast, it needs to know whether the source data is usable and whether the model beats a simple alternative. This reusable local template checks campaign files, keeps a trace of their source, builds analysis tables and tests next-day bookings predictions against carrying today’s figure forward. It is an engineering template, not a connected advertising service.",
+    "choice": "I made the data rebuildable from files through checked table layers to a dashboard. In the newer local extension, the prediction target is explicitly in the future and the model is compared with carrying today's figure forward.",
+    "result": "The public browser console shows a fixed quality review with two warnings. The published Python walkthrough rebuilds example tables and a model locally. The newer next-day evaluation is separate local work and is not reproduced by that public walkthrough yet.",
+    "learning": "A polished forecast is not evidence that a model adds value. Data available only after the prediction time must stay out of training features, and a model needs to beat a simple baseline on later dates before its extra complexity is justified.",
+    "access": "Browser snapshot needs no setup. Python is required to rebuild the template.",
+    "publication": "The public console is fixed, and the published model is an earlier example. The prospective next-day evaluation and GA4 adapter are local extensions, not a released public benchmark.",
+    "mediaCaption": "Fixed public data-quality snapshot, not a live Python pipeline run.",
+    "steps": ["Open Data quality in the public browser snapshot and inspect its warnings.", "Use the published DEMO.md to install, rebuild and open the local Streamlit dashboard.", "Treat the model as an engineering example. The newer next-day baseline comparison described here is not yet in the published walkthrough."],
     "points": [
-      "A clean command rebuilds the DuckDB lakehouse from committed fixtures and preserves source checksums.",
-      "The current fixture surfaces five duplicate campaign/day records before training, then scores next-day predictions against persistence.",
-      "An optional adapter maps Google's public GA4 ecommerce sample to the same prospective task without committing the raw export."
+      "The published Makefile rebuilds DuckDB tables, trains an example model and opens a local Streamlit dashboard.",
+      "Local follow-on work adds source checksums, duplicate detection and a future target with a persistence baseline.",
+      "A local GA4 adapter explores the same task with public ecommerce data; it is not evidence of results for a connected advertising account."
     ],
     "stack": ["Python", "DuckDB", "XGBoost", "Streamlit", "Makefile"],
     "links": [
-      { "label": "Open demo", "href": "https://matthewpaver.github.io/marketing-ml-lakehouse/", "primary": true },
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse" }
+      { "label": "Explore sample data", "href": "https://matthewpaver.github.io/marketing-ml-lakehouse/#quality", "primary": true },
+      { "label": "Run published template", "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md" }
     ],
-    "note": "The public console uses committed fixtures. It does not claim results from a connected advertising account."
+    "note": "The public console is a fixed sample snapshot, not a live view of the current Python output. Rebuild and inspect your own output in the local Streamlit dashboard. Neither route establishes results for a connected advertising account."
   },
   "hr": {
     "kicker": "Analytics handoff",
     "title": "HR Performance Analytics",
-    "summary": "A historical Power BI delivery exercise packaged with its artefacts, reproduction notes and a corrected semantic contract.",
+    "summary": "A Power BI case study about why checking the meaning of a field matters as much as building the dashboard.",
     "image": "./assets/hr-summary-preview.png",
-    "imageAlt": "HR Performance Analytics Power BI dashboard",
-    "role": "BI reporting",
-    "status": "Public package",
+    "imageWidth": 1360,
+    "imageHeight": 787,
+    "imageAvif": "./assets/hr-summary-preview.avif",
+    "imageAlt": "Historical HR dashboard; its absence and age labels are not reliable interpretations of the source data",
+    "role": "BI analyst and dashboard developer",
+    "status": "Historical work; rebuild outstanding",
     "focus": "Stakeholder analytics",
-    "problem": "A dashboard screenshot hides the model, calculations and interpretation choices. This repository keeps the historical artefacts together, points to Microsoft AdventureWorks and records two semantic errors that must be corrected in a rebuild.",
+    "problem": "A dashboard screenshot hides the model, calculations and interpretation choices. This case puts the historical AdventureWorks dashboard beside two errors in how I interpreted its fields. Both need correcting before the report can be reused.",
+    "choice": "The original dashboard made two unsupported interpretations. SickLeaveHours is an available balance, not absence taken. ModifiedDate records when a row changed; it cannot stand in for a birth date or hire date. I am retaining the original work with this correction rather than presenting it as reliable employee analysis.",
+    "result": "The screenshots and exports show the historical dashboard, not a corrected rebuild. Annual absence, age or tenure conclusions derived from those fields should not be used. A rebuilt report needs explicit definitions and appropriate source dates before those measures are calculated.",
+    "learning": "A chart can be technically well built and still answer the wrong question. Field definitions, measure assumptions and a correction trail are part of the deliverable, not documentation to add after the visual design.",
+    "access": "Read the correction here. Power BI Desktop is needed to edit the historical report.",
+    "publication": "Read the correction below before opening the repository. Its README and existing PBIX/PDF exports still contain the old interpretations; a corrected rebuild remains outstanding.",
+    "mediaCaption": "Historical output retained for the case study; labels have not been corrected in the export.",
+    "steps": ["Read the two field-meaning corrections on this page.", "Inspect the original exports as historical artefacts, not current HR findings.", "Before reuse, rebuild the measures from documented field definitions and validate the resulting PBIX/PDF."],
     "points": [
-      "SickLeaveHours is treated as an available balance, not absence taken; ModifiedDate is not used as age or tenure evidence.",
-      "PBIX, PDF, screenshots, SQL and the written correction trail stay together.",
-      "A validator checks the 11-file handoff package and semantic contract."
+      "Do not label a sick-leave balance as annual absence or use it to identify high-absence employees.",
+      "Use appropriate birth and hire dates for age or tenure, not the row's ModifiedDate.",
+      "A package validator can check that files exist; it cannot establish that the report's interpretation is correct."
     ],
     "stack": ["Power BI", "DAX", "AdventureWorks", "Reporting"],
     "links": [
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/hr-performance-dashboards", "primary": true }
+      { "label": "Read the correction", "href": "#case-story", "primary": true },
+      { "label": "Inspect historical files", "href": "https://github.com/MatthewPaver/hr-performance-dashboards" }
     ],
-    "note": "The historical PBIX and PDF still carry the old labels. The semantic contract takes precedence until those immutable exports are rebuilt."
+    "note": "Fictional AdventureWorks data, not employee-performance evidence. The historical exports must not inform HR decisions."
   },
   "england": {
     "kicker": "Finished experiment",
     "title": "Can England Win It?",
     "summary": "A one-day World Cup scenario simulator kept as an example of interactive modelling and animation.",
     "image": "./assets/can-england-win-it.png",
+    "imageWidth": 1200,
+    "imageHeight": 630,
     "imageAlt": "Can England Win It scenario simulator",
     "video": "./assets/can-england-win-it-demo.mp4",
-    "role": "Scenario simulation",
+    "role": "Simulation and frontend developer",
     "status": "Finished",
     "focus": "Public experiment",
-    "problem": "A tool built for one event loses its purpose when the event ends. This project ran 10,000 seeded simulations per scenario, then closed with the final result and a postmortem.",
+    "problem": "I wanted to make a small simulation people could play with, rather than present a single opaque football prediction. The result is a deliberately time-bounded experiment in modelling assumptions and animated interaction.",
+    "choice": "I exposed the assumptions and used seeded simulations so the same inputs can be repeated. The animation turns a modelling exercise into something a nontechnical visitor can explore.",
+    "result": "Choose the scenario assumptions and play the tournament to see the simulated outcomes change. The archived model remains interactive; its results are illustrative, not a forecast for a current competition.",
+    "learning": "This was a useful way to practise reproducibility and frontend storytelling in a small build. Finishing the experiment and documenting its assumptions is more honest than treating an event-specific toy as an ongoing product.",
+    "access": "Runs in your browser. No account or setup.",
+    "publication": "Finished entertainment experiment. Assumptions such as player boosts are part of the game, not validated sporting effects.",
+    "mediaCaption": "Recorded scenario simulation from the finished experiment.",
+    "steps": ["Choose the team's mood and pressure response in the public experiment.", "Pick a player and play through the simulated tournament.", "Change one assumption and compare the scenario, without treating the output as betting guidance."],
     "points": [
       "The assumptions stay visible and editable.",
       "Tests cover seeded output, bounds, monotonicity and uncertainty ranges.",
@@ -148,8 +215,8 @@
     ],
     "stack": ["TypeScript", "React", "Vite", "Vitest"],
     "links": [
-      { "label": "Open retrospective", "href": "https://matthewpaver.github.io/can-england-win-it/", "primary": true },
-      { "label": "Open repo", "href": "https://github.com/MatthewPaver/can-england-win-it" }
+      { "label": "Explore the tournament", "href": "https://matthewpaver.github.io/can-england-win-it/", "primary": true },
+      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/can-england-win-it" }
     ],
     "note": "A scenario tool for fun, not a forecast or betting product."
   }

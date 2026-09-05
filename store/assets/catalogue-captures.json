@@ -1,0 +1,23 @@
+[
+  {
+    "file": "projectlens-blockers.png",
+    "source": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+    "state": "Bundled synthetic Northstar example after review; actual readiness card",
+    "capturedAt": "2026-09-05T01:11:21.602Z",
+    "sha256": "793b2934ec4eb26b57ab1647d2c153a5963228a6399076052534d29fbf17ff35"
+  },
+  {
+    "file": "lakehouse-quality.png",
+    "source": "https://matthewpaver.github.io/marketing-ml-lakehouse/#quality",
+    "state": "Published fixed sample-data quality screen; not a live pipeline execution",
+    "capturedAt": "2026-09-05T01:11:22.391Z",
+    "sha256": "4e9aafe7f11ec42994b0b5ba1790655e4a2a16cef96ea47a60e9e314920a0d49"
+  },
+  {
+    "file": "winchester-shortlist.png",
+    "source": "https://matthewpaver.github.io/winchester-buyer-check/",
+    "state": "Seeded home shortlist with Under £425k filter selected",
+    "capturedAt": "2026-09-05T01:11:23.330Z",
+    "sha256": "c303aeb576c450574f8d5822f6e0a05a5231742dae82c0867c37b4c5438e7afc"
+  }
+]

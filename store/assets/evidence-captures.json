@@ -1,0 +1,16 @@
+[
+  {
+    "file": "policylens-review.png",
+    "source": "iam-policy-auditor/public/index.html",
+    "state": "Bundled before/after AWS policy example after Review this change; AI disabled",
+    "capturedAt": "2026-09-05T00:33:27.603Z",
+    "sha256": "b81af9be8c80359e81921dad10fc79eab4e3bb438cd235125344acfe84304e0c"
+  },
+  {
+    "file": "projectlens-questions.png",
+    "source": "ProjectLens/docs/change-assurance.html",
+    "state": "Synthetic Northstar example, Draft questions for the team; no real client data",
+    "capturedAt": "2026-09-05T00:33:30.700Z",
+    "sha256": "2c9f2aecaf01e418f4d02a56b6aca280fa304c6476ecac5e79e49da1812b32df"
+  }
+]

@@ -58,11 +58,13 @@ function publishFonts() {
   }
 }
 
-function renderAppPage({ pageSlug, previewSlug, preview }) {
+function renderAppPage({ previewSlug, preview }) {
   // Nested three levels below the deployed root: /store/apps/<slug>/
   const assetPrefix = "../../..";
-  const canonical = `${siteBase}/store/apps/${pageSlug}/`;
-  const previewUrl = `${siteBase}/preview.html?app=${previewSlug}`;
+  // Every alias shares the current slug's canonical and byte-identical content.
+  // This also prevents the QuickSupply alias overwriting its lowercase canonical on macOS.
+  const canonical = `${siteBase}/store/apps/${previewSlug}/`;
+  const previewUrl = `${assetPrefix}/preview.html?app=${previewSlug}`;
   const absoluteImage = preview.image.replace(/^\.\//, `${siteBase}/`);
   const primary = preview.links.find((link) => link.primary) || preview.links[0];
   const secondary = preview.links.filter((link) => link !== primary);
@@ -79,6 +81,16 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
         `<a class="button ghost" href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`
     )
     .join("\n            ");
+  const imageMarkup = preview.imageAvif
+    ? `<picture id="preview-picture" ${preview.video ? 'hidden' : ''}>
+            <source type="image/avif" srcset="${assetPrefix}/${escapeHtml(preview.imageAvif.replace(/^\.\//, ""))}" />
+            <img src="${assetPrefix}/${escapeHtml(preview.image.replace(/^\.\//, ""))}" width="${preview.imageWidth}" height="${preview.imageHeight}" alt="${escapeHtml(preview.imageAlt)}" />
+          </picture>`
+    : `<picture id="preview-picture" ${preview.video ? 'hidden' : ''}><img src="${assetPrefix}/${escapeHtml(preview.image.replace(/^\.\//, ""))}" width="${preview.imageWidth}" height="${preview.imageHeight}" alt="${escapeHtml(preview.imageAlt)}" /></picture>`;
+  const videoUrl = preview.video ? `${assetPrefix}/${escapeHtml(preview.video.replace(/^\.\//, ''))}` : '';
+  const videoMarkup = preview.video ? `<video id="preview-video" src="${videoUrl}" poster="${assetPrefix}/${escapeHtml(preview.image.replace(/^\.\//, ''))}" controls muted playsinline preload="none" aria-label="${escapeHtml(preview.title)} recorded walkthrough"></video>
+          <p id="preview-media-error" class="preview-media-error" role="status" hidden>Recording unavailable. Read the text walkthrough below, download it, or <button type="button">try the recording again</button>.</p>` : '';
+  const steps = preview.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join('');
 
   return `<!doctype html>
 <html lang="en-GB" class="no-js">
@@ -86,7 +98,8 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
     <meta charset="utf-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fbfaf7" />
+    <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
     <title>${escapeHtml(preview.title)} · Matthew Paver</title>
     <meta name="description" content="${escapeHtml(preview.summary)}" />
     <link rel="canonical" href="${canonical}" />
@@ -103,16 +116,16 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
     <link rel="icon" type="image/svg+xml" href="${assetPrefix}/assets/favicon.svg" />
     <link rel="apple-touch-icon" href="${assetPrefix}/assets/apple-touch-icon.svg" />
     <link rel="stylesheet" href="${assetPrefix}/styles.css" />
+    <link rel="stylesheet" href="${assetPrefix}/preview.css" />
     <script type="application/ld+json">
       ${JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "CreativeWork",
         name: preview.title,
         description: preview.summary,
         url: canonical,
         image: absoluteImage,
-        applicationCategory: preview.focus,
-        operatingSystem: "Web",
+        about: preview.focus,
         author: { "@type": "Person", name: "Matthew Paver" },
       })}
     </script>
@@ -120,11 +133,12 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
       document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");
     </script>
   </head>
-  <body>
+  <body class="project-page static-preview">
+    <a class="skip-link" href="#case-story">Skip to the case</a>
     <main class="shell preview-shell">
       <nav class="preview-nav" aria-label="Preview navigation">
-        <a href="${assetPrefix}/">Back to store</a>
-        <a href="${previewUrl}">Store preview</a>
+        <a href="${assetPrefix}/work/" data-catalogue-return>All work</a>
+        <a href="${previewUrl}">Interactive preview</a>
         <a href="https://github.com/MatthewPaver">GitHub profile</a>
       </nav>
 
@@ -133,6 +147,7 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
           <h1>${escapeHtml(preview.title)}</h1>
           <p class="preview-kicker">${escapeHtml(preview.kicker)}</p>
           <p class="lede">${escapeHtml(preview.summary)}</p>
+          <p class="preview-access">${escapeHtml(preview.access)}</p>
           <div class="preview-actions">
             ${
               primary
@@ -141,13 +156,17 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
             }
             ${secondaryLinks}
           </div>
+          <div class="preview-boundary"><strong>Before using this</strong><p>${escapeHtml(preview.note)}</p><p>${escapeHtml(preview.publication)}</p></div>
         </div>
 
-        <figure class="preview-media">
-          <img src="${assetPrefix}/${escapeHtml(preview.image.replace(/^\.\//, ""))}" width="1280" height="720" alt="${escapeHtml(preview.imageAlt)}" />
+        <figure class="preview-media" id="recording">
+          ${imageMarkup}
+          ${videoMarkup}
+          <p class="preview-media-caption">${escapeHtml(preview.mediaCaption)}</p>
+          <div class="preview-media-links"><a href="${assetPrefix}/${escapeHtml(preview.image.replace(/^\.\//, ''))}">Open full-size image</a>${videoUrl ? `<a href="${videoUrl}" download>Download recording</a>` : ''}</div>
           <figcaption class="preview-meta">
             <div>
-              <span>Role</span>
+              <span>My contribution</span>
               <strong>${escapeHtml(preview.role)}</strong>
             </div>
             <div>
@@ -162,27 +181,28 @@ function renderAppPage({ pageSlug, previewSlug, preview }) {
         </figure>
       </section>
 
-      <section class="preview-layout">
+      <section class="preview-layout" id="case-story">
         <article class="preview-panel">
-          <h2>What it solves</h2>
+          <h2>Why I built it</h2>
           <p>${escapeHtml(preview.problem)}</p>
-          <ul class="preview-list">
-              ${points}
-          </ul>
+          <h2>What I chose</h2><p>${escapeHtml(preview.choice)}</p>
+          <h2>What the example shows</h2><p>${escapeHtml(preview.result)}</p>
+          <h2>What I learned</h2><p>${escapeHtml(preview.learning)}</p>
         </article>
 
         <aside class="preview-panel">
-          <h3>Stack</h3>
-          <div class="preview-stack">${stack}</div>
-          <p class="motion-note">${escapeHtml(preview.note)}</p>
+          <h2>${preview.video ? 'Text walkthrough' : 'Try this example'}</h2>
+          <ol class="preview-list">${steps}</ol>
+          <details class="preview-technical" id="implementation"><summary>Implementation and checks</summary><ul class="preview-list">${points}</ul><h3>Built with</h3><div class="preview-stack">${stack}</div></details>
         </aside>
       </section>
 
       <footer class="footer">
         <p>Matthew Paver, software and AI engineer.</p>
-        <a href="${assetPrefix}/work/">All public work</a>
+        <a href="${assetPrefix}/work/" data-catalogue-return>All public work</a>
       </footer>
     </main>
+    <script type="module" src="${assetPrefix}/preview.js"></script>
   </body>
 </html>
 `;
@@ -217,7 +237,7 @@ function main() {
     const preview = previews[previewSlug];
     const pageDir = path.join(outDir, "store", "apps", pageSlug);
     fs.mkdirSync(pageDir, { recursive: true });
-    fs.writeFileSync(path.join(pageDir, "index.html"), renderAppPage({ pageSlug, previewSlug, preview }));
+    fs.writeFileSync(path.join(pageDir, "index.html"), renderAppPage({ previewSlug, preview }));
   }
 
   console.log(

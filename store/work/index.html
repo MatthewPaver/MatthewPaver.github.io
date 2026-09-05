@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f3efe6" />
+    <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
     <title>Public work · Matthew Paver</title>
     <link rel="canonical" href="https://matthewpaver.github.io/work/" />
     <meta name="description" content="Seven public projects and three reusable engineering patterns by Matthew Paver, with code, demos and honest limits." />
@@ -16,157 +17,224 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.svg" />
+    <link rel="preload" href="../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
-    <link rel="stylesheet" href="../styles.css?v=20260811-3" />
-    <script src="../script.js?v=20260811-3" defer></script>
+    <link rel="stylesheet" href="../styles.css?v=20260905-3" />
+    <link rel="stylesheet" href="./catalogue.css?v=20260905-3" />
+    <link rel="stylesheet" href="./covers.css?v=20260905-1" />
+    <script src="./catalogue.js?v=20260905-1" type="module"></script>
   </head>
   <body>
     <a class="skip-link" href="#catalogue">Skip to catalogue</a>
 
     <div class="topbar-shell">
       <nav class="shell topbar" aria-label="Primary navigation">
-        <a class="brand" href="../" aria-label="Matthew Paver home">
+        <a class="brand" href="../" aria-label="MP, Matthew Paver home">
           <span class="brand-mark" aria-hidden="true">MP</span>
           <span>Matthew Paver</span>
         </a>
         <div class="nav-links">
           <a href="../">Home</a>
           <a aria-current="page" href="./">All work</a>
-          <a href="#templates">Patterns</a>
-          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV</a>
+          <a href="#templates" data-pattern-jump>Patterns</a>
+          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF)</a>
         </div>
       </nav>
     </div>
 
     <main class="shell work-page">
       <header class="work-hero">
-        <h1>Things I have built, tested and learned from.</h1>
-        <p class="lede">Seven projects and three reusable patterns. Search by the job each one does, then open the code, demo and known limits.</p>
+        <h1>Explore my work.</h1>
+        <p class="lede">Try a tool, follow a case study or start with working code. See what each project does and what is ready to use.</p>
       </header>
 
       <section id="catalogue" aria-labelledby="catalogue-heading">
         <div class="catalogue-heading">
-          <h2 id="catalogue-heading">Projects</h2>
-          <p data-catalogue-count aria-live="polite">Seven projects</p>
+          <h2 id="catalogue-heading">Public catalogue</h2>
+          <p data-catalogue-count aria-live="polite">7 projects and 3 patterns</p>
         </div>
 
         <div class="catalogue-controls js-only" data-catalogue-controls hidden>
           <label class="search-field">
             <span>Search public work</span>
-            <input type="search" placeholder="Try AI evaluation or public data" autocomplete="off" data-catalogue-search />
+            <input type="search" placeholder="Search projects and patterns" maxlength="120" autocomplete="off" data-catalogue-search />
           </label>
-          <div class="work-filters" role="group" aria-label="Filter projects by type">
+          <div class="work-filters" role="group" aria-label="Choose how to explore">
             <button type="button" data-work-filter="all" aria-pressed="true">All</button>
-            <button type="button" data-work-filter="decision">Decision tools</button>
-            <button type="button" data-work-filter="product">Product</button>
-            <button type="button" data-work-filter="data">Data</button>
-            <button type="button" data-work-filter="analytics">Analytics</button>
-            <button type="button" data-work-filter="experiment">Experiments</button>
+            <button type="button" data-work-filter="browser" aria-pressed="false">Try in browser</button>
+            <button type="button" data-work-filter="local" aria-pressed="false">Run locally</button>
+            <button type="button" data-work-filter="case" aria-pressed="false">Watch or read</button>
+            <button type="button" data-work-filter="pattern" aria-pressed="false">Reuse a pattern</button>
           </div>
+          <label class="catalogue-subject">Subject <select data-catalogue-subject><option value="all">All subjects</option><option value="decision">Decision tools</option><option value="product">Product workflows</option><option value="data">Data and ML</option><option value="analytics">Analytics</option><option value="experiment">Experiments</option></select></label>
+          <button class="catalogue-clear" type="button" data-catalogue-clear>Clear filters</button>
         </div>
 
         <div class="work-grid" data-catalogue-grid>
-          <article class="work-card app-card image-card" data-slug="policylens" data-category="decision" data-status="Public" data-problem="Reviewers can see a risky policy diff without proving which sensitive request became reachable" data-solves="Turns an IAM policy diff into a cited stop or pass decision" data-proof="55 of 55 documented scenarios match expected decisions; AWS simulator cross-check pending; adversarial AI grounding evaluation; correction verifier">
-            <img src="../assets/policylens.png" width="1400" height="900" alt="PolicyLens IAM change review with a cited access finding" loading="eager" />
-            <div class="work-card-copy">
-              <p class="project-kind">AI assurance</p>
-              <h3>PolicyLens</h3>
-              <p>Checks whether one sensitive AWS request became reachable, cites the granting statement, and tests the correction.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Result</dt><dd>55/55 documented decisions matched</dd></div><div><dt>Limit</dt><dd>AWS cross-check, SCPs and permission boundaries remain</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=policylens">Open case study <span aria-hidden="true">↗</span></a>
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser" data-slug="projectlens" data-category="decision" data-status="Public" data-problem="A change pack can tell a different story from the schedule it cites" data-solves="Gives a change board an evidence pack and decision record before approval" data-proof="Northstar demo surfaces three blockers including an unacknowledged 73-day finish movement; cited dates; optional RAG with a human gate">
+            <div class="app-cover app-cover--photo" data-cover="construction">
+              <img class="app-cover-photo" src="../assets/photography/construction.jpg" width="1200" height="711" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <div class="app-cover-screen">
+                <img src="../assets/projectlens-blockers.png" width="1076" height="688" alt="Actual ProjectLens review: the synthetic Northstar example needs evidence before a decision" loading="lazy" decoding="async" />
+              </div>
             </div>
-          </article>
-
-          <article class="work-card app-card image-card" data-slug="projectlens" data-category="decision" data-status="Public" data-problem="A change pack can tell a different story from the schedule it cites" data-solves="Gives a change board an evidence pack and decision record before approval" data-proof="Northstar demo surfaces three blockers including an unacknowledged 73-day finish movement; cited dates; optional RAG with a human gate">
-            <img src="../assets/projectlens.png" width="1440" height="1000" alt="ProjectLens schedule assurance workspace showing a 73-day finish movement and three cited blockers" />
             <div class="work-card-copy">
-              <p class="project-kind">Project controls</p>
               <h3>ProjectLens</h3>
-              <p>Compares a change narrative with its Primavera schedule before the board meets and keeps every finding tied to source dates.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Result</dt><dd>Three blockers, including +73 days</dd></div><div><dt>Limit</dt><dd>Supports review, not contractual entitlement</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=projectlens">Open case study <span aria-hidden="true">↗</span></a>
+              <p class="work-access">Browser tool · no account · sample files included</p>
+              <p>Check whether a project's written update agrees with its schedule, then prepare questions for the next review.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>Find three issues in the sample, including an unacknowledged 73-day finish-date movement.</dd></div><div><dt>Before using</dt><dd>Schedule differences do not prove delay causes or contractual responsibility.</dd></div></dl>
+              <a class="work-launch" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Try the schedule review</a>
+              <a class="project-link" href="../preview.html?app=projectlens">Review ProjectLens case</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Select Try the Northstar example.</li><li>Inspect the three blockers and their source dates.</li><li>Use Review my change pack to compare your own XER files.</li></ol><p>The browser comparison works locally. Export your record to keep a copy; this is not a shared team workspace.</p></details>
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-slug="quicksupply" data-category="product" data-status="Public" data-problem="A Liverpool supply-cover booking journey relied on dated screens and manual follow-up" data-solves="Makes a three-sided booking handoff visible and testable" data-proof="One request traced from school submission through agency assignment to teacher acceptance; recorded walkthrough; official DfE context; route and browser tests">
-            <img src="../assets/quicksupply-dashboard.png" width="1200" height="760" alt="QuickSupply agency dashboard showing live cover requests" />
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="local" data-slug="policylens" data-category="decision" data-status="Public" data-problem="Reviewers can see a risky policy diff without proving which sensitive request became reachable" data-solves="Turns an IAM policy diff into a cited stop or pass decision" data-proof="Public Org demo and benchmark; newer local change-review capture; AWS cross-check remains incomplete">
+            <div class="app-cover" data-cover="policylens">
+              <div class="app-cover-screen">
+                <img src="../assets/policylens-review.png" width="808" height="625" alt="Completed PolicyLens sample review with changed access, the granting statement and a candidate correction" loading="eager" decoding="async" />
+              </div>
+            </div>
             <div class="work-card-copy">
-              <p class="project-kind">Workflow product</p>
+              <h3>PolicyLens</h3>
+              <p class="work-access">Local tool · Node.js · public demo and local extension</p>
+              <p>For cloud engineers reviewing a permission change: see what access it adds, find the permission responsible and check a proposed fix.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>In the case</dt><dd>A database-delete request changes from denied to allowed; the granting permission is identified.</dd></div><div><dt>Before using</dt><dd>The capture is a local extension. The public demo opens the earlier Org view, not this screen.</dd></div></dl>
+              <a class="work-launch" href="https://github.com/MatthewPaver/iam-policy-auditor#quick-start-stranger-usable-in-90-seconds">Run public IAM demo</a>
+              <a class="project-link" href="../preview.html?app=policylens">Review PolicyLens case</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Follow the repository's Node.js quick start.</li><li>Select Run the 90-second demo.</li><li>Inspect the Org results and their policy citations.</li></ol><p>The public example needs no API key. Account-wide controls such as SCPs and permission boundaries are not evaluated. Read the case for the newer local change-review work.</p></details>
+            </div>
+          </article>
+
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="case" data-slug="quicksupply" data-category="product" data-status="Public" data-problem="A Liverpool supply-cover booking journey relied on dated screens and manual follow-up" data-solves="Makes a three-sided booking handoff visible and testable" data-proof="One request traced from school submission through agency assignment to teacher acceptance; recorded walkthrough; official DfE context; route and browser tests">
+            <div class="app-cover app-cover--photo" data-cover="classroom">
+              <img class="app-cover-photo" src="../assets/photography/classroom.jpg" width="1200" height="675" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <div class="app-cover-screen">
+                <picture>
+                  <source type="image/avif" srcset="../assets/quicksupply-dashboard.avif" width="800" height="506" />
+                  <img src="../assets/quicksupply-dashboard.png" width="1200" height="760" alt="QuickSupply agency dashboard showing sample cover requests" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+            <div class="work-card-copy">
               <h3>QuickSupply</h3>
-              <p>Turns an observed Liverpool supply-cover problem into separate school, agency and teacher journeys with visible handoffs.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Result</dt><dd>School-to-teacher request trace</dd></div><div><dt>Limit</dt><dd>Historical case study, not a live service</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=quicksupply">Open case study <span aria-hidden="true">↗</span></a>
+              <p class="work-access">Recorded case study · no setup to watch</p>
+              <p>See how I redesigned a Liverpool supply-teacher booking process, from a school's request to an agency assignment and teacher response.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Watch this</dt><dd>A school requests cover, an agency assigns a teacher and the teacher responds.</dd></div><div><dt>Before using</dt><dd>Recorded prototype with fictional data, not a live staffing service.</dd></div></dl>
+              <a class="work-launch" href="../preview.html?app=quicksupply">Watch the booking walkthrough</a>
+              <a class="project-link" href="https://github.com/MatthewPaver/QuickSupply">Explore the source</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Play the recorded walkthrough on the case page.</li><li>Follow the school, agency and teacher handoffs.</li><li>Read the repository's setup and security warnings before running it.</li></ol><p>A fictional-data case study, not a live staffing service or deployment-ready starter.</p></details>
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-slug="winchester" data-category="product data decision" data-status="Public" data-problem="A listing price omits commute, cash position, sold-price context and condition" data-solves="Turns a property shortlist into an affordability and evidence review" data-proof="Nine seeded homes compared against budget, commute and completed-sale context; HM Land Registry source with published filters">
-            <img src="../assets/winchester.png" width="1600" height="1000" alt="Winchester House Hunter property comparison workspace" />
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser" data-slug="winchester" data-category="product decision" data-status="Public" data-problem="A listing price omits commute, cash position, sold-price context and condition" data-solves="Turns a property shortlist into an affordability and evidence review" data-proof="Nine seeded homes compared against budget, commute and completed-sale context; HM Land Registry source with published filters">
+            <div class="app-cover app-cover--photo" data-cover="housing">
+              <img class="app-cover-photo" src="../assets/photography/housing.jpg" width="1200" height="901" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <div class="app-cover-screen">
+                <img src="../assets/winchester-shortlist.png" width="1280" height="800" alt="Actual Winchester demo with the under £425k filter applied to seeded homes" loading="lazy" decoding="async" />
+              </div>
+            </div>
             <div class="work-card-copy">
-              <p class="project-kind">Recommendation workflow</p>
               <h3>Winchester House Hunter</h3>
-              <p>Combines a personal shortlist with affordability, commute, sold-price context, condition notes and next actions.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Result</dt><dd>Nine-home decision journey</dd></div><div><dt>Limit</dt><dd>Seeded homes, not listings or a valuation</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=winchester">Open case study <span aria-hidden="true">↗</span></a>
+              <p class="work-access">Browser example · no account · seeded homes</p>
+              <p>Explore how a home-buying shortlist changes when budget, station distance and missing evidence are considered together.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>Filter nine example homes to five under £425k, then inspect one home's missing evidence.</dd></div><div><dt>Before using</dt><dd>Homes, fit scores and negotiation prices are illustrative, not listings or valuations.</dd></div></dl>
+              <a class="work-launch" href="https://matthewpaver.github.io/winchester-buyer-check/">Try the shortlist</a>
+              <a class="project-link" href="../preview.html?app=winchester">Review Winchester case</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Choose Under £425k or a station-distance filter.</li><li>Open a home to review its evidence checklist.</li><li>Explore the affordability inputs and market context.</li></ol><p>The homes are examples, not live listings. This is an exploratory tool, not financial advice or a valuation.</p></details>
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-slug="lakehouse" data-category="data" data-status="Public" data-problem="A notebook hides the source contracts and data checks needed to reproduce an analysis" data-solves="Rebuilds a marketing dataset from source contracts to a prospective model task" data-proof="Five duplicate campaign/day records surfaced before training; checksum lineage; temporal baseline; leakage-safe next-day targets; GA4 public-data adapter">
-            <img src="../assets/marketing-lakehouse-dashboard.png" width="1200" height="675" alt="Marketing ML Lakehouse evidence console" />
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser local" data-slug="lakehouse" data-category="data" data-status="Public" data-problem="A notebook hides the source contracts and data checks needed to reproduce an analysis" data-solves="Rebuilds campaign files into checked reporting tables" data-proof="Fixed public quality console and published Python rebuild; next-day baseline evaluation is a local extension">
+            <div class="app-cover" data-cover="lakehouse">
+              <div class="app-cover-screen">
+                <img src="../assets/lakehouse-quality.png" width="1280" height="800" alt="Actual lakehouse browser example with sample data checks and two review warnings" loading="lazy" decoding="async" />
+              </div>
+            </div>
             <div class="work-card-copy">
-              <p class="project-kind">Data engineering template</p>
               <h3>Marketing ML Lakehouse</h3>
-              <p>Builds source contracts, lineage and layered tables around a next-day prediction task with a temporal holdout and simple baseline.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Result</dt><dd>Five duplicate keys surfaced before training</dd></div><div><dt>Limit</dt><dd>Demo fixtures are not campaign results</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=lakehouse">Open case study <span aria-hidden="true">↗</span></a>
+              <p class="work-access">Browser example · Python to rebuild or adapt</p>
+              <p>Turn campaign files into checked reporting tables. Explore sample quality warnings or rebuild the published pipeline locally.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>Inspect two warnings in the sample quality review, then follow the Python rebuild guide.</dd></div><div><dt>Before using</dt><dd>The browser is fixed. The newer next-day prediction evaluation is not yet published.</dd></div></dl>
+              <a class="work-launch" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality">Explore sample data</a>
+              <a class="project-link" href="../preview.html?app=lakehouse">Review Lakehouse case</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Inspect Data quality in the browser example.</li><li>Follow the <a href="https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md">published walkthrough</a> to rebuild the example data and model.</li><li>Open the local Streamlit dashboard to inspect those outputs.</li></ol><p>No ad account is needed. The sample does not establish campaign uplift; the case separates the public version from newer local ML work.</p></details>
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-slug="hr" data-category="analytics" data-status="Public" data-problem="A dashboard screenshot does not preserve the model, calculations or interpretation decisions" data-solves="Packages a historical Power BI exercise with a corrected semantic contract" data-proof="AdventureWorks source; PBIX and PDF artefacts; corrected semantic contract; 11-file package validator">
-            <img src="../assets/hr-summary-preview.png" width="1360" height="787" alt="HR Performance Analytics Power BI summary dashboard" />
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="case" data-slug="hr" data-category="analytics data" data-status="Public" data-problem="A dashboard screenshot does not preserve the model, calculations or interpretation decisions" data-solves="Explains corrections to a historical Power BI exercise" data-proof="Historical AdventureWorks dashboard; correction on the case page; public README and exports still need a rebuild">
+            <div class="app-cover" data-cover="hr">
+              <div class="app-cover-screen">
+                <picture>
+                  <source type="image/avif" srcset="../assets/hr-summary-preview.avif" width="800" height="463" />
+                  <img src="../assets/hr-summary-preview.png" width="1360" height="787" alt="HR Performance Analytics Power BI summary dashboard" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
             <div class="work-card-copy">
-              <p class="project-kind">Analytics handoff</p>
               <h3>HR Performance Analytics</h3>
-              <p>Packages a historical Power BI exercise with its artefacts, reproduction notes and a correction to the original field interpretation.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>11-file package validator</dd></div><div><dt>Limit</dt><dd>Historical export still carries old labels</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=hr">Open case study <span aria-hidden="true">↗</span></a>
+              <p class="work-access">Historical case · Power BI Desktop to edit</p>
+              <p>For BI learners: inspect a dashboard handoff and its corrections to the meaning of employee fields in Microsoft's sample data.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Read this</dt><dd>Why a sick-leave balance is not annual absence, and a row's update date is not age or tenure.</dd></div><div><dt>Before using</dt><dd>The old exports and public README still contain those interpretations. A rebuild is outstanding.</dd></div></dl>
+              <a class="work-launch" href="../preview.html?app=hr#case-story">Read the corrections first</a>
+              <a class="project-link" href="../preview.html?app=hr">Review HR Analytics case</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Read the correction on the case page before opening the repository.</li><li>Inspect the original files as historical work, not current HR findings.</li><li>Rebuild measures from appropriate source fields before reusing the report.</li></ol><p>Fictional AdventureWorks data. The old labels must not inform employee decisions.</p></details>
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-slug="england" data-category="experiment" data-status="Archived" data-problem="A one-event product loses its purpose when the event ends" data-solves="Shows a transparent tournament scenario model and closes it when the event ends" data-proof="10,000 seeded runs; model tests; live retrospective; POSTMORTEM.md">
-            <img src="../assets/can-england-win-it.png" width="1200" height="675" alt="Can England Win It tournament scenario simulator" />
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser case" data-slug="england" data-category="experiment" data-status="Archived" data-problem="A one-event product loses its purpose when the event ends" data-solves="Shows a transparent tournament scenario model and closes it when the event ends" data-proof="10,000 seeded runs; model tests; live retrospective; POSTMORTEM.md">
+            <div class="app-cover" data-cover="england">
+              <div class="app-cover-screen">
+                <img src="../assets/can-england-win-it.png" width="1200" height="630" alt="Can England Win It tournament scenario simulator" loading="lazy" decoding="async" />
+              </div>
+            </div>
             <div class="work-card-copy">
-              <p class="project-kind">Finished experiment</p>
               <h3>Can England Win It?</h3>
-              <p>A one-day World Cup scenario tool kept as a compact example of interactive modelling, animation and an honest close-out.</p>
-              <dl class="work-card-proof" aria-label="Case grammar"><div><dt>Evidence</dt><dd>10,000 seeded runs per scenario</dd></div><div><dt>Limit</dt><dd>Retrospective, not a forecast</dd></div></dl>
-              <a class="project-link" href="../preview.html?app=england">Open retrospective <span aria-hidden="true">↗</span></a>
+              <p class="work-access">Browser experiment · no account</p>
+              <p>Change the football scenarios and play through an animated tournament. Kept as a finished experiment in simulation and interaction design.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>Change the assumptions and play the tournament to compare simulated outcomes.</dd></div><div><dt>Before using</dt><dd>Finished entertainment experiment, not a forecast or betting tool.</dd></div></dl>
+              <a class="work-launch" href="https://matthewpaver.github.io/can-england-win-it/">Explore the tournament</a>
+              <a class="project-link" href="../preview.html?app=england">Read the retrospective</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Choose the team's mood and pressure response.</li><li>Pick a player and play the tournament.</li><li>Read the model assumptions in the repository.</li></ol><p>A scenario game, not betting advice or a validated forecast.</p></details>
             </div>
           </article>
         </div>
 
         <div class="catalogue-empty" data-catalogue-empty hidden>
-          <h3>No project matches that search.</h3>
-          <p>Clear the search or choose another category.</p>
+          <h3>No work matches those filters.</h3>
+          <p>Try a different search or clear the filters to see every project and pattern.</p>
+          <button type="button" class="button ghost" data-catalogue-clear>Show all work</button>
         </div>
       </section>
 
       <section id="templates" class="template-shelf" aria-labelledby="templates-heading">
         <header class="section-intro">
           <h2 id="templates-heading">Patterns you can reuse.</h2>
-          <p>Smaller repositories that teach one engineering decision without pretending to be standalone products.</p>
+          <p>For developers and data practitioners. Start with the included examples, inspect the output, then replace the inputs for your own task.</p>
         </header>
         <div class="template-list">
-          <a class="template-row" href="https://github.com/MatthewPaver/sentence-similarity-analysis">
-            <div><strong>RAG retrieval and answer evaluation</strong><p>Measures retrieval, citation coverage and grounded answers, with BEIR adapters and adversarial documents.</p></div><span>Python and sentence-transformers</span>
+          <a class="template-row" data-catalogue-item data-mode="pattern" data-category="data" href="https://github.com/MatthewPaver/sentence-similarity-analysis">
+            <div><strong>Sentence similarity starter</strong><p>Compare sentence meaning with embeddings in the published notebook. The offline RAG evaluation extension is local work and is not in this public quick start yet.</p></div><span>Python · notebook and model setup</span>
           </a>
-          <a class="template-row" href="https://github.com/MatthewPaver/pyspark-kafka-streaming">
-            <div><strong>PySpark and Kafka data contracts</strong><p>Validates events, quarantines failures, applies watermarks and deduplication, then reports window metrics.</p></div><span>PySpark and Kafka</span>
+          <a class="template-row" data-catalogue-item data-mode="pattern" data-category="data" href="https://github.com/MatthewPaver/pyspark-kafka-streaming#quick-start">
+            <div><strong>PySpark and Kafka starter</strong><p>Run a small DataFrame example, then try a Kafka producer and consumer. Start with batch data before adding the broker and streaming setup.</p></div><span>Python + Java · Docker for Kafka</span>
           </a>
-          <a class="template-row" href="https://github.com/MatthewPaver/dating-app-recommendation-system">
-            <div><strong>Offline recommender evaluation</strong><p>Compares collaborative filtering with a popularity baseline using temporal holdouts, Top-K metrics and coverage.</p></div><span>Python and SciPy</span>
+          <a class="template-row" data-catalogue-item data-mode="pattern" data-category="data" href="https://github.com/MatthewPaver/dating-app-recommendation-system#quick-start">
+            <div><strong>Offline recommender starter</strong><p>Run recommendations on fictional sample interactions using the command-line demo. Inspect the output and temporal holdout before adapting the input CSV.</p></div><span>Python 3.11 · sample CLI</span>
           </a>
         </div>
       </section>
+      <details class="image-credits">
+        <summary>Photography &amp; screen captures</summary>
+        <p>Every interface shown is a real project capture. The background photographs provide context, not client sites, live listings or project evidence.</p>
+        <ul>
+          <li>QuickSupply: classroom photograph by <a href="https://unsplash.com/photos/empty-classroom-with-desks-and-chalkboard-PDRFeeDniCk">Ivan Aleksic</a>, taken at the Museum of Yugoslavia in Belgrade, not a Liverpool client site.</li>
+          <li>Winchester: terraced houses by <a href="https://unsplash.com/photos/row-of-colorful-terraced-houses-under-a-cloudy-sky-zhq1aM0RC4U">Rohan Gangopadhyay</a>. These are not properties in the demo.</li>
+          <li>ProjectLens: construction cranes in Hamburg by <a href="https://unsplash.com/photos/a-group-of-cranes-that-are-next-to-a-building-ARCwim3C14s">Johannes Weckström</a>, not the synthetic Northstar project.</li>
+        </ul>
+        <p>Photos used under the <a href="https://unsplash.com/license">Unsplash License</a>. Full-size interface captures and their limitations are on each case page.</p>
+      </details>
     </main>
 
     <footer class="shell footer">

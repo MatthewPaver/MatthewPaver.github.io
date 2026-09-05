@@ -1,0 +1,37 @@
+{
+  "license": "https://unsplash.com/license",
+  "licenseChecked": "2026-09-05",
+  "purpose": "Contextual photography behind genuine, unmodified interface captures. Photos do not depict client work, dataset records or product outcomes.",
+  "images": [
+    {
+      "file": "classroom.jpg",
+      "project": "quicksupply",
+      "author": "Ivan Aleksic",
+      "source": "https://unsplash.com/photos/empty-classroom-with-desks-and-chalkboard-PDRFeeDniCk",
+      "download": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=max&fm=jpg&q=82&w=1200",
+      "width": 1200,
+      "height": 675,
+      "context": "Classroom at the Museum of Yugoslavia, Belgrade, Serbia. Education context only, not a Liverpool school or client site."
+    },
+    {
+      "file": "housing.jpg",
+      "project": "winchester",
+      "author": "Rohan Gangopadhyay",
+      "source": "https://unsplash.com/photos/row-of-colorful-terraced-houses-under-a-cloudy-sky-zhq1aM0RC4U",
+      "download": "https://images.unsplash.com/photo-1759782180566-cf30776a782c?auto=format&fit=max&fm=jpg&q=82&w=1200",
+      "width": 1200,
+      "height": 901,
+      "context": "Terraced houses for housing context. Not a Winchester listing or any home in the demo."
+    },
+    {
+      "file": "construction.jpg",
+      "project": "projectlens",
+      "author": "Johannes Weckström",
+      "source": "https://unsplash.com/photos/a-group-of-cranes-that-are-next-to-a-building-ARCwim3C14s",
+      "download": "https://images.unsplash.com/photo-1682930680866-ee307c0ae476?auto=format&fit=max&fm=jpg&q=82&w=1200",
+      "width": 1200,
+      "height": 711,
+      "context": "Construction cranes in Hamburg, Germany. Not a project delivered by Matthew Paver or the synthetic Northstar example."
+    }
+  ]
+}

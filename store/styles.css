@@ -31,6 +31,8 @@
   --display: "Newsreader Local", Charter, Georgia, serif;
   --body: "Manrope Local", "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --control-radius: 7px;
+  --brand-navy: #1c3762;
 }
 
 * {
@@ -99,6 +101,7 @@ button {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 summary:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 3px;
@@ -190,8 +193,9 @@ video {
   width: 34px;
   height: 34px;
   place-items: center;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--brand-navy);
+  color: #ffffff;
+  border-radius: var(--control-radius);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
 }
@@ -266,7 +270,7 @@ h3 {
   justify-content: center;
   padding: 10px 16px;
   border: 1px solid var(--ink);
-  border-radius: 3px;
+  border-radius: var(--control-radius);
   font-size: 0.9rem;
   font-weight: 800;
   text-decoration: none;
@@ -1292,13 +1296,14 @@ h3 {
   min-height: 46px;
   padding: 10px 12px;
   border: 1px solid var(--line-strong);
-  border-radius: 2px;
+  border-radius: var(--control-radius);
   background: var(--paper-strong);
   color: var(--ink);
 }
 
 .search-field input::placeholder {
-  color: #60788e;
+  color: var(--muted);
+  opacity: 1;
 }
 
 .work-filters {
@@ -1311,7 +1316,7 @@ h3 {
   min-height: 46px;
   padding: 9px 12px;
   border: 1px solid var(--line-strong);
-  border-radius: 2px;
+  border-radius: var(--control-radius);
   background: var(--paper);
   color: var(--muted);
   cursor: pointer;

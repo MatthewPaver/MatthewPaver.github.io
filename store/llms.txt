@@ -41,7 +41,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A Liverpool supply-cover booking journey relied on dated screens and manual follow-up
 - Outcome: Makes a three-sided booking handoff visible and testable
-- Proof: One request traced from school submission through agency assignment to teacher acceptance; recorded walkthrough; official DfE context; route and browser tests
+- Proof: Recorded school, agency and teacher handoff; newer DfE context and audit fixes remain local work
 - Available now: Watch the recorded prototype without installing anything.
 - Publication boundary: Historical case study with fictional data. The public source is not a deployment-ready staffing service.
 - Preview: https://matthewpaver.github.io/preview.html?app=quicksupply
@@ -54,9 +54,9 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A listing price omits commute, cash position, sold-price context and condition
 - Outcome: Turns a property shortlist into an affordability and evidence review
-- Proof: Nine seeded homes compared against budget, commute and completed-sale context; HM Land Registry source with published filters
+- Proof: Nine seeded homes; hosted market summaries are illustrative until the traceable local rebuild is published
 - Available now: Runs in your browser. No account; nine seeded homes.
-- Publication boundary: The homes, fit scores and negotiation figures are examples. Completed-sale context is historical and separate from the shortlist.
+- Publication boundary: The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.
 - Preview: https://matthewpaver.github.io/preview.html?app=winchester
 - Repo: https://github.com/MatthewPaver/winchester-buyer-check
 - Stack: Browser JavaScript, HTML and CSS, public data
@@ -82,7 +82,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Outcome: Explains corrections to a historical Power BI exercise
 - Proof: Historical AdventureWorks dashboard; correction on the case page; public README and exports still need a rebuild
 - Available now: Read the correction here. Power BI Desktop is needed to edit the historical report.
-- Publication boundary: Read the correction below before opening the repository. Its README and existing PBIX/PDF exports still contain the old interpretations; a corrected rebuild remains outstanding.
+- Publication boundary: The corrected data and replacement review PDF are local, unpublished work. The public repository still contains historical interpretations. Refreshing and checking the original Power BI report remains outstanding.
 - Preview: https://matthewpaver.github.io/preview.html?app=hr
 - Repo: https://github.com/MatthewPaver/hr-performance-dashboards
 - Stack: Power BI, DAX, AdventureWorks, reporting

@@ -66,9 +66,29 @@ typography:
     fontWeight: 780
     lineHeight: 0.98
     letterSpacing: "-0.025em"
+  compact-case-title:
+    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontSize: "clamp(1.75rem, 2.6vw, 2.5rem)"
+    fontWeight: 780
+  landing-reading:
+    fontSize: ".95rem"
+    lineHeight: 1.65
+  method-title:
+    fontSize: "1.18rem"
+    fontWeight: 700
+    lineHeight: 1.4
+  method-reading:
+    fontSize: ".92rem"
+    lineHeight: 1.7
+  evidence-caption:
+    fontSize: ".85rem"
+    lineHeight: 1.7
+  compact-mobile-tab:
+    fontSize: ".82rem"
+    fontWeight: 700
 rounded:
-  field: "2px"
-  control: "3px"
+  field: "7px"
+  control: "7px"
   node: "4px"
   surface: "5px"
   landing-control: "7px"
@@ -165,7 +185,7 @@ components:
 
 The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.
 
-The landing variant lets working software lead: a personal introduction sits beside a substantial screening room, followed by a scroll-led sequence of real project captures and short case stories. Compact cards remain the small-screen, reduced-motion and simple-view presentation. Manrope takes the display role here, while the catalogue and previews retain Newsreader's editorial hierarchy. Motion supports discovery and workflow: reveals settle after entry, the recording starts only on request, and the slow source-to-output path can be paused.
+The landing variant pairs a personal introduction and CV with the existing screening room, then offers three compact case tabs. One complete case is visible at a time; without enhancement all three remain readable. Manrope takes the display role here, while the catalogue and previews retain Newsreader's editorial hierarchy. Existing hero motion and user-initiated videos remain; a short case transition supports navigation.
 
 The user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing; `store/styles.css` remains the shared catalogue/preview foundation.
 
@@ -233,7 +253,7 @@ The shared accent becomes lighter in dark mode. The MP mark deliberately retains
 
 The catalogue and previews retain the core shell capped at 1220px with 40px total viewport breathing room, reducing to 28px on small screens. The landing instead caps its shell at 1320px with 64px total breathing room; at 640px and below this becomes 32px total.
 
-The landing desktop hero pairs introduction and media in a `.86fr / 1.32fr` split. At least 1100px wide and 700px high, Selected work can enhance to a `1.35fr / 1fr` layout: a sticky capture on the left and three normally scrolling case chapters on the right. The stage is at most 550px tall and each chapter has at least 560px of reading space. Otherwise, the three projects form equal-width columns with 24px gaps and unboxed copy below framed captures. At 980px and below the hero stacks and each project becomes a two-column image-and-copy row; at 640px and below those rows stack vertically. The recording remains a visible part of the page, not a hidden carousel slide.
+The landing desktop hero keeps its .86fr / 1.32fr split. Selected work uses an underlined three-button tablist above one image-and-copy panel (1.15fr / 1fr, 28–64px gap). Below 760px the panel stacks image above copy. Full interface captures use contain sizing in a 1.3 desktop or 1.4 mobile frame. Tabs are at least 48px tall. The full catalogue stays a separate route with its existing filters, search and templates.
 
 The Method uses an ordered list of six checks: three columns read left to right, followed by the second row. Below 720px it becomes one vertical sequence. Its landing introduction is a separate two-column heading-and-explanation layout that stacks below 980px. Each scenario links its input evidence and a concrete result, and identifies local-only extensions. Controls remain at least 44px high, anchors account for the sticky header, and page-level horizontal overflow is prohibited.
 
@@ -271,10 +291,10 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 
 - **Catalogue / Preview:** Paper surfaces with 5px corners, one-pixel structural rules and compact copy padding (typically 18–28px). The retained shared evidence-card primitive uses canvas.
 - **Catalogue First Use:** The `/work/` card presents the project name, browser/local/case-study requirement, plain-language use, one observable example and a practical boundary, then a direct first action and case link. Native `details` holds optional first steps without JavaScript. `store/work/catalogue.css` scopes the two-column desktop and one-column mobile layout. Real screenshots use `object-fit: contain` inside a 16:10 frame; the finished experiment uses the same card width. Sample data, historical exports and local-only extensions are labelled beside actions.
-- **Catalogue Covers:** `store/work/covers.css` gives all seven projects a reserved 16:10 stage. Genuine screenshots remain unmodified, contained and at their natural aspect ratio; the frame does not invent browser chrome or crop away evidence. QuickSupply, Winchester and ProjectLens use separately layered, self-hosted stock photography for education, housing and construction context. The other four use quiet, app-derived solid colours so abstract tools are not obscured by unrelated photos. Full-size case images and landing captures are unchanged. Visible credits and `store/assets/photography/sources.json` distinguish stock context from client work, listings and dataset evidence. The cover system adds no JavaScript, animation or dependency; it stays visible with scripts or photos unavailable.
+- **Catalogue Covers:** `store/work/covers.css` gives all seven projects a reserved 16:10 stage. Genuine screenshots remain unmodified, contained and at their natural aspect ratio; the frame does not invent browser chrome or crop away evidence. QuickSupply, Winchester and ProjectLens use separately layered, self-hosted stock photography for education, housing and construction context. The other four use quiet, app-derived solid colours so abstract tools are not obscured by unrelated photos. Full-size case images and landing captures are unchanged. `store/assets/photography/sources.json` records attribution and distinguishes stock context from client work, listings and dataset evidence. The visible credits accordion was removed at Matthew's request. The cover system adds no JavaScript, animation or dependency; it stays visible with scripts or photos unavailable.
 - **Project Details:** `store/preview.css` owns a top-aligned, two-column hero with a 2.3–3.4rem Newsreader title. At 980px it stacks. Images retain their intrinsic proportions and expose a full-size link; video has its own 16:10 contained frame. Access and publication boundaries precede the case narrative. The story covers the problem, design choice, observed output and learning; implementation details remain optional. Generated and query routes share this presentation and the same `previews.json` content.
 - **Landing Selected Work:** Borderless case copy paired with a 14px media frame. The enhanced wide view uses a single sticky stage; simple view keeps the inline cards. Each story moves from a plain-language question to the build and one thing to inspect. Evidence rows keep the reproduced result beside its boundary.
-- **Landing Media:** Large real captures lead the composition; do not replace these with invented dashboard illustrations. Use `object-fit: contain` for the full application interface in both inline cards and the scroll stage. Inline media retains its 1.48 desktop and 1.55 small-mobile frame proportions without cropping the capture.
+- **Landing Media:** Use real captures, never invented dashboard illustrations. Case panels use object-fit: contain and preserve complete screenshots. Keep the existing hero recording and its deliberate play action.
 
 ### Inputs / Fields
 
@@ -283,9 +303,9 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 
 ### Navigation
 
-The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV, resolving to All projects, Method and CV on small screens. All projects is a direct `/work/` link, not a jump to the three selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection.
+The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV at every width, with compact spacing and 44px-high targets on phones. All projects is a direct `/work/` link, not a jump to the three selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
 
-Catalogue grouping is action-first: All, Try in browser, Run locally, Watch or read, and Reuse a pattern. Subject is secondary. Search includes both the seven projects and three patterns. Mode, subject and search live in the URL and survive refresh, browser Back and the case return link. Clear filters and the Patterns navigation offer escape routes from empty combinations. With JavaScript unavailable, all items and their first steps remain visible.
+Catalogue grouping is action-first: All, Try in browser, Run locally, Watch or read, and Reuse a pattern. Subject is secondary. At 640px and below, a native Explore selector replaces the five-button row and sits beside Subject; both desktop and mobile controls reflect the same state across resize. Search includes both the seven projects and three patterns. Mode, subject and search live in the URL and survive refresh, browser Back and the case return link. Clear filters and the Patterns navigation offer escape routes from empty combinations. With JavaScript unavailable, all items and their first steps remain visible.
 
 On a JavaScript-enabled load, the hidden filter controls reserve their actual geometry until the catalogue module is ready, so revealing them does not move the project covers. The catalogue preloads its existing self-hosted display and body fonts.
 
@@ -303,11 +323,11 @@ The hero source-to-output signal runs a slow 18-second linear loop only when the
 
 An IntersectionObserver reveals each target once: media enters with an 850ms clipped 18px movement, while section copy and capability links use a 600ms 14px movement. Content is visible by default; the effects do not gate access. Reduced motion skips these effects, disables transitions and cancels running page animations. User-initiated video remains available. Motion values and breakpoint extensions are recorded in `.impeccable/design.json`.
 
-Selected work has one optional scroll-led sequence, owned by `store/work-story.css` and `store/work-story.js`. An IntersectionObserver chooses the case entering the central reading area and crossfades its real capture over 300ms, with a 700ms clipped 22px entry and subtle .97-to-1 scale. The prior animation is cancelled on rapid changes. There are no wheel handlers, continuous scroll loops or new dependencies. Keyboard focus updates the same stage. Native project anchors allow direct jumps; the simple-view button removes the sticky treatment. Reduced motion, small/short viewports, JavaScript failure and printing retain the full source cards. The cloned decorative stage is hidden from assistive technology; the original card content remains accessible.
+Selected work uses compact case tabs, owned by store/work-story.css and store/work-story.js. A user selection transitions the source panel with 240ms opacity and 8px movement. Reduced motion skips and cancels that animation. Tabs support ArrowLeft, ArrowRight, Home and End; their selected state matches the labelled tabpanel. Project anchor IDs and browser Back restore the matching case. The controls are built only during enhancement: failed JavaScript leaves all source content available, and print CSS shows every case. No sticky clones, scroll tracking or view-mode switch remain.
 
-### How I Check the Answers
+### How I Work
 
-Six ordered nodes explain the engineering boundary in everyday language: what goes in, what the code checks, what AI can do, what needs review, who decides and what gets saved. PolicyLens, ProjectLens and the lakehouse each supply concrete examples. A scenario change updates the nodes and evidence links together, with a single staged emphasis; re-selecting the current scenario remains settled. The existing `#contract` route is retained. No connecting lines imply a different reading order or an unimplemented automatic gate.
+Three flat, separated rows pair a specific engineering choice with a short explanation and a direct link to case evidence. They cover source tracing in ProjectLens, explanation checks in the local PolicyLens extension and a simple forecast baseline in the local lakehouse extension. On desktop, headings and explanations use a .9fr / 1.1fr layout; below 760px each row stacks. The existing #contract anchor remains. There is no scenario switcher or animated diagram, and the text keeps public/local limitations explicit.
 
 ## Do's and Don'ts
 

@@ -10,7 +10,7 @@ test('catalogue photography stays self-hosted, credited and within the added ima
   let total = 0;
   for (const image of manifest.images) {
     assert.ok(image.author && image.context && image.width && image.height);
-    assert.ok(html.includes(`href="${image.source}"`));
+    assert.equal(new URL(image.source).hostname, 'unsplash.com');
     assert.ok(html.includes(`src="../assets/photography/${image.file}"`));
     const bytes = fs.readFileSync(`store/assets/photography/${image.file}`);
     assert.equal(bytes.readUInt16BE(0), 0xffd8, 'download must be a JPEG, not an error page');
@@ -18,4 +18,5 @@ test('catalogue photography stays self-hosted, credited and within the added ima
   }
   assert.ok(total < 600 * 1024, `Photos total ${total} bytes, exceeding the 600 KiB budget`);
   assert.ok(!/<img[^>]+src="https?:/i.test(html), 'catalogue images must not call third-party hosts at runtime');
+  assert.ok(!html.includes('image-credits'), 'attribution records stay in the source manifest, not a catalogue section');
 });

@@ -64,21 +64,13 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
   await expect(page.getByText("Private", { exact: true })).toHaveCount(0);
 });
 
-test("the Decision Contract changes with each real project", async ({ page }) => {
-  await page.goto("/");
-  const contract = page.locator("[data-decision-contract]");
-  await contract.getByRole("button", { name: "ProjectLens" }).click();
-  await expect(contract.locator("[data-contract-summary]")).toContainText("project timetable supplies the dates");
-  await expect(contract.locator('[data-contract-value="authority"]')).toHaveText("Dates, deadlines and task relationships that disagree");
-  await expect(contract.locator('[data-contract-value="owner"]')).toHaveText("Project change board");
-  await expect(contract.getByRole("button", { name: "ProjectLens" })).toHaveAttribute("aria-pressed", "true");
-
-  await page.waitForTimeout(1300);
-  await contract.getByRole("button", { name: "ProjectLens" }).click();
-  await expect(contract.locator("[data-contract-canvas]")).not.toHaveClass(/is-playing/);
-
-  await contract.getByRole("button", { name: "ML Lakehouse" }).click();
-  await expect(contract.locator('[data-contract-value="stop"]')).toContainText("failure to beat the simple baseline");
+test("Method gives three direct paths to project evidence", async ({ page }) => {
+  await page.goto("/#contract");
+  const method = page.locator("#contract");
+  await expect(method.getByRole("heading", {name:"How I work."})).toBeVisible();
+  await expect(method.locator(".method-example")).toHaveCount(3);
+  await method.getByRole("link", {name:"Read the lakehouse evaluation"}).click();
+  await expect(page).toHaveURL(/app=lakehouse#case-story$/);
 });
 
 test("full catalogue search, category filters and category links narrow seven public projects", async ({ page }) => {
@@ -110,6 +102,7 @@ test("selected work exposes a result, boundary and case route", async ({ page })
   );
 
   const project = page.locator('[data-project="projectlens"]');
+  await page.getByRole('tab', {name:'ProjectLens',exact:true}).click();
   await expect(project.getByText(/three blockers, including a 73-day finish movement/i)).toBeVisible();
   await expect(project.getByRole("link", {name:"Review ProjectLens case", exact:true})).toHaveAttribute(
     "href",
@@ -123,6 +116,7 @@ test("result screenshots remain uncropped and biography stays separate from proj
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   for (const project of ["policylens", "projectlens"]) {
+    await page.locator(`[role="tab"][aria-controls="case-${project}"]`).click();
     const screenshot = page.locator(`[data-project="${project}"] .project-media img`);
     await screenshot.scrollIntoViewIfNeeded();
     await expect(screenshot).toHaveCSS("object-fit", "contain");
@@ -192,7 +186,7 @@ test("the portfolio remains useful without JavaScript", async ({ browser }) => {
   await expect(page.locator(".selected-card")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "PolicyLens", exact: true })).toBeVisible();
   await expect(page.locator(".capability-routes a")).toHaveCount(3);
-  await expect(page.locator('[data-contract-value="owner"]')).toHaveText("Cloud security reviewer");
+  await expect(page.locator('.method-example')).toHaveCount(3);
   await page.goto("/work/");
   await expect(page.locator(".work-card:visible")).toHaveCount(7);
   await expect(page.locator("[data-catalogue-controls]")).toBeHidden();
@@ -205,19 +199,18 @@ test("mobile layout has usable controls and no page-level horizontal overflow", 
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
-  const button = page.locator("[data-decision-contract]").getByRole("button", { name: "ProjectLens" });
+  const button = page.getByRole("tab", { name: "ProjectLens", exact:true });
   const box = await button.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(44);
   await expect(page.getByRole("link", { name: "All projects", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Method", exact: true })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "CV (PDF)", exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "About", exact: true })).toBeHidden();
+  await expect(page.getByRole("link", { name: "About", exact: true })).toBeVisible();
 
-  const cards = page.locator(".selected-card");
-  const firstCard = await cards.nth(0).boundingBox();
-  const secondCard = await cards.nth(1).boundingBox();
-  expect(secondCard?.y).toBeGreaterThan((firstCard?.y ?? 0) + (firstCard?.height ?? 0));
+  await expect(page.locator(".selected-card:visible")).toHaveCount(1);
+  await button.click();
+  await expect(page.getByRole("tabpanel", {name:"ProjectLens",exact:true})).toBeVisible();
 
   await page.goto("/work/");
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
@@ -230,7 +223,7 @@ test("dark and reduced-motion preferences keep the method usable", async ({ page
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
   await page.goto("/");
   await expect(page.locator('meta[name="theme-color"]')).toHaveCount(2);
-  const contract = page.locator("[data-decision-contract]");
-  await contract.getByRole("button", { name: "ProjectLens" }).click();
-  await expect(contract.locator("[data-contract-canvas]")).not.toHaveClass(/is-playing/);
+  await expect(page.locator(".method-example")).toHaveCount(3);
+  await page.getByRole("tab", {name:"ProjectLens",exact:true}).click();
+  await expect(page.getByRole("tabpanel", {name:"ProjectLens",exact:true})).toBeVisible();
 });

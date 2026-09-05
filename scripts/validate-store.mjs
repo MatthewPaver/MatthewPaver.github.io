@@ -96,7 +96,7 @@ assertPublicCatalogueText({
 });
 
 assert.ok(indexHtml.includes('id="selected-heading"'), "The page needs a clear start-here shelf");
-assert.equal((indexHtml.match(/<article class="selected-card"/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
+assert.equal((indexHtml.match(/<(?:article|div) class="selected-card"/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
 assert.ok(workHtml.includes('id="templates"'), "Reusable code must have a separate pattern section");
 assert.ok(workHtml.includes("Sentence similarity starter"), "Sentence similarity starter is missing");
 assert.ok(workHtml.includes("PySpark and Kafka starter"), "Streaming starter is missing");

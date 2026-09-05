@@ -6,9 +6,7 @@
 
 .portfolio-landing .shell { width: min(1320px, calc(100% - 64px)); }
 .portfolio-landing h2 { font-size: clamp(2rem, 3.4vw, 3.4rem); line-height: 1.1; }
-.portfolio-landing .button { border-radius: 7px; }
 .portfolio-landing .button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; }
-.portfolio-landing .brand-mark { border-radius: 7px; background: #1c3762; color: #fff; }
 .action-arrow { display: inline-block; width: 18px; height: 18px; flex-shrink: 0; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 1.7; }
 
 .landing-hero {
@@ -199,6 +197,12 @@
   .portfolio-landing .selected-card-content { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; }
   .portfolio-landing .selected-grid--shelf .project-copy { padding: 0; }
   .portfolio-landing .contract-intro { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (max-width: 720px) {
+  .portfolio-landing .topbar { gap:12px; }
+  .portfolio-landing .nav-links { gap:10px; }
+  .portfolio-landing .nav-links a { font-size:.75rem; white-space:nowrap; }
+  .portfolio-landing .nav-links a:nth-child(3) { display:inline-flex; }
 }
 @media (max-width: 640px) {
   .portfolio-landing .shell { width: calc(100% - 32px); }

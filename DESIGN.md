@@ -1,29 +1,37 @@
 ---
 name: Matthew Paver Portfolio
-description: An editorial evidence catalogue for auditable software and AI engineering.
+description: A media-led engineering portfolio with an editorial evidence catalogue.
 colors:
-  burnt-orange: "#a83f24"
-  burnt-orange-deep: "#742914"
-  burnt-orange-soft: "#eed7cf"
-  sea-green: "#165e58"
-  focus-green: "#006d63"
-  warm-canvas: "#f3efe6"
-  paper: "#fbfaf6"
+  brand-navy: "#1c3762"
+  brand-cyan: "#00adf1"
+  brand-blue: "#006b95"
+  brand-blue-deep: "#16456b"
+  brand-blue-soft: "#dceff8"
+  support-blue: "#245a7c"
+  focus-blue: "#006b95"
+  cool-canvas: "#f3f6fa"
+  paper: "#ffffff"
   paper-strong: "#ffffff"
-  ink: "#1b1c19"
-  muted-ink: "#5d5f58"
-  rule: "#cfc8ba"
-  rule-strong: "#8b877e"
-  night-canvas: "#181a18"
-  night-paper: "#20231f"
-  night-ink: "#f1eee7"
+  ink: "#152b47"
+  muted-ink: "#506278"
+  rule: "#c7d3df"
+  rule-strong: "#8194a8"
+  night-canvas: "#0b1626"
+  night-paper: "#102137"
+  night-ink: "#f0f6fc"
+  screening-surface: "#102a43"
+  screening-ink: "#f7fbfe"
+  screening-muted: "#bed0e1"
+  screening-rule: "#44627c"
+  screening-selected: "#5ed0ff"
+  screening-focus: "#9edfff"
 typography:
   display:
     fontFamily: "Newsreader Local, Charter, Georgia, serif"
-    fontSize: "clamp(3.4rem, 4.5vw, 4.3rem)"
+    fontSize: "clamp(3.25rem, 6.7vw, 6rem)"
     fontWeight: 700
     lineHeight: 0.98
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.025em"
   headline:
     fontFamily: "Newsreader Local, Charter, Georgia, serif"
     fontSize: "clamp(2.15rem, 4vw, 4rem)"
@@ -40,15 +48,39 @@ typography:
     fontSize: "0.78rem"
     fontWeight: 760
     lineHeight: 1.45
+  landing-display:
+    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontSize: "clamp(2.5rem, 3.55vw, 3.6rem)"
+    fontWeight: 760
+    lineHeight: 1.12
+    letterSpacing: "-0.04em"
+  landing-headline:
+    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontSize: "clamp(2rem, 3.4vw, 3.4rem)"
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: "-0.025em"
+  landing-title:
+    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontSize: "clamp(1.4rem, 2vw, 2rem)"
+    fontWeight: 780
+    lineHeight: 0.98
+    letterSpacing: "-0.025em"
 rounded:
+  field: "2px"
   control: "3px"
   node: "4px"
   surface: "5px"
+  landing-control: "7px"
+  landing-node: "10px"
+  landing-media: "14px"
 spacing:
   xs: "6px"
   sm: "10px"
   md: "16px"
+  media: "24px"
   lg: "28px"
+  landing-gutter: "32px"
   xl: "48px"
 components:
   button-primary:
@@ -58,7 +90,7 @@ components:
     padding: "10px 16px"
     height: "46px"
   button-primary-hover:
-    backgroundColor: "{colors.burnt-orange-deep}"
+    backgroundColor: "{colors.brand-blue-deep}"
     textColor: "{colors.paper}"
     rounded: "{rounded.control}"
   button-ghost:
@@ -68,13 +100,60 @@ components:
     padding: "10px 16px"
     height: "46px"
   evidence-card:
-    backgroundColor: "{colors.warm-canvas}"
+    backgroundColor: "{colors.cool-canvas}"
     textColor: "{colors.ink}"
     rounded: "{rounded.surface}"
   contract-node:
     backgroundColor: "{colors.paper-strong}"
     textColor: "{colors.ink}"
     rounded: "{rounded.node}"
+    padding: "21px"
+  landing-button-primary:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.landing-control}"
+    padding: "10px 16px"
+    height: "46px"
+  hero-button-primary:
+    backgroundColor: "{colors.brand-cyan}"
+    textColor: "{colors.brand-navy}"
+    rounded: "{rounded.landing-control}"
+    padding: "10px 16px"
+    height: "46px"
+  landing-button-ghost:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.landing-control}"
+    padding: "10px 16px"
+    height: "46px"
+  landing-brand-mark:
+    backgroundColor: "{colors.brand-navy}"
+    textColor: "{colors.paper-strong}"
+    rounded: "{rounded.landing-control}"
+    size: "34px"
+  screening-room:
+    backgroundColor: "{colors.screening-surface}"
+    textColor: "{colors.screening-ink}"
+    rounded: "{rounded.landing-media}"
+  screening-tab:
+    backgroundColor: "transparent"
+    textColor: "{colors.screening-muted}"
+    padding: "12px 8px"
+    height: "48px"
+  catalogue-search:
+    backgroundColor: "{colors.paper-strong}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.field}"
+    padding: "10px 12px"
+    height: "46px"
+  catalogue-card:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.surface}"
+  landing-contract-node:
+    backgroundColor: "{colors.paper-strong}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.landing-node}"
     padding: "21px"
 ---
 
@@ -84,119 +163,151 @@ components:
 
 **Creative North Star: "The Evidence Catalogue"**
 
-The portfolio feels like a small, carefully edited software shop whose products can withstand inspection. It pairs an editorial reading experience with the precision of an engineering workbench: warm paper, dark ink, quiet rules, real interface captures and brief statements of purpose, evidence and limits.
+The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.
 
-The composition is confident but restrained. Personality comes from Matthew's work and decision philosophy rather than ornamental effects. Motion explains a change, check or hand-off, then settles; it never competes with the evidence.
+The landing variant lets working software lead: a personal introduction sits beside a substantial screening room, followed by a scroll-led sequence of real project captures and short case stories. Compact cards remain the small-screen, reduced-motion and simple-view presentation. Manrope takes the display role here, while the catalogue and previews retain Newsreader's editorial hierarchy. Motion supports discovery and workflow: reveals settle after entry, the recording starts only on request, and the slow source-to-output path can be paused.
+
+The user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing; `store/styles.css` remains the shared catalogue/preview foundation.
 
 **Key Characteristics:**
 
-- Editorial hierarchy with dense, readable engineering evidence.
-- One rare burnt-orange accent against warm paper and ink.
+- A media-led Manrope landing and a Newsreader-led editorial catalogue.
+- Navy identity, cyan emphasis and accessible blue actions against cool neutral surfaces.
 - Real product captures framed as working software, not generated artwork.
-- Rectilinear, lightly softened surfaces with sparse structural borders.
+- Softened media frames on the landing; compact rectilinear catalogue controls and cards.
 - Honest boundaries and accountable human decisions beside every claim.
+- User-controlled playback, pausable background motion and static reduced-motion fallbacks.
 
 ## Colors
 
-The palette resembles annotated paper and workshop materials: warm neutrals carry the page, ink establishes authority, and the accent marks only consequential evidence or state.
+Reference: https://projectingsuccess.co.uk/, inspected 5 September 2026. Observed navy `#1c3762`, cyan `#00adf1` and action blue `#028bc1`. The portfolio uses darker `#006b95` for small text and links. The hero is one deliberate navy region in light mode; all subsequent reading sections stay light. Dark mode uses a coherent midnight-blue foundation. The media frame stays dark in either theme.
 
 ### Primary
 
-- **Burnt Orange:** Signals selected evidence, consequential labels and the active thread through a decision.
-- **Deep Burnt Orange:** Provides high-contrast accent copy and the primary-button hover state.
-- **Soft Burnt Orange:** Marks abstention and stop conditions without turning them into alarms.
+- **Brand Navy:** Owns the landing area and MP mark. The mark stays white on navy in both themes.
+- **Brand Cyan:** The primary hero action has dark navy text; pale cyan carries emphasis and active paths on navy.
+- **Brand Blue / Deep Blue:** Readable links, control feedback and small accent copy on light surfaces.
+- **Soft Blue:** Groups decision conditions; text labels carry their meaning, not colour alone.
 
 ### Secondary
 
-- **Sea Green:** A restrained counterpoint for provenance and system status, never a competing brand color.
-- **Focus Green:** Reserved for keyboard focus and accessible interaction feedback.
+- **Support Blue:** A tonal counterpart for provenance and system status.
+- **Focus Blue:** Dark blue on light backgrounds; pale cyan on dark backgrounds.
 
 ### Neutral
 
-- **Warm Canvas:** The main page field.
+- **Cool Canvas:** The main reading-page field.
 - **Paper and Strong Paper:** Nested reading and card surfaces.
 - **Ink and Muted Ink:** Primary and supporting copy.
 - **Rule and Strong Rule:** Section structure, card boundaries and diagram paths.
 - **Night Canvas, Night Paper and Night Ink:** The corresponding dark-mode foundation.
+- **Screening Surface, Ink, Muted and Rule:** Fixed dark media chrome, readable captions and restrained dividers; these do not invert with the page theme.
+- **Screening Selected and Focus:** Pale cyan selection and keyboard feedback inside the dark media frame.
 
-**The One Signal Rule.** Burnt orange identifies a meaningful state or piece of evidence; it is not decorative fill.
+**The One Signal Rule.** Cyan and blue identify meaningful actions and selections. Do not add competing accent families to portfolio chrome; colours inside real product captures belong to those products.
+
+The shared accent becomes lighter in dark mode. The MP mark deliberately retains navy and white in both themes. Body text and action labels must pass 4.5:1 contrast; the reference company's brighter button colour is not copied with white text.
 
 ## Typography
 
-**Display Font:** Newsreader Local (with Charter, Georgia and serif fallbacks)
+**Landing Display Font:** Manrope Local (with Avenir Next and sans-serif fallbacks)
+
+**Catalogue / Preview Display Font:** Newsreader Local (with Charter, Georgia and serif fallbacks)
 
 **Body Font:** Manrope Local (with Avenir Next, Segoe UI, Helvetica, Arial and sans-serif fallbacks)
 
-**Character:** Newsreader gives project claims an authored editorial voice. Manrope keeps evidence, navigation, controls and technical detail compact and operational.
+**Character:** The landing uses bold Manrope to make the personal introduction and project names direct and compact. Newsreader preserves the catalogue and preview pages' authored editorial voice. Shared body copy, navigation, controls and technical detail remain Manrope. Both font families are existing locally hosted assets; the landing preloads Manrope.
 
 ### Hierarchy
 
-- **Display:** Bold, tightly tracked and balanced; used for the two-line hero proposition only.
-- **Headline:** Bold editorial headings for major sections, with short line lengths.
-- **Title:** Editorial project and capability names, scaled to their shelf hierarchy.
+- **Landing Display:** Two-line Manrope hero with a pale-cyan second line on navy. The frontmatter records the desktop role; at 980px and below it uses `clamp(2.6rem, 6vw, 3.6rem)`, and at 640px and below `clamp(2rem, 7.7vw, 3rem)`.
+- **Landing Headline / Title:** Manrope section and project headings, using the scoped frontmatter roles. Mobile project titles resolve to 1.65rem.
+- **Display / Headline:** Newsreader defaults for the catalogue and preview family; the catalogue's route-specific heading and shared mobile rules may further constrain them.
+- **Title:** Newsreader project and capability names outside the landing, scaled to their shelf hierarchy.
 - **Body:** Neutral sans-serif for explanations, generally held to roughly 48–66 characters per line.
 - **Label:** Compact, high-weight sans-serif for audiences, states and diagram roles; sentence case is preferred over generic uppercase eyebrows.
 
-**The Claim and Evidence Rule.** Serif type makes the claim; sans-serif type explains, qualifies and proves it.
+**The Claim and Evidence Rule.** In the catalogue and previews, serif type makes the claim and sans-serif type explains, qualifies and proves it. The media-led landing deliberately uses Manrope for both roles; preserve that scoped distinction.
 
 ## Layout
 
-The core shell is capped at 1220px with 40px of viewport breathing room, reducing to 28px on small screens. The desktop hero is an asymmetric text-and-evidence split. The three flagship projects form one deliberately uneven shelf rather than a repeated equal-card grid, followed by thin capability routes and a compact supporting shelf.
+The catalogue and previews retain the core shell capped at 1220px with 40px total viewport breathing room, reducing to 28px on small screens. The landing instead caps its shell at 1320px with 64px total breathing room; at 640px and below this becomes 32px total.
 
-Below 980px, project and supporting shelves become horizontal, touch-scrollable rails. Below 720px, each card occupies about 84vw so the next item remains visible as an invitation. The Decision Contract changes from a connected two-row enterprise diagram into one ordered vertical sequence. Controls remain at least 44px high, anchors account for the sticky header, and page-level horizontal overflow is prohibited.
+The landing desktop hero pairs introduction and media in a `.86fr / 1.32fr` split. At least 1100px wide and 700px high, Selected work can enhance to a `1.35fr / 1fr` layout: a sticky capture on the left and three normally scrolling case chapters on the right. The stage is at most 550px tall and each chapter has at least 560px of reading space. Otherwise, the three projects form equal-width columns with 24px gaps and unboxed copy below framed captures. At 980px and below the hero stacks and each project becomes a two-column image-and-copy row; at 640px and below those rows stack vertically. The recording remains a visible part of the page, not a hidden carousel slide.
+
+The Method uses an ordered list of six checks: three columns read left to right, followed by the second row. Below 720px it becomes one vertical sequence. Its landing introduction is a separate two-column heading-and-explanation layout that stacks below 980px. Each scenario links its input evidence and a concrete result, and identifies local-only extensions. Controls remain at least 44px high, anchors account for the sticky header, and page-level horizontal overflow is prohibited.
 
 Major sections use generous responsive vertical rhythm; evidence inside cards remains compact. The homepage curates; the searchable `/work/` route carries the full public catalogue.
 
-**The Curated First Rule.** Three flagship applications must be understandable before the visitor is asked to browse the full catalogue.
+**The Curated First Rule.** The landing makes three selected applications understandable without requiring a visit to the full catalogue; the catalogue remains directly available for visitors who already know what they need.
 
 ## Elevation & Depth
 
-The system is flat by default. Borders, tonal shifts and inset screenshot crops create most separation. A diffuse warm shadow is used only for the hero evidence window and the Decision Contract workbench; cards lift by no more than three pixels in response to hover.
+The system is flat by default. Borders, tonal shifts and inset screenshot crops create most separation. The landing screening room has a diffuse shadow (`0 26px 64px rgb(16 42 67 / 19%)`), while the Decision Contract retains its blue-grey workbench shadow (`0 24px 52px rgb(19 49 77 / 12%)`). The video play control has a small local shadow. Landing project containers do not lift or cast hover shadows; only their image moves. Catalogue and preview surfaces retain their existing restrained border and screenshot-depth treatments.
 
 **The Evidence Above Chrome Rule.** Depth may focus attention on a real interface or causal workflow, never on ornamental containers.
 
 ## Shapes
 
-Surfaces are rectilinear with gently eased corners: 3px for controls, 4px for diagram nodes and 5px for substantial cards or workbenches. One-pixel rules remain visible and structural. Circles are limited to evidence markers and native status-like signals; large rounded pills and soft dashboard bubbles do not belong in this system.
+Catalogue and preview surfaces preserve compact geometry: 2px on catalogue search and filters, 3px on shared buttons, and 5px on cards and preview media. The shared diagram node base remains 4px. The landing is a scoped softer variant: 7px action buttons and MP mark, 14px media/workbench frames and 10px Decision Contract nodes. Its selected cards have no enclosing rounded container; only the media is framed.
+
+One-pixel rules remain visible and structural. Circles are limited to evidence markers and native status-like signals; large rounded pills and soft dashboard bubbles do not belong in this system.
 
 ## Components
 
 ### Buttons
 
-- **Shape:** Compact rectangular controls with a 3px corner and a 46px minimum height.
+- **Shape:** Compact rectangular controls with a 46px minimum height; 3px corners in the shared catalogue/preview style and 7px in the landing variant.
 - **Primary:** Ink surface, paper text and strong Manrope label weight.
 - **Hover / Focus:** A two-pixel lift and deep accent fill on hover; a three-pixel solid focus outline with a three-pixel offset.
 - **Ghost:** Transparent at rest, strong paper on hover, with the same border and geometry as the primary action.
 
 ### Chips
 
-- **Style:** Scenario and filter controls use compact bordered rectangles rather than pills.
+- **Style:** Scenario and catalogue filter controls use compact bordered rectangles rather than pills. Screening-room selectors are equal-width text buttons above the media, not bordered chips.
 - **State:** Selection is explicit through `aria-pressed`, a filled surface and a clear foreground change.
 
 ### Cards / Containers
 
-- **Corner Style:** 5px on project and supporting surfaces.
-- **Background:** Canvas for flagship cards; paper for supporting items and nested evidence.
-- **Shadow Strategy:** Flat at rest, with minimal responsive lift only where the whole card is actionable.
-- **Border:** One-pixel rule or strong rule, used to express structure rather than decoration.
-- **Internal Padding:** Typically 18–28px, with evidence rows separated by rules.
+- **Catalogue / Preview:** Paper surfaces with 5px corners, one-pixel structural rules and compact copy padding (typically 18–28px). The retained shared evidence-card primitive uses canvas.
+- **Catalogue First Use:** The `/work/` card presents the project name, browser/local/case-study requirement, plain-language use, one observable example and a practical boundary, then a direct first action and case link. Native `details` holds optional first steps without JavaScript. `store/work/catalogue.css` scopes the two-column desktop and one-column mobile layout. Real screenshots use `object-fit: contain` inside a 16:10 frame; the finished experiment uses the same card width. Sample data, historical exports and local-only extensions are labelled beside actions.
+- **Catalogue Covers:** `store/work/covers.css` gives all seven projects a reserved 16:10 stage. Genuine screenshots remain unmodified, contained and at their natural aspect ratio; the frame does not invent browser chrome or crop away evidence. QuickSupply, Winchester and ProjectLens use separately layered, self-hosted stock photography for education, housing and construction context. The other four use quiet, app-derived solid colours so abstract tools are not obscured by unrelated photos. Full-size case images and landing captures are unchanged. Visible credits and `store/assets/photography/sources.json` distinguish stock context from client work, listings and dataset evidence. The cover system adds no JavaScript, animation or dependency; it stays visible with scripts or photos unavailable.
+- **Project Details:** `store/preview.css` owns a top-aligned, two-column hero with a 2.3–3.4rem Newsreader title. At 980px it stacks. Images retain their intrinsic proportions and expose a full-size link; video has its own 16:10 contained frame. Access and publication boundaries precede the case narrative. The story covers the problem, design choice, observed output and learning; implementation details remain optional. Generated and query routes share this presentation and the same `previews.json` content.
+- **Landing Selected Work:** Borderless case copy paired with a 14px media frame. The enhanced wide view uses a single sticky stage; simple view keeps the inline cards. Each story moves from a plain-language question to the build and one thing to inspect. Evidence rows keep the reproduced result beside its boundary.
+- **Landing Media:** Large real captures lead the composition; do not replace these with invented dashboard illustrations. Use `object-fit: contain` for the full application interface in both inline cards and the scroll stage. Inline media retains its 1.48 desktop and 1.55 small-mobile frame proportions without cropping the capture.
 
 ### Inputs / Fields
 
-- **Style:** Paper surface, one-pixel rule, 3px corner and a touch-safe height.
-- **Focus:** The shared solid focus-green outline; no glow.
+- **Style:** Catalogue search uses Strong Paper, a one-pixel strong rule, 2px corner, 10px 12px padding and a 46px minimum height.
+- **Focus:** The shared solid focus-blue outline; no glow.
 
 ### Navigation
 
-The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short burnt-orange underline. On small screens, secondary items may collapse, but Selected, All work and CV remain easy to reach.
+The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV, resolving to All projects, Method and CV on small screens. All projects is a direct `/work/` link, not a jump to the three selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection.
 
-### Evidence Story
+Catalogue grouping is action-first: All, Try in browser, Run locally, Watch or read, and Reuse a pattern. Subject is secondary. Search includes both the seven projects and three patterns. Mode, subject and search live in the URL and survive refresh, browser Back and the case return link. Clear filters and the Patterns navigation offer escape routes from empty combinations. With JavaScript unavailable, all items and their first steps remain visible.
 
-The hero capture moves through change, deterministic check, source-linked finding and human decision once on entry. Manual stage selection remains available. The image crop and one marker move to reveal causality; there is no looping animation.
+On a JavaScript-enabled load, the hidden filter controls reserve their actual geometry until the catalogue module is ready, so revealing them does not move the project covers. The catalogue preloads its existing self-hosted display and body fonts.
 
-### Decision Contract
+### Project Screening Room
 
-Six nodes make the engineering boundary explicit: source of truth, deterministic authority, permitted AI role, abstention condition, accountable human and retained record. A scenario change updates all six together and plays one directional signal. Re-selecting the current scenario remains settled.
+The landing hero now offers QuickSupply, ProjectLens and ML Lakehouse previews. QuickSupply is an actual recorded walkthrough; the other two are real still captures with case links. The selectors expose `aria-pressed` and support left/right arrow keys. A selection change pauses the video and reveals the new panel with a short 360ms transition; reselecting the active project does nothing.
+
+Video uses `preload="none"`, a real poster and click-to-play enhancement. Native controls become available for playback; without JavaScript they are present from the start. The recording pauses when switched away, offscreen or in a hidden document, and never resumes automatically. A text walkthrough, download link, retry state and case-study fallback remain available. Playing video uses `object-fit: contain` so the recording is not cropped.
+
+The former four-stage hero evidence story is no longer mounted on the landing. Its leftover shared CSS/JavaScript is not the current landing component or a system-wide interaction requirement.
+
+### Landing Motion
+
+The hero source-to-output signal runs a slow 18-second linear loop only when the hero is visible, the document is visible, reduced motion is not requested and the visitor has not paused it. The visible pause/resume control changes its pressed state and label. Without JavaScript the path stays still.
+
+An IntersectionObserver reveals each target once: media enters with an 850ms clipped 18px movement, while section copy and capability links use a 600ms 14px movement. Content is visible by default; the effects do not gate access. Reduced motion skips these effects, disables transitions and cancels running page animations. User-initiated video remains available. Motion values and breakpoint extensions are recorded in `.impeccable/design.json`.
+
+Selected work has one optional scroll-led sequence, owned by `store/work-story.css` and `store/work-story.js`. An IntersectionObserver chooses the case entering the central reading area and crossfades its real capture over 300ms, with a 700ms clipped 22px entry and subtle .97-to-1 scale. The prior animation is cancelled on rapid changes. There are no wheel handlers, continuous scroll loops or new dependencies. Keyboard focus updates the same stage. Native project anchors allow direct jumps; the simple-view button removes the sticky treatment. Reduced motion, small/short viewports, JavaScript failure and printing retain the full source cards. The cloned decorative stage is hidden from assistive technology; the original card content remains accessible.
+
+### How I Check the Answers
+
+Six ordered nodes explain the engineering boundary in everyday language: what goes in, what the code checks, what AI can do, what needs review, who decides and what gets saved. PolicyLens, ProjectLens and the lakehouse each supply concrete examples. A scenario change updates the nodes and evidence links together, with a single staged emphasis; re-selecting the current scenario remains settled. The existing `#contract` route is retained. No connecting lines imply a different reading order or an unimplemented automatic gate.
 
 ## Do's and Don'ts
 
@@ -204,14 +315,16 @@ Six nodes make the engineering boundary explicit: source of truth, deterministic
 
 - **Do** lead with a real application surface and a plain-language user problem.
 - **Do** pair every reproduced result with its honest boundary.
-- **Do** use the accent only for consequential evidence, selection or caution.
+- **Do** use navy for identity and cyan/blue for meaningful actions, workflow and selection.
 - **Do** preserve dark mode, visible keyboard focus, reduced motion and touch-safe controls.
 - **Do** keep private work out of public catalogues and previews.
+- **Do** preserve the Manrope landing and Newsreader catalogue/preview variants instead of applying either globally.
+- **Do** keep video user-initiated and background motion pausable, with static and no-JavaScript fallbacks.
 
 ### Don't:
 
 - **Don't** replace screenshots with generated product art or generic gradient thumbnails.
-- **Don't** add vanity counters, floating blobs, perpetual motion, marquees or cursor spectacle.
+- **Don't** add vanity counters, floating blobs, unpausable loops, marquees or cursor spectacle.
 - **Don't** repeat the same project proof across several homepage sections.
 - **Don't** use rounded-pill components as a default visual language.
 - **Don't** claim model or product impact that the linked evidence cannot reproduce.

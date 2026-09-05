@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { assertPublicCatalogueText } from "./catalogue-visibility.mjs";
 
 const root = process.cwd();
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -78,31 +79,34 @@ for (const row of rows) {
   assert.ok(sitemap.includes(`${siteBase}/${row.preview}`), `Sitemap is missing ${row.slug}`);
 
   const preview = previews[row.slug];
-  for (const field of ["kicker", "title", "summary", "image", "imageAlt", "role", "status", "focus", "problem", "note"]) {
+  assert.ok(Number.isInteger(preview.imageWidth) && preview.imageWidth > 0 && Number.isInteger(preview.imageHeight) && preview.imageHeight > 0, `${row.slug} needs intrinsic image dimensions`);
+  for (const field of ["kicker", "title", "summary", "image", "imageAlt", "role", "status", "focus", "problem", "note", "choice", "result", "learning", "access", "publication", "mediaCaption"]) {
     assert.equal(typeof preview[field], "string", `${row.slug}.${field} must be a string`);
     assert.ok(preview[field].trim(), `${row.slug}.${field} cannot be empty`);
   }
   assert.ok(Array.isArray(preview.points) && preview.points.length >= 3, `${row.slug} needs three evidence points`);
   assert.ok(Array.isArray(preview.stack) && preview.stack.length >= 3, `${row.slug} needs a stack`);
+  assert.ok(Array.isArray(preview.steps) && preview.steps.length >= 3 && preview.steps.every((step) => typeof step === "string" && step.trim()), `${row.slug} needs a usable first-use walkthrough`);
   assert.ok(Array.isArray(preview.links) && preview.links.some((link) => link.primary), `${row.slug} needs one primary action`);
 }
 
-for (const name of ["NewCo", "Architexa", "Happening", "Paper Trading", "AI Study Companion", "Smart Job Market", "University of Liverpool"]) {
-  assert.ok(!`${indexHtml}${workHtml}`.includes(name), `Private or removed work must not appear in the public catalogue: ${name}`);
-}
+assertPublicCatalogueText({
+  projectContent: `${indexHtml.split('<section id="about"')[0]}${workHtml}${JSON.stringify(rows)}${JSON.stringify(previews)}`,
+  siteContent: `${indexHtml}${workHtml}`,
+});
 
 assert.ok(indexHtml.includes('id="selected-heading"'), "The page needs a clear start-here shelf");
-assert.equal((indexHtml.match(/class="selected-card/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
+assert.equal((indexHtml.match(/<article class="selected-card"/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
 assert.ok(workHtml.includes('id="templates"'), "Reusable code must have a separate pattern section");
-assert.ok(workHtml.includes("RAG retrieval and answer evaluation"), "RAG evaluation template is missing");
-assert.ok(workHtml.includes("PySpark and Kafka data contracts"), "Streaming template is missing");
-assert.ok(workHtml.includes("Offline recommender evaluation"), "Recommender template is missing");
+assert.ok(workHtml.includes("Sentence similarity starter"), "Sentence similarity starter is missing");
+assert.ok(workHtml.includes("PySpark and Kafka starter"), "Streaming starter is missing");
+assert.ok(workHtml.includes("Offline recommender starter"), "Recommender starter is missing");
 assert.ok(!indexHtml.includes("data-catalogue-search"), "Search belongs on the full work page, not the homepage");
 assert.ok(workHtml.includes("data-catalogue-search"), "The full work page needs search");
 assert.ok(!`${indexHtml}${workHtml}`.includes("scroll-progress"), "The portfolio should not use decorative scroll tracking");
 assert.ok(indexHtml.includes("script.js"), "The evidence interaction needs its small progressive-enhancement script");
 assert.ok(!styles.includes("content-visibility"), "Cards must render in full-page captures and print output");
-assert.ok(workHtml.includes('aria-label="Case grammar"'), "Cards must expose evidence and limits");
+assert.equal((workHtml.match(/aria-label="Example and boundary"/g) || []).length, 7, "Every card must expose an example and practical boundary");
 
 assert.ok(indexHtml.includes('rel="canonical"'), "Index needs a canonical URL");
 assert.ok(previewHtml.includes('rel="canonical"'), "Preview needs a canonical URL");
@@ -150,6 +154,8 @@ for (const row of rows) {
   llms.push(`- Problem: ${row.problem}`);
   llms.push(`- Outcome: ${row.solves}`);
   llms.push(`- Proof: ${row.proof}`);
+  llms.push(`- Available now: ${previews[row.slug].access}`);
+  llms.push(`- Publication boundary: ${previews[row.slug].publication}`);
   llms.push(`- Preview: ${siteBase}/${row.preview}`);
   llms.push(`- Repo: ${row.repo}`);
   llms.push(`- Stack: ${row.stack.replaceAll(";", ",")}`);
@@ -157,9 +163,9 @@ for (const row of rows) {
 }
 
 llms.push("## Reusable templates", "");
-llms.push("- RAG retrieval and answer evaluation: https://github.com/MatthewPaver/sentence-similarity-analysis");
-llms.push("- PySpark and Kafka data contracts: https://github.com/MatthewPaver/pyspark-kafka-streaming");
-llms.push("- Offline recommender evaluation: https://github.com/MatthewPaver/dating-app-recommendation-system");
+llms.push("- Sentence similarity starter (notebook; newer RAG extension is not yet published): https://github.com/MatthewPaver/sentence-similarity-analysis");
+llms.push("- PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming");
+llms.push("- Offline recommender starter (fictional sample): https://github.com/MatthewPaver/dating-app-recommendation-system");
 llms.push("");
 fs.writeFileSync(path.join(root, "store/llms.txt"), `${llms.join("\n").trimEnd()}\n`);
 

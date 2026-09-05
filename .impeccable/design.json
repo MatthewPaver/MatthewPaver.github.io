@@ -1,108 +1,343 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-11T12:15:02Z",
+  "generatedAt": "2026-09-05T00:54:36.902Z",
   "title": "Design System: Matthew Paver Portfolio",
   "extensions": {
     "colorMeta": {
-      "burnt-orange": {
+      "brand-blue": {
         "role": "primary",
-        "displayName": "Burnt Orange",
-        "canonical": "#a83f24",
-        "tonalRamp": ["#35150d", "#572114", "#7b2d1a", "#a83f24", "#c96546", "#df937b", "#efc3b3", "#faeee9"]
+        "displayName": "Brand Blue",
+        "canonical": "#006b95",
+        "tonalRamp": [
+          "#06283c",
+          "#043d58",
+          "#025274",
+          "#006b95",
+          "#4090b0",
+          "#80b5ca",
+          "#bfdae5",
+          "#ebf3f7"
+        ]
       },
-      "burnt-orange-deep": {
+      "brand-blue-deep": {
         "role": "primary",
-        "displayName": "Deep Burnt Orange",
-        "canonical": "#742914",
-        "tonalRamp": ["#281009", "#48190c", "#742914", "#984126", "#bd674c", "#dc9480", "#efc5b7", "#faf0ec"]
+        "displayName": "Brand Blue Deep",
+        "canonical": "#16456b",
+        "tonalRamp": [
+          "#0b2034",
+          "#0e2c45",
+          "#123756",
+          "#16456b",
+          "#507490",
+          "#8ba2b5",
+          "#c5d1da",
+          "#ecf0f3"
+        ]
       },
-      "burnt-orange-soft": {
+      "brand-blue-soft": {
         "role": "primary",
-        "displayName": "Soft Burnt Orange",
-        "canonical": "#eed7cf",
-        "tonalRamp": ["#37201a", "#5b382e", "#81574a", "#a77b6d", "#c7a79b", "#eed7cf", "#f5e8e3", "#fcf7f5"]
+        "displayName": "Brand Blue Soft",
+        "canonical": "#dceff8",
+        "tonalRamp": [
+          "#324250",
+          "#677885",
+          "#9caeb9",
+          "#dceff8",
+          "#e5f3fa",
+          "#eef7fc",
+          "#f6fbfd",
+          "#fcfefe"
+        ]
       },
-      "sea-green": {
+      "support-blue": {
         "role": "secondary",
-        "displayName": "Sea Green",
-        "canonical": "#165e58",
-        "tonalRamp": ["#082421", "#0d3935", "#124c47", "#165e58", "#3c7d76", "#6aa49d", "#a5cbc6", "#e3f0ee"]
+        "displayName": "Support Blue",
+        "canonical": "#245a7c",
+        "tonalRamp": [
+          "#0e2437",
+          "#15354d",
+          "#1c4662",
+          "#245a7c",
+          "#5b839d",
+          "#92adbe",
+          "#c8d6de",
+          "#edf2f5"
+        ]
       },
-      "focus-green": {
+      "focus-blue": {
         "role": "secondary",
-        "displayName": "Focus Green",
-        "canonical": "#006d63",
-        "tonalRamp": ["#002823", "#004039", "#00584f", "#006d63", "#318c82", "#66ada5", "#a3d3ce", "#e2f3f1"]
+        "displayName": "Focus Blue",
+        "canonical": "#006b95",
+        "tonalRamp": [
+          "#06283c",
+          "#043d58",
+          "#025274",
+          "#006b95",
+          "#4090b0",
+          "#80b5ca",
+          "#bfdae5",
+          "#ebf3f7"
+        ]
       },
-      "warm-canvas": {
+      "cool-canvas": {
         "role": "neutral",
-        "displayName": "Warm Canvas",
-        "canonical": "#f3efe6",
-        "tonalRamp": ["#2b2925", "#47433c", "#676159", "#8a8378", "#afa89d", "#d2ccc1", "#f3efe6", "#fbf9f4"]
+        "displayName": "Cool Canvas",
+        "canonical": "#f3f6fa",
+        "tonalRamp": [
+          "#374450",
+          "#727b85",
+          "#adb3ba",
+          "#f3f6fa",
+          "#f6f8fb",
+          "#f9fbfd",
+          "#fcfdfe",
+          "#fefeff"
+        ]
       },
       "paper": {
         "role": "neutral",
         "displayName": "Paper",
-        "canonical": "#fbfaf6",
-        "tonalRamp": ["#2d2c29", "#4a4944", "#696760", "#8c8981", "#b1aea5", "#d7d4cc", "#fbfaf6", "#ffffff"]
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#394551",
+          "#777f88",
+          "#b5b9be",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
       },
       "paper-strong": {
         "role": "neutral",
-        "displayName": "Strong Paper",
+        "displayName": "Paper Strong",
         "canonical": "#ffffff",
-        "tonalRamp": ["#2c2c2c", "#494949", "#686868", "#8b8b8b", "#b0b0b0", "#d6d6d6", "#f4f4f4", "#ffffff"]
+        "tonalRamp": [
+          "#394551",
+          "#777f88",
+          "#b5b9be",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
-        "canonical": "#1b1c19",
-        "tonalRamp": ["#1b1c19", "#30312d", "#4c4d47", "#6d6e67", "#92938b", "#b9bab3", "#dedfd9", "#f5f5f1"]
+        "canonical": "#152b47",
+        "tonalRamp": [
+          "#0b1b2d",
+          "#0e2035",
+          "#11253d",
+          "#152b47",
+          "#506075",
+          "#8a95a3",
+          "#c5cad1",
+          "#eceef0"
+        ]
       },
       "muted-ink": {
         "role": "neutral",
         "displayName": "Muted Ink",
-        "canonical": "#5d5f58",
-        "tonalRamp": ["#20211e", "#393a35", "#5d5f58", "#7c7e76", "#9fa198", "#c1c3bb", "#e1e2dd", "#f6f7f4"]
+        "canonical": "#506278",
+        "tonalRamp": [
+          "#162636",
+          "#28394b",
+          "#3a4c5f",
+          "#506278",
+          "#7c899a",
+          "#a8b1bc",
+          "#d3d8dd",
+          "#f1f2f4"
+        ]
       },
       "rule": {
         "role": "neutral",
         "displayName": "Rule",
-        "canonical": "#cfc8ba",
-        "tonalRamp": ["#2c2924", "#49443b", "#696157", "#8b8377", "#aea699", "#cfc8ba", "#e7e3da", "#faf8f3"]
+        "canonical": "#c7d3df",
+        "tonalRamp": [
+          "#2e3d4b",
+          "#5e6c79",
+          "#8e9ba8",
+          "#c7d3df",
+          "#d5dee7",
+          "#e3e9ef",
+          "#f1f4f7",
+          "#fbfbfc"
+        ]
       },
       "rule-strong": {
         "role": "neutral",
-        "displayName": "Strong Rule",
-        "canonical": "#8b877e",
-        "tonalRamp": ["#292722", "#46433c", "#666159", "#8b877e", "#aba79f", "#cbc8c1", "#e6e4df", "#f8f7f4"]
+        "displayName": "Rule Strong",
+        "canonical": "#8194a8",
+        "tonalRamp": [
+          "#203040",
+          "#3e4f61",
+          "#5d6f81",
+          "#8194a8",
+          "#a1afbe",
+          "#c0cad4",
+          "#e0e4e9",
+          "#f5f6f8"
+        ]
       },
       "night-canvas": {
         "role": "neutral",
         "displayName": "Night Canvas",
-        "canonical": "#181a18",
-        "tonalRamp": ["#181a18", "#2e312e", "#494d49", "#686d68", "#8e938e", "#b7bbb7", "#dcdedc", "#f3f4f3"]
+        "canonical": "#0b1626",
+        "tonalRamp": [
+          "#091726",
+          "#091726",
+          "#0a1626",
+          "#0b1626",
+          "#48505c",
+          "#858b93",
+          "#c2c5c9",
+          "#ebecee"
+        ]
       },
       "night-paper": {
         "role": "neutral",
         "displayName": "Night Paper",
-        "canonical": "#20231f",
-        "tonalRamp": ["#171916", "#20231f", "#3b3f3a", "#5b605a", "#80857f", "#a9aea8", "#d0d3cf", "#f0f2ef"]
+        "canonical": "#102137",
+        "tonalRamp": [
+          "#0a1929",
+          "#0c1c2e",
+          "#0e1e32",
+          "#102137",
+          "#4c5969",
+          "#88909b",
+          "#c3c8cd",
+          "#ecedef"
+        ]
       },
       "night-ink": {
         "role": "neutral",
         "displayName": "Night Ink",
-        "canonical": "#f1eee7",
-        "tonalRamp": ["#292823", "#45423c", "#645f57", "#877f75", "#aaa398", "#cdc8bf", "#f1eee7", "#faf9f6"]
+        "canonical": "#f0f6fc",
+        "tonalRamp": [
+          "#364451",
+          "#707b86",
+          "#aab3bc",
+          "#f0f6fc",
+          "#f4f8fd",
+          "#f8fbfe",
+          "#fbfdfe",
+          "#fefeff"
+        ]
+      },
+      "screening-surface": {
+        "role": "neutral",
+        "displayName": "Screening Surface",
+        "canonical": "#102a43",
+        "tonalRamp": [
+          "#0a1b2c",
+          "#0c2033",
+          "#0e243a",
+          "#102a43",
+          "#4c5f72",
+          "#8895a1",
+          "#c3cad0",
+          "#eceef0"
+        ]
+      },
+      "screening-ink": {
+        "role": "neutral",
+        "displayName": "Screening Ink",
+        "canonical": "#f7fbfe",
+        "tonalRamp": [
+          "#384551",
+          "#747e87",
+          "#afb7bd",
+          "#f7fbfe",
+          "#f9fcfe",
+          "#fbfdff",
+          "#fdfeff",
+          "#feffff"
+        ]
+      },
+      "screening-muted": {
+        "role": "neutral",
+        "displayName": "Screening Muted",
+        "canonical": "#bed0e1",
+        "tonalRamp": [
+          "#2c3c4b",
+          "#5a6a7a",
+          "#8799a9",
+          "#bed0e1",
+          "#cedce9",
+          "#dfe8f0",
+          "#eff3f8",
+          "#fafbfd"
+        ]
+      },
+      "screening-rule": {
+        "role": "neutral",
+        "displayName": "Screening Rule",
+        "canonical": "#44627c",
+        "tonalRamp": [
+          "#142637",
+          "#23394d",
+          "#324c62",
+          "#44627c",
+          "#73899d",
+          "#a2b1be",
+          "#d0d8de",
+          "#f0f2f5"
+        ]
+      },
+      "screening-selected": {
+        "role": "primary",
+        "displayName": "Screening Selected",
+        "canonical": "#5ed0ff",
+        "tonalRamp": [
+          "#193c51",
+          "#2f6a88",
+          "#4499be",
+          "#5ed0ff",
+          "#86dcff",
+          "#afe8ff",
+          "#d7f3ff",
+          "#f2fbff"
+        ]
+      },
+      "screening-focus": {
+        "role": "secondary",
+        "displayName": "Screening Focus",
+        "canonical": "#9edfff",
+        "tonalRamp": [
+          "#263f51",
+          "#4c7188",
+          "#71a3be",
+          "#9edfff",
+          "#b6e7ff",
+          "#cfefff",
+          "#e7f7ff",
+          "#f7fcff"
+        ]
+      },
+      "brand-navy": {
+        "role": "primary",
+        "displayName": "Brand Navy",
+        "canonical": "#1c3762"
+      },
+      "brand-cyan": {
+        "role": "primary",
+        "displayName": "Brand Cyan",
+        "canonical": "#00adf1"
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Editorial Display",
-        "purpose": "The two-line hero proposition and no other copy."
+        "displayName": "Catalogue / Preview Display",
+        "purpose": "Newsreader default outside the scoped landing variant; route and responsive rules may refine its size."
       },
       "headline": {
         "displayName": "Section Headline",
-        "purpose": "Major section and project headings."
+        "purpose": "Newsreader section headings in the catalogue and preview family."
       },
       "body": {
         "displayName": "Operational Body",
@@ -111,23 +346,40 @@
       "label": {
         "displayName": "Evidence Label",
         "purpose": "Audience, state and Decision Contract roles."
+      },
+      "landing-display": {
+        "displayName": "Landing Display",
+        "purpose": "The two-line personal opening, using the existing locally hosted Manrope font."
+      },
+      "landing-headline": {
+        "displayName": "Landing Headline",
+        "purpose": "Manrope section headings in the landing variant."
+      },
+      "landing-title": {
+        "displayName": "Landing Project Title",
+        "purpose": "Compact high-weight Manrope titles below real project captures."
       }
     },
     "shadows": [
       {
-        "name": "evidence-window",
-        "value": "0 24px 55px rgb(55 40 25 / 16%)",
-        "purpose": "Focuses the hero's real interface capture."
+        "name": "screening-room",
+        "value": "0 26px 64px rgb(16 42 67 / 19%)",
+        "purpose": "Focuses the landing's real project recording and still previews."
       },
       {
         "name": "contract-workbench",
-        "value": "0 24px 52px rgb(55 40 25 / 12%)",
+        "value": "0 24px 52px rgb(19 49 77 / 12%)",
         "purpose": "Separates the enterprise diagram from its paper section."
       },
       {
         "name": "screenshot-inset",
-        "value": "0 18px 38px rgb(27 28 25 / 20%)",
-        "purpose": "Makes real application captures read as inset software windows."
+        "value": "0 18px 38px rgb(21 43 71 / 20%)",
+        "purpose": "Retained shared screenshot treatment outside the landing screening room."
+      },
+      {
+        "name": "screening-play",
+        "value": "0 6px 22px rgb(0 0 0 / 24%)",
+        "purpose": "Separates the user-initiated play control from the real video poster."
       }
     ],
     "motion": [
@@ -142,17 +394,46 @@
         "purpose": "Color, border and visibility feedback."
       },
       {
-        "name": "evidence-crop",
-        "value": "720ms cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "One-time movement between evidence stages."
+        "name": "screening-selection",
+        "value": "360ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "8px entry and opacity change after a different project is selected; skipped for reduced motion."
       },
       {
         "name": "contract-signal",
         "value": "640ms cubic-bezier(0.16, 1, 0.3, 1)",
         "purpose": "One pass through the six decision fields on entry or genuine scenario change."
+      },
+      {
+        "name": "source-flow",
+        "value": "18s linear infinite",
+        "purpose": "Landing source-to-output path; paused by default in CSS, enabled only while visible, document active, user not paused and reduced motion off."
+      },
+      {
+        "name": "media-reveal",
+        "value": "850ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "One-time 18px entry with clip-path inset from 6% to 0 and 14px corners; IntersectionObserver threshold .12."
+      },
+      {
+        "name": "content-reveal",
+        "value": "600ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "One-time 14px entry and opacity .65 to 1 for section introductions and capability links; content visible without JavaScript."
+      },
+      {
+        "name": "landing-image-hover",
+        "value": "650ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Selected media translates up 5px and scales to 1.035; outer card remains still."
+      },
+      {
+        "name": "work-story-reveal",
+        "value": "700ms cubic-bezier(.16,1,.3,1), 300ms opacity ease",
+        "purpose": "A real capture follows the case in the central reading area, with a 22px entry, .97-to-1 scale and 12%-to-0 bottom clip. Previous animation is cancelled on a new selection."
       }
     ],
     "breakpoints": [
+      {
+        "name": "landing-narrow-desktop",
+        "value": "1100px"
+      },
       {
         "name": "compact-desktop",
         "value": "980px"
@@ -162,90 +443,148 @@
         "value": "720px"
       },
       {
+        "name": "landing-mobile",
+        "value": "640px"
+      },
+      {
         "name": "small-mobile",
         "value": "460px"
       }
-    ]
+    ],
+    "catalogueFirstUse": {
+      "scope": "store/work/index.html",
+      "sourceFiles": ["store/work/catalogue.css"],
+      "order": ["Project", "Setup requirement", "Use", "Evidence and limit", "Direct first action", "Case", "Optional first steps"],
+      "media": "Real application captures, contained in 16:10 frames; never imply generated artwork is a working screen",
+      "interaction": "Native links and details; existing search and category filters preserved",
+      "fallback": "All content and first steps work without JavaScript"
+    },
+    "workStory": {
+      "scope": "store/index.html Selected work only",
+      "sourceFiles": ["store/work-story.css", "store/work-story.js"],
+      "minimumViewport": {"width": 1100, "height": 700},
+      "columns": "1.35fr 1fr",
+      "stage": "sticky, max-height 550px, 14px radius, contained real capture",
+      "chapter": "Problem, what Matthew built, what to inspect, reproduced result and boundary",
+      "interaction": "Native scrolling, IntersectionObserver, project anchors and keyboard focus; no scroll hijacking",
+      "fallbacks": ["Simple-view control", "Reduced motion", "Small or short screen", "JavaScript unavailable", "Print"],
+      "reference": "https://www.apple.com/macbook-pro/",
+      "referenceUse": "Pacing and product-led storytelling, not copied assets or branding"
+    },
+    "paletteReference": {
+      "url": "https://projectingsuccess.co.uk/",
+      "observed": "2026-09-05",
+      "navy": "#1c3762",
+      "cyan": "#00adf1",
+      "actionBlue": "#028bc1",
+      "note": "Personal portfolio adaptation; no company endorsement or logo reuse. Darker #006b95 for body links."
+    }
   },
   "components": [
     {
-      "name": "Primary Button",
+      "name": "Shared Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The single strongest action in a local section.",
+      "description": "Catalogue/preview primary action; the landing uses the same treatment with a 7px corner.",
       "html": "<a class=\"ds-button-primary\" href=\"#\">Explore the store</a>",
-      "css": ".ds-button-primary { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#1b1c19); border-radius:3px; background:var(--ink,#1b1c19); color:var(--paper,#fbfaf6); font:800 .9rem/1.2 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms cubic-bezier(.16,1,.3,1); } .ds-button-primary:hover { background:var(--accent-dark,#742914); translate:0 -2px; } .ds-button-primary:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+      "css": ".ds-button-primary { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#152b47); border-radius:3px; background:var(--ink,#152b47); color:var(--paper,#ffffff); font:800 .9rem/1.2 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms cubic-bezier(.16,1,.3,1); } .ds-button-primary:hover { background:var(--accent-dark,#16456b); translate:0 -2px; } .ds-button-primary:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
     },
     {
-      "name": "Ghost Button",
+      "name": "Shared Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "A quiet secondary action such as the CV link.",
+      "description": "Catalogue/preview secondary action; the landing uses the same treatment with a 7px corner.",
       "html": "<a class=\"ds-button-ghost\" href=\"#\">View CV</a>",
-      "css": ".ds-button-ghost { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#1b1c19); border-radius:3px; background:transparent; color:var(--ink,#1b1c19); font:800 .9rem/1.2 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms cubic-bezier(.16,1,.3,1); } .ds-button-ghost:hover { background:var(--paper-strong,#fff); translate:0 -2px; } .ds-button-ghost:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+      "css": ".ds-button-ghost { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#152b47); border-radius:3px; background:transparent; color:var(--ink,#152b47); font:800 .9rem/1.2 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms cubic-bezier(.16,1,.3,1); } .ds-button-ghost:hover { background:var(--paper-strong,#fff); translate:0 -2px; } .ds-button-ghost:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
     },
     {
       "name": "Section Navigation",
       "kind": "nav",
       "description": "Sticky, quiet navigation with an evidence-colored current-location marker.",
-      "html": "<nav class=\"ds-nav\"><a aria-current=\"location\" href=\"#\">Selected</a><a href=\"#\">All work</a><a href=\"#\">About</a></nav>",
-      "css": ".ds-nav { display:flex; gap:24px; align-items:center; font-family:var(--body,sans-serif); } .ds-nav a { display:inline-flex; min-height:44px; align-items:center; color:var(--muted,#5d5f58); font-size:.86rem; font-weight:700; text-decoration:none; } .ds-nav a:hover { color:var(--ink,#1b1c19); } .ds-nav a[aria-current=location] { color:var(--ink,#1b1c19); text-decoration:underline; text-decoration-color:var(--accent,#a83f24); text-underline-offset:.45em; } .ds-nav a:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a aria-current=\"location\" href=\"#selected\">Work</a><a href=\"#contract\">Method</a><a href=\"#about\">About</a></nav>",
+      "css": ".ds-nav { display:flex; gap:24px; align-items:center; font-family:var(--body,sans-serif); } .ds-nav a { display:inline-flex; min-height:44px; align-items:center; color:var(--muted,#506278); font-size:.86rem; font-weight:700; text-decoration:none; } .ds-nav a:hover { color:var(--ink,#152b47); } .ds-nav a[aria-current=location] { color:var(--ink,#152b47); text-decoration:underline; text-decoration-color:var(--accent,#006b95); text-underline-offset:.45em; } .ds-nav a:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
     },
     {
       "name": "Catalogue Search",
       "kind": "input",
+      "refersTo": "catalogue-search",
       "description": "A compact, touch-safe field for the full public work catalogue.",
       "html": "<label class=\"ds-search\"><span>Search projects</span><input type=\"search\" placeholder=\"Try AI evaluation or public data\"></label>",
-      "css": ".ds-search { display:grid; gap:7px; color:var(--ink,#1b1c19); font:750 .78rem/1.4 var(--body,sans-serif); } .ds-search input { min-height:46px; padding:10px 13px; border:1px solid var(--line-strong,#8b877e); border-radius:3px; background:var(--paper,#fbfaf6); color:var(--ink,#1b1c19); font:500 1rem/1.4 var(--body,sans-serif); } .ds-search input:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+      "css": ".ds-search { display:grid; gap:7px; color:var(--ink,#152b47); font:800 .76rem/1.55 var(--body,sans-serif); } .ds-search input { min-height:46px; padding:10px 12px; border:1px solid var(--line-strong,#8194a8); border-radius:2px; background:var(--paper-strong,#fff); color:var(--ink,#152b47); font:400 1rem/1.55 var(--body,sans-serif); } .ds-search input::placeholder { color:#60788e; } .ds-search input:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
     },
     {
-      "name": "Flagship Evidence Card",
+      "name": "Shared Evidence Card",
       "kind": "card",
       "refersTo": "evidence-card",
-      "description": "A real interface capture followed by audience, purpose, result and boundary.",
+      "description": "Retained shared evidence-card treatment. The landing instead uses an unboxed card with a 14px media frame and Manrope title; this legacy sample is not its current composition.",
       "html": "<article class=\"ds-evidence-card\"><div class=\"ds-evidence-media\">REAL INTERFACE CAPTURE</div><div class=\"ds-evidence-copy\"><small>For cloud security reviewers</small><h3>PolicyLens</h3><p>See exactly how a permission change alters access.</p><dl><div><dt>Reproduced result</dt><dd>One decision path with cited policy evidence.</dd></div><div><dt>Boundary</dt><dd>Code owns the verdict; AI only explains it.</dd></div></dl><a href=\"#\">Open case →</a></div></article>",
-      "css": ".ds-evidence-card { overflow:hidden; border:1px solid var(--line-strong,#8b877e); border-radius:5px; background:var(--canvas,#f3efe6); color:var(--ink,#1b1c19); font-family:var(--body,sans-serif); } .ds-evidence-media { min-height:170px; padding:20px; border-bottom:1px solid var(--line-strong,#8b877e); background:#1d2929; color:#f1eee7; font-size:.7rem; font-weight:800; letter-spacing:.05em; } .ds-evidence-copy { padding:24px; } .ds-evidence-copy small { color:var(--accent-dark,#742914); font-weight:750; } .ds-evidence-copy h3 { margin:8px 0 12px; font:700 2.4rem/.98 var(--display,serif); letter-spacing:-.025em; } .ds-evidence-copy p { color:var(--muted,#5d5f58); line-height:1.55; } .ds-evidence-copy dl { margin:22px 0 16px; } .ds-evidence-copy dl div { padding:10px 0; border-top:1px solid var(--line,#cfc8ba); } .ds-evidence-copy dt { color:var(--muted,#5d5f58); font-size:.72rem; font-weight:750; } .ds-evidence-copy dd { margin:3px 0 0; font-size:.8rem; font-weight:700; } .ds-evidence-copy a { display:inline-flex; min-height:44px; align-items:center; color:inherit; font-weight:800; text-underline-offset:.22em; } .ds-evidence-copy a:focus-visible { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+      "css": ".ds-evidence-card { overflow:hidden; border:1px solid var(--line-strong,#8194a8); border-radius:5px; background:var(--canvas,#f3f6fa); color:var(--ink,#152b47); font-family:var(--body,sans-serif); } .ds-evidence-media { min-height:170px; padding:20px; border-bottom:1px solid var(--line-strong,#8194a8); background:#142e48; color:#f0f6fc; font-size:.7rem; font-weight:800; letter-spacing:.05em; } .ds-evidence-copy { padding:24px; } .ds-evidence-copy small { color:var(--accent-dark,#16456b); font-weight:750; } .ds-evidence-copy h3 { margin:8px 0 12px; font:700 2.4rem/.98 var(--display,serif); letter-spacing:-.025em; } .ds-evidence-copy p { color:var(--muted,#506278); line-height:1.55; } .ds-evidence-copy dl { margin:22px 0 16px; } .ds-evidence-copy dl div { padding:10px 0; border-top:1px solid var(--line,#c7d3df); } .ds-evidence-copy dt { color:var(--muted,#506278); font-size:.72rem; font-weight:750; } .ds-evidence-copy dd { margin:3px 0 0; font-size:.8rem; font-weight:700; } .ds-evidence-copy a { display:inline-flex; min-height:44px; align-items:center; color:inherit; font-weight:800; text-underline-offset:.22em; } .ds-evidence-copy a:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
     },
     {
       "name": "Decision Contract Scenario",
       "kind": "chip",
       "description": "A three-state switcher whose selection updates one complete decision boundary.",
       "html": "<div class=\"ds-scenarios\" role=\"group\" aria-label=\"Decision scenario\"><button aria-pressed=\"true\">PolicyLens</button><button aria-pressed=\"false\">ProjectLens</button><button aria-pressed=\"false\">Lakehouse</button></div>",
-      "css": ".ds-scenarios { display:flex; gap:6px; padding:10px; background:#202824; } .ds-scenarios button { min-height:46px; padding:9px 13px; border:1px solid #68716c; border-radius:3px; background:transparent; color:#d5dcd7; font:760 .78rem/1.3 var(--body,sans-serif); cursor:pointer; } .ds-scenarios button:hover { border-color:#aeb8b1; } .ds-scenarios button[aria-pressed=true] { border-color:#f3efe6; background:#f3efe6; color:#1b1c19; } .ds-scenarios button:focus-visible { outline:3px solid var(--focus,#79d5ca); outline-offset:3px; }"
+      "css": ".ds-scenarios { display:flex; gap:6px; padding:10px; background:#16395d; } .ds-scenarios button { min-height:46px; padding:9px 13px; border:1px solid #627e95; border-radius:3px; background:transparent; color:#d1e0eb; font:760 .78rem/1.3 var(--body,sans-serif); cursor:pointer; } .ds-scenarios button:hover { border-color:#adc4d8; } .ds-scenarios button[aria-pressed=true] { border-color:#f3f6fa; background:#f3f6fa; color:#152b47; } .ds-scenarios button:focus-visible { outline:3px solid var(--focus,#7adaff); outline-offset:3px; }"
     },
     {
-      "name": "Decision Contract Node",
+      "name": "Shared Decision Contract Node",
       "kind": "custom",
       "refersTo": "contract-node",
-      "description": "One accountable field in the six-part enterprise decision boundary.",
+      "description": "One accountable field in the six-part decision boundary. Shared base is 4px; the landing overrides this to 10px.",
       "html": "<section class=\"ds-contract-node\"><span>Permitted AI role</span><strong>Explain the fixed verdict with claims tied to policy evidence</strong></section>",
-      "css": ".ds-contract-node { display:flex; min-height:150px; flex-direction:column; justify-content:space-between; padding:21px; border:1px solid var(--line,#cfc8ba); border-radius:4px; background:var(--paper-strong,#fff); color:var(--ink,#1b1c19); font-family:var(--body,sans-serif); } .ds-contract-node span { color:var(--accent-dark,#742914); font-size:.7rem; font-weight:800; } .ds-contract-node strong { margin-top:28px; font-size:1rem; line-height:1.45; } .ds-contract-node:focus-within { outline:3px solid var(--focus,#006d63); outline-offset:3px; }"
+      "css": ".ds-contract-node { display:flex; min-height:150px; flex-direction:column; justify-content:space-between; padding:21px; border:1px solid var(--line,#c7d3df); border-radius:4px; background:var(--paper-strong,#fff); color:var(--ink,#152b47); font-family:var(--body,sans-serif); } .ds-contract-node span { color:var(--accent-dark,#16456b); font-size:.7rem; font-weight:800; } .ds-contract-node strong { margin-top:28px; font-size:1rem; line-height:1.45; } .ds-contract-node:focus-within { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
+    },
+    {
+      "name": "Landing Primary Button",
+      "kind": "button",
+      "refersTo": "landing-button-primary",
+      "description": "The landing's scoped primary action, with a compact arrow and softer corner.",
+      "html": "<a class=\"ds-landing-primary\" href=\"#selected\">Explore the work <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\" /></svg></a>",
+      "css": ".ds-landing-primary { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#152b47); border-radius:7px; background:var(--ink,#152b47); color:var(--paper,#ffffff); font:800 .9rem/1.55 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms var(--ease-out,cubic-bezier(.16,1,.3,1)); } .ds-landing-primary svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.7; } .ds-landing-primary:hover { background:var(--accent-dark,#16456b); translate:0 -2px; } .ds-landing-primary:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; } @media(prefers-reduced-motion:reduce) { .ds-landing-primary { transition:none; } }"
+    },
+    {
+      "name": "Landing Ghost Button",
+      "kind": "button",
+      "refersTo": "landing-button-ghost",
+      "description": "The landing CV action, paired with the primary work link.",
+      "html": "<a class=\"ds-landing-ghost\" href=\"https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf\">Open CV (PDF)</a>",
+      "css": ".ds-landing-ghost { display:inline-flex; min-height:46px; align-items:center; justify-content:center; padding:10px 16px; border:1px solid var(--ink,#152b47); border-radius:7px; background:transparent; color:var(--ink,#152b47); font:800 .9rem/1.55 var(--body,sans-serif); text-decoration:none; transition:background-color 180ms ease,translate 180ms var(--ease-out,cubic-bezier(.16,1,.3,1)); } .ds-landing-ghost:hover { background:var(--paper-strong,#fff); translate:0 -2px; } .ds-landing-ghost:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; } @media(prefers-reduced-motion:reduce) { .ds-landing-ghost { transition:none; } }"
+    },
+    {
+      "name": "Screening Room Project Selector",
+      "kind": "custom",
+      "refersTo": "screening-tab",
+      "description": "Project selection above the real media: explicit pressed state, cyan underline and inset focus. Live page handles keyboard selection and pauses video on a change.",
+      "html": "<div class=\"ds-screening-tabs\" role=\"group\" aria-label=\"Choose a project preview\"><button aria-pressed=\"true\">QuickSupply</button><button aria-pressed=\"false\">ProjectLens</button><button aria-pressed=\"false\">ML Lakehouse</button></div>",
+      "css": ".ds-screening-tabs { display:flex; gap:0; padding:6px 12px 0; border-bottom:1px solid #44627c; background:#102a43; border-radius:14px 14px 0 0; } .ds-screening-tabs button { position:relative; flex:1; min-height:48px; border:0; padding:12px 8px; background:transparent; color:#bed0e1; font:750 .76rem/1.55 var(--body,sans-serif); cursor:pointer; } .ds-screening-tabs button[aria-pressed=true] { color:#fff; } .ds-screening-tabs button[aria-pressed=true]::after { content:''; position:absolute; bottom:-1px; left:12px; right:12px; height:3px; border-radius:3px; background:#5ed0ff; } .ds-screening-tabs button:hover { color:#fff; background:#214966; } .ds-screening-tabs button:focus-visible { outline:3px solid #9edfff; outline-offset:-4px; }"
     }
   ],
   "narrative": {
     "northStar": "The Evidence Catalogue",
-    "overview": "The portfolio feels like a small, carefully edited software shop whose products can withstand inspection. It pairs an editorial reading experience with the precision of an engineering workbench: warm paper, dark ink, quiet rules, real interface captures and brief statements of purpose, evidence and limits.\n\nThe composition is confident but restrained. Personality comes from Matthew's work and decision philosophy rather than ornamental effects. Motion explains a change, check or hand-off, then settles; it never competes with the evidence.",
+    "overview": "The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.\n\nThe landing variant lets working software lead: a personal introduction sits beside a substantial screening room, followed by a scroll-led sequence of real captures and short case stories. Compact cards remain the small-screen, reduced-motion and simple-view presentation. Manrope takes the display role here, while the catalogue and previews retain Newsreader's editorial hierarchy. Motion supports discovery and workflow: reveals settle after entry, the recording starts only on request, and the slow source-to-output path can be paused.\n\nThe user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing and `store/work-story.css` scopes the optional project sequence; `store/styles.css` remains the shared catalogue/preview foundation.",
     "keyCharacteristics": [
-      "Editorial hierarchy with dense, readable engineering evidence.",
-      "One rare burnt-orange accent against warm paper and ink.",
+      "A media-led Manrope landing and a Newsreader-led editorial catalogue.",
+      "Navy identity, cyan emphasis and accessible blue actions against cool neutral surfaces.",
       "Real product captures framed as working software, not generated artwork.",
-      "Rectilinear, lightly softened surfaces with sparse structural borders.",
-      "Honest boundaries and accountable human decisions beside every claim."
+      "Softened media frames on the landing; compact rectilinear catalogue controls and cards.",
+      "Honest boundaries and accountable human decisions beside every claim.",
+      "User-controlled playback, pausable background motion and static reduced-motion fallbacks."
     ],
     "rules": [
       {
         "name": "The One Signal Rule",
-        "body": "Burnt orange identifies a meaningful state or piece of evidence; it is not decorative fill.",
+        "body": "Cyan and blue identify meaningful actions and selections. Do not add competing accent families to portfolio chrome; colours inside real product captures belong to those products.",
         "section": "colors"
       },
       {
         "name": "The Claim and Evidence Rule",
-        "body": "Serif type makes the claim; sans-serif type explains, qualifies and proves it.",
+        "body": "In the catalogue and previews, serif type makes the claim and sans-serif type explains, qualifies and proves it. The media-led landing deliberately uses Manrope for both roles; preserve that scoped distinction.",
         "section": "typography"
       },
       {
         "name": "The Curated First Rule",
-        "body": "Three flagship applications must be understandable before the visitor is asked to browse the full catalogue.",
+        "body": "The landing makes three selected applications understandable without requiring a visit to the full catalogue; the catalogue remains directly available for visitors who already know what they need.",
         "section": "layout"
       },
       {
@@ -257,13 +596,15 @@
     "dos": [
       "Do lead with a real application surface and a plain-language user problem.",
       "Do pair every reproduced result with its honest boundary.",
-      "Do use the accent only for consequential evidence, selection or caution.",
+      "Do use navy for identity and cyan/blue for meaningful actions, workflow and selection.",
       "Do preserve dark mode, visible keyboard focus, reduced motion and touch-safe controls.",
-      "Do keep private work out of public catalogues and previews."
+      "Do keep private work out of public catalogues and previews.",
+      "Do preserve the Manrope landing and Newsreader catalogue/preview variants instead of applying either globally.",
+      "Do keep video user-initiated and background motion pausable, with static and no-JavaScript fallbacks."
     ],
     "donts": [
       "Don't replace screenshots with generated product art or generic gradient thumbnails.",
-      "Don't add vanity counters, floating blobs, perpetual motion, marquees or cursor spectacle.",
+      "Don't add vanity counters, floating blobs, unpausable loops, marquees or cursor spectacle.",
       "Don't repeat the same project proof across several homepage sections.",
       "Don't use rounded-pill components as a default visual language.",
       "Don't claim model or product impact that the linked evidence cannot reproduce."

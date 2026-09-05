@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fbfaf7" />
+    <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
     <title>Project preview · Matthew Paver</title>
     <meta
       name="description"
@@ -29,40 +30,59 @@
     <script>
       document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");
     </script>
-    <link rel="stylesheet" href="./styles.css?v=20260811-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260905-4" />
+    <link rel="stylesheet" href="./preview.css?v=20260905-1" />
   </head>
-  <body>
+  <body class="project-page">
+    <a class="skip-link" href="#case-story">Skip to the case</a>
     <main class="shell preview-shell">
       <nav class="preview-nav" aria-label="Preview navigation">
-        <a href="./">Back to selected work</a>
-        <a href="https://github.com/MatthewPaver/MatthewPaver">GitHub profile</a>
+        <a href="./work/" data-catalogue-return>All work</a>
+        <a href="./">Matthew Paver</a>
+        <a href="https://github.com/MatthewPaver">GitHub profile</a>
       </nav>
 
       <section class="preview-hero">
         <noscript>
           <article class="preview-panel no-script-panel">
-            <h1>Project previews need JavaScript.</h1>
-            <p>
-              The selected work page still works without JavaScript. Open it to browse the projects and public evidence.
-            </p>
-            <p>
-              <a class="button primary" href="./#work">Back to store</a>
-            </p>
+            <h1>Choose a project</h1>
+            <p>These complete case pages work without JavaScript, including their screenshots, recordings and source links.</p>
+            <ul class="preview-list">
+              <li><a href="./store/apps/policylens/">PolicyLens</a></li>
+              <li><a href="./store/apps/projectlens/">ProjectLens</a></li>
+              <li><a href="./store/apps/quicksupply/">QuickSupply</a></li>
+              <li><a href="./store/apps/winchester/">Winchester House Hunter</a></li>
+              <li><a href="./store/apps/lakehouse/">Marketing ML Lakehouse</a></li>
+              <li><a href="./store/apps/hr/">HR Performance Analytics</a></li>
+              <li><a href="./store/apps/england/">Can England Win It?</a></li>
+            </ul>
           </article>
         </noscript>
         <div class="preview-copy">
-          <h1 id="preview-title">Project preview</h1>
-          <p id="preview-kicker" class="preview-kicker">Selected work</p>
+          <h1 id="preview-title">Loading project…</h1>
+          <p id="preview-kicker" class="preview-kicker"></p>
           <p id="preview-summary" class="lede"></p>
+          <p id="preview-access" class="preview-access"></p>
           <div id="preview-actions" class="preview-actions"></div>
+          <div id="preview-boundary" class="preview-boundary" hidden>
+            <strong>Before using this</strong>
+            <p id="preview-note"></p>
+            <p id="preview-publication"></p>
+          </div>
         </div>
 
-        <figure class="preview-media">
-          <img id="preview-image" src="./assets/policylens.png" width="1400" height="900" alt="PolicyLens IAM review interface" />
-          <video id="preview-video" hidden controls muted playsinline preload="metadata"></video>
+        <figure class="preview-media" id="recording" hidden>
+          <picture id="preview-picture">
+            <source id="preview-image-avif" type="image/avif" />
+            <img id="preview-image" src="./assets/policylens.png" width="1400" height="900" alt="PolicyLens IAM review interface" />
+          </picture>
+          <video id="preview-video" hidden controls muted playsinline preload="none"></video>
+          <p id="preview-media-error" class="preview-media-error" role="status" hidden>Recording unavailable. Read the text walkthrough below, download it, or <button type="button">try the recording again</button>.</p>
+          <p class="preview-media-caption" id="preview-media-caption"></p>
+          <div class="preview-media-links"><a id="preview-full-image" href="./assets/policylens.png">Open full-size image</a><a id="preview-download" hidden download>Download recording</a></div>
           <figcaption class="preview-meta">
             <div>
-              <span>Role</span>
+              <span>My contribution</span>
               <strong id="preview-role"></strong>
             </div>
             <div>
@@ -77,26 +97,36 @@
         </figure>
       </section>
 
-      <section class="preview-layout">
+      <section class="preview-layout" id="case-story" hidden>
         <article class="preview-panel">
-          <h2>What it solves</h2>
+          <h2>Why I built it</h2>
           <p id="preview-problem"></p>
-          <ul id="preview-points" class="preview-list"></ul>
+          <h2>What I chose</h2>
+          <p id="preview-choice"></p>
+          <h2>What the example shows</h2>
+          <p id="preview-result"></p>
+          <h2>What I learned</h2>
+          <p id="preview-learning"></p>
         </article>
 
         <aside class="preview-panel">
-          <h3>Stack</h3>
-          <div id="preview-stack" class="preview-stack"></div>
-          <p id="preview-note" class="motion-note"></p>
+          <h2 id="preview-steps-heading">Try this example</h2>
+          <ol id="preview-steps" class="preview-list"></ol>
+          <details class="preview-technical" id="implementation">
+            <summary>Implementation and checks</summary>
+            <ul id="preview-points" class="preview-list"></ul>
+            <h3>Built with</h3>
+            <div id="preview-stack" class="preview-stack"></div>
+          </details>
         </aside>
       </section>
 
       <footer class="footer">
         <p>Matthew Paver, software and AI engineer.</p>
-        <a href="./work/">All public work</a>
+        <a href="./work/" data-catalogue-return>All public work</a>
       </footer>
     </main>
 
-    <script src="./preview.js?v=20260519-1"></script>
+    <script src="./preview.js?v=20260905-1" type="module"></script>
   </body>
 </html>

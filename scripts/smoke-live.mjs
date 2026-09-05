@@ -1,5 +1,6 @@
 // Live smoke checks for the deployed portfolio.
 // Fails (exit 1) if any stranger-path invariant breaks. No dependencies; Node 18+.
+import { inspectPublicPages } from './portfolio-smoke-contract.mjs';
 
 const HOME = "https://matthewpaver.github.io/";
 const checks = [];
@@ -26,6 +27,7 @@ async function expect200(name, url) {
 }
 
 await expect200("homepage 200", HOME);
+await expect200("public catalogue 200", `${HOME}work/`);
 await expect200("ProjectLens demo 200", "https://matthewpaver.github.io/ProjectLens/change-assurance.html");
 await expect200("QuickSupply preview 200", "https://matthewpaver.github.io/preview.html?app=quicksupply");
 await expect200("QuickSupply repo 200", "https://github.com/MatthewPaver/QuickSupply");
@@ -38,22 +40,15 @@ await expect200(
   "https://matthewpaver.github.io/marketing-ml-lakehouse/"
 );
 await expect200("England preview 200", "https://matthewpaver.github.io/preview.html?app=england");
-await expect200("Recommender preview 200", "https://matthewpaver.github.io/preview.html?app=recommender");
+await expect200("Recommender public source 200", "https://github.com/MatthewPaver/dating-app-recommendation-system");
 
 try {
-  const html = await (await fetch(`${HOME}?smoke=${Date.now()}`, { cache: "no-store" })).text();
-  record("homepage has ProjectLens", /data-slug="projectlens"/i.test(html));
-  record("homepage has QuickSupply public", /data-slug="quicksupply"[^>]*data-status="Public"/i.test(html));
-  record("homepage has lakehouse", /data-slug="lakehouse"/i.test(html));
-  record("homepage has england on product shelf", /data-slug="england"[^>]*data-tags="[^"]*product/i.test(html));
-  record("homepage has recommender", /data-slug="recommender"/i.test(html));
-  record("homepage has no Output Gate", !/Output Gate|ai-workflow-evaluator|ADOPTION\.md/i.test(html));
-  record("homepage has no MeetingProof", !/MeetingProof|meetingproof/i.test(html));
-  record("homepage has no happening-open-core card", !/data-slug="happening-core"/i.test(html));
-  record("homepage has no paper-trading card", !/data-slug="paper-trading"/i.test(html));
-  const privateMarkers =
-    (html.match(/class="status private"/g) || []).length + (html.match(/data-status="Private/gi) || []).length;
-  record("zero private product cards", privateMarkers === 0, `${privateMarkers} marker(s)`);
+  const [home, catalogue] = await Promise.all(['', 'work/'].map(async (route) => {
+    const response = await fetch(`${HOME}${route}?smoke=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`${route || 'homepage'} returned ${response.status}`);
+    return response.text();
+  }));
+  for (const check of inspectPublicPages(home, catalogue)) record(check.name, check.pass);
 } catch (err) {
   record("homepage content checks", false, err.message);
 }

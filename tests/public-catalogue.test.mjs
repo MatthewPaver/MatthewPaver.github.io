@@ -4,6 +4,11 @@ import { basename, join } from "node:path";
 import test from "node:test";
 
 const contentDir = new URL("../src/content/apps/", import.meta.url);
+test("installed portfolio opens at the public site root", () => {
+  const manifest = JSON.parse(readFileSync(new URL("../store/manifest.webmanifest", import.meta.url), "utf8"));
+  assert.equal(manifest.start_url, "/");
+  assert.equal(manifest.scope, "/");
+});
 const metrics = JSON.parse(
   readFileSync(new URL("../src/data/github-metrics.json", import.meta.url), "utf8"),
 );

@@ -102,6 +102,6 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 
 ## Reusable templates
 
-- Sentence similarity starter (notebook; newer RAG extension is not yet published): https://github.com/MatthewPaver/sentence-similarity-analysis
+- RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate
 - PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming
 - Offline recommender starter (fictional sample): https://github.com/MatthewPaver/dating-app-recommendation-system

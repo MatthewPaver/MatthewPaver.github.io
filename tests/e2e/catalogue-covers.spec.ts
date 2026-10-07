@@ -44,6 +44,8 @@ test('prototype covers pair contextual photos with genuine uncropped screens', a
 });
 
 test('all seven covers share a stable frame and preserve the original source captures', async ({ page }) => {
+  // 7 covers x 4 widths of layout and image checks: allow more than the 30s default.
+  test.setTimeout(90_000);
   await page.goto('/work/');
   await expect(page.locator('.app-cover')).toHaveCount(7);
   await expect(page.locator('.app-cover-screen img')).toHaveCount(7);

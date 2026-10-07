@@ -3,6 +3,9 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
+  // Local runs: each worker is a full Chromium plus image/video decoding; more than
+  // two saturates an 8-core laptop and media checks time out. CI keeps the default.
+  workers: process.env.CI ? undefined : 2,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? "github" : "line",
   use: {
@@ -20,7 +23,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "node scripts/prepare-pages-artifact.mjs && python3 -m http.server 4321 --directory pages-dist",
+    command: "node scripts/prepare-pages-artifact.mjs && python3 scripts/serve-pages.py 4321",
     url: "http://127.0.0.1:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 30_000,

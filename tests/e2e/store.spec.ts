@@ -39,7 +39,7 @@ test("enterprise palette keeps hero links and actions readable in both themes", 
 
 test("homepage is a compact public portfolio with a personal introduction", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Matthew Paver \| Software and AI engineering/);
+  await expect(page).toHaveTitle(/Matthew Paver \| AI solutions architect/);
   const heroHeading = page.getByRole("heading", { name: "AI architecture. Working software." });
   await expect(heroHeading).toBeVisible();
   if (test.info().project.name === "desktop") {
@@ -94,7 +94,7 @@ test("selected work exposes a result, boundary and case route", async ({ page })
   await page.goto("/");
   const policy = page.locator('[data-project="policylens"]');
   await expect(policy.getByText("Database deletion changes from denied to allowed")).toBeVisible();
-  await expect(policy.getByText("Supplied policies only; the public repo still starts with the earlier Org demo")).toBeVisible();
+  await expect(policy.getByText("Supplied policies only; an authored benchmark, not an AWS simulator check")).toBeVisible();
   await expect(policy.getByText("Node.js · AWS IAM · AI evaluation")).toBeVisible();
   await expect(policy.getByRole("link", {name:"Review PolicyLens case", exact:true})).toHaveAttribute(
     "href",
@@ -122,7 +122,7 @@ test("result screenshots remain uncropped and biography stays separate from proj
     await expect(screenshot).toHaveCSS("object-fit", "contain");
     await expect.poll(() => screenshot.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
   }
-  await expect(page.locator("#about")).toContainText("over six years at Projecting Success");
+  await expect(page.locator("#about")).toContainText("seven years in data and AI. Six of them were at Projecting Success");
   await expect(page.locator(".about-background")).toContainText("University of Liverpool");
   await expect(page.locator("#selected")).toContainText("not work delivered for an employer or client");
 });
@@ -132,12 +132,14 @@ test("screening room switches real projects and pauses video when switching away
   const room = page.locator("[data-screening-room]");
   const video = room.locator("video");
   expect(await video.evaluate((element: HTMLVideoElement) => element.readyState)).toBe(0);
+  await expect(room.locator('[data-screening-panel="projectlens"]')).toBeVisible();
+  await room.getByRole("button", { name: "QuickSupply", exact: true }).click();
   await room.getByRole("button", { name: "Watch the walkthrough" }).click();
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
   await room.getByRole("button", { name: "ProjectLens", exact: true }).click();
   await expect(room.locator('[data-screening-panel="projectlens"]')).toBeVisible();
   expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-  await page.keyboard.press("ArrowRight");
+  await page.keyboard.press("ArrowLeft");
   await expect(room.getByRole("button", { name: "ML Lakehouse" })).toHaveAttribute("aria-pressed", "true");
   await expect(room.getByText("Check the data before trusting the forecast.")).toBeVisible();
 });
@@ -158,6 +160,7 @@ test("background motion can be paused and obeys reduced motion", async ({ page }
 test("unavailable video has a useful recovery path", async ({ page }) => {
   await page.route("**/quicksupply-demo.m4v", (route) => route.abort());
   await page.goto("/");
+  await page.locator("[data-screening-room]").getByRole("button", { name: "QuickSupply", exact: true }).click();
   await page.getByRole("button", { name: "Watch the walkthrough" }).click();
   await expect(page.locator(".screening-error")).toBeVisible();
   await expect(page.locator(".screening-error a").first()).toHaveAttribute("href", "./assets/quicksupply-demo.m4v");
@@ -175,7 +178,7 @@ test("PolicyLens has an indexable detail page and public source", async ({ page 
   await expect(page.getByRole("heading", { name: "What the example shows" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Run public IAM demo" }).first()).toHaveAttribute(
     "href",
-    "https://github.com/MatthewPaver/iam-policy-auditor#quick-start-stranger-usable-in-90-seconds",
+    "https://github.com/MatthewPaver/iam-policy-auditor#quick-start",
   );
 });
 

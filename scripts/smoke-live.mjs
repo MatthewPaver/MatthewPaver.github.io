@@ -40,7 +40,7 @@ await expect200(
   "https://matthewpaver.github.io/marketing-ml-lakehouse/"
 );
 await expect200("England preview 200", "https://matthewpaver.github.io/preview.html?app=england");
-await expect200("Recommender public source 200", "https://github.com/MatthewPaver/dating-app-recommendation-system");
+await expect200("Recommender public source 200", "https://github.com/MatthewPaver/recommender-eval-lab");
 
 try {
   const [home, catalogue] = await Promise.all(['', 'work/'].map(async (route) => {

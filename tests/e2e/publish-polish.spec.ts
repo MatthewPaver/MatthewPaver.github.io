@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('selected cases have short action names and directly inspectable captures', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-copy')).toContainText('Six years at Projecting Success');
+  await expect(page.locator('.hero-copy')).toContainText('Seven years in data and AI, six of them at Projecting Success');
   for (const [slug, name, image] of [
     ['policylens', 'PolicyLens', 'policylens-review.png'],
     ['projectlens', 'ProjectLens', 'projectlens-questions.png'],
@@ -19,7 +19,9 @@ test('selected cases have short action names and directly inspectable captures',
   }
 });
 
-test('catalogue leads with an immediately usable public browser example', async ({ page }) => {
+test('catalogue leads with the strongest AI work: PolicyLens, then ProjectLens', async ({ page }) => {
   await page.goto('/work/');
-  await expect(page.locator('.app-card').first()).toHaveAttribute('data-slug', 'projectlens');
+  await expect(page.locator('.app-card').first()).toHaveAttribute('data-slug', 'policylens');
+  await expect(page.locator('.app-card').nth(1)).toHaveAttribute('data-slug', 'projectlens');
+  await expect(page.locator('.template-row').first()).toContainText('RAG retrieval gate');
 });

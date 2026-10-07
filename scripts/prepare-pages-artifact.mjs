@@ -198,7 +198,7 @@ function renderAppPage({ previewSlug, preview }) {
       </section>
 
       <footer class="footer">
-        <p>Matthew Paver, software and AI engineer.</p>
+        <p>Matthew Paver, AI solutions architect.</p>
         <a href="${assetPrefix}/work/" data-catalogue-return>All public work</a>
       </footer>
     </main>

@@ -110,7 +110,8 @@ assert.ok(ragCase.includes('href="https://github.com/MatthewPaver/rag-retrieval-
 assert.ok(ragCase.includes("<h2>Limits</h2>"), "RAG case study needs visible limitations");
 assert.ok(sitemap.includes(`${siteBase}/work/rag-regression-gate/`), "Sitemap is missing the RAG case study");
 assert.ok(workHtml.includes("PySpark and Kafka starter"), "Streaming starter is missing");
-assert.ok(workHtml.includes("Offline recommender starter"), "Recommender starter is missing");
+assert.ok(workHtml.includes("Recommender evaluation lab"), "Recommender evaluation lab is missing");
+assert.ok(!`${indexHtml}${workHtml}`.includes("dating-app-recommendation-system"), "Use the renamed recommender-eval-lab repository");
 assert.ok(!indexHtml.includes("data-catalogue-search"), "Search belongs on the full work page, not the homepage");
 assert.ok(workHtml.includes("data-catalogue-search"), "The full work page needs search");
 assert.ok(!`${indexHtml}${workHtml}`.includes("scroll-progress"), "The portfolio should not use decorative scroll tracking");
@@ -176,7 +177,7 @@ llms.push("## Reusable templates", "");
 llms.push("- RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate");
 llms.push(`  - Case study, how I'd stop a RAG regression reaching production: ${siteBase}/work/rag-regression-gate/`);
 llms.push("- PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming");
-llms.push("- Offline recommender starter (fictional sample): https://github.com/MatthewPaver/dating-app-recommendation-system");
+llms.push("- Recommender evaluation lab (personalised vs popularity baseline, fictional sample): https://github.com/MatthewPaver/recommender-eval-lab");
 llms.push("");
 fs.writeFileSync(path.join(root, "store/llms.txt"), `${llms.join("\n").trimEnd()}\n`);
 

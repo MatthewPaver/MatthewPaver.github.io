@@ -32,7 +32,7 @@ test('mobile exploration is compact and keeps filter state across resize and his
   const mode = page.getByRole('combobox', { name: 'Explore', exact: true });
   await expect(mode).toBeVisible();
   await expect(page.getByRole('group', { name: 'Choose how to explore' })).toBeHidden();
-  const cover = await page.locator('[data-slug="projectlens"] .app-cover').boundingBox();
+  const cover = await page.locator('.app-card .app-cover').first().boundingBox();
   expect(cover!.y).toBeLessThan(550);
   await mode.selectOption('browser');
   await page.getByRole('combobox', { name: 'Subject', exact: true }).selectOption('decision');

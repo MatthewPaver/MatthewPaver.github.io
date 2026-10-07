@@ -16,7 +16,7 @@ This repository owns `matthewpaver.github.io`. The root route is the canonical p
 - `src/content/apps/` is the single catalogue source. Cards, app pages, JSON-LD and sitemap routes are generated from it.
 - Client JavaScript only enhances search, filtering, copy actions and theme choice.
 - Product screenshots must show real interfaces or clearly labelled synthetic outputs.
-- The old `MatthewPaver/store/` route redirects here (done 2026-07-29). Only `store/workbench.html` still serves from the legacy repo — it has no equivalent on this site.
+- The old `MatthewPaver/store/` routes (including `store/workbench.html`) redirect here; the profile repo's Pages build writes redirect-only HTML for a fixed list of legacy routes.
 
 ## Quality gates
 

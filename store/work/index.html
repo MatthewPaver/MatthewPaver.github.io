@@ -73,6 +73,23 @@
         </div>
 
         <div class="work-grid" data-catalogue-grid>
+          <article class="work-card app-card image-card" data-catalogue-item data-mode="local" data-slug="policylens" data-category="decision" data-status="Public" data-problem="Reviewers can see a risky policy diff without proving which sensitive request became reachable" data-solves="Turns an IAM policy diff into a cited stop or pass decision" data-proof="Public change review, Org demo and benchmark; AWS simulator cross-check not yet run">
+            <div class="app-cover" data-cover="policylens">
+              <div class="app-cover-screen">
+                <img src="../assets/policylens-review.png" width="808" height="625" alt="Completed PolicyLens sample review with changed access, the granting statement and a candidate correction" loading="eager" decoding="async" />
+              </div>
+            </div>
+            <div class="work-card-copy">
+              <h3>PolicyLens</h3>
+              <p class="work-access">Local tool · Node.js · public change review and Org demo</p>
+              <p>For cloud engineers reviewing a permission change: see what access it adds, find the permission responsible and check a proposed fix.</p>
+              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>In the case</dt><dd>A database-delete request changes from denied to allowed; the granting permission is identified.</dd></div><div><dt>Before using</dt><dd>Runs locally on supplied policies. The benchmark is authored cases, not an AWS simulator check.</dd></div></dl>
+              <a class="work-launch" href="https://github.com/MatthewPaver/iam-policy-auditor#quick-start">Run public IAM demo</a>
+              <a class="project-link" href="../preview.html?app=policylens">Review PolicyLens case</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Follow the repository's Node.js quick start.</li><li>Select Change review, load the example and review the change.</li><li>Inspect the denied-to-allowed verdict and its cited statement, then verify the proposed correction.</li></ol><p>The public example needs no API key. Account-wide controls such as SCPs and permission boundaries are not evaluated.</p></details>
+            </div>
+          </article>
+
           <article class="work-card app-card image-card" data-catalogue-item data-mode="browser" data-slug="projectlens" data-category="decision" data-status="Public" data-problem="A change pack can tell a different story from the schedule it cites" data-solves="Gives a change board an evidence pack and decision record before approval" data-proof="Northstar demo surfaces three blockers including an unacknowledged 73-day finish movement; cited dates; optional RAG with a human gate">
             <div class="app-cover app-cover--photo" data-cover="construction">
               <img class="app-cover-photo" src="../assets/photography/construction.jpg" width="1200" height="711" alt="" aria-hidden="true" loading="lazy" decoding="async" />
@@ -88,23 +105,6 @@
               <a class="work-launch" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Try the schedule review</a>
               <a class="project-link" href="../preview.html?app=projectlens">Review ProjectLens case</a>
               <details class="work-first-steps"><summary>First steps</summary><ol><li>Select Try the Northstar example.</li><li>Inspect the three blockers and their source dates.</li><li>Use Review my change pack to compare your own XER files.</li></ol><p>The browser comparison works locally. Export your record to keep a copy; this is not a shared team workspace.</p></details>
-            </div>
-          </article>
-
-          <article class="work-card app-card image-card" data-catalogue-item data-mode="local" data-slug="policylens" data-category="decision" data-status="Public" data-problem="Reviewers can see a risky policy diff without proving which sensitive request became reachable" data-solves="Turns an IAM policy diff into a cited stop or pass decision" data-proof="Public Org demo and benchmark; newer local change-review capture; AWS cross-check remains incomplete">
-            <div class="app-cover" data-cover="policylens">
-              <div class="app-cover-screen">
-                <img src="../assets/policylens-review.png" width="808" height="625" alt="Completed PolicyLens sample review with changed access, the granting statement and a candidate correction" loading="eager" decoding="async" />
-              </div>
-            </div>
-            <div class="work-card-copy">
-              <h3>PolicyLens</h3>
-              <p class="work-access">Local tool · Node.js · public demo and local extension</p>
-              <p>For cloud engineers reviewing a permission change: see what access it adds, find the permission responsible and check a proposed fix.</p>
-              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>In the case</dt><dd>A database-delete request changes from denied to allowed; the granting permission is identified.</dd></div><div><dt>Before using</dt><dd>The capture is a local extension. The public demo opens the earlier Org view, not this screen.</dd></div></dl>
-              <a class="work-launch" href="https://github.com/MatthewPaver/iam-policy-auditor#quick-start-stranger-usable-in-90-seconds">Run public IAM demo</a>
-              <a class="project-link" href="../preview.html?app=policylens">Review PolicyLens case</a>
-              <details class="work-first-steps"><summary>First steps</summary><ol><li>Follow the repository's Node.js quick start.</li><li>Select Run the 90-second demo.</li><li>Inspect the Org results and their policy citations.</li></ol><p>The public example needs no API key. Account-wide controls such as SCPs and permission boundaries are not evaluated. Read the case for the newer local change-review work.</p></details>
             </div>
           </article>
 
@@ -221,8 +221,8 @@
           <a class="template-row" data-catalogue-item data-mode="pattern" data-category="data" href="https://github.com/MatthewPaver/pyspark-kafka-streaming#quick-start">
             <div><strong>PySpark and Kafka starter</strong><p>Run a small DataFrame example, then try a Kafka producer and consumer. Start with batch data before adding the broker and streaming setup.</p></div><span>Python + Java · Docker for Kafka</span>
           </a>
-          <a class="template-row" data-catalogue-item data-mode="pattern" data-category="data" href="https://github.com/MatthewPaver/dating-app-recommendation-system#quick-start">
-            <div><strong>Offline recommender starter</strong><p>Run recommendations on fictional sample interactions using the command-line demo. Inspect the output and temporal holdout before adapting the input CSV.</p></div><span>Python 3.11 · sample CLI</span>
+          <a class="template-row" data-catalogue-item data-mode="pattern" data-category="data" href="https://github.com/MatthewPaver/recommender-eval-lab#quick-start">
+            <div><strong>Recommender evaluation lab</strong><p>Test whether personalised recommendations beat a popularity baseline before building them into a product. Run the command-line demo on fictional sample interactions, then inspect the temporal holdout before adapting the input CSV.</p></div><span>Python 3.11 · sample CLI</span>
           </a>
         </div>
       </section>

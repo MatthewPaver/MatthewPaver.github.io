@@ -15,9 +15,9 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: Reviewers can see a risky policy diff without proving which sensitive request became reachable
 - Outcome: Turns an IAM policy diff into a cited stop or pass decision
-- Proof: Public Org demo and benchmark; newer local change-review capture; AWS cross-check remains incomplete
+- Proof: Public change review, Org demo and benchmark; AWS simulator cross-check not yet run
 - Available now: Node.js or Docker. The public example does not need an API key.
-- Publication boundary: The capture shows the newer local change-review extension. The public repository currently opens the earlier Org demo, not this exact screen.
+- Publication boundary: The capture shows the change-review workflow in the public repository, run locally on its bundled example with AI off. The AWS simulator cross-check has not yet been run.
 - Preview: https://matthewpaver.github.io/preview.html?app=policylens
 - Repo: https://github.com/MatthewPaver/iam-policy-auditor
 - Stack: Node.js, AWS IAM, AI evals, Docker
@@ -105,4 +105,4 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate
   - Case study, how I'd stop a RAG regression reaching production: https://matthewpaver.github.io/work/rag-regression-gate/
 - PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming
-- Offline recommender starter (fictional sample): https://github.com/MatthewPaver/dating-app-recommendation-system
+- Recommender evaluation lab (personalised vs popularity baseline, fictional sample): https://github.com/MatthewPaver/recommender-eval-lab

@@ -8,24 +8,24 @@
     "imageHeight": 625,
     "imageAlt": "Completed PolicyLens sample review showing denied-to-allowed access, source evidence and a candidate correction",
     "role": "Product and AI engineer",
-    "status": "Local extension of a public tool",
+    "status": "Public tool that runs locally",
     "focus": "IAM and AI evaluation",
     "problem": "A policy diff tells a reviewer which JSON changed. PolicyLens evaluates the same sensitive request before and after, cites the granting statement, and checks whether a correction closes that path while preserving required access.",
     "choice": "I kept the permission decision in code. AI receives the checked facts and may explain them, but it cannot overrule the result. This makes a wrong explanation something I can test for, rather than something a reviewer has to guess at.",
-    "result": "In the captured local example, deleting a production database changes from denied to allowed. The review identifies the granting statement and checks a candidate correction while preserving required report access.",
+    "result": "In the bundled change-review example, deleting a production database changes from denied to allowed. The review identifies the granting statement and checks a candidate correction while preserving required report access.",
     "learning": "A passing test suite only establishes behaviour for the cases it covers. The next useful evidence is comparison with AWS's own simulator, plus adversarial tests of whether AI explanations stay faithful to the engine.",
     "access": "Node.js or Docker. The public example does not need an API key.",
-    "publication": "The capture shows the newer local change-review extension. The public repository currently opens the earlier Org demo, not this exact screen.",
-    "mediaCaption": "Local change-review example: denied, allowed, then a proposed correction.",
-    "steps": ["Follow the public repository's quick start and open the local app.", "Choose Run the 90-second demo to populate the Org view.", "Inspect who-can results and their policy citations. The change-review capture above documents a separate, not-yet-published extension."],
+    "publication": "The capture shows the change-review workflow in the public repository, run locally on its bundled example with AI off. The AWS simulator cross-check has not yet been run.",
+    "mediaCaption": "Change review on the bundled example: denied, allowed, then a proposed correction.",
+    "steps": ["Follow the public repository's quick start and open the local app.", "Select Change review, load the example and review the change.", "Inspect the denied-to-allowed verdict and its cited statement, then verify the proposed correction."],
     "points": [
       "The deterministic engine decides permission reachability. The LLM can explain the result but cannot change it.",
-      "The public benchmark and newer local scenario suite are different evidence sets. Neither is a completed independent AWS simulator cross-check.",
+      "The public benchmark and AI grounding cases are authored evidence sets. Neither is an independent AWS simulator cross-check.",
       "Run the published benchmark to inspect its documented cases. AI explanations are optional and need a separately configured key."
     ],
     "stack": ["Node.js", "AWS IAM", "AI evals", "Docker"],
     "links": [
-      { "label": "Run public IAM demo", "href": "https://github.com/MatthewPaver/iam-policy-auditor#quick-start-stranger-usable-in-90-seconds", "primary": true },
+      { "label": "Run public IAM demo", "href": "https://github.com/MatthewPaver/iam-policy-auditor#quick-start", "primary": true },
       { "label": "Inspect public benchmark", "href": "https://github.com/MatthewPaver/iam-policy-auditor/tree/main/benchmark" }
     ],
     "note": "Local decision support, not an authorization oracle. SCPs, permission boundaries, session policies and some cross-account interactions remain outside the current model."

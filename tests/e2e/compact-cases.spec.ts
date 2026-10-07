@@ -57,7 +57,7 @@ test('failed enhancement and printing keep every case available', async ({ page 
   await expect(page.locator('.selected-card:visible')).toHaveCount(3);
 });
 
-test('Method is concise, evidence-linked and honest about local extensions', async ({ page }) => {
+test('Method is concise, evidence-linked and honest about baseline results', async ({ page }) => {
   await page.goto('/#contract');
   const method = page.locator('#contract');
   await expect(method.locator('.method-example')).toHaveCount(3);
@@ -65,7 +65,7 @@ test('Method is concise, evidence-linked and honest about local extensions', asy
   for (const slug of ['projectlens','policylens','lakehouse']) {
     await expect(method.locator(`a[href="./preview.html?app=${slug}#case-story"]`)).toBeVisible();
   }
-  await expect(method).toContainText('local');
+  await expect(method).toContainText('fails to improve');
   await expect(method).toContainText('simple baseline');
   await expect(method.locator('button')).toHaveCount(0);
 });

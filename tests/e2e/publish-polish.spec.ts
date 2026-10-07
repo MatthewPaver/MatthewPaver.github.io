@@ -2,7 +2,8 @@ import { expect, test } from '@playwright/test';
 
 test('selected cases have short action names and directly inspectable captures', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-copy')).toContainText('Seven years in data and AI, six of them at Projecting Success');
+  await expect(page.locator('.hero-copy')).toContainText('AI solutions architect at Trustpilot through Ciklum');
+  await expect(page.locator('.hero-copy')).toContainText('Seven years in data and AI');
   for (const [slug, name, image] of [
     ['policylens', 'PolicyLens', 'policylens-review.png'],
     ['projectlens', 'ProjectLens', 'projectlens-questions.png'],

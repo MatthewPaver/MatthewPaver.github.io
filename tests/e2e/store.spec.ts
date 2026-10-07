@@ -122,7 +122,8 @@ test("result screenshots remain uncropped and biography stays separate from proj
     await expect(screenshot).toHaveCSS("object-fit", "contain");
     await expect.poll(() => screenshot.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
   }
-  await expect(page.locator("#about")).toContainText("seven years in data and AI. Six of them were at Projecting Success");
+  await expect(page.locator("#about")).toContainText("Automation & AI Consultant at Ciklum, placed at Trustpilot");
+  await expect(page.locator("#about")).toContainText("six years at Projecting Success");
   await expect(page.locator(".about-background")).toContainText("University of Liverpool");
   await expect(page.locator("#selected")).toContainText("not work delivered for an employer or client");
 });

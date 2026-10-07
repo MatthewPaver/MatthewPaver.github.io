@@ -1,0 +1,20 @@
+/* Long-form case notes under /work/<case>/. Uses the shared tokens from styles.css. */
+.case-note { max-width: 760px; padding-block: 36px 56px; }
+.case-note h1 { font-family: var(--display); font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.015em; margin: 8px 0 14px; }
+.case-note h2 { font-family: var(--display); font-size: clamp(1.45rem, 2.4vw, 1.9rem); letter-spacing: -0.01em; margin: 40px 0 10px; }
+.case-note p, .case-note li { font-size: 1.05rem; line-height: 1.7; }
+.case-note ul { padding-left: 1.2em; }
+.case-note li + li { margin-top: 6px; }
+.case-note code { font-size: 0.92em; overflow-wrap: anywhere; }
+.case-kicker { color: var(--muted); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin: 0; }
+.case-table-wrap { overflow-x: auto; margin: 18px 0 8px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--paper); }
+.case-table-wrap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.case-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+.case-table caption { text-align: left; padding: 12px 14px 0; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+.case-table th, .case-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.case-table thead th { font-weight: 750; }
+.case-table tbody tr:last-child td, .case-table tbody tr:last-child th { border-bottom: 0; }
+.case-table tbody th { font-weight: 650; }
+.case-source { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+.case-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.case-actions a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 750; color: var(--accent); }

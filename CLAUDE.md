@@ -10,6 +10,8 @@ This repository owns `matthewpaver.github.io`. The root route is the canonical p
 
 ## Architecture
 
+- Long-form case notes live at `store/work/<case>/index.html` with shared `store/work/case.css` (first: `rag-regression-gate/`). `scripts/validate-store.mjs` checks each one's canonical, CSP, JSON-LD, repo link, Limits section, sitemap entry and the catalogue row linking to it; llms.txt lists it.
+
 - Astro generates static HTML. Primary content and links must work without client JavaScript.
 - `src/content/apps/` is the single catalogue source. Cards, app pages, JSON-LD and sitemap routes are generated from it.
 - Client JavaScript only enhances search, filtering, copy actions and theme choice.

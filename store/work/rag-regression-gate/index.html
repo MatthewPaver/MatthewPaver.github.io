@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
+    <title>How I'd stop a RAG regression reaching production · Matthew Paver</title>
+    <link rel="canonical" href="https://matthewpaver.github.io/work/rag-regression-gate/" />
+    <meta name="description" content="A retrieval regression gate for RAG: paired bootstrap confidence intervals, a minimum practical drop, and cost recorded beside quality. Results on BEIR SciFact." />
+    <meta property="og:title" content="How I'd stop a RAG regression reaching production" />
+    <meta property="og:description" content="A retrieval regression gate with confidence intervals, tested on BEIR SciFact: it blocks a bad chunking change and passes a better hybrid retriever." />
+    <meta property="og:url" content="https://matthewpaver.github.io/work/rag-regression-gate/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://matthewpaver.github.io/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.svg" />
+    <link rel="preload" href="../../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../../assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
+    <link rel="stylesheet" href="../../styles.css?v=20260905-5" />
+    <link rel="stylesheet" href="../case.css?v=20261007-1" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How I'd stop a RAG regression reaching production","author":{"@type":"Person","name":"Matthew Paver"},"url":"https://matthewpaver.github.io/work/rag-regression-gate/","inLanguage":"en-GB"}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#case">Skip to case study</a>
+
+    <div class="topbar-shell">
+      <nav class="shell topbar" aria-label="Primary navigation">
+        <a class="brand" href="../../" aria-label="MP, Matthew Paver home">
+          <span class="brand-mark" aria-hidden="true">MP</span>
+          <span>Matthew Paver</span>
+        </a>
+        <div class="nav-links">
+          <a href="../../">Home</a>
+          <a href="../">All work</a>
+          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF)</a>
+        </div>
+      </nav>
+    </div>
+
+    <main class="shell">
+      <article id="case" class="case-note">
+        <p class="case-kicker">Case study · RAG retrieval gate</p>
+        <h1>How I'd stop a RAG regression reaching production</h1>
+        <p class="lede">Retrieval changes are judged by eye more often than any other part of a RAG system. I built a gate that judges them on labelled questions, with statistics, before they merge.</p>
+
+        <h2>The problem</h2>
+        <p>Teams change the retrieval layer constantly: a new embedding model, a different chunk size, a hybrid retriever, a re-ranker. The failure that matters is quiet. The right passage slips from rank 2 to rank 12, drops out of the context window, and the model answers from something else. A spot check of five queries rarely catches it.</p>
+        <p>The opposite failure is just as costly. A gate with a fixed threshold fails good changes on noise, and after a few false alarms people stop trusting it and override it.</p>
+
+        <h2>The gate design</h2>
+        <ul>
+          <li><strong>Same questions, two configs.</strong> The baseline config is pinned to production; the pull request edits only the candidate. Both are scored on hit@k, MRR, recall, nDCG and, where labelled, required context, hard negatives and citations.</li>
+          <li><strong>Two conditions to fail.</strong> A metric fails only when the drop exceeds a practical threshold (0.02 absolute) <em>and</em> a 95% paired bootstrap interval over questions (10,000 resamples, fixed seed) excludes zero. The first stops trivial changes blocking a merge; the second stops noise doing it.</li>
+          <li><strong>Cost beside quality.</strong> Every run records index build time, p50 and p95 latency per query, peak memory and model size. These are reported, not gated, because they depend on the runner.</li>
+          <li><strong>No tuning on the test set.</strong> Fusion and re-rank settings are literature defaults fixed before the first run.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <p>BEIR SciFact: 5,183 abstracts, 300 test queries, k=10, each candidate against BM25. Δ is candidate minus baseline.</p>
+        <div class="case-table-wrap" role="region" aria-label="Results table, scrolls sideways on small screens" tabindex="0">
+          <table class="case-table">
+            <caption>Apple M1 Pro, CPU only, Python 3.13. Produced by <code>scripts/results_table.py</code> in the repository.</caption>
+            <thead>
+              <tr><th scope="col">Configuration</th><th scope="col">hit@10</th><th scope="col">MRR@10 (Δ, 95% CI)</th><th scope="col">nDCG@10 (Δ, 95% CI)</th><th scope="col">Gate</th><th scope="col">p50 / p95 ms</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">BM25 (baseline)</th><td>0.8100</td><td>0.6321</td><td>0.6646</td><td>baseline</td><td>2.2 / 7.8</td></tr>
+              <tr><th scope="row">BM25, 12-word chunks</th><td>0.7300</td><td>0.5316 (−0.1005, [−0.1354, −0.0661])</td><td>0.5675 (−0.0971, [−0.1283, −0.0671])</td><td>Fail, five metrics</td><td>6.5 / 20.7</td></tr>
+              <tr><th scope="row">MiniLM-L6 dense</th><td>0.7933</td><td>0.6047 (−0.0274, [−0.0689, +0.0151])</td><td>0.6451 (−0.0195, [−0.0578, +0.0201])</td><td>Pass, not significant</td><td>8.9 / 13.7</td></tr>
+              <tr><th scope="row">Hybrid BM25 + MiniLM (RRF)</th><td>0.8267</td><td>0.6536 (+0.0215, [−0.0041, +0.0466])</td><td>0.6875 (+0.0229, [+0.0019, +0.0437])</td><td>Pass, nDCG significantly better</td><td>11.6 / 20.5</td></tr>
+              <tr><th scope="row">BM25 + cross-encoder re-rank</th><td>0.8167</td><td>0.6527 (+0.0206, [−0.0136, +0.0562])</td><td>0.6809 (+0.0163, [−0.0137, +0.0473])</td><td>Pass</td><td>1965.9 / 3923.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The gate blocks the chunking change, which is worse well beyond noise, and passes the hybrid retriever, the only candidate with a significant gain. The re-ranker's gains are not significant on 300 queries and cost about two seconds a query on this CPU.</p>
+
+        <h2>Trade-offs</h2>
+        <ul>
+          <li><strong>Significance costs power.</strong> On a six-question fixture a real one-question regression reads as noise, so the small fixture in CI runs threshold-only as a tripwire.</li>
+          <li><strong>Passing is not improving.</strong> The dense MiniLM model passes because its drop is within noise, yet every point estimate is negative. A threshold-only gate would have failed it on MRR. If a change must prove it is better, read the significance verdicts, not the pass.</li>
+          <li><strong>Deterministic over clever.</strong> No LLM judge and no generator in the loop: the gate is free to run on every pull request and gives the same answer twice.</li>
+        </ul>
+
+        <h2>Limits</h2>
+        <ul>
+          <li>One public dataset in one domain. Results on your corpus need your questions.</li>
+          <li>It checks that labelled evidence is retrieved, not that an answer is true.</li>
+          <li>Latency is one laptop CPU, one query at a time, pure-Python BM25. It ranks configurations; it is not a serving benchmark.</li>
+          <li>The interval assumes the labelled questions represent real traffic. If they don't, it is precise about the wrong thing.</li>
+        </ul>
+
+        <div class="case-actions">
+          <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Code, configs and full results on GitHub</a>
+          <a href="../#templates">Back to patterns</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="shell footer">
+      <p>Public projects only. Private work stays private.</p>
+      <a href="../">Back to all work</a>
+    </footer>
+  </body>
+</html>

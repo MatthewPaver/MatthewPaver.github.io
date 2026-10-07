@@ -103,5 +103,6 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 ## Reusable templates
 
 - RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate
+  - Case study, how I'd stop a RAG regression reaching production: https://matthewpaver.github.io/work/rag-regression-gate/
 - PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming
 - Offline recommender starter (fictional sample): https://github.com/MatthewPaver/dating-app-recommendation-system

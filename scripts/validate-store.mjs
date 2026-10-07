@@ -99,6 +99,16 @@ assert.ok(indexHtml.includes('id="selected-heading"'), "The page needs a clear s
 assert.equal((indexHtml.match(/<(?:article|div) class="selected-card"/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
 assert.ok(workHtml.includes('id="templates"'), "Reusable code must have a separate pattern section");
 assert.ok(workHtml.includes("RAG retrieval gate"), "RAG retrieval gate is missing");
+const ragCasePath = "store/work/rag-regression-gate/index.html";
+assert.ok(fs.existsSync(path.join(root, ragCasePath)), "RAG regression case study is missing");
+const ragCase = read(ragCasePath);
+assert.ok(workHtml.includes('href="./rag-regression-gate/"'), "The RAG retrieval gate entry must link to its case study");
+assert.ok(ragCase.includes(`rel="canonical" href="${siteBase}/work/rag-regression-gate/"`), "RAG case study needs its canonical URL");
+assert.ok(ragCase.includes('http-equiv="Content-Security-Policy"'), "RAG case study needs a CSP");
+assert.ok(ragCase.includes('application/ld+json'), "RAG case study needs structured data");
+assert.ok(ragCase.includes('href="https://github.com/MatthewPaver/rag-retrieval-gate"'), "RAG case study must link to its repository");
+assert.ok(ragCase.includes("<h2>Limits</h2>"), "RAG case study needs visible limitations");
+assert.ok(sitemap.includes(`${siteBase}/work/rag-regression-gate/`), "Sitemap is missing the RAG case study");
 assert.ok(workHtml.includes("PySpark and Kafka starter"), "Streaming starter is missing");
 assert.ok(workHtml.includes("Offline recommender starter"), "Recommender starter is missing");
 assert.ok(!indexHtml.includes("data-catalogue-search"), "Search belongs on the full work page, not the homepage");
@@ -164,6 +174,7 @@ for (const row of rows) {
 
 llms.push("## Reusable templates", "");
 llms.push("- RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate");
+llms.push(`  - Case study, how I'd stop a RAG regression reaching production: ${siteBase}/work/rag-regression-gate/`);
 llms.push("- PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming");
 llms.push("- Offline recommender starter (fictional sample): https://github.com/MatthewPaver/dating-app-recommendation-system");
 llms.push("");

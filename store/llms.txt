@@ -67,9 +67,9 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A notebook hides the source contracts and data checks needed to reproduce an analysis
 - Outcome: Rebuilds campaign files into checked reporting tables
-- Proof: Fixed public quality console and published Python rebuild; next-day baseline evaluation is a local extension
+- Proof: Public console built from generated evidence; next-day model evaluated against a prior-day baseline
 - Available now: Browser snapshot needs no setup. Python is required to rebuild the template.
-- Publication boundary: The public console is fixed, and the published model is an earlier example. The prospective next-day evaluation and GA4 adapter are local extensions, not a released public benchmark.
+- Publication boundary: The console, pipeline and next-day evaluation are published and rebuilt in CI. The optional GA4 public-data profile needs your own BigQuery access and is not part of the published results.
 - Preview: https://matthewpaver.github.io/preview.html?app=lakehouse
 - Repo: https://github.com/MatthewPaver/marketing-ml-lakehouse
 - Stack: Python, DuckDB, XGBoost, Streamlit, Makefile

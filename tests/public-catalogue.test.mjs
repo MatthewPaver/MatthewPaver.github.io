@@ -1,40 +1,9 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
-import { basename, join } from "node:path";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
-const contentDir = new URL("../src/content/apps/", import.meta.url);
 test("installed portfolio opens at the public site root", () => {
   const manifest = JSON.parse(readFileSync(new URL("../store/manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(manifest.start_url, "/");
   assert.equal(manifest.scope, "/");
-});
-const metrics = JSON.parse(
-  readFileSync(new URL("../src/data/github-metrics.json", import.meta.url), "utf8"),
-);
-const entries = readdirSync(contentDir)
-  .filter((name) => name.endsWith(".md"))
-  .map((name) => ({
-    name: basename(name, ".md"),
-    source: readFileSync(join(contentDir.pathname, name), "utf8"),
-  }));
-
-test("the curated catalogue contains public, reproducible work only", () => {
-  assert.equal(entries.length, 7);
-  let featured = 0;
-  for (const entry of entries) {
-    assert.match(entry.source, /^portfolioRole:\s+.+$/m, `${entry.name} must state its portfolio role`);
-    assert.match(entry.source, /^audience:\s+.+$/m, `${entry.name} must name its audience`);
-    if (/^featured:\s+true$/m.test(entry.source)) featured += 1;
-    const repo = entry.source.match(/^repo:\s+https:\/\/github\.com\/([^\s]+)$/m)?.[1];
-    const metricsRepo = entry.source.match(/^metricsRepo:\s+([^\s]+)$/m)?.[1];
-    assert.ok(repo, `${entry.name} must link to a public repository`);
-    assert.equal(metricsRepo, repo, `${entry.name} metrics must use its displayed repository`);
-    assert.ok(metrics[metricsRepo], `${entry.name} must have public repository evidence`);
-    assert.doesNotMatch(entry.source, /^status:\s+(private|prototype)$/m,
-      `${entry.name} cannot expose private or prototype work`);
-    assert.doesNotMatch(entry.source, /^image:\s+.*\.svg$/m,
-      `${entry.name} must use a real interface screenshot`);
-  }
-  assert.equal(featured, 3, "the homepage must lead with exactly three selected projects");
 });

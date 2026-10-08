@@ -8,7 +8,7 @@ The homepage gives hiring managers a short route through three selected projects
 
 The deployed site lives in [`store/`](store/). `npm run build` validates its catalogue, copies it to `pages-dist/`, and generates indexable project pages under `/store/apps/<slug>/`.
 
-The `src/` folder contains an earlier Astro catalogue and is not used for deployment. It remains only while the project pages and content collections are being retired or migrated.
+An earlier Astro catalogue (`src/`), no longer deployed, was removed on 2026-10-08; it is recoverable from git history at commit `e1bfe8a`.
 
 ## Work locally
 
@@ -25,8 +25,6 @@ Run the release checks with:
 npm test
 npm run test:e2e
 ```
-
-`npm run metrics` refreshes public GitHub metadata. `npm run screenshots` recaptures public product screenshots.
 
 ## Deployment
 

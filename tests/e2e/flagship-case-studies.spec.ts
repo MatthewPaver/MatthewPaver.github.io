@@ -1,0 +1,34 @@
+import { expect, test } from '@playwright/test';
+
+test('homepage opens all three evidence-led case studies with real capture pairs', async ({ page }) => {
+  await page.goto('/');
+  const release = page.locator('.flagship-release').first();
+  await expect(release.locator('a')).toHaveCount(3);
+  for (const slug of ['projectlens', 'policylens', 'rag-regression-gate']) {
+    await page.goto(`/work/${slug}/`);
+    await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://matthewpaver.github.io/work/${slug}/`);
+    const images = page.locator('.comparison-pair img');
+    await expect(images).toHaveCount(2);
+    for (const image of await images.all()) await expect.poll(() => image.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
+    await expect(page.getByRole('heading', { name: 'Limits', exact: true })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  }
+  const response = await page.request.get('/demos/rag-gate/comparison.json');
+  const report = await response.json();
+  expect(report.passed).toBe(false);
+  expect(report.regressions).toContain('mrr_at_k');
+  await page.goto('/demos/rag-gate/');
+  await expect(page.getByRole('heading', { name: 'Candidate regresses', exact: true })).toBeVisible();
+});
+
+test('before-and-after evidence and demo links remain available without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  for (const slug of ['projectlens', 'policylens', 'rag-regression-gate']) {
+    await page.goto(`http://127.0.0.1:4321/work/${slug}/`);
+    await expect(page.locator('.comparison-pair img')).toHaveCount(2);
+    await expect(page.getByRole('heading', { name: 'Limits', exact: true })).toBeVisible();
+    await expect(page.locator('.case-actions a').first()).toBeVisible();
+  }
+  await context.close();
+});

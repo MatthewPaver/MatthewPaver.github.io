@@ -87,7 +87,7 @@ test('Patterns navigation escapes an incompatible active filter', async ({ page 
 });
 
 const modes = [
-  { label: 'Try in browser', mode: 'browser', slugs: ['projectlens', 'winchester', 'lakehouse', 'england'] },
+  { label: 'Try in browser', mode: 'browser', slugs: ['policylens', 'projectlens', 'winchester', 'lakehouse', 'england'] },
   { label: 'Run locally', mode: 'local', slugs: ['policylens', 'lakehouse'] },
   { label: 'Watch or read', mode: 'case', slugs: ['quicksupply', 'hr', 'england'] },
   { label: 'Reuse a pattern', mode: 'pattern', slugs: [] },

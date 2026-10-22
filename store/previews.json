@@ -4,29 +4,56 @@
     "title": "PolicyLens",
     "summary": "Find the permission that allows a sensitive cloud action, then check whether a proposed correction removes that access.",
     "image": "./assets/policylens-review.png",
-    "imageWidth": 808,
-    "imageHeight": 625,
-    "imageAlt": "Completed PolicyLens sample review showing denied-to-allowed access, source evidence and a candidate correction",
+    "imageWidth": 1280,
+    "imageHeight": 720,
+    "imageAlt": "Implemented PolicyLens review workspace using synthetic evidence",
     "role": "Product and AI engineer",
-    "status": "Public tool that runs locally",
+    "status": "Public browser-local change review",
     "focus": "IAM and AI evaluation",
     "problem": "A policy diff tells a reviewer which JSON changed. PolicyLens evaluates the same sensitive request before and after, cites the granting statement, and checks whether a correction closes that path while preserving required access.",
     "choice": "I kept the permission decision in code. AI receives the checked facts and may explain them, but it cannot overrule the result. This makes a wrong explanation something I can test for, rather than something a reviewer has to guess at.",
     "result": "In the bundled change-review example, deleting a production database changes from denied to allowed. The review identifies the granting statement and checks a candidate correction while preserving required report access.",
     "learning": "A passing test suite only establishes behaviour for the cases it covers. The next useful evidence is comparison with AWS's own simulator, plus adversarial tests of whether AI explanations stay faithful to the engine.",
-    "access": "Node.js or Docker. The public example does not need an API key.",
-    "publication": "The capture shows the change-review workflow in the public repository, run locally on its bundled example with AI off. The AWS simulator cross-check has not yet been run.",
-    "mediaCaption": "Change review on the bundled example: denied, allowed, then a proposed correction.",
-    "steps": ["Follow the public repository's quick start and open the local app.", "Select Change review, load the example and review the change.", "Inspect the denied-to-allowed verdict and its cited statement, then verify the proposed correction."],
+    "access": "Run the synthetic example in your browser. No account, install, upload or API key.",
+    "publication": "The public browser demo runs deterministic change review locally. Account analysis and optional AI explanations remain in the local Node server.",
+    "mediaCaption": "Implemented correction journey: original stop remains beside the verified candidate. Synthetic policies.",
+    "steps": [
+      "Open Try browser demo and select Run example change.",
+      "Inspect Stop and review, the permission transition and its granting statement.",
+      "Verify correction, confirm required access remains, then export review JSON."
+    ],
     "points": [
       "The deterministic engine decides permission reachability. The LLM can explain the result but cannot change it.",
       "The public benchmark and AI grounding cases are authored evidence sets. Neither is an independent AWS simulator cross-check.",
       "Run the published benchmark to inspect its documented cases. AI explanations are optional and need a separately configured key."
     ],
-    "stack": ["Node.js", "AWS IAM", "AI evals", "Docker"],
+    "stack": [
+      "Node.js",
+      "AWS IAM",
+      "AI evals",
+      "Docker"
+    ],
     "links": [
-      { "label": "Run public IAM demo", "href": "https://github.com/MatthewPaver/iam-policy-auditor#quick-start", "primary": true },
-      { "label": "Inspect public benchmark", "href": "https://github.com/MatthewPaver/iam-policy-auditor/tree/main/benchmark" }
+      {
+        "label": "Try browser demo",
+        "href": "https://matthewpaver.github.io/iam-policy-auditor/",
+        "primary": true
+      },
+      {
+        "label": "Before and after",
+        "href": "https://matthewpaver.github.io/work/policylens/",
+        "primary": false
+      },
+      {
+        "label": "Run public IAM demo",
+        "href": "https://github.com/MatthewPaver/iam-policy-auditor#quick-start",
+        "primary": false
+      },
+      {
+        "label": "Inspect public benchmark",
+        "href": "https://github.com/MatthewPaver/iam-policy-auditor/tree/main/benchmark",
+        "primary": false
+      }
     ],
     "note": "Local decision support, not an authorization oracle. SCPs, permission boundaries, session policies and some cross-account interactions remain outside the current model."
   },
@@ -35,9 +62,9 @@
     "title": "ProjectLens",
     "summary": "Find where a project's written update disagrees with its schedule, then turn the differences into questions for a reviewer.",
     "image": "./assets/projectlens-blockers.png",
-    "imageWidth": 1076,
-    "imageHeight": 688,
-    "imageAlt": "ProjectLens readiness result with three blockers from the synthetic Northstar example",
+    "imageWidth": 1280,
+    "imageHeight": 720,
+    "imageAlt": "Implemented ProjectLens review workspace using synthetic evidence",
     "role": "Product and AI engineer",
     "status": "Live public demo",
     "focus": "Project controls and RAG",
@@ -46,18 +73,38 @@
     "result": "The synthetic Northstar example produces three blockers, including a finish date moving by 73 days without being acknowledged. The reviewer can inspect the dates, prepare follow-up questions and export a decision record.",
     "learning": "The useful output is a question someone can investigate, not a score that pretends to predict project failure. Separating schedule facts from interpretation makes the review easier to challenge.",
     "access": "Runs in your browser. No account; sample schedules included.",
-    "publication": "The public example uses synthetic schedules. Its precedent cards are a static fallback; live retrieval requires local setup.",
-    "mediaCaption": "Public Northstar sample: three issues to resolve before a decision.",
-    "steps": ["Select Try the Northstar example in the public demo.", "Open the three blockers and follow the source dates, including the 73-day movement.", "Prepare review questions. Export the record if you want to keep it; the browser is not a shared team workspace."],
+    "publication": "The current public tool includes the evidence desk, accountable decisions, local draft recovery and exports. Supplemental public-record context is optional; untouched examples stay not reviewed.",
+    "mediaCaption": "Implemented Northstar evidence desk. Three priorities are visible; all four findings remain available and are saved.",
+    "steps": [
+      "Select Try the Northstar example.",
+      "Select a finding to inspect source fields, or draft questions for the team.",
+      "Record an accountable decision and export it; optionally save a device draft to resume later."
+    ],
     "points": [
       "The bundled Northstar schedules are synthetic examples. The browser comparison also accepts your own XER files without uploading them.",
       "The bundled case surfaces three board blockers, including an unacknowledged 73-day finish movement.",
       "Every finding links to schedule evidence and the reviewer records the decision and follow-up."
     ],
-    "stack": ["Browser JavaScript", "Python", "Playwright", "Optional Gemini RAG"],
+    "stack": [
+      "Browser JavaScript",
+      "Python",
+      "Playwright",
+      "Optional Gemini RAG"
+    ],
     "links": [
-      { "label": "Try the schedule review", "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html", "primary": true },
-      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/ProjectLens" }
+      {
+        "label": "Before and after",
+        "href": "https://matthewpaver.github.io/work/projectlens/"
+      },
+      {
+        "label": "Try the schedule review",
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+        "primary": true
+      },
+      {
+        "label": "Explore the source",
+        "href": "https://github.com/MatthewPaver/ProjectLens"
+      }
     ],
     "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority."
   },
@@ -81,16 +128,33 @@
     "access": "Watch the recorded prototype without installing anything.",
     "publication": "Historical case study with fictional data. The public source is not a deployment-ready staffing service.",
     "mediaCaption": "Recorded prototype: school request, agency assignment and teacher response.",
-    "steps": ["The school submits a request for supply cover.", "The agency reviews the request and assigns or offers the work to a teacher.", "The teacher responds, and the booking status is visible across the separate role views."],
+    "steps": [
+      "The school submits a request for supply cover.",
+      "The agency reviews the request and assigns or offers the work to a teacher.",
+      "The teacher responds, and the booking status is visible across the separate role views."
+    ],
     "points": [
       "One request can be followed from school submission through agency assignment to teacher acceptance.",
       "Server-sent events keep the three views in step without manual refresh.",
       "Newer local work adds official DfE vacancy data for aggregate market context. It does not rank teachers and is not part of the published recording."
     ],
-    "stack": ["Next.js", "TypeScript", "SQLite", "Drizzle", "SSE"],
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "SQLite",
+      "Drizzle",
+      "SSE"
+    ],
     "links": [
-      { "label": "Watch the walkthrough", "href": "#recording", "primary": true },
-      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/QuickSupply" }
+      {
+        "label": "Watch the walkthrough",
+        "href": "#recording",
+        "primary": true
+      },
+      {
+        "label": "Explore the source",
+        "href": "https://github.com/MatthewPaver/QuickSupply"
+      }
     ],
     "note": "Historical redesign case study, not a live staffing service or a validated startup."
   },
@@ -112,16 +176,31 @@
     "access": "Runs in your browser. No account; nine seeded homes.",
     "publication": "The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.",
     "mediaCaption": "Public seeded example with the under-£425k filter selected.",
-    "steps": ["Choose Under £425k or a station-distance filter.", "Open a home and read its evidence checklist before interpreting the score.", "Treat prices and affordability inputs as illustrative. Consult the cited completed-sale context separately."],
+    "steps": [
+      "Choose Under £425k or a station-distance filter.",
+      "Open a home and read its evidence checklist before interpreting the score.",
+      "Treat prices and affordability inputs as illustrative. Consult the cited completed-sale context separately."
+    ],
     "points": [
       "The demo compares nine seeded homes against budget, commute and local completed-sale evidence.",
       "The newer local market build records the HM Land Registry source, filters and reconciled counts. Until that release is public, treat the hosted summaries as illustrative.",
       "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
     ],
-    "stack": ["Browser JavaScript", "HTML and CSS", "HM Land Registry"],
+    "stack": [
+      "Browser JavaScript",
+      "HTML and CSS",
+      "HM Land Registry"
+    ],
     "links": [
-      { "label": "Try the shortlist", "href": "https://matthewpaver.github.io/winchester-buyer-check/", "primary": true },
-      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/winchester-buyer-check" }
+      {
+        "label": "Try the shortlist",
+        "href": "https://matthewpaver.github.io/winchester-buyer-check/",
+        "primary": true
+      },
+      {
+        "label": "Explore the source",
+        "href": "https://github.com/MatthewPaver/winchester-buyer-check"
+      }
     ],
     "note": "Illustrative only. Listings and figures are seeded examples, not financial, tax, legal or mortgage advice."
   },
@@ -143,16 +222,33 @@
     "access": "Browser snapshot needs no setup. Python is required to rebuild the template.",
     "publication": "The console, pipeline and next-day evaluation are published and rebuilt in CI. The optional GA4 public-data profile needs your own BigQuery access and is not part of the published results.",
     "mediaCaption": "Public console built from the pipeline's generated evidence file.",
-    "steps": ["Open Data quality in the public browser snapshot and inspect its warnings.", "Use the published DEMO.md to install, rebuild and open the local Streamlit dashboard.", "Open the Lineage tab to see the next-day model compared with the prior-day baseline, including the confidence intervals."],
+    "steps": [
+      "Open Data quality in the public browser snapshot and inspect its warnings.",
+      "Use the published DEMO.md to install, rebuild and open the local Streamlit dashboard.",
+      "Open the Lineage tab to see the next-day model compared with the prior-day baseline, including the confidence intervals."
+    ],
     "points": [
       "The published Makefile rebuilds DuckDB tables, trains an example model and opens a local Streamlit dashboard.",
       "Local follow-on work adds source checksums, duplicate detection and a future target with a persistence baseline.",
       "A local GA4 adapter explores the same task with public ecommerce data; it is not evidence of results for a connected advertising account."
     ],
-    "stack": ["Python", "DuckDB", "XGBoost", "Streamlit", "Makefile"],
+    "stack": [
+      "Python",
+      "DuckDB",
+      "XGBoost",
+      "Streamlit",
+      "Makefile"
+    ],
     "links": [
-      { "label": "Explore sample data", "href": "https://matthewpaver.github.io/marketing-ml-lakehouse/#quality", "primary": true },
-      { "label": "Run published template", "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md" }
+      {
+        "label": "Explore sample data",
+        "href": "https://matthewpaver.github.io/marketing-ml-lakehouse/#quality",
+        "primary": true
+      },
+      {
+        "label": "Run published template",
+        "href": "https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md"
+      }
     ],
     "note": "The public console is a fixed sample snapshot, not a live view of the current Python output. Rebuild and inspect your own output in the local Streamlit dashboard. Neither route establishes results for a connected advertising account."
   },
@@ -175,16 +271,32 @@
     "access": "Read the correction here. Power BI Desktop is needed to edit the historical report.",
     "publication": "The corrected data and replacement review PDF are local, unpublished work. The public repository still contains historical interpretations. Refreshing and checking the original Power BI report remains outstanding.",
     "mediaCaption": "Historical output retained for the case study; labels have not been corrected in the export.",
-    "steps": ["Read the two field-meaning corrections on this page.", "Inspect the original exports as historical artefacts, not current HR findings.", "Before reuse, rebuild the measures from documented field definitions and validate the resulting PBIX/PDF."],
+    "steps": [
+      "Read the two field-meaning corrections on this page.",
+      "Inspect the original exports as historical artefacts, not current HR findings.",
+      "Before reuse, rebuild the measures from documented field definitions and validate the resulting PBIX/PDF."
+    ],
     "points": [
       "Do not label a sick-leave balance as annual absence or use it to identify high-absence employees.",
       "Use appropriate birth and hire dates for age or tenure, not the row's ModifiedDate.",
       "A package validator can check that files exist; it cannot establish that the report's interpretation is correct."
     ],
-    "stack": ["Power BI", "DAX", "AdventureWorks", "Reporting"],
+    "stack": [
+      "Power BI",
+      "DAX",
+      "AdventureWorks",
+      "Reporting"
+    ],
     "links": [
-      { "label": "Read the correction", "href": "#case-story", "primary": true },
-      { "label": "Inspect historical files", "href": "https://github.com/MatthewPaver/hr-performance-dashboards" }
+      {
+        "label": "Read the correction",
+        "href": "#case-story",
+        "primary": true
+      },
+      {
+        "label": "Inspect historical files",
+        "href": "https://github.com/MatthewPaver/hr-performance-dashboards"
+      }
     ],
     "note": "Fictional AdventureWorks data, not employee-performance evidence. The historical exports must not inform HR decisions."
   },
@@ -207,16 +319,32 @@
     "access": "Runs in your browser. No account or setup.",
     "publication": "Finished entertainment experiment. Assumptions such as player boosts are part of the game, not validated sporting effects.",
     "mediaCaption": "Recorded scenario simulation from the finished experiment.",
-    "steps": ["Choose the team's mood and pressure response in the public experiment.", "Pick a player and play through the simulated tournament.", "Change one assumption and compare the scenario, without treating the output as betting guidance."],
+    "steps": [
+      "Choose the team's mood and pressure response in the public experiment.",
+      "Pick a player and play through the simulated tournament.",
+      "Change one assumption and compare the scenario, without treating the output as betting guidance."
+    ],
     "points": [
       "The assumptions stay visible and editable.",
       "Tests cover seeded output, bounds, monotonicity and uncertainty ranges.",
       "The postmortem records what the one-day build achieved and why it stopped."
     ],
-    "stack": ["TypeScript", "React", "Vite", "Vitest"],
+    "stack": [
+      "TypeScript",
+      "React",
+      "Vite",
+      "Vitest"
+    ],
     "links": [
-      { "label": "Explore the tournament", "href": "https://matthewpaver.github.io/can-england-win-it/", "primary": true },
-      { "label": "Explore the source", "href": "https://github.com/MatthewPaver/can-england-win-it" }
+      {
+        "label": "Explore the tournament",
+        "href": "https://matthewpaver.github.io/can-england-win-it/",
+        "primary": true
+      },
+      {
+        "label": "Explore the source",
+        "href": "https://github.com/MatthewPaver/can-england-win-it"
+      }
     ],
     "note": "A scenario tool for fun, not a forecast or betting product."
   }

@@ -18,3 +18,13 @@
 .case-source { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 .case-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .case-actions a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 750; color: var(--accent); }
+
+/* Real capture pairs stay readable without client JavaScript. */
+.case-comparison { margin-block: 32px; }
+.comparison-pair { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
+.comparison-pair figure { margin: 0; min-width: 0; }
+.comparison-pair a { display: block; }
+.comparison-pair img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+.comparison-pair figcaption { margin-top: 8px; font-size: .85rem; color: var(--muted); }
+.case-comparison a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+@media (max-width: 720px) { .comparison-pair { grid-template-columns: minmax(0,1fr); } }

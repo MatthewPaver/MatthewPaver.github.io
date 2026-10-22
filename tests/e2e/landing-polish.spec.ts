@@ -36,7 +36,7 @@ test('mobile exploration is compact and keeps filter state across resize and his
   expect(cover!.y).toBeLessThan(550);
   await mode.selectOption('browser');
   await page.getByRole('combobox', { name: 'Subject', exact: true }).selectOption('decision');
-  await expect(page.locator('.work-card:visible')).toHaveCount(2);
+  await expect(page.locator('.work-card:visible')).toHaveCount(3);
   await expect(page).toHaveURL(/mode=browser/);
   await page.reload();
   await expect(mode).toHaveValue('browser');

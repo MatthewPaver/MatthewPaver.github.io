@@ -15,9 +15,9 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: Reviewers can see a risky policy diff without proving which sensitive request became reachable
 - Outcome: Turns an IAM policy diff into a cited stop or pass decision
-- Proof: Public change review, Org demo and benchmark; AWS simulator cross-check not yet run
-- Available now: Node.js or Docker. The public example does not need an API key.
-- Publication boundary: The capture shows the change-review workflow in the public repository, run locally on its bundled example with AI off. The AWS simulator cross-check has not yet been run.
+- Proof: Published browser-local correction journey and JSON export; authored benchmark; AWS simulator cross-check not yet run
+- Available now: Run the synthetic example in your browser. No account, install, upload or API key.
+- Publication boundary: The public browser demo runs deterministic change review locally. Account analysis and optional AI explanations remain in the local Node server.
 - Preview: https://matthewpaver.github.io/preview.html?app=policylens
 - Repo: https://github.com/MatthewPaver/iam-policy-auditor
 - Stack: Node.js, AWS IAM, AI evals, Docker
@@ -28,9 +28,9 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: A change pack can tell a different story from the schedule it cites
 - Outcome: Gives a change board an evidence pack and decision record before approval
-- Proof: Northstar demo surfaces three blockers including an unacknowledged 73-day finish movement; cited dates; optional RAG with a human gate
+- Proof: Published evidence desk; three priorities and all findings retained; draft recovery; accountable decisions and exact source exports
 - Available now: Runs in your browser. No account; sample schedules included.
-- Publication boundary: The public example uses synthetic schedules. Its precedent cards are a static fallback; live retrieval requires local setup.
+- Publication boundary: The current public tool includes the evidence desk, accountable decisions, local draft recovery and exports. Supplemental public-record context is optional; untouched examples stay not reviewed.
 - Preview: https://matthewpaver.github.io/preview.html?app=projectlens
 - Repo: https://github.com/MatthewPaver/ProjectLens
 - Stack: Browser JavaScript, Python, Playwright, optional Gemini RAG
@@ -104,5 +104,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 
 - RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate
   - Case study, how I'd stop a RAG regression reaching production: https://matthewpaver.github.io/work/rag-regression-gate/
+- ProjectLens before and after: https://matthewpaver.github.io/work/projectlens/
+- PolicyLens before and after: https://matthewpaver.github.io/work/policylens/
 - PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming
 - Recommender evaluation lab (personalised vs popularity baseline, fictional sample): https://github.com/MatthewPaver/recommender-eval-lab

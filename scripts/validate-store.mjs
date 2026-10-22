@@ -176,6 +176,8 @@ for (const row of rows) {
 llms.push("## Reusable templates", "");
 llms.push("- RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate");
 llms.push(`  - Case study, how I'd stop a RAG regression reaching production: ${siteBase}/work/rag-regression-gate/`);
+llms.push(`- ProjectLens before and after: ${siteBase}/work/projectlens/`);
+llms.push(`- PolicyLens before and after: ${siteBase}/work/policylens/`);
 llms.push("- PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming");
 llms.push("- Recommender evaluation lab (personalised vs popularity baseline, fictional sample): https://github.com/MatthewPaver/recommender-eval-lab");
 llms.push("");

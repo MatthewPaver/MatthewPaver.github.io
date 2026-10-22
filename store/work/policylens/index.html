@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
+    <title>Prove the correction while keeping the original risk visible · Matthew Paver</title>
+    <link rel="canonical" href="https://matthewpaver.github.io/work/policylens/" />
+    <meta name="description" content="A cited permission-change review with separate original and corrected outcomes, recoverable input errors and a portable record." />
+    <meta property="og:title" content="Prove the correction while keeping the original risk visible" />
+    <meta property="og:description" content="A cited permission-change review with separate original and corrected outcomes, recoverable input errors and a portable record." />
+    <meta property="og:url" content="https://matthewpaver.github.io/work/policylens/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://matthewpaver.github.io/assets/flagships/policylens-after.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.svg" />
+    <link rel="preload" href="../../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../../assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
+    <link rel="stylesheet" href="../../styles.css?v=20260905-5" />
+    <link rel="stylesheet" href="../case.css?v=20261007-1" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Prove the correction while keeping the original risk visible", "author": {"@type": "Person", "name": "Matthew Paver"}, "url": "https://matthewpaver.github.io/work/policylens/", "inLanguage": "en-GB"}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#case">Skip to case study</a>
+
+    <div class="topbar-shell">
+      <nav class="shell topbar" aria-label="Primary navigation">
+        <a class="brand" href="../../" aria-label="MP, Matthew Paver home">
+          <span class="brand-mark" aria-hidden="true">MP</span>
+          <span>Matthew Paver</span>
+        </a>
+        <div class="nav-links">
+          <a href="../../">Home</a>
+          <a href="../">All work</a>
+          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF)</a>
+        </div>
+      </nav>
+    </div>
+
+    <main class="shell">
+<article id="case" class="case-note">
+<h1>Prove the correction while keeping the original risk visible</h1>
+<p class="lede">A cited permission-change review with separate original and corrected outcomes, recoverable input errors and a portable record.</p>
+<div class="case-actions">
+<a href="https://matthewpaver.github.io/iam-policy-auditor/">Try PolicyLens</a>
+<a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a>
+</div>
+<h2>The problem</h2>
+<p>A policy diff shows edited JSON, but a reviewer needs to know whether a sensitive request became reachable and whether the correction preserves required access.</p>
+<section class="case-comparison" aria-label="PolicyLens before and after">
+<h2>Before and after</h2>
+<p>Actual captures of the same synthetic task at 1280 × 720. Open either image to inspect the full detail.</p>
+<div class="comparison-pair">
+<figure>
+<a href="../../assets/flagships/policylens-before.png">
+<img src="../../assets/flagships/policylens-before.png" width="1280" height="720" alt="PolicyLens before the workflow update" loading="lazy">
+</a>
+<figcaption>Before · existing interface</figcaption>
+</figure>
+<figure>
+<a href="../../assets/flagships/policylens-after.png">
+<img src="../../assets/flagships/policylens-after.png" width="1280" height="720" alt="PolicyLens implemented workflow" loading="lazy">
+</a>
+<figcaption>After · implemented and tested</figcaption>
+</figure>
+</div>
+<p class="case-source">Screenshots show the interaction change. They do not establish time saved, adoption or a measured business outcome.</p>
+</section>
+<h2>What changed</h2>
+<p>
+<strong>Before.</strong> Change review was behind account-analysis tools. Inputs and large policy editors dominated the page. Old results could remain current-looking after edits; there was no portable review record.</p>
+<p>
+<strong>After.</strong> The workbench opens directly into change review. The original ImplicitDeny to Allow result stays stopped beside the corrected candidate. Changes invalidate affected results, late responses are discarded, and exports bind inputs to engine and source identities.</p>
+<h2>Complete journey</h2>
+<ol>
+<li>Run the synthetic example, or paste current and proposed policies with one declared action, resource and context.</li>
+<li>Inspect the stop/review/pass outcome and granting statement with its source line.</li>
+<li>Verify a corrected candidate. It must close the declared risk, preserve definite required access and avoid introducing a high or critical finding.</li>
+<li>Export JSON with original and corrected evidence, identities and explicit limits. The published demo runs its deterministic engine in your browser without uploading policies.</li>
+</ol>
+<h2>Evidence and practical value</h2>
+<p>The example cites S2 at after.json:10 for the added rds:DeleteDBInstance grant. The corrected candidate removes that access while retaining s3:GetObject on the report. Validation includes 133 engine/module assertions, four server-browser journeys, a browser-local publication journey, an authored 55-case benchmark and six grounding expectations. These are authored tests, not independent AWS parity evidence.</p>
+<p>The value demonstrated here is an inspectable, complete review handoff with clear failure and recovery states. The next test is whether representative users find it useful in their own workflow.</p>
+<h2>Limits</h2>
+<p>The supplied documents and declared requests define the scope. SCPs, permission boundaries, session policies and cross-account interactions are excluded. AWS Access Analyzer already checks for new access; PolicyLens offers a smaller local review workflow. Independent AWS simulator comparison remains outstanding. The public browser demo has no AI or account-analysis service.</p>
+<p class="case-source">Independent public project by Matthew Paver. Synthetic demonstrations, updated 22 October 2026. No client deployment or measured commercial result is claimed.</p>
+<div class="case-actions">
+<a href="https://matthewpaver.github.io/iam-policy-auditor/">Try the updated demo</a>
+<a href="../">All public work</a>
+</div>
+</article>
+    </main>
+
+    <footer class="shell footer">
+      <p>Public projects only. Private work stays private.</p>
+      <a href="../">Back to all work</a>
+    </footer>
+  </body>
+</html>

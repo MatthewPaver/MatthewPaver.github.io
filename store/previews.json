@@ -61,28 +61,28 @@
     "kicker": "Project change assurance",
     "title": "ProjectLens",
     "summary": "Find where a project's written update disagrees with its schedule, then turn the differences into questions for a reviewer.",
-    "image": "./assets/projectlens-blockers.png",
+    "image": "./assets/projectlens-questions.png",
     "imageWidth": 1280,
     "imageHeight": 720,
-    "imageAlt": "Implemented ProjectLens review workspace using synthetic evidence",
+    "imageAlt": "ProjectLens product landing with the real Northstar finish comparison and source evidence",
     "role": "Product and AI engineer",
     "status": "Live public demo",
     "focus": "Project controls and RAG",
     "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. The public demo uses static context. Newer local retrieval lets a reviewer inspect cited programme status records; these are not records of past decisions or their causes.",
     "choice": "I compare the schedule evidence before asking AI for help. Every finding keeps its source dates, and a reviewer must decide whether a suggested precedent is relevant. A plausible narrative is not treated as a project decision.",
-    "result": "The synthetic Northstar example produces three blockers, including a finish date moving by 73 days without being acknowledged. The reviewer can inspect the dates, prepare follow-up questions and export a decision record.",
+    "result": "The synthetic Northstar example shows a 73-day finish movement and five review questions. Schedule facts remain visible when the narrative changes. The reviewer can inspect source fields and export the original and revised narrative with a human decision.",
     "learning": "The useful output is a question someone can investigate, not a score that pretends to predict project failure. Separating schedule facts from interpretation makes the review easier to challenge.",
     "access": "Runs in your browser. No account; sample schedules included.",
-    "publication": "The current public tool includes the evidence desk, accountable decisions, local draft recovery and exports. Supplemental public-record context is optional; untouched examples stay not reviewed.",
-    "mediaCaption": "Implemented Northstar evidence desk. Three priorities are visible; all four findings remain available and are saved.",
+    "publication": "The public product includes an interactive real-engine example, source evidence, narrative revision, local draft recovery, decisions and exports. Public-record context stays optional.",
+    "mediaCaption": "Product landing with the synthetic Northstar example. The dates and changes come from the same parser used in the full review.",
     "steps": [
-      "Select Try the Northstar example.",
-      "Select a finding to inspect source fields, or draft questions for the team.",
-      "Record an accountable decision and export it; optionally save a device draft to resume later."
+      "Inspect the interactive example, then open the Northstar review or use your own XER files.",
+      "Select a finding to inspect its source fields. Recheck a revised narrative without erasing the original.",
+      "Record a human decision, export the evidence and track its conditions; save a device draft if needed."
     ],
     "points": [
       "The bundled Northstar schedules are synthetic examples. The browser comparison also accepts your own XER files without uploading them.",
-      "The bundled case surfaces three board blockers, including an unacknowledged 73-day finish movement.",
+      "The bundled case retains five review questions, including an unacknowledged 73-day finish movement.",
       "Every finding links to schedule evidence and the reviewer records the decision and follow-up."
     ],
     "stack": [
@@ -93,8 +93,8 @@
     ],
     "links": [
       {
-        "label": "Take the interactive walkthrough",
-        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1",
+        "label": "Open product demo",
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
         "primary": true
       },
       {
@@ -102,8 +102,8 @@
         "href": "https://matthewpaver.github.io/work/projectlens/"
       },
       {
-        "label": "Try the schedule review",
-        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html"
+        "label": "Take the interactive walkthrough",
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1"
       },
       {
         "label": "Explore the source",

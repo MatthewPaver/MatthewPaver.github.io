@@ -103,7 +103,7 @@ test("selected work exposes a result, boundary and case route", async ({ page })
 
   const project = page.locator('[data-project="projectlens"]');
   await page.getByRole('tab', {name:'ProjectLens',exact:true}).click();
-  await expect(project.getByText(/three blockers, including a 73-day finish movement/i)).toBeVisible();
+  await expect(project.getByText(/five review questions, including a 73-day finish movement/i)).toBeVisible();
   await expect(project.getByRole("link", {name:"Review ProjectLens case", exact:true})).toHaveAttribute(
     "href",
     "./preview.html?app=projectlens",

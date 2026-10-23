@@ -30,7 +30,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Outcome: Gives a change board an evidence pack and decision record before approval
 - Proof: Published evidence desk; three priorities and all findings retained; draft recovery; accountable decisions and exact source exports
 - Available now: Runs in your browser. No account; sample schedules included.
-- Publication boundary: The current public tool includes the evidence desk, accountable decisions, local draft recovery and exports. Supplemental public-record context is optional; untouched examples stay not reviewed.
+- Publication boundary: The public product includes an interactive real-engine example, source evidence, narrative revision, local draft recovery, decisions and exports. Public-record context stays optional.
 - Preview: https://matthewpaver.github.io/preview.html?app=projectlens
 - Repo: https://github.com/MatthewPaver/ProjectLens
 - Stack: Browser JavaScript, Python, Playwright, optional Gemini RAG

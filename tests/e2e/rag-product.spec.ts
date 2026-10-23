@@ -13,10 +13,14 @@ test('review the changed evidence, compare another update, and download the exac
   await page.goto(demo);
   await page.getByRole('link', { name: 'Explore the example', exact: true }).click();
   await expect(page.locator('#switch-result')).toBeEnabled();
+  const outcome = await page.locator('#decision').boundingBox();
+  const sources = await page.locator('.rankings').boundingBox();
+  expect(outcome!.y + outcome!.height).toBeLessThan(sources!.y);
+  expect(await page.locator('#decision').evaluate(el => !!(el.compareDocumentPosition(document.querySelector('.rankings')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
   await expect(page.locator('#before-sources h4').first()).toHaveText('Approved retention policy');
   await expect(page.locator('#after-sources h4').first()).toHaveText('2022 proposal');
   await expect(page.locator('#consequence')).toContainText('outdated proposal now ranks above it');
-  await expect(page.locator('#case-summary')).toHaveText('All 6 case checks pass. Evidence ranking still worsens.');
+  await expect(page.locator('#case-summary')).toHaveText('6 of 6 question checks pass. Overall source order still worsens.');
   await page.getByRole('link', { name: 'See the full evidence', exact: true }).click();
   await page.getByText('Read every retrieved source', { exact: true }).click();
   await expect(page.locator('#source-evidence section').first().locator('li')).toHaveCount(3);
@@ -34,6 +38,8 @@ test('review the changed evidence, compare another update, and download the exac
     expect(downloaded.passed).toBe(passed);
   }
   await expect(page.locator('#verdict')).toHaveText('No regression detected');
+  await expect(page.locator('#result-heading')).toHaveText('The source order is unchanged in this test.');
+  await expect(page.locator('#decision-mark')).toHaveAttribute('d', 'M8 15h14');
   await expect(page.locator('#after-sources h4').first()).toHaveText('Approved retention policy');
   await expect(page.locator('#reproduce')).toContainText('candidate-bm25-b05.json');
   await expect(page.locator('#full-report')).toHaveAttribute('href', 'unchanged-report.html');
@@ -60,6 +66,7 @@ test('all questions preserve exact source order in both saved comparisons', asyn
       }
       await expect(page.locator('#verdict')).toHaveText(report.passed ? 'No regression detected' : 'Hold this update');
       if (index === 3) await expect(page.locator('#consequence')).toContainText('No new drop here does not mean the existing result is good');
+      if (scenario === 'regression' && index !== 2) await expect(page.locator('#consequence')).toContainText('held because data-retention evidence ranks worse');
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
     }
   }
@@ -112,5 +119,7 @@ test('reduced motion keeps result switching immediate and content visible', asyn
   await page.goto(demo);
   await page.getByRole('button', { name: 'Switch to unchanged ranking', exact: true }).click();
   await expect(page.locator('#verdict')).toHaveText('No regression detected');
+  await expect(page.locator('#result-heading')).toHaveText('The source order is unchanged in this test.');
+  await expect(page.locator('#decision-mark')).toHaveAttribute('d', 'M8 15h14');
   expect(await page.evaluate(() => document.getAnimations().length)).toBe(0);
 });

@@ -32,3 +32,18 @@ test('before-and-after evidence and demo links remain available without JavaScri
   }
   await context.close();
 });
+
+
+test('ProjectLens walkthrough is reachable from the homepage, case and preview without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  const url = 'https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1';
+  await page.goto('http://127.0.0.1:4321/');
+  await expect(page.getByRole('link', { name: 'Take the walkthrough', exact: true })).toHaveAttribute('href', url);
+  await page.goto('http://127.0.0.1:4321/work/projectlens/');
+  await expect(page.getByRole('link', { name: 'Take the interactive walkthrough', exact: true })).toHaveAttribute('href', url);
+  await expect(page.getByRole('link', { name: 'Try ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
+  const data = await (await page.request.get('http://127.0.0.1:4321/previews.json')).json();
+  expect(data.projectlens.links.find((link: {primary?: boolean}) => link.primary).href).toBe(url);
+  await context.close();
+});

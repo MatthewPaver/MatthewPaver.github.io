@@ -93,20 +93,24 @@
     ],
     "links": [
       {
+        "label": "Take the interactive walkthrough",
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1",
+        "primary": true
+      },
+      {
         "label": "Before and after",
         "href": "https://matthewpaver.github.io/work/projectlens/"
       },
       {
         "label": "Try the schedule review",
-        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
-        "primary": true
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html"
       },
       {
         "label": "Explore the source",
         "href": "https://github.com/MatthewPaver/ProjectLens"
       }
     ],
-    "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority."
+    "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority. The guided example uses the same engine and disposable in-memory records. Reloading clears the walkthrough only."
   },
   "quicksupply": {
     "kicker": "Product redesign case study",

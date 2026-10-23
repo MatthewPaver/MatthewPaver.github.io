@@ -16,7 +16,8 @@ test('selected cases have short action names and directly inspectable captures',
     const capture = card.getByRole('link', { name: `Open full-size ${name} capture`, exact: true });
     await expect(capture).toHaveAttribute('href', `./assets/${image}`);
     await expect(card.locator('a .project-summary')).toHaveCount(0);
-    await expect(card.getByRole('link')).toHaveCount(2);
+    await expect(card.getByRole('link')).toHaveCount(slug === 'policylens' ? 3 : 2);
+    if (slug === 'policylens') await expect(card.getByRole('link', { name: 'Open PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
   }
 });
 

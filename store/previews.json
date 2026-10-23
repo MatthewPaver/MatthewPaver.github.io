@@ -2,11 +2,11 @@
   "policylens": {
     "kicker": "IAM change review",
     "title": "PolicyLens",
-    "summary": "Find the permission that allows a sensitive cloud action, then check whether a proposed correction removes that access.",
+    "summary": "Review introduced access, trace its policy statement and verify a correction that keeps required access.",
     "image": "./assets/policylens-review.png",
     "imageWidth": 1280,
     "imageHeight": 720,
-    "imageAlt": "Implemented PolicyLens review workspace using synthetic evidence",
+    "imageAlt": "PolicyLens product landing with a real-engine synthetic permission-change example",
     "role": "Product and AI engineer",
     "status": "Public browser-local change review",
     "focus": "IAM and AI evaluation",
@@ -15,12 +15,13 @@
     "result": "In the bundled change-review example, deleting a production database changes from denied to allowed. The review identifies the granting statement and checks a candidate correction while preserving required report access.",
     "learning": "A passing test suite only establishes behaviour for the cases it covers. The next useful evidence is comparison with AWS's own simulator, plus adversarial tests of whether AI explanations stay faithful to the engine.",
     "access": "Run the synthetic example in your browser. No account, install, upload or API key.",
-    "publication": "The public browser demo runs deterministic change review locally. Account analysis and optional AI explanations remain in the local Node server.",
-    "mediaCaption": "Implemented correction journey: original stop remains beside the verified candidate. Synthetic policies.",
+    "publication": "The product landing includes a three-stage review using the actual deterministic engine. The browser demo processes policies locally; account analysis and optional AI stay in the Node server.",
+    "mediaCaption": "Product landing and guided review, using synthetic policies and the same engine as the full workbench.",
     "steps": [
-      "Open Try browser demo and select Run example change.",
-      "Inspect Stop and review, the permission transition and its granting statement.",
-      "Verify correction, confirm required access remains, then export review JSON."
+      "Open PolicyLens and try the synthetic permission change.",
+      "Inspect introduced database-delete access and its cited statement.",
+      "Verify a correction against the risk and required report access, then export the exact review record.",
+      "Choose Use your own policies to open two JSON files or paste a change."
     ],
     "points": [
       "The deterministic engine decides permission reachability. The LLM can explain the result but cannot change it.",
@@ -34,6 +35,11 @@
       "Docker"
     ],
     "links": [
+      {
+        "label": "Review your own policies",
+        "href": "https://matthewpaver.github.io/iam-policy-auditor/?view=review",
+        "primary": false
+      },
       {
         "label": "Try browser demo",
         "href": "https://matthewpaver.github.io/iam-policy-auditor/",

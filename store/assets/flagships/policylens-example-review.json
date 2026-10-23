@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "engine": {
+    "name": "PolicyLens",
+    "version": "1.0.0",
+    "sourceIdentity": "e7e3dc545efaacb43838e5805b4805412fb37194ea9a040e90ce421bad158708",
+    "runtime": "browser"
+  },
+  "inputIdentity": "b69374fbcf11bd33d94b8ad28cb9b0f8aaca96672303d0eacdb0cf8c338413c3",
+  "inputs": {
+    "before": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"ReadReports\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::reports/*\"\n    }\n  ]\n}\n",
+    "after": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"ReadReports\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::reports/*\"\n    },\n    {\n      \"Sid\": \"DeleteProductionDatabase\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"rds:DeleteDBInstance\",\n      \"Resource\": \"arn:aws:rds:eu-west-1:111122223333:db:prod-1\"\n    }\n  ]\n}\n",
+    "action": "rds:DeleteDBInstance",
+    "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+    "context": {},
+    "useAI": false
+  },
+  "review": {
+    "schemaVersion": 1,
+    "engine": {
+      "name": "PolicyLens",
+      "version": "1.0.0",
+      "sourceIdentity": "e7e3dc545efaacb43838e5805b4805412fb37194ea9a040e90ce421bad158708",
+      "runtime": "browser"
+    },
+    "verdict": {
+      "status": "stop",
+      "label": "Stop and review",
+      "reason": "The proposed policy broadens the checked request from ImplicitDeny to Allow."
+    },
+    "request": {
+      "action": "rds:DeleteDBInstance",
+      "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+      "context": {}
+    },
+    "access": {
+      "before": {
+        "action": "rds:DeleteDBInstance",
+        "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+        "decision": "ImplicitDeny",
+        "allowMatches": [],
+        "denyMatches": [],
+        "conditionalAllows": [],
+        "unknowns": [],
+        "explanation": "Implicitly denied — no statement allows this action/resource under the given context."
+      },
+      "after": {
+        "action": "rds:DeleteDBInstance",
+        "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+        "decision": "Allow",
+        "allowMatches": [
+          {
+            "id": "S2",
+            "doc": "after.json",
+            "line": 10,
+            "sid": "DeleteProductionDatabase",
+            "condition": null,
+            "cond": {
+              "result": true,
+              "unmet": [],
+              "missingKeys": []
+            }
+          }
+        ],
+        "denyMatches": [],
+        "conditionalAllows": [],
+        "unknowns": [],
+        "explanation": "Allowed by [S2 · after.json:10] with all conditions satisfied by the given context."
+      },
+      "broadened": true
+    },
+    "findings": {
+      "introduced": [
+        {
+          "ruleId": "AWS-SENSITIVE-NO-CONDITION",
+          "severity": "medium",
+          "title": "Destructive action without conditions: rds:DeleteDBInstance",
+          "description": "Statement [S2 · after.json:10] allows rds:DeleteDBInstance with no Condition block. There is no MFA, source-IP, or org guardrail on this irreversible operation.",
+          "statements": [
+            "S2"
+          ],
+          "evidence": [
+            {
+              "doc": "after.json",
+              "line": 10,
+              "endLine": 15,
+              "snippet": "    {\n      \"Sid\": \"DeleteProductionDatabase\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"rds:DeleteDBInstance\",\n      \"Resource\": \"arn:aws:rds:eu-west-1:111122223333:db:prod-1\"\n    }",
+              "truncated": false
+            }
+          ],
+          "remediation": {
+            "summary": "Add a guardrail condition, e.g. require MFA for destructive calls.",
+            "rewrite": "{\n  \"Condition\": {\n    \"Bool\": {\n      \"aws:MultiFactorAuthPresent\": \"true\"\n    }\n  }\n}"
+          }
+        }
+      ],
+      "resolved": []
+    },
+    "evidence": [
+      {
+        "id": "S2",
+        "doc": "after.json",
+        "line": 10,
+        "sid": "DeleteProductionDatabase",
+        "condition": null,
+        "cond": {
+          "result": true,
+          "unmet": [],
+          "missingKeys": []
+        }
+      }
+    ],
+    "suggestedCorrections": [
+      {
+        "ruleId": "AWS-SENSITIVE-NO-CONDITION",
+        "title": "Destructive action without conditions: rds:DeleteDBInstance",
+        "summary": "Add a guardrail condition, e.g. require MFA for destructive calls.",
+        "rewrite": "{\n  \"Condition\": {\n    \"Bool\": {\n      \"aws:MultiFactorAuthPresent\": \"true\"\n    }\n  }\n}",
+        "evidence": [
+          {
+            "doc": "after.json",
+            "line": 10,
+            "endLine": 15,
+            "snippet": "    {\n      \"Sid\": \"DeleteProductionDatabase\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"rds:DeleteDBInstance\",\n      \"Resource\": \"arn:aws:rds:eu-west-1:111122223333:db:prod-1\"\n    }",
+            "truncated": false
+          }
+        ]
+      }
+    ],
+    "statements": {
+      "before": [
+        {
+          "id": "S1",
+          "doc": "before.json",
+          "provider": "aws",
+          "kind": "identity",
+          "sid": "ReadReports",
+          "effect": "Allow",
+          "principals": [],
+          "actions": [
+            "s3:GetObject"
+          ],
+          "notActions": [],
+          "resources": [
+            "arn:aws:s3:::reports/*"
+          ],
+          "notResources": [],
+          "conditions": null,
+          "line": 4,
+          "endLine": 9
+        }
+      ],
+      "after": [
+        {
+          "id": "S1",
+          "doc": "after.json",
+          "provider": "aws",
+          "kind": "identity",
+          "sid": "ReadReports",
+          "effect": "Allow",
+          "principals": [],
+          "actions": [
+            "s3:GetObject"
+          ],
+          "notActions": [],
+          "resources": [
+            "arn:aws:s3:::reports/*"
+          ],
+          "notResources": [],
+          "conditions": null,
+          "line": 4,
+          "endLine": 9
+        },
+        {
+          "id": "S2",
+          "doc": "after.json",
+          "provider": "aws",
+          "kind": "identity",
+          "sid": "DeleteProductionDatabase",
+          "effect": "Allow",
+          "principals": [],
+          "actions": [
+            "rds:DeleteDBInstance"
+          ],
+          "notActions": [],
+          "resources": [
+            "arn:aws:rds:eu-west-1:111122223333:db:prod-1"
+          ],
+          "notResources": [],
+          "conditions": null,
+          "line": 10,
+          "endLine": 15
+        }
+      ]
+    },
+    "limits": [
+      "Only the supplied policy documents are evaluated.",
+      "SCPs, permission boundaries, session policies, and cross-account resource-policy interplay are not evaluated.",
+      "A pass means no increase for the checked request and rule set. It does not prove the policy is safe."
+    ],
+    "ai": null,
+    "aiEvaluation": null,
+    "aiError": null
+  },
+  "correction": {
+    "inputIdentity": "c75d35f90a7d0096db2713189bf25b7b99a4793370b95c49e97f0ceaeea76ab8",
+    "inputs": {
+      "proposed": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"ReadReports\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::reports/*\"\n    },\n    {\n      \"Sid\": \"DeleteProductionDatabase\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"rds:DeleteDBInstance\",\n      \"Resource\": \"arn:aws:rds:eu-west-1:111122223333:db:prod-1\"\n    }\n  ]\n}\n",
+      "candidate": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"ReadReports\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:GetObject\",\n      \"Resource\": \"arn:aws:s3:::reports/*\"\n    }\n  ]\n}\n",
+      "riskRequest": {
+        "action": "rds:DeleteDBInstance",
+        "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+        "context": {}
+      },
+      "requiredAccess": [
+        {
+          "action": "s3:GetObject",
+          "resource": "arn:aws:s3:::reports/daily.csv",
+          "context": {}
+        }
+      ]
+    },
+    "result": {
+      "schemaVersion": 1,
+      "engine": {
+        "name": "PolicyLens",
+        "version": "1.0.0",
+        "sourceIdentity": "e7e3dc545efaacb43838e5805b4805412fb37194ea9a040e90ce421bad158708",
+        "runtime": "browser"
+      },
+      "verified": true,
+      "introducedSevere": [],
+      "riskClosed": true,
+      "requiredPreserved": true,
+      "risk": {
+        "proposed": {
+          "action": "rds:DeleteDBInstance",
+          "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+          "decision": "Allow",
+          "allowMatches": [
+            {
+              "id": "S2",
+              "doc": "proposed.json",
+              "line": 10,
+              "sid": "DeleteProductionDatabase",
+              "condition": null,
+              "cond": {
+                "result": true,
+                "unmet": [],
+                "missingKeys": []
+              }
+            }
+          ],
+          "denyMatches": [],
+          "conditionalAllows": [],
+          "unknowns": [],
+          "explanation": "Allowed by [S2 · proposed.json:10] with all conditions satisfied by the given context."
+        },
+        "candidate": {
+          "action": "rds:DeleteDBInstance",
+          "resource": "arn:aws:rds:eu-west-1:111122223333:db:prod-1",
+          "decision": "ImplicitDeny",
+          "allowMatches": [],
+          "denyMatches": [],
+          "conditionalAllows": [],
+          "unknowns": [],
+          "explanation": "Implicitly denied — no statement allows this action/resource under the given context."
+        }
+      },
+      "preservation": [
+        {
+          "id": "required-1",
+          "request": {
+            "action": "s3:GetObject",
+            "resource": "arn:aws:s3:::reports/daily.csv",
+            "context": {}
+          },
+          "before": {
+            "action": "s3:GetObject",
+            "resource": "arn:aws:s3:::reports/daily.csv",
+            "decision": "Allow",
+            "allowMatches": [
+              {
+                "id": "S1",
+                "doc": "proposed.json",
+                "line": 4,
+                "sid": "ReadReports",
+                "condition": null,
+                "cond": {
+                  "result": true,
+                  "unmet": [],
+                  "missingKeys": []
+                }
+              }
+            ],
+            "denyMatches": [],
+            "conditionalAllows": [],
+            "unknowns": [],
+            "explanation": "Allowed by [S1 · proposed.json:4] with all conditions satisfied by the given context."
+          },
+          "after": {
+            "action": "s3:GetObject",
+            "resource": "arn:aws:s3:::reports/daily.csv",
+            "decision": "Allow",
+            "allowMatches": [
+              {
+                "id": "S1",
+                "doc": "candidate.json",
+                "line": 4,
+                "sid": "ReadReports",
+                "condition": null,
+                "cond": {
+                  "result": true,
+                  "unmet": [],
+                  "missingKeys": []
+                }
+              }
+            ],
+            "denyMatches": [],
+            "conditionalAllows": [],
+            "unknowns": [],
+            "explanation": "Allowed by [S1 · candidate.json:4] with all conditions satisfied by the given context."
+          },
+          "preserved": true
+        }
+      ],
+      "candidateFindings": [],
+      "limits": [
+        "Verification covers the declared risk request and required-access checks only.",
+        "Production approval still needs the organisation-level controls that this local model does not evaluate."
+      ]
+    }
+  },
+  "createdAt": "2026-10-23T13:24:43.245Z"
+}

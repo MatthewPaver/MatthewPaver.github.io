@@ -2,7 +2,7 @@
   {
     "file": "policylens-review.png",
     "source": "iam-policy-auditor/public/index.html",
-    "state": "Product landing and real-engine synthetic example, 1280×720",
+    "state": "Product landing and real-engine synthetic example, 1280\u00d7720",
     "capturedAt": "2026-10-23T13:24:43.509Z",
     "sha256": "47902f582e311c2c369c8be0b62d8e5cbea869b6f071f5ad91be1f5466a8fca7"
   },
@@ -16,36 +16,43 @@
   {
     "file": "flagships/policylens-product-before.png",
     "source": "iam-policy-auditor/public/index.html",
-    "state": "Previous entry with empty policy editors, 1280×720",
+    "state": "Previous entry with empty policy editors, 1280\u00d7720",
     "capturedAt": "2026-10-23T12:25:05.352Z",
     "sha256": "c13f64fbb9d3a41ffdb2d8ce51fd4141e1d447b86fe318e1f26e393f273a8bcf"
   },
   {
     "file": "flagships/policylens-product-after.png",
     "source": "iam-policy-auditor/public/index.html",
-    "state": "Product landing and real-engine synthetic example, 1280×720",
+    "state": "Product landing and real-engine synthetic example, 1280\u00d7720",
     "capturedAt": "2026-10-23T13:24:43.509Z",
     "sha256": "47902f582e311c2c369c8be0b62d8e5cbea869b6f071f5ad91be1f5466a8fca7"
   },
   {
     "file": "flagships/policylens-review-before.png",
     "source": "iam-policy-auditor/public/index.html",
-    "state": "Previous original-proposal review, 1280×720",
+    "state": "Previous original-proposal review, 1280\u00d7720",
     "capturedAt": "2026-10-23T12:25:05.502Z",
     "sha256": "0c30088e0782cec213cc97580147233c0ae269389e77f913c34f8b74ffee5cca"
   },
   {
     "file": "flagships/policylens-review-after.png",
     "source": "iam-policy-auditor/public/index.html",
-    "state": "New workbench on the same synthetic original proposal, 1280×720",
+    "state": "New workbench on the same synthetic original proposal, 1280\u00d7720",
     "capturedAt": "2026-10-23T13:24:44.332Z",
     "sha256": "48c62992c2a3f5d4ffbafe7ca32f0573cdad5e9dde7b9a87e646d22f85fb345f"
   },
   {
     "file": "flagships/policylens-correction-phone.png",
     "source": "iam-policy-auditor/public/index.html",
-    "state": "Real-engine synthetic correction on phone, full-page390×844 viewport",
-    "capturedAt": "2026-10-23T13:24:44.047Z",
-    "sha256": "4a9cd1c70ab44c9f4eae41e31aab4bc6c039a92da7722bf6efe003a330f6fde7"
+    "state": "Actual removed and retained synthetic statements with separate verification, full-page375\u00d7900 viewport",
+    "capturedAt": "2026-10-23T15:20:38.865728+00:00",
+    "sha256": "209329d02af4337998945578088259aaa14de70101bc76b192c51185a045738a"
+  },
+  {
+    "file": "flagships/policylens-correction-evidence.png",
+    "source": "iam-policy-auditor/public/index.html",
+    "state": "Actual removed and retained synthetic statements with separate verification, full-page1440\u00d7900 viewport",
+    "capturedAt": "2026-10-23T15:20:38.866043+00:00",
+    "sha256": "640dcbf46492988adc47f1f09f34587b27ce8036bcd6d0c1dc05e0a9a7f0afbd"
   }
 ]

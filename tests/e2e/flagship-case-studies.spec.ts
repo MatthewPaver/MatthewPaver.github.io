@@ -18,6 +18,8 @@ test('homepage opens all three evidence-led case studies with real capture pairs
   expect(report.passed).toBe(false);
   expect(report.regressions).toContain('mrr_at_k');
   await page.goto('/demos/rag-gate/');
+  await expect(page.getByRole('heading', { name: 'Keep the right policy within reach.', exact: true })).toBeVisible();
+  await page.goto('/demos/rag-gate/report.html');
   await expect(page.getByRole('heading', { name: 'Candidate regresses', exact: true })).toBeVisible();
 });
 

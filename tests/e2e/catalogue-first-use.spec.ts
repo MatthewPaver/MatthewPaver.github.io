@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('catalogue offers direct first actions and honest setup requirements', async ({ page }) => {
   await page.goto('/work/');
   const actions = {
-    projectlens: ['Try the schedule review', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html'],
+    projectlens: ['Take the interactive walkthrough', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1'],
     winchester: ['Try the shortlist', 'https://matthewpaver.github.io/winchester-buyer-check/'],
     lakehouse: ['Explore sample data', 'https://matthewpaver.github.io/marketing-ml-lakehouse/#quality'],
   };
@@ -12,6 +12,7 @@ test('catalogue offers direct first actions and honest setup requirements', asyn
     await expect(card.getByRole('link', {name, exact:true})).toHaveAttribute('href',href);
     await expect(card.locator('.work-access')).toContainText('Browser');
   }
+  await expect(page.locator('[data-slug="projectlens"]').getByRole('link', {name:'Use the full schedule review',exact:true})).toHaveAttribute('href','https://matthewpaver.github.io/ProjectLens/change-assurance.html');
   await expect(page.locator('[data-slug="policylens"] .work-access')).toContainText('Node.js');
   await expect(page.locator('[data-slug="quicksupply"] .work-access')).toContainText('Recorded case study');
   await expect(page.locator('[data-slug="hr"] .work-access')).toContainText('Power BI Desktop');

@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 test('catalogue offers direct first actions and honest setup requirements', async ({ page }) => {
   await page.goto('/work/');
   const actions = {
+    policylens: ['Open product demo', 'https://matthewpaver.github.io/iam-policy-auditor/'],
     projectlens: ['Open product demo', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html'],
     winchester: ['Try the shortlist', 'https://matthewpaver.github.io/winchester-buyer-check/'],
     lakehouse: ['Explore sample data', 'https://matthewpaver.github.io/marketing-ml-lakehouse/#quality'],

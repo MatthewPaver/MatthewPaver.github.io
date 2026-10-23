@@ -17,7 +17,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Outcome: Turns an IAM policy diff into a cited stop or pass decision
 - Proof: Published browser-local correction journey and JSON export; authored benchmark; AWS simulator cross-check not yet run
 - Available now: Run the synthetic example in your browser. No account, install, upload or API key.
-- Publication boundary: The public browser demo runs deterministic change review locally. Account analysis and optional AI explanations remain in the local Node server.
+- Publication boundary: The product landing includes a three-stage review using the actual deterministic engine. The browser demo processes policies locally; account analysis and optional AI stay in the Node server.
 - Preview: https://matthewpaver.github.io/preview.html?app=policylens
 - Repo: https://github.com/MatthewPaver/iam-policy-auditor
 - Stack: Node.js, AWS IAM, AI evals, Docker

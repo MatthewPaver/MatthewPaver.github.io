@@ -55,8 +55,8 @@
     "performance": {
       "index_build_s": 0.0,
       "query_p50_ms": 0.01,
-      "query_p95_ms": 0.03,
-      "peak_rss_mb": 27.2,
+      "query_p95_ms": 0.01,
+      "peak_rss_mb": 27.0,
       "model_params": null,
       "model_mb": null,
       "device": "cpu"
@@ -302,7 +302,7 @@
       "index_build_s": 0.0,
       "query_p50_ms": 0.01,
       "query_p95_ms": 0.02,
-      "peak_rss_mb": 27.2,
+      "peak_rss_mb": 27.0,
       "model_params": null,
       "model_mb": null,
       "device": "cpu"
@@ -598,8 +598,8 @@
     "baseline": {
       "index_build_s": 0.0,
       "query_p50_ms": 0.01,
-      "query_p95_ms": 0.03,
-      "peak_rss_mb": 27.2,
+      "query_p95_ms": 0.01,
+      "peak_rss_mb": 27.0,
       "model_params": null,
       "model_mb": null,
       "device": "cpu"
@@ -608,7 +608,7 @@
       "index_build_s": 0.0,
       "query_p50_ms": 0.01,
       "query_p95_ms": 0.02,
-      "peak_rss_mb": 27.2,
+      "peak_rss_mb": 27.0,
       "model_params": null,
       "model_mb": null,
       "device": "cpu"
@@ -626,5 +626,5 @@
   ],
   "newly_failing_cases": [],
   "passed": false,
-  "reproduce": "rag-gate gate --dataset fixtures/policies.json --k 3 --baseline configs/baseline.json --candidate configs/candidate-chunk-12.json --no-bootstrap --output reports/change.json --html reports/change.html"
+  "reproduce": "rag-gate gate --dataset fixtures/policies.json --k 3 --baseline configs/baseline.json --candidate configs/candidate-chunk-12.json --no-bootstrap --output reports/comparison.json --html reports/report.html"
 }

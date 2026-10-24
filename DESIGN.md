@@ -259,7 +259,7 @@ The Method uses an ordered list of six checks: three columns read left to right,
 
 Major sections use generous responsive vertical rhythm; evidence inside cards remains compact. The homepage curates; the searchable `/work/` route carries the full public catalogue.
 
-**The Curated First Rule.** The landing makes three selected applications understandable without requiring a visit to the full catalogue; the catalogue remains directly available for visitors who already know what they need.
+**The Curated First Rule.** The landing makes three flagship review tools and the retained QuickSupply case understandable without requiring a visit to the full catalogue; the catalogue remains directly available for visitors who already know what they need.
 
 ## Elevation & Depth
 
@@ -303,7 +303,7 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 
 ### Navigation
 
-The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV at every width, with compact spacing and 44px-high targets on phones. All projects is a direct `/work/` link, not a jump to the three selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
+The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV at every width, with compact spacing and 44px-high targets on phones. All projects is a direct `/work/` link, not a jump to the selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
 
 Catalogue grouping is action-first: All, Try in browser, Run locally, Watch or read, and Reuse a pattern. Subject is secondary. At 640px and below, a native Explore selector replaces the five-button row and sits beside Subject; both desktop and mobile controls reflect the same state across resize. Search includes both the seven projects and three patterns. Mode, subject and search live in the URL and survive refresh, browser Back and the case return link. Clear filters and the Patterns navigation offer escape routes from empty combinations. With JavaScript unavailable, all items and their first steps remain visible.
 
@@ -348,3 +348,7 @@ Three flat, separated rows pair a specific engineering choice with a short expla
 - **Don't** repeat the same project proof across several homepage sections.
 - **Don't** use rounded-pill components as a default visual language.
 - **Don't** claim model or product impact that the linked evidence cannot reproduce.
+
+## Flagship discovery and case notes
+
+PolicyLens, ProjectLens and RAG Regression Gate share the selected-work tab pattern and direct demo/case actions. QuickSupply remains the fourth case. Phone tabs use two equal columns so every product name stays visible. Primary flagship case links use `/work/<product>/`; older technical walkthroughs remain secondary. Case notes lead with the problem, supported decision and limits, then show the full journey and matched captures. The technical evidence anchor, reproducible results and earlier captures remain directly accessible. Case headings use a maximum measure of 24ch within the existing type scale.

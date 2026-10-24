@@ -96,7 +96,7 @@ assertPublicCatalogueText({
 });
 
 assert.ok(indexHtml.includes('id="selected-heading"'), "The page needs a clear start-here shelf");
-assert.equal((indexHtml.match(/<(?:article|div) class="selected-card"/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
+assert.equal((indexHtml.match(/<(?:article|div) class="selected-card"/g) || []).length, 4, "The homepage features three review tools and the retained QuickSupply case");
 assert.ok(workHtml.includes('id="templates"'), "Reusable code must have a separate pattern section");
 assert.ok(workHtml.includes("RAG Regression Gate"), "RAG Regression Gate is missing");
 const ragCasePath = "store/work/rag-regression-gate/index.html";
@@ -175,7 +175,7 @@ for (const row of rows) {
 
 llms.push("## Reusable templates", "");
 llms.push("- RAG Regression Gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate");
-llms.push(`  - Case study, how I'd stop a RAG regression reaching production: ${siteBase}/work/rag-regression-gate/`);
+llms.push(`  - Case study, keep the right policy within reach: ${siteBase}/work/rag-regression-gate/`);
 llms.push(`- ProjectLens before and after: ${siteBase}/work/projectlens/`);
 llms.push(`- PolicyLens before and after: ${siteBase}/work/policylens/`);
 llms.push("- PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming");

@@ -30,7 +30,7 @@
 .method-example p { margin:0; color:var(--muted); font-size:.92rem; line-height:1.7; max-width:65ch; }
 .method-example a { display:inline-flex; align-items:center; min-height:44px; margin-top:4px; color:var(--accent); font-size:.85rem; font-weight:700; text-underline-offset:4px; }
 @media (max-width:760px) {
-  .case-tabs { gap:20px; margin-bottom:24px; }
+  .case-tabs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px 20px; margin-bottom:24px; }
   .case-tabs button { font-size:.82rem; }
   .portfolio-landing [data-story-mode="tabs"] .selected-card-content { grid-template-columns:1fr; gap:24px; }
   .portfolio-landing [data-story-mode="tabs"] .selected-grid--shelf .project-media { aspect-ratio:1.4; padding:16px; }

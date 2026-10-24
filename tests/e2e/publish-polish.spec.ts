@@ -7,16 +7,17 @@ test('selected cases have short action names and directly inspectable captures',
   for (const [slug, name, image] of [
     ['policylens', 'PolicyLens', 'policylens-review.png'],
     ['projectlens', 'ProjectLens', 'projectlens-questions.png'],
+    ['rag-regression-gate', 'RAG Regression Gate', 'flagships/rag-clarity-after.png'],
     ['quicksupply', 'QuickSupply', 'quicksupply-dashboard.png'],
   ]) {
     await page.getByRole('tab', {name, exact:true}).click();
     const card = page.locator(`[data-project="${slug}"]`);
     await expect(card.getByRole('link', { name: `Review ${name} case`, exact: true }))
-      .toHaveAttribute('href', `./preview.html?app=${slug}`);
+      .toHaveAttribute('href', slug === 'quicksupply' ? `./preview.html?app=${slug}` : `./work/${slug}/`);
     const capture = card.getByRole('link', { name: `Open full-size ${name} capture`, exact: true });
     await expect(capture).toHaveAttribute('href', `./assets/${image}`);
     await expect(card.locator('a .project-summary')).toHaveCount(0);
-    await expect(card.getByRole('link')).toHaveCount(slug === 'policylens' ? 3 : 2);
+    await expect(card.getByRole('link')).toHaveCount(slug === 'quicksupply' ? 2 : 3);
     if (slug === 'policylens') await expect(card.getByRole('link', { name: 'Open PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
   }
 });

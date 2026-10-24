@@ -175,7 +175,7 @@ test("PolicyLens has an indexable detail page and public source", async ({ page 
     "https://matthewpaver.github.io/store/apps/policylens/",
   );
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /policylens-review\.png$/);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /previews\/policylens-2026-10-24\.png$/);
   await expect(page.getByRole("heading", { name: "What the example shows" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Run public IAM demo" }).first()).toHaveAttribute(
     "href",

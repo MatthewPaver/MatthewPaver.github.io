@@ -7,6 +7,9 @@ import crypto from "node:crypto";
 
 const date = process.argv[2] ?? new Date().toISOString().slice(0, 10);
 if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Capture date must be YYYY-MM-DD");
+const revision = process.argv[3] ?? "";
+if (revision && !/^[a-z0-9-]+$/.test(revision)) throw new Error("Capture revision must use lowercase letters, digits and hyphens");
+const suffix = revision ? `-${revision}` : "";
 const directory = "store/assets/previews";
 fs.mkdirSync(directory, { recursive: true });
 const products = [
@@ -25,17 +28,17 @@ try {
     else await expect(page.locator(ready)).toBeEnabled();
     await page.evaluate(() => document.fonts.ready);
     await page.evaluate(() => document.getAnimations().forEach(animation => animation.finish()));
-    const file = `${slug}-${date}.png`;
+    const file = `${slug}-${date}${suffix}.png`;
     await page.screenshot({ path: `${directory}/${file}` });
     captured.push({
-      product, url, captured_utc: new Date().toISOString(), viewport: { width: 1280, height: 800 },
-      state: "Current published landing with ready synthetic example; reduced motion; no input files or edits",
+      product, url, source_kind: /^https:\/\/matthewpaver\.github\.io\//.test(url) ? "published product" : "local candidate build", captured_utc: new Date().toISOString(), viewport: { width: 1280, height: 800 },
+      state: "Landing with ready synthetic example; reduced motion; no input files or edits",
       file, sha256: crypto.createHash("sha256").update(fs.readFileSync(`${directory}/${file}`)).digest("hex"),
       source_html_sha256: crypto.createHash("sha256").update(await response.body()).digest("hex"),
     });
     await page.close();
   }
-  fs.writeFileSync(`${directory}/captures.json`, JSON.stringify(captured, null, 2) + "\n");
+  fs.writeFileSync(`${directory}/${revision ? `captures-${date}${suffix}.json` : "captures.json"}`, JSON.stringify(captured, null, 2) + "\n");
 } finally {
   await browser.close();
 }

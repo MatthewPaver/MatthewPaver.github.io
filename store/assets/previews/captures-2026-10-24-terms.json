@@ -1,0 +1,47 @@
+[
+  {
+    "product": "ProjectLens",
+    "url": "http://127.0.0.1:36733/change-assurance.html",
+    "source_kind": "local candidate build",
+    "captured_utc": "2026-10-24T17:22:15.495Z",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "Landing with ready synthetic example; reduced motion; no input files or edits",
+    "file": "projectlens-2026-10-24-terms.png",
+    "sha256": "48f0f8d42212bfebbdeeb5404a8856eb793fe4963199dcf22da30ea1f4f1c2e3",
+    "source_html_sha256": "1a31e7eee6f274f17fe8012721a518c2895e18f8a43dcc461f58ca1f6792b31e",
+    "capture_environment": "GitHub-hosted ubuntu-latest Chromium"
+  },
+  {
+    "product": "PolicyLens",
+    "url": "http://127.0.0.1:40025/",
+    "source_kind": "local candidate build",
+    "captured_utc": "2026-10-24T17:22:16.158Z",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "Landing with ready synthetic example; reduced motion; no input files or edits",
+    "file": "policylens-2026-10-24-terms.png",
+    "sha256": "97bb2d13b8fa631c694893065331393df8dcc75b9615927445f6c0f7e34a673a",
+    "source_html_sha256": "9ec3913bee15b2f68f51a50ef86584a3b2c3f0b6420654cc3ebd3c778b631281",
+    "capture_environment": "GitHub-hosted ubuntu-latest Chromium"
+  },
+  {
+    "product": "RAG Regression Gate",
+    "url": "http://127.0.0.1:45395/",
+    "source_kind": "local candidate build",
+    "captured_utc": "2026-10-24T17:22:16.794Z",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "Landing with ready synthetic example; reduced motion; no input files or edits",
+    "file": "rag-regression-gate-2026-10-24-terms.png",
+    "sha256": "dcb16b1a73def768c49b9dc717a314a54db153f775f30095b60a2c9b3aa4df5b",
+    "source_html_sha256": "77985216c08c2c41162c4db4d905a302692b4a6c14ac157079fec9491e659d02",
+    "capture_environment": "GitHub-hosted ubuntu-latest Chromium"
+  }
+]

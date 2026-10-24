@@ -13,9 +13,13 @@ test('review the changed evidence, compare another update, and download the exac
   await page.goto(demo);
   await page.getByRole('link', { name: 'Explore the example', exact: true }).click();
   await expect(page.locator('#switch-result')).toBeEnabled();
-  const outcome = await page.locator('#decision').boundingBox();
-  const sources = await page.locator('.rankings').boundingBox();
-  expect(outcome!.y + outcome!.height).toBeLessThan(sources!.y);
+  // Anchor scrolling can move the viewport between separate boundingBox calls.
+  // Sample both rectangles in one browser task so the order check stays meaningful.
+  const positions = await page.evaluate(() => ({
+    outcomeBottom: document.querySelector('#decision')!.getBoundingClientRect().bottom,
+    sourcesTop: document.querySelector('.rankings')!.getBoundingClientRect().top,
+  }));
+  expect(positions.outcomeBottom).toBeLessThan(positions.sourcesTop);
   expect(await page.locator('#decision').evaluate(el => !!(el.compareDocumentPosition(document.querySelector('.rankings')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
   await expect(page.locator('#before-sources h4').first()).toHaveText('Approved retention policy');
   await expect(page.locator('#after-sources h4').first()).toHaveText('2022 proposal');

@@ -25,5 +25,5 @@ test('catalogue leads with the strongest AI work: PolicyLens, then ProjectLens',
   await page.goto('/work/');
   await expect(page.locator('.app-card').first()).toHaveAttribute('data-slug', 'policylens');
   await expect(page.locator('.app-card').nth(1)).toHaveAttribute('data-slug', 'projectlens');
-  await expect(page.locator('.template-row').first()).toContainText('RAG retrieval gate');
+  await expect(page.locator('.template-row').first()).toContainText('RAG Regression Gate');
 });

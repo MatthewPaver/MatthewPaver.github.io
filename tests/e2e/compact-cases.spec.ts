@@ -3,12 +3,12 @@ import { expect, test } from '@playwright/test';
 test('compact case tabs show one complete case and preserve the catalogue route', async ({ page }) => {
   await page.goto('/#selected');
   const tabs = page.getByRole('tablist', {name:'Selected case studies'});
-  for (const [name, slug] of [['PolicyLens','policylens'],['ProjectLens','projectlens'],['QuickSupply','quicksupply']]) {
+  for (const [name, slug] of [['PolicyLens','policylens'],['ProjectLens','projectlens'],['RAG Regression Gate','rag-regression-gate'],['QuickSupply','quicksupply']]) {
     await tabs.getByRole('tab', {name, exact:true}).click();
     await expect(page.getByRole('tabpanel')).toHaveCount(1);
     const panel = page.getByRole('tabpanel', {name, exact:true});
     await expect(panel).toBeVisible();
-    await expect(panel.locator('.project-link')).toHaveAttribute('href', `./preview.html?app=${slug}`);
+    await expect(panel.locator('.project-link')).toHaveAttribute('href', slug === 'quicksupply' ? `./preview.html?app=${slug}` : `./work/${slug}/`);
     await expect(panel.locator('.project-media img')).toHaveCSS('object-fit','contain');
     await expect.poll(() => panel.locator('.project-media img').evaluate((img:HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
     await expect(page).toHaveURL(new RegExp(`#case-${slug}$`));
@@ -23,8 +23,8 @@ test('tabs support arrow keys, Home, End, bookmarks and browser Back', async ({ 
   await expect(project).toHaveAttribute('aria-selected','true');
   await project.focus();
   await page.keyboard.press('ArrowRight');
-  await expect(tabs.getByRole('tab',{name:'QuickSupply'})).toBeFocused();
-  await expect(page.getByRole('tabpanel',{name:'QuickSupply'})).toBeVisible();
+  await expect(tabs.getByRole('tab',{name:'RAG Regression Gate'})).toBeFocused();
+  await expect(page.getByRole('tabpanel',{name:'RAG Regression Gate'})).toBeVisible();
   await page.keyboard.press('Home');
   await expect(tabs.getByRole('tab',{name:'PolicyLens'})).toBeFocused();
   await page.keyboard.press('End');
@@ -49,12 +49,12 @@ test('reduced motion and narrow screens retain working tabs without overflow', a
 test('failed enhancement and printing keep every case available', async ({ page }) => {
   await page.route('**/work-story.js*', route => route.abort());
   await page.goto('/#selected');
-  await expect(page.locator('.selected-card:visible')).toHaveCount(3);
+  await expect(page.locator('.selected-card:visible')).toHaveCount(4);
   await expect(page.locator('[data-case-tabs]')).toBeHidden();
   await page.unroute('**/work-story.js*');
   await page.reload();
   await page.emulateMedia({media:'print'});
-  await expect(page.locator('.selected-card:visible')).toHaveCount(3);
+  await expect(page.locator('.selected-card:visible')).toHaveCount(4);
 });
 
 test('Method is concise, evidence-linked and honest about baseline results', async ({ page }) => {
@@ -63,7 +63,7 @@ test('Method is concise, evidence-linked and honest about baseline results', asy
   await expect(method.locator('.method-example')).toHaveCount(3);
   expect((await method.innerText()).split(/\s+/).length).toBeLessThan(210);
   for (const slug of ['projectlens','policylens','lakehouse']) {
-    await expect(method.locator(`a[href="./preview.html?app=${slug}#case-story"]`)).toBeVisible();
+    await expect(method.locator(slug === 'lakehouse' ? `a[href="./preview.html?app=${slug}#case-story"]` : `a[href="./work/${slug}/#technical-evidence"]`)).toBeVisible();
   }
   await expect(method).toContainText('fails to improve');
   await expect(method).toContainText('simple baseline');

@@ -55,7 +55,7 @@ test('method evidence is available together in reading order', async ({ page }) 
   await page.goto('/#contract');
   const method = page.locator('#contract');
   for (const slug of ['projectlens','policylens','lakehouse']) {
-    await expect(method.locator('a[href="./preview.html?app=' + slug + '#case-story"]')).toBeVisible();
+    await expect(method.locator(slug === 'lakehouse' ? `a[href="./preview.html?app=${slug}#case-story"]` : `a[href="./work/${slug}/#technical-evidence"]`)).toBeVisible();
   }
   const tops = await method.locator('.method-example').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().top));
   expect(tops[0]).toBeLessThan(tops[1]);

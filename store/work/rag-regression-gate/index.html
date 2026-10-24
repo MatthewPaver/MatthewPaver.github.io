@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
-    <title>How I'd stop a RAG regression reaching production · Matthew Paver</title>
+    <title>RAG Regression Gate: keep the right policy within reach · Matthew Paver</title>
     <link rel="canonical" href="https://matthewpaver.github.io/work/rag-regression-gate/" />
-    <meta name="description" content="A retrieval regression gate for RAG: paired bootstrap confidence intervals, a minimum practical drop, and cost recorded beside quality. Results on BEIR SciFact." />
-    <meta property="og:title" content="How I'd stop a RAG regression reaching production" />
-    <meta property="og:description" content="A retrieval regression gate with confidence intervals, tested on BEIR SciFact: it blocks a bad chunking change and passes a better hybrid retriever." />
+    <meta name="description" content="A search update puts an old, unapproved proposal above the current staff policy. RAG Regression Gate compares the sources found before and after the update so a team can investigate before releasing it." />
+    <meta property="og:title" content="RAG Regression Gate: keep the right policy within reach" />
+    <meta property="og:description" content="A search update puts an old, unapproved proposal above the current staff policy. RAG Regression Gate compares the sources found before and after the update so a team can investigate before releasing it." />
     <meta property="og:url" content="https://matthewpaver.github.io/work/rag-regression-gate/" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="https://matthewpaver.github.io/assets/og-image.png" />
@@ -43,23 +43,18 @@
 
     <main class="shell">
       <article id="case" class="case-note">
-        <p class="case-kicker">Case study · RAG Regression Gate</p>
-        <h1>How I'd stop a RAG regression reaching production</h1>
-        <p class="lede">Before an internal help assistant changes, compare which policy sources it finds. RAG Regression Gate keeps source rankings and saved test evidence together for review.</p>
-        <div class="case-actions">
-          <a href="../../demos/rag-gate/">Explore RAG Regression Gate</a>
-          <a href="#technical-evidence">Technical evidence</a>
-          <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Inspect the source</a>
-        </div>
-
-        <h2>The problem</h2>
-        <p>Teams change the retrieval layer constantly: a new embedding model, a different chunk size, a hybrid retriever, a re-ranker. The failure that matters is quiet. The right passage slips from rank 2 to rank 12, drops out of the context window, and the model answers from something else. A spot check of five queries rarely catches it.</p>
-        <p>The opposite failure is just as costly. A gate with a fixed threshold fails good changes on noise, and after a few false alarms people stop trusting it and override it.</p>
-
+<h1>RAG Regression Gate: keep the right policy within reach</h1>
+<p class="lede">A search update puts an old, unapproved proposal above the current staff policy. RAG Regression Gate compares the sources found before and after the update so a team can investigate before releasing it.</p>
+<div class="case-actions"><a href="../../demos/rag-gate/">Explore RAG Regression Gate</a>
+<a href="#technical-evidence">Technical evidence</a>
+<a href="https://github.com/MatthewPaver/rag-retrieval-gate">Inspect the source</a></div>
+<h2>The problem</h2><p>An internal help assistant depends on finding the right documents. A search update can change which policy it finds first, even when every question still finds some relevant evidence. Staff could then receive an answer based on an outdated proposal.</p>
+<h2>The decision it supports</h2><p>The before-and-after view makes that hidden change inspectable. In the synthetic example, the approved retention policy says 30 days; an old 365-day proposal overtakes it after the update. All six question checks still pass, while overall source order worsens. The gate holds the update for investigation.</p>
+<h2>Limits</h2><p>The website explores two saved Python comparisons. It does not run a live assistant, accept uploads or prove generated answers correct. Its six-question examples use threshold-only checks and are smoke tests, not an accuracy benchmark. Engineers must run the command-line tool on representative questions for their own documents. A passing result does not prove an improvement.</p>
+<p class="case-source">Independent public project by Matthew Paver. Examples are synthetic. No client deployment, adoption, time saving or measured commercial benefit is claimed. User comprehension has not yet been measured.</p>
+<h2>Complete journey</h2>
+<ol><li>Explore the held update. Compare the approved policy and old proposal before and after the search change.</li><li>Review all six staff questions and open the source documents. The hold applies to the overall update; another question may show no new drop.</li><li>Switch to the saved unchanged comparison. Read the HTML report or download the exact JSON result for either comparison.</li><li>For your own documents, follow the repository setup and run the gate on labelled questions. The website demonstrates the evidence an engineer can produce.</li></ol>
 <section class="case-comparison" aria-label="RAG Regression Gate before and after">
-          <h2>Make the result clear first</h2>
-<p>RAG Regression Gate keeps its technical name with “Search checks for staff assistants”. The hold result and its consequence now appear before source rankings, including on phones. The unchanged comparison has its own neutral result heading; exact saved engine reports remain available.</p>
-<p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/rag-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/rag-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/rag-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p>
 <h2>Before and after</h2>
           <p>Actual desktop captures at 1280 × 800. The same six-question example moves from a technical metric report to a plain-language source comparison.</p>
           <div class="comparison-pair">
@@ -68,22 +63,11 @@
           </div>
           <p class="case-source">The captures show a clearer review journey. They do not establish time saved, adoption or a measured business outcome.</p>
         </section>
-        <h2>What changed in this release</h2>
-        <p>The product now starts with a staff question: how long should customer event records be kept? The current policy says 30 days. After a chunking change, an unapproved 365-day proposal moves above it. All six case checks still pass, so the source comparison explains a risk a pass count alone hides.</p>
-        <p>Visitors can explore all six questions, inspect every retrieved source, switch to a second saved comparison with no detected regression, then download the exact engine result. The browser explores recorded Python results; it does not run a live assistant. The CLI remains the way to evaluate your own data.</p>
-        <p><a href="../../demos/rag-gate/">Explore the interactive product demo</a> · <a href="../../demos/rag-gate/report.html">Open the full offline report</a> · <a href="../../demos/rag-gate/comparison.json">Download the regression evidence</a></p>
-        <p>The six-question synthetic example regresses MRR from 0.9167 to 0.8333 and nDCG from 0.9385 to 0.8770. Its threshold-only mode is a smoke test, separate from the earlier SciFact evaluation below. Passing the second example means no detected regression, not proof of a good result: the ended refund pilot already ranks first in both runs.</p>
-        <p>Source tests check the generated examples against the real engine. Browser tests cover every question in both comparisons, source inspection, exact downloads, keyboard navigation, reduced motion, phones, unavailable evidence and use without JavaScript. The portable offline report and validated JSON remain available. Reports are unsigned and require a trusted run; user adoption and generated-answer quality remain unproven.</p>
-        <h2>The gate design</h2>
-        <ul>
-          <li><strong>Same questions, two configs.</strong> The baseline config is pinned to production; the pull request edits only the candidate. Both are scored on hit@k, MRR, recall, nDCG and, where labelled, required context, hard negatives and citations.</li>
-          <li><strong>Two conditions to fail.</strong> A metric fails only when the drop exceeds a practical threshold (0.02 absolute) <em>and</em> a 95% paired bootstrap interval over questions (10,000 resamples, fixed seed) excludes zero. The first stops trivial changes blocking a merge; the second stops noise doing it.</li>
-          <li><strong>Cost beside quality.</strong> Every run records index build time, p50 and p95 latency per query, peak memory and model size. These are reported, not gated, because they depend on the runner.</li>
-          <li><strong>No tuning on the test set.</strong> Fusion and re-rank settings are literature defaults fixed before the first run.</li>
-        </ul>
-
-        <h2 id="technical-evidence">Results</h2>
-        <p>BEIR SciFact: 5,183 abstracts, 300 test queries, k=10, each candidate against BM25. Δ is candidate minus baseline.</p>
+<h2>Why the design changed</h2><p>Before, the report opened with technical scores. After, a staff question, the release decision and the source comparison come first. Visitors can inspect six questions, compare a second saved result and choose a readable report or the exact JSON data.</p>
+<h2 id="technical-evidence">Technical evidence</h2>
+<p>The website keeps the saved reports, input fingerprints, configurations and source text inspectable. The separate SciFact benchmark below uses 5,183 abstracts and 300 test questions. Benchmark results describe one public dataset, not staff-policy accuracy or user benefit.</p>
+<p><a href="https://github.com/MatthewPaver/rag-retrieval-gate#results">Results and reproducible tests</a> · <a href="https://github.com/MatthewPaver/rag-retrieval-gate#quickstart">Run locally</a></p>
+<p><a href="../../demos/rag-gate/report.html">Read the held-update report (HTML)</a> · <a href="../../demos/rag-gate/unchanged-report.html">Read the unchanged report (HTML)</a></p><details><summary>Benchmark results and engineering trade-offs</summary><p>BEIR SciFact: 5,183 abstracts, 300 test queries, k=10, each candidate against BM25. Δ is candidate minus baseline.</p>
         <div class="case-table-wrap" role="region" aria-label="Results table, scrolls sideways on small screens" tabindex="0">
           <table class="case-table">
             <caption>Apple M1 Pro, CPU only, Python 3.13. Produced by <code>scripts/results_table.py</code> in the repository.</caption>
@@ -108,19 +92,10 @@
           <li><strong>Deterministic over clever.</strong> No LLM judge and no generator in the loop: the gate is free to run on every pull request and gives the same answer twice.</li>
         </ul>
 
-        <h2>Limits</h2>
-        <ul>
-          <li>One public dataset in one domain. Results on your corpus need your questions.</li>
-          <li>It checks that labelled evidence is retrieved, not that an answer is true.</li>
-          <li>Latency is one laptop CPU, one query at a time, pure-Python BM25. It ranks configurations; it is not a serving benchmark.</li>
-          <li>The interval assumes the labelled questions represent real traffic. If they don't, it is precise about the wrong thing.</li>
-        </ul>
-
-        <div class="case-actions">
-          <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Code, configs and full results on GitHub</a>
-          <a href="../#templates">Back to patterns</a>
-        </div>
-      </article>
+        </details><details><summary>How the release check works</summary><p>Baseline and candidate search configurations use the same labelled questions. A metric fails when its drop exceeds the practical threshold (0.02 absolute by default) and a 95% paired bootstrap interval excludes zero. The small synthetic examples disable bootstrap checks. Build time, latency and memory are reported, not gated. No language-model judge or answer generator is involved.</p></details>
+<details><summary>Design history and earlier captures</summary><p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/rag-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/rag-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/rag-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p></details>
+<div class="case-actions"><a href="../../demos/rag-gate/">Try the updated demo</a><a href="../">All public work</a></div>
+</article>
     </main>
 
     <footer class="shell footer">

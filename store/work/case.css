@@ -1,6 +1,6 @@
 /* Long-form case notes under /work/<case>/. Uses the shared tokens from styles.css. */
 .case-note { max-width: 760px; padding-block: 36px 56px; }
-.case-note h1 { font-family: var(--display); font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.015em; margin: 8px 0 14px; }
+.case-note h1 { max-width: 24ch; font-family: var(--display); font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.015em; margin: 8px 0 14px; }
 .case-note h2 { font-family: var(--display); font-size: clamp(1.45rem, 2.4vw, 1.9rem); letter-spacing: -0.01em; margin: 40px 0 10px; }
 .case-note p, .case-note li { font-size: 1.05rem; line-height: 1.7; }
 .case-note ul { padding-left: 1.2em; }

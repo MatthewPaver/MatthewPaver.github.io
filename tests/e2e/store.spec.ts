@@ -55,7 +55,7 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
     expect((hero?.y ?? 0) + (hero?.height ?? 0)).toBeLessThanOrEqual(721);
   }
   await expect(page.getByRole("heading", { name: "Selected work." })).toBeVisible();
-  await expect(page.locator(".selected-card")).toHaveCount(3);
+  await expect(page.locator(".selected-card")).toHaveCount(4);
   await expect(page.getByRole("link", { name: "Explore the work" })).toHaveAttribute("href", "#selected");
   await expect(page.getByRole("link", { name: "Open CV (PDF)", exact: true })).toHaveAttribute(
     "href",
@@ -98,7 +98,7 @@ test("selected work exposes a result, boundary and case route", async ({ page })
   await expect(policy.getByText("Node.js · AWS IAM · AI evaluation")).toBeVisible();
   await expect(policy.getByRole("link", {name:"Review PolicyLens case", exact:true})).toHaveAttribute(
     "href",
-    "./preview.html?app=policylens",
+    "./work/policylens/",
   );
 
   const project = page.locator('[data-project="projectlens"]');
@@ -106,7 +106,7 @@ test("selected work exposes a result, boundary and case route", async ({ page })
   await expect(project.getByText(/five review questions, including a 73-day finish movement/i)).toBeVisible();
   await expect(project.getByRole("link", {name:"Review ProjectLens case", exact:true})).toHaveAttribute(
     "href",
-    "./preview.html?app=projectlens",
+    "./work/projectlens/",
   );
 });
 
@@ -187,7 +187,7 @@ test("the portfolio remains useful without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator(".selected-card")).toHaveCount(3);
+  await expect(page.locator(".selected-card")).toHaveCount(4);
   await expect(page.getByRole("heading", { name: "PolicyLens", exact: true })).toBeVisible();
   await expect(page.locator(".capability-routes a")).toHaveCount(3);
   await expect(page.locator('.method-example')).toHaveCount(3);

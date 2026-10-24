@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f3f6fa" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
-    <title>Make a permission change understandable before it ships · Matthew Paver</title>
+    <title>PolicyLens: remove risky access, keep the access people need · Matthew Paver</title>
     <link rel="canonical" href="https://matthewpaver.github.io/work/policylens/" />
-    <meta name="description" content="A product landing and real-engine demo explain introduced access, its source, a checked correction and the portable evidence record." />
-    <meta property="og:title" content="Make a permission change understandable before it ships" />
-    <meta property="og:description" content="A product landing and real-engine demo explain introduced access, its source, a checked correction and the portable evidence record." />
+    <meta name="description" content="A permission change lets someone delete a production database. PolicyLens shows where that access came from and checks a correction that keeps required report access." />
+    <meta property="og:title" content="PolicyLens: remove risky access, keep the access people need" />
+    <meta property="og:description" content="A permission change lets someone delete a production database. PolicyLens shows where that access came from and checks a correction that keeps required report access." />
     <meta property="og:url" content="https://matthewpaver.github.io/work/policylens/" />
     <meta property="og:type" content="article" />
     <meta property="og:image" content="https://matthewpaver.github.io/assets/flagships/policylens-product-after.png" />
@@ -22,7 +22,7 @@
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="../../styles.css?v=20260905-5" />
     <link rel="stylesheet" href="../case.css?v=20261007-1" />
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Make a permission change understandable before it ships", "author": {"@type": "Person", "name": "Matthew Paver"}, "url": "https://matthewpaver.github.io/work/policylens/", "inLanguage": "en-GB"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PolicyLens: remove risky access, keep the access people need", "author": {"@type": "Person", "name": "Matthew Paver"}, "url": "https://matthewpaver.github.io/work/policylens/", "inLanguage": "en-GB"}</script>
   </head>
   <body>
     <a class="skip-link" href="#case">Skip to case study</a>
@@ -43,16 +43,18 @@
 
     <main class="shell">
 <article id="case" class="case-note">
-<h1>Make a permission change understandable before it ships</h1>
-<p class="lede">A product landing and real-engine demo explain introduced access, its source, a checked correction and the portable evidence record.</p>
-<div class="case-actions">
-<a href="https://matthewpaver.github.io/iam-policy-auditor/">Explore PolicyLens</a>
+<h1>PolicyLens: remove risky access, keep the access people need</h1>
+<p class="lede">A permission change lets someone delete a production database. PolicyLens shows where that access came from and checks a correction that keeps required report access.</p>
+<div class="case-actions"><a href="https://matthewpaver.github.io/iam-policy-auditor/">Explore PolicyLens</a>
 <a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review">Review your own policies</a>
-<a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a>
 <a href="#technical-evidence">Technical evidence</a>
-</div>
-<h2>The problem</h2>
-<p>A policy diff shows edited JSON, but a reviewer needs to know whether a sensitive request became reachable and whether the correction preserves required access.</p>
+<a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a></div>
+<h2>The problem</h2><p>An engineer reviewing a cloud permission change needs more than a list of edited lines. They need to see what the change allows, whether the risky access is removed and whether the service can still do its job.</p>
+<h2>The decision it supports</h2><p>The review connects a concrete consequence to the policy statement responsible. It then checks a proposed correction against the risky request and the access that must survive. A service owner can inspect what was removed, what was retained and the exported review evidence.</p>
+<h2>Limits</h2><p>The browser checks supplied policies and declared requests, not whole-account safety or production approval. Service control policies, permission boundaries, session policies and cross-account interactions are excluded. Independent AWS simulator comparison remains outstanding. The public demo has no AI or account-analysis service.</p>
+<p class="case-source">Independent public project by Matthew Paver. Examples are synthetic. No client deployment, adoption, time saving or measured commercial benefit is claimed. User comprehension has not yet been measured.</p>
+<h2>Complete journey</h2>
+<ol><li>Open the synthetic permission-change example. Inspect the added database-delete permission and the source statement that grants it.</li><li>Check the correction. See the removed deletion statement and retained report statement, then inspect the separate access verification.</li><li>Download the review JSON. The original proposal stays distinct from the corrected result.</li><li>Choose Use your own policies to open or paste current, proposed and corrected policies with the requests and required access you want checked. Policies stay in the browser.</li></ol>
 <section class="case-comparison" aria-label="PolicyLens before and after">
 <h2>Before and after</h2>
 <p>Actual product-entry captures at 1280 × 720. The before view opens on empty editors; the after view explains the job and runs the labelled synthetic example.</p>
@@ -72,38 +74,13 @@
 </div>
 <p class="case-source">Screenshots show the interaction change. They do not establish time saved, adoption or a measured business outcome.</p>
 </section>
-<h2>What changed</h2>
-<p>
-<strong>Before.</strong> The working review opened on empty policy editors, technical fields and unfilled result regions. A first-time visitor had to infer the product’s value before trying it.</p>
-<p>
-<strong>After.</strong> The landing explains the consequence and offers a three-stage review: inspect introduced access, check a correction, then export the evidence. The example uses the real engine. A source-trace replay has a reduced-motion alternative; keyboard chapter controls, source copying and separate own-policy work support exploration. The original stopped proposal remains distinct from the corrected result.</p>
-<p class="case-source">The earlier workflow iteration remains inspectable: <a href="../../assets/flagships/policylens-before.png">original workflow</a> and <a href="../../assets/flagships/policylens-after.png">first correction workbench</a>. New matched-task captures: <a href="../../assets/flagships/policylens-review-before.png">review before</a> and <a href="../../assets/flagships/policylens-review-after.png">review after</a>.</p>
-<h2>Make the result clear first</h2>
-<p>The deletion consequence and correction action now precede the request and source-code disclosure. A checked correction leads with deletion not allowed by the checked policy and required access preserved; exact requests, decisions and source citations remain inspectable.</p>
-<p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/policylens-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/policylens-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/policylens-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p>
-<h2>Complete journey</h2>
-<ol>
-<li>Follow the synthetic example through risk, source evidence, correction and export. The browser computes the results; the demo is not a prerecorded animation.</li>
-<li>Choose Use your own policies, then open or paste current and proposed JSON with a declared action, resource and condition context.</li>
-<li>Inspect the stop/review/pass outcome and granting statement with its source line.</li>
-<li>Verify a corrected candidate. It must close the declared risk, preserve definite required access and avoid introducing a high or critical finding.</li>
-<li>Export JSON with original and corrected evidence, identities and explicit limits. The published demo runs its deterministic engine in your browser without uploading policies.</li>
-</ol>
-<h2>See what the correction changes</h2>
-<p>The updated correction view shows the actual removed, retained and added statements. In the synthetic example, it removes DeleteProductionDatabase and retains ReadReports. Exact statement JSON remains inspectable. The engine separately confirms that deletion is blocked and the declared report request stays allowed.</p>
-<p>A retained statement is not a promise of retained effective access. A candidate can add a deny while retaining its original allow; the document comparison and access verification show those facts separately.</p>
-<p><a href="../../assets/flagships/policylens-correction-evidence.png">Inspect the desktop correction evidence</a> · <a href="../../assets/flagships/policylens-correction-phone.png">Inspect the phone correction evidence</a></p>
-<h2 id="technical-evidence">Evidence and practical value</h2>
-<p><a href="../../assets/flagships/policylens-example-review.json" download>Inspect the exported synthetic review JSON</a> · <a href="../../assets/flagships/policylens-correction-phone.png">See the verified correction on a phone</a></p>
-<p>The example cites S2 at after.json:10 for the added rds:DeleteDBInstance grant. The corrected candidate removes that access while retaining s3:GetObject on the report. Validation retains the existing engine/module tests, authored 55-case benchmark and six captured grounding expectations. Browser journeys cover the product entry, real-engine correction and export, own files, invalid inputs, missing required access, stale results, late responses, navigation, source copying, phones and reduced motion. These are authored checks, not independent AWS parity evidence or live-model evaluation.</p>
-<p>The demonstrated value is an understandable, inspectable review handoff: a reviewer can see what the checked change allows, why the engine says so, whether a candidate preserves required access and what the exported record contains. Practitioner demand, adoption and measured business benefit remain unvalidated.</p>
-<h2>Limits</h2>
-<p>The supplied documents and declared requests define the scope. SCPs, permission boundaries, session policies and cross-account interactions are excluded. AWS Access Analyzer already checks for new access; PolicyLens offers a smaller local review workflow. Independent AWS simulator comparison remains outstanding. The public browser demo has no AI or account-analysis service.</p>
-<p class="case-source">Independent public project by Matthew Paver. Synthetic demonstrations, updated 23 October 2026. No client deployment or measured commercial result is claimed.</p>
-<div class="case-actions">
-<a href="https://matthewpaver.github.io/iam-policy-auditor/">Try the updated demo</a>
-<a href="../">All public work</a>
-</div>
+<h2>Why the design changed</h2><p>Before, visitors faced empty policy editors before understanding the job. After, a working example leads from the risk to its source, a checked correction and an export. The correction view separates removed, retained and added statements from the engine’s access decisions. Retaining a statement alone does not prove effective access is retained.</p>
+<h2 id="technical-evidence">Technical evidence</h2>
+<p>The example cites S2 at after.json:10 for rds:DeleteDBInstance. The correction removes that access while retaining the declared s3:GetObject report request. Authored checks include a 55-case benchmark and six captured grounding expectations. Browser journeys cover correction and export, own files, invalid inputs, stale results, missing required access, phones and reduced motion. These checks do not establish parity with AWS or live-model quality.</p>
+<p><a href="https://github.com/MatthewPaver/iam-policy-auditor#results">Results and reproducible tests</a> · <a href="https://github.com/MatthewPaver/iam-policy-auditor#quickstart">Run locally</a></p>
+<p><a href="../../assets/flagships/policylens-example-review.json" download>Inspect the exported synthetic review JSON</a>. Exact statements and request decisions remain available beside the plain-language explanation.</p>
+<details><summary>Design history and earlier captures</summary><p class="case-source">The earlier workflow iteration remains inspectable: <a href="../../assets/flagships/policylens-before.png">original workflow</a> and <a href="../../assets/flagships/policylens-after.png">first correction workbench</a>. New matched-task captures: <a href="../../assets/flagships/policylens-review-before.png">review before</a> and <a href="../../assets/flagships/policylens-review-after.png">review after</a>.</p><p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/policylens-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/policylens-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/policylens-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p><p><a href="../../preview.html?app=policylens">Earlier technical walkthrough</a></p></details>
+<div class="case-actions"><a href="https://matthewpaver.github.io/iam-policy-auditor/">Try the updated demo</a><a href="../">All public work</a></div>
 </article>
     </main>
 

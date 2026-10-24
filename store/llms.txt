@@ -103,7 +103,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 ## Reusable templates
 
 - RAG Regression Gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate
-  - Case study, how I'd stop a RAG regression reaching production: https://matthewpaver.github.io/work/rag-regression-gate/
+  - Case study, keep the right policy within reach: https://matthewpaver.github.io/work/rag-regression-gate/
 - ProjectLens before and after: https://matthewpaver.github.io/work/projectlens/
 - PolicyLens before and after: https://matthewpaver.github.io/work/policylens/
 - PySpark and Kafka starter: https://github.com/MatthewPaver/pyspark-kafka-streaming

@@ -34,7 +34,7 @@ test('review the changed evidence, compare another update, and download the exac
   for (const [passed, filename] of [[false, 'comparison.json'], [true, 'unchanged.json']] as const) {
     if (passed) await page.getByRole('button', { name: 'Switch to unchanged ranking', exact: true }).click();
     const downloadEvent = page.waitForEvent('download');
-    await page.getByRole('link', { name: 'Download report', exact: true }).click();
+    await page.getByRole('link', { name: 'Download JSON report', exact: true }).click();
     const download = await downloadEvent;
     expect(download.suggestedFilename()).toBe(filename);
     const downloaded = JSON.parse(await fs.readFile((await download.path())!, 'utf8'));
@@ -47,6 +47,7 @@ test('review the changed evidence, compare another update, and download the exac
   await expect(page.locator('#after-sources h4').first()).toHaveText('Approved retention policy');
   await expect(page.locator('#reproduce')).toContainText('candidate-bm25-b05.json');
   await expect(page.locator('#full-report')).toHaveAttribute('href', 'unchanged-report.html');
+  await expect(page.getByRole('link', { name: 'Read report (HTML)', exact: true })).toHaveAttribute('href', /\/unchanged-report\.html$/);
   await page.getByRole('button', { name: 'Switch to regressing update', exact: true }).click();
   await expect(page.locator('#verdict')).toHaveText('Hold this update');
   expect(errors).toEqual([]);
@@ -84,7 +85,7 @@ test('keyboard controls have bounded navigation and readable status updates', as
   const next = page.getByRole('button', { name: 'Next question', exact: true });
   await next.focus();
   await page.keyboard.press('Enter');
-  await expect(page.locator('#position')).toHaveText('2 of 6');
+  await expect(page.locator('#position')).toHaveText('Question 2 of 6');
   await expect(page.locator('#announcement')).toContainText('How often should production API credentials be rotated?');
   await page.getByLabel('Choose a staff question').selectOption('5');
   await expect(next).toBeDisabled();

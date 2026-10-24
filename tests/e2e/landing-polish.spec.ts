@@ -5,8 +5,8 @@ test('selected cases have direct actions without the redundant jump row', async 
   await page.goto('/#selected');
   await expect(page.getByRole('navigation', { name: 'Jump to a selected project' })).toHaveCount(0);
   await expect(page.getByRole('tablist', {name:'Selected case studies'})).toBeVisible();
-  for (const project of ['policylens', 'projectlens', 'quicksupply']) {
-    await expect(page.locator(`#case-${project} .project-link`)).toHaveAttribute('href', `./preview.html?app=${project}`);
+  for (const project of ['policylens', 'projectlens', 'rag-regression-gate', 'quicksupply']) {
+    await expect(page.locator(`#case-${project} .project-link`)).toHaveAttribute('href', project === 'quicksupply' ? `./preview.html?app=${project}` : `./work/${project}/`);
   }
 });
 

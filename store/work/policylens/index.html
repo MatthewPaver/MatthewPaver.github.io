@@ -49,6 +49,7 @@
 <a href="https://matthewpaver.github.io/iam-policy-auditor/">Explore PolicyLens</a>
 <a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review">Review your own policies</a>
 <a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a>
+<a href="#technical-evidence">Technical evidence</a>
 </div>
 <h2>The problem</h2>
 <p>A policy diff shows edited JSON, but a reviewer needs to know whether a sensitive request became reachable and whether the correction preserves required access.</p>
@@ -92,7 +93,7 @@
 <p>The updated correction view shows the actual removed, retained and added statements. In the synthetic example, it removes DeleteProductionDatabase and retains ReadReports. Exact statement JSON remains inspectable. The engine separately confirms that deletion is blocked and the declared report request stays allowed.</p>
 <p>A retained statement is not a promise of retained effective access. A candidate can add a deny while retaining its original allow; the document comparison and access verification show those facts separately.</p>
 <p><a href="../../assets/flagships/policylens-correction-evidence.png">Inspect the desktop correction evidence</a> · <a href="../../assets/flagships/policylens-correction-phone.png">Inspect the phone correction evidence</a></p>
-<h2>Evidence and practical value</h2>
+<h2 id="technical-evidence">Evidence and practical value</h2>
 <p><a href="../../assets/flagships/policylens-example-review.json" download>Inspect the exported synthetic review JSON</a> · <a href="../../assets/flagships/policylens-correction-phone.png">See the verified correction on a phone</a></p>
 <p>The example cites S2 at after.json:10 for the added rds:DeleteDBInstance grant. The corrected candidate removes that access while retaining s3:GetObject on the report. Validation retains the existing engine/module tests, authored 55-case benchmark and six captured grounding expectations. Browser journeys cover the product entry, real-engine correction and export, own files, invalid inputs, missing required access, stale results, late responses, navigation, source copying, phones and reduced motion. These are authored checks, not independent AWS parity evidence or live-model evaluation.</p>
 <p>The demonstrated value is an understandable, inspectable review handoff: a reviewer can see what the checked change allows, why the engine says so, whether a candidate preserves required access and what the exported record contains. Practitioner demand, adoption and measured business benefit remain unvalidated.</p>

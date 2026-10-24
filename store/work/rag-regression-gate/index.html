@@ -43,9 +43,14 @@
 
     <main class="shell">
       <article id="case" class="case-note">
-        <p class="case-kicker">Case study · RAG retrieval gate</p>
+        <p class="case-kicker">Case study · RAG Regression Gate</p>
         <h1>How I'd stop a RAG regression reaching production</h1>
-        <p class="lede">Retrieval changes are judged by eye more often than any other part of a RAG system. I built a gate that judges them on labelled questions, with statistics, before they merge.</p>
+        <p class="lede">Before an internal help assistant changes, compare which policy sources it finds. RAG Regression Gate keeps source rankings and saved test evidence together for review.</p>
+        <div class="case-actions">
+          <a href="../../demos/rag-gate/">Explore RAG Regression Gate</a>
+          <a href="#technical-evidence">Technical evidence</a>
+          <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Inspect the source</a>
+        </div>
 
         <h2>The problem</h2>
         <p>Teams change the retrieval layer constantly: a new embedding model, a different chunk size, a hybrid retriever, a re-ranker. The failure that matters is quiet. The right passage slips from rank 2 to rank 12, drops out of the context window, and the model answers from something else. A spot check of five queries rarely catches it.</p>
@@ -77,7 +82,7 @@
           <li><strong>No tuning on the test set.</strong> Fusion and re-rank settings are literature defaults fixed before the first run.</li>
         </ul>
 
-        <h2>Results</h2>
+        <h2 id="technical-evidence">Results</h2>
         <p>BEIR SciFact: 5,183 abstracts, 300 test queries, k=10, each candidate against BM25. Δ is candidate minus baseline.</p>
         <div class="case-table-wrap" role="region" aria-label="Results table, scrolls sideways on small screens" tabindex="0">
           <table class="case-table">

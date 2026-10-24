@@ -98,11 +98,11 @@ assertPublicCatalogueText({
 assert.ok(indexHtml.includes('id="selected-heading"'), "The page needs a clear start-here shelf");
 assert.equal((indexHtml.match(/<(?:article|div) class="selected-card"/g) || []).length, 3, "The homepage must stay distilled to three selected projects");
 assert.ok(workHtml.includes('id="templates"'), "Reusable code must have a separate pattern section");
-assert.ok(workHtml.includes("RAG retrieval gate"), "RAG retrieval gate is missing");
+assert.ok(workHtml.includes("RAG Regression Gate"), "RAG Regression Gate is missing");
 const ragCasePath = "store/work/rag-regression-gate/index.html";
 assert.ok(fs.existsSync(path.join(root, ragCasePath)), "RAG regression case study is missing");
 const ragCase = read(ragCasePath);
-assert.ok(workHtml.includes('href="./rag-regression-gate/"'), "The RAG retrieval gate entry must link to its case study");
+assert.ok(workHtml.includes('href="./rag-regression-gate/"'), "The RAG Regression Gate entry must link to its case study");
 assert.ok(ragCase.includes(`rel="canonical" href="${siteBase}/work/rag-regression-gate/"`), "RAG case study needs its canonical URL");
 assert.ok(ragCase.includes('http-equiv="Content-Security-Policy"'), "RAG case study needs a CSP");
 assert.ok(ragCase.includes('application/ld+json'), "RAG case study needs structured data");
@@ -174,7 +174,7 @@ for (const row of rows) {
 }
 
 llms.push("## Reusable templates", "");
-llms.push("- RAG retrieval gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate");
+llms.push("- RAG Regression Gate (CLI and CI gate for retrieval quality): https://github.com/MatthewPaver/rag-retrieval-gate");
 llms.push(`  - Case study, how I'd stop a RAG regression reaching production: ${siteBase}/work/rag-regression-gate/`);
 llms.push(`- ProjectLens before and after: ${siteBase}/work/projectlens/`);
 llms.push(`- PolicyLens before and after: ${siteBase}/work/policylens/`);

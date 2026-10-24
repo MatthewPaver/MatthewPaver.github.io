@@ -1,27 +1,42 @@
 // Real local application states only. Start PolicyLens on 4177 and ProjectLens docs on 4377.
-import { chromium } from "@playwright/test";
+// Current captures default to the published products; optional URLs support local verification.
+// Historical assets are immutable: new previews always use a dated path under assets/previews/.
+import { chromium, expect } from "@playwright/test";
 import fs from "node:fs";
 import crypto from "node:crypto";
 
+const date = process.argv[2] ?? new Date().toISOString().slice(0, 10);
+if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("Capture date must be YYYY-MM-DD");
+const directory = "store/assets/previews";
+fs.mkdirSync(directory, { recursive: true });
+const products = [
+  ["projectlens", "ProjectLens", process.env.PROJECTLENS_CAPTURE_URL ?? "https://matthewpaver.github.io/ProjectLens/change-assurance.html", "#example-finish"],
+  ["policylens", "PolicyLens", process.env.POLICYLENS_CAPTURE_URL ?? "https://matthewpaver.github.io/iam-policy-auditor/", "#demoAfter"],
+  ["rag-regression-gate", "RAG Regression Gate", process.env.RAG_CAPTURE_URL ?? "https://matthewpaver.github.io/demos/rag-gate/", "#switch-result"],
+];
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1200, height: 900 }, reducedMotion: "reduce" });
 const captured = [];
-async function capture(locator, file, source, state) {
-  await locator.screenshot({ path: `store/assets/${file}` });
-  const bytes = fs.readFileSync(`store/assets/${file}`);
-  captured.push({ file, source, state, capturedAt: new Date().toISOString(), sha256: crypto.createHash("sha256").update(bytes).digest("hex") });
+try {
+  for (const [slug, product, url, ready] of products) {
+    const page = await browser.newPage({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });
+    const response = await page.goto(url, { waitUntil: "networkidle" });
+    if (response?.status() !== 200) throw new Error(`${product} capture did not load successfully`);
+    if (slug === "policylens") await expect(page.locator(ready)).toHaveText("Allow");
+    else await expect(page.locator(ready)).toBeEnabled();
+    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(() => document.getAnimations().forEach(animation => animation.finish()));
+    const file = `${slug}-${date}.png`;
+    await page.screenshot({ path: `${directory}/${file}` });
+    captured.push({
+      product, url, captured_utc: new Date().toISOString(), viewport: { width: 1280, height: 800 },
+      state: "Current published landing with ready synthetic example; reduced motion; no input files or edits",
+      file, sha256: crypto.createHash("sha256").update(fs.readFileSync(`${directory}/${file}`)).digest("hex"),
+      source_html_sha256: crypto.createHash("sha256").update(await response.body()).digest("hex"),
+    });
+    await page.close();
+  }
+  fs.writeFileSync(`${directory}/captures.json`, JSON.stringify(captured, null, 2) + "\n");
+} finally {
+  await browser.close();
 }
-await page.goto("http://127.0.0.1:4177/", { waitUntil: "networkidle" });
-await page.getByRole("button", { name: "Change review", exact: true }).click();
-await page.locator("#loadChangeExample").click();
-await page.locator("#compareBtn").click();
-await page.locator("#compareResult .verdict").waitFor({ state: "visible" });
-await capture(page.locator("#compareResult"), "policylens-review.png", "iam-policy-auditor/public/index.html", "Bundled before/after AWS policy example after Review this change; AI disabled");
-await page.goto("http://127.0.0.1:4377/change-assurance.html", { waitUntil: "networkidle" });
-await page.locator("#loadAssuranceDemo").click();
-await page.locator("#requestAnswers").click();
-await page.locator("#requestPanel").waitFor({ state: "visible" });
-await page.evaluate(() => document.fonts.ready);
-await capture(page.locator("#requestPanel"), "projectlens-questions.png", "ProjectLens/docs/change-assurance.html", "Synthetic Northstar example, Draft questions for the team; no real client data");
-fs.writeFileSync("store/assets/evidence-captures.json", JSON.stringify(captured, null, 2) + "\n");
-await browser.close();
+console.log(`Captured ${captured.length} current previews. Historical captures unchanged.`);

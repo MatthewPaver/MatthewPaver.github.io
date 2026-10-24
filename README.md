@@ -2,7 +2,7 @@
 
 Source for [matthewpaver.github.io](https://matthewpaver.github.io/), a public portfolio of software, AI evaluation and data engineering work.
 
-The homepage gives hiring managers a short route through three selected projects. The full work page contains seven public projects and three smaller reusable patterns. Private repositories do not appear in either view.
+The homepage gives hiring managers a short route through four selected projects, including three flagship review tools. The full work page contains seven public projects and three smaller reusable patterns. Private repositories do not appear in either view.
 
 ## Source of truth
 

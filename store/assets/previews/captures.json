@@ -1,0 +1,41 @@
+[
+  {
+    "product": "ProjectLens",
+    "url": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+    "captured_utc": "2026-10-24T16:23:11.766Z",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "Current published landing with ready synthetic example; reduced motion; no input files or edits",
+    "file": "projectlens-2026-10-24.png",
+    "sha256": "759b00b07bd316c668d92e91bbd5cd2ece06886bc94d2c91f12a341a7ffca54c",
+    "source_html_sha256": "cfb66722962adf4a129ba97f671a1fbdaba59d467232f63553b26526775b5a87"
+  },
+  {
+    "product": "PolicyLens",
+    "url": "https://matthewpaver.github.io/iam-policy-auditor/",
+    "captured_utc": "2026-10-24T16:23:14.491Z",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "Current published landing with ready synthetic example; reduced motion; no input files or edits",
+    "file": "policylens-2026-10-24.png",
+    "sha256": "dfae84718d7c87c78608b7f8480be7824a1406515d82937dbc59abb6d7b0245b",
+    "source_html_sha256": "951c881cf54b52a7a2db6169fa10f7fc12320346d3fa6c8f48687f3d9a948cf2"
+  },
+  {
+    "product": "RAG Regression Gate",
+    "url": "https://matthewpaver.github.io/demos/rag-gate/",
+    "captured_utc": "2026-10-24T16:23:15.862Z",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "Current published landing with ready synthetic example; reduced motion; no input files or edits",
+    "file": "rag-regression-gate-2026-10-24.png",
+    "sha256": "4353f715395b40a553f8bfc673763c28c2b283425824d93508162932092beaa3",
+    "source_html_sha256": "ff90789403413995e66f8773eac461217c27304251879237429ae8782f1f4cd6"
+  }
+]

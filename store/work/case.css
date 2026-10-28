@@ -4,8 +4,8 @@
 .case-note > :not(.case-head):not(.case-comparison) { max-width: 70ch; }
 .case-head { display: grid; gap: 28px; align-items: center; margin-bottom: 24px; }
 @media (min-width: 1100px) { .case-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; } .case-head .case-hero { margin: 0; } }
-.case-standfirst { margin: 0 0 14px; font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; line-height: 1.3; letter-spacing: -.01em; color: var(--ink); }
-.case-note h1 { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 8px 0 12px; }
+.case-note .case-standfirst { margin: 0 0 14px; font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; line-height: 1.3; letter-spacing: -.01em; color: var(--ink); }
+.case-note h1 { max-width: none; font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 8px 0 12px; text-wrap: balance; }
 .case-note h2 { font-family: var(--display); font-size: clamp(1.45rem, 2.4vw, 1.9rem); letter-spacing: -0.01em; margin: 40px 0 10px; }
 .case-note p, .case-note li { font-size: 1.05rem; line-height: 1.7; }
 .case-note ul { padding-left: 1.2em; }

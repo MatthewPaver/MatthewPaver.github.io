@@ -31,8 +31,8 @@
       "width": 1280,
       "height": 800
     },
-    "state": "First screen with the made-up example ready, after the 28 Oct plain-language and UX passes; reduced motion; light scheme; no edits",
+    "state": "First screen with the made-up example ready, after the 28 Oct plain-language, UX and round-2 passes (connector lines in the column gap); captured from this branch's local build; reduced motion; light scheme; no edits",
     "file": "rag-regression-gate-2026-10-28.png",
-    "sha256": "6c4bb830f064588512b5e3cf218e3f96d757ef5f2d8076d66aa1e1362d46701f"
+    "sha256": "0bef1c99edf625961f0d2422cdfa7546ce97416f6085322fb0310c0adcd3cdc7"
   }
 ]

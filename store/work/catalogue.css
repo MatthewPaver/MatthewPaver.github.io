@@ -1,7 +1,7 @@
 /* First-use guidance is scoped to the catalogue; the landing keeps its story layout. */
 .work-hero { max-width:780px; padding-block:36px 28px; }
 .work-hero h1 { max-width:none; font-size:clamp(2.6rem,5vw,4rem); line-height:1.1; margin-bottom:14px; }
-.work-hero .lede { font-size:1.05rem; line-height:1.6; }
+.work-hero .lede { font-size:1.15rem; line-height:1.55; }
 .catalogue-heading { padding-top:22px; margin-bottom:18px; }
 .catalogue-heading h2 { font-family:var(--body); font-size:1.1rem; line-height:1.4; }
 .catalogue-controls { grid-template-columns:minmax(220px,1fr) auto; background:transparent; border:0; padding:0; gap:14px 20px; }
@@ -22,13 +22,13 @@
 .work-card-copy > .work-access { margin:0 0 14px; color:var(--accent-dark); font-size:.875rem; font-weight:700; line-height:1.6; }
 .work-card-copy > p { font-size:1rem; line-height:1.65; }
 .work-card-proof { margin:18px 0; grid-template-columns:1fr; gap:14px; }
-.work-card-proof dt { font-size:.8rem; text-transform:none; letter-spacing:0; }
+.work-card-proof dt { font-size:0.8125rem; text-transform:none; letter-spacing:0; }
 .work-card-proof dd { font-size:.95rem; line-height:1.55; font-weight:500; }
 .work-card-proof div:last-child dd { color:var(--muted); }
 .work-launch { display:flex; align-items:center; justify-content:center; min-height:44px; padding:10px 12px; border:1px solid var(--ink); border-radius:var(--control-radius); color:var(--paper); background:var(--ink); text-decoration:none; font-size:.82rem; font-weight:700; }
 .work-launch:hover { background:var(--accent-dark); border-color:var(--accent-dark); }
 .work-card-copy > .work-launch { margin-bottom:10px; }
-.work-card .project-link { display:flex; align-items:center; min-height:44px; margin:4px 0 0; font-size:.8rem; }
+.work-card .project-link { display:flex; align-items:center; min-height:44px; margin:4px 0 0; font-size:0.8125rem; }
 .work-first-steps { margin-top:8px; border-top:1px solid var(--line); font-size:.875rem; line-height:1.65; }
 .work-first-steps summary { padding:12px 0; min-height:44px; cursor:pointer; color:var(--ink); font-weight:700; }
 .work-first-steps ol { margin:4px 0 12px; padding-left:20px; }
@@ -55,7 +55,7 @@
   .catalogue-clear { grid-column:2; grid-row:3; margin-top:-8px; }
   .work-filters { display:none; }
   .catalogue-heading { align-items:baseline; flex-direction:row; flex-wrap:wrap; gap:4px 12px; padding-top:18px; margin-bottom:16px; }
-  .catalogue-heading p { font-size:.8rem; }
+  .catalogue-heading p { font-size:0.8125rem; }
 }
 @media print {
   .work-first-steps { display:none; }

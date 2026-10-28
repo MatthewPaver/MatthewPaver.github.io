@@ -22,7 +22,7 @@
 .preview-meta { grid-template-columns:1fr 1fr; }
 .preview-meta div { padding:14px 18px; }
 .preview-meta div:last-child { grid-column:1/-1; border-top:1px solid var(--line); }
-.preview-meta span { text-transform:none; letter-spacing:0; font-size:.8rem; }
+.preview-meta span { text-transform:none; letter-spacing:0; font-size:0.8125rem; }
 .preview-meta strong { font-size:.875rem; line-height:1.5; }
 .preview-layout { grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr); gap:clamp(28px,5vw,64px); padding-bottom:48px; scroll-margin-top:32px; }
 .preview-panel { padding:0; border:0; background:transparent; min-width:0; }

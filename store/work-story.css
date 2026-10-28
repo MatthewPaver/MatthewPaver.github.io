@@ -23,7 +23,7 @@
 .portfolio-landing [data-story-mode="tabs"] .project-copy { padding:0; }
 .portfolio-landing [data-story-mode="tabs"] .project-title-line h3 { font-size:clamp(1.75rem,2.6vw,2.5rem); }
 .portfolio-landing [data-story-mode="tabs"] .project-audience { min-height:0; margin-top:18px; color:var(--accent); font-size:1rem; font-weight:700; }
-.portfolio-landing [data-story-mode="tabs"] .project-summary { min-height:0; font-size:.95rem; }
+.portfolio-landing [data-story-mode="tabs"] .project-summary { min-height:0; font-size:1rem; }
 .method-examples { margin-top:32px; }
 .method-example { display:grid; grid-template-columns:.9fr 1.1fr; gap:40px; padding-block:24px; border-top:1px solid var(--line); }
 .method-example h3 { margin:0; font-size:1.18rem; line-height:1.4; letter-spacing:-.02em; }

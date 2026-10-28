@@ -17,11 +17,10 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <link rel="apple-touch-icon" href="../assets/apple-touch-icon.svg" />
-    <link rel="preload" href="../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="../assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="../styles.css?v=20261028-1" />
-    <link rel="stylesheet" href="./catalogue.css?v=20261028-1" />
+    <link rel="stylesheet" href="./catalogue.css?v=20261028-2" />
     <link rel="stylesheet" href="./covers.css?v=20261028-1" />
     <script src="./catalogue.js?v=20261028-1" type="module"></script>
   </head>
@@ -45,7 +44,7 @@
 
     <main class="shell work-page">
       <header class="work-hero">
-        <h1>Explore my work.</h1>
+        <h1>All work</h1>
         <p class="lede">Try a tool in your browser, read how it was built or start from working code. Each card says what you can do and what to know first.</p>
       </header>
 
@@ -76,7 +75,7 @@
           <article class="work-card app-card image-card" data-catalogue-item data-mode="browser local" data-slug="policylens" data-category="decision" data-status="Public" data-problem="Reviewers can see a risky policy diff without proving which sensitive request became reachable" data-solves="Turns an IAM policy diff into a cited stop or pass decision" data-proof="Browser review with a checked fix and JSON export; my own 55-case benchmark; not yet compared with the AWS simulator">
             <div class="app-cover" data-cover="policylens">
               <div class="app-cover-screen">
-                <img src="../assets/previews/policylens-2026-10-24-terms.png" width="1280" height="800" alt="PolicyLens product landing and working permission-change example" loading="eager" decoding="async" />
+                <img src="../assets/previews/policylens-2026-10-28.png" width="1280" height="800" alt="PolicyLens product landing and working permission-change example" loading="eager" decoding="async" />
               </div>
             </div>
             <div class="work-card-copy">
@@ -85,8 +84,8 @@
               <p>For anyone reviewing an AWS permission change: see what new access it gives, which line causes it and whether a proposed fix works.</p>
               <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>A change that suddenly allows deleting a database, and the policy line that allows it.</dd></div><div><dt>Limits</dt><dd>Checks only the policies you give it. Account-wide checks need the local Node.js version.</dd></div></dl>
               <a class="work-launch" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the example</a>
-              <a class="button ghost" href="./policylens/">Case study</a> <a class="project-link" href="../preview.html?app=policylens">How it works</a>
-              <details class="work-first-steps"><summary>First steps</summary><ol><li>Open the example permission change.</li><li>See the new access and the line behind it, then check the proposed fix.</li><li>Download the review record, or choose Use your own policies to check two JSON files.</li></ol><p>No install or API key for the browser version. Organisation-wide rules, permission boundaries and session policies are not checked.</p></details>
+              <a class="project-link" href="./policylens/">Read the case study</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Open the example permission change.</li><li>See the new access and the line behind it, then check the proposed fix.</li><li>Download the review record, or choose Use your own policies to check two JSON files.</li></ol><p>No install or API key for the browser version. Organisation-wide rules, permission boundaries and session policies are not checked.</p><p class="first-steps-more"><a class="first-steps-link" href="../preview.html?app=policylens">How it works</a></p></details>
             </div>
           </article>
 
@@ -94,7 +93,7 @@
             <div class="app-cover app-cover--photo" data-cover="construction">
               <img class="app-cover-photo" src="../assets/photography/construction.jpg" width="1200" height="711" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div class="app-cover-screen">
-                <img src="../assets/previews/projectlens-2026-10-24-terms.png" width="1280" height="800" alt="ProjectLens product landing with the synthetic Northstar finish comparison" loading="lazy" decoding="async" />
+                <img src="../assets/previews/projectlens-2026-10-28.png" width="1280" height="800" alt="ProjectLens product landing with the synthetic Northstar finish comparison" loading="lazy" decoding="async" />
               </div>
             </div>
             <div class="work-card-copy">
@@ -103,16 +102,15 @@
               <p>For project reviewers: check whether a written project update agrees with its schedule files, then record what to ask and what you decided.</p>
               <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>The example’s finish date moves 73 days while its update says nothing changed.</dd></div><div><dt>Limits</dt><dd>Shows what changed, not why or who is responsible.</dd></div></dl>
               <a class="work-launch" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open the example</a>
-              <a class="project-link" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the guided walkthrough</a>
-              <a class="button ghost" href="./projectlens/">Case study</a> <a class="project-link" href="../preview.html?app=projectlens">How it works</a>
-              <details class="work-first-steps"><summary>First steps</summary><ol><li>Select Try the Northstar example.</li><li>Open the top findings and the dates behind them.</li><li>Select Use your own schedules to compare two Primavera P6 exports.</li></ol><p>Files stay in your browser. Download your record to keep a copy; there is no shared team workspace.</p></details>
+              <a class="project-link" href="./projectlens/">Read the case study</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Select Try the Northstar example.</li><li>Open the top findings and the dates behind them.</li><li>Select Use your own schedules to compare two Primavera P6 exports.</li></ol><p>Files stay in your browser. Download your record to keep a copy; there is no shared team workspace.</p><p class="first-steps-more"><a class="first-steps-link" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the guided walkthrough</a> <a class="first-steps-link" href="../preview.html?app=projectlens">How it works</a></p></details>
             </div>
           </article>
 
           <article class="work-card app-card image-card" data-catalogue-item data-mode="browser local" data-slug="rag-regression-gate" data-category="decision" data-status="Public" data-problem="A search update can rank an outdated document above the current policy while every question still passes" data-solves="Holds a search update when the right documents drop down the results" data-proof="Two saved comparisons in the browser; SciFact benchmark with paired bootstrap intervals; command-line gate for CI">
             <div class="app-cover" data-cover="rag">
               <div class="app-cover-screen">
-                <img src="../assets/previews/rag-regression-gate-2026-10-24-terms.png" width="1280" height="800" alt="RAG Regression Gate comparing where the approved policy and an old proposal rank before and after an update" loading="lazy" decoding="async" />
+                <img src="../assets/previews/rag-regression-gate-2026-10-28.png" width="1280" height="800" alt="RAG Regression Gate comparing where the approved policy and an old proposal rank before and after an update" loading="lazy" decoding="async" />
               </div>
             </div>
             <div class="work-card-copy">
@@ -121,8 +119,8 @@
               <p>For teams running an AI assistant that looks up documents: check that a search update still finds the right policy before staff rely on it.</p>
               <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>See an old 365-day proposal overtake the approved 30-day policy, while all six question checks still pass.</dd></div><div><dt>Limits</dt><dd>Checks which documents are found, not whether the assistant’s answers are right.</dd></div></dl>
               <a class="work-launch" href="../demos/rag-gate/">Open the example</a>
-              <a class="button ghost" href="./rag-regression-gate/">Case study</a> <a class="project-link" href="../preview.html?app=rag-regression-gate">How it works</a>
-              <details class="work-first-steps"><summary>First steps</summary><ol><li>Open the example and compare where the two documents rank.</li><li>Step through the six staff questions and open the documents.</li><li>To test your own documents, follow the setup in the repository.</li></ol><p>The website shows saved results. It does not run an assistant or accept uploads.</p></details>
+              <a class="project-link" href="./rag-regression-gate/">Read the case study</a>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Open the example and compare where the two documents rank.</li><li>Step through the six staff questions and open the documents.</li><li>To test your own documents, follow the setup in the repository.</li></ol><p>The website shows saved results. It does not run an assistant or accept uploads.</p><p class="first-steps-more"><a class="first-steps-link" href="../preview.html?app=rag-regression-gate">How it works</a></p></details>
             </div>
           </article>
 
@@ -229,7 +227,7 @@
 
       <section id="templates" class="template-shelf" aria-labelledby="templates-heading">
         <header class="section-intro">
-          <h2 id="templates-heading">Code examples you can reuse.</h2>
+          <h2 id="templates-heading">Code examples</h2>
           <p>For developers and data engineers. Run the included example, check the output, then swap in your own data.</p>
         </header>
         <div class="template-list">

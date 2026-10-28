@@ -5,14 +5,14 @@ test('homepage navigation always exposes the full project catalogue', async ({ p
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   for (const width of [320, 390, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
-    const catalogue = nav.getByRole('link', { name: 'All projects', exact: true });
+    const catalogue = nav.getByRole('link', { name: 'All work', exact: true });
     await expect(catalogue).toBeVisible();
     await expect(catalogue).toHaveAttribute('href', './work/');
     const box = await catalogue.boundingBox();
     expect(box!.height).toBeGreaterThanOrEqual(44);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
   }
-  await nav.getByRole('link', { name: 'All projects', exact: true }).click();
+  await nav.getByRole('link', { name: 'All work', exact: true }).click();
   await expect(page).toHaveURL(/\/work\/$/);
   await expect(page.locator('.work-card')).toHaveCount(8);
   await expect(page.locator('.template-row')).toHaveCount(2);
@@ -40,7 +40,7 @@ test("enterprise palette keeps hero links and actions readable in both themes", 
 test("homepage is a compact public portfolio with a personal introduction", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Matthew Paver \| AI solutions architect/);
-  const heroHeading = page.getByRole("heading", { name: "AI architecture. Working software." });
+  const heroHeading = page.getByRole("heading", { name: "I design AI systems and build them." });
   await expect(heroHeading).toBeVisible();
   if (test.info().project.name === "desktop") {
     const lines = await heroHeading.evaluate((heading) => {
@@ -54,7 +54,7 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
     const hero = await page.locator(".hero").boundingBox();
     expect((hero?.y ?? 0) + (hero?.height ?? 0)).toBeLessThanOrEqual(721);
   }
-  await expect(page.getByRole("heading", { name: "Selected work." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Selected work", exact: true })).toBeVisible();
   await expect(page.locator(".selected-card")).toHaveCount(4);
   await expect(page.getByRole("link", { name: "See my work" })).toHaveAttribute("href", "#selected");
   await expect(page.getByRole("link", { name: "Open CV (PDF)", exact: true })).toHaveAttribute(
@@ -67,7 +67,7 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
 test("Method gives three direct paths to project evidence", async ({ page }) => {
   await page.goto("/#contract");
   const method = page.locator("#contract");
-  await expect(method.getByRole("heading", {name:"How I work."})).toBeVisible();
+  await expect(method.getByRole("heading", {name:"How I work", exact: true})).toBeVisible();
   await expect(method.locator(".method-example")).toHaveCount(3);
   await method.getByRole("link", {name:"Read the lakehouse evaluation"}).click();
   await expect(page).toHaveURL(/app=lakehouse#case-story$/);
@@ -175,7 +175,7 @@ test("PolicyLens has an indexable detail page and public source", async ({ page 
     "https://matthewpaver.github.io/store/apps/policylens/",
   );
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /previews\/policylens-2026-10-24-terms\.png$/);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /previews\/policylens-2026-10-28\.png$/);
   await expect(page.getByRole("heading", { name: "What the example shows" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Run public IAM demo" }).first()).toHaveAttribute(
     "href",
@@ -207,7 +207,7 @@ test("mobile layout has usable controls and no page-level horizontal overflow", 
   const box = await button.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(44);
-  await expect(page.getByRole("link", { name: "All projects", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "All work", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Method", exact: true })).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "CV (PDF)", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "About", exact: true })).toBeVisible();

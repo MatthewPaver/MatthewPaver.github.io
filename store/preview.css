@@ -22,7 +22,7 @@
 .preview-meta { grid-template-columns:1fr 1fr; }
 .preview-meta div { padding:14px 18px; }
 .preview-meta div:last-child { grid-column:1/-1; border-top:1px solid var(--line); }
-.preview-meta span { text-transform:none; letter-spacing:0; font-size:.8rem; }
+.preview-meta span { text-transform:none; letter-spacing:0; font-size:0.8125rem; }
 .preview-meta strong { font-size:.875rem; line-height:1.5; }
 .preview-layout { grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr); gap:clamp(28px,5vw,64px); padding-bottom:48px; scroll-margin-top:32px; }
 .preview-panel { padding:0; border:0; background:transparent; min-width:0; }
@@ -33,7 +33,7 @@
 .preview-panel p { margin:12px 0 0; }
 .preview-list { margin-top:12px; }
 .preview-technical { margin-top:28px; border-block:1px solid var(--line); }
-.preview-technical summary { min-height:48px; padding:14px 0; cursor:pointer; font-weight:750; }
+.preview-technical summary { min-height:48px; padding:14px 0; cursor:pointer; font-weight:700; }
 .preview-technical .preview-list { margin-top:0; }
 .preview-stack { margin:12px 0 24px; }
 .preview-nav { flex-wrap:wrap; gap:8px 20px; }

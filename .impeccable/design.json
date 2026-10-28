@@ -333,11 +333,11 @@
     "typographyMeta": {
       "display": {
         "displayName": "Catalogue / Preview Display",
-        "purpose": "Newsreader default outside the scoped landing variant; route and responsive rules may refine its size."
+        "purpose": "Hanken Grotesk default outside the scoped landing variant; route and responsive rules may refine its size."
       },
       "headline": {
         "displayName": "Section Headline",
-        "purpose": "Newsreader section headings in the catalogue and preview family."
+        "purpose": "Hanken Grotesk section headings in the catalogue and preview family."
       },
       "body": {
         "displayName": "Operational Body",
@@ -349,15 +349,15 @@
       },
       "landing-display": {
         "displayName": "Landing Display",
-        "purpose": "The two-line personal opening, using the existing locally hosted Manrope font."
+        "purpose": "The two-line personal opening, using the existing locally hosted Hanken Grotesk font."
       },
       "landing-headline": {
         "displayName": "Landing Headline",
-        "purpose": "Manrope section headings in the landing variant."
+        "purpose": "Hanken Grotesk section headings in the landing variant."
       },
       "landing-title": {
         "displayName": "Landing Project Title",
-        "purpose": "Compact high-weight Manrope titles below real project captures."
+        "purpose": "Compact high-weight Hanken Grotesk titles below real project captures."
       }
     },
     "shadows": [
@@ -516,7 +516,7 @@
       "name": "Shared Evidence Card",
       "kind": "card",
       "refersTo": "evidence-card",
-      "description": "Retained shared evidence-card treatment. The landing instead uses an unboxed card with a 14px media frame and Manrope title; this legacy sample is not its current composition.",
+      "description": "Retained shared evidence-card treatment. The landing instead uses an unboxed card with a 14px media frame and Hanken Grotesk title; this legacy sample is not its current composition.",
       "html": "<article class=\"ds-evidence-card\"><div class=\"ds-evidence-media\">REAL INTERFACE CAPTURE</div><div class=\"ds-evidence-copy\"><small>For cloud security reviewers</small><h3>PolicyLens</h3><p>See exactly how a permission change alters access.</p><dl><div><dt>Reproduced result</dt><dd>One decision path with cited policy evidence.</dd></div><div><dt>Boundary</dt><dd>Code owns the verdict; AI only explains it.</dd></div></dl><a href=\"#\">Open case →</a></div></article>",
       "css": ".ds-evidence-card { overflow:hidden; border:1px solid var(--line-strong,#8194a8); border-radius:5px; background:var(--canvas,#f3f6fa); color:var(--ink,#152b47); font-family:var(--body,sans-serif); } .ds-evidence-media { min-height:170px; padding:20px; border-bottom:1px solid var(--line-strong,#8194a8); background:#142e48; color:#f0f6fc; font-size:.7rem; font-weight:800; letter-spacing:.05em; } .ds-evidence-copy { padding:24px; } .ds-evidence-copy small { color:var(--accent-dark,#16456b); font-weight:750; } .ds-evidence-copy h3 { margin:8px 0 12px; font:700 2.4rem/.98 var(--display,serif); letter-spacing:-.025em; } .ds-evidence-copy p { color:var(--muted,#506278); line-height:1.55; } .ds-evidence-copy dl { margin:22px 0 16px; } .ds-evidence-copy dl div { padding:10px 0; border-top:1px solid var(--line,#c7d3df); } .ds-evidence-copy dt { color:var(--muted,#506278); font-size:.72rem; font-weight:750; } .ds-evidence-copy dd { margin:3px 0 0; font-size:.8rem; font-weight:700; } .ds-evidence-copy a { display:inline-flex; min-height:44px; align-items:center; color:inherit; font-weight:800; text-underline-offset:.22em; } .ds-evidence-copy a:focus-visible { outline:3px solid var(--focus,#006b95); outline-offset:3px; }"
     },
@@ -562,9 +562,9 @@
   ],
   "narrative": {
     "northStar": "The Evidence Catalogue",
-    "overview": "The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.\n\nThe landing variant lets working software lead: a personal introduction sits beside a substantial screening room, followed by a scroll-led sequence of real captures and short case stories. Compact cards remain the small-screen, reduced-motion and simple-view presentation. Manrope takes the display role here, while the catalogue and previews retain Newsreader's editorial hierarchy. Motion supports discovery and workflow: reveals settle after entry, the recording starts only on request, and the slow source-to-output path can be paused.\n\nThe user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing and `store/work-story.css` scopes the optional project sequence; `store/styles.css` remains the shared catalogue/preview foundation.",
+    "overview": "The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.\n\nThe landing variant lets working software lead: a personal introduction sits beside a substantial screening room, followed by a scroll-led sequence of real captures and short case stories. Compact cards remain the small-screen, reduced-motion and simple-view presentation. Hanken Grotesk takes the display role here, while the catalogue and previews retain Hanken Grotesk's editorial hierarchy. Motion supports discovery and workflow: reveals settle after entry, the recording starts only on request, and the slow source-to-output path can be paused.\n\nThe user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing and `store/work-story.css` scopes the optional project sequence; `store/styles.css` remains the shared catalogue/preview foundation.",
     "keyCharacteristics": [
-      "A media-led Manrope landing and a Newsreader-led editorial catalogue.",
+      "A media-led Hanken Grotesk landing and a Hanken Grotesk-led editorial catalogue.",
       "Navy identity, cyan emphasis and accessible blue actions against cool neutral surfaces.",
       "Real product captures framed as working software, not generated artwork.",
       "Softened media frames on the landing; compact rectilinear catalogue controls and cards.",
@@ -579,7 +579,7 @@
       },
       {
         "name": "The Claim and Evidence Rule",
-        "body": "In the catalogue and previews, serif type makes the claim and sans-serif type explains, qualifies and proves it. The media-led landing deliberately uses Manrope for both roles; preserve that scoped distinction.",
+        "body": "In the catalogue and previews, serif type makes the claim and sans-serif type explains, qualifies and proves it. The media-led landing deliberately uses Hanken Grotesk for both roles; preserve that scoped distinction.",
         "section": "typography"
       },
       {
@@ -599,7 +599,7 @@
       "Do use navy for identity and cyan/blue for meaningful actions, workflow and selection.",
       "Do preserve dark mode, visible keyboard focus, reduced motion and touch-safe controls.",
       "Do keep private work out of public catalogues and previews.",
-      "Do preserve the Manrope landing and Newsreader catalogue/preview variants instead of applying either globally.",
+      "Do preserve the Hanken Grotesk landing and Hanken Grotesk catalogue/preview variants instead of applying either globally.",
       "Do keep video user-initiated and background motion pausable, with static and no-JavaScript fallbacks."
     ],
     "donts": [

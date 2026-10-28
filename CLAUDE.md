@@ -14,7 +14,7 @@ This repository owns `matthewpaver.github.io`. The root route is the canonical p
 
 - The site is hand-written static HTML in `store/`; there is no framework build. Primary content and links must work without client JavaScript.
 - Catalogue sources: `store/app-index.csv` (eight rows) and `store/previews.json` (same order) feed `store/work/index.html` cards, `preview.html?app=<slug>` and the generated `/store/apps/<slug>/` pages; `scripts/validate-store.mjs` asserts they stay in sync with the work page and `store/sitemap.xml`.
-- The only runtime npm deps are `@fontsource-variable/manrope` and `@fontsource-variable/newsreader`, whose woff2 files `prepare-pages-artifact.mjs` copies into `pages-dist/assets/fonts/`; `@playwright/test` is the only dev dep.
+- The only runtime npm dep is `@fontsource-variable/hanken-grotesk`, whose woff2 file `prepare-pages-artifact.mjs` copies into `pages-dist/assets/fonts/`; `@playwright/test` is the only dev dep.
 - Client JavaScript only enhances search, filtering, copy actions and theme choice.
 - Product screenshots must show real interfaces or clearly labelled synthetic outputs.
 - The old `MatthewPaver/store/` routes (including `store/workbench.html`) redirect here; the profile repo's Pages build writes redirect-only HTML for a fixed list of legacy routes.
@@ -29,7 +29,7 @@ This repository owns `matthewpaver.github.io`. The root route is the canonical p
 
 ## Design language
 
-`DESIGN.md` is the source of truth. In short: navy and cyan landing, cool-white catalogue, Manrope for the landing and body, Newsreader for catalogue and case headings, blue only for actions and selection, real product screenshots.
+`DESIGN.md` is the source of truth. In short: navy and cyan landing, cool-white catalogue, Hanken Grotesk for every page (one family, never Inter, Manrope, Geist or a serif display), blue only for actions and selection, real product screenshots.
 
 ## Writing for visitors
 

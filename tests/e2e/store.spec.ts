@@ -125,7 +125,7 @@ test("result screenshots remain uncropped and biography stays separate from proj
   await expect(page.locator("#about")).toContainText("Automation & AI Consultant at Ciklum, placed at Trustpilot");
   await expect(page.locator("#about")).toContainText("six years at Projecting Success");
   await expect(page.locator(".about-background")).toContainText("University of Liverpool");
-  await expect(page.locator("#selected")).toContainText("not work delivered for an employer or client");
+  await expect(page.locator("#selected")).toContainText("None of them is client or employer work");
 });
 
 test("screening room switches real projects and pauses video when switching away", async ({ page }) => {

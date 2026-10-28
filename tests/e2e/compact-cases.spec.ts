@@ -65,7 +65,7 @@ test('Method is concise, evidence-linked and honest about baseline results', asy
   for (const slug of ['projectlens','policylens','lakehouse']) {
     await expect(method.locator(slug === 'lakehouse' ? `a[href="./preview.html?app=${slug}#case-story"]` : `a[href="./work/${slug}/#technical-evidence"]`)).toBeVisible();
   }
-  await expect(method).toContainText('fails to improve');
+  await expect(method).toContainText('does no better');
   await expect(method).toContainText('simple baseline');
   await expect(method.locator('button')).toHaveCount(0);
 });

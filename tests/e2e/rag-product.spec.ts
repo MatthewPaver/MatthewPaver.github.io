@@ -42,7 +42,7 @@ test('review the changed evidence, compare another update, and download the exac
     expect(downloaded.passed).toBe(passed);
   }
   await expect(page.locator('#verdict')).toHaveText('No drop found');
-  await expect(page.locator('#result-heading')).toHaveText('The source order is unchanged in this test.');
+  await expect(page.locator('#result-heading')).toHaveText('Nothing got worse in this test.');
   await expect(page.locator('#decision-mark')).toHaveAttribute('d', 'M8 15h14');
   await expect(page.locator('#after-sources h4').first()).toHaveText('Approved retention policy');
   await expect(page.locator('#reproduce')).toContainText('candidate-bm25-b05.json');
@@ -124,7 +124,7 @@ test('reduced motion keeps result switching immediate and content visible', asyn
   await page.goto(demo);
   await page.getByRole('button', { name: 'Show an update that changes nothing', exact: true }).click();
   await expect(page.locator('#verdict')).toHaveText('No drop found');
-  await expect(page.locator('#result-heading')).toHaveText('The source order is unchanged in this test.');
+  await expect(page.locator('#result-heading')).toHaveText('Nothing got worse in this test.');
   await expect(page.locator('#decision-mark')).toHaveAttribute('d', 'M8 15h14');
   expect(await page.evaluate(() => document.getAnimations().length)).toBe(0);
 });

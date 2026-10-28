@@ -34,7 +34,7 @@ test('review the changed evidence, compare another update, and download the exac
   for (const [passed, filename] of [[false, 'comparison.json'], [true, 'unchanged.json']] as const) {
     if (passed) await page.getByRole('button', { name: 'Show an update that changes nothing', exact: true }).click();
     const downloadEvent = page.waitForEvent('download');
-    await page.getByRole('link', { name: 'Download JSON report', exact: true }).click();
+    await page.getByRole('link', { name: 'Download the data (JSON)', exact: true }).click();
     const download = await downloadEvent;
     expect(download.suggestedFilename()).toBe(filename);
     const downloaded = JSON.parse(await fs.readFile((await download.path())!, 'utf8'));
@@ -47,7 +47,7 @@ test('review the changed evidence, compare another update, and download the exac
   await expect(page.locator('#after-sources h4').first()).toHaveText('Approved retention policy');
   await expect(page.locator('#reproduce')).toContainText('candidate-bm25-b05.json');
   await expect(page.locator('#full-report')).toHaveAttribute('href', 'unchanged-report.html');
-  await expect(page.getByRole('link', { name: 'Read report (HTML)', exact: true })).toHaveAttribute('href', /\/unchanged-report\.html$/);
+  await expect(page.getByRole('link', { name: 'Read the full report', exact: true })).toHaveAttribute('href', /\/unchanged-report\.html$/);
   await page.getByRole('button', { name: 'Show the update that got worse', exact: true }).click();
   await expect(page.locator('#verdict')).toHaveText('Hold this update');
   expect(errors).toEqual([]);

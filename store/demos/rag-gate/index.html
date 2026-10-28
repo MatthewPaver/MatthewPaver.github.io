@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
   <meta name="description" content="Check which policy sources an internal help assistant retrieves before an update. Explore real, reproducible regression evidence.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'">
   <title>RAG Regression Gate: Keep the right policy within reach</title>
@@ -29,7 +30,7 @@
     </div>
 
     <a class="evidence-link" href="#evidence">See the full evidence</a>
-    <div class="closing"><div><h2 id="result-heading">All six checks pass, but the update is still held.</h2><p id="case-summary">6 of 6 question checks pass. The overall order of documents still got worse, so a simple pass count would miss this.</p><div class="closing-actions"><button id="switch-result" class="text-button" hidden disabled>Show an update that changes nothing</button><a id="download" href="comparison.json" download>Download JSON report</a><a id="read-report" href="report.html">Read report (HTML)</a></div></div><p class="boundary">Checks which documents are found, not whether answers are correct. Six questions is a quick check, not a measure of accuracy.</p></div>
+    <div class="closing"><div><h2 id="result-heading">All six checks pass, but the update is still held.</h2><p id="case-summary">6 of 6 question checks pass. The overall order of documents still got worse, so a simple pass count would miss this.</p><div class="closing-actions"><button id="switch-result" class="text-button" hidden disabled>Show an update that changes nothing</button><a id="download" href="comparison.json" download>Download the data (JSON)</a><a id="read-report" href="report.html">Read the full report</a></div></div><p class="boundary">Checks which documents are found, not whether answers are correct. Six questions is a quick check, not a measure of accuracy.</p></div>
     <p id="load-error" class="error" role="status" hidden>Interactive results could not load. Read the saved report below, or reload this page.</p>
     <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
     <noscript><p>JavaScript is off. The example above remains readable. <a href="report.html">Open all six questions in the offline report</a>.</p></noscript>

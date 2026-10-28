@@ -919,7 +919,7 @@ h3 {
 
 .project-title-line span {
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 750;
   text-align: right;
 }
@@ -2194,8 +2194,3 @@ img[src$="/projectlens-questions.png"] {
   }
 }
 
-.flagship-release { padding-block: 36px; border-top: 1px solid var(--line); }
-.flagship-release h2 { font: 700 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); margin-bottom: 12px; }
-.flagship-release ul { list-style: none; padding: 0; margin: 16px 0; }
-.flagship-release li { border-bottom: 1px solid var(--line); }
-.flagship-release li a { display: block; padding: 14px 0; min-height: 44px; font-weight: 650; color: var(--ink); }

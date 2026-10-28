@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test';
 
 test('homepage opens all three evidence-led case studies with real capture pairs', async ({ page }) => {
   await page.goto('/');
-  const release = page.locator('.flagship-release').first();
-  await expect(release.locator('a')).toHaveCount(3);
+  await expect(page.locator('.flagship-release')).toHaveCount(0);
+  for (const slug of ['projectlens', 'policylens', 'rag-regression-gate']) await expect(page.locator(`[data-project="${slug}"] a[href="./work/${slug}/"]`)).toHaveCount(1);
   for (const slug of ['projectlens', 'policylens', 'rag-regression-gate']) {
     await page.goto(`/work/${slug}/`);
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', `https://matthewpaver.github.io/work/${slug}/`);

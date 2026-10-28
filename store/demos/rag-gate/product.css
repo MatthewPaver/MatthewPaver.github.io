@@ -177,7 +177,7 @@ h1{
   position:relative;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:7.5%}
+  gap:120px}
 .ranking{
   border-top:1px solid var(--line);
   padding-top:20px;
@@ -332,7 +332,7 @@ h1{
 .skip:hover,.skip:focus{
   color:var(--paper)}
 @media (max-width:700px){
-  .masthead nav a,.closing-actions a,.footer a{
+  .masthead nav a,.closing-actions a,.footer a,.actions a,.evidence-link,.own-questions a{
     display:inline-flex;
     align-items:center;
     min-height:44px}
@@ -368,36 +368,40 @@ h1{
   font-size:18px}
 
 
+/* The connectors sit inside the 120px gap, 12px clear of each column.
+   113px is the distance between the two source headings in a column. */
 .rank-swap{
-  top:120px;
-  height:116px;
-  width:126px;
-  left:calc(50% - 63px)}
+  top:135px;
+  height:113px;
+  width:96px;
+  left:calc(50% - 48px)}
 .rank-swap span{
   position:absolute;
   left:0;
-  top:0;
-  width:171px;
-  height:1px;
+  top:-1px;
+  width:148px;
+  height:2px;
   transform-origin:left center;
   background:var(--green);
-  transform:rotate(42.6deg)}
+  transform:rotate(49.65deg)}
 .rank-swap .old-connector{
-  top:116px;
-  transform:rotate(-42.6deg);
+  top:112px;
+  transform:rotate(-49.65deg);
+  background:repeating-linear-gradient(90deg,var(--red) 0 7px,transparent 7px 11px)}
+.rank-swap .old-connector::before,.rank-swap .old-connector::after{
   background:var(--red)}
 .rank-swap span::before,.rank-swap span::after{
   content:"";
   position:absolute;
-  width:7px;
-  height:7px;
+  width:9px;
+  height:9px;
   border-radius:50%;
   background:inherit;
-  top:-3px}
+  top:-3.5px}
 .rank-swap span::before{
-  left:-3px}
+  left:-4px}
 .rank-swap span::after{
-  right:-3px}
+  right:-4px}
 
 .question-note{
   font-size:14px;
@@ -644,7 +648,7 @@ h1{
   margin-bottom:24px;
   gap:16px}
 .question-heading h2{
-  font-size:26px;
+  font-size:22px;
   text-wrap:pretty}
 .question-navigation{
   gap:24px}

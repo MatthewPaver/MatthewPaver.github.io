@@ -14,7 +14,7 @@ test('catalogue offers direct first actions and honest setup requirements', asyn
     await expect(card.getByRole('link', {name, exact:true})).toHaveAttribute('href',href);
     await expect(card.locator('.work-access')).toContainText(/browser/i);
   }
-  await expect(page.locator('[data-slug="projectlens"]').getByRole('link', {name:'Take the guided walkthrough',exact:true})).toHaveAttribute('href','https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1');
+  await expect(page.locator('[data-slug="projectlens"] a.first-steps-link', {hasText:'Take the guided walkthrough'})).toHaveAttribute('href','https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1');
   await expect(page.locator('[data-slug="policylens"] .work-card-proof')).toContainText('Node.js');
   await expect(page.locator('[data-slug="quicksupply"] .work-access')).toContainText('Recorded walkthrough');
   await expect(page.locator('[data-slug="hr"] .work-access')).toContainText('Power BI Desktop');

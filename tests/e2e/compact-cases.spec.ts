@@ -13,7 +13,7 @@ test('compact case tabs show one complete case and preserve the catalogue route'
     await expect.poll(() => panel.locator('.project-media img').evaluate((img:HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
     await expect(page).toHaveURL(new RegExp(`#case-${slug}$`));
   }
-  await expect(page.getByRole('link', {name:'View all public work', exact:true})).toHaveAttribute('href','./work/');
+  await expect(page.locator('.all-work-link').getByRole('link', {name:'See all work', exact:true})).toHaveAttribute('href','./work/');
 });
 
 test('tabs support arrow keys, Home, End, bookmarks and browser Back', async ({ page }) => {

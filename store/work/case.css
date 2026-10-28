@@ -1,23 +1,28 @@
 /* Long-form case notes under /work/<case>/. Uses the shared tokens from styles.css. */
-.case-note { max-width: 760px; padding-block: 36px 56px; }
-.case-note h1 { max-width: 24ch; font-family: var(--display); font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.1; letter-spacing: -0.015em; margin: 8px 0 14px; }
+.case-note { max-width: 1220px; padding-block: 36px 56px; }
+/* Reading text keeps a comfortable measure; the header and the before-and-after figures use the full width. */
+.case-note > :not(.case-head):not(.case-comparison) { max-width: 70ch; }
+.case-head { display: grid; gap: 28px; align-items: center; margin-bottom: 24px; }
+@media (min-width: 1100px) { .case-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 56px; } .case-head .case-hero { margin: 0; } }
+.case-standfirst { margin: 0 0 14px; font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; line-height: 1.3; letter-spacing: -.01em; color: var(--ink); }
+.case-note h1 { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin: 8px 0 12px; }
 .case-note h2 { font-family: var(--display); font-size: clamp(1.45rem, 2.4vw, 1.9rem); letter-spacing: -0.01em; margin: 40px 0 10px; }
 .case-note p, .case-note li { font-size: 1.05rem; line-height: 1.7; }
 .case-note ul { padding-left: 1.2em; }
 .case-note li + li { margin-top: 6px; }
-.case-note code { font-size: 0.92em; overflow-wrap: anywhere; }
+.case-note code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: max(0.9em, 0.8rem); overflow-wrap: anywhere; }
 .case-kicker { color: var(--muted); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin: 0; }
 .case-table-wrap { overflow-x: auto; margin: 18px 0 8px; border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--paper); }
 .case-table-wrap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .case-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
 .case-table caption { text-align: left; padding: 12px 14px 0; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
 .case-table th, .case-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-.case-table thead th { font-weight: 750; }
+.case-table thead th { font-weight: 700; }
 .case-table tbody tr:last-child td, .case-table tbody tr:last-child th { border-bottom: 0; }
-.case-table tbody th { font-weight: 650; }
+.case-table tbody th { font-weight: 600; }
 .case-source { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 .case-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.case-actions a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 750; color: var(--accent); }
+.case-actions a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--accent); }
 .case-actions .case-primary { padding: 10px 20px; border-radius: var(--control-radius); background: var(--ink); color: var(--paper); text-decoration: none; }
 .case-actions .case-primary:hover { background: var(--accent-dark); }
 
@@ -30,10 +35,11 @@
 
 /* Phone-sized hit areas for the reading links and disclosures. */
 .case-note ul a { display: inline-block; padding-block: 10px; }
-.case-note details > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
+.case-note details > summary { display: list-item; padding-block: 11px; cursor: pointer; }
+.case-note details a { display: inline-block; padding-block: 11px; }
 
 /* Real capture pairs stay readable without client JavaScript. */
-.case-comparison { margin-block: 32px; }
+.case-comparison { margin-block: 40px; }
 .comparison-pair { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
 .comparison-pair figure { margin: 0; min-width: 0; }
 .comparison-pair a { display: block; }

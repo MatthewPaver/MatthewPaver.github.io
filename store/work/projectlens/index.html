@@ -20,7 +20,7 @@
     <link rel="preload" href="../../assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="../../styles.css?v=20261028-1" />
-    <link rel="stylesheet" href="../case.css?v=20261028-1" />
+    <link rel="stylesheet" href="../case.css?v=20261028-2" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ProjectLens: check the story against the schedule", "author": {"@type": "Person", "name": "Matthew Paver"}, "url": "https://matthewpaver.github.io/work/projectlens/", "inLanguage": "en-GB"}</script>
   </head>
   <body>
@@ -42,13 +42,17 @@
 
     <main class="shell">
 <article id="case" class="case-note">
-<h1>ProjectLens: check the story against the schedule</h1>
+<header class="case-head"><div class="case-head-text">
+<h1>ProjectLens</h1>
+<p class="case-standfirst">Check the story against the schedule.</p>
 <p class="lede">A project update says the finish date has not changed. The schedule files show it has moved 73 days. ProjectLens puts that conflict next to the schedule entries behind it, so a reviewer can ask for an explanation and record a decision.</p>
 <div class="case-actions"><a class="case-primary" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Try ProjectLens</a>
 <a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the interactive walkthrough</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/ProjectLens">Inspect the source</a></div>
+</div>
 <figure class="case-hero"><a href="../../assets/previews/projectlens-2026-10-28.png"><img src="../../assets/previews/projectlens-2026-10-28.png" width="1280" height="800" alt="ProjectLens first screen: the finish date moves 73 days while the written update says nothing changed" fetchpriority="high"></a><figcaption>The ProjectLens example as it opens in your browser.</figcaption></figure>
+</header>
 <h2>The problem</h2><p>On large projects, the team sends a written update with each new version of the schedule, often exported from planning software called Primavera P6. Reviewers have to check the two agree. A confident written update can hide dates that moved, fixed dates that changed, or tasks that now depend on different work.</p>
 <h2>The decision it supports</h2><p>Should the update be accepted? ProjectLens lists what changed, puts the three most important findings first and keeps all five from the example available. The reviewer can ask for evidence, record who decided and why, and track any conditions. The tool finds the mismatch; the person decides what it means.</p>
 <h2>Limits</h2><p>ProjectLens reads single-project Primavera P6 exports (XER files) and looks for key phrases in the written update. It shows what changed, not why, and it does not decide who is responsible or approve anything. Decision records stay on your device and are not signed. If you choose to save a draft, it includes the schedule files. Planners have not yet tried it on real project files.</p>

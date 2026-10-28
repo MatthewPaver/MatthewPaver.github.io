@@ -45,31 +45,31 @@ typography:
     lineHeight: 1.55
   label:
     fontFamily: "Hanken Grotesk Local, Helvetica Neue, Segoe UI, Arial, sans-serif"
-    fontSize: "0.78rem"
-    fontWeight: 760
+    fontSize: "0.8rem"
+    fontWeight: 700
     lineHeight: 1.45
   landing-display:
     fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.5rem, 3.55vw, 3.6rem)"
-    fontWeight: 760
-    lineHeight: 1.12
-    letterSpacing: "-0.04em"
+    fontSize: "clamp(2.75rem, 4.45vw, 4rem)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "-0.03em"
   landing-headline:
     fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2rem, 3.4vw, 3.4rem)"
+    fontSize: "clamp(1.75rem, 2.6vw, 2.5rem)"
     fontWeight: 700
     lineHeight: 1.1
-    letterSpacing: "-0.025em"
+    letterSpacing: "-0.02em"
   landing-title:
     fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.4rem, 2vw, 2rem)"
-    fontWeight: 780
+    fontWeight: 700
     lineHeight: 0.98
     letterSpacing: "-0.025em"
   compact-case-title:
     fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.75rem, 2.6vw, 2.5rem)"
-    fontWeight: 780
+    fontWeight: 700
   landing-reading:
     fontSize: ".95rem"
     lineHeight: 1.65
@@ -234,11 +234,15 @@ The shared accent becomes lighter in dark mode. The MP mark deliberately retains
 
 **Why this face:** Matthew asked for a typeface that generated sites do not reach for by default. Inter, Geist, Manrope, Space Grotesk, Plus Jakarta Sans, Poppins and similar faces are out. Hanken Grotesk is a neutral grotesque (an Akzidenz stand-in in taste-skill's type library) that suits short declarative headlines, and one family keeps the home page, catalogue and case studies reading as one site.
 
-**Character:** Headings are set bold and tight (tracking about -0.03em), body at 400 with generous leading. Weight and size carry hierarchy; there is no second family and no serif accent.
+**Character:** Headings are set bold and tight (tracking about -0.03em on display sizes, -0.02em on section headings), body at 400 with generous leading. Weight and size carry hierarchy; there is no second family and no serif accent.
+
+**Weights:** three only. 400 for reading text, 600 for emphasis inside text and small controls, 700 for headings, labels and buttons. Do not use in-between variable weights (720, 760, 780).
+
+**Smallest text:** 0.8rem (12.8px). The MP monogram is the only exception.
 
 ### Hierarchy
 
-- **Landing Display:** Two-line Hanken Grotesk hero with a pale-cyan second line on navy. The frontmatter records the desktop role; at 980px and below it uses `clamp(2.6rem, 6vw, 3.6rem)`, and at 640px and below `clamp(2rem, 7.7vw, 3rem)`.
+- **Landing Display:** One white Hanken Grotesk sentence on navy, "I design AI systems and build them.", set with `text-wrap: balance`. It must fit in two lines at every width: the hero grid gives the text `.92fr` against `1.26fr` for the screening room so the first line fits at 4rem. At 1100px and below it uses 2.5rem, at 980px and below `clamp(2.6rem, 6vw, 3.6rem)`, and at 640px and below `clamp(2.25rem, 10vw, 3rem)`. No accent colour on part of the line.
 - **Landing Headline / Title:** Hanken Grotesk section and project headings, using the scoped frontmatter roles. Mobile project titles resolve to 1.65rem.
 - **Display / Headline:** Hanken Grotesk defaults for the catalogue and preview family; the catalogue's route-specific heading and shared mobile rules may further constrain them.
 - **Title:** Hanken Grotesk project and capability names outside the landing, scaled to their shelf hierarchy.

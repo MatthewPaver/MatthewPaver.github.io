@@ -83,10 +83,12 @@ function render() {
   document.querySelector('.rank-swap').hidden = !retentionSwap;
   // The hold applies to the whole update. Only the question that got worse carries the red verdict.
   const questionWorse = after.reciprocal_rank < before.reciprocal_rank - 1e-9 || after.ndcg < before.ndcg - 1e-9;
-  const state = report.passed ? 'pass' : questionWorse ? 'hold' : 'held-elsewhere';
-  byId('verdict').textContent = { pass: 'No drop found', hold: 'Hold this update', 'held-elsewhere': 'No drop on this question' }[state];
+  // A question whose top source was already wrong before the update is not a green pass.
+  const staleTop = before.id === 'refund-window-with-conflict';
+  const state = questionWorse && !report.passed ? 'hold' : staleTop ? 'stale' : report.passed ? 'pass' : 'held-elsewhere';
+  byId('verdict').textContent = { pass: 'No drop found', hold: 'Hold this update', 'held-elsewhere': 'No drop on this question', stale: 'Already wrong before the update' }[state];
   byId('decision').classList.toggle('no-regression', state === 'pass');
-  byId('decision').classList.toggle('question-ok', state === 'held-elsewhere');
+  byId('decision').classList.toggle('question-ok', state === 'held-elsewhere' || state === 'stale');
   byId('decision-mark').setAttribute('d', state === 'hold' ? 'M15 7v10m0 4v2' : 'M8 15h14');
   byId('result-heading').textContent = report.passed ? 'Nothing got worse in this test.' : 'All six checks pass, but the update is still held.';
   const heldNote = ' The update as a whole is still on hold because the data-retention question got worse (question 3).';

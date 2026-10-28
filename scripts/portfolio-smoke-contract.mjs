@@ -2,7 +2,7 @@
 export function inspectPublicPages(home, catalogue) {
   const content = `${home}\n${catalogue}`;
   return [
-    { name: 'homepage links to all projects', pass: /href="\.\/work\/">All projects<\/a>/.test(home) },
+    { name: 'homepage links to all projects', pass: /href="\.\/work\/">All work<\/a>/.test(home) },
     { name: 'homepage offers the CV', pass: /href="[^"]*\/CV\.pdf"/.test(home) },
     { name: 'homepage has four selected cases', pass: (home.match(/<(?:article|div) class="selected-card"/g) || []).length === 4 },
     ...['policylens', 'projectlens', 'rag-regression-gate'].map(slug => ({ name: `homepage features ${slug}`, pass: home.includes(`data-project="${slug}"`) && home.includes(`./work/${slug}/`) })),

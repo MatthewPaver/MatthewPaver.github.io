@@ -14,7 +14,7 @@ for (const [name, slug, demo, repo] of products) {
     await expect(panel.getByRole('link', { name: `Open ${name}`, exact: true })).toBeVisible();
     await panel.getByRole('link', { name: `Read the ${name} case study`, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`/work/${slug}/$`));
-    await expect(page.locator('.case-note > h1')).toContainText(name);
+    await expect(page.locator('.case-note h1')).toContainText(name);
     await expect(page.getByRole('heading', { name: 'The decision it supports', exact: true })).toBeVisible();
     // The caveat remains readable before any historic captures or technical disclosure.
     expect(await page.locator('.case-note').evaluate(el => {

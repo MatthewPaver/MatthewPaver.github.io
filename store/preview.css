@@ -33,7 +33,7 @@
 .preview-panel p { margin:12px 0 0; }
 .preview-list { margin-top:12px; }
 .preview-technical { margin-top:28px; border-block:1px solid var(--line); }
-.preview-technical summary { min-height:48px; padding:14px 0; cursor:pointer; font-weight:750; }
+.preview-technical summary { min-height:48px; padding:14px 0; cursor:pointer; font-weight:700; }
 .preview-technical .preview-list { margin-top:0; }
 .preview-stack { margin:12px 0 24px; }
 .preview-nav { flex-wrap:wrap; gap:8px 20px; }

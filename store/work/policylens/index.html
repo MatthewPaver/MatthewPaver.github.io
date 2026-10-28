@@ -20,7 +20,7 @@
     <link rel="preload" href="../../assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="../../styles.css?v=20261028-1" />
-    <link rel="stylesheet" href="../case.css?v=20261028-1" />
+    <link rel="stylesheet" href="../case.css?v=20261028-2" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "PolicyLens: remove risky access, keep the access people need", "author": {"@type": "Person", "name": "Matthew Paver"}, "url": "https://matthewpaver.github.io/work/policylens/", "inLanguage": "en-GB"}</script>
   </head>
   <body>
@@ -42,13 +42,17 @@
 
     <main class="shell">
 <article id="case" class="case-note">
-<h1>PolicyLens: remove risky access, keep the access people need</h1>
+<header class="case-head"><div class="case-head-text">
+<h1>PolicyLens</h1>
+<p class="case-standfirst">Remove risky access, keep the access people need.</p>
 <p class="lede">A proposed AWS permission change would let someone delete a production database. PolicyLens shows which line in the policy allows it, then checks that a fix removes that access without breaking the report access people still need.</p>
 <div class="case-actions"><a class="case-primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Try PolicyLens</a>
 <a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review">Check your own policies</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a></div>
+</div>
 <figure class="case-hero"><a href="../../assets/previews/policylens-2026-10-28.png"><img src="../../assets/previews/policylens-2026-10-28.png" width="1280" height="800" alt="PolicyLens first screen: a made-up change that newly allows deleting a database, with the policy line responsible" fetchpriority="high"></a><figcaption>The PolicyLens example as it opens in your browser.</figcaption></figure>
+</header>
 <h2>The problem</h2><p>In AWS, permissions are written as JSON policies. When someone changes one, a reviewer usually sees a list of edited lines. What they need to know is simpler: what can people now do that they could not do before, has the risky part been removed, and can the service still do its job?</p>
 <h2>The decision it supports</h2><p>Should this change go ahead? PolicyLens answers with a concrete example (“this account can now delete the prod-1 database”) and points to the policy line responsible. It then checks a proposed fix against two questions: is the deletion now blocked, and can the account still read its reports? The reviewer can download a record of what was removed, what was kept and why.</p>
 <h2>Limits</h2><p>PolicyLens checks only the policies and requests you give it. It does not prove a whole AWS account is safe, and it does not yet cover organisation-wide rules (service control policies), permission boundaries, session policies or access between accounts. I have not yet compared its results with AWS’s own policy simulator. The browser demo has no AI and no account access.</p>

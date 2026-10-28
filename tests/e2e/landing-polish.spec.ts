@@ -14,7 +14,7 @@ test('the complete homepage navigation remains usable on a narrow phone', async 
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/');
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
-  for (const name of ['All projects', 'Method', 'About', 'CV (PDF)']) {
+  for (const name of ['All work', 'Method', 'About', 'CV (PDF)']) {
     const link = nav.getByRole('link', { name, exact: true });
     await expect(link).toBeVisible();
     const box = await link.boundingBox();
@@ -23,7 +23,7 @@ test('the complete homepage navigation remains usable on a narrow phone', async 
   }
   await nav.getByRole('link', { name: 'About', exact: true }).click();
   await expect(page).toHaveURL(/#about$/);
-  await expect(page.getByRole('heading', { name: 'An architect who builds.' })).toBeInViewport();
+  await expect(page.getByRole('heading', { name: 'An architect who builds' })).toBeInViewport();
 });
 
 test('mobile exploration is compact and keeps filter state across resize and history', async ({ page }) => {

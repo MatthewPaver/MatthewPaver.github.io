@@ -11,7 +11,7 @@ test('review the changed evidence, compare another update, and download the exac
     if (request.method() !== 'GET' || !request.url().startsWith('http://127.0.0.1:4321/')) unexpected.push(request.url());
   });
   await page.goto(demo);
-  await page.getByRole('link', { name: 'Explore the example', exact: true }).click();
+  await page.getByRole('link', { name: 'Open the example', exact: true }).click();
   await expect(page.locator('#switch-result')).toBeEnabled();
   // Anchor scrolling can move the viewport between separate boundingBox calls.
   // Sample both rectangles in one browser task so the order check stays meaningful.
@@ -69,7 +69,7 @@ test('all questions preserve exact source order in both saved comparisons', asyn
         const section = column === 'first' ? page.locator('#source-evidence section').first() : page.locator('#source-evidence section').last();
         await expect(section.locator('code')).toHaveText(run.cases[index].retrieved_ids);
       }
-      await expect(page.locator('#verdict')).toHaveText(report.passed ? 'No drop found' : index === 2 ? 'Hold this update' : 'No drop on this question');
+      await expect(page.locator('#verdict')).toHaveText(index === 3 ? 'Already wrong before the update' : report.passed ? 'No drop found' : index === 2 ? 'Hold this update' : 'No drop on this question');
       if (index === 3) await expect(page.locator('#consequence')).toContainText('The update did not make this worse, but it was already a problem');
       if (scenario === 'regression' && index !== 2) await expect(page.locator('#consequence')).toContainText('still on hold because the data-retention question got worse');
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);

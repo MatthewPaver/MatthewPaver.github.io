@@ -124,6 +124,7 @@ test('catalogue search and action mode survive reload together', async ({ page }
 
 test('browser Back restores the filtered catalogue after reading a case', async ({ page }) => {
   await page.goto('/work/?mode=browser&q=ProjectLens#catalogue');
+  await page.locator('[data-slug="projectlens"] .work-first-steps summary').click();
   await page.locator('[data-slug="projectlens"] a[href*="preview.html"]').click();
   await expect(page.locator('.preview-copy h1')).toHaveText('ProjectLens');
   await page.goBack();
@@ -135,6 +136,7 @@ test('browser Back restores the filtered catalogue after reading a case', async 
 
 test('the top All work link returns to the same catalogue query and filter', async ({ page }) => {
   await page.goto('/work/?mode=browser&q=ProjectLens#catalogue');
+  await page.locator('[data-slug="projectlens"] .work-first-steps summary').click();
   await page.locator('[data-slug="projectlens"] a[href*="preview.html"]').click();
   await expect(page.locator('.preview-copy h1')).toHaveText('ProjectLens');
   const allWork = page.getByRole('navigation', { name: 'Preview navigation' }).getByRole('link', { name: 'All work', exact: true });

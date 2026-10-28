@@ -18,6 +18,19 @@
 .case-source { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 .case-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .case-actions a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 750; color: var(--accent); }
+.case-actions .case-primary { padding: 10px 20px; border-radius: var(--control-radius); background: var(--ink); color: var(--paper); text-decoration: none; }
+.case-actions .case-primary:hover { background: var(--accent-dark); }
+
+/* The product shows on the first screen, before the reading starts. */
+.case-hero { margin: 28px 0 8px; }
+.case-hero a { display: block; }
+.case-hero img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--control-radius); }
+.case-hero figcaption { margin-top: 8px; font-size: .85rem; color: var(--muted); }
+.case-hero a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Phone-sized hit areas for the reading links and disclosures. */
+.case-note ul a { display: inline-block; padding-block: 10px; }
+.case-note details > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
 
 /* Real capture pairs stay readable without client JavaScript. */
 .case-comparison { margin-block: 32px; }

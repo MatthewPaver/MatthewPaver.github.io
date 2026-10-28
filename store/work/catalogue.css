@@ -27,6 +27,7 @@
 .work-card-proof div:last-child dd { color:var(--muted); }
 .work-launch { display:flex; align-items:center; justify-content:center; min-height:44px; padding:10px 12px; border:1px solid var(--ink); border-radius:var(--control-radius); color:var(--paper); background:var(--ink); text-decoration:none; font-size:.82rem; font-weight:800; }
 .work-launch:hover { background:var(--accent-dark); border-color:var(--accent-dark); }
+.work-card-copy > .work-launch { margin-bottom:10px; }
 .work-card .project-link { display:flex; align-items:center; min-height:44px; margin:4px 0 0; font-size:.8rem; }
 .work-first-steps { margin-top:8px; border-top:1px solid var(--line); font-size:.875rem; line-height:1.65; }
 .work-first-steps summary { padding:12px 0; min-height:44px; cursor:pointer; color:var(--ink); font-weight:750; }

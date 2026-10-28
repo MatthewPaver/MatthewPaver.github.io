@@ -13,8 +13,7 @@ const root = process.cwd();
 const sourceDir = path.join(root, "store");
 const outDir = path.join(root, "pages-dist");
 const fontFiles = [
-  path.join(root, "node_modules", "@fontsource-variable", "manrope", "files", "manrope-latin-wght-normal.woff2"),
-  path.join(root, "node_modules", "@fontsource-variable", "newsreader", "files", "newsreader-latin-opsz-normal.woff2"),
+  path.join(root, "node_modules", "@fontsource-variable", "hanken-grotesk", "files", "hanken-grotesk-latin-wght-normal.woff2"),
 ];
 const siteBase = "https://matthewpaver.github.io";
 

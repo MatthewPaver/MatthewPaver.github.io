@@ -1,16 +1,8 @@
 @font-face {
-  font-family: "Manrope Local";
-  src: url("./assets/fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  font-family: "Hanken Grotesk Local";
+  src: url("./assets/fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
   font-style: normal;
-  font-weight: 200 800;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Newsreader Local";
-  src: url("./assets/fonts/newsreader-latin-opsz-normal.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 200 800;
+  font-weight: 100 900;
   font-display: swap;
 }
 
@@ -28,8 +20,8 @@
   --accent-soft: #dceff8;
   --sea: #245a7c;
   --focus: #006b95;
-  --display: "Newsreader Local", Charter, Georgia, serif;
-  --body: "Manrope Local", "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+  --display: "Hanken Grotesk Local", "Helvetica Neue", Arial, sans-serif;
+  --body: "Hanken Grotesk Local", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --control-radius: 7px;
   --brand-navy: #1c3762;

@@ -17,8 +17,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
     <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.svg" />
-    <link rel="preload" href="../../assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="../../assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="../../assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="../../styles.css?v=20261028-1" />
     <link rel="stylesheet" href="../case.css?v=20261028-1" />
@@ -48,7 +47,7 @@
 <div class="case-actions"><a class="case-primary" href="../../demos/rag-gate/">Try RAG Regression Gate</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Inspect the source</a></div>
-<figure class="case-hero"><a href="../../assets/previews/rag-regression-gate-2026-10-24-terms.png"><img src="../../assets/previews/rag-regression-gate-2026-10-24-terms.png" width="1280" height="800" alt="RAG Regression Gate first screen: an old proposal now ranks above the approved policy after a search update" fetchpriority="high"></a><figcaption>The RAG Regression Gate example as it opens in your browser.</figcaption></figure>
+<figure class="case-hero"><a href="../../assets/previews/rag-regression-gate-2026-10-28.png"><img src="../../assets/previews/rag-regression-gate-2026-10-28.png" width="1280" height="800" alt="RAG Regression Gate first screen: an old proposal now ranks above the approved policy after a search update" fetchpriority="high"></a><figcaption>The RAG Regression Gate example as it opens in your browser.</figcaption></figure>
 <h2>The problem</h2><p>An assistant is only as good as the documents it finds. A change to how it searches can alter which policy comes first, even when every question still finds something relevant. Staff could then get an answer based on an outdated proposal, and nobody would notice from a simple pass count.</p>
 <h2>The decision it supports</h2><p>Should this search update be released? In the example, the approved data-retention policy says 30 days. After the update, an old 365-day proposal ranks above it. All six question checks still pass, but the order of results got worse overall, so the gate holds the update until someone investigates.</p>
 <h2>Limits</h2><p>The website shows two saved test results. It does not run an assistant, accept uploads or check whether an assistant’s answers are correct. Six questions is a quick sanity check, not a measure of accuracy. To test your own documents, an engineer runs the command-line tool on questions your staff really ask. A pass means nothing got measurably worse; it does not prove anything got better.</p>

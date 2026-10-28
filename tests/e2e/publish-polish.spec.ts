@@ -5,9 +5,9 @@ test('selected cases have short action names and directly inspectable captures',
   await expect(page.locator('.hero-copy')).toContainText('Automation & AI Consultant at Ciklum, placed at Trustpilot');
   await expect(page.locator('.hero-copy')).toContainText('six years at Projecting Success');
   for (const [slug, name, image] of [
-    ['policylens', 'PolicyLens', 'previews/policylens-2026-10-24-terms.png'],
-    ['projectlens', 'ProjectLens', 'previews/projectlens-2026-10-24-terms.png'],
-    ['rag-regression-gate', 'RAG Regression Gate', 'previews/rag-regression-gate-2026-10-24-terms.png'],
+    ['policylens', 'PolicyLens', 'previews/policylens-2026-10-28.png'],
+    ['projectlens', 'ProjectLens', 'previews/projectlens-2026-10-28.png'],
+    ['rag-regression-gate', 'RAG Regression Gate', 'previews/rag-regression-gate-2026-10-28.png'],
     ['quicksupply', 'QuickSupply', 'quicksupply-dashboard.png'],
   ]) {
     await page.getByRole('tab', {name, exact:true}).click();

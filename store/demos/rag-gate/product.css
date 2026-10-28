@@ -1,3 +1,9 @@
+@font-face{
+  font-family:"Hanken Grotesk Local";
+  src:url("../../assets/fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap}
 /* Hallmark · redesign · custom paper and ink source review */
 /* Hallmark · waive 71 · approved comparison groups · the staff question sits with its result navigator above two source columns, as approved. */
 /* Critique: preserve approved comparison;
@@ -28,7 +34,7 @@
   --pass-edge:#91b08a;
   --pass-divider:#b9cfb2;
   --code-paper:#e9ece5;
-  --body-font:Arial,Helvetica,sans-serif;
+  --body-font:"Hanken Grotesk Local","Helvetica Neue",Arial,sans-serif;
   --code-font:ui-monospace,SFMono-Regular,Consolas,monospace}
 
 *{

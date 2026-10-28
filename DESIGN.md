@@ -27,47 +27,47 @@ colors:
   screening-focus: "#9edfff"
 typography:
   display:
-    fontFamily: "Newsreader Local, Charter, Georgia, serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(3.25rem, 6.7vw, 6rem)"
     fontWeight: 700
     lineHeight: 0.98
     letterSpacing: "-0.025em"
   headline:
-    fontFamily: "Newsreader Local, Charter, Georgia, serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.15rem, 4vw, 4rem)"
     fontWeight: 700
     lineHeight: 0.98
     letterSpacing: "-0.025em"
   body:
-    fontFamily: "Manrope Local, Avenir Next, Segoe UI, Helvetica, Arial, sans-serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Segoe UI, Arial, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.55
   label:
-    fontFamily: "Manrope Local, Avenir Next, Segoe UI, Helvetica, Arial, sans-serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Segoe UI, Arial, sans-serif"
     fontSize: "0.78rem"
     fontWeight: 760
     lineHeight: 1.45
   landing-display:
-    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.5rem, 3.55vw, 3.6rem)"
     fontWeight: 760
     lineHeight: 1.12
     letterSpacing: "-0.04em"
   landing-headline:
-    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2rem, 3.4vw, 3.4rem)"
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: "-0.025em"
   landing-title:
-    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.4rem, 2vw, 2rem)"
     fontWeight: 780
     lineHeight: 0.98
     letterSpacing: "-0.025em"
   compact-case-title:
-    fontFamily: "Manrope Local, Avenir Next, sans-serif"
+    fontFamily: "Hanken Grotesk Local, Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(1.75rem, 2.6vw, 2.5rem)"
     fontWeight: 780
   landing-reading:
@@ -185,13 +185,13 @@ components:
 
 The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.
 
-The landing variant pairs a personal introduction and CV with the existing screening room, then offers three compact case tabs. One complete case is visible at a time; without enhancement all three remain readable. Manrope takes the display role here, while the catalogue and previews retain Newsreader's editorial hierarchy. Existing hero motion and user-initiated videos remain; a short case transition supports navigation.
+The landing variant pairs a personal introduction and CV with the existing screening room, then offers three compact case tabs. One complete case is visible at a time; without enhancement all three remain readable. Hanken Grotesk sets every role here and on the catalogue and previews. Existing hero motion and user-initiated videos remain; a short case transition supports navigation.
 
 The user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing; `store/styles.css` remains the shared catalogue/preview foundation.
 
 **Key Characteristics:**
 
-- A media-led Manrope landing and a Newsreader-led editorial catalogue.
+- One typeface, Hanken Grotesk, across the landing, catalogue, case studies and the RAG demo.
 - Navy identity, cyan emphasis and accessible blue actions against cool neutral surfaces.
 - Real product captures framed as working software, not generated artwork.
 - Softened media frames on the landing; compact rectilinear catalogue controls and cards.
@@ -230,24 +230,22 @@ The shared accent becomes lighter in dark mode. The MP mark deliberately retains
 
 ## Typography
 
-**Landing Display Font:** Manrope Local (with Avenir Next and sans-serif fallbacks)
+**Typeface (28 October 2026):** Hanken Grotesk Local, self-hosted from `@fontsource-variable/hanken-grotesk` (OFL), with Helvetica Neue, Arial and sans-serif fallbacks. It replaces Manrope and Newsreader. One family for every role: display, headings, body, labels and controls.
 
-**Catalogue / Preview Display Font:** Newsreader Local (with Charter, Georgia and serif fallbacks)
+**Why this face:** Matthew asked for a typeface that generated sites do not reach for by default. Inter, Geist, Manrope, Space Grotesk, Plus Jakarta Sans, Poppins and similar faces are out. Hanken Grotesk is a neutral grotesque (an Akzidenz stand-in in taste-skill's type library) that suits short declarative headlines, and one family keeps the home page, catalogue and case studies reading as one site.
 
-**Body Font:** Manrope Local (with Avenir Next, Segoe UI, Helvetica, Arial and sans-serif fallbacks)
-
-**Character:** The landing uses bold Manrope to make the personal introduction and project names direct and compact. Newsreader preserves the catalogue and preview pages' authored editorial voice. Shared body copy, navigation, controls and technical detail remain Manrope. Both font families are existing locally hosted assets; the landing preloads Manrope.
+**Character:** Headings are set bold and tight (tracking about -0.03em), body at 400 with generous leading. Weight and size carry hierarchy; there is no second family and no serif accent.
 
 ### Hierarchy
 
-- **Landing Display:** Two-line Manrope hero with a pale-cyan second line on navy. The frontmatter records the desktop role; at 980px and below it uses `clamp(2.6rem, 6vw, 3.6rem)`, and at 640px and below `clamp(2rem, 7.7vw, 3rem)`.
-- **Landing Headline / Title:** Manrope section and project headings, using the scoped frontmatter roles. Mobile project titles resolve to 1.65rem.
-- **Display / Headline:** Newsreader defaults for the catalogue and preview family; the catalogue's route-specific heading and shared mobile rules may further constrain them.
-- **Title:** Newsreader project and capability names outside the landing, scaled to their shelf hierarchy.
+- **Landing Display:** Two-line Hanken Grotesk hero with a pale-cyan second line on navy. The frontmatter records the desktop role; at 980px and below it uses `clamp(2.6rem, 6vw, 3.6rem)`, and at 640px and below `clamp(2rem, 7.7vw, 3rem)`.
+- **Landing Headline / Title:** Hanken Grotesk section and project headings, using the scoped frontmatter roles. Mobile project titles resolve to 1.65rem.
+- **Display / Headline:** Hanken Grotesk defaults for the catalogue and preview family; the catalogue's route-specific heading and shared mobile rules may further constrain them.
+- **Title:** Hanken Grotesk project and capability names outside the landing, scaled to their shelf hierarchy.
 - **Body:** Neutral sans-serif for explanations, generally held to roughly 48–66 characters per line.
 - **Label:** Compact, high-weight sans-serif for audiences, states and diagram roles; sentence case is preferred over generic uppercase eyebrows.
 
-**The Claim and Evidence Rule.** In the catalogue and previews, serif type makes the claim and sans-serif type explains, qualifies and proves it. The media-led landing deliberately uses Manrope for both roles; preserve that scoped distinction.
+**The One Voice Rule.** Every page uses the same typeface. Claims are made with size and weight, not by switching to a serif.
 
 ## Layout
 
@@ -278,7 +276,7 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 ### Buttons
 
 - **Shape:** Compact rectangular controls with a 46px minimum height; 3px corners in the shared catalogue/preview style and 7px in the landing variant.
-- **Primary:** Ink surface, paper text and strong Manrope label weight.
+- **Primary:** Ink surface, paper text and strong Hanken Grotesk label weight.
 - **Hover / Focus:** A two-pixel lift and deep accent fill on hover; a three-pixel solid focus outline with a three-pixel offset.
 - **Ghost:** Transparent at rest, strong paper on hover, with the same border and geometry as the primary action.
 
@@ -292,7 +290,7 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 - **Catalogue / Preview:** Paper surfaces with 5px corners, one-pixel structural rules and compact copy padding (typically 18–28px). The retained shared evidence-card primitive uses canvas.
 - **Catalogue First Use:** The `/work/` card presents the project name, browser/local/case-study requirement, plain-language use, one observable example and a practical boundary, then a direct first action and case link. Native `details` holds optional first steps without JavaScript. `store/work/catalogue.css` scopes the two-column desktop and one-column mobile layout. Real screenshots use `object-fit: contain` inside a 16:10 frame; the finished experiment uses the same card width. Sample data, historical exports and local-only extensions are labelled beside actions.
 - **Catalogue Covers:** `store/work/covers.css` gives all seven projects a reserved 16:10 stage. Genuine screenshots remain unmodified, contained and at their natural aspect ratio; the frame does not invent browser chrome or crop away evidence. QuickSupply, Winchester and ProjectLens use separately layered, self-hosted stock photography for education, housing and construction context. The other four use quiet, app-derived solid colours so abstract tools are not obscured by unrelated photos. Full-size case images and landing captures are unchanged. `store/assets/photography/sources.json` records attribution and distinguishes stock context from client work, listings and dataset evidence. The visible credits accordion was removed at Matthew's request. The cover system adds no JavaScript, animation or dependency; it stays visible with scripts or photos unavailable.
-- **Project Details:** `store/preview.css` owns a top-aligned, two-column hero with a 2.3–3.4rem Newsreader title. At 980px it stacks. Images retain their intrinsic proportions and expose a full-size link; video has its own 16:10 contained frame. Access and publication boundaries precede the case narrative. The story covers the problem, design choice, observed output and learning; implementation details remain optional. Generated and query routes share this presentation and the same `previews.json` content.
+- **Project Details:** `store/preview.css` owns a top-aligned, two-column hero with a 2.3–3.4rem Hanken Grotesk title. At 980px it stacks. Images retain their intrinsic proportions and expose a full-size link; video has its own 16:10 contained frame. Access and publication boundaries precede the case narrative. The story covers the problem, design choice, observed output and learning; implementation details remain optional. Generated and query routes share this presentation and the same `previews.json` content.
 - **Landing Selected Work:** Borderless case copy paired with a 14px media frame. The enhanced wide view uses a single sticky stage; simple view keeps the inline cards. Each story moves from a plain-language question to the build and one thing to inspect. Evidence rows keep the reproduced result beside its boundary.
 - **Landing Media:** Use real captures, never invented dashboard illustrations. Case panels use object-fit: contain and preserve complete screenshots. Keep the existing hero recording and its deliberate play action.
 
@@ -303,7 +301,7 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 
 ### Navigation
 
-The sticky navigation uses high-weight Manrope, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV at every width, with compact spacing and 44px-high targets on phones. All projects is a direct `/work/` link, not a jump to the selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
+The sticky navigation uses high-weight Hanken Grotesk, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV at every width, with compact spacing and 44px-high targets on phones. All projects is a direct `/work/` link, not a jump to the selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
 
 Catalogue grouping is action-first: All, Try in browser, Run locally, Watch or read, and Reuse a pattern. Subject is secondary. At 640px and below, a native Explore selector replaces the five-button row and sits beside Subject; both desktop and mobile controls reflect the same state across resize. Search includes both the seven projects and three patterns. Mode, subject and search live in the URL and survive refresh, browser Back and the case return link. Clear filters and the Patterns navigation offer escape routes from empty combinations. With JavaScript unavailable, all items and their first steps remain visible.
 
@@ -338,7 +336,7 @@ Three flat, separated rows pair a specific engineering choice with a short expla
 - **Do** use navy for identity and cyan/blue for meaningful actions, workflow and selection.
 - **Do** preserve dark mode, visible keyboard focus, reduced motion and touch-safe controls.
 - **Do** keep private work out of public catalogues and previews.
-- **Do** preserve the Manrope landing and Newsreader catalogue/preview variants instead of applying either globally.
+- **Do** keep one typeface (Hanken Grotesk) on every page. **Don't** reintroduce Inter, Manrope, Geist or a serif display face.
 - **Do** keep video user-initiated and background motion pausable, with static and no-JavaScript fallbacks.
 
 ### Don't:

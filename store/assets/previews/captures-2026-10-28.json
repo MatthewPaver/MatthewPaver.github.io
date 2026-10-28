@@ -1,0 +1,38 @@
+[
+  {
+    "product": "PolicyLens",
+    "url": "https://matthewpaver.github.io/iam-policy-auditor/",
+    "captured_utc": "2026-10-28",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "First screen with the made-up example ready, after the 28 Oct plain-language and UX passes; reduced motion; light scheme; no edits",
+    "file": "policylens-2026-10-28.png",
+    "sha256": "22be290bc210968d5e4231bef3b80788450469bb0302e377838010ea2c513d4b"
+  },
+  {
+    "product": "ProjectLens",
+    "url": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+    "captured_utc": "2026-10-28",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "First screen with the made-up example ready, after the 28 Oct plain-language and UX passes; reduced motion; light scheme; no edits",
+    "file": "projectlens-2026-10-28.png",
+    "sha256": "7de7cbabdce87e395c0baabcd7b66f81688d19a6dfbe468760c282ac74df2c98"
+  },
+  {
+    "product": "RAG Regression Gate",
+    "url": "https://matthewpaver.github.io/demos/rag-gate/",
+    "captured_utc": "2026-10-28",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "state": "First screen with the made-up example ready, after the 28 Oct plain-language and UX passes; reduced motion; light scheme; no edits",
+    "file": "rag-regression-gate-2026-10-28.png",
+    "sha256": "6c4bb830f064588512b5e3cf218e3f96d757ef5f2d8076d66aa1e1362d46701f"
+  }
+]

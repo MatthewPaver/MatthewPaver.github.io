@@ -44,7 +44,7 @@ test('ProjectLens product landing is primary and its walkthrough stays reachable
   await expect(page.locator('.screening-room').getByRole('link', { name: 'Open ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
   await page.goto('http://127.0.0.1:4321/work/projectlens/');
   await expect(page.locator('.case-actions').first().getByRole('link', { name: 'Take the interactive walkthrough', exact: true })).toHaveAttribute('href', url);
-  await expect(page.getByRole('link', { name: 'Explore ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
+  await expect(page.getByRole('link', { name: 'Try ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
   const data = await (await page.request.get('http://127.0.0.1:4321/previews.json')).json();
   expect(data.projectlens.links.find((link: {primary?: boolean}) => link.primary).href).toBe('https://matthewpaver.github.io/ProjectLens/change-assurance.html');
   expect(data.projectlens.links.some((link: {href:string}) => link.href === url)).toBe(true);

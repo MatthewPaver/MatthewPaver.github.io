@@ -13,7 +13,7 @@ This repository owns `matthewpaver.github.io`. The root route is the canonical p
 - Long-form case notes live at `store/work/<case>/index.html` with shared `store/work/case.css` (first: `rag-regression-gate/`). `scripts/validate-store.mjs` checks each one's canonical, CSP, JSON-LD, repo link, Limits section, sitemap entry and the catalogue row linking to it; llms.txt lists it.
 
 - The site is hand-written static HTML in `store/`; there is no framework build. Primary content and links must work without client JavaScript.
-- Catalogue sources: `store/app-index.csv` (seven rows) and `store/previews.json` (same order) feed `store/work/index.html` cards, `preview.html?app=<slug>` and the generated `/store/apps/<slug>/` pages; `scripts/validate-store.mjs` asserts they stay in sync with the work page and `store/sitemap.xml`.
+- Catalogue sources: `store/app-index.csv` (eight rows) and `store/previews.json` (same order) feed `store/work/index.html` cards, `preview.html?app=<slug>` and the generated `/store/apps/<slug>/` pages; `scripts/validate-store.mjs` asserts they stay in sync with the work page and `store/sitemap.xml`.
 - The only runtime npm deps are `@fontsource-variable/manrope` and `@fontsource-variable/newsreader`, whose woff2 files `prepare-pages-artifact.mjs` copies into `pages-dist/assets/fonts/`; `@playwright/test` is the only dev dep.
 - Client JavaScript only enhances search, filtering, copy actions and theme choice.
 - Product screenshots must show real interfaces or clearly labelled synthetic outputs.
@@ -29,8 +29,15 @@ This repository owns `matthewpaver.github.io`. The root route is the canonical p
 
 ## Design language
 
-- Editorial instrument panel, not a glossy template marketplace.
-- Newsreader for display type; IBM Plex Sans for interface and body copy.
-- Warm paper and near-black ink in light mode; deep slate surfaces in dark mode.
-- Teal indicates usable/open paths. Amber highlights evidence and attention.
-- Use semantic design tokens and one consistent 1.5px line-icon language.
+`DESIGN.md` is the source of truth. In short: navy and cyan landing, cool-white catalogue, Manrope for the landing and body, Newsreader for catalogue and case headings, blue only for actions and selection, real product screenshots.
+
+## Writing for visitors
+
+Every page must make sense to a non-technical hiring manager, a person from the app's field and an engineer.
+
+- Plain UK English, short sentences. Say what you start with, what the tool does and what you see.
+- Do not use: flagship, ecosystem, journey, evidence-led, seamless, frontier, revolutionary.
+- No em dashes. At most one middle dot per line. Sentence case labels, no uppercase eyebrows.
+- Explain jargon the first time (for example RAG, ROAS, XER) or replace it ("fixture" becomes "sample data").
+- State each limit once, in the page's Limits section. Do not repeat the same disclaimer.
+- Use the same product name everywhere: PolicyLens, ProjectLens, RAG Regression Gate, QuickSupply, Winchester Buyer Check, Marketing ML Lakehouse, HR Performance Analytics, Can England Win It?

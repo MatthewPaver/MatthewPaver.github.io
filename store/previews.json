@@ -118,6 +118,60 @@
     ],
     "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority. The guided example uses the same engine and disposable in-memory records. Reloading clears the walkthrough only."
   },
+  "rag-regression-gate": {
+    "kicker": "Search update check",
+    "title": "RAG Regression Gate",
+    "summary": "Compare the documents an AI assistant finds before and after a search update, and hold the update if the right ones drop.",
+    "image": "./assets/previews/rag-regression-gate-2026-10-24-terms.png",
+    "imageWidth": 1280,
+    "imageHeight": 800,
+    "imageAlt": "RAG Regression Gate comparing where the approved policy and an old proposal rank before and after an update",
+    "role": "AI and evaluation engineer",
+    "status": "Public browser example and command-line tool",
+    "focus": "Search testing for AI assistants",
+    "problem": "Many workplace assistants look up documents before they answer (RAG). A change to how they search can push an old, unapproved document above the current policy, even when every test question still finds something relevant.",
+    "choice": "I compare the ranked documents for the same labelled questions before and after a change. A score only fails when its drop is bigger than a set threshold and a statistical test shows it is not noise. No AI model judges the results, so the check is free to run and gives the same answer twice.",
+    "result": "In the browser example, an old 365-day proposal overtakes the approved 30-day retention policy. All six question checks still pass, but the overall order gets worse, so the update is held. On the public SciFact benchmark the gate blocks a 12-word chunking change and passes a hybrid search, the only change with a real gain.",
+    "learning": "A pass is not an improvement. One model passed because its drop was within noise, yet every score was lower. If a change must prove it is better, read the significance results, not just the pass.",
+    "access": "Try the saved example in your browser. No account, install or upload.",
+    "publication": "The website shows two saved comparisons from the command-line tool. Engineers run the same tool on their own labelled questions and add it to CI.",
+    "mediaCaption": "First screen of the browser example, using made-up staff documents.",
+    "steps": [
+      "Open the example and compare where the approved policy and the old proposal rank.",
+      "Step through all six staff questions and open the documents.",
+      "Switch to the second saved result, then read or download either report.",
+      "To test your own documents, follow the setup in the repository."
+    ],
+    "points": [
+      "The gate checks which documents are found and in what order. It does not check whether the assistant's answer is correct.",
+      "Six questions is a quick sanity check. The SciFact benchmark (300 questions) is where the statistical tests apply.",
+      "Build time, latency and memory are reported but do not fail the gate."
+    ],
+    "stack": [
+      "Python",
+      "BM25",
+      "MiniLM embeddings",
+      "GitHub Actions"
+    ],
+    "links": [
+      {
+        "label": "Try browser example",
+        "href": "https://matthewpaver.github.io/demos/rag-gate/",
+        "primary": true
+      },
+      {
+        "label": "Read the case study",
+        "href": "https://matthewpaver.github.io/work/rag-regression-gate/",
+        "primary": false
+      },
+      {
+        "label": "Run it locally",
+        "href": "https://github.com/MatthewPaver/rag-retrieval-gate#quickstart",
+        "primary": false
+      }
+    ],
+    "note": "Checks search results, not answers. The browser example uses made-up documents and saved results; it does not run an assistant or accept uploads."
+  },
   "quicksupply": {
     "kicker": "Product redesign case study",
     "title": "QuickSupply",
@@ -170,31 +224,31 @@
   },
   "winchester": {
     "kicker": "Property decision tool",
-    "title": "Winchester House Hunter",
+    "title": "Winchester Buyer Check",
     "summary": "Compare a shortlist of homes by budget, station walk and missing evidence, then see what needs checking before a decision.",
     "image": "./assets/winchester-shortlist.png",
     "imageWidth": 1280,
     "imageHeight": 800,
-    "imageAlt": "Winchester's seeded shortlist with the under £425k filter selected",
+    "imageAlt": "Winchester Buyer Check with the Under £425k filter: made-up homes listed with price, station walk and fit score",
     "role": "Product and data engineer",
     "status": "Live public demo",
     "focus": "Recommendations and public data",
-    "problem": "A portal listing cannot answer whether one home works for one buyer. House Hunter combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
+    "problem": "A portal listing cannot answer whether one home works for one buyer. Winchester Buyer Check combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
     "choice": "I separated the example homes from public completed-sale records, and put missing evidence beside the shortlist. This makes the recommendation a starting point for questions rather than an unexplained ranking.",
-    "result": "Choose Under £425k and the nine seeded homes become five. Open Upper Brook Street to inspect the evidence checklist and see which assumptions need checking.",
+    "result": "Choose Under £425k and the nine example homes become five. Open Upper Brook Street to see which facts are confirmed and which still need checking.",
     "learning": "Precise-looking scores can imply more certainty than the inputs deserve. Fit and evidence scores are demo heuristics, not calibrated probabilities; negotiation figures are illustrative assumptions, not estimated market values.",
-    "access": "Runs in your browser. No account; nine seeded homes.",
+    "access": "Runs in your browser. No account; nine made-up example homes.",
     "publication": "The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.",
-    "mediaCaption": "Public seeded example with the under-£425k filter selected.",
+    "mediaCaption": "Public example with the Under £425k filter selected.",
     "steps": [
       "Choose Under £425k or a station-distance filter.",
       "Open a home and read its evidence checklist before interpreting the score.",
       "Treat prices and affordability inputs as illustrative. Consult the cited completed-sale context separately."
     ],
     "points": [
-      "The demo compares nine seeded homes against budget, commute and local completed-sale evidence.",
+      "The demo compares nine made-up homes against budget, commute and local completed-sale evidence.",
       "The newer local market build records the HM Land Registry source, filters and reconciled counts. Until that release is public, treat the hosted summaries as illustrative.",
-      "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
+      "The public demo separates the made-up homes from real completed-sale data and states what it cannot decide."
     ],
     "stack": [
       "Browser JavaScript",
@@ -212,7 +266,7 @@
         "href": "https://github.com/MatthewPaver/winchester-buyer-check"
       }
     ],
-    "note": "Illustrative only. Listings and figures are seeded examples, not financial, tax, legal or mortgage advice."
+    "note": "Illustrative only. The homes and figures are made-up examples, not financial, tax, legal or mortgage advice."
   },
   "lakehouse": {
     "kicker": "Reusable data template",
@@ -323,7 +377,7 @@
     "status": "Finished",
     "focus": "Public experiment",
     "problem": "I wanted to make a small simulation people could play with, rather than present a single opaque football prediction. The result is a deliberately time-bounded experiment in modelling assumptions and animated interaction.",
-    "choice": "I exposed the assumptions and used seeded simulations so the same inputs can be repeated. The animation turns a modelling exercise into something a nontechnical visitor can explore.",
+    "choice": "I exposed the assumptions and used made-up simulations so the same inputs can be repeated. The animation turns a modelling exercise into something a nontechnical visitor can explore.",
     "result": "Choose the scenario assumptions and play the tournament to see the simulated outcomes change. The archived model remains interactive; its results are illustrative, not a forecast for a current competition.",
     "learning": "This was a useful way to practise reproducibility and frontend storytelling in a small build. Finishing the experiment and documenting its assumptions is more honest than treating an event-specific toy as an ongoing product.",
     "access": "Runs in your browser. No account or setup.",

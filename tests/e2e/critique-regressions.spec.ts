@@ -11,7 +11,7 @@ async function expectMode(page: Page, mode: string) {
   await expect(page.locator('[data-catalogue-mode]')).toHaveValue(mode);
 }
 
-const projectSlugs = ['policylens', 'projectlens', 'quicksupply', 'winchester', 'lakehouse', 'hr', 'england'];
+const projectSlugs = ['policylens', 'projectlens', 'rag-regression-gate', 'quicksupply', 'winchester', 'lakehouse', 'hr', 'england'];
 
 test('query preview screenshots fit their available width without cropping or a tall fixed-height box', async ({ page }) => {
   for (const slug of ['policylens', 'projectlens', 'winchester', 'lakehouse', 'hr']) {
@@ -76,21 +76,21 @@ test('Data and ML route includes its two projects and all three patterns', async
   await expect(page.locator('.work-card:visible')).toHaveCount(2);
   await expect(page.locator('[data-slug="lakehouse"]')).toBeVisible();
   await expect(page.locator('[data-slug="hr"]')).toBeVisible();
-  await expect(page.locator('.template-row:visible')).toHaveCount(3);
+  await expect(page.locator('.template-row:visible')).toHaveCount(2);
 });
 
-test('Patterns navigation escapes an incompatible active filter', async ({ page }) => {
+test('Code examples navigation escapes an incompatible active filter', async ({ page }) => {
   await page.goto('/work/?mode=browser&category=decision&q=ProjectLens#catalogue');
-  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Patterns', exact: true }).click();
-  await expect(page.locator('.template-row:visible')).toHaveCount(3);
+  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Code examples', exact: true }).click();
+  await expect(page.locator('.template-row:visible')).toHaveCount(2);
   await expect(page.locator('.work-card:visible')).toHaveCount(0);
 });
 
 const modes = [
-  { label: 'Try in browser', mode: 'browser', slugs: ['policylens', 'projectlens', 'winchester', 'lakehouse', 'england'] },
-  { label: 'Run locally', mode: 'local', slugs: ['policylens', 'lakehouse'] },
+  { label: 'Try in browser', mode: 'browser', slugs: ['policylens', 'projectlens', 'rag-regression-gate', 'winchester', 'lakehouse', 'england'] },
+  { label: 'Run locally', mode: 'local', slugs: ['policylens', 'rag-regression-gate', 'lakehouse'] },
   { label: 'Watch or read', mode: 'case', slugs: ['quicksupply', 'hr', 'england'] },
-  { label: 'Reuse a pattern', mode: 'pattern', slugs: [] },
+  { label: 'Reuse code', mode: 'pattern', slugs: [] },
 ];
 
 for (const { label, mode, slugs } of modes) {
@@ -100,11 +100,11 @@ for (const { label, mode, slugs } of modes) {
     await expectMode(page, mode);
     await expect.poll(() => new URL(page.url()).searchParams.get('mode')).toBe(mode);
     await expect.poll(() => page.locator('.work-card:visible').evaluateAll((cards) => cards.map((card) => card.getAttribute('data-slug')))).toEqual(slugs);
-    await expect(page.locator('.template-row:visible')).toHaveCount(mode === 'pattern' ? 3 : 0);
+    await expect(page.locator('.template-row:visible')).toHaveCount(mode === 'pattern' ? 2 : 0);
     await page.reload();
     await expectMode(page, mode);
     await expect.poll(() => page.locator('.work-card:visible').evaluateAll((cards) => cards.map((card) => card.getAttribute('data-slug')))).toEqual(slugs);
-    await expect(page.locator('.template-row:visible')).toHaveCount(mode === 'pattern' ? 3 : 0);
+    await expect(page.locator('.template-row:visible')).toHaveCount(mode === 'pattern' ? 2 : 0);
   });
 }
 
@@ -264,14 +264,14 @@ for (const slug of ['quicksupply', 'england']) {
   });
 }
 
-test('all seventeen retained app routes resolve and QuickSupply has one lowercase canonical', async ({ request }) => {
+test('all eighteen retained app routes resolve and QuickSupply has one lowercase canonical', async ({ request }) => {
   const retainedRoutes = [
     ...projectSlugs,
     'iam-policy-auditor', 'policy-lens', 'marketing-ml-lakehouse', 'hr-performance',
     'hr-performance-dashboards', 'can-england-win-it', 'project-lens', 'QuickSupply',
     'quick-supply', 'winchester-buyer-check',
   ];
-  expect(retainedRoutes).toHaveLength(17);
+  expect(retainedRoutes).toHaveLength(18);
   for (const slug of retainedRoutes) {
     const response = await request.get(`/store/apps/${slug}/`);
     expect.soft(response.ok(), slug).toBe(true);

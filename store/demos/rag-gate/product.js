@@ -81,24 +81,29 @@ function render() {
   renderSources(before, after);
   const retentionSwap = !report.passed && before.id === 'conflicting-retention-evidence';
   document.querySelector('.rank-swap').hidden = !retentionSwap;
-  byId('verdict').textContent = report.passed ? 'No regression detected' : 'Hold this update';
-  byId('decision').classList.toggle('no-regression', report.passed);
-  byId('decision-mark').setAttribute('d', report.passed ? 'M8 15h14' : 'M15 7v10m0 4v2');
-  byId('result-heading').textContent = report.passed ? 'The source order is unchanged in this test.' : 'Catch a change a pass count can miss.';
+  // The hold applies to the whole update. Only the question that got worse carries the red verdict.
+  const questionWorse = after.reciprocal_rank < before.reciprocal_rank - 1e-9 || after.ndcg < before.ndcg - 1e-9;
+  const state = report.passed ? 'pass' : questionWorse ? 'hold' : 'held-elsewhere';
+  byId('verdict').textContent = { pass: 'No drop found', hold: 'Hold this update', 'held-elsewhere': 'No drop on this question' }[state];
+  byId('decision').classList.toggle('no-regression', state === 'pass');
+  byId('decision').classList.toggle('question-ok', state === 'held-elsewhere');
+  byId('decision-mark').setAttribute('d', state === 'hold' ? 'M15 7v10m0 4v2' : 'M8 15h14');
+  byId('result-heading').textContent = report.passed ? 'Nothing got worse in this test.' : 'All six checks pass, but the update is still held.';
+  const heldNote = ' The update as a whole is still on hold because the data-retention question got worse (question 3).';
   if (retentionSwap) {
-    byId('consequence').textContent = 'The current policy is still found. The outdated proposal now ranks above it.';
+    byId('consequence').textContent = 'The current policy is still found, but the outdated proposal now ranks above it.';
   } else if (before.id === 'refund-window-with-conflict') {
-    byId('consequence').textContent = 'An ended refund pilot ranks first in both runs. No new drop here does not mean the existing result is good.' + (!report.passed ? ' The update is held because data-retention evidence ranks worse.' : '');
+    byId('consequence').textContent = 'An ended refund pilot ranks first both before and after. The update did not make this worse, but it was already a problem.' + (!report.passed ? heldNote : '');
   } else if (before.id === 'sev1-escalation' && !report.passed) {
-    byId('consequence').textContent = 'The incident handbook stays first. Other sources change order; the ranking score for this question does not fall. The update is held because data-retention evidence ranks worse.';
+    byId('consequence').textContent = 'The incident handbook stays first. Other documents swap places, but this question’s score does not fall.' + heldNote;
   } else {
     byId('consequence').textContent = report.passed
-      ? 'This question keeps the same source order. Passing this small test does not prove the assistant is ready to release.'
-      : 'This question keeps the same source order. The update is held because data-retention evidence ranks worse.';
+      ? 'This question finds the same documents in the same order. A small test passing does not prove the assistant is ready.'
+      : 'This question finds the same documents in the same order.' + heldNote;
   }
   const count = report.candidate_report.cases.filter((entry) => entry.passed).length;
-  byId('case-summary').textContent = `${count} of ${report.candidate_report.cases.length} question checks pass. ${report.passed ? 'No overall source-order drop was detected in this test.' : 'Overall source order still worsens.'}`;
-  byId('switch-result').textContent = report.passed ? 'Switch to regressing update' : 'Switch to unchanged ranking';
+  byId('case-summary').textContent = `${count} of ${report.candidate_report.cases.length} question checks pass. ${report.passed ? 'The overall order of documents did not get worse.' : 'The overall order of documents still got worse, so a simple pass count would miss this.'}`;
+  byId('switch-result').textContent = report.passed ? 'Show the update that got worse' : 'Show an update that changes nothing';
   const stem = report.passed ? 'unchanged' : 'comparison';
   byId('download').href = `${stem}.json`;
   byId('full-report').href = report.passed ? 'unchanged-report.html' : 'report.html';
@@ -108,7 +113,7 @@ function render() {
   const metricRows = report.metrics.filter((metric) => ['mrr_at_k', 'ndcg_at_k'].includes(metric.metric));
   byId('metric-summary').replaceChildren(...metricRows.map((metric) => text('p', `${metric.metric === 'mrr_at_k' ? 'Rank of the first relevant source (MRR)' : 'Quality of the source order (nDCG)'}: ${metric.baseline.toFixed(4)} before, ${metric.candidate.toFixed(4)} after. ${metric.verdict}.`)));
   const changed = before.retrieved_ids.join('|') !== after.retrieved_ids.join('|');
-  byId('question-note').textContent = `Showing the first two sources. ${changed ? 'The full ranking changed.' : 'The full ranking is unchanged.'} Open the evidence below for every retrieved source and its exact text.`;
+  byId('question-note').textContent = `Showing the top two documents. ${changed ? 'The full list changed.' : 'The full list is unchanged.'} See the full evidence below for every document found and its exact text.`;
   byId('announcement').textContent = `${selected + 1} of 6. ${before.query} ${byId('verdict').textContent}. ${byId('consequence').textContent}`;
 }
 function changeQuestion(index) {

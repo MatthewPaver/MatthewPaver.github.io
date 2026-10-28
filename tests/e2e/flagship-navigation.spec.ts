@@ -12,7 +12,7 @@ for (const [name, slug, demo, repo] of products) {
     await page.getByRole('tab', { name, exact: true }).click();
     const panel = page.getByRole('tabpanel', { name, exact: true });
     await expect(panel.getByRole('link', { name: `Open ${name}`, exact: true })).toBeVisible();
-    await panel.getByRole('link', { name: `Review ${name} case`, exact: true }).click();
+    await panel.getByRole('link', { name: `Read the ${name} case study`, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`/work/${slug}/$`));
     await expect(page.locator('.case-note > h1')).toContainText(name);
     await expect(page.getByRole('heading', { name: 'The decision it supports', exact: true })).toBeVisible();
@@ -21,7 +21,7 @@ for (const [name, slug, demo, repo] of products) {
       const headings = [...el.querySelectorAll('h2')].map(h => h.textContent);
       return headings.indexOf('Limits') < headings.indexOf('Before and after');
     })).toBe(true);
-    await expect(page.getByRole('link', { name: `Explore ${name}`, exact: true })).toHaveAttribute('href', demo);
+    await expect(page.getByRole('link', { name: `Try ${name}`, exact: true })).toHaveAttribute('href', demo);
     await page.locator('.case-actions').first().getByRole('link', { name: 'Technical evidence', exact: true }).click();
     await expect(page).toHaveURL(/#technical-evidence$/);
     await expect(page.getByRole('link', { name: 'Results and reproducible tests', exact: true }))
@@ -40,7 +40,7 @@ test('all three flagship cases remain reachable with JavaScript disabled', async
   for (const [name, slug] of products) {
     const card = page.locator(`[data-project="${slug}"]`);
     await expect(card.getByRole('link', { name: `Open ${name}`, exact: true })).toBeVisible();
-    await card.getByRole('link', { name: `Review ${name} case`, exact: true }).click();
+    await card.getByRole('link', { name: `Read the ${name} case study`, exact: true }).click();
     await expect(page.locator('.case-actions a').first()).toBeVisible();
     await page.getByRole('link', { name: 'Home', exact: true }).click();
   }

@@ -6,8 +6,8 @@ test('PolicyLens product and before/after case stay directly reachable without J
   await page.goto('http://127.0.0.1:4321/');
   await expect(page.getByRole('link', { name: 'Open PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
   await page.goto('http://127.0.0.1:4321/work/policylens/');
-  await expect(page.getByRole('link', { name: 'Explore PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
-  await expect(page.getByRole('link', { name: 'Review your own policies', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review');
+  await expect(page.getByRole('link', { name: 'Try PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
+  await expect(page.getByRole('link', { name: 'Check your own policies', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review');
   await expect(page.locator('.comparison-pair img')).toHaveCount(2);
   await expect(page.locator('.comparison-pair img').first()).toHaveAttribute('src', /policylens-product-before\.png$/);
   await expect(page.locator('.comparison-pair img').last()).toHaveAttribute('src', /policylens-product-after\.png$/);

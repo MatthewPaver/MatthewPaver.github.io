@@ -15,7 +15,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Status: Public
 - Problem: Reviewers can see a risky policy diff without proving which sensitive request became reachable
 - Outcome: Turns an IAM policy diff into a cited stop or pass decision
-- Proof: Published browser-local correction journey and JSON export; authored benchmark; AWS simulator cross-check not yet run
+- Proof: Browser review with a checked fix and JSON export; my own 55-case benchmark; not yet compared with the AWS simulator
 - Available now: Run the synthetic example in your browser. No account, install, upload or API key.
 - Publication boundary: The product landing includes a three-stage review using the actual deterministic engine. The browser demo processes policies locally; account analysis and optional AI stay in the Node server.
 - Preview: https://matthewpaver.github.io/preview.html?app=policylens
@@ -35,11 +35,24 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Repo: https://github.com/MatthewPaver/ProjectLens
 - Stack: Browser JavaScript, Python, Playwright, optional Gemini RAG
 
+### RAG Regression Gate
+
+- Shelf: AI engineering
+- Status: Public
+- Problem: A search update can rank an outdated document above the current policy while every question still passes
+- Outcome: Holds a search update when the right documents drop down the results
+- Proof: Two saved comparisons in the browser; SciFact benchmark with paired bootstrap intervals; command-line gate for CI
+- Available now: Try the saved example in your browser. No account, install or upload.
+- Publication boundary: The website shows two saved comparisons from the command-line tool. Engineers run the same tool on their own labelled questions and add it to CI.
+- Preview: https://matthewpaver.github.io/preview.html?app=rag-regression-gate
+- Repo: https://github.com/MatthewPaver/rag-retrieval-gate
+- Stack: Python, BM25, MiniLM embeddings, GitHub Actions
+
 ### QuickSupply
 
 - Shelf: Products
 - Status: Public
-- Problem: A Liverpool supply-cover booking journey relied on dated screens and manual follow-up
+- Problem: A Liverpool supply-cover booking process relied on dated screens and manual follow-up
 - Outcome: Makes a three-sided booking handoff visible and testable
 - Proof: Recorded school, agency and teacher handoff; newer DfE context and audit fixes remain local work
 - Available now: Watch the recorded prototype without installing anything.
@@ -48,14 +61,14 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Repo: https://github.com/MatthewPaver/QuickSupply
 - Stack: Next.js, TypeScript, SQLite, Drizzle, SSE
 
-### Winchester House Hunter
+### Winchester Buyer Check
 
 - Shelf: Products
 - Status: Public
 - Problem: A listing price omits commute, cash position, sold-price context and condition
 - Outcome: Turns a property shortlist into an affordability and evidence review
-- Proof: Nine seeded homes; hosted market summaries are illustrative until the traceable local rebuild is published
-- Available now: Runs in your browser. No account; nine seeded homes.
+- Proof: Nine made-up homes; market figures from a 2025 HM Land Registry snapshot
+- Available now: Runs in your browser. No account; nine made-up example homes.
 - Publication boundary: The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.
 - Preview: https://matthewpaver.github.io/preview.html?app=winchester
 - Repo: https://github.com/MatthewPaver/winchester-buyer-check

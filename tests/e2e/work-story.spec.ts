@@ -5,7 +5,7 @@ test('failed story JavaScript still leaves images, copy and case links available
   await page.goto('/#selected');
   await expect(page.locator('.selected-card')).toHaveCount(4);
   await expect(page.locator('[data-project="policylens"] .project-media')).toBeVisible();
-  await expect(page.locator('[data-project="projectlens"]').getByRole('link', {name:'Review ProjectLens case',exact:true})).toHaveAttribute('href','./work/projectlens/');
+  await expect(page.locator('[data-project="projectlens"]').getByRole('link', {name:'Read the ProjectLens case study',exact:true})).toHaveAttribute('href','./work/projectlens/');
 });
 
 test('visible link wording remains available to assistive technology', async ({ page }) => {

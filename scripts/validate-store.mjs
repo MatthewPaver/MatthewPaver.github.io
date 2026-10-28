@@ -59,7 +59,7 @@ const previews = JSON.parse(read("store/previews.json"));
 const manifest = JSON.parse(read("store/manifest.webmanifest"));
 const siteBase = "https://matthewpaver.github.io";
 
-assert.equal(rows.length, 7, "The visual catalogue should stay distilled to seven public projects");
+assert.equal(rows.length, 8, "The visual catalogue should stay distilled to eight public projects");
 assert.deepEqual(Object.keys(previews), rows.map((row) => row.slug), "Preview order must match the catalogue CSV");
 assert.equal(new Set(rows.map((row) => row.slug)).size, rows.length, "Catalogue slugs must be unique");
 assert.equal((workHtml.match(/class="work-card app-card image-card"/g) || []).length, rows.length, "Work page card count must match the catalogue CSV");
@@ -117,7 +117,7 @@ assert.ok(workHtml.includes("data-catalogue-search"), "The full work page needs 
 assert.ok(!`${indexHtml}${workHtml}`.includes("scroll-progress"), "The portfolio should not use decorative scroll tracking");
 assert.ok(indexHtml.includes("script.js"), "The evidence interaction needs its small progressive-enhancement script");
 assert.ok(!styles.includes("content-visibility"), "Cards must render in full-page captures and print output");
-assert.equal((workHtml.match(/aria-label="Example and boundary"/g) || []).length, 7, "Every card must expose an example and practical boundary");
+assert.equal((workHtml.match(/aria-label="Example and boundary"/g) || []).length, 8, "Every card must expose an example and practical boundary");
 
 assert.ok(indexHtml.includes('rel="canonical"'), "Index needs a canonical URL");
 assert.ok(previewHtml.includes('rel="canonical"'), "Preview needs a canonical URL");
@@ -187,7 +187,7 @@ const status = {
   generatedAt: new Date().toISOString(),
   passing: true,
   checks: [
-    { name: "Public catalogue entries", value: String(rows.length), pass: rows.length === 7 },
+    { name: "Public catalogue entries", value: String(rows.length), pass: rows.length === 8 },
     { name: "Real screenshots", value: String(rows.length), pass: true },
     { name: "Preview records", value: String(Object.keys(previews).length), pass: true },
     { name: "Private projects exposed", value: "0", pass: true },
@@ -197,4 +197,4 @@ const status = {
 };
 fs.writeFileSync(path.join(root, "store/validator-status.json"), `${JSON.stringify(status, null, 2)}\n`);
 
-console.log(`Validated ${rows.length} public projects, ${Object.keys(previews).length} previews and three reusable templates.`);
+console.log(`Validated ${rows.length} public projects, ${Object.keys(previews).length} previews and two reusable code examples.`);

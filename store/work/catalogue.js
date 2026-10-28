@@ -26,7 +26,7 @@ function render() {
     item.hidden = !(modeMatches && subjectMatches && (!query || text.includes(query)));
     if (!item.hidden) item.classList.contains('template-row') ? patterns++ : projects++;
   }
-  count.textContent = `${projects} ${projects === 1 ? 'project' : 'projects'} and ${patterns} ${patterns === 1 ? 'pattern' : 'patterns'}`;
+  count.textContent = `${projects} ${projects === 1 ? 'project' : 'projects'} and ${patterns} ${patterns === 1 ? 'code example' : 'code examples'}`;
   empty.hidden = projects + patterns > 0;
   templates.hidden = patterns === 0;
   document.querySelector('[data-catalogue-grid]').hidden = projects === 0;

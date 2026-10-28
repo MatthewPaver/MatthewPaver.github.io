@@ -1,6 +1,6 @@
 # Portfolio context
 
-*Updated 28 July 2026*
+*Updated 28 October 2026*
 
 ## Purpose
 
@@ -13,14 +13,7 @@ homepage should not pretend they belong to one product suite.
 
 ## Homepage
 
-Lead with Matthew's name and a short first-person introduction. Show three
-projects first:
-
-1. ProjectLens
-3. Output Gate
-
-Keep DecisionGraph, Marketing ML Lakehouse, Paper Trading, House Hunter and
-Happening in the project archive.
+Lead with Matthew's name, current role and a short first-person introduction. Show four selected projects: PolicyLens, ProjectLens, RAG Regression Gate and QuickSupply. Everything else lives in the full catalogue at `/work/`.
 
 ## Writing
 

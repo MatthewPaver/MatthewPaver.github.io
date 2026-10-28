@@ -51,6 +51,7 @@
 /* Abstract projects use the same stage, with colour drawn from the actual app. */
 .app-cover:not(.app-cover--photo) .app-cover-screen { inset: 8% 6%; align-items: center; }
 .app-cover[data-cover="policylens"] { background: #273a4b; }
+.app-cover[data-cover="rag"] { background: #e4e1d8; }
 .app-cover[data-cover="lakehouse"] { background: #c9dcd7; }
 .app-cover[data-cover="hr"] { background: #d9deeb; }
 .app-cover[data-cover="england"] { background: #0b1d45; }
@@ -58,5 +59,6 @@
 @media (prefers-color-scheme: dark) {
   .app-cover { background: #20364c; }
   .app-cover[data-cover="lakehouse"] { background: #294b46; }
+  .app-cover[data-cover="rag"] { background: #3a3832; }
   .app-cover[data-cover="hr"] { background: #2b3653; }
 }

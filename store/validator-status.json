@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-10-24T16:43:27.230Z",
+  "generatedAt": "2026-10-28T10:14:42.993Z",
   "passing": true,
   "checks": [
     {
       "name": "Public catalogue entries",
-      "value": "7",
+      "value": "8",
       "pass": true
     },
     {
       "name": "Real screenshots",
-      "value": "7",
+      "value": "8",
       "pass": true
     },
     {
       "name": "Preview records",
-      "value": "7",
+      "value": "8",
       "pass": true
     },
     {

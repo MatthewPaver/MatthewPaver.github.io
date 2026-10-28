@@ -36,7 +36,7 @@ test('mobile exploration is compact and keeps filter state across resize and his
   expect(cover!.y).toBeLessThan(550);
   await mode.selectOption('browser');
   await page.getByRole('combobox', { name: 'Subject', exact: true }).selectOption('decision');
-  await expect(page.locator('.work-card:visible')).toHaveCount(3);
+  await expect(page.locator('.work-card:visible')).toHaveCount(4);
   await expect(page).toHaveURL(/mode=browser/);
   await page.reload();
   await expect(mode).toHaveValue('browser');
@@ -50,7 +50,7 @@ test('mobile exploration is compact and keeps filter state across resize and his
   await expect(mode).toHaveValue('browser');
   await page.getByRole('button', { name: 'Clear filters', exact: true }).click();
   await expect(mode).toHaveValue('all');
-  await expect(page.locator('.work-card:visible')).toHaveCount(7);
+  await expect(page.locator('.work-card:visible')).toHaveCount(8);
 });
 
 test('shared marks and controls stay consistent between the homepage and inner pages', async ({ page }) => {

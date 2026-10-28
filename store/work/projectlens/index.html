@@ -44,43 +44,42 @@
     <main class="shell">
 <article id="case" class="case-note">
 <h1>ProjectLens: check the story against the schedule</h1>
-<p class="lede">The update says the finish is unchanged. The schedules show a 73-day delay. ProjectLens puts the conflict beside its source so a reviewer can ask for an explanation and record a decision.</p>
-<div class="case-actions"><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Explore ProjectLens</a>
+<p class="lede">A project update says the finish date has not changed. The schedule files show it has moved 73 days. ProjectLens puts that conflict next to the schedule entries behind it, so a reviewer can ask for an explanation and record a decision.</p>
+<div class="case-actions"><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Try ProjectLens</a>
 <a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the interactive walkthrough</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/ProjectLens">Inspect the source</a></div>
-<h2>The problem</h2><p>Project managers and planners need to check whether a submitted update agrees with its schedules. A polished report can hide changed dates, constraints and relationships.</p>
-<h2>The decision it supports</h2><p>The review keeps three priority findings beside their original fields; all five findings in the Northstar example remain available. A reviewer can ask for evidence, record who made the decision and track any conditions. The tool finds the discrepancy; the reviewer decides what it means.</p>
-<h2>Limits</h2><p>Checks cover supported single-project Primavera P6 XER fields and narrative keywords. They do not establish the cause of a delay, contractual responsibility or approval. Records are local and unsigned; a deliberately saved device draft includes source files. Planner trials with representative real exports remain outstanding.</p>
-<p class="case-source">Independent public project by Matthew Paver. Examples are synthetic. No client deployment, adoption, time saving or measured commercial benefit is claimed. User comprehension has not yet been measured.</p>
-<h2>Complete journey</h2>
-<ol><li>Open the synthetic Northstar example, or choose two supported schedule exports and paste the update. Files are parsed in your browser without uploading them.</li><li>Select a finding to inspect its source dates and fields. Edit the update and rerun the checks; the original wording remains in the record.</li><li>Record a decision with an owner and rationale. For conditional approval, add a condition, owner and due date.</li><li>Download the evidence-linked record. Close a condition when its follow-up is complete, or deliberately save a device draft to resume later.</li></ol>
+<h2>The problem</h2><p>On large projects, the team sends a written update with each new version of the schedule, often exported from planning software called Primavera P6. Reviewers have to check the two agree. A confident written update can hide dates that moved, fixed dates that changed, or tasks that now depend on different work.</p>
+<h2>The decision it supports</h2><p>Should the update be accepted? ProjectLens lists what changed, puts the three most important findings first and keeps all five from the example available. The reviewer can ask for evidence, record who decided and why, and track any conditions. The tool finds the mismatch; the person decides what it means.</p>
+<h2>Limits</h2><p>ProjectLens reads single-project Primavera P6 exports (XER files) and looks for key phrases in the written update. It shows what changed, not why, and it does not decide who is responsible or approve anything. Decision records stay on your device and are not signed. If you choose to save a draft, it includes the schedule files. Planners have not yet tried it on real project files.</p>
+<p class="case-source">This is a personal project with a made-up example project. It has not been used by a client, and I have not measured time saved.</p>
+<h2>Try it step by step</h2>
+<ol><li>Open the Northstar example, or choose two schedule exports of your own and paste the written update. Files are read in your browser and never uploaded.</li><li>Select a finding to see the dates and schedule entries behind it. You can edit the update and run the checks again; the original wording stays in the record.</li><li>Record a decision with who made it and why. If you approve with conditions, add the condition, its owner and a due date.</li><li>Download the record. Close each condition when the follow-up is done, or save a draft on this device to finish later.</li></ol>
 <section class="case-comparison" aria-label="ProjectLens before and after">
 <h2>Before and after</h2>
-<p>Actual landing-page captures of the same synthetic Northstar example at 1280 × 720. Open either image to inspect the full detail.</p>
+<p>The first screen, before and after, using the same example. Select either image to see it full size.</p>
 <div class="comparison-pair">
 <figure>
 <a href="../../assets/flagships/projectlens-product-before.png">
 <img src="../../assets/flagships/projectlens-product-before.png" width="1280" height="720" alt="ProjectLens before the product redesign, with an oversized introduction and separate demo action" loading="lazy">
 </a>
-<figcaption>Before · introduction hides the working evidence</figcaption>
+<figcaption>Before: an introduction hides the comparison</figcaption>
 </figure>
 <figure>
 <a href="../../assets/flagships/projectlens-product-after.png">
 <img src="../../assets/flagships/projectlens-product-after.png" width="1280" height="720" alt="ProjectLens product landing with an interactive comparison and a clear next question" loading="lazy">
 </a>
-<figcaption>After · real comparison on the product landing page</figcaption>
+<figcaption>After: the real comparison is on the first screen</figcaption>
 </figure>
 </div>
-<p class="case-source">Screenshots show the interaction change. They do not establish time saved, adoption or a measured business outcome.</p>
 </section>
-<h2>Why the design changed</h2><p>Before, the introduction hid the working comparison behind another action. After, the landing shows the actual date comparison and next review question. The full review keeps factual changes visible after narrative edits and preserves original and revised wording separately.</p>
+<h2>Why the design changed</h2><p>Visitors had to click past an introduction before they saw anything work. Now the first screen shows the real date comparison and the question a reviewer should ask next. In the full review, the date changes stay visible even after someone edits the written update, and the original and edited wording are kept side by side.</p>
 <h2 id="technical-evidence">Technical evidence</h2>
-<p>Northstar moves from 15 December 2027 to 26 February 2028: 73 days. Three findings are prioritised; all five remain in the record. Optional public-record context never has to be dismissed to save a decision. Seven browser suites cover source integrity, narrative edits, decisions, exports, drafts, storage failures and follow-up.</p>
-<p><a href="https://github.com/MatthewPaver/ProjectLens#results">Results and reproducible tests</a> · <a href="https://github.com/MatthewPaver/ProjectLens#quickstart">Run locally</a></p>
-<p><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the interactive walkthrough</a>. It uses the working parser, checks and decision forms. Demonstration records stay in memory, separate from saved work, and disappear on reload. Playback pauses for your decision; reduced-motion visitors can use Next.</p>
-<details><summary>Design history and earlier captures</summary><p class="case-source">Earlier workflow captures remain available: <a href="../../assets/flagships/projectlens-before.png">original workflow</a> and <a href="../../assets/flagships/projectlens-after.png">first evidence-desk iteration</a>.</p><p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/projectlens-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/projectlens-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/projectlens-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p><p><a href="../../preview.html?app=projectlens">Earlier technical walkthrough</a></p></details>
-<div class="case-actions"><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Try the updated demo</a><a href="../">All public work</a></div>
+<p>For engineers. The Northstar finish moves from 15 Dec 2027 to 26 Feb 2028, 73 days. Three findings are put first and all five stay in the record. Optional public-record context never has to be dismissed before saving a decision. Seven browser test suites cover source integrity, edits to the update, decisions, exports, drafts, storage failures and follow-up.</p>
+<ul><li><a href="https://github.com/MatthewPaver/ProjectLens#results">Results and reproducible tests</a></li><li><a href="https://github.com/MatthewPaver/ProjectLens#quickstart">Run locally</a></li></ul>
+<p><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the interactive walkthrough</a>. It uses the same file reader, checks and decision forms as the full tool. Walkthrough records are kept apart from saved work and disappear when you reload. It pauses for your decision, and if you prefer reduced motion you can step through with Next.</p>
+<details><summary>Design history and earlier captures</summary><p class="case-source">Earlier workflow captures remain available: <a href="../../assets/flagships/projectlens-before.png">original workflow</a> and <a href="../../assets/flagships/projectlens-after.png">first evidence-desk iteration</a>.</p><p class="case-source">First-screen captures: <a href="../../assets/flagships/projectlens-clarity-before.png">before the wording pass</a>, <a href="../../assets/flagships/projectlens-clarity-after.png">after the wording pass</a> and <a href="../../assets/flagships/projectlens-clarity-phone.png">phone view</a>.</p><p><a href="../../preview.html?app=projectlens">Earlier technical walkthrough</a></p></details>
+<div class="case-actions"><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Try ProjectLens</a><a href="../">All public work</a></div>
 </article>
     </main>
 

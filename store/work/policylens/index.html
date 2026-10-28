@@ -44,43 +44,42 @@
     <main class="shell">
 <article id="case" class="case-note">
 <h1>PolicyLens: remove risky access, keep the access people need</h1>
-<p class="lede">A permission change lets someone delete a production database. PolicyLens shows where that access came from and checks a correction that keeps required report access.</p>
-<div class="case-actions"><a href="https://matthewpaver.github.io/iam-policy-auditor/">Explore PolicyLens</a>
-<a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review">Review your own policies</a>
+<p class="lede">A proposed AWS permission change would let someone delete a production database. PolicyLens shows which line in the policy allows it, then checks that a fix removes that access without breaking the report access people still need.</p>
+<div class="case-actions"><a href="https://matthewpaver.github.io/iam-policy-auditor/">Try PolicyLens</a>
+<a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review">Check your own policies</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a></div>
-<h2>The problem</h2><p>An engineer reviewing a cloud permission change needs more than a list of edited lines. They need to see what the change allows, whether the risky access is removed and whether the service can still do its job.</p>
-<h2>The decision it supports</h2><p>The review connects a concrete consequence to the policy statement responsible. It then checks a proposed correction against the risky request and the access that must survive. A service owner can inspect what was removed, what was retained and the exported review evidence.</p>
-<h2>Limits</h2><p>The browser checks supplied policies and declared requests, not whole-account safety or production approval. Service control policies, permission boundaries, session policies and cross-account interactions are excluded. Independent AWS simulator comparison remains outstanding. The public demo has no AI or account-analysis service.</p>
-<p class="case-source">Independent public project by Matthew Paver. Examples are synthetic. No client deployment, adoption, time saving or measured commercial benefit is claimed. User comprehension has not yet been measured.</p>
-<h2>Complete journey</h2>
-<ol><li>Open the synthetic permission-change example. Inspect the added database-delete permission and the source statement that grants it.</li><li>Check the correction. See the removed deletion statement and retained report statement, then inspect the separate access verification.</li><li>Download the review JSON. The original proposal stays distinct from the corrected result.</li><li>Choose Use your own policies to open or paste current, proposed and corrected policies with the requests and required access you want checked. Policies stay in the browser.</li></ol>
+<h2>The problem</h2><p>In AWS, permissions are written as JSON policies. When someone changes one, a reviewer usually sees a list of edited lines. What they need to know is simpler: what can people now do that they could not do before, has the risky part been removed, and can the service still do its job?</p>
+<h2>The decision it supports</h2><p>Should this change go ahead? PolicyLens answers with a concrete example (“this account can now delete the prod-1 database”) and points to the policy line responsible. It then checks a proposed fix against two questions: is the deletion now blocked, and can the account still read its reports? The reviewer can download a record of what was removed, what was kept and why.</p>
+<h2>Limits</h2><p>PolicyLens checks only the policies and requests you give it. It does not prove a whole AWS account is safe, and it does not yet cover organisation-wide rules (service control policies), permission boundaries, session policies or access between accounts. I have not yet compared its results with AWS’s own policy simulator. The browser demo has no AI and no account access.</p>
+<p class="case-source">This is a personal project with made-up examples. It has not been used by a client, and I have not measured time saved.</p>
+<h2>Try it step by step</h2>
+<ol><li>Open the example. It shows a change that newly allows deleting a database, and the policy line that allows it.</li><li>Check the fix. See which line was removed and which was kept, then select Verify correction to test both requests.</li><li>Download the review record (a JSON file). The original problem and the fixed result are kept separate.</li><li>To check your own policies, choose Use your own policies and open or paste them. They never leave your browser.</li></ol>
 <section class="case-comparison" aria-label="PolicyLens before and after">
 <h2>Before and after</h2>
-<p>Actual product-entry captures at 1280 × 720. The before view opens on empty editors; the after view explains the job and runs the labelled synthetic example.</p>
+<p>The first screen, before and after. It used to open on empty policy editors. Now it explains the job and runs a labelled example straight away.</p>
 <div class="comparison-pair">
 <figure>
 <a href="../../assets/flagships/policylens-product-before.png">
 <img src="../../assets/flagships/policylens-product-before.png" width="1280" height="720" alt="PolicyLens previous entry, with empty policy editors and an unexplained workbench" loading="lazy">
 </a>
-<figcaption>Before · editors before the product story</figcaption>
+<figcaption>Before: empty editors, no explanation</figcaption>
 </figure>
 <figure>
 <a href="../../assets/flagships/policylens-product-after.png">
 <img src="../../assets/flagships/policylens-product-after.png" width="1280" height="720" alt="PolicyLens product landing, with its real-engine permission-change example" loading="lazy">
 </a>
-<figcaption>After · a working example explains the value</figcaption>
+<figcaption>After: a working example explains the job</figcaption>
 </figure>
 </div>
-<p class="case-source">Screenshots show the interaction change. They do not establish time saved, adoption or a measured business outcome.</p>
 </section>
-<h2>Why the design changed</h2><p>Before, visitors faced empty policy editors before understanding the job. After, a working example leads from the risk to its source, a checked correction and an export. The correction view separates removed, retained and added statements from the engine’s access decisions. Retaining a statement alone does not prove effective access is retained.</p>
+<h2>Why the design changed</h2><p>Visitors met empty editors before they knew what the tool was for. Now a working example leads from the risk, to the line that causes it, to a checked fix and a downloadable record. The fix screen shows which lines were removed, kept or added, separately from the access test itself, because keeping a line does not on its own prove the access still works.</p>
 <h2 id="technical-evidence">Technical evidence</h2>
-<p>The example cites S2 at after.json:10 for rds:DeleteDBInstance. The correction removes that access while retaining the declared s3:GetObject report request. Authored checks include a 55-case benchmark and six captured grounding expectations. Browser journeys cover correction and export, own files, invalid inputs, stale results, missing required access, phones and reduced motion. These checks do not establish parity with AWS or live-model quality.</p>
-<p><a href="https://github.com/MatthewPaver/iam-policy-auditor#results">Results and reproducible tests</a> · <a href="https://github.com/MatthewPaver/iam-policy-auditor#quickstart">Run locally</a></p>
-<p><a href="../../assets/flagships/policylens-example-review.json" download>Inspect the exported synthetic review JSON</a>. Exact statements and request decisions remain available beside the plain-language explanation.</p>
-<details><summary>Design history and earlier captures</summary><p class="case-source">The earlier workflow iteration remains inspectable: <a href="../../assets/flagships/policylens-before.png">original workflow</a> and <a href="../../assets/flagships/policylens-after.png">first correction workbench</a>. New matched-task captures: <a href="../../assets/flagships/policylens-review-before.png">review before</a> and <a href="../../assets/flagships/policylens-review-after.png">review after</a>.</p><p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/policylens-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/policylens-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/policylens-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p><p><a href="../../preview.html?app=policylens">Earlier technical walkthrough</a></p></details>
-<div class="case-actions"><a href="https://matthewpaver.github.io/iam-policy-auditor/">Try the updated demo</a><a href="../">All public work</a></div>
+<p>For engineers. The example cites statement S2 at <code>after.json:10</code> for <code>rds:DeleteDBInstance</code>. The fix removes that access and keeps the declared <code>s3:GetObject</code> report request. I wrote a 55-case benchmark and six checks that the AI explanation stays faithful to the result. Browser tests cover the fix and export, your own files, invalid input, out-of-date results, missing required access, phone layouts and reduced motion.</p>
+<ul><li><a href="https://github.com/MatthewPaver/iam-policy-auditor#results">Results and reproducible tests</a></li><li><a href="https://github.com/MatthewPaver/iam-policy-auditor#quickstart">Run locally</a></li></ul>
+<p><a href="../../assets/flagships/policylens-example-review.json" download>Download the example review record (JSON)</a>. It keeps the exact policy lines and decisions beside the plain-language explanation.</p>
+<details><summary>Design history and earlier captures</summary><p class="case-source">The earlier workflow iteration remains inspectable: <a href="../../assets/flagships/policylens-before.png">original workflow</a> and <a href="../../assets/flagships/policylens-after.png">first correction workbench</a>. New matched-task captures: <a href="../../assets/flagships/policylens-review-before.png">review before</a> and <a href="../../assets/flagships/policylens-review-after.png">review after</a>.</p><p class="case-source">First-screen captures: <a href="../../assets/flagships/policylens-clarity-before.png">before the wording pass</a>, <a href="../../assets/flagships/policylens-clarity-after.png">after the wording pass</a> and <a href="../../assets/flagships/policylens-clarity-phone.png">phone view</a>.</p><p><a href="../../preview.html?app=policylens">Earlier technical walkthrough</a></p></details>
+<div class="case-actions"><a href="https://matthewpaver.github.io/iam-policy-auditor/">Try PolicyLens</a><a href="../">All public work</a></div>
 </article>
     </main>
 

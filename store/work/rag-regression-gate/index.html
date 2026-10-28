@@ -44,30 +44,28 @@
     <main class="shell">
       <article id="case" class="case-note">
 <h1>RAG Regression Gate: keep the right policy within reach</h1>
-<p class="lede">A search update puts an old, unapproved proposal above the current staff policy. RAG Regression Gate compares the sources found before and after the update so a team can investigate before releasing it.</p>
-<div class="case-actions"><a href="../../demos/rag-gate/">Explore RAG Regression Gate</a>
+<p class="lede">Many workplace AI assistants look up documents before they answer. This is called RAG (retrieval-augmented generation). After a search update, an old, unapproved proposal can start appearing above the current staff policy. RAG Regression Gate compares the documents found before and after an update, so a team can catch that before staff rely on it.</p>
+<div class="case-actions"><a href="../../demos/rag-gate/">Try RAG Regression Gate</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Inspect the source</a></div>
-<h2>The problem</h2><p>An internal help assistant depends on finding the right documents. A search update can change which policy it finds first, even when every question still finds some relevant evidence. Staff could then receive an answer based on an outdated proposal.</p>
-<h2>The decision it supports</h2><p>The before-and-after view makes that hidden change inspectable. In the synthetic example, the approved retention policy says 30 days; an old 365-day proposal overtakes it after the update. All six question checks still pass, while overall source order worsens. The gate holds the update for investigation.</p>
-<h2>Limits</h2><p>The website explores two saved Python comparisons. It does not run a live assistant, accept uploads or prove generated answers correct. Its six-question examples use threshold-only checks and are smoke tests, not an accuracy benchmark. Engineers must run the command-line tool on representative questions for their own documents. A passing result does not prove an improvement.</p>
-<p class="case-source">Independent public project by Matthew Paver. Examples are synthetic. No client deployment, adoption, time saving or measured commercial benefit is claimed. User comprehension has not yet been measured.</p>
-<h2>Complete journey</h2>
-<ol><li>Explore the held update. Compare the approved policy and old proposal before and after the search change.</li><li>Review all six staff questions and open the source documents. The hold applies to the overall update; another question may show no new drop.</li><li>Switch to the saved unchanged comparison. Read the HTML report or download the exact JSON result for either comparison.</li><li>For your own documents, follow the repository setup and run the gate on labelled questions. The website demonstrates the evidence an engineer can produce.</li></ol>
+<h2>The problem</h2><p>An assistant is only as good as the documents it finds. A change to how it searches can alter which policy comes first, even when every question still finds something relevant. Staff could then get an answer based on an outdated proposal, and nobody would notice from a simple pass count.</p>
+<h2>The decision it supports</h2><p>Should this search update be released? In the example, the approved data-retention policy says 30 days. After the update, an old 365-day proposal ranks above it. All six question checks still pass, but the order of results got worse overall, so the gate holds the update until someone investigates.</p>
+<h2>Limits</h2><p>The website shows two saved test results. It does not run an assistant, accept uploads or check whether an assistant’s answers are correct. Six questions is a quick sanity check, not a measure of accuracy. To test your own documents, an engineer runs the command-line tool on questions your staff really ask. A pass means nothing got measurably worse; it does not prove anything got better.</p>
+<p class="case-source">This is a personal project with made-up documents. It has not been used by a client, and I have not measured time saved.</p>
+<h2>Try it step by step</h2>
+<ol><li>Open the example. Compare where the approved policy and the old proposal rank before and after the update.</li><li>Step through all six staff questions and open the documents. The hold is for the update as a whole, so some questions show no change.</li><li>Switch to the second saved result, where the update changes nothing. Read either report or download its data (JSON).</li><li>To use it on your own documents, follow the setup in the repository and run the gate on questions you have labelled.</li></ol>
 <section class="case-comparison" aria-label="RAG Regression Gate before and after">
 <h2>Before and after</h2>
-          <p>Actual desktop captures at 1280 × 800. The same six-question example moves from a technical metric report to a plain-language source comparison.</p>
+          <p>The first screen, before and after, using the same six-question example. It used to open on a table of scores. Now it opens on a staff question and the documents found.</p>
           <div class="comparison-pair">
-            <figure><a href="../../assets/flagships/rag-before.png"><img src="../../assets/flagships/rag-before.png" width="1280" height="800" alt="Before: the offline report opens with retrieval metrics and a Candidate regresses verdict" loading="lazy"></a><figcaption>Before · working offline report, technical first view</figcaption></figure>
-            <figure><a href="../../assets/flagships/rag-after.png"><img src="../../assets/flagships/rag-after.png" width="1280" height="800" alt="After: product introduction and a before-and-after comparison of current policy and an outdated proposal" loading="lazy"></a><figcaption>After · product page and interactive evidence review</figcaption></figure>
+            <figure><a href="../../assets/flagships/rag-before.png"><img src="../../assets/flagships/rag-before.png" width="1280" height="800" alt="Before: the offline report opens with retrieval metrics and a Candidate regresses verdict" loading="lazy"></a><figcaption>Before: a table of scores comes first</figcaption></figure>
+            <figure><a href="../../assets/flagships/rag-after.png"><img src="../../assets/flagships/rag-after.png" width="1280" height="800" alt="After: product introduction and a before-and-after comparison of current policy and an outdated proposal" loading="lazy"></a><figcaption>After: a question and its documents come first</figcaption></figure>
           </div>
-          <p class="case-source">The captures show a clearer review journey. They do not establish time saved, adoption or a measured business outcome.</p>
         </section>
-<h2>Why the design changed</h2><p>Before, the report opened with technical scores. After, a staff question, the release decision and the source comparison come first. Visitors can inspect six questions, compare a second saved result and choose a readable report or the exact JSON data.</p>
+<h2>Why the design changed</h2><p>The old report opened with scores only an engineer could read. Now a staff question, the release decision and the documents found come first. Visitors can step through six questions, compare a second saved result and choose a readable report or the raw data.</p>
 <h2 id="technical-evidence">Technical evidence</h2>
-<p>The website keeps the saved reports, input fingerprints, configurations and source text inspectable. The separate SciFact benchmark below uses 5,183 abstracts and 300 test questions. Benchmark results describe one public dataset, not staff-policy accuracy or user benefit.</p>
-<p><a href="https://github.com/MatthewPaver/rag-retrieval-gate#results">Results and reproducible tests</a> · <a href="https://github.com/MatthewPaver/rag-retrieval-gate#quickstart">Run locally</a></p>
-<p><a href="../../demos/rag-gate/report.html">Read the held-update report (HTML)</a> · <a href="../../demos/rag-gate/unchanged-report.html">Read the unchanged report (HTML)</a></p><details><summary>Benchmark results and engineering trade-offs</summary><p>BEIR SciFact: 5,183 abstracts, 300 test queries, k=10, each candidate against BM25. Δ is candidate minus baseline.</p>
+<p>For engineers. The website keeps the saved reports, input fingerprints, settings and document text open to inspection. The separate benchmark below uses SciFact, a public set of 5,183 research abstracts and 300 test questions. Its results describe that dataset only.</p>
+<ul><li><a href="https://github.com/MatthewPaver/rag-retrieval-gate#results">Results and reproducible tests</a></li><li><a href="https://github.com/MatthewPaver/rag-retrieval-gate#quickstart">Run locally</a></li><li><a href="../../demos/rag-gate/report.html">Read the held-update report</a></li><li><a href="../../demos/rag-gate/unchanged-report.html">Read the unchanged report</a></li></ul><details><summary>Benchmark results and engineering trade-offs</summary><p>BEIR SciFact: 5,183 abstracts, 300 test queries, k=10, each candidate against BM25. Δ is candidate minus baseline.</p>
         <div class="case-table-wrap" role="region" aria-label="Results table, scrolls sideways on small screens" tabindex="0">
           <table class="case-table">
             <caption>Apple M1 Pro, CPU only, Python 3.13. Produced by <code>scripts/results_table.py</code> in the repository.</caption>
@@ -93,8 +91,8 @@
         </ul>
 
         </details><details><summary>How the release check works</summary><p>Baseline and candidate search configurations use the same labelled questions. A metric fails when its drop exceeds the practical threshold (0.02 absolute by default) and a 95% paired bootstrap interval excludes zero. The small synthetic examples disable bootstrap checks. Build time, latency and memory are reported, not gated. No language-model judge or answer generator is involved.</p></details>
-<details><summary>Design history and earlier captures</summary><p class="case-source">Actual landing captures at 1280 × 800: <a href="../../assets/flagships/rag-clarity-before.png">before clarity refinement</a> · <a href="../../assets/flagships/rag-clarity-after.png">after clarity refinement</a> · <a href="../../assets/flagships/rag-clarity-phone.png">updated phone view</a>. These show the presentation change; user comprehension has not yet been measured.</p></details>
-<div class="case-actions"><a href="../../demos/rag-gate/">Try the updated demo</a><a href="../">All public work</a></div>
+<details><summary>Design history and earlier captures</summary><p class="case-source">First-screen captures: <a href="../../assets/flagships/rag-clarity-before.png">before the wording pass</a>, <a href="../../assets/flagships/rag-clarity-after.png">after the wording pass</a> and <a href="../../assets/flagships/rag-clarity-phone.png">phone view</a>.</p></details>
+<div class="case-actions"><a href="../../demos/rag-gate/">Try RAG Regression Gate</a><a href="../">All public work</a></div>
 </article>
     </main>
 

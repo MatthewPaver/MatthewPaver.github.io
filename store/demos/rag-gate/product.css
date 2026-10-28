@@ -416,6 +416,14 @@ h1{
   fill:var(--green)}
 .no-regression p{
   border-color:var(--pass-divider)}
+.question-ok{
+  color:var(--ink);
+  background:var(--neutral-paper);
+  border-color:var(--line)}
+.question-ok .decision-icon{
+  fill:var(--muted)}
+.question-ok p{
+  border-color:var(--line)}
 .evidence-section,.how,.own-questions{
   margin-top:64px;
   padding:38px 20px 0;

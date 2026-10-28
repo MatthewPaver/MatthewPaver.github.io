@@ -14,8 +14,8 @@ test('homepage navigation always exposes the full project catalogue', async ({ p
   }
   await nav.getByRole('link', { name: 'All projects', exact: true }).click();
   await expect(page).toHaveURL(/\/work\/$/);
-  await expect(page.locator('.work-card')).toHaveCount(7);
-  await expect(page.locator('.template-row')).toHaveCount(3);
+  await expect(page.locator('.work-card')).toHaveCount(8);
+  await expect(page.locator('.template-row')).toHaveCount(2);
 });
 
 test("enterprise palette keeps hero links and actions readable in both themes", async ({ page }) => {
@@ -56,7 +56,7 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
   }
   await expect(page.getByRole("heading", { name: "Selected work." })).toBeVisible();
   await expect(page.locator(".selected-card")).toHaveCount(4);
-  await expect(page.getByRole("link", { name: "Explore the work" })).toHaveAttribute("href", "#selected");
+  await expect(page.getByRole("link", { name: "See my work" })).toHaveAttribute("href", "#selected");
   await expect(page.getByRole("link", { name: "Open CV (PDF)", exact: true })).toHaveAttribute(
     "href",
     "https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf",
@@ -73,14 +73,14 @@ test("Method gives three direct paths to project evidence", async ({ page }) => 
   await expect(page).toHaveURL(/app=lakehouse#case-story$/);
 });
 
-test("full catalogue search, category filters and category links narrow seven public projects", async ({ page }) => {
+test("full catalogue search, category filters and category links narrow eight public projects", async ({ page }) => {
   await page.goto("/work/?category=decision#catalogue");
   const cards = page.locator(".work-card:visible");
-  await expect(cards).toHaveCount(3);
+  await expect(cards).toHaveCount(4);
   await expect(page.getByRole("combobox", { name: "Subject" })).toHaveValue("decision");
   await page.getByRole("combobox", { name: "Subject" }).selectOption("data");
   await expect(cards).toHaveCount(2);
-  await expect(page.locator('.template-row:visible')).toHaveCount(3);
+  await expect(page.locator('.template-row:visible')).toHaveCount(2);
   await page.getByRole("button", { name: "Clear filters", exact: true }).click();
   await page.getByRole("searchbox", { name: "Search public work" }).fill("sick-leave balance");
   await expect(cards).toHaveCount(1);
@@ -93,18 +93,18 @@ test("full catalogue search, category filters and category links narrow seven pu
 test("selected work exposes a result, boundary and case route", async ({ page }) => {
   await page.goto("/");
   const policy = page.locator('[data-project="policylens"]');
-  await expect(policy.getByText("Database deletion changes from denied to allowed")).toBeVisible();
-  await expect(policy.getByText("Supplied policies only; an authored benchmark, not an AWS simulator check")).toBeVisible();
-  await expect(policy.getByText("Node.js · AWS IAM · AI evaluation")).toBeVisible();
-  await expect(policy.getByRole("link", {name:"Review PolicyLens case", exact:true})).toHaveAttribute(
+  await expect(policy.getByText("A change that suddenly allows deleting a database")).toBeVisible();
+  await expect(policy.getByText("Checks only the policies you give it, not a whole AWS account")).toBeVisible();
+  await expect(policy.getByText("Node.js, AWS IAM, AI evaluation")).toBeVisible();
+  await expect(policy.getByRole("link", {name:"Read the PolicyLens case study", exact:true})).toHaveAttribute(
     "href",
     "./work/policylens/",
   );
 
   const project = page.locator('[data-project="projectlens"]');
   await page.getByRole('tab', {name:'ProjectLens',exact:true}).click();
-  await expect(project.getByText(/five review questions, including a 73-day finish movement/i)).toBeVisible();
-  await expect(project.getByRole("link", {name:"Review ProjectLens case", exact:true})).toHaveAttribute(
+  await expect(project.getByText(/finish date moves 73 days while the update says nothing changed/i)).toBeVisible();
+  await expect(project.getByRole("link", {name:"Read the ProjectLens case study", exact:true})).toHaveAttribute(
     "href",
     "./work/projectlens/",
   );
@@ -141,7 +141,7 @@ test("screening room switches real projects and pauses video when switching away
   await expect(room.locator('[data-screening-panel="projectlens"]')).toBeVisible();
   expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
   await page.keyboard.press("ArrowLeft");
-  await expect(room.getByRole("button", { name: "ML Lakehouse" })).toHaveAttribute("aria-pressed", "true");
+  await expect(room.getByRole("button", { name: "Lakehouse" })).toHaveAttribute("aria-pressed", "true");
   await expect(room.getByText("Check the data before trusting the forecast.")).toBeVisible();
 });
 
@@ -192,7 +192,7 @@ test("the portfolio remains useful without JavaScript", async ({ browser }) => {
   await expect(page.locator(".capability-routes a")).toHaveCount(3);
   await expect(page.locator('.method-example')).toHaveCount(3);
   await page.goto("/work/");
-  await expect(page.locator(".work-card:visible")).toHaveCount(7);
+  await expect(page.locator(".work-card:visible")).toHaveCount(8);
   await expect(page.locator("[data-catalogue-controls]")).toBeHidden();
   await context.close();
 });

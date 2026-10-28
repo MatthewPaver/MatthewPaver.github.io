@@ -229,26 +229,26 @@
     "image": "./assets/winchester-shortlist.png",
     "imageWidth": 1280,
     "imageHeight": 800,
-    "imageAlt": "Winchester's seeded shortlist with the under £425k filter selected",
+    "imageAlt": "Winchester Buyer Check with the Under £425k filter: made-up homes listed with price, station walk and fit score",
     "role": "Product and data engineer",
     "status": "Live public demo",
     "focus": "Recommendations and public data",
     "problem": "A portal listing cannot answer whether one home works for one buyer. Winchester Buyer Check combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
     "choice": "I separated the example homes from public completed-sale records, and put missing evidence beside the shortlist. This makes the recommendation a starting point for questions rather than an unexplained ranking.",
-    "result": "Choose Under £425k and the nine seeded homes become five. Open Upper Brook Street to inspect the evidence checklist and see which assumptions need checking.",
+    "result": "Choose Under £425k and the nine example homes become five. Open Upper Brook Street to see which facts are confirmed and which still need checking.",
     "learning": "Precise-looking scores can imply more certainty than the inputs deserve. Fit and evidence scores are demo heuristics, not calibrated probabilities; negotiation figures are illustrative assumptions, not estimated market values.",
-    "access": "Runs in your browser. No account; nine seeded homes.",
+    "access": "Runs in your browser. No account; nine made-up example homes.",
     "publication": "The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.",
-    "mediaCaption": "Public seeded example with the under-£425k filter selected.",
+    "mediaCaption": "Public example with the Under £425k filter selected.",
     "steps": [
       "Choose Under £425k or a station-distance filter.",
       "Open a home and read its evidence checklist before interpreting the score.",
       "Treat prices and affordability inputs as illustrative. Consult the cited completed-sale context separately."
     ],
     "points": [
-      "The demo compares nine seeded homes against budget, commute and local completed-sale evidence.",
+      "The demo compares nine made-up homes against budget, commute and local completed-sale evidence.",
       "The newer local market build records the HM Land Registry source, filters and reconciled counts. Until that release is public, treat the hosted summaries as illustrative.",
-      "The public demo separates seeded homes from completed-sale context and states what it cannot decide."
+      "The public demo separates the made-up homes from real completed-sale data and states what it cannot decide."
     ],
     "stack": [
       "Browser JavaScript",
@@ -266,7 +266,7 @@
         "href": "https://github.com/MatthewPaver/winchester-buyer-check"
       }
     ],
-    "note": "Illustrative only. Listings and figures are seeded examples, not financial, tax, legal or mortgage advice."
+    "note": "Illustrative only. The homes and figures are made-up examples, not financial, tax, legal or mortgage advice."
   },
   "lakehouse": {
     "kicker": "Reusable data template",
@@ -377,7 +377,7 @@
     "status": "Finished",
     "focus": "Public experiment",
     "problem": "I wanted to make a small simulation people could play with, rather than present a single opaque football prediction. The result is a deliberately time-bounded experiment in modelling assumptions and animated interaction.",
-    "choice": "I exposed the assumptions and used seeded simulations so the same inputs can be repeated. The animation turns a modelling exercise into something a nontechnical visitor can explore.",
+    "choice": "I exposed the assumptions and used made-up simulations so the same inputs can be repeated. The animation turns a modelling exercise into something a nontechnical visitor can explore.",
     "result": "Choose the scenario assumptions and play the tournament to see the simulated outcomes change. The archived model remains interactive; its results are illustrative, not a forecast for a current competition.",
     "learning": "This was a useful way to practise reproducibility and frontend storytelling in a small build. Finishing the experiment and documenting its assumptions is more honest than treating an event-specific toy as an ongoing product.",
     "access": "Runs in your browser. No account or setup.",

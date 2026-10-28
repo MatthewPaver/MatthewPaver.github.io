@@ -68,7 +68,7 @@ Rule: do not invent adoption, customer, revenue or accuracy claims
 - Problem: A listing price omits commute, cash position, sold-price context and condition
 - Outcome: Turns a property shortlist into an affordability and evidence review
 - Proof: Nine made-up homes; market figures from a 2025 HM Land Registry snapshot
-- Available now: Runs in your browser. No account; nine seeded homes.
+- Available now: Runs in your browser. No account; nine made-up example homes.
 - Publication boundary: The public homes, scores and market summaries are illustrative. A local rebuild now traces 931 included 2025 sales to a retained public source, but that provenance update has not been published yet.
 - Preview: https://matthewpaver.github.io/preview.html?app=winchester
 - Repo: https://github.com/MatthewPaver/winchester-buyer-check

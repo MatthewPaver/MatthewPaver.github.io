@@ -1,25 +1,19 @@
 import { expect, test } from '@playwright/test';
 
-test('selected cases have short action names and directly inspectable captures', async ({ page }) => {
+test('selected rows have direct actions and readable HTML results', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('.hero-copy')).toContainText('Automation & AI Consultant at Ciklum, placed at Trustpilot');
-  await expect(page.locator('.hero-copy')).toContainText('six years at Projecting Success');
-  for (const [slug, name, image] of [
-    ['policylens', 'PolicyLens', 'previews/policylens-2026-10-28.png'],
-    ['projectlens', 'ProjectLens', 'previews/projectlens-2026-10-28.png'],
-    ['rag-regression-gate', 'RAG Regression Gate', 'previews/rag-regression-gate-2026-10-28.png'],
-    ['quicksupply', 'QuickSupply', 'quicksupply-dashboard.png'],
+  await expect(page.locator('.hero-copy .lede')).not.toContainText('Projecting Success');
+  await expect(page.locator('#about')).toContainText('six years at Projecting Success');
+  for (const [slug, name] of [
+    ['policylens', 'PolicyLens'], ['projectlens', 'ProjectLens'], ['rag-regression-gate', 'RAG Regression Gate'],
   ]) {
-    await page.getByRole('tab', {name, exact:true}).click();
-    const card = page.locator(`[data-project="${slug}"]`);
-    await expect(card.getByRole('link', { name: slug === 'quicksupply' ? 'Watch and read the QuickSupply case study' : `Read the ${name} case study`, exact: true }))
-      .toHaveAttribute('href', slug === 'quicksupply' ? `./preview.html?app=${slug}` : `./work/${slug}/`);
-    const capture = card.getByRole('link', { name: `View the ${name} screenshot`, exact: true });
-    await expect(capture).toHaveAttribute('href', `./assets/${image}`);
-    await expect(card.locator('a .project-summary')).toHaveCount(0);
-    await expect(card.getByRole('link')).toHaveCount(slug === 'quicksupply' ? 2 : 3);
-    if (slug === 'policylens') await expect(card.getByRole('link', { name: 'Open PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
+    const row = page.locator(`[data-project="${slug}"]`);
+    await expect(row.getByRole('link', {name:`Read the ${name} case study`,exact:true})).toHaveAttribute('href', `./work/${slug}/`);
+    await expect(row.locator('[data-card]')).toBeVisible();
+    await expect(row.locator('.row-summary')).toBeVisible();
   }
+  await expect(page.locator('#case-lakehouse .row-question')).toHaveText('Can a campaign report be rebuilt and checked from the raw files?');
 });
 
 test('catalogue leads with the strongest AI work: PolicyLens, then ProjectLens', async ({ page }) => {

@@ -185,9 +185,9 @@ components:
 
 The portfolio presents a carefully edited body of engineering work whose claims can withstand inspection. Navy and cyan establish the landing area; a cool-white catalogue, real interface captures and brief statements of purpose, evidence and limits support inspection.
 
-The landing variant pairs a personal introduction and CV with the existing screening room, then offers three compact case tabs. One complete case is visible at a time; without enhancement all three remain readable. Hanken Grotesk sets every role here and on the catalogue and previews. Existing hero motion and user-initiated videos remain; a short case transition supports navigation.
+The landing pairs a personal introduction and CV with one PolicyLens check on real public AWS policy data. A continuous navy lower page presents five complete work rows: PolicyLens, ProjectLens, RAG Regression Gate, QuickSupply and Marketing ML Lakehouse. Hanken Grotesk sets every role here and on the catalogue and previews. The introduction states the current role, employer and placement; client responsibilities stay out of public copy.
 
-The user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` owns the landing; `store/styles.css` remains the shared catalogue/preview foundation.
+The user requested colours from Projecting Success on 5 September 2026. Its live site supplied the navy/cyan relationship, not a licence to present this as that company's site or reuse its endorsements. The existing content, navigation, real media and personal identity are retained. `store/landing.css` supplies the landing foundation, with `store/d2.css` and `store/lower.css` owning the approved hero and lower page; `store/styles.css` remains the shared catalogue/preview foundation.
 
 **Key Characteristics:**
 
@@ -196,11 +196,11 @@ The user requested colours from Projecting Success on 5 September 2026. Its live
 - Real product captures framed as working software, not generated artwork.
 - Softened media frames on the landing; compact rectilinear catalogue controls and cards.
 - Honest boundaries and accountable human decisions beside every claim.
-- User-controlled playback, pausable background motion and static reduced-motion fallbacks.
+- User-controlled playback, a pausable two-play hero check and static reduced-motion fallbacks.
 
 ## Colors
 
-Reference: https://projectingsuccess.co.uk/, inspected 5 September 2026. Observed navy `#1c3762`, cyan `#00adf1` and action blue `#028bc1`. The portfolio uses darker `#006b95` for small text and links. The hero is one deliberate navy region in light mode; all subsequent reading sections stay light. Dark mode uses a coherent midnight-blue foundation. The media frame stays dark in either theme.
+Reference: https://projectingsuccess.co.uk/, inspected 5 September 2026. Observed navy `#1c3762`, cyan `#00adf1` and action blue `#028bc1`. The portfolio uses darker `#006b95` for small text and links. The homepage hero and lower page retain navy in both themes, with tonal bands separating the lower sections. The catalogue and previews retain their existing light and midnight-blue theme foundations. Result cards preserve their respective application colours.
 
 ### Primary
 
@@ -238,12 +238,12 @@ The shared accent becomes lighter in dark mode. The MP mark deliberately retains
 
 **Weights:** three only. 400 for reading text, 600 for emphasis inside text and small controls, 700 for headings, labels and buttons. Do not use in-between variable weights (720, 760, 780).
 
-**Smallest text:** 0.8rem (12.8px). The MP monogram is the only exception.
+**Smallest text:** 0.8rem (12.8px) across the shared system. The approved homepage uses a 0.875rem (14px) phone text floor. The MP monogram remains an exception to the shared minimum.
 
 ### Hierarchy
 
-- **Landing Display:** One white Hanken Grotesk sentence on navy, "I design AI systems and build them.", set with `text-wrap: balance`. It must fit in two lines at every width: the hero grid gives the text `.92fr` against `1.26fr` for the screening room so the first line fits at 4rem. At 1100px and below it uses 2.5rem, at 980px and below `clamp(2.6rem, 6vw, 3.6rem)`, and at 640px and below `clamp(2.25rem, 10vw, 3rem)`. No accent colour on part of the line.
-- **Landing Headline / Title:** Hanken Grotesk section and project headings, using the scoped frontmatter roles. Mobile project titles resolve to 1.65rem.
+- **Landing Display:** One white Hanken Grotesk sentence on navy, "I design AI systems and build them.", set with `text-wrap: balance`, `clamp(2.75rem, 4.45vw, 4rem)` and 1.05 line height. At 1100px and below the final hero rule uses `clamp(2.25rem, 6vw, 3.6rem)`. No accent colour on part of the line.
+- **Landing Headline / Title:** The navy lower page uses `clamp(2.25rem, 4.2vw, 3.25rem)` section headings and `clamp(1.75rem, 2.6vw, 2.25rem)` project titles. Below 720px section headings use `clamp(2rem, 9vw, 2.5rem)`.
 - **Display / Headline:** Hanken Grotesk defaults for the catalogue and preview family; the catalogue's route-specific heading and shared mobile rules may further constrain them.
 - **Title:** Hanken Grotesk project and capability names outside the landing, scaled to their shelf hierarchy.
 - **Body:** Neutral sans-serif for explanations, generally held to roughly 48–66 characters per line.
@@ -255,23 +255,23 @@ The shared accent becomes lighter in dark mode. The MP mark deliberately retains
 
 The catalogue and previews retain the core shell capped at 1220px with 40px total viewport breathing room, reducing to 28px on small screens. The landing instead caps its shell at 1320px with 64px total breathing room; at 640px and below this becomes 32px total.
 
-The landing desktop hero keeps its .86fr / 1.32fr split. Selected work uses an underlined three-button tablist above one image-and-copy panel (1.15fr / 1fr, 28–64px gap). Below 760px the panel stacks image above copy. Full interface captures use contain sizing in a 1.3 desktop or 1.4 mobile frame. Tabs are at least 48px tall. The full catalogue stays a separate route with its existing filters, search and templates.
+The desktop hero uses a 1fr / 1.08fr grid: introduction and check on the left, the PolicyLens result card on the right. At 1100px and below, introduction, check and result stack. Selected work keeps all five rows in document order, each with its own check line and a 1.12fr / 1fr media-and-copy grid. The row grid stacks below 980px; check lines stack vertically below 720px. Direct project anchors work without tab enhancement. The full catalogue stays a separate route with its existing filters, search and templates.
 
-The Method uses an ordered list of six checks: three columns read left to right, followed by the second row. Below 720px it becomes one vertical sequence. Its landing introduction is a separate two-column heading-and-explanation layout that stacks below 980px. Each scenario links its input evidence and a concrete result, and identifies local-only extensions. Controls remain at least 44px high, anchors account for the sticky header, and page-level horizontal overflow is prohibited.
+The Method pairs its introduction with an ordered list of three evidence-linked practices in a .9fr / 1.1fr grid, stacking below 980px. The list stays vertical and its connecting line draws with scroll progress. Controls remain at least 44px high, anchors account for the sticky header, and page-level horizontal overflow is prohibited.
 
 Major sections use generous responsive vertical rhythm; evidence inside cards remains compact. The homepage curates; the searchable `/work/` route carries the full public catalogue.
 
-**The Curated First Rule.** The landing makes three flagship review tools and the retained QuickSupply case understandable without requiring a visit to the full catalogue; the catalogue remains directly available for visitors who already know what they need.
+**The Curated First Rule.** The landing makes PolicyLens, ProjectLens, RAG Regression Gate, QuickSupply and Marketing ML Lakehouse understandable without requiring a visit to the full catalogue; the catalogue remains directly available for visitors who already know what they need.
 
 ## Elevation & Depth
 
-The system is flat by default. Borders, tonal shifts and inset screenshot crops create most separation. The landing screening room has a diffuse shadow (`0 26px 64px rgb(16 42 67 / 19%)`), while the Decision Contract retains its blue-grey workbench shadow (`0 24px 52px rgb(19 49 77 / 12%)`). The video play control has a small local shadow. Landing project containers do not lift or cast hover shadows; only their image moves. Catalogue and preview surfaces retain their existing restrained border and screenshot-depth treatments.
+The system is flat by default. Borders, tonal shifts and framed evidence create most separation. The homepage result wrapper has no shadow; lower work rows use alternating translucent navy bands. Result highlights use the respective application's border and inset emphasis. Catalogue and preview surfaces retain their existing restrained border and screenshot-depth treatments.
 
 **The Evidence Above Chrome Rule.** Depth may focus attention on a real interface or causal workflow, never on ornamental containers.
 
 ## Shapes
 
-Catalogue and preview surfaces preserve compact geometry: 2px on catalogue search and filters, 3px on shared buttons, and 5px on cards and preview media. The shared diagram node base remains 4px. The landing is a scoped softer variant: 7px action buttons and MP mark, 14px media/workbench frames and 10px Decision Contract nodes. Its selected cards have no enclosing rounded container; only the media is framed.
+Catalogue and preview surfaces preserve compact geometry: 2px on catalogue search and filters, 3px on shared buttons, and 5px on cards and preview media. The shared diagram node base remains 4px. The landing is a scoped softer variant: 7px action buttons and MP mark, a 14px hero result frame and 12px lower media frames. Selected rows have no enclosing rounded container; only their media is framed.
 
 One-pixel rules remain visible and structural. Circles are limited to evidence markers and native status-like signals; large rounded pills and soft dashboard bubbles do not belong in this system.
 
@@ -280,13 +280,13 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 ### Buttons
 
 - **Shape:** Compact rectangular controls with a 46px minimum height; 3px corners in the shared catalogue/preview style and 7px in the landing variant.
-- **Primary:** Ink surface, paper text and strong Hanken Grotesk label weight.
+- **Primary:** Ink surface, paper text and strong Hanken Grotesk label weight in the shared system. Homepage primary actions use cyan with dark navy text.
 - **Hover / Focus:** A two-pixel lift and deep accent fill on hover; a three-pixel solid focus outline with a three-pixel offset.
 - **Ghost:** Transparent at rest, strong paper on hover, with the same border and geometry as the primary action.
 
 ### Chips
 
-- **Style:** Scenario and catalogue filter controls use compact bordered rectangles rather than pills. Screening-room selectors are equal-width text buttons above the media, not bordered chips.
+- **Style:** Catalogue filter controls retain their compact bordered rectangles. Homepage check inputs use static rounded chips; result-card status pills preserve their application styling. The hero has no project selectors.
 - **State:** Selection is explicit through `aria-pressed`, a filled surface and a clear foreground change.
 
 ### Cards / Containers
@@ -295,8 +295,8 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 - **Catalogue First Use:** The `/work/` card presents the project name, browser/local/case-study requirement, plain-language use, one observable example and a practical boundary, then a direct first action and case link. Native `details` holds optional first steps without JavaScript. `store/work/catalogue.css` scopes the two-column desktop and one-column mobile layout. Real screenshots use `object-fit: contain` inside a 16:10 frame; the finished experiment uses the same card width. Sample data, historical exports and local-only extensions are labelled beside actions.
 - **Catalogue Covers:** `store/work/covers.css` gives all seven projects a reserved 16:10 stage. Genuine screenshots remain unmodified, contained and at their natural aspect ratio; the frame does not invent browser chrome or crop away evidence. QuickSupply, Winchester and ProjectLens use separately layered, self-hosted stock photography for education, housing and construction context. The other four use quiet, app-derived solid colours so abstract tools are not obscured by unrelated photos. Full-size case images and landing captures are unchanged. `store/assets/photography/sources.json` records attribution and distinguishes stock context from client work, listings and dataset evidence. The visible credits accordion was removed at Matthew's request. The cover system adds no JavaScript, animation or dependency; it stays visible with scripts or photos unavailable.
 - **Project Details:** `store/preview.css` owns a top-aligned, two-column hero with a 2.3–3.4rem Hanken Grotesk title. At 980px it stacks. Images retain their intrinsic proportions and expose a full-size link; video has its own 16:10 contained frame. Access and publication boundaries precede the case narrative. The story covers the problem, design choice, observed output and learning; implementation details remain optional. Generated and query routes share this presentation and the same `previews.json` content.
-- **Landing Selected Work:** Borderless case copy paired with a 14px media frame. The enhanced wide view uses a single sticky stage; simple view keeps the inline cards. Each story moves from a plain-language question to the build and one thing to inspect. Evidence rows keep the reproduced result beside its boundary.
-- **Landing Media:** Use real captures, never invented dashboard illustrations. Case panels use object-fit: contain and preserve complete screenshots. Keep the existing hero recording and its deliberate play action.
+- **Landing Selected Work:** Five complete rows pair borderless case copy with framed evidence. Each includes a plain-language question, purpose, observable example, limit and direct action. PolicyLens and ProjectLens show live HTML results on labelled real public data; RAG Regression Gate and Lakehouse retain labelled example data. QuickSupply is a recorded prototype.
+- **Landing Media:** Preserve real captures and app-specific result styling. QuickSupply has native controls, `preload="none"`, a poster and a direct case link. Playback is user initiated and pauses offscreen or when the document is hidden; it never resumes automatically.
 
 ### Inputs / Fields
 
@@ -305,31 +305,25 @@ One-pixel rules remain visible and structural. Circles are limited to evidence m
 
 ### Navigation
 
-The sticky navigation uses high-weight Hanken Grotesk, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All projects, Method, About and CV at every width, with compact spacing and 44px-high targets on phones. All projects is a direct `/work/` link, not a jump to the selected homepage cases; the hero's Explore the work action still introduces those cases. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
+The sticky navigation uses high-weight Hanken Grotesk, generous hit areas and quiet muted links. The active in-page section is identified with ink text and a short brand-blue underline. The landing shows All work, Method, About and CV (PDF) at every width, with compact spacing and 44px-high targets on phones. All work links directly to `/work/`; the hero's See my work action links to the selected homepage rows. The catalogue keeps Home, All work, Patterns and CV; on mobile the brand provides Home so Patterns remains available. Detail pages provide an explicit All work return that restores the visitor's catalogue selection. The landing and catalogue share the white-on-navy, 7px-radius MP mark in both themes. Buttons, search and catalogue selects share the 7px control radius.
 
 Catalogue grouping is action-first: All, Try in browser, Run locally, Watch or read, and Reuse a pattern. Subject is secondary. At 640px and below, a native Explore selector replaces the five-button row and sits beside Subject; both desktop and mobile controls reflect the same state across resize. Search includes both the seven projects and three patterns. Mode, subject and search live in the URL and survive refresh, browser Back and the case return link. Clear filters and the Patterns navigation offer escape routes from empty combinations. With JavaScript unavailable, all items and their first steps remain visible.
 
 On a JavaScript-enabled load, the hidden filter controls reserve their actual geometry until the catalogue module is ready, so revealing them does not move the project covers. The catalogue preloads its existing self-hosted display and body fonts.
 
-### Project Screening Room
+### PolicyLens Hero
 
-The landing hero now offers QuickSupply, ProjectLens and ML Lakehouse previews. QuickSupply is an actual recorded walkthrough; the other two are real still captures with case links. The selectors expose `aria-pressed` and support left/right arrow keys. A selection change pauses the video and reveals the new panel with a short 360ms transition; reselecting the active project does nothing.
-
-Video uses `preload="none"`, a real poster and click-to-play enhancement. Native controls become available for playback; without JavaScript they are present from the start. The recording pauses when switched away, offscreen or in a hidden document, and never resumes automatically. A text walkthrough, download link, retry state and case-study fallback remain available. Playing video uses `object-fit: contain` so the recording is not cropped.
-
-The former four-stage hero evidence story is no longer mounted on the landing. Its leftover shared CSS/JavaScript is not the current landing component or a system-wide interaction requirement.
+The hero shows only PolicyLens on AWSSupportServiceRolePolicy v19 to v20, dated 21 December 2021. Its HTML result names `s3:GetObject` on `*`, line 1640, and 40 lower-risk additions. A caption links AWS security bulletin AWS-2021-007 and states that AWS Support systems could not use the permission and the change was reverted. Direct actions open PolicyLens and the real policy versions. The result is labelled real public data.
 
 ### Landing Motion
 
-The hero source-to-output signal runs a slow 18-second linear loop only when the hero is visible, the document is visible, reduced motion is not requested and the visitor has not paused it. The visible pause/resume control changes its pressed state and label. Without JavaScript the path stays still.
+`store/d2.js` coordinates the hero check: draw in the lines, send the pulse, then highlight the permission finding. The 4800ms sequence plays twice and rests on its final frame. The pause/resume control exposes its state through `aria-pressed` and disappears after completion. Offscreen and hidden-document states pause the sequence. Reduced motion, unavailable animation support and disabled JavaScript retain the final result. There are no hero tool tabs, progress bar, auto-advance or ambient drift.
 
-An IntersectionObserver reveals each target once: media enters with an 850ms clipped 18px movement, while section copy and capability links use a 600ms 14px movement. Content is visible by default; the effects do not gate access. Reduced motion skips these effects, disables transitions and cancels running page animations. User-initiated video remains available. Motion values and breakpoint extensions are recorded in `.impeccable/design.json`.
-
-Selected work uses compact case tabs, owned by store/work-story.css and store/work-story.js. A user selection transitions the source panel with 240ms opacity and 8px movement. Reduced motion skips and cancels that animation. Tabs support ArrowLeft, ArrowRight, Home and End; their selected state matches the labelled tabpanel. Project anchor IDs and browser Back restore the matching case. The controls are built only during enhancement: failed JavaScript leaves all source content available, and print CSS shows every case. No sticky clones, scroll tracking or view-mode switch remain.
+`store/lower.js` draws each row's check once on entry. Lower-page strands and the Method connector follow scroll progress. Content ships visible; reduced motion leaves the finished checks and cancels active transitions. Print restores check wires, nodes and verdicts. Native project anchors and browser history navigate complete rows without a selected-case controller.
 
 ### How I Work
 
-Three flat, separated rows pair a specific engineering choice with a short explanation and a direct link to case evidence. They cover source tracing in ProjectLens, explanation checks in the local PolicyLens extension and a simple forecast baseline in the local lakehouse extension. On desktop, headings and explanations use a .9fr / 1.1fr layout; below 760px each row stacks. The existing #contract anchor remains. There is no scenario switcher or animated diagram, and the text keeps public/local limitations explicit.
+Three evidence-linked practices cover source tracing in ProjectLens, explanation checks in the local PolicyLens extension and a simple forecast baseline in the local lakehouse extension. The existing `#contract` anchor remains. There is no scenario switcher; public and local limitations stay explicit.
 
 ## Do's and Don'ts
 
@@ -341,16 +335,16 @@ Three flat, separated rows pair a specific engineering choice with a short expla
 - **Do** preserve dark mode, visible keyboard focus, reduced motion and touch-safe controls.
 - **Do** keep private work out of public catalogues and previews.
 - **Do** keep one typeface (Hanken Grotesk) on every page. **Don't** reintroduce Inter, Manrope, Geist or a serif display face.
-- **Do** keep video user-initiated and background motion pausable, with static and no-JavaScript fallbacks.
+- **Do** keep video user-initiated and the hero check pausable, with final reduced-motion and no-JavaScript fallbacks.
 
 ### Don't:
 
 - **Don't** replace screenshots with generated product art or generic gradient thumbnails.
 - **Don't** add vanity counters, floating blobs, unpausable loops, marquees or cursor spectacle.
-- **Don't** repeat the same project proof across several homepage sections.
+- **Don't** add repeated project proof beyond the approved PolicyLens hero and selected-work row.
 - **Don't** use rounded-pill components as a default visual language.
 - **Don't** claim model or product impact that the linked evidence cannot reproduce.
 
 ## Flagship discovery and case notes
 
-PolicyLens, ProjectLens and RAG Regression Gate share the selected-work tab pattern and direct demo/case actions. QuickSupply remains the fourth case. Phone tabs use two equal columns so every product name stays visible. Primary flagship case links use `/work/<product>/`; older technical walkthroughs remain secondary. Case notes lead with the problem, supported decision and limits, then show the full journey and matched captures. The technical evidence anchor, reproducible results and earlier captures remain directly accessible. Case headings use a maximum measure of 24ch within the existing type scale.
+PolicyLens, ProjectLens and RAG Regression Gate have complete selected-work rows and direct demo/case actions. QuickSupply is fourth and Marketing ML Lakehouse fifth. All five remain readable at every width without tabs. Primary flagship case links use `/work/<product>/`; older technical walkthroughs remain secondary. Case notes lead with the problem, supported decision and limits, then show the full journey and matched captures. The technical evidence anchor, reproducible results and earlier captures remain directly accessible. Case headings use a maximum measure of 24ch within the existing type scale.

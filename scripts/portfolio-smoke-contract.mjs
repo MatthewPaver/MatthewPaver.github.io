@@ -4,7 +4,7 @@ export function inspectPublicPages(home, catalogue) {
   return [
     { name: 'homepage links to all projects', pass: /href="\.\/work\/">All work<\/a>/.test(home) },
     { name: 'homepage offers the CV', pass: /href="[^"]*\/CV\.pdf"/.test(home) },
-    { name: 'homepage has four selected cases', pass: (home.match(/<(?:article|div) class="selected-card"/g) || []).length === 4 },
+    { name: 'homepage has five selected cases in order', pass: JSON.stringify([...home.matchAll(/<article class="work-row" id="case-([^"]+)"/g)].map(match => match[1])) === JSON.stringify(['policylens', 'projectlens', 'rag-regression-gate', 'quicksupply', 'lakehouse']) },
     ...['policylens', 'projectlens', 'rag-regression-gate'].map(slug => ({ name: `homepage features ${slug}`, pass: home.includes(`data-project="${slug}"`) && home.includes(`./work/${slug}/`) })),
     { name: 'catalogue has search', pass: catalogue.includes('data-catalogue-search') },
     ...['policylens', 'projectlens', 'rag-regression-gate', 'quicksupply', 'winchester', 'lakehouse', 'hr', 'england'].map((slug) => ({

@@ -96,7 +96,9 @@ assertPublicCatalogueText({
 });
 
 assert.ok(indexHtml.includes('id="selected-heading"'), "The page needs a clear start-here shelf");
-assert.equal((indexHtml.match(/<(?:article|div) class="selected-card"/g) || []).length, 4, "The homepage features three review tools and the retained QuickSupply case");
+assert.deepEqual([...indexHtml.matchAll(/<article class="work-row" id="case-([^"]+)"/g)].map(match => match[1]),
+  ["policylens", "projectlens", "rag-regression-gate", "quicksupply", "lakehouse"],
+  "The homepage follows the approved five-project order");
 assert.ok(workHtml.includes('id="templates"'), "Reusable code must have a separate pattern section");
 assert.ok(workHtml.includes("RAG Regression Gate"), "RAG Regression Gate is missing");
 const ragCasePath = "store/work/rag-regression-gate/index.html";

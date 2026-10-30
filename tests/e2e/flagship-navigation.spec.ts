@@ -9,8 +9,7 @@ const products = [
 for (const [name, slug, demo, repo] of products) {
   test(`${name} has a complete homepage, case, evidence and demo path`, async ({ page }) => {
     await page.goto('/#selected');
-    await page.getByRole('tab', { name, exact: true }).click();
-    const panel = page.getByRole('tabpanel', { name, exact: true });
+    const panel = page.locator(`[data-project="${slug}"]`);
     await expect(panel.getByRole('link', { name: `Open ${name}`, exact: true })).toBeVisible();
     await panel.getByRole('link', { name: `Read the ${name} case study`, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`/work/${slug}/$`));

@@ -8,7 +8,6 @@
     <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
     <title>Matthew Paver | AI solutions architect</title>
     <link rel="canonical" href="https://matthewpaver.github.io/" />
-    <link rel="preload" as="image" href="./assets/previews/projectlens-2026-10-28.png" fetchpriority="high" />
     <link rel="preload" as="font" href="./assets/fonts/hanken-grotesk-latin-wght-normal.woff2" type="font/woff2" crossorigin />
     <meta name="description" content="Inspect the software, AI evaluation and data engineering projects Matthew Paver has built, tested and made reproducible." />
     <meta property="og:title" content="Matthew Paver | AI solutions architect" />
@@ -30,9 +29,11 @@
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="./styles.css?v=20261028-1" />
     <link rel="stylesheet" href="./landing.css?v=20261028-1" />
-    <link rel="stylesheet" href="./work-story.css?v=20260905-3" />
+    <link rel="stylesheet" href="./d2.css" />
+    <link rel="stylesheet" href="./lower.css" />
     <script src="./script.js?v=20260905-3" defer></script>
-    <script src="./work-story.js?v=20260905-3" defer></script>
+    <script src="./d2.js" defer></script>
+    <script src="./lower.js" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -46,7 +47,7 @@
             "https://github.com/MatthewPaver",
             "https://www.linkedin.com/in/matthew-paver-534262166/"
           ],
-          "jobTitle": "AI solutions architect",
+          "jobTitle": "Automation & AI Consultant",
           "worksFor": { "@type": "Organization", "name": "Ciklum" },
           "knowsAbout": ["AI evaluation", "data engineering", "decision support", "machine learning"]
         },
@@ -58,7 +59,8 @@
             { "@type": "ListItem", "position": 1, "url": "https://matthewpaver.github.io/preview.html?app=policylens", "name": "PolicyLens" },
             { "@type": "ListItem", "position": 2, "url": "https://matthewpaver.github.io/preview.html?app=projectlens", "name": "ProjectLens" },
             { "@type": "ListItem", "position": 3, "url": "https://matthewpaver.github.io/preview.html?app=rag-regression-gate", "name": "RAG Regression Gate" },
-            { "@type": "ListItem", "position": 4, "url": "https://matthewpaver.github.io/preview.html?app=quicksupply", "name": "QuickSupply" }
+            { "@type": "ListItem", "position": 4, "url": "https://matthewpaver.github.io/preview.html?app=quicksupply", "name": "QuickSupply" },
+            { "@type": "ListItem", "position": 5, "url": "https://matthewpaver.github.io/preview.html?app=lakehouse", "name": "Marketing ML Lakehouse" }
           ]
         }
       ]
@@ -66,12 +68,6 @@
     </script>
   </head>
   <body class="portfolio-landing">
-    <!-- THESIS: A personal portfolio that lets visitors see working software before reading its implementation details.
-    OWN-WORLD: Navy identity, cyan pathways, cool-white reading surfaces, real product captures and compact application shelves. Colour reference: Projecting Success; this is Matthew's personal portfolio, not a company site.
-    STORY: Meet Matthew, watch a real workflow, choose a case, inspect the method, browse or get in touch.
-    FIRST VIEWPORT: A personal introduction and CV on the left; a large three-project media player on the right. Curved source-to-output paths animate behind it, with a visible pause control.
-    FORM: Code-led extension of the existing world, pinned to the user's Tabfolio Pro and Presenta references. Signature interaction: the project screening room, then a clipped media reveal on scroll.
-    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
     <a class="skip-link" href="#selected">Skip to selected work</a>
 
     <div class="topbar-shell">
@@ -90,200 +86,217 @@
     </div>
 
     <main id="top">
-      <header class="hero landing-hero">
-        <svg class="flow-backdrop" viewBox="0 0 1440 760" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <path d="M-120 620C260 620 210 160 610 160S1010 570 1570 180" />
-          <path d="M-120 650C280 650 250 190 640 190S1070 600 1570 210" />
-          <path d="M-120 680C300 680 290 220 670 220S1130 630 1570 240" />
-          <path class="flow-signal" d="M-120 650C280 650 250 190 640 190S1070 600 1570 210" />
-        </svg>
+      <!-- hero:start -->
+      <header class="hero landing-hero" data-hero data-motion="finished">
         <div class="shell hero-grid">
           <div class="hero-copy">
             <h1>I design AI systems and build them.</h1>
-            <p class="lede">I’m Matthew Paver, an Automation &amp; AI Consultant at Ciklum, placed at Trustpilot. Before that I spent six years at Projecting Success, moving from data analysis to solutions architecture.</p>
+            <p class="lede">I’m Matthew Paver, an Automation &amp; AI Consultant at Ciklum, placed at Trustpilot.</p>
             <div class="hero-actions">
-              <a class="button primary" href="#selected">See my work <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg></a>
+              <a class="button primary" href="#selected">See my work</a>
               <a class="button ghost" href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">Open CV (PDF)</a>
             </div>
           </div>
-          <section class="screening-room" aria-label="Explore working projects" data-screening-room>
-            <div class="screening-tabs" role="group" aria-label="Choose a project preview" hidden>
-              <button type="button" data-screening-tab="projectlens" aria-pressed="true">ProjectLens</button>
-              <button type="button" data-screening-tab="quicksupply" aria-pressed="false">QuickSupply</button>
-              <button type="button" data-screening-tab="lakehouse" aria-pressed="false">Lakehouse</button>
+          <figure class="check-lane" aria-label="PolicyLens policy check">
+            <div class="hero-check">
+              <p class="check-input">AWS Support policy update (v19 to v20)</p>
+              <svg class="hero-wire" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="check-strand" d="M0 12 H100" pathLength="1"/><path class="check-pulse" d="M0 12 H100" pathLength="1"/></svg>
+              <p class="check-node"><span class="check-dot" aria-hidden="true"></span>PolicyLens finds</p>
+              <svg class="hero-wire" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="check-strand" d="M0 12 H100" pathLength="1"/><path class="check-pulse" d="M0 12 H100" pathLength="1"/></svg>
             </div>
-            <div class="screening-panel" data-screening-panel="projectlens">
-              <a class="screening-media" href="./work/projectlens/"><img src="./assets/previews/projectlens-2026-10-28.png" width="1280" height="800" alt="ProjectLens product landing showing a real-engine synthetic schedule comparison and its next review question" fetchpriority="high" /></a>
-              <div class="screening-caption"><div><strong>Does the change pack match the schedule?</strong><span>ProjectLens: try it in your browser</span></div><a href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open ProjectLens <svg class="action-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a></div>
+            <figcaption>Stop: the support role could read every object in every S3 bucket</figcaption>
+            <p class="check-explainer">AWS is Amazon Web Services. Identity and Access Management (IAM) policies set permissions. S3 is its object storage service.</p>
+          </figure>
+          <section class="screening-room" aria-label="PolicyLens result on real public data">
+            <div class="live-card is-found" data-hero-card><div class="lc-frame" data-ui><div class="lc lc--policylens" data-card="policylens">
+                  <div class="lc-bar"><span class="lc-mark">PolicyLens</span><span class="lc-meta">Real public data: AWS Support policy</span></div>
+                  <div class="lc-body">
+                    <p class="lc-title">Stop: the support role could read every object in every S3 bucket</p>
+                    <p class="lc-status">AWSSupportServiceRolePolicy, v19 to v20<br /><time datetime="2021-12-21">21 December 2021</time></p>
+                    <div class="policy-finding" data-flag><strong><code>s3:GetObject</code></strong><span>on <code>*</code> (all objects)</span><span>line 1640</span></div>
+                    <p class="lc-status">+40 lower-risk additions</p>
+                  </div>
+                </div></div></div>
+            <div class="screening-caption">
+              <p>Source: <a href="https://aws.amazon.com/security/security-bulletins/AWS-2021-007/">AWS security bulletin AWS-2021-007</a>. This is a policy-only finding. AWS says its support systems could not use the permission, and the change was reverted.</p>
+              <a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Try it on your own policy</a>
+              <a class="source-link" href="https://github.com/MatthewPaver/iam-policy-auditor/tree/feat/lift-and-shift/examples/policies">See the real AWS policy versions</a>
             </div>
-            <div class="screening-panel" data-screening-panel="quicksupply" hidden>
-              <div class="screening-media">
-                <video controls playsinline preload="none" poster="./assets/quicksupply-dashboard.avif" aria-label="QuickSupply recorded product walkthrough" aria-describedby="quicksupply-transcript">
-                  <source src="./assets/quicksupply-demo.m4v" type="video/mp4" />
-                  <p><a href="./assets/quicksupply-demo.m4v">Download the QuickSupply walkthrough</a>.</p>
-                </video>
-                <button class="screening-play" type="button" data-play-video hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z" /></svg><span>Watch the walkthrough</span></button>
-              </div>
-              <div class="screening-caption"><div><strong>Follow a school’s request for a supply teacher.</strong><span>QuickSupply: recorded walkthrough</span></div><a href="./preview.html?app=quicksupply" aria-label="Read the QuickSupply case study">Read the case study <svg class="action-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a></div>
-              <details class="video-transcript"><summary>What happens in this demo?</summary><p id="quicksupply-transcript">A school requests supply cover, an agency manages the request and assigns a teacher, and the teacher can review the assignment. The separate role-based dashboards share the booking status. This is a recorded case study, not a live staffing service.</p></details>
-            </div>
-            <div class="screening-panel" data-screening-panel="lakehouse" hidden>
-              <a class="screening-media" href="./preview.html?app=lakehouse"><img src="./assets/lakehouse-quality.png" width="1280" height="800" alt="Marketing ML Lakehouse data checks: seven checks on made-up sample data, six pass and one warning" loading="lazy" /></a>
-              <div class="screening-caption"><div><strong>Check the data before trusting the forecast.</strong><span>Marketing ML Lakehouse: data pipeline you can rebuild</span></div><a href="./preview.html?app=lakehouse">See how it works <svg class="action-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg></a></div>
-            </div>
-            <p class="screening-error" role="status" hidden>Video unavailable. <a href="./assets/quicksupply-demo.m4v">Download the recording</a> or <a href="./preview.html?app=quicksupply">read the case study</a>.</p>
           </section>
         </div>
-        <div class="shell hero-bottom"><a href="./work/">See all work <svg class="action-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a><button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false" hidden>Pause background motion</button></div>
+        <div class="shell hero-bottom"><a href="./work/">See all work</a><button type="button" class="motion-toggle" data-check-toggle aria-pressed="false" hidden>Pause animation</button></div>
       </header>
+      <!-- hero:end -->
 
-      <section id="selected" class="selected-work" aria-labelledby="selected-heading">
+<!-- lower:start -->
+      <div class="lower" data-lower>
+        <svg class="lower-strands" data-strands viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path d="M6 0 C 2 120, 10 240, 5 360 S 9 600, 4 760 S 8 920, 6 1000" />
+          <path d="M3 0 C 7 160, 1 300, 6 470 S 2 700, 7 860 S 3 960, 4 1000" />
+          <path d="M95 0 C 99 140, 91 280, 96 420 S 92 640, 97 780 S 93 930, 95 1000" />
+          <path d="M98 0 C 93 180, 99 340, 94 520 S 98 720, 93 880 S 97 970, 97 1000" />
+        </svg>
+
+      <section id="selected" class="lower-band work" aria-labelledby="selected-heading">
         <div class="shell">
-          <header class="section-intro section-intro--stacked" data-reveal>
-            <div class="selected-heading-row">
-              <h2 id="selected-heading">Selected work</h2>
-            </div>
+          <div class="lower-intro">
+            <h2 id="selected-heading">Selected work</h2>
             <p>Personal projects you can try in your browser. None of them is client or employer work.</p>
-          </header>
-
-          <div class="work-story" data-work-story>
-          <div class="case-tabs" role="tablist" aria-label="Selected case studies" data-case-tabs hidden></div>
-          <div class="selected-grid selected-grid--shelf" aria-label="Featured applications">
-            <div class="selected-card" data-project="policylens" id="case-policylens" data-story-caption="A sample access change, checked before and after">
-              <div class="selected-card-content">
-                <span class="project-media">
-                  <a class="project-media-link" href="./assets/previews/policylens-2026-10-28.png" aria-label="View the PolicyLens screenshot"><img src="./assets/previews/policylens-2026-10-28.png" width="1280" height="800" alt="PolicyLens product landing with a real-engine permission-change example and direct review actions" loading="lazy" /></a>
-                </span>
-                <div class="project-copy">
-                  <div class="project-title-line">
-                    <h3>PolicyLens</h3>
-                    <span>Cloud security</span>
-                  </div>
-                  <p class="project-audience">Could a permission change give someone too much access?</p>
-                  <p class="project-summary">A proposed AWS change would let someone delete a production database. PolicyLens shows the line that allows it, checks that a fix removes it without breaking the access people need, and saves a record of the review.</p>
-                  <p class="project-observe"><strong>Try it in your browser.</strong> It uses a made-up example and nothing is uploaded.</p>
-                  <dl class="project-proof">
-                    <div><dt>Example</dt><dd>A change that suddenly allows deleting a database</dd></div>
-                    <div><dt>Limits</dt><dd>Checks only the policies you give it, not a whole AWS account</dd></div>
-                  </dl>
-                  <p class="project-technology">Node.js, AWS IAM, AI evaluation</p>
-                  <div class="project-actions"><a class="button primary project-open" href="https://matthewpaver.github.io/iam-policy-auditor/">Open PolicyLens</a><a class="project-link" href="./work/policylens/">Read the PolicyLens case study</a></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="selected-card" data-project="projectlens" id="case-projectlens" data-story-caption="Questions drawn from the sample project timetable">
-              <div class="selected-card-content">
-                <span class="project-media">
-                  <a class="project-media-link" href="./assets/previews/projectlens-2026-10-28.png" aria-label="View the ProjectLens screenshot"><img src="./assets/previews/projectlens-2026-10-28.png" width="1280" height="800" alt="ProjectLens interactive schedule comparison with the 73-day movement, source evidence and a next review question" loading="lazy" /></a>
-                </span>
-                <div class="project-copy">
-                  <div class="project-title-line">
-                    <h3>ProjectLens</h3>
-                    <span>Project controls</span>
-                  </div>
-                  <p class="project-audience">Does a project update match its schedule?</p>
-                  <p class="project-summary">ProjectLens compares two versions of a project schedule with the written update. It flags dates that moved without explanation, so a reviewer knows what to ask and can record a decision.</p>
-                  <p class="project-observe"><strong>Try it in your browser.</strong> The example uses a made-up project, so you need no company files.</p>
-                  <dl class="project-proof">
-                    <div><dt>Example</dt><dd>The finish date moves 73 days while the update says nothing changed</dd></div>
-                    <div><dt>Limits</dt><dd>Shows what changed, not why it changed or who is responsible</dd></div>
-                  </dl>
-                  <p class="project-technology">Browser JavaScript, Python, Playwright</p>
-                  <div class="project-actions"><a class="button primary project-open" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open ProjectLens</a><a class="project-link" href="./work/projectlens/">Read the ProjectLens case study</a></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="selected-card" data-project="rag-regression-gate" id="case-rag-regression-gate" data-story-caption="Check which policy sources a staff assistant finds">
-              <div class="selected-card-content">
-                <span class="project-media"><a class="project-media-link" href="./assets/previews/rag-regression-gate-2026-10-28.png" aria-label="View the RAG Regression Gate screenshot"><img src="./assets/previews/rag-regression-gate-2026-10-28.png" width="1280" height="800" alt="RAG Regression Gate compares an approved policy with an old proposal that moved above it in search results" loading="lazy" /></a></span>
-                <div class="project-copy">
-                  <div class="project-title-line"><h3>RAG Regression Gate</h3><span>AI assistants</span></div>
-                  <p class="project-audience">After an update, will an AI assistant still find the right policy?</p>
-                  <p class="project-summary">Many workplace assistants look up documents before they answer. This tool compares the documents they find before and after an update, and holds the update if an old, unapproved document now ranks above the current one.</p>
-                  <p class="project-observe"><strong>Try it in your browser.</strong> Step through six example staff questions, then download the full report.</p>
-                  <dl class="project-proof">
-                    <div><dt>Example</dt><dd>An old 365-day proposal now ranks above the approved 30-day policy</dd></div>
-                    <div><dt>Limits</dt><dd>Checks which documents are found, not whether the answer is right</dd></div>
-                  </dl>
-                  <p class="project-technology">Python, search testing, CI</p>
-                  <div class="project-actions"><a class="button primary project-open" href="./demos/rag-gate/">Open RAG Regression Gate</a><a class="project-link" href="./work/rag-regression-gate/">Read the RAG Regression Gate case study</a></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="selected-card" data-project="quicksupply" id="case-quicksupply" data-story-caption="A recorded supply-teacher booking case study">
-              <div class="selected-card-content">
-                <span class="project-media">
-                  <a class="project-media-link" href="./assets/quicksupply-dashboard.png" aria-label="View the QuickSupply screenshot"><picture>
-                    <source type="image/avif" srcset="./assets/quicksupply-dashboard.avif 800w" sizes="(max-width: 720px) calc(100vw - 28px), (max-width: 980px) 720px, 32vw" />
-                    <img src="./assets/quicksupply-dashboard.png" width="1200" height="760" alt="QuickSupply agency dashboard showing sample cover requests" loading="lazy" />
-                  </picture></a>
-                </span>
-                <div class="project-copy">
-                  <div class="project-title-line">
-                    <h3>QuickSupply</h3>
-                    <span>Service workflow</span>
-                  </div>
-                  <p class="project-audience">Who is arranging the teacher, and what happens next?</p>
-                  <p class="project-summary">I started with an outdated Liverpool booking process. In this prototype, a school requests cover, an agency assigns a teacher and everyone can follow the booking.</p>
-                  <p class="project-observe"><strong>Watch the handoff.</strong> The recorded demo follows a request through the separate school, agency and teacher views.</p>
-                  <dl class="project-proof">
-                    <div><dt>Example</dt><dd>School requests cover → agency assigns → teacher responds</dd></div>
-                    <div><dt>Limits</dt><dd>A recorded prototype with made-up data, not a live booking service</dd></div>
-                  </dl>
-                  <p class="project-technology">Next.js, TypeScript, Drizzle</p>
-                  <div class="project-actions"><a class="button primary project-open project-link" href="./preview.html?app=quicksupply">Watch and read the QuickSupply case study</a></div>
-                </div>
-              </div>
-            </div>
           </div>
-          </div>
+        </div>
+        <div class="work-rows">
+          <article class="work-row" id="case-policylens" data-work-row data-project="policylens" aria-labelledby="h-policylens">
+            <div class="shell work-row-inner">
+              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">AWS Support policy v19 to v20</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>PolicyLens finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Stop: new permission to read stored objects</strong></p></div>
+              <div class="work-row-grid">
+                <div class="row-media"><div class="row-card live-card is-found"><div class="lc-frame" data-ui><div class="lc lc--policylens" data-card="policylens">
+                  <div class="lc-bar"><span class="lc-mark">PolicyLens</span><span class="lc-meta">Real public data: AWS Support policy</span></div>
+                  <div class="lc-body">
+                    <p class="lc-title">Stop: the support role could read every object in every S3 bucket</p>
+                    <p class="lc-status">AWSSupportServiceRolePolicy, v19 to v20<br /><time datetime="2021-12-21">21 December 2021</time></p>
+                    <div class="policy-finding" data-flag><strong><code>s3:GetObject</code></strong><span>on <code>*</code> (all objects)</span><span>line 1640</span></div>
+                    <p class="lc-status">+40 lower-risk additions</p>
+                  </div>
+                </div></div></div></div>
+                <div class="row-copy">
+                  <div class="row-title"><h3 id="h-policylens">PolicyLens</h3><span>Cloud security</span></div>
+                  <p class="row-question">Could a permission change give someone too much access?</p>
+                  <p class="row-summary">Compare an existing AWS permissions policy with a proposed version before it ships. PolicyLens lists newly allowed access with source lines. It can also check a correction against access you need to keep.</p>
+                  <p class="row-observe"><strong>Try it in your browser.</strong> Load your own policies or follow the public AWS policy versions.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd><code>s3:GetObject</code> added on all objects, at line 1640</dd></div><div><dt>Limits</dt><dd>Checks only the policies you give it, not a whole AWS account</dd></div></dl>
+                  <p class="row-tech">Node.js, AWS Identity and Access Management (IAM), AI evaluation</p>
+                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open PolicyLens</a><a class="row-link project-link" href="./work/policylens/">Read the PolicyLens case study</a></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="work-row" id="case-projectlens" data-work-row data-project="projectlens" aria-labelledby="h-projectlens">
+            <div class="shell work-row-inner">
+              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">2024-25 published date</li><li class="rc-chip">2025-26 published date</li><li class="rc-chip is-flag">Written update</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>ProjectLens finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>The published commentary and end date disagree</strong></p></div>
+              <div class="work-row-grid">
+                <div class="row-media"><div class="row-card live-card is-found"><div class="lc-frame" data-ui><div class="lc lc--projectlens" data-card="projectlens">
+                  <div class="lc-bar"><span class="lc-mark">ProjectLens</span><span class="lc-meta">Real public data: E-7 Wedgetail</span></div>
+                  <div class="lc-body"><p class="lc-title">The published commentary and end date disagree</p>
+                    <div class="lc-compare lc-compare--dates"><div class="lc-date"><span>2024-25 published end date</span><strong>31/12/2027</strong></div><div class="lc-move"><span>+913 days</span><i></i></div><div class="lc-date" data-flag><span>2025-26 published end date</span><strong>01/07/2030</strong></div></div>
+                    <div class="lc-reading"><div><span>The 2025-26 commentary says</span><p>End date “remained the same at 31/12/2027”.</p></div><div><span>The published date says</span><p>01/07/2030. Check the published date against the commentary.</p></div></div>
+                    <p class="lc-status">Source: <a href="https://www.gov.uk/government/publications/nista-major-projects-annual-report-2025-26">Government Major Projects Portfolio (GMPP) data</a>. Open Government Licence.</p>
+                  </div></div></div></div></div>
+                <div class="row-copy">
+                  <div class="row-title"><h3 id="h-projectlens">ProjectLens</h3><span>Project controls</span></div>
+                  <p class="row-question">Progress updates that say on track when the schedule says otherwise</p>
+                  <p class="row-summary">ProjectLens compares two versions of a project schedule with the written update. It flags dates that moved without explanation, so a reviewer knows what to ask and can record a decision.</p>
+                  <p class="row-observe"><strong>Try it in your browser.</strong> The browser walkthrough uses a made-up project. The public-data example here comes from government releases.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>E-7 Wedgetail: the published end date moves by 913 days</dd></div><div><dt>Limits</dt><dd>Shows what changed, not why it changed or who is responsible</dd></div></dl>
+                  <p class="row-tech">Browser JavaScript, Python, Playwright</p>
+                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open ProjectLens</a><a class="row-link project-link" href="./work/projectlens/">Read the ProjectLens case study</a></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="work-row" id="case-rag-regression-gate" data-work-row data-project="rag-regression-gate" aria-labelledby="h-rag-regression-gate">
+            <div class="shell work-row-inner">
+              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">Approved retention policy</li><li class="rc-chip is-flag">2022 proposal</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>RAG Regression Gate finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Hold this update</strong><span class="rc-note">The current policy is still found, but the outdated proposal now ranks above it.</span></p></div>
+              <div class="work-row-grid">
+                <div class="row-media"><a class="row-card live-card is-found" href="./demos/rag-gate/" aria-label="RAG Regression Gate on the retention question: hold this update, because the 2022 proposal now ranks above the approved retention policy. Open RAG Regression Gate."><div class="lc-frame" data-ui><div class="lc lc--rag" data-card="rag"><div class="lc-bar"><span class="lc-mark">RAG Regression Gate</span><span class="lc-meta">Saved test results for 6 example staff questions</span></div><div class="lc-body"><p class="lc-question">How long should raw customer event records be retained?</p><div class="lc-decision"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14"/><path d="M15 7v10m0 4v2"/></svg><div><b>Hold this update</b><p>The current policy is still found, but the outdated proposal now ranks above it.</p></div></div><div class="lc-rankings"><section class="lc-before"><p class="lc-rank-head">Before update</p><ol><li><b>1</b><span class="lc-src">Approved retention policy</span><span class="lc-pill lc-pill--current">Current</span></li><li><b>2</b><span class="lc-src">2022 proposal</span><span class="lc-pill lc-pill--old">Unapproved proposal</span></li></ol></section><section><p class="lc-rank-head">After update</p><ol><li data-flag><b>1</b><span class="lc-src">2022 proposal</span><span class="lc-pill lc-pill--old">Unapproved proposal</span></li><li><b>2</b><span class="lc-src">Approved retention policy</span><span class="lc-pill lc-pill--current">Current</span></li></ol></section></div></div></div></div></a></div>
+                <div class="row-copy">
+                  <div class="row-title"><h3 id="h-rag-regression-gate">RAG Regression Gate</h3><span>AI assistants</span></div>
+                  <p class="row-question">After an update, will an AI assistant still find the right policy?</p>
+                  <p class="row-summary">Retrieval-augmented generation (RAG) means looking up documents before generating an answer. This tool compares the documents an assistant finds before and after an update, and holds the update if an old, unapproved document now ranks above the current one.</p>
+                  <p class="row-observe"><strong>Try it in your browser.</strong> Step through six example staff questions, then download the full report.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>An old 365-day proposal now ranks above the approved 30-day policy</dd></div><div><dt>Limits</dt><dd>Checks which documents are found, not whether the answer is right</dd></div></dl>
+                  <p class="row-tech">Python, search testing, automated release checks</p>
+                  <div class="row-actions"><a class="button primary" href="./demos/rag-gate/">Open RAG Regression Gate</a><a class="row-link project-link" href="./work/rag-regression-gate/">Read the RAG Regression Gate case study</a></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="work-row" id="case-quicksupply" data-work-row data-project="quicksupply" aria-labelledby="h-quicksupply">
+            <div class="shell work-row-inner">
+              <div class="row-check rc--pass" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">School requests cover</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>Agency assigns</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Teacher responds</strong><span class="rc-note">Everyone can follow the booking.</span></p></div>
+              <div class="work-row-grid">
+                <div class="row-media"><div class="row-card row-video">
+<video controls playsinline preload="none" poster="./assets/quicksupply-dashboard.png" width="960" height="540" data-row-video><source src="./assets/quicksupply-demo.m4v" type="video/mp4" /></video>
+<span class="row-video-caption">Recorded demo: a request moves through the school, agency and teacher views.</span>
+</div></div>
+                <div class="row-copy">
+                  <div class="row-title"><h3 id="h-quicksupply">QuickSupply</h3><span>Service workflow</span></div>
+                  <p class="row-question">Who is arranging the teacher, and what happens next?</p>
+                  <p class="row-summary">I started with an outdated Liverpool booking process. In this prototype, a school requests cover, an agency assigns a teacher and everyone can follow the booking.</p>
+                  <p class="row-observe"><strong>Watch the handoff.</strong> The recorded demo follows a request through the separate school, agency and teacher views.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>School requests cover, agency assigns, teacher responds</dd></div><div><dt>Limits</dt><dd>A recorded prototype with made-up data, not a live booking service</dd></div></dl>
+                  <p class="row-tech">Next.js, TypeScript, Drizzle</p>
+                  <div class="row-actions"><a class="button primary project-link" href="./preview.html?app=quicksupply">Watch and read the QuickSupply case study</a></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="work-row" id="case-lakehouse" data-work-row data-project="lakehouse" aria-labelledby="h-lakehouse">
+            <div class="shell work-row-inner">
+              <div class="row-check rc--warn" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">Audiences</li><li class="rc-chip">Daily budget plan</li><li class="rc-chip">Conversions</li><li class="rc-chip is-flag">Ad delivery</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>7 data checks</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>6 pass, 1 warning</strong><span class="rc-note">5 rows repeat the same campaign and day.</span></p></div>
+              <div class="work-row-grid">
+                <div class="row-media"><a class="row-card live-card is-found" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality" aria-label="Marketing ML Lakehouse data checks on made-up sample data: seven checks, six pass and one warning. Open the data checks."><div class="lc-frame" data-ui><div class="lc lc--lake">
+<div class="lc-bar"><span class="lc-mark">Marketing ML Lakehouse</span><span class="lc-meta">Sample-data demo</span></div>
+<div class="lc-body">
+<p class="lc-title">Data checks</p>
+<p class="lk-sum"><b>7 checks</b><span class="lk-pill lk-pass">6 pass</span><span class="lk-pill lk-warn">1 warning</span><span class="lk-pill">0 fail</span></p>
+<ul class="lk-list">
+<li><span><b>Audiences</b><small>6 rows</small></span><em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Daily budget plan</b><small>126 rows</small></span><em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Conversions</b><small>319 rows</small></span><em class="lk-pill lk-pass">Pass</em></li>
+<li data-flag><span><b>Ad delivery</b><small>131 rows. 5 rows repeat the same campaign and day</small></span><em class="lk-pill lk-warn">Warning</em></li>
+<li><span><b>One row per campaign per day</b><small>0 repeated</small></span><em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Spend adds up</b><small>£37,847.66 found, £37,847.66 expected</small></span><em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Booking revenue adds up</b><small>£337,578.75 found, £337,578.75 expected</small></span><em class="lk-pill lk-pass">Pass</em></li>
+</ul>
+</div></div></div></a></div>
+                <div class="row-copy">
+                  <div class="row-title"><h3 id="h-lakehouse">Marketing ML Lakehouse</h3><span>Data and ML</span></div>
+                  <p class="row-question">Can a campaign report be rebuilt and checked from the raw files?</p>
+                  <p class="row-summary">For analysts and data engineers: turn raw ad-campaign files into checked reporting tables, and test whether a forecast beats a simple guess.</p>
+                  <p class="row-observe"><strong>Try it in your browser.</strong> Open the data checks: six pass and one warns about five repeated rows. Then follow the guide to rebuild it in Python.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>Five ad-delivery rows repeat the same campaign and day</dd></div><div><dt>Limits</dt><dd>Made-up sample data. The next-day forecast does no better than assuming tomorrow matches today.</dd></div></dl>
+                  
+                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality">Open the data checks</a><a class="row-link project-link" href="./preview.html?app=lakehouse">How it works</a></div>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section id="contract" class="decision-contract" aria-labelledby="contract-heading">
-        <div class="shell">
-          <header class="contract-intro" data-reveal>
+      <section id="contract" class="lower-band lower-band--deep method" aria-labelledby="contract-heading">
+        <div class="shell method-grid">
+          <header class="lower-intro">
             <h2 id="contract-heading">How I work</h2>
             <p>I start with the decision someone needs to make, then test the part most likely to mislead them. Here is what that looks like in the work.</p>
           </header>
-
-          <div class="method-examples">
-            <article class="method-example">
+          <ol class="method-steps" data-method>
+            <li class="method-example">
               <h3>Keep the source beside the answer.</h3>
-              <div>
-                <p>In ProjectLens, a reviewer can follow a moved date back to the schedule entries behind it. That helps them ask a better question. It does not tell them who caused the delay.</p>
-                <a href="./work/projectlens/#technical-evidence">Follow the ProjectLens example</a>
-              </div>
-            </article>
-            <article class="method-example">
+              <p>In ProjectLens, a reviewer can follow a moved date back to the schedule entries behind it. That helps them ask a better question. It does not tell them who caused the delay.</p>
+              <a href="./work/projectlens/#technical-evidence">Follow the ProjectLens example</a>
+            </li>
+            <li class="method-example">
               <h3>Test the explanation, too.</h3>
-              <div>
-                <p>PolicyLens tests that the AI’s explanation matches the permission result and the policy line it quotes. I wrote these test cases myself, so they do not cover every AWS rule.</p>
-                <a href="./work/policylens/#technical-evidence">Inspect the PolicyLens checks</a>
-              </div>
-            </article>
-            <article class="method-example">
+              <p>PolicyLens tests that the AI’s explanation matches the permission result and the policy line it quotes. This explanation check is a local extension; the published demo uses a deterministic permission check.</p>
+              <a href="./work/policylens/#technical-evidence">Inspect the PolicyLens checks</a>
+            </li>
+            <li class="method-example">
               <h3>Compare with the simple baseline.</h3>
-              <div>
-                <p>For the lakehouse’s next-day forecast, the simple guess is “tomorrow will look like today”. I keep future data out of training and say plainly when the model does no better than that guess.</p>
-                <a href="./preview.html?app=lakehouse#case-story">Read the lakehouse evaluation</a>
-              </div>
-            </article>
-          </div>
+              <p>In the local lakehouse extension’s next-day forecast, the simple guess is “tomorrow will look like today”. I keep future data out of training and say plainly when the model does no better than that guess.</p>
+              <a href="./preview.html?app=lakehouse#case-story">Read the lakehouse evaluation</a>
+            </li>
+          </ol>
         </div>
       </section>
 
-      <section id="capabilities" class="capability-store" aria-labelledby="capabilities-heading">
+      <section id="capabilities" class="lower-band routes" aria-labelledby="capabilities-heading">
         <div class="shell">
-          <header class="section-intro section-intro--stacked">
+          <header class="lower-intro">
             <h2 id="capabilities-heading">Find your way in</h2>
             <p>Pick what you want to do: try a tool, read how a product was built or reuse working code.</p>
           </header>
-
-          <nav class="capability-routes" aria-label="Browse work by capability">
+          <nav class="route-list" aria-label="Browse work by capability">
             <a href="./work/?category=decision#catalogue">
               <strong>Review tools</strong>
               <span>Check a cloud permission change, a project schedule update or an AI assistant’s search results.</span>
@@ -300,32 +313,37 @@
               <small>QuickSupply, Winchester Buyer Check</small>
             </a>
           </nav>
-
-          <p class="all-work-link"><a href="./work/">See all work</a></p>
+          <p class="routes-all"><a href="./work/">See all work</a></p>
         </div>
       </section>
 
-      <section id="about" class="shell closing" aria-labelledby="about-heading">
-        <div>
-          <h2 id="about-heading">An architect who builds</h2>
-          <p>Since November 2025 I have been an Automation &amp; AI Consultant at Ciklum, placed at Trustpilot, where I lead AI and automation projects from discovery to support after launch. Before that I spent six years at Projecting Success, progressing from data analysis through data science into solutions architecture. That path still shapes how I work: understand the decision, check the data, build the system and explain it to the people who will use it.</p>
-          <p>My experience spans knowledge graphs, AI-assisted workflows and cloud automation, alongside release management, privacy reviews and technical training. I’m interested in what happens after a prototype works: who operates it, how it fails and how people stay in control.</p>
-          <p>These public projects are independent work. QuickSupply came from an outdated Liverpool supply-teacher booking process; Winchester Buyer Check came from my own home search. They show how I work without exposing employer or client systems.</p>
-          <dl class="about-background">
-            <div><dt>Education</dt><dd>BSc (Hons), Computer Science with Artificial Intelligence<br />University of Liverpool</dd></div>
-            <div><dt>Credentials</dt><dd>AWS Certified AI Practitioner<br />AWS Certified Cloud Practitioner</dd></div>
-          </dl>
+      <section id="about" class="lower-band lower-band--deep about" aria-labelledby="about-heading">
+        <div class="shell about-grid">
+          <div class="about-copy">
+            <h2 id="about-heading">An architect who builds</h2>
+            <p>Since November 2025 I have been an Automation &amp; AI Consultant at Ciklum, placed at Trustpilot. Before that I spent six years at Projecting Success, progressing from data analysis through data science into solutions architecture. That path still shapes how I work: understand the decision, check the data, build the system and explain it to the people who will use it.</p>
+            <p>My experience spans knowledge graphs, AI-assisted workflows and cloud automation, alongside release management, privacy reviews and technical training. I’m interested in what happens after a prototype works: who operates it, how it fails and how people stay in control.</p>
+            <p>These public projects are independent work. QuickSupply came from an outdated Liverpool supply-teacher booking process; Winchester Buyer Check came from my own home search. They show how I work without exposing employer or client systems.</p>
+          </div>
+          <aside class="about-side">
+            <dl class="about-facts">
+              <div><dt>Education</dt><dd>BSc (Hons), Computer Science with Artificial Intelligence<br />University of Liverpool</dd></div>
+              <div><dt>Credentials</dt><dd>AWS Certified AI Practitioner<br />AWS Certified Cloud Practitioner</dd></div>
+            </dl>
+            <nav class="about-links" aria-label="Contact Matthew Paver">
+              <a class="button primary" href="https://www.linkedin.com/in/matthew-paver-534262166/">Contact me on LinkedIn</a>
+              <a href="https://github.com/MatthewPaver">GitHub profile</a>
+              <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF)</a>
+            </nav>
+          </aside>
         </div>
-        <nav class="closing-links" aria-label="Contact Matthew Paver">
-          <a class="button primary" href="https://www.linkedin.com/in/matthew-paver-534262166/">Contact me on LinkedIn</a>
-          <a href="https://github.com/MatthewPaver">GitHub profile</a>
-          <a href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF)</a>
-        </nav>
       </section>
+      </div>
     </main>
 
-    <footer class="shell footer">
-      <p>Matthew Paver, AI solutions architect.</p>
+    <footer class="lower-footer">
+      <div class="shell"><p>Matthew Paver, AI solutions architect.</p></div>
     </footer>
+<!-- lower:end -->
   </body>
 </html>

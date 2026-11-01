@@ -22,7 +22,7 @@ test("enterprise palette keeps hero links and actions readable in both themes", 
   for (const colorScheme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme });
     await page.goto("/");
-    for (const selector of [".hero-bottom > a", ".landing-hero .lede", ".hero-actions .primary", ".hero-actions .ghost", ".project-link"]) {
+    for (const selector of [".hero-bottom > a", ".landing-hero .lede", ".hero-actions .primary", ".hero-actions .ghost", ".row-link"]) {
       const ratio = await page.locator(selector).first().evaluate((element) => {
         const rgb = (value: string) => value.match(/[\d.]+/g)!.map(Number);
         const luminance = (values: number[]) => values.slice(0, 3).map(v => v / 255).map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
@@ -51,11 +51,10 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
     expect(lines).toBeLessThanOrEqual(2);
 
     await page.setViewportSize({ width: 1280, height: 720 });
-    const hero = await page.locator(".hero").boundingBox();
-    expect((hero?.y ?? 0) + (hero?.height ?? 0)).toBeLessThanOrEqual(721);
+    await expect(page.locator("[data-hero-card]")).toBeVisible();
   }
   await expect(page.getByRole("heading", { name: "Selected work", exact: true })).toBeVisible();
-  await expect(page.locator(".selected-card")).toHaveCount(4);
+  await expect(page.locator(".work-row")).toHaveCount(5);
   await expect(page.getByRole("link", { name: "See my work" })).toHaveAttribute("href", "#selected");
   await expect(page.getByRole("link", { name: "Open CV (PDF)", exact: true })).toHaveAttribute(
     "href",
@@ -90,81 +89,87 @@ test("full catalogue search, category filters and category links narrow eight pu
   await expect(page.locator("[data-catalogue-empty]")).toBeVisible();
 });
 
-test("selected work exposes a result, boundary and case route", async ({ page }) => {
-  await page.goto("/");
+test("selected work exposes real public results, boundaries and case routes", async ({ page }) => {
+  await page.goto("/#selected");
   const policy = page.locator('[data-project="policylens"]');
-  await expect(policy.getByText("A change that suddenly allows deleting a database")).toBeVisible();
-  await expect(policy.getByText("Checks only the policies you give it, not a whole AWS account")).toBeVisible();
-  await expect(policy.getByText("Node.js, AWS IAM, AI evaluation")).toBeVisible();
-  await expect(policy.getByRole("link", {name:"Read the PolicyLens case study", exact:true})).toHaveAttribute(
-    "href",
-    "./work/policylens/",
-  );
-
+  await expect(policy).toContainText('s3:GetObject');
+  await expect(policy).toContainText('line 1640');
+  await expect(policy).toContainText('Checks only the policies you give it, not a whole AWS account');
+  await expect(policy.getByRole('link', {name:'Read the PolicyLens case study',exact:true})).toHaveAttribute('href','./work/policylens/');
   const project = page.locator('[data-project="projectlens"]');
-  await page.getByRole('tab', {name:'ProjectLens',exact:true}).click();
-  await expect(project.getByText(/finish date moves 73 days while the update says nothing changed/i)).toBeVisible();
-  await expect(project.getByRole("link", {name:"Read the ProjectLens case study", exact:true})).toHaveAttribute(
-    "href",
-    "./work/projectlens/",
-  );
+  await expect(project).toContainText('913 days');
+  await expect(project).toContainText('31/12/2027');
+  await expect(project).toContainText('01/07/2030');
+  await expect(project.getByRole('link', {name:'Read the ProjectLens case study',exact:true})).toHaveAttribute('href','./work/projectlens/');
 });
 
-test("result screenshots remain uncropped and biography stays separate from project evidence", async ({ page }) => {
-  // The reduced-motion view keeps source images inline; the scroll-view frames
-  // have their own containment and loading checks in work-story.spec.ts.
+test("live results remain readable and biography stays separate from project evidence", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   for (const project of ["policylens", "projectlens"]) {
-    await page.locator(`[role="tab"][aria-controls="case-${project}"]`).click();
-    const screenshot = page.locator(`[data-project="${project}"] .project-media img`);
-    await screenshot.scrollIntoViewIfNeeded();
-    await expect(screenshot).toHaveCSS("object-fit", "contain");
-    await expect.poll(() => screenshot.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
+    const result = page.locator(`[data-project="${project}"] [data-ui]`);
+    await expect(result).toBeVisible();
+    await expect(result).not.toHaveAttribute('aria-hidden', 'true');
   }
   await expect(page.locator("#about")).toContainText("Automation & AI Consultant at Ciklum, placed at Trustpilot");
   await expect(page.locator("#about")).toContainText("six years at Projecting Success");
-  await expect(page.locator(".about-background")).toContainText("University of Liverpool");
+  await expect(page.locator(".about-facts")).toContainText("University of Liverpool");
   await expect(page.locator("#selected")).toContainText("None of them is client or employer work");
 });
 
-test("screening room switches real projects and pauses video when switching away", async ({ page }) => {
+test("hero leads only with PolicyLens and links its real source", async ({ page }) => {
   await page.goto("/");
-  const room = page.locator("[data-screening-room]");
-  const video = room.locator("video");
-  expect(await video.evaluate((element: HTMLVideoElement) => element.readyState)).toBe(0);
-  await expect(room.locator('[data-screening-panel="projectlens"]')).toBeVisible();
-  await room.getByRole("button", { name: "QuickSupply", exact: true }).click();
-  await room.getByRole("button", { name: "Watch the walkthrough" }).click();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
-  await room.getByRole("button", { name: "ProjectLens", exact: true }).click();
-  await expect(room.locator('[data-screening-panel="projectlens"]')).toBeVisible();
-  expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-  await page.keyboard.press("ArrowLeft");
-  await expect(room.getByRole("button", { name: "Lakehouse" })).toHaveAttribute("aria-pressed", "true");
-  await expect(room.getByText("Check the data before trusting the forecast.")).toBeVisible();
+  const hero = page.locator('[data-hero]');
+  await expect(hero.locator('[data-screening-tab], .tab-progress, .ambient')).toHaveCount(0);
+  await expect(hero.locator('[data-card]')).toHaveCount(1);
+  await expect(hero).toContainText('AWSSupportServiceRolePolicy, v19 to v20');
+  await expect(hero).toContainText('21 December 2021');
+  await expect(hero).toContainText('+40 lower-risk additions');
+  await expect(hero).toContainText('AWS says its support systems could not use the permission');
+  await expect(hero.getByRole('link', {name:'AWS security bulletin AWS-2021-007'})).toHaveAttribute('href','https://aws.amazon.com/security/security-bulletins/AWS-2021-007/');
+  await expect(hero.getByRole('link', {name:'Try it on your own policy'})).toHaveAttribute('href','https://matthewpaver.github.io/iam-policy-auditor/');
+  await expect(hero.getByRole('link', {name:'See the real AWS policy versions'})).toHaveAttribute('href', /iam-policy-auditor\/tree\/.+\/examples\/policies/);
 });
 
-test("background motion can be paused and obeys reduced motion", async ({ page }) => {
+test("hero animation pauses, runs twice and rests on its final result", async ({ page }) => {
+  await page.emulateMedia({reducedMotion:'no-preference'});
   await page.goto("/");
-  const hero = page.locator(".landing-hero");
-  await expect(hero).toHaveAttribute("data-background-running", "true");
-  await page.getByRole("button", { name: "Pause background motion" }).click();
-  await expect(hero).toHaveAttribute("data-background-running", "false");
-  await page.getByRole("button", { name: "Resume background motion" }).click();
-  await expect(hero).toHaveAttribute("data-background-running", "true");
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(hero).toHaveAttribute("data-background-running", "false");
-  await expect(page.locator("[data-motion-toggle]")).toBeHidden();
+  const hero = page.locator('[data-hero]');
+  await expect(hero).toHaveAttribute('data-motion', 'running');
+  await page.getByRole('button', {name:'Pause animation',exact:true}).click();
+  await expect(hero).toHaveAttribute('data-motion','paused');
+  await expect(page.locator('[data-check-toggle]')).toHaveAttribute('aria-pressed','true');
+  await page.getByRole('button', {name:'Resume animation',exact:true}).click();
+  await expect(hero).toHaveAttribute('data-motion','running');
+  // Only the scripted hero animations: button press transitions also show up in getAnimations().
+  const iterations = await hero.evaluate(el => el.getAnimations({subtree:true}).filter(animation => !(animation instanceof CSSTransition) && !(animation instanceof CSSAnimation)).map(animation => animation.effect!.getTiming().iterations));
+  expect(iterations.length).toBeGreaterThan(0);
+  expect(iterations.every(value => value === 2)).toBe(true);
+  await hero.evaluate(el => el.getAnimations({subtree:true}).forEach(animation => animation.finish()));
+  await expect(hero).toHaveAttribute('data-motion','finished');
+  await expect(page.locator('[data-hero-card]')).toHaveClass(/is-found/);
+  await expect(page.locator('[data-check-toggle]')).toBeHidden();
+  expect(await hero.evaluate(el => el.getAnimations({subtree:true}).filter(animation => !(animation instanceof CSSTransition) && !(animation instanceof CSSAnimation)).length)).toBe(0);
 });
 
-test("unavailable video has a useful recovery path", async ({ page }) => {
-  await page.route("**/quicksupply-demo.m4v", (route) => route.abort());
-  await page.goto("/");
-  await page.locator("[data-screening-room]").getByRole("button", { name: "QuickSupply", exact: true }).click();
-  await page.getByRole("button", { name: "Watch the walkthrough" }).click();
-  await expect(page.locator(".screening-error")).toBeVisible();
-  await expect(page.locator(".screening-error a").first()).toHaveAttribute("href", "./assets/quicksupply-demo.m4v");
+test("changing reduced motion during the check restores the final frame", async ({ page }) => {
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  await page.goto('/');
+  await expect(page.locator('[data-hero]')).toHaveAttribute('data-motion','running');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(page.locator('[data-hero]')).toHaveAttribute('data-motion','finished');
+  await expect(page.locator('[data-check-toggle]')).toBeHidden();
+  await expect(page.locator('[data-hero-card]')).toHaveClass(/is-found/);
+});
+
+test("QuickSupply recording has native controls and a case fallback", async ({ page }) => {
+  await page.route('**/quicksupply-demo.m4v', route => route.abort());
+  await page.goto('/#case-quicksupply');
+  const row = page.locator('#case-quicksupply');
+  await expect(row.locator('video')).toHaveAttribute('controls','');
+  await expect(row.locator('video')).toHaveAttribute('preload','none');
+  expect(await row.locator('video').evaluate((video: HTMLVideoElement) => video.paused)).toBe(true);
+  await expect(row.getByRole('link', {name:'Watch and read the QuickSupply case study',exact:true})).toHaveAttribute('href','./preview.html?app=quicksupply');
 });
 
 test("PolicyLens has an indexable detail page and public source", async ({ page }) => {
@@ -187,9 +192,9 @@ test("the portfolio remains useful without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto("/");
-  await expect(page.locator(".selected-card")).toHaveCount(4);
+  await expect(page.locator(".work-row")).toHaveCount(5);
   await expect(page.getByRole("heading", { name: "PolicyLens", exact: true })).toBeVisible();
-  await expect(page.locator(".capability-routes a")).toHaveCount(3);
+  await expect(page.locator(".route-list a")).toHaveCount(3);
   await expect(page.locator('.method-example')).toHaveCount(3);
   await page.goto("/work/");
   await expect(page.locator(".work-card:visible")).toHaveCount(8);
@@ -203,7 +208,7 @@ test("mobile layout has usable controls and no page-level horizontal overflow", 
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
-  const button = page.getByRole("tab", { name: "ProjectLens", exact:true });
+  const button = page.locator(".screening-room").getByRole("link", {name:"Try it on your own policy"});
   const box = await button.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(44);
@@ -212,9 +217,7 @@ test("mobile layout has usable controls and no page-level horizontal overflow", 
   await expect(page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "CV (PDF)", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "About", exact: true })).toBeVisible();
 
-  await expect(page.locator(".selected-card:visible")).toHaveCount(1);
-  await button.click();
-  await expect(page.getByRole("tabpanel", {name:"ProjectLens",exact:true})).toBeVisible();
+  await expect(page.locator(".work-row:visible")).toHaveCount(5);
 
   await page.goto("/work/");
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
@@ -228,6 +231,5 @@ test("dark and reduced-motion preferences keep the method usable", async ({ page
   await page.goto("/");
   await expect(page.locator('meta[name="theme-color"]')).toHaveCount(2);
   await expect(page.locator(".method-example")).toHaveCount(3);
-  await page.getByRole("tab", {name:"ProjectLens",exact:true}).click();
-  await expect(page.getByRole("tabpanel", {name:"ProjectLens",exact:true})).toBeVisible();
+  await expect(page.locator("#case-projectlens")).toBeVisible();
 });

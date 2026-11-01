@@ -62,10 +62,10 @@ test('method evidence is available together in reading order', async ({ page }) 
   expect(tops[1]).toBeLessThan(tops[2]);
 });
 
-test('a direct Method link stays on the method after compact cases enhance', async ({ page }) => {
+test('a direct Method link stays on the method after row checks enhance', async ({ page }) => {
   await page.setViewportSize({width:1280,height:800});
   await page.goto('/#contract');
-  await expect(page.locator('[data-work-story]')).toHaveAttribute('data-story-mode', 'tabs');
+  await expect(page.locator('.work-row')).toHaveCount(5);
   await page.evaluate(() => document.fonts.ready);
   await expect.poll(() => page.locator('#contract').evaluate(el => el.getBoundingClientRect().top)).toBeLessThan(150);
 });

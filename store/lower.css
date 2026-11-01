@@ -1,0 +1,207 @@
+/* Lower page: one continuous navy page under the hero. The hero's check lines carry on down the page
+   as the background, and each tool's own check branches off them. Loaded after d2.css.
+   Text on navy uses the hero's proven values: ink #f7fbfe, muted #ccdeec, accent #5ed0ff, danger #ff9d8f. */
+
+.lower {
+  --l-base: #1c3762;
+  --l-deep: rgba(12, 30, 60, 0.4);   /* static tonal step, about #162d53 over the base */
+  --l-step: rgba(12, 30, 60, 0.22);  /* lighter step for alternate work rows */
+  --l-panel: rgba(94, 208, 255, 0.08);
+  --l-ink: #f7fbfe;
+  --l-muted: #ccdeec;
+  --l-accent: #5ed0ff;
+  --l-danger: #ff9d8f;
+  --l-warn: #ffc98a;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--l-base);
+  color: var(--l-ink);
+}
+.lower a:focus-visible { outline: 2px solid var(--l-accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---- The check lines behind the page ---- */
+.lower-strands { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.lower-strands path { fill: none; stroke: var(--l-accent); stroke-width: 1.4; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.2; }
+
+/* ---- Bands ---- */
+.lower-band { position: relative; z-index: 1; padding-block: clamp(56px, 8vw, 112px); }
+.lower-band--deep { background: var(--l-deep); }
+.lower h2 { margin: 0; color: var(--l-ink); font-size: clamp(2.25rem, 4.2vw, 3.25rem); font-weight: 700; line-height: 1.06; letter-spacing: -0.028em; text-wrap: balance; }
+.lower h3 { margin: 0; color: var(--l-ink); text-wrap: balance; }
+.lower p { margin: 0; }
+.lower-intro { display: grid; gap: 16px; max-width: 46rem; margin-bottom: clamp(28px, 4vw, 48px); }
+.lower-intro p { color: var(--l-muted); font-size: 1.125rem; line-height: 1.6; }
+.lower .button.primary { background: #00adf1; border-color: #00adf1; color: #102a43; }
+.lower .button.primary:hover { background: #6bd2f7; border-color: #6bd2f7; translate: none; }
+
+/* ---- Selected work: one tool per row ---- */
+.work { padding-bottom: 0; }
+.work-row { position: relative; padding-block: clamp(36px, 4.5vw, 64px); }
+.work-row:nth-child(even) { background: var(--l-step); }
+.work-row-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: clamp(32px, 4.5vw, 72px); align-items: start; margin-top: clamp(24px, 3vw, 36px); }
+
+.row-media { min-width: 0; }
+.row-card { display: block; overflow: hidden; border-radius: 12px; color: inherit; text-decoration: none; }
+.row-card .lc-frame { display: block; }
+.row-card [data-ui] .lc { border-radius: 12px; }
+.row-video { background: #102a43; }
+.row-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: #0d2238; }
+.row-video-caption { display: block; padding: 14px 18px; color: var(--l-muted); font-size: 0.9375rem; line-height: 1.45; }
+
+.row-copy { display: grid; gap: 18px; align-content: start; min-width: 0; }
+.row-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.row-title h3 { font-size: clamp(1.75rem, 2.6vw, 2.25rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.022em; }
+.row-title span { color: var(--l-muted); font-size: 1rem; font-weight: 600; }
+.row-question { color: var(--l-accent); font-size: 1.25rem; font-weight: 600; line-height: 1.35; }
+.row-summary { color: var(--l-muted); font-size: 1.125rem; line-height: 1.62; }
+.row-observe { color: var(--l-ink); font-size: 1.0625rem; line-height: 1.55; }
+.row-observe strong { font-weight: 700; }
+.row-proof { display: grid; gap: 14px; margin: 4px 0 0; }
+.row-proof div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 16px; }
+.row-proof dt { color: var(--l-muted); font-size: 1rem; font-weight: 600; }
+.row-proof dd { margin: 0; color: var(--l-ink); font-size: 1.0625rem; line-height: 1.5; }
+.row-tech { color: var(--l-muted); font-size: 1rem; }
+.row-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 6px; }
+.row-link, .method-steps a, .routes-all a, .about-links a:not(.button) {
+  display: inline-flex; min-height: 44px; align-items: center;
+  color: var(--l-accent); font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px;
+}
+.row-link:hover, .method-steps a:hover, .routes-all a:hover, .about-links a:not(.button):hover { color: #a6e6ff; }
+
+/* ---- Each tool's own check, in its own words ---- */
+.row-check { --rc: var(--l-accent); display: flex; align-items: center; gap: 0; color: var(--l-ink); }
+.rc--fail { --rc: var(--l-danger); }
+.rc--warn { --rc: var(--l-warn); }
+.rc-in { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.rc-chip { padding: 8px 14px; border-radius: 999px; background: rgba(94, 208, 255, 0.12); color: var(--l-ink); font-size: 0.9375rem; font-weight: 600; line-height: 1.3; white-space: nowrap; }
+.rc-chip.is-flag { background: color-mix(in srgb, var(--rc) 12%, transparent); color: var(--rc); }  /* 12% keeps #ff9d8f at 4.8:1 */
+.rc-wire { position: relative; flex: 1 1 40px; min-width: 28px; max-width: 120px; height: 2px; margin-inline: 14px; color: var(--l-accent); }
+.rc-wire + .rc-node + .rc-wire { color: var(--rc); }
+.rc-wire i { position: absolute; inset: 0; background: currentColor; border-radius: 2px; transform-origin: left center; }
+.rc-node { display: flex; flex: none; align-items: center; gap: 10px; font-size: 1rem; font-weight: 700; white-space: nowrap; }
+.rc-dot { width: 14px; height: 14px; border: 2px solid var(--rc); border-radius: 50%; background: var(--l-base); }
+.rc-out { display: grid; gap: 2px; min-width: 0; max-width: 32rem; }
+.rc-out strong { color: var(--rc); font-size: 1.0625rem; font-weight: 700; line-height: 1.35; }
+.rc--pass .rc-out strong { color: var(--l-ink); }
+.rc-note { color: var(--l-muted); font-size: 0.9375rem; line-height: 1.4; }
+
+/* Drawn when the row comes into view (lower.js adds is-armed, then is-drawn). Without script it is simply drawn. */
+@media (prefers-reduced-motion: no-preference) {
+  .work-row.is-armed .rc-wire i { transform: scaleX(0); }
+  .work-row.is-armed .rc-node, .work-row.is-armed .rc-out { opacity: 0; transform: translateY(4px); }
+  .work-row .rc-wire i { transition: transform 560ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .work-row .rc-node, .work-row .rc-out { transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1); }
+  .work-row.is-drawn .rc-wire i { transform: none; }
+  .work-row.is-drawn .rc-node, .work-row.is-drawn .rc-out { opacity: 1; transform: none; }
+  .work-row.is-drawn .rc-node { transition-delay: 480ms; }
+  .work-row.is-drawn .rc-wire + .rc-node + .rc-wire i { transition-delay: 620ms; }
+  .work-row.is-drawn .rc-out { transition-delay: 1100ms; }
+}
+
+/* Lakehouse result card, in the app's own colours (marketing-ml-lakehouse docs/styles.css). */
+[data-ui] .lc--lake { --lc-line: #ced8d2; --lc-muted: #56645f; background: #f2f5f1; color: #15221f; }
+[data-ui] .lc--lake .lc-bar { background: #ffffff; border-bottom: 1px solid var(--lc-line); }
+.lk-sum { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.9375rem; }
+.lk-sum b { margin-right: 2px; font-weight: 700; }
+.lk-pill { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; background: #e3e9e5; color: #44524d; font-size: 0.875rem; font-style: normal; font-weight: 600; line-height: 1.5; white-space: nowrap; }
+.lk-pass { background: #d9eee8; color: #0a5e54; }
+.lk-warn { background: #ffeadc; color: #84391a; }
+.lk-list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.lk-list li { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 8px; background: #ffffff; transition: box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1), background-color 220ms cubic-bezier(0.16, 1, 0.3, 1); }
+.lk-list b { display: block; font-size: 0.9375rem; font-weight: 600; }
+.lk-list small { display: block; margin-top: 2px; color: var(--lc-muted); font-size: 0.875rem; line-height: 1.35; font-variant-numeric: tabular-nums; }
+.live-card.is-found [data-ui] .lc--lake [data-flag] { background: #fff4ea; box-shadow: 0 0 0 2px #84391a; }
+
+/* ---- How I work: three steps joined by one line, drawn as you scroll ---- */
+.method-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 104px); align-items: start; }
+.method-grid .lower-intro { margin-bottom: 0; }
+.method-steps { --p: 1; position: relative; display: grid; gap: clamp(32px, 4vw, 52px); margin: 0; padding: 0 0 0 44px; list-style: none; }
+.method-steps::before, .method-steps::after { content: ""; position: absolute; left: 7px; top: 10px; width: 2px; border-radius: 2px; }
+.method-steps::before { bottom: 10px; background: rgba(94, 208, 255, 0.2); }
+.method-steps::after { height: calc((100% - 20px) * var(--p)); background: var(--l-accent); }
+.method-steps li { position: relative; display: grid; gap: 10px; }
+.method-steps li::before { content: ""; position: absolute; left: -44px; top: 6px; width: 16px; height: 16px; border: 2px solid var(--l-accent); border-radius: 50%; background: #162d53; box-sizing: border-box; }
+.method-steps h3 { font-size: clamp(1.375rem, 2vw, 1.625rem); font-weight: 700; line-height: 1.25; letter-spacing: -0.015em; }
+.method-steps p { color: var(--l-muted); font-size: 1.0625rem; line-height: 1.62; }
+
+/* ---- Find your way in ---- */
+.route-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.route-list a { display: grid; align-content: start; gap: 10px; padding: 28px; border-radius: 14px; background: var(--l-panel); color: var(--l-ink); text-decoration: none; transition: background-color 150ms ease-out; }
+.route-list a:hover { background: rgba(94, 208, 255, 0.14); }
+.route-list strong { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.01em; }
+.route-list span { color: var(--l-muted); font-size: 1.0625rem; line-height: 1.55; }
+.route-list small { color: var(--l-accent); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; }
+.routes-all { margin-top: 20px; }
+
+/* ---- About ---- */
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.8fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.about-copy { display: grid; gap: 18px; max-width: 44rem; }
+.about-copy h2 { margin-bottom: 6px; }
+.about-copy p { color: var(--l-muted); font-size: 1.125rem; line-height: 1.66; }
+.about-side { display: grid; gap: 32px; align-content: start; padding-top: clamp(0px, 1vw, 12px); }
+.about-facts { display: grid; gap: 22px; margin: 0; }
+.about-facts dt { color: var(--l-muted); font-size: 0.9375rem; font-weight: 600; }
+.about-facts dd { margin: 4px 0 0; color: var(--l-ink); font-size: 1.0625rem; line-height: 1.5; }
+.about-links { display: grid; gap: 4px; justify-items: start; }
+.about-links .button { margin-bottom: 8px; }
+
+/* ---- Footer ---- */
+.lower-footer { background: #142a4b; color: var(--l-muted, #ccdeec); padding-block: 32px; }
+.lower-footer p { margin: 0; color: #ccdeec; font-size: 1rem; }
+
+/* ---- Tablet and phone ---- */
+@media (max-width: 980px) {
+  .work-row-grid, .method-grid, .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .route-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .lower-band { padding-block: 56px; }
+  .work { padding-bottom: 0; }
+  .work-row { padding-block: 28px; }
+  .work-row-grid { gap: 24px; margin-top: 20px; }
+  .lower h2 { font-size: clamp(2rem, 9vw, 2.5rem); }
+  .lower-intro { margin-bottom: 8px; }
+  .lower-intro p, .row-summary, .about-copy p { font-size: 1rem; }
+  .row-question { font-size: 1.125rem; }
+  .row-observe, .row-proof dd, .method-steps p, .route-list span, .about-facts dd { font-size: 1rem; }
+  .row-proof div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .row-actions { gap: 4px 20px; }
+  .row-actions .button { width: 100%; }
+
+  /* The check stacks top to bottom, like the hero's phone layout. */
+  .row-check { flex-direction: column; align-items: flex-start; }
+  .rc-wire { flex: none; width: 2px; height: 20px; min-width: 0; margin: 6px 0 6px 6px; }
+  .rc-wire i { transform-origin: center top; }
+  .rc-chip { white-space: normal; }
+  .rc-node { white-space: normal; }
+  .rc-out { padding-left: 24px; }
+  .method-steps { padding-left: 36px; }
+  .method-steps li::before { left: -36px; }
+  .route-list a { padding: 22px; }
+  .about-side { gap: 24px; }
+}
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+  .work-row.is-armed:not(.is-drawn) .rc-wire i { transform: scaleY(0); }
+}
+
+/* Phone: keep row actions and hero source links at the 14px text floor. */
+@media (max-width: 640px) {
+  .portfolio-landing .row-actions a,
+  .portfolio-landing [data-hero-card] p a,
+  .portfolio-landing .lc-status a,
+  .portfolio-landing .screening-caption p,
+  .portfolio-landing .screening-caption p a { font-size: .875rem; }
+}
+
+/* Case-study links on the navy page: landing.css colours .project-link with the
+   light-theme action blue at 13px, which fails contrast on navy. */
+.lower .row-link { color: var(--l-accent); font-size: 1rem; }
+.lower .row-link:hover { color: #a6e6ff; }
+
+/* Smallest phones: four menu links and the logo must fit in 320px. */
+@media (max-width: 359px) {
+  .portfolio-landing .topbar { gap: 8px; }
+  .portfolio-landing .nav-links { gap: 0; }
+  .portfolio-landing .nav-links a { padding-inline: 3px; }
+}

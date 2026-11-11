@@ -199,6 +199,23 @@
 .lower .row-link { color: var(--l-accent); font-size: 1rem; }
 .lower .row-link:hover { color: #a6e6ff; }
 
+/* Clarity pass (Nov 2026): the hero is now copy plus one card, so the empty "check" grid area goes. */
+.landing-hero .hero-grid { grid-template-areas: "copy card"; }
+.screening-room .live-card { padding-bottom: 12px; }
+.hero-inventory { margin: 18px 0 0; max-width: 46ch; color: #ccdeec; font-size: 1rem; line-height: 1.5; }
+.landing-hero .hero-actions { align-items: center; }
+.hero-cv-link { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 4px; color: #f7fbfe; font-size: 1rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.hero-cv-link:hover { color: #a6e6ff; }
+@media (max-width: 1100px) {
+  .landing-hero .hero-grid { grid-template-areas: "copy" "card"; }
+}
+
+/* "Also built": a quieter group under the three review tools. */
+.also-heading { padding-top: clamp(40px, 5vw, 64px); color: var(--l-muted); font-size: 1.375rem; font-weight: 700; letter-spacing: -0.01em; }
+.lower h4 { margin: 0; color: var(--l-ink); text-wrap: balance; }
+.row-title h4 { font-size: clamp(1.5rem, 2.2vw, 1.875rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.work-also .row-question { font-size: 1.125rem; }
+
 /* Smallest phones: four menu links and the logo must fit in 320px. */
 @media (max-width: 359px) {
   .portfolio-landing .topbar { gap: 8px; }

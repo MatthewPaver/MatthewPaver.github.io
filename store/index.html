@@ -90,38 +90,26 @@
       <header class="hero landing-hero" data-hero data-motion="finished">
         <div class="shell hero-grid">
           <div class="hero-copy">
-            <h1>I build checks people can inspect before they decide.</h1>
-            <p class="lede">I’m Matthew Paver, an AI solutions architect. These tools help reviewers inspect cloud permissions, question project updates and test which documents an assistant finds — with the evidence beside the answer. A person still makes the call.</p>
+            <h1>I build AI review tools that show their evidence.</h1>
+            <p class="lede">Matthew Paver, AI solutions architect. Prototypes that check AWS cloud permission changes, project updates and AI document search, with the sources beside the answer. A person still makes the call.</p>
+            <!-- Inventory strip: tells a first-time visitor what is on this page before they scroll. -->
+            <p class="hero-inventory">5 selected of 8: three review tools, a booking prototype and a data pipeline, all personal prototypes you can inspect</p>
             <div class="hero-actions">
-              <a class="button primary" href="#selected">Explore an example</a>
-              <a class="button ghost" href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">Open CV (PDF)</a>
+              <a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the PolicyLens example</a>
+              <a class="hero-cv-link" href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">CV (PDF)</a>
             </div>
           </div>
-          <figure class="check-lane" aria-label="PolicyLens policy check">
-            <div class="hero-check">
-              <p class="check-input">AWS Support policy update (v19 to v20)</p>
-              <svg class="hero-wire" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="check-strand" d="M0 12 H100" pathLength="1"/><path class="check-pulse" d="M0 12 H100" pathLength="1"/></svg>
-              <p class="check-node"><span class="check-dot" aria-hidden="true"></span>PolicyLens finds</p>
-              <svg class="hero-wire" viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="check-strand" d="M0 12 H100" pathLength="1"/><path class="check-pulse" d="M0 12 H100" pathLength="1"/></svg>
-            </div>
-            <figcaption>Stop: the support role could read every object in every S3 bucket</figcaption>
-            <p class="check-explainer">AWS is Amazon Web Services. Identity and Access Management (IAM) policies set permissions. S3 is its object storage service.</p>
-          </figure>
+          <!-- The hero keeps one product surface. The old check lane, glossary and source essay were removed so the Stop finding is stated once. -->
           <section class="screening-room" aria-label="PolicyLens result on real public data">
             <div class="live-card is-found" data-hero-card><div class="lc-frame" data-ui><div class="lc lc--policylens" data-card="policylens">
-                  <div class="lc-bar"><span class="lc-mark">PolicyLens</span><span class="lc-meta">Real public data: AWS Support policy</span></div>
+                  <div class="lc-bar"><span class="lc-mark">PolicyLens</span> <span class="lc-meta">Real public data: AWS Support policy</span></div>
                   <div class="lc-body">
                     <p class="lc-title">Stop: the support role could read every object in every S3 bucket</p>
-                    <p class="lc-status">AWSSupportServiceRolePolicy, v19 to v20<br /><time datetime="2021-12-21">21 December 2021</time></p>
-                    <div class="policy-finding" data-flag><strong><code>s3:GetObject</code></strong><span>on <code>*</code> (all objects)</span><span>line 1640</span></div>
+                    <p class="lc-status">AWSSupportServiceRolePolicy, v19 to v20<span class="visually-hidden">,</span><br /> <time datetime="2021-12-21">21 December 2021</time></p>
+                    <div class="policy-finding" data-flag><strong><code>s3:GetObject</code></strong> <span>on <code>*</code> (all objects)<span class="visually-hidden">,</span></span> <span>line 1640</span></div>
                     <p class="lc-status">+40 lower-risk additions</p>
                   </div>
                 </div></div></div>
-            <div class="screening-caption">
-              <p>Source: <a href="https://aws.amazon.com/security/security-bulletins/AWS-2021-007/">AWS security bulletin AWS-2021-007</a>. This is a policy-only finding. AWS says its support systems could not use the permission, and the change was reverted.</p>
-              <a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the example policy comparison</a>
-              <a class="source-link" href="https://github.com/MatthewPaver/iam-policy-auditor/tree/feat/lift-and-shift/examples/policies">See the real AWS policy versions</a>
-            </div>
           </section>
         </div>
         <div class="shell hero-bottom"><a href="./work/">See all work</a><button type="button" class="motion-toggle" data-check-toggle aria-pressed="false" hidden>Pause animation</button></div>
@@ -147,23 +135,22 @@
         <div class="work-rows">
           <article class="work-row" id="case-policylens" data-work-row data-project="policylens" aria-labelledby="h-policylens">
             <div class="shell work-row-inner">
-              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">AWS Support policy v19 to v20</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>PolicyLens finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Stop: new permission to read stored objects</strong></p></div>
+              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">AWS Support policy v19 to v20</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>PolicyLens finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>New permission to read stored objects</strong></p></div>
               <div class="work-row-grid">
+                <!-- Compact proof only: the full Stop card already appears once in the hero. -->
                 <div class="row-media"><div class="row-card live-card is-found"><div class="lc-frame" data-ui><div class="lc lc--policylens" data-card="policylens">
-                  <div class="lc-bar"><span class="lc-mark">PolicyLens</span><span class="lc-meta">Real public data: AWS Support policy</span></div>
+                  <div class="lc-bar"><span class="lc-mark">PolicyLens</span> <span class="lc-meta">Real public data, 21 December 2021</span></div>
                   <div class="lc-body">
-                    <p class="lc-title">Stop: the support role could read every object in every S3 bucket</p>
-                    <p class="lc-status">AWSSupportServiceRolePolicy, v19 to v20<br /><time datetime="2021-12-21">21 December 2021</time></p>
-                    <div class="policy-finding" data-flag><strong><code>s3:GetObject</code></strong><span>on <code>*</code> (all objects)</span><span>line 1640</span></div>
-                    <p class="lc-status">+40 lower-risk additions</p>
+                    <div class="policy-finding"><strong><code>s3:GetObject</code></strong> <span>on <code>*</code> (all objects)<span class="visually-hidden">,</span></span> <span>line 1640</span></div>
+                    <p class="lc-status">Source: <a href="https://aws.amazon.com/security/security-bulletins/AWS-2021-007/">AWS security bulletin AWS-2021-007</a>. AWS says its support systems could not use the permission, and reverted it.</p>
                   </div>
                 </div></div></div></div>
                 <div class="row-copy">
                   <div class="row-title"><h3 id="h-policylens">PolicyLens</h3><span>Cloud security</span></div>
                   <p class="row-question">For cloud engineers reviewing a proposed AWS access change</p>
                   <p class="row-summary">Compare two policy versions and inspect newly allowed access with the policy lines behind it. Optional AI explanations appear only if a grounding check passes.</p>
-                  <p class="row-observe"><strong>Evidence.</strong> Set 5 matched <strong>21 of 30</strong> expected outcomes; it wrongly passed a modelled change that removes MFA (<code>PLH5-A21</code>). The card above uses a real public AWS incident, separate from that fixture.</p>
-                  <dl class="row-proof"><div><dt>Example</dt><dd><code>s3:GetObject</code> added on all objects, at line 1640</dd></div><div><dt>Limits</dt><dd>Can miss dangerous changes. Does not assess a whole AWS account or approve deployment</dd></div></dl>
+                  <p class="row-observe"><strong>Evidence.</strong> On test policy changes with known answers, it matched <strong>21 of 30</strong>. It wrongly passed a made-up change that removes multi-factor authentication (MFA), the second sign-in check.</p>
+                  <dl class="row-proof"><div><dt>Limits</dt><dd>Can miss dangerous changes. Does not assess a whole AWS account or approve deployment</dd></div></dl>
                   <p class="row-tech">Node.js, AWS Identity and Access Management (IAM), AI evaluation</p>
                   <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the example</a><a class="row-link project-link" href="./work/policylens/">Evidence, cases and limits</a></div>
                 </div>
@@ -185,8 +172,8 @@
                   <div class="row-title"><h3 id="h-projectlens">ProjectLens</h3><span>Project controls</span></div>
                   <p class="row-question">For project reviewers checking whether a written update agrees with reported dates</p>
                   <p class="row-summary">Compare schedule versions with the update, inspect flagged changes and record questions. The card above uses public government data; the interactive walkthrough uses a made-up project.</p>
-                  <p class="row-observe"><strong>Evidence.</strong> Set 5 matched <strong>29 of 40</strong> expected outcomes, but detected only <strong>3 of 10</strong> labelled contradictions in public project updates.</p>
-                  <dl class="row-proof"><div><dt>Example</dt><dd>E-7 Wedgetail: the published end date moves by 913 days</dd></div><div><dt>Limits</dt><dd>Misses contradictions. Does not establish delay cause or approve a change</dd></div></dl>
+                  <p class="row-observe"><strong>Evidence.</strong> On test project updates with known answers, it matched <strong>29 of 40</strong>.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>E-7 Wedgetail: the published end date moves by 913 days</dd></div><div><dt>Limits</dt><dd>Found only <strong>3 of 10</strong> labelled contradictions in public project updates. Does not establish delay cause or approve a change</dd></div></dl>
                   <p class="row-tech">Browser JavaScript, Python, Playwright</p>
                   <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open the example</a><a class="row-link project-link" href="./work/projectlens/">Evidence, cases and limits</a></div>
                 </div>
@@ -195,72 +182,76 @@
           </article>
           <article class="work-row" id="case-rag-regression-gate" data-work-row data-project="rag-regression-gate" aria-labelledby="h-rag-regression-gate">
             <div class="shell work-row-inner">
-              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">Approved retention policy</li><li class="rc-chip is-flag">2022 proposal</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>RAG Regression Gate finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Hold this update</strong><span class="rc-note">The current policy is still found, but the outdated proposal now ranks above it.</span></p></div>
+              <div class="row-check rc--fail" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">Approved retention policy</li><li class="rc-chip is-flag">2022 proposal</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>RAG Regression Gate finds</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Hold this update<span class="visually-hidden">.</span></strong> <span class="rc-note">The current policy is still found, but the outdated proposal now ranks above it.</span></p></div>
               <div class="work-row-grid">
-                <div class="row-media"><a class="row-card live-card is-found" href="./demos/rag-gate/" aria-label="RAG Regression Gate on the retention question: hold this update, because the 2022 proposal now ranks above the approved retention policy. Open RAG Regression Gate."><div class="lc-frame" data-ui><div class="lc lc--rag" data-card="rag"><div class="lc-bar"><span class="lc-mark">RAG Regression Gate</span><span class="lc-meta">Saved test results for 6 example staff questions</span></div><div class="lc-body"><p class="lc-question">How long should raw customer event records be retained?</p><div class="lc-decision"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14"/><path d="M15 7v10m0 4v2"/></svg><div><b>Hold this update</b><p>The current policy is still found, but the outdated proposal now ranks above it.</p></div></div><div class="lc-rankings"><section class="lc-before"><p class="lc-rank-head">Before update</p><ol><li><b>1</b><span class="lc-src">Approved retention policy</span><span class="lc-pill lc-pill--current">Current</span></li><li><b>2</b><span class="lc-src">2022 proposal</span><span class="lc-pill lc-pill--old">Unapproved proposal</span></li></ol></section><section><p class="lc-rank-head">After update</p><ol><li data-flag><b>1</b><span class="lc-src">2022 proposal</span><span class="lc-pill lc-pill--old">Unapproved proposal</span></li><li><b>2</b><span class="lc-src">Approved retention policy</span><span class="lc-pill lc-pill--current">Current</span></li></ol></section></div></div></div></div></a></div>
+                <div class="row-media"><a class="row-card live-card is-found" href="./demos/rag-gate/" aria-label="RAG Regression Gate on the retention question: hold this update, because the 2022 proposal now ranks above the approved retention policy. Open RAG Regression Gate."><div class="lc-frame" data-ui><div class="lc lc--rag" data-card="rag"><div class="lc-bar"><span class="lc-mark">RAG Regression Gate</span> <span class="lc-meta">Saved test results for 6 example staff questions</span></div><div class="lc-body"><p class="lc-question">How long should raw customer event records be retained?</p><div class="lc-decision"><svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14"/><path d="M15 7v10m0 4v2"/></svg><div><b>Hold this update<span class="visually-hidden">.</span></b> <p>The current policy is still found, but the outdated proposal now ranks above it.</p></div></div><div class="lc-rankings"><section class="lc-before"><p class="lc-rank-head">Before update</p><ol><li><b>1</b><span class="lc-src">Approved retention policy</span><span class="lc-pill lc-pill--current">Current</span></li><li><b>2</b><span class="lc-src">2022 proposal</span><span class="lc-pill lc-pill--old">Unapproved proposal</span></li></ol></section><section><p class="lc-rank-head">After update</p><ol><li data-flag><b>1</b><span class="lc-src">2022 proposal</span><span class="lc-pill lc-pill--old">Unapproved proposal</span></li><li><b>2</b><span class="lc-src">Approved retention policy</span><span class="lc-pill lc-pill--current">Current</span></li></ol></section></div></div></div></div></a></div>
                 <div class="row-copy">
                   <div class="row-title"><h3 id="h-rag-regression-gate">RAG Regression Gate</h3><span>AI assistants</span></div>
-                  <p class="row-question">After an update, will an AI assistant still find the right policy?</p>
-                  <p class="row-summary">Retrieval-augmented generation (RAG) means looking up documents before generating an answer. This tool compares the documents an assistant finds before and after an update, and holds the update if an old, unapproved document now ranks above the current one.</p>
-                  <p class="row-observe"><strong>Inspect a saved run.</strong> The page shows saved CLI comparisons for six example questions. It does not re-run search on your documents. Engineers run the gate locally or in CI.</p>
-                  <dl class="row-proof"><div><dt>Example</dt><dd>An old 365-day proposal now ranks above the approved 30-day policy</dd></div><div><dt>Limits</dt><dd>Checks which documents are found, not whether the answer is right</dd></div></dl>
+                  <p class="row-question">For teams with an AI assistant that looks up documents before it answers</p>
+                  <p class="row-summary">Retrieval-augmented generation (RAG) means looking up documents before generating an answer. This tool compares the documents an assistant finds before and after an update, and holds the update if an old, unapproved document now ranks above the current one. Engineers run it locally or as an automated release check.</p>
+                  <p class="row-observe"><strong>Evidence.</strong> In a saved run of <strong>6 example questions</strong>, an unapproved 2022 proposal overtook the approved policy after an update, so the gate held it.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>An old 365-day proposal now ranks above the approved 30-day policy</dd></div><div><dt>Limits</dt><dd>Checks which documents are found, not whether the answer is right. The page shows a saved run and does not search your documents</dd></div></dl>
                   <p class="row-tech">Python, search testing, automated release checks</p>
                   <div class="row-actions"><a class="button primary" href="./demos/rag-gate/">Inspect a saved run</a><a class="row-link project-link" href="./work/rag-regression-gate/">Evidence, cases and limits</a></div>
                 </div>
               </div>
             </div>
           </article>
+          <!-- Also built: the two non-review projects sit in their own quieter group, so the three review tools read as the main work. -->
+          <section class="work-also" aria-labelledby="also-heading">
+          <div class="shell"><h3 id="also-heading" class="also-heading">Also built</h3></div>
           <article class="work-row" id="case-quicksupply" data-work-row data-project="quicksupply" aria-labelledby="h-quicksupply">
             <div class="shell work-row-inner">
-              <div class="row-check rc--pass" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">School requests cover</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>Agency assigns</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Teacher responds</strong><span class="rc-note">Everyone can follow the booking.</span></p></div>
+              <div class="row-check rc--pass" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">School requests cover</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>Agency assigns</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>Teacher responds<span class="visually-hidden">.</span></strong> <span class="rc-note">Everyone can follow the booking.</span></p></div>
               <div class="work-row-grid">
                 <div class="row-media"><div class="row-card row-video">
 <video controls playsinline preload="none" poster="./assets/quicksupply-dashboard.png" width="960" height="540" data-row-video><source src="./assets/quicksupply-demo.m4v" type="video/mp4" /></video>
 <span class="row-video-caption">Recorded demo: a request moves through the school, agency and teacher views.</span>
 </div></div>
                 <div class="row-copy">
-                  <div class="row-title"><h3 id="h-quicksupply">QuickSupply</h3><span>Service workflow</span></div>
-                  <p class="row-question">Who is arranging the teacher, and what happens next?</p>
-                  <p class="row-summary">I started with an outdated Liverpool booking process. In this prototype, a school requests cover, an agency assigns a teacher and everyone can follow the booking.</p>
-                  <p class="row-observe"><strong>Watch the handoff.</strong> The recorded demo follows a request through the separate school, agency and teacher views.</p>
+                  <div class="row-title"><h4 id="h-quicksupply">QuickSupply</h4><span>Service workflow</span></div>
+                  <p class="row-question">For schools and supply agencies following a cover booking</p>
+                  <p class="row-summary">A booking prototype that shows who is arranging the supply teacher and what happens next. It started from an outdated Liverpool booking process.</p>
+                  <p class="row-observe"><strong>Evidence.</strong> A recorded demo follows one request through the separate school, agency and teacher views.</p>
                   <dl class="row-proof"><div><dt>Example</dt><dd>School requests cover, agency assigns, teacher responds</dd></div><div><dt>Limits</dt><dd>A recorded prototype with made-up data, not a live booking service</dd></div></dl>
                   <p class="row-tech">Next.js, TypeScript, Drizzle</p>
-                  <div class="row-actions"><a class="button primary project-link" href="./preview.html?app=quicksupply">Watch and read the QuickSupply case study</a></div>
+                  <div class="row-actions"><a class="button primary project-link" href="./preview.html?app=quicksupply">Watch the demo, evidence and limits</a></div>
                 </div>
               </div>
             </div>
           </article>
           <article class="work-row" id="case-lakehouse" data-work-row data-project="lakehouse" aria-labelledby="h-lakehouse">
             <div class="shell work-row-inner">
-              <div class="row-check rc--warn" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">Audiences</li><li class="rc-chip">Daily budget plan</li><li class="rc-chip">Conversions</li><li class="rc-chip is-flag">Ad delivery</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>7 data checks</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>6 pass, 1 warning</strong><span class="rc-note">5 rows repeat the same campaign and day.</span></p></div>
+              <div class="row-check rc--warn" data-row-check><ul class="rc-in" aria-label="Checked"><li class="rc-chip">Audiences</li><li class="rc-chip">Daily budget plan</li><li class="rc-chip">Conversions</li><li class="rc-chip is-flag">Ad delivery</li></ul><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-node"><span class="rc-dot" aria-hidden="true"></span>7 data checks</p><span class="rc-wire" aria-hidden="true"><i></i></span><p class="rc-out"><strong>6 pass, 1 warning<span class="visually-hidden">.</span></strong> <span class="rc-note">5 rows repeat the same campaign and day.</span></p></div>
               <div class="work-row-grid">
                 <div class="row-media"><a class="row-card live-card is-found" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality" aria-label="Marketing ML Lakehouse data checks on made-up sample data: seven checks, six pass and one warning. Open the data checks."><div class="lc-frame" data-ui><div class="lc lc--lake">
-<div class="lc-bar"><span class="lc-mark">Marketing ML Lakehouse</span><span class="lc-meta">Sample-data demo</span></div>
+<div class="lc-bar"><span class="lc-mark">Marketing ML Lakehouse</span> <span class="lc-meta">Sample-data demo</span></div>
 <div class="lc-body">
 <p class="lc-title">Data checks</p>
 <p class="lk-sum"><b>7 checks</b><span class="lk-pill lk-pass">6 pass</span><span class="lk-pill lk-warn">1 warning</span><span class="lk-pill">0 fail</span></p>
 <ul class="lk-list">
-<li><span><b>Audiences</b><small>6 rows</small></span><em class="lk-pill lk-pass">Pass</em></li>
-<li><span><b>Daily budget plan</b><small>126 rows</small></span><em class="lk-pill lk-pass">Pass</em></li>
-<li><span><b>Conversions</b><small>319 rows</small></span><em class="lk-pill lk-pass">Pass</em></li>
-<li data-flag><span><b>Ad delivery</b><small>131 rows. 5 rows repeat the same campaign and day</small></span><em class="lk-pill lk-warn">Warning</em></li>
-<li><span><b>One row per campaign per day</b><small>0 repeated</small></span><em class="lk-pill lk-pass">Pass</em></li>
-<li><span><b>Spend adds up</b><small>£37,847.66 found, £37,847.66 expected</small></span><em class="lk-pill lk-pass">Pass</em></li>
-<li><span><b>Booking revenue adds up</b><small>£337,578.75 found, £337,578.75 expected</small></span><em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Audiences<span class="visually-hidden">:</span></b> <small>6 rows</small></span> <em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Daily budget plan<span class="visually-hidden">:</span></b> <small>126 rows</small></span> <em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Conversions<span class="visually-hidden">:</span></b> <small>319 rows</small></span> <em class="lk-pill lk-pass">Pass</em></li>
+<li data-flag><span><b>Ad delivery<span class="visually-hidden">:</span></b> <small>131 rows. 5 rows repeat the same campaign and day<span class="visually-hidden">.</span></small></span> <em class="lk-pill lk-warn">Warning</em></li>
+<li><span><b>One row per campaign per day<span class="visually-hidden">:</span></b> <small>0 repeated</small></span> <em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Spend adds up<span class="visually-hidden">:</span></b> <small>£37,847.66 found, £37,847.66 expected</small></span> <em class="lk-pill lk-pass">Pass</em></li>
+<li><span><b>Booking revenue adds up<span class="visually-hidden">:</span></b> <small>£337,578.75 found, £337,578.75 expected</small></span> <em class="lk-pill lk-pass">Pass</em></li>
 </ul>
 </div></div></div></a></div>
                 <div class="row-copy">
-                  <div class="row-title"><h3 id="h-lakehouse">Marketing ML Lakehouse</h3><span>Data and ML</span></div>
-                  <p class="row-question">Can a campaign report be rebuilt and checked from the raw files?</p>
-                  <p class="row-summary">For analysts and data engineers: turn raw ad-campaign files into checked reporting tables, and test whether a forecast beats a simple guess.</p>
-                  <p class="row-observe"><strong>Try it in your browser.</strong> Open the data checks: six pass and one warns about five repeated rows. Then follow the guide to rebuild it in Python.</p>
+                  <div class="row-title"><h4 id="h-lakehouse">Marketing ML Lakehouse</h4><span>Data and ML</span></div>
+                  <p class="row-question">For analysts and data engineers who report on ad campaigns</p>
+                  <p class="row-summary">Rebuild campaign reporting tables from the raw files and check them. A guide shows how to rebuild it yourself in Python.</p>
+                  <p class="row-observe"><strong>Evidence.</strong> <strong>7 data checks</strong>: 6 pass and 1 warns about five repeated rows.</p>
                   <dl class="row-proof"><div><dt>Example</dt><dd>Five ad-delivery rows repeat the same campaign and day</dd></div><div><dt>Limits</dt><dd>Made-up sample data. The next-day forecast does no better than assuming tomorrow matches today.</dd></div></dl>
-                  
-                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality">Open the data checks</a><a class="row-link project-link" href="./preview.html?app=lakehouse">How it works</a></div>
+
+                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality">Open the example</a><a class="row-link project-link" href="./preview.html?app=lakehouse">Evidence, cases and limits</a></div>
                 </div>
               </div>
             </div>
           </article>
+          </section>
         </div>
       </section>
 

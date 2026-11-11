@@ -10,7 +10,7 @@ test('failed check-line JavaScript leaves results, copy and case links available
 
 test('visible link wording remains available to assistive technology', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-actions').getByRole('link', {name:'Open CV (PDF)',exact:true})).toBeVisible();
+  await expect(page.locator('.hero-actions').getByRole('link', {name:'CV (PDF)',exact:true})).toBeVisible();
   await expect(page.locator('.brand')).toHaveAccessibleName(/MP/);
   for (const project of ['policylens','projectlens','rag-regression-gate','quicksupply','lakehouse']) {
     await expect(page.locator(`[data-project="${project}"] .row-actions a`).last()).not.toHaveAttribute('aria-label');

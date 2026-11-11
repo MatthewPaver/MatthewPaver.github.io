@@ -2,14 +2,16 @@ import { expect, test } from '@playwright/test';
 
 test('selected rows have direct actions and readable HTML results', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-copy')).toContainText('Automation & AI Consultant at Ciklum, placed at Trustpilot');
+  // Hero is purpose-first; employer detail lives under About, not in the first viewport.
+  await expect(page.locator('.hero-copy h1')).toContainText('I build checks people can inspect before they decide.');
   await expect(page.locator('.hero-copy .lede')).not.toContainText('Projecting Success');
+  await expect(page.locator('#about')).toContainText('Automation & AI Consultant at Ciklum, placed at Trustpilot');
   await expect(page.locator('#about')).toContainText('six years at Projecting Success');
-  for (const [slug, name] of [
+  for (const [slug] of [
     ['policylens', 'PolicyLens'], ['projectlens', 'ProjectLens'], ['rag-regression-gate', 'RAG Regression Gate'],
   ]) {
     const row = page.locator(`[data-project="${slug}"]`);
-    await expect(row.getByRole('link', {name:`Read the ${name} case study`,exact:true})).toHaveAttribute('href', `./work/${slug}/`);
+    await expect(row.getByRole('link', {name:'Evidence, cases and limits',exact:true})).toHaveAttribute('href', `./work/${slug}/`);
     await expect(row.locator('[data-card]')).toBeVisible();
     await expect(row.locator('.row-summary')).toBeVisible();
   }

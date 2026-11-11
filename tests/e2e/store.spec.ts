@@ -95,12 +95,12 @@ test("selected work exposes real public results, boundaries and case routes", as
   await expect(policy).toContainText('s3:GetObject');
   await expect(policy).toContainText('line 1640');
   await expect(policy).toContainText('Checks only the policies you give it, not a whole AWS account');
-  await expect(policy.getByRole('link', {name:'Read the PolicyLens case study',exact:true})).toHaveAttribute('href','./work/policylens/');
+  await expect(policy.getByRole('link', {name:'Evidence, cases and limits',exact:true})).toHaveAttribute('href','./work/policylens/');
   const project = page.locator('[data-project="projectlens"]');
   await expect(project).toContainText('913 days');
   await expect(project).toContainText('31/12/2027');
   await expect(project).toContainText('01/07/2030');
-  await expect(project.getByRole('link', {name:'Read the ProjectLens case study',exact:true})).toHaveAttribute('href','./work/projectlens/');
+  await expect(project.getByRole('link', {name:'Evidence, cases and limits',exact:true})).toHaveAttribute('href','./work/projectlens/');
 });
 
 test("live results remain readable and biography stays separate from project evidence", async ({ page }) => {
@@ -127,7 +127,7 @@ test("hero leads only with PolicyLens and links its real source", async ({ page 
   await expect(hero).toContainText('+40 lower-risk additions');
   await expect(hero).toContainText('AWS says its support systems could not use the permission');
   await expect(hero.getByRole('link', {name:'AWS security bulletin AWS-2021-007'})).toHaveAttribute('href','https://aws.amazon.com/security/security-bulletins/AWS-2021-007/');
-  await expect(hero.getByRole('link', {name:'Try it on your own policy'})).toHaveAttribute('href','https://matthewpaver.github.io/iam-policy-auditor/');
+  await expect(hero.getByRole('link', {name:'Open the example policy comparison'})).toHaveAttribute('href','https://matthewpaver.github.io/iam-policy-auditor/');
   await expect(hero.getByRole('link', {name:'See the real AWS policy versions'})).toHaveAttribute('href', /iam-policy-auditor\/tree\/.+\/examples\/policies/);
 });
 

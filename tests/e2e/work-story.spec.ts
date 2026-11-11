@@ -5,7 +5,7 @@ test('failed check-line JavaScript leaves results, copy and case links available
   await page.goto('/#selected');
   await expect(page.locator('[data-work-row]')).toHaveCount(5);
   await expect(page.locator('[data-project="policylens"] .row-media')).toBeVisible();
-  await expect(page.locator('[data-project="projectlens"]').getByRole('link', {name:'Read the ProjectLens case study',exact:true})).toHaveAttribute('href','./work/projectlens/');
+  await expect(page.locator('[data-project="projectlens"]').getByRole('link', {name:'Evidence, cases and limits',exact:true})).toHaveAttribute('href','./work/projectlens/');
 });
 
 test('visible link wording remains available to assistive technology', async ({ page }) => {

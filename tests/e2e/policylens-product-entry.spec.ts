@@ -4,7 +4,8 @@ test('PolicyLens product and before/after case stay directly reachable without J
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4321/');
-  await expect(page.getByRole('link', { name: 'Open PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
+  // Homepage uses plain "Open the example" so the next click is obvious to a stranger.
+  await expect(page.locator('#case-policylens').getByRole('link', { name: 'Open the example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
   await page.goto('http://127.0.0.1:4321/work/policylens/');
   await expect(page.getByRole('link', { name: 'Try PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
   await expect(page.getByRole('link', { name: 'Check your own policies', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review');

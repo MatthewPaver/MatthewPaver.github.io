@@ -41,7 +41,8 @@ test('ProjectLens product landing is primary and its walkthrough stays reachable
   const page = await context.newPage();
   const url = 'https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1';
   await page.goto('http://127.0.0.1:4321/');
-  await expect(page.locator('#case-projectlens').getByRole('link', { name: 'Open ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
+  // Homepage CTA is plain "Open the example" so a stranger knows the next click.
+  await expect(page.locator('#case-projectlens').getByRole('link', { name: 'Open the example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
   await page.goto('http://127.0.0.1:4321/work/projectlens/');
   await expect(page.locator('.case-actions').first().getByRole('link', { name: 'Take the interactive walkthrough', exact: true })).toHaveAttribute('href', url);
   await expect(page.getByRole('link', { name: 'Try ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');

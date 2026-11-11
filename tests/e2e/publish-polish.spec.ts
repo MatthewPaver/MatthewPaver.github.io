@@ -28,7 +28,7 @@ test('catalogue leads with the strongest AI work: PolicyLens, then ProjectLens',
 
 test('selected evidence keeps measured failures and prototype limits explicit', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-inventory')).toHaveText('5 selected of 8: three review tools, a booking prototype and a data pipeline, all personal prototypes you can inspect');
+  await expect(page.locator('.hero-inventory')).toHaveText('5 selected of 8: three review tools, a booking prototype and a data pipeline, all personal prototypes you can inspect. See all eight on All work');
   const policy = page.locator('#case-policylens');
   await expect(policy.locator('.row-observe')).toContainText('21 of 30');
   await expect(policy.locator('.row-observe')).toContainText('wrongly passed a made-up change that removes multi-factor authentication (MFA)');

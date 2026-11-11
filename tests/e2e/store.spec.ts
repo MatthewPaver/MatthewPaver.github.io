@@ -174,7 +174,7 @@ test("QuickSupply recording has native controls and a case fallback", async ({ p
   await expect(row.locator('video')).toHaveAttribute('controls','');
   await expect(row.locator('video')).toHaveAttribute('preload','none');
   expect(await row.locator('video').evaluate((video: HTMLVideoElement) => video.paused)).toBe(true);
-  await expect(row.getByRole('link', {name:'Watch the demo, evidence and limits',exact:true})).toHaveAttribute('href','./preview.html?app=quicksupply');
+  await expect(row.getByRole('link', {name:'Watch the demo',exact:true})).toHaveAttribute('href','./preview.html?app=quicksupply');
 });
 
 test("PolicyLens has an indexable detail page and public source", async ({ page }) => {

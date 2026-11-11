@@ -48,14 +48,15 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
       range.selectNodeContents(heading);
       return new Set([...range.getClientRects()].map((rect) => Math.round(rect.top))).size;
     });
-    expect(lines).toBeLessThanOrEqual(2);
+    // Purpose-first headline can wrap to three lines at 1280; keep it short of a wall of text.
+    expect(lines).toBeLessThanOrEqual(3);
 
     await page.setViewportSize({ width: 1280, height: 720 });
     await expect(page.locator("[data-hero-card]")).toBeVisible();
   }
   await expect(page.getByRole("heading", { name: "Selected work", exact: true })).toBeVisible();
   await expect(page.locator(".work-row")).toHaveCount(5);
-  await expect(page.getByRole("link", { name: "See my work" })).toHaveAttribute("href", "#selected");
+  await expect(page.getByRole("link", { name: "Explore an example" })).toHaveAttribute("href", "#selected");
   await expect(page.getByRole("link", { name: "Open CV (PDF)", exact: true })).toHaveAttribute(
     "href",
     "https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf",
@@ -94,7 +95,7 @@ test("selected work exposes real public results, boundaries and case routes", as
   const policy = page.locator('[data-project="policylens"]');
   await expect(policy).toContainText('s3:GetObject');
   await expect(policy).toContainText('line 1640');
-  await expect(policy).toContainText('Checks only the policies you give it, not a whole AWS account');
+  await expect(policy).toContainText('Does not assess a whole AWS account or approve deployment');
   await expect(policy.getByRole('link', {name:'Evidence, cases and limits',exact:true})).toHaveAttribute('href','./work/policylens/');
   const project = page.locator('[data-project="projectlens"]');
   await expect(project).toContainText('913 days');
@@ -208,7 +209,7 @@ test("mobile layout has usable controls and no page-level horizontal overflow", 
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
     await page.evaluate(() => document.documentElement.clientWidth),
   );
-  const button = page.locator(".screening-room").getByRole("link", {name:"Try it on your own policy"});
+  const button = page.locator(".screening-room").getByRole("link", {name:"Open the example policy comparison"});
   const box = await button.boundingBox();
   expect(box?.height).toBeGreaterThanOrEqual(44);
   expect(box?.width).toBeGreaterThanOrEqual(44);

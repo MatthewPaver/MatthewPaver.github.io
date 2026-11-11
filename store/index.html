@@ -90,10 +90,10 @@
       <header class="hero landing-hero" data-hero data-motion="finished">
         <div class="shell hero-grid">
           <div class="hero-copy">
-            <h1>I design AI systems and build them.</h1>
-            <p class="lede">I’m Matthew Paver, an Automation &amp; AI Consultant at Ciklum, placed at Trustpilot.</p>
+            <h1>I build checks people can inspect before they decide.</h1>
+            <p class="lede">I’m Matthew Paver, an AI solutions architect. These tools help reviewers inspect cloud permissions, question project updates and test which documents an assistant finds — with the evidence beside the answer. A person still makes the call.</p>
             <div class="hero-actions">
-              <a class="button primary" href="#selected">See my work</a>
+              <a class="button primary" href="#selected">Explore an example</a>
               <a class="button ghost" href="https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf">Open CV (PDF)</a>
             </div>
           </div>
@@ -119,7 +119,7 @@
                 </div></div></div>
             <div class="screening-caption">
               <p>Source: <a href="https://aws.amazon.com/security/security-bulletins/AWS-2021-007/">AWS security bulletin AWS-2021-007</a>. This is a policy-only finding. AWS says its support systems could not use the permission, and the change was reverted.</p>
-              <a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Try it on your own policy</a>
+              <a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the example policy comparison</a>
               <a class="source-link" href="https://github.com/MatthewPaver/iam-policy-auditor/tree/feat/lift-and-shift/examples/policies">See the real AWS policy versions</a>
             </div>
           </section>
@@ -141,7 +141,7 @@
         <div class="shell">
           <div class="lower-intro">
             <h2 id="selected-heading">Selected work</h2>
-            <p>Personal projects you can try in your browser. None of them is client or employer work.</p>
+            <p>Personal prototypes you can inspect in your browser. None of them is client or employer work. Each card states who it is for, what it helps with, what was measured and what it does not do.</p>
           </div>
         </div>
         <div class="work-rows">
@@ -160,12 +160,12 @@
                 </div></div></div></div>
                 <div class="row-copy">
                   <div class="row-title"><h3 id="h-policylens">PolicyLens</h3><span>Cloud security</span></div>
-                  <p class="row-question">Could a permission change give someone too much access?</p>
-                  <p class="row-summary">Compare an existing AWS permissions policy with a proposed version before it ships. PolicyLens lists newly allowed access with source lines. It can also check a correction against access you need to keep.</p>
-                  <p class="row-observe"><strong>Try it in your browser.</strong> Load your own policies or follow the public AWS policy versions.</p>
-                  <dl class="row-proof"><div><dt>Example</dt><dd><code>s3:GetObject</code> added on all objects, at line 1640</dd></div><div><dt>Limits</dt><dd>Checks only the policies you give it, not a whole AWS account</dd></div></dl>
+                  <p class="row-question">For cloud engineers reviewing a proposed AWS access change</p>
+                  <p class="row-summary">Compare two policy versions and inspect newly allowed access with the policy lines behind it. Optional AI explanations appear only if a grounding check passes.</p>
+                  <p class="row-observe"><strong>Evidence.</strong> Set 5 matched <strong>21 of 30</strong> expected outcomes; it wrongly passed a modelled change that removes MFA (<code>PLH5-A21</code>). The card above uses a real public AWS incident, separate from that fixture.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd><code>s3:GetObject</code> added on all objects, at line 1640</dd></div><div><dt>Limits</dt><dd>Can miss dangerous changes. Does not assess a whole AWS account or approve deployment</dd></div></dl>
                   <p class="row-tech">Node.js, AWS Identity and Access Management (IAM), AI evaluation</p>
-                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open PolicyLens</a><a class="row-link project-link" href="./work/policylens/">Read the PolicyLens case study</a></div>
+                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the example</a><a class="row-link project-link" href="./work/policylens/">Evidence, cases and limits</a></div>
                 </div>
               </div>
             </div>
@@ -183,12 +183,12 @@
                   </div></div></div></div></div>
                 <div class="row-copy">
                   <div class="row-title"><h3 id="h-projectlens">ProjectLens</h3><span>Project controls</span></div>
-                  <p class="row-question">Progress updates that say on track when the schedule says otherwise</p>
-                  <p class="row-summary">ProjectLens compares two versions of a project schedule with the written update. It flags dates that moved without explanation, so a reviewer knows what to ask and can record a decision.</p>
-                  <p class="row-observe"><strong>Try it in your browser.</strong> The browser walkthrough uses a made-up project. The public-data example here comes from government releases.</p>
-                  <dl class="row-proof"><div><dt>Example</dt><dd>E-7 Wedgetail: the published end date moves by 913 days</dd></div><div><dt>Limits</dt><dd>Shows what changed, not why it changed or who is responsible</dd></div></dl>
+                  <p class="row-question">For project reviewers checking whether a written update agrees with reported dates</p>
+                  <p class="row-summary">Compare schedule versions with the update, inspect flagged changes and record questions. The card above uses public government data; the interactive walkthrough uses a made-up project.</p>
+                  <p class="row-observe"><strong>Evidence.</strong> Set 5 matched <strong>29 of 40</strong> expected outcomes, but detected only <strong>3 of 10</strong> labelled contradictions in public project updates.</p>
+                  <dl class="row-proof"><div><dt>Example</dt><dd>E-7 Wedgetail: the published end date moves by 913 days</dd></div><div><dt>Limits</dt><dd>Misses contradictions. Does not establish delay cause or approve a change</dd></div></dl>
                   <p class="row-tech">Browser JavaScript, Python, Playwright</p>
-                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open ProjectLens</a><a class="row-link project-link" href="./work/projectlens/">Read the ProjectLens case study</a></div>
+                  <div class="row-actions"><a class="button primary" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open the example</a><a class="row-link project-link" href="./work/projectlens/">Evidence, cases and limits</a></div>
                 </div>
               </div>
             </div>
@@ -202,10 +202,10 @@
                   <div class="row-title"><h3 id="h-rag-regression-gate">RAG Regression Gate</h3><span>AI assistants</span></div>
                   <p class="row-question">After an update, will an AI assistant still find the right policy?</p>
                   <p class="row-summary">Retrieval-augmented generation (RAG) means looking up documents before generating an answer. This tool compares the documents an assistant finds before and after an update, and holds the update if an old, unapproved document now ranks above the current one.</p>
-                  <p class="row-observe"><strong>Try it in your browser.</strong> Step through six example staff questions, then download the full report.</p>
+                  <p class="row-observe"><strong>Inspect a saved run.</strong> The page shows saved CLI comparisons for six example questions. It does not re-run search on your documents. Engineers run the gate locally or in CI.</p>
                   <dl class="row-proof"><div><dt>Example</dt><dd>An old 365-day proposal now ranks above the approved 30-day policy</dd></div><div><dt>Limits</dt><dd>Checks which documents are found, not whether the answer is right</dd></div></dl>
                   <p class="row-tech">Python, search testing, automated release checks</p>
-                  <div class="row-actions"><a class="button primary" href="./demos/rag-gate/">Open RAG Regression Gate</a><a class="row-link project-link" href="./work/rag-regression-gate/">Read the RAG Regression Gate case study</a></div>
+                  <div class="row-actions"><a class="button primary" href="./demos/rag-gate/">Inspect a saved run</a><a class="row-link project-link" href="./work/rag-regression-gate/">Evidence, cases and limits</a></div>
                 </div>
               </div>
             </div>
@@ -294,7 +294,7 @@
         <div class="shell">
           <header class="lower-intro">
             <h2 id="capabilities-heading">Find your way in</h2>
-            <p>Pick what you want to do: try a tool, read how a product was built or reuse working code.</p>
+            <p>Pick what you want to do: inspect an example, read how a product was built or reuse working code.</p>
           </header>
           <nav class="route-list" aria-label="Browse work by capability">
             <a href="./work/?category=decision#catalogue">

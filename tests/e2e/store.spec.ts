@@ -40,7 +40,7 @@ test("enterprise palette keeps hero links and actions readable in both themes", 
 test("homepage is a compact public portfolio with a personal introduction", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Matthew Paver \| AI solutions architect/);
-  const heroHeading = page.getByRole("heading", { name: "I design AI systems and build them." });
+  const heroHeading = page.getByRole("heading", { name: "I build checks people can inspect before they decide." });
   await expect(heroHeading).toBeVisible();
   if (test.info().project.name === "desktop") {
     const lines = await heroHeading.evaluate((heading) => {

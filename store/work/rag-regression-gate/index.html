@@ -46,7 +46,7 @@
 <h1>RAG Regression Gate</h1>
 <p class="case-standfirst">Keep the right policy within reach.</p>
 <p class="lede">Many workplace AI assistants look up documents before they answer. This is called RAG (retrieval-augmented generation). After a search update, an old, unapproved proposal can start appearing above the current staff policy. RAG Regression Gate compares the documents found before and after an update, so a team can catch that before staff rely on it.</p>
-<div class="case-actions"><a class="case-primary" href="../../demos/rag-gate/">Try RAG Regression Gate</a>
+<div class="case-actions"><a class="case-primary" href="../../demos/rag-gate/">Inspect a saved run</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/rag-retrieval-gate">Inspect the source</a></div>
 </div>
@@ -56,8 +56,8 @@
 <h2>The decision it supports</h2><p>Should this search update be released? In the example, the approved data-retention policy says 30 days. After the update, an old 365-day proposal ranks above it. All six question checks still pass, but the order of results got worse overall, so the gate holds the update until someone investigates.</p>
 <h2>Limits</h2><p>The website shows two saved test results. It does not run an assistant, accept uploads or check whether an assistant’s answers are correct. Six questions is a quick sanity check, not a measure of accuracy. To test your own documents, an engineer runs the command-line tool on questions your staff really ask. A pass means nothing got measurably worse; it does not prove anything got better.</p>
 <p class="case-source">This is a personal project with made-up documents. It has not been used by a client, and I have not measured time saved.</p>
-<h2>Try it step by step</h2>
-<ol><li>Open the example. Compare where the approved policy and the old proposal rank before and after the update.</li><li>Step through all six staff questions and open the documents. The hold is for the update as a whole, so some questions show no change.</li><li>Switch to the second saved result, where the update changes nothing. Read either report or download its data (JSON).</li><li>To use it on your own documents, follow the setup in the repository and run the gate on questions you have labelled.</li></ol>
+<h2>Inspect the saved run step by step</h2>
+<ol><li>Open the saved example. Compare where the approved policy and the old proposal rank before and after the update.</li><li>Step through all six staff questions and open the documents. The hold is for the update as a whole, so some questions show no change.</li><li>Switch to the second saved result, where the update changes nothing. Read either report or download its data (JSON).</li><li>To use it on your own documents, follow the setup in the repository and run the gate on questions you have labelled.</li></ol>
 <section class="case-comparison" aria-label="RAG Regression Gate before and after">
 <h2>Before and after</h2>
           <p>The first screen, before and after, using the same six-question example. It used to open on a table of scores. Now it opens on a staff question and the documents found.</p>

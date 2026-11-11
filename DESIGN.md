@@ -242,7 +242,7 @@ The shared accent becomes lighter in dark mode. The MP mark deliberately retains
 
 ### Hierarchy
 
-- **Landing Display:** One white Hanken Grotesk sentence on navy, "I design AI systems and build them.", set with `text-wrap: balance`, `clamp(2.75rem, 4.45vw, 4rem)` and 1.05 line height. At 1100px and below the final hero rule uses `clamp(2.25rem, 6vw, 3.6rem)`. No accent colour on part of the line.
+- **Landing Display:** One white Hanken Grotesk sentence on navy, "I build checks people can inspect before they decide.", set with `text-wrap: balance`, `clamp(2.75rem, 4.45vw, 4rem)` and 1.05 line height. At 1100px and below the final hero rule uses `clamp(2.25rem, 6vw, 3.6rem)`. No accent colour on part of the line.
 - **Landing Headline / Title:** The navy lower page uses `clamp(2.25rem, 4.2vw, 3.25rem)` section headings and `clamp(1.75rem, 2.6vw, 2.25rem)` project titles. Below 720px section headings use `clamp(2rem, 9vw, 2.5rem)`.
 - **Display / Headline:** Hanken Grotesk defaults for the catalogue and preview family; the catalogue's route-specific heading and shared mobile rules may further constrain them.
 - **Title:** Hanken Grotesk project and capability names outside the landing, scaled to their shelf hierarchy.

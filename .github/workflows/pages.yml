@@ -16,6 +16,10 @@ concurrency:
 
 # `store/` is the canonical source. The build copies it to `pages-dist/` and
 # writes indexable detail pages under `/store/apps/<slug>/`.
+#
+# Pages publish is deliberately separate from Playwright. Apt DNS flakes on
+# GitHub runners were cancelling the whole job (10m timeout) after the static
+# site was already built, so the live entrance never updated.
 jobs:
   deploy:
     environment:
@@ -36,8 +40,45 @@ jobs:
       - name: Test catalogue and prepare Pages artifact
         run: npm test
 
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
+        with:
+          # pages-dist is store/ at the site root, plus nested store/apps/<slug>/
+          # so legacy /store/apps/... bookmarks (e.g. marketing-ml-lakehouse) resolve.
+          path: pages-dist
+
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
+
+  # Browser journeys stay required for the workflow status, but they must not
+  # sit in front of the Pages upload or one apt blip holds the whole site.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Test catalogue and prepare Pages artifact
+        run: npm test
+
       - name: Install browser for release checks
-        run: npx playwright install --with-deps chromium
+        # Retry: ubuntu apt mirrors occasionally fail DNS on the runner.
+        run: |
+          for attempt in 1 2 3; do
+            if npx playwright install --with-deps chromium; then
+              exit 0
+            fi
+            echo "Chromium install attempt ${attempt} failed; waiting before retry"
+            sleep 20
+          done
+          exit 1
 
       - name: Check desktop and mobile journeys
         run: npm run test:e2e -- --workers=2
@@ -49,13 +90,3 @@ jobs:
           name: browser-test-results
           path: test-results
           retention-days: 7
-
-      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
-      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
-        with:
-          # pages-dist is store/ at the site root, plus nested store/apps/<slug>/
-          # so legacy /store/apps/... bookmarks (e.g. marketing-ml-lakehouse) resolve.
-          path: pages-dist
-
-      - id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5

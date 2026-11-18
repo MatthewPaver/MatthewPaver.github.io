@@ -50,7 +50,7 @@ test('mobile exploration is compact and keeps filter state across resize and his
   await expect(mode).toHaveValue('browser');
   await page.getByRole('button', { name: 'Clear filters', exact: true }).click();
   await expect(mode).toHaveValue('all');
-  await expect(page.locator('.work-card:visible')).toHaveCount(8);
+  await expect(page.locator('.work-card:visible')).toHaveCount(7);
 });
 
 test('shared marks and controls stay consistent between the homepage and inner pages', async ({ page }) => {

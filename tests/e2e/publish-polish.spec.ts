@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('selected rows have direct actions and readable HTML results', async ({ page }) => {
   await page.goto('/');
   // Hero is purpose-first; employer detail lives under About, not in the first viewport.
-  await expect(page.locator('.hero-copy h1')).toContainText('I build AI review tools that show their evidence.');
+  await expect(page.locator('.hero-copy h1')).toContainText('I build checks people can inspect before they decide.');
   await expect(page.locator('.hero-copy .lede')).not.toContainText('Projecting Success');
   await expect(page.locator('#about')).toContainText('Automation & AI Consultant at Ciklum, placed at Trustpilot');
   await expect(page.locator('#about')).toContainText('six years at Projecting Success');
@@ -28,7 +28,7 @@ test('catalogue leads with the strongest AI work: PolicyLens, then ProjectLens',
 
 test('selected evidence keeps measured failures and prototype limits explicit', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.hero-inventory')).toHaveText('5 selected of 8: three review tools, a booking prototype and a data pipeline, all personal prototypes you can inspect. See all eight on All work');
+  await expect(page.locator('.hero-inventory')).toHaveText('5 selected of 7: three review tools, a booking prototype and a data pipeline, all personal prototypes you can inspect. See all seven on All work');
   const policy = page.locator('#case-policylens');
   await expect(policy.locator('.row-observe')).toContainText('21 of 30');
   await expect(policy.locator('.row-observe')).toContainText('wrongly passed a made-up change that removes multi-factor authentication (MFA)');

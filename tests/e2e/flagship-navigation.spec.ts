@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
  // RAG says "Inspect a saved run" because that page does not re-run search.
 const products = [
   ['ProjectLens', 'projectlens', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html', 'ProjectLens', 'Open the example', 'Try ProjectLens'],
-  ['PolicyLens', 'policylens', 'https://matthewpaver.github.io/iam-policy-auditor/', 'iam-policy-auditor', 'Open the example', 'Try PolicyLens'],
+  ['PolicyLens', 'policylens', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident', 'iam-policy-auditor', 'Open the example', 'Try PolicyLens'],
   ['RAG Regression Gate', 'rag-regression-gate', '../../demos/rag-gate/', 'rag-retrieval-gate', 'Inspect a saved run', 'Inspect a saved run'],
 ] as const;
 

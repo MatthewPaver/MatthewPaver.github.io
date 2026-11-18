@@ -1,5 +1,5 @@
 export const MODES = ['all', 'browser', 'local', 'case', 'pattern'];
-export const SUBJECTS = ['all', 'decision', 'product', 'data', 'analytics', 'experiment'];
+export const SUBJECTS = ['all', 'decision', 'product', 'data', 'analytics'];
 
 export function readCatalogueState(search) {
   const params = new URLSearchParams(search);

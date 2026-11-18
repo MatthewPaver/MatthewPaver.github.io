@@ -66,3 +66,6 @@
 .work-card-copy > .work-launch { margin-top:auto; }
 .first-steps-more { display:flex; flex-wrap:wrap; gap:4px 18px; margin:10px 0 0; }
 .first-steps-link { display:inline-flex; align-items:center; min-height:44px; color:var(--accent); font-weight:600; text-underline-offset:4px; }
+
+/* One-line experiments note below the code examples (Can England). */
+.experiments-line { margin-block: 0 48px; color: var(--muted); }

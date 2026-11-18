@@ -53,5 +53,23 @@ try {
   record("homepage content checks", false, err.message);
 }
 
+// Honesty strings (18 Nov 2026): case pages keep their published misses, previews never
+// say "Live public demo", the hero does not lead with "AI review tools", and the fake
+// ProjectLens upload page (file pickers that read nothing) stays gone.
+for (const [name, url, text, wanted] of [
+  ["PolicyLens case shows 21 of 30", `${HOME}work/policylens/`, "21 of 30", true],
+  ["ProjectLens case shows 29 of 40", `${HOME}work/projectlens/`, "29 of 40", true],
+  ["previews never say Live public demo", `${HOME}previews.json`, "Live public demo", false],
+  ["hero does not lead with AI review tools", HOME, "AI review tools", false],
+  ["ProjectLens has no fake upload page", `${HOME}ProjectLens/board-readiness.html`, 'type="file"', false],
+]) {
+  try {
+    const body = await (await fetch(`${url}?smoke=${Date.now()}`, { cache: "no-store" })).text();
+    record(name, body.includes(text) === wanted);
+  } catch (err) {
+    record(name, false, err.message);
+  }
+}
+
 console.log(`\n${checks.length - failed}/${checks.length} checks passed`);
 if (failed > 0) process.exit(1);

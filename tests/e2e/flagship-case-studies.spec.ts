@@ -20,7 +20,7 @@ test('homepage opens all three evidence-led case studies with real capture pairs
   await page.goto('/demos/rag-gate/');
   await expect(page.getByRole('heading', { name: 'Keep the right policy within reach.', exact: true })).toBeVisible();
   await page.goto('/demos/rag-gate/report.html');
-  await expect(page.getByRole('heading', { name: 'Candidate regresses', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Hold this update', exact: true })).toBeVisible();
 });
 
 test('before-and-after evidence and demo links remain available without JavaScript', async ({ browser }) => {
@@ -42,12 +42,12 @@ test('ProjectLens product landing is primary and its walkthrough stays reachable
   const url = 'https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1';
   await page.goto('http://127.0.0.1:4321/');
   // Homepage CTA is plain "Open the example" so a stranger knows the next click.
-  await expect(page.locator('#case-projectlens').getByRole('link', { name: 'Open the example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
+  await expect(page.locator('#case-projectlens').getByRole('link', { name: 'Open the example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/public-evidence.html?project=MOD_0120_2021-Q2');
   await page.goto('http://127.0.0.1:4321/work/projectlens/');
   await expect(page.locator('.case-actions').first().getByRole('link', { name: 'Take the interactive walkthrough', exact: true })).toHaveAttribute('href', url);
   await expect(page.getByRole('link', { name: 'Try ProjectLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/ProjectLens/change-assurance.html');
   const data = await (await page.request.get('http://127.0.0.1:4321/previews.json')).json();
-  expect(data.projectlens.links.find((link: {primary?: boolean}) => link.primary).href).toBe('https://matthewpaver.github.io/ProjectLens/change-assurance.html');
+  expect(data.projectlens.links.find((link: {primary?: boolean}) => link.primary).href).toBe('https://matthewpaver.github.io/work/projectlens/');
   expect(data.projectlens.links.some((link: {href:string}) => link.href === url)).toBe(true);
   await context.close();
 });

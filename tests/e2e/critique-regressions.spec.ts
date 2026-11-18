@@ -87,9 +87,9 @@ test('Code examples navigation escapes an incompatible active filter', async ({ 
 });
 
 const modes = [
-  { label: 'Try in browser', mode: 'browser', slugs: ['policylens', 'projectlens', 'rag-regression-gate', 'winchester', 'lakehouse', 'england'] },
+  { label: 'Try in browser', mode: 'browser', slugs: ['policylens', 'projectlens', 'rag-regression-gate', 'winchester', 'lakehouse'] },
   { label: 'Run locally', mode: 'local', slugs: ['policylens', 'rag-regression-gate', 'lakehouse'] },
-  { label: 'Watch or read', mode: 'case', slugs: ['quicksupply', 'hr', 'england'] },
+  { label: 'Watch or read', mode: 'case', slugs: ['quicksupply', 'hr'] },
   { label: 'Reuse code', mode: 'pattern', slugs: [] },
 ];
 

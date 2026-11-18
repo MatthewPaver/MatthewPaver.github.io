@@ -14,7 +14,7 @@ test('homepage navigation always exposes the full project catalogue', async ({ p
   }
   await nav.getByRole('link', { name: 'All work', exact: true }).click();
   await expect(page).toHaveURL(/\/work\/$/);
-  await expect(page.locator('.work-card')).toHaveCount(8);
+  await expect(page.locator('.work-card')).toHaveCount(7);
   await expect(page.locator('.template-row')).toHaveCount(2);
 });
 
@@ -40,7 +40,7 @@ test("enterprise palette keeps hero links and actions readable in both themes", 
 test("homepage is a compact public portfolio with a personal introduction", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Matthew Paver \| AI solutions architect/);
-  const heroHeading = page.getByRole("heading", { name: "I build AI review tools that show their evidence." });
+  const heroHeading = page.getByRole("heading", { name: "I build checks people can inspect before they decide." });
   await expect(heroHeading).toBeVisible();
   if (test.info().project.name === "desktop") {
     const lines = await heroHeading.evaluate((heading) => {
@@ -56,7 +56,7 @@ test("homepage is a compact public portfolio with a personal introduction", asyn
   }
   await expect(page.getByRole("heading", { name: "Selected work", exact: true })).toBeVisible();
   await expect(page.locator(".work-row")).toHaveCount(5);
-  await expect(page.locator(".hero-actions").getByRole("link", { name: "Open the PolicyLens example", exact: true })).toHaveAttribute("href", "https://matthewpaver.github.io/iam-policy-auditor/");
+  await expect(page.locator(".hero-actions").getByRole("link", { name: "Open the PolicyLens example", exact: true })).toHaveAttribute("href", "https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident");
   await expect(page.locator(".hero-actions .hero-cv-link")).toHaveAttribute(
     "href",
     "https://github.com/MatthewPaver/MatthewPaver/blob/main/CV.pdf",
@@ -73,7 +73,7 @@ test("Method gives three direct paths to project evidence", async ({ page }) => 
   await expect(page).toHaveURL(/app=lakehouse#case-story$/);
 });
 
-test("full catalogue search, category filters and category links narrow eight public projects", async ({ page }) => {
+test("full catalogue search, category filters and category links narrow seven public projects", async ({ page }) => {
   await page.goto("/work/?category=decision#catalogue");
   const cards = page.locator(".work-card:visible");
   await expect(cards).toHaveCount(4);
@@ -129,7 +129,7 @@ test("hero leads only with PolicyLens and selected work links its real source", 
   const policy = page.locator('#case-policylens');
   await expect(policy).toContainText('AWS says its support systems could not use the permission');
   await expect(policy.getByRole('link', {name:'AWS security bulletin AWS-2021-007'})).toHaveAttribute('href','https://aws.amazon.com/security/security-bulletins/AWS-2021-007/');
-  await expect(hero.getByRole('link', {name:'Open the PolicyLens example', exact:true})).toHaveAttribute('href','https://matthewpaver.github.io/iam-policy-auditor/');
+  await expect(hero.getByRole('link', {name:'Open the PolicyLens example', exact:true})).toHaveAttribute('href','https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident');
   await expect(hero.locator('.check-lane, .check-explainer, .screening-caption')).toHaveCount(0);
   await expect(hero.locator('.button.primary')).toHaveCount(1);
   await expect(hero.locator('.lc-title')).toHaveText('Stop: the support role could read every object in every S3 bucket');
@@ -202,7 +202,7 @@ test("the portfolio remains useful without JavaScript", async ({ browser }) => {
   await expect(page.locator(".route-list a")).toHaveCount(3);
   await expect(page.locator('.method-example')).toHaveCount(3);
   await page.goto("/work/");
-  await expect(page.locator(".work-card:visible")).toHaveCount(8);
+  await expect(page.locator(".work-card:visible")).toHaveCount(7);
   await expect(page.locator("[data-catalogue-controls]")).toBeHidden();
   await context.close();
 });

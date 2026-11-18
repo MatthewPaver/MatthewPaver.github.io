@@ -46,7 +46,8 @@
 <h1>PolicyLens</h1>
 <p class="case-standfirst">Remove risky access, keep the access people need.</p>
 <p class="lede">A proposed AWS permission change would let someone delete a production database. PolicyLens shows which line in the policy allows it, then checks that a fix removes that access without breaking the report access people still need.</p>
-<div class="case-actions"><a class="case-primary" href="https://matthewpaver.github.io/iam-policy-auditor/">Try PolicyLens</a>
+<div class="case-actions"><a class="case-primary" href="https://matthewpaver.github.io/iam-policy-auditor/?view=review&amp;example=aws-incident">Try PolicyLens</a>
+<a href="https://matthewpaver.github.io/iam-policy-auditor/">Try the made-up example</a>
 <a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review">Check your own policies</a>
 <a href="#technical-evidence">Technical evidence</a>
 <a href="https://github.com/MatthewPaver/iam-policy-auditor">Inspect the source</a></div>
@@ -55,6 +56,7 @@
 </header>
 <h2>The problem</h2><p>In AWS, permissions are written as JSON policies. When someone changes one, a reviewer usually sees a list of edited lines. What they need to know is simpler: what can people now do that they could not do before, has the risky part been removed, and can the service still do its job?</p>
 <h2>The decision it supports</h2><p>Should this change go ahead? PolicyLens answers with a concrete example (“this account can now delete the prod-1 database”) and points to the policy line responsible. It then checks a proposed fix against two questions: is the deletion now blocked, and can the account still read its reports? The reviewer can download a record of what was removed, what was kept and why.</p>
+<h2 id="evidence">Evidence</h2><p><strong>A real AWS change.</strong> PolicyLens includes the public AWS Support policy change from version 19 to version 20 (<a href="https://aws.amazon.com/security/security-bulletins/AWS-2021-007/">AWS security bulletin AWS-2021-007</a>). <a href="https://matthewpaver.github.io/iam-policy-auditor/?view=review&amp;example=aws-incident">Open it in PolicyLens</a> and it stops on <code>s3:GetObject</code> on all objects. It reports line 1640 of the policy as PolicyLens normalises it; that is line 1642 in the raw AWS file. AWS says its support systems could not use the permission, and the change was reverted.</p><p><strong>Labelled test changes.</strong> It gave the expected answer on <strong>21 of 30</strong> labelled test policy changes (set 5, the committed fixture <code>bench/real-cases/policylens-heldout5.json</code>; reproduce with <code>npm run bench:real</code>). Named miss: on a modelled role-trust change that lets a named user assume a role without multi-factor authentication (MFA), it returned Pass where Stop was expected. Earlier sets informed the rules, so this is not production accuracy. <a href="https://github.com/MatthewPaver/iam-policy-auditor#readme">Source: the PolicyLens README</a>.</p>
 <h2>Limits</h2><p>PolicyLens checks only the policies and requests you give it. It does not prove a whole AWS account is safe, and it does not yet cover organisation-wide rules (service control policies), permission boundaries, session policies or access between accounts. I have not yet compared its results with AWS’s own policy simulator. The browser demo has no AI and no account access.</p>
 <p class="case-source">This is a personal project with made-up examples. It has not been used by a client, and I have not measured time saved.</p>
 <h2>Try it step by step</h2>

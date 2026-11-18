@@ -2,7 +2,13 @@ import { safeCatalogueReturn } from './catalogue-state.js';
 
 const SITE_BASE = "https://matthewpaver.github.io/";
 const params = new URLSearchParams(window.location.search);
-const slug = (params.get('app') || 'projectlens').slice(0, 100);
+const slug = (params.get('app') || '').slice(0, 100);
+// These projects have full case pages; the preview points to them rather than duplicating them.
+const CASE_PAGES = {
+  policylens: './work/policylens/',
+  projectlens: './work/projectlens/',
+  'rag-regression-gate': './work/rag-regression-gate/',
+};
 const returnHref = safeCatalogueReturn(params.get('returnTo'), window.location.origin);
 
 function setText(id, text) {
@@ -30,7 +36,7 @@ function updateSocialMeta(preview, slug) {
   setMeta("meta[name='twitter:title']", "content", title);
   setMeta("meta[name='twitter:description']", "content", preview.summary);
   setMeta("meta[name='twitter:image']", "content", absoluteImage);
-  setMeta("link[rel='canonical']", "href", previewUrl);
+  setMeta("link[rel='canonical']", "href", Object.hasOwn(CASE_PAGES, slug) ? `${SITE_BASE}${CASE_PAGES[slug].slice(2)}` : previewUrl);
 }
 
 function renderUnknown() {
@@ -58,6 +64,28 @@ function renderUnknown() {
   }
 }
 
+// With no ?app=, list the catalogue instead of silently opening one project.
+function renderCatalogue(previews) {
+  document.title = 'Projects · Matthew Paver';
+  setText('preview-kicker', 'Public work');
+  setText('preview-title', 'Choose a project');
+  setText('preview-summary', 'Pick a project to read about it. Three have full case studies.');
+  setText('preview-access', '');
+  document.querySelector('.preview-media').hidden = true;
+  document.querySelector('.preview-layout').hidden = true;
+  const list = document.createElement('ul');
+  list.className = 'preview-list';
+  for (const [key, item] of Object.entries(previews)) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = Object.hasOwn(CASE_PAGES, key) ? CASE_PAGES[key] : `./preview.html?app=${encodeURIComponent(key)}`;
+    link.textContent = Object.hasOwn(CASE_PAGES, key) ? `${item.title} (case study)` : item.title;
+    li.append(link, document.createTextNode(` · ${item.status}`));
+    list.append(li);
+  }
+  document.querySelector('#preview-actions').replaceChildren(list);
+}
+
 function renderPreview(preview, slug) {
   updateSocialMeta(preview, slug);
   setText("preview-kicker", preview.kicker);
@@ -70,6 +98,9 @@ function renderPreview(preview, slug) {
   setText("preview-note", preview.note);
   for (const field of ['choice', 'result', 'learning', 'access', 'publication']) setText(`preview-${field}`, preview[field]);
   setText('preview-media-caption', preview.mediaCaption);
+  if (Object.hasOwn(CASE_PAGES, slug)) {
+    setText('preview-access', `${preview.access} This is a short summary; the full case study has the evidence and limits.`);
+  }
   setText('preview-steps-heading', preview.video ? 'Text walkthrough' : 'Try this example');
   document.querySelector('.preview-media').hidden = false;
   document.querySelector('.preview-layout').hidden = false;
@@ -170,6 +201,10 @@ async function init() {
       if (!response.ok) throw new Error('Project data unavailable');
       previews = await response.json();
     } finally { clearTimeout(timeout); }
+    if (!slug) {
+      renderCatalogue(previews);
+      return;
+    }
     const preview = Object.hasOwn(previews, slug) ? previews[slug] : null;
 
     if (!preview) {

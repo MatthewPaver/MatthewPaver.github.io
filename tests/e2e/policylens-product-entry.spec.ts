@@ -5,16 +5,16 @@ test('PolicyLens product and before/after case stay directly reachable without J
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4321/');
   // Homepage uses plain "Open the example" so the next click is obvious to a stranger.
-  await expect(page.locator('#case-policylens').getByRole('link', { name: 'Open the example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
-  await expect(page.locator('.hero-actions').getByRole('link', { name: 'Open the PolicyLens example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
+  await expect(page.locator('#case-policylens').getByRole('link', { name: 'Open the example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident');
+  await expect(page.locator('.hero-actions').getByRole('link', { name: 'Open the PolicyLens example', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident');
   await page.goto('http://127.0.0.1:4321/work/policylens/');
-  await expect(page.getByRole('link', { name: 'Try PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/');
+  await expect(page.getByRole('link', { name: 'Try PolicyLens', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident');
   await expect(page.getByRole('link', { name: 'Check your own policies', exact: true })).toHaveAttribute('href', 'https://matthewpaver.github.io/iam-policy-auditor/?view=review');
   await expect(page.locator('.comparison-pair img')).toHaveCount(2);
   await expect(page.locator('.comparison-pair img').first()).toHaveAttribute('src', /policylens-product-before\.png$/);
   await expect(page.locator('.comparison-pair img').last()).toHaveAttribute('src', /policylens-product-after\.png$/);
   const data = await (await page.request.get('http://127.0.0.1:4321/previews.json')).json();
-  expect(data.policylens.links.find((link: {primary?:boolean}) => link.primary).href).toBe('https://matthewpaver.github.io/iam-policy-auditor/');
+  expect(data.policylens.links.find((link: {primary?:boolean}) => link.primary).href).toBe('https://matthewpaver.github.io/work/policylens/');
   expect(data.policylens.steps.join(' ')).toContain('correction');
   await context.close();
 });

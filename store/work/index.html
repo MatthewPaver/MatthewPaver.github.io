@@ -8,9 +8,9 @@
     <meta name="theme-color" content="#0b1626" media="(prefers-color-scheme: dark)" />
     <title>Public work · Matthew Paver</title>
     <link rel="canonical" href="https://matthewpaver.github.io/work/" />
-    <meta name="description" content="Eight public projects and two code examples by Matthew Paver, each with a demo or recording, the code and its limits." />
+    <meta name="description" content="Seven public projects and two code examples by Matthew Paver, each with a demo or recording, the code and its limits." />
     <meta property="og:title" content="Public work · Matthew Paver" />
-    <meta property="og:description" content="Eight public projects and two code examples, each with a demo or recording, the code and its limits." />
+    <meta property="og:description" content="Seven public projects and two code examples, each with a demo or recording, the code and its limits." />
     <meta property="og:url" content="https://matthewpaver.github.io/work/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://matthewpaver.github.io/assets/og-image.png" />
@@ -20,7 +20,7 @@
     <link rel="preload" href="../assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js-enabled");</script>
     <link rel="stylesheet" href="../styles.css?v=20261028-1" />
-    <link rel="stylesheet" href="./catalogue.css?v=20261028-2" />
+    <link rel="stylesheet" href="./catalogue.css?v=20261118-1" />
     <link rel="stylesheet" href="./covers.css?v=20261028-1" />
     <script src="./catalogue.js?v=20261028-1" type="module"></script>
   </head>
@@ -51,7 +51,7 @@
       <section id="catalogue" aria-labelledby="catalogue-heading">
         <div class="catalogue-heading">
           <h2 id="catalogue-heading">Public catalogue</h2>
-          <p data-catalogue-count aria-live="polite">8 projects and 2 code examples</p>
+          <p data-catalogue-count aria-live="polite">7 projects and 2 code examples</p>
         </div>
 
         <div class="catalogue-controls js-only" data-catalogue-controls hidden>
@@ -67,7 +67,7 @@
             <button type="button" data-work-filter="pattern" aria-pressed="false">Reuse code</button>
           </div>
           <label class="catalogue-mode">Explore <select data-catalogue-mode><option value="all">All work</option><option value="browser">Try in browser</option><option value="local">Run locally</option><option value="case">Watch or read</option><option value="pattern">Reuse code</option></select></label>
-          <label class="catalogue-subject">Subject <select data-catalogue-subject><option value="all">All subjects</option><option value="decision">Review tools</option><option value="product">Product workflows</option><option value="data">Data and ML</option><option value="analytics">Analytics</option><option value="experiment">Experiments</option></select></label>
+          <label class="catalogue-subject">Subject <select data-catalogue-subject><option value="all">All subjects</option><option value="decision">Review tools</option><option value="product">Product workflows</option><option value="data">Data and ML</option><option value="analytics">Analytics</option></select></label>
           <button class="catalogue-clear" type="button" data-catalogue-clear>Clear filters</button>
         </div>
 
@@ -84,6 +84,7 @@
               <p>For anyone reviewing an AWS permission change: see what new access it gives, which line causes it and whether a proposed fix works.</p>
               <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>A change that suddenly allows deleting a database, and the policy line that allows it.</dd></div><div><dt>Limits</dt><dd>Checks only the policies you give it. Account-wide checks need the local Node.js version.</dd></div></dl>
               <a class="work-launch" href="https://matthewpaver.github.io/iam-policy-auditor/">Open the example</a>
+              <a class="project-link" href="https://matthewpaver.github.io/iam-policy-auditor/?view=review&amp;example=aws-incident">Open the real AWS incident</a>
               <a class="project-link" href="./policylens/">Read the case study</a>
               <details class="work-first-steps"><summary>First steps</summary><ol><li>Open the example permission change.</li><li>See the new access and the line behind it, then check the proposed fix.</li><li>Download the review record, or choose Use your own policies to check two JSON files.</li></ol><p>No install or API key for the browser version. Organisation-wide rules, permission boundaries and session policies are not checked.</p><p class="first-steps-more"><a class="first-steps-link" href="../preview.html?app=policylens">How it works</a></p></details>
             </div>
@@ -102,6 +103,7 @@
               <p>For project reviewers: check whether a written project update agrees with its schedule files, then record what to ask and what you decided.</p>
               <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>The example’s finish date moves 73 days while its update says nothing changed.</dd></div><div><dt>Limits</dt><dd>Shows what changed, not why or who is responsible.</dd></div></dl>
               <a class="work-launch" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html">Open the example</a>
+              <a class="project-link" href="https://matthewpaver.github.io/ProjectLens/public-evidence.html?project=MOD_0120_2021-Q2">See real public data: E-7 Wedgetail</a>
               <a class="project-link" href="./projectlens/">Read the case study</a>
               <details class="work-first-steps"><summary>First steps</summary><ol><li>Select Try the Northstar example.</li><li>Open the top findings and the dates behind them.</li><li>Select Use your own schedules to compare two Primavera P6 exports.</li></ol><p>Files stay in your browser. Download your record to keep a copy; there is no shared team workspace.</p><p class="first-steps-more"><a class="first-steps-link" href="https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1">Take the guided walkthrough</a> <a class="first-steps-link" href="../preview.html?app=projectlens">How it works</a></p></details>
             </div>
@@ -176,7 +178,7 @@
               <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>Open the data checks: six pass and one warns about five repeated rows. Then follow the guide to rebuild it in Python.</dd></div><div><dt>Limits</dt><dd>Made-up sample data. The next-day forecast does no better than assuming tomorrow matches today.</dd></div></dl>
               <a class="work-launch" href="https://matthewpaver.github.io/marketing-ml-lakehouse/#quality">Open the data checks</a>
               <a class="project-link" href="../preview.html?app=lakehouse">How it works</a>
-              <details class="work-first-steps"><summary>First steps</summary><ol><li>Open Data quality in the browser example.</li><li>Follow the <a href="https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md">published walkthrough</a> to rebuild the example data and model.</li><li>Open the local Streamlit dashboard to inspect those outputs.</li></ol><p>No ad account needed. The sample data cannot show whether a campaign worked.</p></details>
+              <details class="work-first-steps"><summary>First steps</summary><ol><li>Open Data checks in the browser example.</li><li>Follow the <a href="https://github.com/MatthewPaver/marketing-ml-lakehouse/blob/main/DEMO.md">published walkthrough</a> to rebuild the example data and model.</li><li>Open the local Streamlit dashboard to inspect those outputs.</li></ol><p>No ad account needed. The sample data cannot show whether a campaign worked.</p></details>
             </div>
           </article>
 
@@ -200,22 +202,6 @@
             </div>
           </article>
 
-          <article class="work-card app-card image-card" data-catalogue-item data-mode="browser case" data-slug="england" data-category="experiment" data-status="Archived" data-problem="A one-event product loses its purpose when the event ends" data-solves="Shows a transparent tournament scenario model and closes it when the event ends" data-proof="10,000 seeded runs; model tests; live retrospective; POSTMORTEM.md">
-            <div class="app-cover" data-cover="england">
-              <div class="app-cover-screen">
-                <img src="../assets/can-england-win-it.png" width="1200" height="630" alt="Can England Win It tournament scenario simulator" loading="lazy" decoding="async" />
-              </div>
-            </div>
-            <div class="work-card-copy">
-              <h3>Can England Win It?</h3>
-              <p class="work-access">Try in your browser. Finished experiment.</p>
-              <p>Change the football scenarios and play through an animated tournament. Kept as a finished experiment in simulation and interaction design.</p>
-              <dl class="work-card-proof" aria-label="Example and boundary"><div><dt>Try this</dt><dd>Change the assumptions and play the tournament to see how the simulated results shift.</dd></div><div><dt>Limits</dt><dd>A game, not a forecast or betting tool.</dd></div></dl>
-              <a class="work-launch" href="https://matthewpaver.github.io/can-england-win-it/">Play the tournament</a>
-              <a class="project-link" href="../preview.html?app=england">Read the retrospective</a>
-              <details class="work-first-steps"><summary>First steps</summary><ol><li>Choose the team's mood and pressure response.</li><li>Pick a player and play the tournament.</li><li>Read the model assumptions in the repository.</li></ol><p>A scenario game, not betting advice or a validated forecast.</p></details>
-            </div>
-          </article>
         </div>
 
         <div class="catalogue-empty" data-catalogue-empty hidden>
@@ -239,6 +225,9 @@
           </a>
         </div>
       </section>
+
+      <!-- Can England sits outside the grid: a finished side experiment, not one of the review tools. -->
+      <p class="shell experiments-line" id="experiments">Experiments: <a href="https://matthewpaver.github.io/can-england-win-it/">Can England Win It?</a>, a finished football scenario game, not a forecast (<a href="../preview.html?app=england">retrospective</a>).</p>
 </main>
 
     <footer class="shell footer">

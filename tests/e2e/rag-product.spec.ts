@@ -102,7 +102,7 @@ for (const failure of ['network', 'malformed']) {
     await expect(page.locator('.question-navigation')).toBeHidden();
     await page.getByText('Inspect the technical result and reproduce it', { exact: true }).click();
     await page.getByRole('link', { name: 'Open the full offline report', exact: true }).click();
-    await expect(page.getByRole('heading', { name: 'Candidate regresses', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Hold this update', exact: true })).toBeVisible();
   });
 }
 
@@ -115,7 +115,7 @@ test('no JavaScript still offers the full report, source text and own-data setup
   await expect(page.locator('#source-evidence')).toContainText('retention-superseded');
   await expect(page.getByRole('link', { name: 'Set up the gate', exact: true })).toHaveAttribute('href', /#quickstart$/);
   await page.getByRole('link', { name: 'Open all six questions in the offline report', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Candidate regresses', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Hold this update', exact: true })).toBeVisible();
   await context.close();
 });
 

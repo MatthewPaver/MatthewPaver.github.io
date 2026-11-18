@@ -20,18 +20,18 @@ test('catalogue offers direct first actions and honest setup requirements', asyn
   await expect(page.locator('[data-slug="hr"] .work-access')).toContainText('Power BI Desktop');
 });
 
-test('all eight thumbnails preserve the real interface and first-use help works without JavaScript', async ({ browser }) => {
+test('all seven thumbnails preserve the real interface and first-use help works without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
   const page = await context.newPage();
   await page.goto('/work/');
-  await expect(page.locator('.app-cover-screen img')).toHaveCount(8);
+  await expect(page.locator('.app-cover-screen img')).toHaveCount(7);
   for (const img of await page.locator('.app-cover-screen img').all()) {
     await expect(img).toHaveCSS('object-fit','contain');
   }
   const project = page.locator('[data-slug="projectlens"]');
   await project.getByText('First steps', {exact:true}).click();
   await expect(project.getByText(/Try the Northstar example/)).toBeVisible();
-  await expect(page.locator('.work-card')).toHaveCount(8);
+  await expect(page.locator('.work-card')).toHaveCount(7);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(390);
   await context.close();
 });

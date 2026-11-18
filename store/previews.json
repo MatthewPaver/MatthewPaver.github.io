@@ -36,6 +36,16 @@
     ],
     "links": [
       {
+        "label": "Read the full case study",
+        "href": "https://matthewpaver.github.io/work/policylens/",
+        "primary": true
+      },
+      {
+        "label": "Open the real AWS incident",
+        "href": "https://matthewpaver.github.io/iam-policy-auditor/?view=review&example=aws-incident",
+        "primary": false
+      },
+      {
         "label": "Review your own policies",
         "href": "https://matthewpaver.github.io/iam-policy-auditor/?view=review",
         "primary": false
@@ -43,11 +53,6 @@
       {
         "label": "Try browser demo",
         "href": "https://matthewpaver.github.io/iam-policy-auditor/",
-        "primary": true
-      },
-      {
-        "label": "Before and after",
-        "href": "https://matthewpaver.github.io/work/policylens/",
         "primary": false
       },
       {
@@ -61,7 +66,7 @@
         "primary": false
       }
     ],
-    "note": "Local decision support, not an authorization oracle. SCPs, permission boundaries, session policies and some cross-account interactions remain outside the current model."
+    "note": "Local decision support. It does not guarantee what AWS will allow. Service control policies (SCPs), permission boundaries, session policies and some cross-account interactions remain outside the current model."
   },
   "projectlens": {
     "kicker": "Project change assurance",
@@ -70,9 +75,9 @@
     "image": "./assets/previews/projectlens-2026-10-28.png",
     "imageWidth": 1280,
     "imageHeight": 800,
-    "imageAlt": "ProjectLens product landing with the real Northstar finish comparison and source evidence",
+    "imageAlt": "ProjectLens product landing with the made-up Northstar finish comparison and source evidence",
     "role": "Product and AI engineer",
-    "status": "Live public demo",
+    "status": "Browser demo, made-up data (plus real public GMPP data)",
     "focus": "Project controls and RAG",
     "problem": "A change pack can tell a different story from the Primavera schedule it cites. ProjectLens puts the conflicts beside their source dates before the board decides. The public demo uses static context. Newer local retrieval lets a reviewer inspect cited programme status records; these are not records of past decisions or their causes.",
     "choice": "I compare the schedule evidence before asking AI for help. Every finding keeps its source dates, and a reviewer must decide whether a suggested precedent is relevant. A plausible narrative is not treated as a project decision.",
@@ -99,21 +104,29 @@
     ],
     "links": [
       {
-        "label": "Open product demo",
-        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+        "label": "Read the full case study",
+        "href": "https://matthewpaver.github.io/work/projectlens/",
         "primary": true
       },
       {
-        "label": "Before and after",
-        "href": "https://matthewpaver.github.io/work/projectlens/"
+        "label": "See real public data: E-7 Wedgetail",
+        "href": "https://matthewpaver.github.io/ProjectLens/public-evidence.html?project=MOD_0120_2021-Q2",
+        "primary": false
+      },
+      {
+        "label": "Open product demo",
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html",
+        "primary": false
       },
       {
         "label": "Take the interactive walkthrough",
-        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1"
+        "href": "https://matthewpaver.github.io/ProjectLens/change-assurance.html?walkthrough=1",
+        "primary": false
       },
       {
         "label": "Explore the source",
-        "href": "https://github.com/MatthewPaver/ProjectLens"
+        "href": "https://github.com/MatthewPaver/ProjectLens",
+        "primary": false
       }
     ],
     "note": "Evidence review does not establish contractual entitlement, causation or a probability of failure. The board keeps decision authority. The guided example uses the same engine and disposable in-memory records. Reloading clears the walkthrough only."
@@ -155,13 +168,13 @@
     ],
     "links": [
       {
-        "label": "Try browser example",
-        "href": "https://matthewpaver.github.io/demos/rag-gate/",
+        "label": "Read the full case study",
+        "href": "https://matthewpaver.github.io/work/rag-regression-gate/",
         "primary": true
       },
       {
-        "label": "Read the case study",
-        "href": "https://matthewpaver.github.io/work/rag-regression-gate/",
+        "label": "Try browser example",
+        "href": "https://matthewpaver.github.io/demos/rag-gate/",
         "primary": false
       },
       {
@@ -231,7 +244,7 @@
     "imageHeight": 800,
     "imageAlt": "Winchester Buyer Check with the Under £425k filter: made-up homes listed with price, station walk and fit score",
     "role": "Product and data engineer",
-    "status": "Live public demo",
+    "status": "Browser demo, made-up homes (plus real Land Registry market summary)",
     "focus": "Recommendations and public data",
     "problem": "A portal listing cannot answer whether one home works for one buyer. Winchester Buyer Check combines the shortlist with cash position, commute, nearby sold prices, condition notes and next actions.",
     "choice": "I separated the example homes from public completed-sale records, and put missing evidence beside the shortlist. This makes the recommendation a starting point for questions rather than an unexplained ranking.",
@@ -287,7 +300,7 @@
     "publication": "The console, pipeline and next-day evaluation are published and rebuilt in CI. The optional GA4 public-data profile needs your own BigQuery access and is not part of the published results.",
     "mediaCaption": "Public console built from the pipeline's generated evidence file.",
     "steps": [
-      "Open Data quality in the public browser snapshot and inspect its warnings.",
+      "Open Data checks in the public browser snapshot and inspect its warnings.",
       "Use the published DEMO.md to install, rebuild and open the local Streamlit dashboard.",
       "Open the Lineage tab to see the next-day model compared with the prior-day baseline, including the confidence intervals."
     ],

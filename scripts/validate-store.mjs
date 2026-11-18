@@ -62,7 +62,12 @@ const siteBase = "https://matthewpaver.github.io";
 assert.equal(rows.length, 8, "The visual catalogue should stay distilled to eight public projects");
 assert.deepEqual(Object.keys(previews), rows.map((row) => row.slug), "Preview order must match the catalogue CSV");
 assert.equal(new Set(rows.map((row) => row.slug)).size, rows.length, "Catalogue slugs must be unique");
-assert.equal((workHtml.match(/class="work-card app-card image-card"/g) || []).length, rows.length, "Work page card count must match the catalogue CSV");
+// Can England keeps its catalogue row and preview page, but /work/ lists it as a
+// one-line experiment below the grid rather than as a card (decision 18 Nov 2026).
+const experimentSlugs = new Set(["england"]);
+const gridRows = rows.filter((row) => !experimentSlugs.has(row.slug));
+assert.equal((workHtml.match(/class="work-card app-card image-card"/g) || []).length, gridRows.length, "Work page card count must match the catalogue CSV, minus experiments");
+assert.ok(workHtml.includes('id="experiments"') && workHtml.includes('href="../preview.html?app=england"'), "Can England needs its experiments line");
 
 for (const row of rows) {
   assert.match(row.repo, /^https:\/\/github\.com\/MatthewPaver\//, `${row.slug} needs a public MatthewPaver repository`);
@@ -70,12 +75,14 @@ for (const row of rows) {
   assert.match(row.asset, /\.(png|jpe?g|webp)$/i, `${row.slug} must use a real screenshot rather than an illustration SVG`);
   assert.ok(fs.existsSync(path.join(root, "store", row.asset)), `Missing screenshot for ${row.slug}: ${row.asset}`);
   assert.ok(previews[row.slug], `Missing preview data for ${row.slug}`);
-  assert.ok(workHtml.includes(`data-slug="${row.slug}"`), `Missing work card for ${row.slug}`);
-  assert.ok(workHtml.includes(`href="../${row.preview}"`), `Missing preview link for ${row.slug}`);
-  assert.ok(workHtml.includes(`src="../${row.asset}"`), `Card screenshot drift for ${row.slug}`);
-  assert.ok(workHtml.includes(`data-problem="${row.problem.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`), `Problem evidence drift for ${row.slug}`);
-  assert.ok(workHtml.includes(`data-solves="${row.solves.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`), `Outcome evidence drift for ${row.slug}`);
-  assert.ok(workHtml.includes(`data-proof="${row.proof.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`), `Proof evidence drift for ${row.slug}`);
+  if (!experimentSlugs.has(row.slug)) {
+    assert.ok(workHtml.includes(`data-slug="${row.slug}"`), `Missing work card for ${row.slug}`);
+    assert.ok(workHtml.includes(`href="../${row.preview}"`), `Missing preview link for ${row.slug}`);
+    assert.ok(workHtml.includes(`src="../${row.asset}"`), `Card screenshot drift for ${row.slug}`);
+    assert.ok(workHtml.includes(`data-problem="${row.problem.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`), `Problem evidence drift for ${row.slug}`);
+    assert.ok(workHtml.includes(`data-solves="${row.solves.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`), `Outcome evidence drift for ${row.slug}`);
+    assert.ok(workHtml.includes(`data-proof="${row.proof.replaceAll("&", "&amp;").replaceAll('"', "&quot;")}"`), `Proof evidence drift for ${row.slug}`);
+  }
   assert.ok(sitemap.includes(`${siteBase}/${row.preview}`), `Sitemap is missing ${row.slug}`);
 
   const preview = previews[row.slug];
@@ -119,7 +126,7 @@ assert.ok(workHtml.includes("data-catalogue-search"), "The full work page needs 
 assert.ok(!`${indexHtml}${workHtml}`.includes("scroll-progress"), "The portfolio should not use decorative scroll tracking");
 assert.ok(indexHtml.includes("script.js"), "The evidence interaction needs its small progressive-enhancement script");
 assert.ok(!styles.includes("content-visibility"), "Cards must render in full-page captures and print output");
-assert.equal((workHtml.match(/aria-label="Example and boundary"/g) || []).length, 8, "Every card must expose an example and practical boundary");
+assert.equal((workHtml.match(/aria-label="Example and boundary"/g) || []).length, gridRows.length, "Every card must expose an example and practical boundary");
 
 assert.ok(indexHtml.includes('rel="canonical"'), "Index needs a canonical URL");
 assert.ok(previewHtml.includes('rel="canonical"'), "Preview needs a canonical URL");

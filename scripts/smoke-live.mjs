@@ -62,6 +62,8 @@ for (const [name, url, text, wanted] of [
   ["previews never say Live public demo", `${HOME}previews.json`, "Live public demo", false],
   ["hero does not lead with AI review tools", HOME, "AI review tools", false],
   ["ProjectLens has no fake upload page", `${HOME}ProjectLens/board-readiness.html`, 'type="file"', false],
+  ["PolicyLens case drops the stale 55-case benchmark", `${HOME}work/policylens/`, "55-case", false],
+  ["HR preview no longer calls its published fix unpublished", `${HOME}previews.json`, "local, unpublished", false],
 ]) {
   try {
     const body = await (await fetch(`${url}?smoke=${Date.now()}`, { cache: "no-store" })).text();
